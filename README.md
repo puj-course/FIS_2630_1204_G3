@@ -3,7 +3,11 @@
 # WiseTrip
 
 ## Descripción
-Breve descripción del sistema de software, el problema que busca solucionar y el contexto general del proyecto.
+WiseTrip es una plataforma web de planificación personalizada de viajes que permite a los usuarios organizar sus viajes de acuerdo con su presupuesto, fechas e intereses. La plataforma busca reunir en un solo lugar elementos que normalmente requieren varias aplicaciones, como itinerarios, reservas, gastos, transporte, alojamiento y actividades.
+
+El sistema generará un itinerario personalizado según las preferencias y el presupuesto del usuario, permitiéndole modificar su planificación y recibir alertas relacionadas con clima, cambios en el viaje, presupuesto y gastos. Además, busca ofrecer recomendaciones relacionadas con intereses como aventura, cultura o gastronomía.
+
+El objetivo principal de WiseTrip es simplificar la planificación de viajes, reducir el tiempo y el estrés asociados a organizar un viaje y ayudar al usuario a mantener un mejor control financiero, centralizando la información y facilitando la toma de decisiones antes y durante el viaje.
 
 ---
 
