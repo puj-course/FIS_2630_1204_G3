@@ -160,7 +160,7 @@ docker-compose run ai-model pytest
 **Equipo de desarrollo:**
 
 **Valeria Cortes Rendon**  
-Estudiante de Ciencia de Datos, Pontificia Universidad Javeriana  
+Estudiante de Ingeniería en Sistemas, Pontificia Universidad Javeriana  
 📧 cortesvaleria@javeriana.edu.co  
 
 **Maria Alejandra Rodriguez Betancur**  
