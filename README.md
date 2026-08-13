@@ -159,13 +159,25 @@ docker-compose run ai-model pytest
 
 **Equipo de desarrollo:**
 
-**Estudiante 1**  
+**Valeria Cortes Rendon**  
 Estudiante de Ciencia de Datos, Pontificia Universidad Javeriana  
-📧 est1.u@javeriana.edu.co  
+📧 cortesvaleria@javeriana.edu.co  
 
-**Estudiante 2**  
+**Maria Alejandra Rodriguez Betancur**  
 Estudiante de Ingeniería en Sistemas, Pontificia Universidad Javeriana  
-📧 est2@javeriana.edu.co  
+📧 rodriguez_malejandra@javeriana.edu.co  
+
+**Gabriela Melo Gualteros**  
+Estudiante de Ingeniería en Sistemas, Pontificia Universidad Javeriana  
+📧 g.melog@javeriana.edu.co 
+
+**Santiago Andrés Clavijo Suárez**  
+Estudiante de Ingeniería en Sistemas, Pontificia Universidad Javeriana  
+📧 clavijoss@javeriana.edu.co  
+
+**Isabella Rodrguez Posada**  
+Estudiante de Ingeniería en Sistemas, Pontificia Universidad Javeriana  
+📧 isabellarodriguez@javeriana.edu.co 
 
 --- 
 
