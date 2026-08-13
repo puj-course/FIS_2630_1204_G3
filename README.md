@@ -11,7 +11,7 @@ Breve descripción del sistema de software, el problema que busca solucionar y e
 | Nombre        | Rol                   | GitHub / Perfil |
 |--------------|-----------------------|-----------------|
 | Maria Alejandra Rodriguez | Scrum Master          | github.com/usuario1 |
-| Gabriela Melo Gualteros | Product Owner         | github.com/usuario2 |
+| Gabriela Melo Gualteros | Product Owner         | https://github.com/GabrielaMeloG|
 |  | Sprint Planner        | github.com/usuario3 |
 | Estudiante 4 | Configuration Manager | github.com/usuario4 |
 | Estudiante 5 | QA Lead               | github.com/usuario5 |
