@@ -10,12 +10,12 @@ Breve descripción del sistema de software, el problema que busca solucionar y e
 ## Equipo del Proyecto
 | Nombre        | Rol                   | GitHub / Perfil |
 |--------------|-----------------------|-----------------|
-| Maria Alejandra Rodriguez | Scrum Master          | github.com/usuario1 |
+| Maria Alejandra Rodriguez | Scrum Master          | https://github.com/MalejaRodri |
 | Gabriela Melo Gualteros | Product Owner         | https://github.com/GabrielaMeloG|
-|  | Sprint Planner        | github.com/usuario3 |
-| Estudiante 4 | Configuration Manager | github.com/usuario4 |
-| Estudiante 5 | QA Lead               | github.com/usuario5 |
-| Estudiante 6 | DevOps Engineer       | github.com/usuario6 |
+| Valeria Cortes Rendon | Sprint Planner        | https://github.com/valeriacortess|
+| Isabella Posada | Configuration Manager | https://github.com/isaposada |
+| Santiago Clavijo | QA Lead               | https://github.com/Santiago-Clavijo |
+| Santiago Clavijo | DevOps Engineer       | https://github.com/Santiago-Clavijo |
 
 ---
 
