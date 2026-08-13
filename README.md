@@ -11,8 +11,8 @@ Breve descripción del sistema de software, el problema que busca solucionar y e
 | Nombre        | Rol                   | GitHub / Perfil |
 |--------------|-----------------------|-----------------|
 | Maria Alejandra Rodriguez | Scrum Master          | github.com/usuario1 |
-| Estudiante 2 | Product Owner         | github.com/usuario2 |
-| Estudiante 3 | Sprint Planner        | github.com/usuario3 |
+| Gabriela Melo Gualteros | Product Owner         | github.com/usuario2 |
+|  | Sprint Planner        | github.com/usuario3 |
 | Estudiante 4 | Configuration Manager | github.com/usuario4 |
 | Estudiante 5 | QA Lead               | github.com/usuario5 |
 | Estudiante 6 | DevOps Engineer       | github.com/usuario6 |
