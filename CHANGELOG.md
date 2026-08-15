@@ -100,45 +100,63 @@ Este archivo registra las actualizaciones diarias del equipo durante el desarrol
 
 ---
 
-## Daily Scrum - [Fecha]
+## Daily Scrum - [14/08/2026]
 
 ### Maria Alejandra Rodriguez
 
 1. **¿Qué hice ayer?**
 
+Aprender a gestionar el proyecto y sus componentes en github 
+
 2. **¿Qué voy a hacer hoy?**
 
-3. **¿Tengo algún impedimento o bloqueo?**
+Terminar de documentar y organizar el proceso que hemos tenido en github para el desarrollo del proyecto 
 
+3. **¿Tengo algún impedimento o bloqueo?**
+No
 ---
 
 ### Gabriela Melo Gualteros
 
 1. **¿Qué hice ayer?**
 
+Ayer pude conocer más la plataforma de GitHub, pude crear mis primeros ISSUES y participar en nuestras primeras reuniones como equipo de trabajo
+
 2. **¿Qué voy a hacer hoy?**
 
-3. **¿Tengo algún impedimento o bloqueo?**
+Estuve trabajando en mis issues, la definición de la problemática de la cual se basa nuestro proyecto. 
 
+3. **¿Tengo algún impedimento o bloqueo?**
+No
 ---
 
 ### Valeria Cortes Rendon
 
 1. **¿Qué hice ayer?**
 
+Organización de sprints y Github ademas de organizacion del equipo, Se inicio la documentacion del taller dejado en clase. Se hizo busqueda de informacin sobre la arquitectura que se podria desarrollar en el proyecto. 
+
 2. **¿Qué voy a hacer hoy?**
 
-3. **¿Tengo algún impedimento o bloqueo?**
+Estoy terminando el taller de git, recopilando informacion y escribiendo mis tareas sobre la arquitectura del proyecto. 
 
+3. **¿Tengo algún impedimento o bloqueo?**
+No
 ---
 
 ### Isabella Posada
 
 1. **¿Qué hice ayer?**
 
+Ayer estuve  revisando el Github y acomodando los issues necesarios para complementar el trabajo de mis compañeros 
+
 2. **¿Qué voy a hacer hoy?**
 
+Estuve gestionando como delimitar el proyecto para ir pensando en los proximos requisitos 
+
 3. **¿Tengo algún impedimento o bloqueo?**
+
+No, por ahora no. 
 
 ---
 
@@ -146,9 +164,18 @@ Este archivo registra las actualizaciones diarias del equipo durante el desarrol
 
 1. **¿Qué hice ayer?**
 
+Ayer aprendi a trabajr en github, cree mis primero issues para resolverlos,  asi como participar en las reuniones diarias.
+
 2. **¿Qué voy a hacer hoy?**
 
+Hoy estuve trabajando en mis issues que corresponden a los requerimientos no funcionales y los requisitos en general.
+
 3. **¿Tengo algún impedimento o bloqueo?**
+
+Al no tener  retroalimentacion del la presentacion de la idea se me es dificll definir los requisitos.
+
+---
+<img width="341" height="516" alt="image" src="https://github.com/user-attachments/assets/c9397950-e891-4048-a304-573e6eb22e61" />
 
 ---
 
