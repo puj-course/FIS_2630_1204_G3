@@ -24,9 +24,9 @@ El objetivo principal de WiseTrip es simplificar la planificación de viajes, re
 ---
 
 ## Tecnologías Utilizadas
-- **Frontend:** JavaFX
+- **Frontend:** HTML/CC/JS
 - **Backend:** Java – Spring Boot
-- **Base de Datos:** PostgreSQL
+- **Base de Datos:** MySQL
 - **IA / Data Science:** Python, Pandas, Scikit-learn
 - **DevOps:** GitHub Actions, Docker, SonarQube
 - **Control de versiones:** Git
