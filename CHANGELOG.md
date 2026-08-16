@@ -179,7 +179,116 @@ Al no tener  retroalimentacion del la presentacion de la idea se me es dificll d
 
 ---
 
-## Daily Scrum - [Fecha]
+# Sprint Review y Sprint Retrospective - 15/08/2026
+
+## Maria Alejandra Rodriguez
+
+### Sprint Review
+
+1. **¿Qué logramos?**
+
+   Logramos entender el funcionamiento de GitHub y organizar de manera efectiva las actividades del proyecto para que todo salga bien en tema de gestión.
+
+### Sprint Retrospective
+
+2. **¿Cómo trabajamos?**
+
+   Trabajamos bien, aunque podemos mejorar la organización de la entrega, redacción y la asignación de tareas secundarias (redacción y organización del documento, muestra de pruebas).
+
+3. **¿Qué podríamos mejorar?**
+
+   Organización de las entregas y cosas pendientes.
+
+---
+
+## Gabriela Melo Gualteros
+
+### Sprint Review
+
+1. **¿Qué logramos?**
+
+   Se logró poder comprender varias funciones de GitHub, además de comenzar a realizar nuestro primer Sprint.
+
+### Sprint Retrospective
+
+2. **¿Cómo trabajamos?**
+
+   Al no contar con mucha información del uso de GitHub o de la metodología al principio se sintió difícil empezar pero mientras trabajábamos en equipo pudimos sacarlo adelante.
+
+3. **¿Qué podríamos mejorar?**
+
+   La organización de tiempo. Poder cuadrar bien las reuniones y poder contar con información concreta de lo que se espera en cada entrega.
+
+---
+
+## Valeria Cortes Rendon
+
+### Sprint Review
+
+1. **¿Qué logramos?**
+
+   Logramos el aprendizaje de la nueva herramienta GitHub, realizamos actividades de investigación sobre el proyecto, planteamos de forma más formal nuestra propuesta de negocio y realizamos el Sprint Diario como también la entrega del taller de GitHub.
+
+### Sprint Retrospective
+
+2. **¿Cómo trabajamos?**
+
+   Al inicio fue un poco problemático ya que ninguno entendía como manejar la herramienta lo que hizo que fuera un obstáculo ya que cada uno estaba haciendo lo que creía que estaba bien. A medida que nos organizamos y entendimos la herramienta pudimos unir nuestras ideas y trabajar en equipo.
+
+3. **¿Qué podríamos mejorar?**
+
+   Podríamos mejorar el trabajo en equipo y escuchar las propuestas de cada uno de los integrantes para así llegar a acuerdos en las funcionalidades del proyecto.
+
+---
+
+## Isabella Posada
+
+### Sprint Review
+
+1. **¿Qué logramos?**
+
+   Logramos empezar a aprender a trabajar en equipo, reconocer el trabajo de cada uno y ponernos de acuerdo para repartir las actividades del GitHub.
+
+### Sprint Retrospective
+
+2. **¿Cómo trabajamos?**
+
+   Al principio fue confuso porque estábamos un poco perdidos al no saber cómo empezar, pero en conjunto nos comunicamos y trabajamos bien.
+
+3. **¿Qué podríamos mejorar?**
+
+   Aprovechar los espacios que tenemos en clase un poco más para que sea más inmediata la comunicación.
+
+---
+
+## Santiago Clavijo
+
+### Sprint Review
+
+1. **¿Qué logramos?**
+
+   Entender el funcionamiento de GitHub, y trabajar en nuestros primeros Issues.
+
+### Sprint Retrospective
+
+2. **¿Cómo trabajamos?**
+
+   En general trabajamos bien, un poco confundidos pero poco a poco vamos aprendiendo a usar GitHub y a emplear la metodología Scrum.
+
+3. **¿Qué podríamos mejorar?**
+
+   La organización, al ser la primera semana siento que estuvimos un poco descoordinados pero siento que como inicio lo hicimos bien.
+
+---
+
+<img width="1600" height="792" alt="image" src="https://github.com/user-attachments/assets/6366f2b4-9abe-4799-9c73-cc8f75cef22a" />
+
+---
+
+
+---
+
+##Daily Scrum - []
 
 ### Maria Alejandra Rodriguez
 
