@@ -285,6 +285,36 @@ Al no tener  retroalimentacion del la presentacion de la idea se me es dificll d
 
 ---
 
+---
+
+# Sprint Planning - [17/08/2026]
+
+## Sprint Goal
+
+El objetivo principal de esta semana es poder empezar a visualizar nuestro proyecto como algo ya más tangible. Empezaremos creando un boceto de la página web que nos ayudará a darle forma a la idea y además sobre este boceto queremos ir implementando las diferentes APIs que necesitaremos para el desarrollo web. Se tuvo la idea de que implementaramos las APIs en el boceto mientras vamos aprendiendo como utilizarlas, como implementarlas y como estas afectan el programa para que cuando ya tengamos el modelo definitivo no vayamos a equivocarnos. Trabajaremos también en el comienzo de la base de datos de la cuál se va a basar nuestra pagina. 
+
+## Capacidad del equipo
+
+* Desarrolladores disponibles: 5
+* Puntos/horas disponibles: 42
+
+## Issues seleccionados para el Sprint
+
+| ID | Título | Tipo | Estimación | Responsable |
+|----|--------|------|------------|-------------|
+| PB-00   |        |      |            |             |
+|    |        |      |            |             |
+|    |        |      |            |             |
+
+## Riesgos / Bloqueos identificados
+
+* 
+
+## Notas adicionales
+
+* 
+
+---
 
 ---
 
