@@ -302,13 +302,16 @@ El objetivo principal de esta semana es poder empezar a visualizar nuestro proye
 
 | ID | Título | Tipo | Estimación | Responsable |
 |----|--------|------|------------|-------------|
-| PB-00   |        |      |            |             |
-|    |        |      |            |             |
-|    |        |      |            |             |
+| PB-023  |Crear boceto        | frontend     | 2           |  https://github.com/MalejaRodri           |
+| PB-024 | Probar integración con APIs externas       | backend    |  4          |  https://github.com/isaposada   , https://github.com/GabrielaMeloG  , https://github.com/Santiago-Clavijo       |
+| PB-025   | Diseño de modelo inicial de base de datos       | Base de datos     | 4          |   https://github.com/valeriacortess          |
+
 
 ## Riesgos / Bloqueos identificados
 
-* 
+* Que la implementación de las APIs sea muy complejo
+* Desviarnos de la idea principal de proyecto
+* La magnitud del proyecto 
 
 ## Notas adicionales
 
