@@ -315,7 +315,8 @@ El objetivo principal de esta semana es poder empezar a visualizar nuestro proye
 
 ## Notas adicionales
 
-* 
+* <img width="1600" height="790" alt="image" src="https://github.com/user-attachments/assets/311d1f2b-0d02-4213-8b8b-1f821e7c4710" />
+
 
 ---
 
