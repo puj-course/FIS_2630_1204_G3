@@ -335,7 +335,9 @@ El objetivo principal de esta semana es poder empezar a visualizar nuestro proye
    Luego de clase nos dimos cuenta de muchos errores entonces la idea es corregirlos, estructurar de manera correcta las historias de usuario y tenerlos en cuenta para las siguientes semanas.
    
 3. **¿Tengo algún impedimento o bloqueo?**
+
    Ninguno
+   
 ---
 
 ### Gabriela Melo Gualteros
@@ -374,15 +376,15 @@ El objetivo principal de esta semana es poder empezar a visualizar nuestro proye
 
 1. **¿Qué hice ayer?**
 
-Ayer como grupo terminamos de delimitar el proyecto y cocretar lo de la semana
+   Ayer como grupo terminamos de delimitar el proyecto y cocretar lo de la semana
 
 2. **¿Qué voy a hacer hoy?**
 
-Corregir errores, malinterpretaciones y trabajar en grupo para resolver los casos de usuario de cada uno
+   Corregir errores, malinterpretaciones y trabajar en grupo para resolver los casos de usuario de cada uno
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
-por ahora, no.
+   por ahora, no.
 
 ---
 
