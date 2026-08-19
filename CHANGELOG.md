@@ -322,6 +322,169 @@ El objetivo principal de esta semana es poder empezar a visualizar nuestro proye
 
 ---
 
+##Daily Scrum - [18/08/2026]
+
+### Maria Alejandra Rodriguez
+
+1. **¿Qué hice ayer?**
+   Organizamos y designamos que ibamos a hacer esta semana en la reunión de Sprint planning y retrospective, además terminamos de delimitar nuestro proyecto
+2. **¿Qué voy a hacer hoy?**
+   Luego de clase nos dimos cuenta de muchos errores entonces la idea es corregirlos, estructurar de manera correcta las historias de usuario y tenerlos en cuenta para las siguientes semanas.
+3. **¿Tengo algún impedimento o bloqueo?**
+   Ninguno
+---
+
+### Gabriela Melo Gualteros
+
+1. **¿Qué hice ayer?**
+   Estuvimos en nuestra reunion de Sprint planning y retrospective. Alli nos dimos cuenta de varios cambios y mejoras que podemos implementar; como lo es la verdadera definición y utilidad de un milestone.
+2. **¿Qué voy a hacer hoy?**
+   Despues de la clase me di cuenta que los issues que habia creado ayer no estaban del todo bien, así que hoy los arreglaré para que queden con el formato de INVEST de Historias de Usuario.
+3. **¿Tengo algún impedimento o bloqueo?**
+   Ninguno
+---
+
+### Valeria Cortes Rendon
+
+1. **¿Qué hice ayer?**
+   Realizamos Brainstorm para empezar a gestionar las nuevas historias de usuario para esta semana
+2. **¿Qué voy a hacer hoy?**
+   Aprendimos como se clasifican mejor las tareas y como realizar las HU teniendo en cuenta lo que queremos hacer
+3. **¿Tengo algún impedimento o bloqueo?**
+   No.
+---
+
+### Isabella Posada
+
+1. **¿Qué hice ayer?**
+
+2. **¿Qué voy a hacer hoy?**
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+---
+
+### Santiago Clavijo
+
+1. **¿Qué hice ayer?**
+   Ayer hicimos varios issues sin formato ni historias de usuario.
+2. **¿Qué voy a hacer hoy?**
+   Entendi como usar y crear las historias de usuario, asi como que es un milestone.
+3. **¿Tengo algún impedimento o bloqueo?**
+   Ninguno
+---
+<img width="1600" height="784" alt="PHOTO-2026-08-18-20-57-47" src="https://github.com/user-attachments/assets/c6e8e535-01b5-4424-be33-c756554794dc" />
+
+---
+
+##Daily Scrum - []
+
+### Maria Alejandra Rodriguez
+
+1. **¿Qué hice ayer?**
+
+2. **¿Qué voy a hacer hoy?**
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+---
+
+### Gabriela Melo Gualteros
+
+1. **¿Qué hice ayer?**
+
+2. **¿Qué voy a hacer hoy?**
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+---
+
+### Valeria Cortes Rendon
+
+1. **¿Qué hice ayer?**
+
+2. **¿Qué voy a hacer hoy?**
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+---
+
+### Isabella Posada
+
+1. **¿Qué hice ayer?**
+
+2. **¿Qué voy a hacer hoy?**
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+---
+
+### Santiago Clavijo
+
+1. **¿Qué hice ayer?**
+
+2. **¿Qué voy a hacer hoy?**
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+---
+
+---
+
+##Daily Scrum - []
+
+### Maria Alejandra Rodriguez
+
+1. **¿Qué hice ayer?**
+
+2. **¿Qué voy a hacer hoy?**
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+---
+
+### Gabriela Melo Gualteros
+
+1. **¿Qué hice ayer?**
+
+2. **¿Qué voy a hacer hoy?**
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+---
+
+### Valeria Cortes Rendon
+
+1. **¿Qué hice ayer?**
+
+2. **¿Qué voy a hacer hoy?**
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+---
+
+### Isabella Posada
+
+1. **¿Qué hice ayer?**
+
+2. **¿Qué voy a hacer hoy?**
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+---
+
+### Santiago Clavijo
+
+1. **¿Qué hice ayer?**
+
+2. **¿Qué voy a hacer hoy?**
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+---
+
+---
+
 ##Daily Scrum - []
 
 ### Maria Alejandra Rodriguez
