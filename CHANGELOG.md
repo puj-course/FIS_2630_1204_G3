@@ -197,7 +197,7 @@ Al no tener  retroalimentacion del la presentacion de la idea se me es dificll d
 
 3. **¿Qué podríamos mejorar?**
 
-   Organización de las entregas y cosas pendientes.
+   Organización de las entregas y cosas pendientes. Para la semana 2 vamos a mejorar las HU y entender mejor como funciona el repositorio
 
 ---
 
