@@ -421,7 +421,7 @@ codificar las primeras acciones de recolección de datos y estructura para el in
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
-Ninguno
+   Ninguno
 
 ---
 
@@ -485,7 +485,7 @@ Ninguno
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
-Ninguno
+   Ninguno
 
 ---
 <img width="1600" height="1041" alt="PHOTO-2026-08-19-21-11-01" src="https://github.com/user-attachments/assets/ea91b47d-871b-408e-9f8e-f1f707b82159" />
