@@ -407,15 +407,21 @@ El objetivo principal de esta semana es poder empezar a visualizar nuestro proye
 
 ---
 
-##Daily Scrum - []
+## Daily Scrum - [19/08/2026]
 
 ### Maria Alejandra Rodriguez
 
 1. **¿Qué hice ayer?**
 
+   Revisar y planificar la idea visual y funcional de las primeras historias de usuario
+   
 2. **¿Qué voy a hacer hoy?**
 
+codificar las primeras acciones de recolección de datos y estructura para el inicio de sesión y creación de cuenta
+
 3. **¿Tengo algún impedimento o bloqueo?**
+
+Ninguno
 
 ---
 
@@ -423,9 +429,15 @@ El objetivo principal de esta semana es poder empezar a visualizar nuestro proye
 
 1. **¿Qué hice ayer?**
 
+   Estuve modificando los sprints que ya tenia hechos para que tuvieran el formato de historias de usuario
+
 2. **¿Qué voy a hacer hoy?**
 
+   Estuve investigando que tipo de APIs de pasarela de pagos podemos incorporar en nuestro sistema
+
 3. **¿Tengo algún impedimento o bloqueo?**
+
+   Ninguno
 
 ---
 
@@ -433,9 +445,15 @@ El objetivo principal de esta semana es poder empezar a visualizar nuestro proye
 
 1. **¿Qué hice ayer?**
 
+   Creacion de HU basadas en lo que voy a realizar en la semana
+
 2. **¿Qué voy a hacer hoy?**
 
+   Busqueda de informacion sobre informacion que pueda servirme para realizar las Tablas inciales de la Base de Datos
+
 3. **¿Tengo algún impedimento o bloqueo?**
+
+   No aun
 
 ---
 
@@ -443,9 +461,15 @@ El objetivo principal de esta semana es poder empezar a visualizar nuestro proye
 
 1. **¿Qué hice ayer?**
 
+   Ordenamos las tareas para que cada uno tuviera su issue y sus subissues.
+
 2. **¿Qué voy a hacer hoy?**
 
+   Investigar que apis de actividades sirven, además de documentarlo
+
 3. **¿Tengo algún impedimento o bloqueo?**
+
+   No
 
 ---
 
@@ -453,11 +477,18 @@ El objetivo principal de esta semana es poder empezar a visualizar nuestro proye
 
 1. **¿Qué hice ayer?**
 
+   Creamos las historias de usuario asi como los issues
+
 2. **¿Qué voy a hacer hoy?**
+
+   investigar acerca de las apis del clima que podriamos usar
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
+Ninguno
+
 ---
+<img width="1600" height="1041" alt="PHOTO-2026-08-19-21-11-01" src="https://github.com/user-attachments/assets/ea91b47d-871b-408e-9f8e-f1f707b82159" />
 
 ---
 
