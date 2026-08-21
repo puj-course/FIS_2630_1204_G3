@@ -1,4 +1,4 @@
-# Daily Scrum - WiseTrip
+<img width="1600" height="1041" alt="PHOTO-2026-08-20-21-35-55" src="https://github.com/user-attachments/assets/ae250fe7-d960-4404-8d53-ed93d8ac4a70" /># Daily Scrum - WiseTrip
 
 Este archivo registra las actualizaciones diarias del equipo durante el desarrollo del proyecto **WiseTrip**. En cada Daily Scrum se documentará el avance de las tareas, las actividades realizadas, las tareas pendientes y los posibles impedimentos encontrados.
 
@@ -492,15 +492,22 @@ codificar las primeras acciones de recolección de datos y estructura para el in
 
 ---
 
-##Daily Scrum - []
+## Daily Scrum - [20/08/2026]
 
 ### Maria Alejandra Rodriguez
 
 1. **¿Qué hice ayer?**
 
+   Perfeccionando detalles de la pagina web y dejando los espacios para la aplicación de las APIS
+
 2. **¿Qué voy a hacer hoy?**
 
+   Terminar los detalles del codigo
+
 3. **¿Tengo algún impedimento o bloqueo?**
+
+   Ninguno
+
 
 ---
 
@@ -508,9 +515,15 @@ codificar las primeras acciones de recolección de datos y estructura para el in
 
 1. **¿Qué hice ayer?**
 
+   Ayer estuve redactando el documento de investigación de las APIs de pasarela de pagos, además de respondiendo unas dudas que tenia de que eran realidad este tema de las APIs
+
 2. **¿Qué voy a hacer hoy?**
 
+   Hoy terminaré de documentar la investigación para poder subirla y prepararme para descubrir como implementar la API en la pagina web
+
 3. **¿Tengo algún impedimento o bloqueo?**
+
+   Ninguno
 
 ---
 
@@ -538,11 +551,18 @@ codificar las primeras acciones de recolección de datos y estructura para el in
 
 1. **¿Qué hice ayer?**
 
+   Ayer investigue acerca de las Apis del clima que podria usar
+
 2. **¿Qué voy a hacer hoy?**
+
+   Hoy segui investigando acerca de las Apis y ya cerre las opciones a 2, solo falta implementarla para probar si sirve
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
+   Ninguno
+
 ---
+<img width="1600" height="1041" alt="PHOTO-2026-08-20-21-35-55" src="https://github.com/user-attachments/assets/cc932ddd-4e79-49c1-a03b-9838c3507920" />
 
 ---
 
