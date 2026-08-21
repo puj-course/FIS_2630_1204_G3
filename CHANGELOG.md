@@ -541,9 +541,15 @@ codificar las primeras acciones de recolección de datos y estructura para el in
 
 1. **¿Qué hice ayer?**
 
+   Ayer investigue ciertas APIs aparte de las de Google que podian servir para
+
 2. **¿Qué voy a hacer hoy?**
 
+   Hoy voy a terminar de definir que api es la mejor para habilitar en el proyecto
+
 3. **¿Tengo algún impedimento o bloqueo?**
+
+   Ninguno
 
 ---
 
