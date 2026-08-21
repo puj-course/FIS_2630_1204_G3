@@ -531,9 +531,15 @@ codificar las primeras acciones de recolección de datos y estructura para el in
 
 1. **¿Qué hice ayer?**
 
+   Plantee las tablas de usuario y viajero
+
 2. **¿Qué voy a hacer hoy?**
 
+   Identificare las restricciones de cada tabla y la integrare a lo que tengo hasta el momento
+
 3. **¿Tengo algún impedimento o bloqueo?**
+
+   Ninguno
 
 ---
 
