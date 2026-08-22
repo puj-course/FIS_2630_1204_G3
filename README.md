@@ -183,3 +183,6 @@ Estudiante de Ingeniería en Sistemas, Pontificia Universidad Javeriana
 
 ## Licencia
 Proyecto desarrollado con fines académicos.
+
+## Taller Git
+- [Valeria Cortés](https://github.com/valeriacortess)
