@@ -578,7 +578,7 @@ codificar las primeras acciones de recolección de datos y estructura para el in
 
 ---
 
-##Daily Scrum - []
+## Daily Scrum - [22/08/2026]
 
 ### Maria Alejandra Rodriguez
 
@@ -594,9 +594,15 @@ codificar las primeras acciones de recolección de datos y estructura para el in
 
 1. **¿Qué hice ayer?**
 
+   Documentación de investigación de APIs de pasarelas de pago
+
 2. **¿Qué voy a hacer hoy?**
 
+   Investigar de la integración de la API seleccionada, ver como seria implementarlo en nuestra pagina web
+
 3. **¿Tengo algún impedimento o bloqueo?**
+
+   Ninguno
 
 ---
 
@@ -604,9 +610,15 @@ codificar las primeras acciones de recolección de datos y estructura para el in
 
 1. **¿Qué hice ayer?**
 
+   Creacion de tablas para base de datos y finalizacion de documento de la semana
+
 2. **¿Qué voy a hacer hoy?**
 
+   Presentacion de las tablas iniciales al equipo, muestra de supuestos y reglas de negocio
+
 3. **¿Tengo algún impedimento o bloqueo?**
+
+   Ninguno
 
 ---
 
@@ -614,9 +626,15 @@ codificar las primeras acciones de recolección de datos y estructura para el in
 
 1. **¿Qué hice ayer?**
 
+   ayer termine el documento de restaurantes y hoteles, y deje en proceso la de actividades, donde también delimite el sprint en únicamente pasos de implementación mas no de una ves implementarla.
+
 2. **¿Qué voy a hacer hoy?**
 
+   hoy voy a continuar con el documento, además de incluir más contenido como aportes, citas y procesos de implementación especifica para cuando ya tengamos que poner las APIs en el JavaFX.
+
 3. **¿Tengo algún impedimento o bloqueo?**
+
+   solamente que todos estemos de acuerdo de que ciudades se van a trabajar, mañana las decidimos no influye tanto en mi trabajo
 
 ---
 
@@ -624,6 +642,16 @@ codificar las primeras acciones de recolección de datos y estructura para el in
 
 1. **¿Qué hice ayer?**
 
+   Continue con el documento de la API del clima
+
 2. **¿Qué voy a hacer hoy?**
 
+   Finalice el documento de ivestigacion y decidi que servicio utilizaremos
+
 3. **¿Tengo algún impedimento o bloqueo?**
+
+   ninguno
+
+
+   <img width="1600" height="785" alt="PHOTO-2026-08-22-20-29-01" src="https://github.com/user-attachments/assets/b7201f80-61b5-4fbe-88a7-28e55848057d" />
+
