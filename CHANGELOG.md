@@ -671,17 +671,18 @@ codificar las primeras acciones de recolección de datos y estructura para el in
 
 1. **¿Qué logramos?**
 
-   Logramos entender el funcionamiento de GitHub y organizar de manera efectiva las actividades del proyecto para que todo salga bien en tema de gestión.
+   Avanzamos en la definición de la base de datos, seleccionamos y justificamos las APIs a utilizar y dejamos planteada la lógica de conexión en el código además con este primer borrador del código nos da una perspectiva mucho más clara del rumbo y la construcción del proyecto.
 
 ### Sprint Retrospective
 
 2. **¿Cómo trabajamos?**
 
-   Trabajamos bien, aunque podemos mejorar la organización de la entrega, redacción y la asignación de tareas secundarias (redacción y organización del documento, muestra de pruebas).
-
+   Bien, escuchamos varios puntos de vista, arreglamos par de cosas y terminamos de definir otras
+   
 3. **¿Qué podríamos mejorar?**
 
-   Organización de las entregas y cosas pendientes. Para la semana 2 vamos a mejorar las HU y entender mejor como funciona el repositorio
+   En que deberiamos tener mas claridad del orden del proyecto, es decir que partes van construyendo el proyecto y cuales son las mas escenciales e importantes para el desarrollo del proyecto
+
 
 ---
 
@@ -691,17 +692,17 @@ codificar las primeras acciones de recolección de datos y estructura para el in
 
 1. **¿Qué logramos?**
 
-   Se logró poder comprender varias funciones de GitHub, además de comenzar a realizar nuestro primer Sprint.
+   Pudimos reconocer varios acpectos en los que nos faltaba mejorar para la implementación de la metodologia SCRUM y con respecto al proyecto se pudo realizar una investigación profunda de las APIs de pasarela de pagos. Pudimos reconocer cual de las APIs de pasarelas de pago era por el momento la mas indicada.
 
 ### Sprint Retrospective
 
 2. **¿Cómo trabajamos?**
 
-   Al no contar con mucha información del uso de GitHub o de la metodología al principio se sintió difícil empezar pero mientras trabajábamos en equipo pudimos sacarlo adelante.
+   Se dividio el trabajo de investigación en cada integrante del equipo para sentar todas las bases de como se va a elaborar el proyecto
 
 3. **¿Qué podríamos mejorar?**
 
-   La organización de tiempo. Poder cuadrar bien las reuniones y poder contar con información concreta de lo que se espera en cada entrega.
+   La comunicación y el poder tener la mayoria de recursos de como se maneja SCRUM para no tener que cambiar las cosas que ya hemos realizado solo porque no teniamos la idea clara.
 
 ---
 
@@ -711,17 +712,17 @@ codificar las primeras acciones de recolección de datos y estructura para el in
 
 1. **¿Qué logramos?**
 
-   Logramos el aprendizaje de la nueva herramienta GitHub, realizamos actividades de investigación sobre el proyecto, planteamos de forma más formal nuestra propuesta de negocio y realizamos el Sprint Diario como también la entrega del taller de GitHub.
+   Pudimos realizar la parte inicial de la base de datos y proponer como vamos a implementar las apis dentro de la pagina web
 
 ### Sprint Retrospective
 
 2. **¿Cómo trabajamos?**
 
-   Al inicio fue un poco problemático ya que ninguno entendía como manejar la herramienta lo que hizo que fuera un obstáculo ya que cada uno estaba haciendo lo que creía que estaba bien. A medida que nos organizamos y entendimos la herramienta pudimos unir nuestras ideas y trabajar en equipo.
+   Se dividio la informacion en los integrantes y se les dio un objetivo a cada uno de ellos, el trabajo esta semana fue un poco complejo ya que ninguno se ponia de acuerdo como realizar las implementaciones dentro la pagina web con las APIS
 
 3. **¿Qué podríamos mejorar?**
 
-   Podríamos mejorar el trabajo en equipo y escuchar las propuestas de cada uno de los integrantes para así llegar a acuerdos en las funcionalidades del proyecto.
+   La comunicación y como se van a realizar las entregas de ahora en adelante
 
 ---
 
@@ -731,17 +732,18 @@ codificar las primeras acciones de recolección de datos y estructura para el in
 
 1. **¿Qué logramos?**
 
-   Logramos empezar a aprender a trabajar en equipo, reconocer el trabajo de cada uno y ponernos de acuerdo para repartir las actividades del GitHub.
+   Armamos la base de datos, armamos qué APIs usar, por qué escogimos esas y no otras, y hasta cómo se conecta técnicamente en el código, además que ya va teniendo forma el proyecto
 
 ### Sprint Retrospective
 
 2. **¿Cómo trabajamos?**
 
-   Al principio fue confuso porque estábamos un poco perdidos al no saber cómo empezar, pero en conjunto nos comunicamos y trabajamos bien.
+   Bien, porque nos reunimos todos los días lo cual nos permitía compartir nuestras inquietudes y aportes
 
 3. **¿Qué podríamos mejorar?**
 
-   Aprovechar los espacios que tenemos en clase un poco más para que sea más inmediata la comunicación.
+   Hablar un poco mas para cuadrar los rangos de presupuesto por ciudad, es literal algo muy importante del algoritmo, tocaría ponerle fecha para resolverlo pronto, aparte de manejar bien las limitaciones del issue desde el inicio.
+
 
 ---
 
@@ -751,17 +753,20 @@ codificar las primeras acciones de recolección de datos y estructura para el in
 
 1. **¿Qué logramos?**
 
-   Entender el funcionamiento de GitHub, y trabajar en nuestros primeros Issues.
+   Logramos mejorar en el git la parte de la metodologia SCRUM y saber que API del clima vamos a usar por medio de una investigacion que quedo reflejada en un documento.
 
 ### Sprint Retrospective
 
 2. **¿Cómo trabajamos?**
 
-   En general trabajamos bien, un poco confundidos pero poco a poco vamos aprendiendo a usar GitHub y a emplear la metodología Scrum.
+   Siento que cada vez estamos trabajando mejor en el tema del git, pero siempre tuvimos nuestros problemas.
 
 3. **¿Qué podríamos mejorar?**
 
-   La organización, al ser la primera semana siento que estuvimos un poco descoordinados pero siento que como inicio lo hicimos bien.
+   La comunicacion ya que casi no nos decidimos acerca de las implementaciones de las APIs y soy conciente de que de ahora en adelante toca ser muy meticuloso con todo el tema del git.
+
+---
+<img width="1600" height="1041" alt="PHOTO-2026-08-23-20-17-50" src="https://github.com/user-attachments/assets/d4e26494-1fa4-428d-b453-d6032bede94c" />
 
 ---
 
