@@ -186,3 +186,5 @@ Proyecto desarrollado con fines académicos.
 
 ## Taller Git
 - [Valeria Cortés](https://github.com/valeriacortess)
+
+- [Santiago Clavijo](https://github.com/Santiago-Clavijo)
