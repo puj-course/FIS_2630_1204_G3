@@ -788,11 +788,11 @@ De manera paralela, se desarrollará la estructura inicial de la base de datos y
 
 | ID | Título | Tipo | Estimación | Responsable |
 |---|---|---|---:|---|
-| HU-16 | Crear cuenta de usuario | Frontend / Base de datos | 3 | https://github.com/valeriacortess |
-| HU-17 | Iniciar sesión en la plataforma | Frontend / Base de datos | 3 | https://github.com/valeriacortess |
-| HU-18 | Registrar y gestionar la información básica del usuario | Frontend / Base de datos | 3 | https://github.com/valeriacortess |
-| HU-19 | Registrar el lugar de origen del viaje | Frontend | 3 | https://github.com/isaposada |
-| HU-20 | Seleccionar preferencias de viaje | Frontend | 3 | https://github.com/isaposada |
+| HU-16 | Crear cuenta de usuario | Base de datos | 3 | https://github.com/valeriacortess |
+| HU-17 | Iniciar sesión en la plataforma | Base de datos | 3 | https://github.com/valeriacortess |
+| HU-18 | Registrar y gestionar la información básica del usuario | Base de datos | 3 | https://github.com/valeriacortess |
+| HU-19 | Registrar el lugar de origen del viaje | Base de datos | 3 | https://github.com/isaposada |
+| HU-20 | Seleccionar preferencias de viaje | Base de datos | 3 | https://github.com/isaposada |
 | HU-21 | Guardar las preferencias del usuario en la base de datos | Base de datos | 3 | https://github.com/isaposada |
 | HU-22 | Ingresar las fechas del viaje | Frontend | 3 | https://github.com/MalejaRodri |
 | HU-23 | Ingresar el presupuesto disponible | Frontend | 3 | https://github.com/MalejaRodri |
