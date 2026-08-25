@@ -770,3 +770,48 @@ codificar las primeras acciones de recolección de datos y estructura para el in
 
 ---
 
+
+# Sprint Planning [24/08/2026]
+
+## Sprint Goal
+
+El objetivo principal de este Sprint es implementar el flujo principal de la página web de WiseTrip, conectando el desarrollo del frontend con la base de datos. Durante este Sprint se busca construir las interfaces necesarias para que el usuario pueda registrarse e iniciar sesión, ingresar la información relacionada con su viaje, seleccionar sus preferencias, establecer las fechas y el presupuesto disponible y avanzar por el flujo principal de planificación.
+
+De manera paralela, se desarrollará la estructura inicial de la base de datos y su conexión con la aplicación, permitiendo almacenar y consultar la información necesaria de los usuarios, preferencias y datos del viaje. Al finalizar el Sprint se espera contar con una primera versión funcional de la página web, en la que frontend y base de datos trabajen de manera integrada y permitan comprobar el flujo principal definido para WiseTrip.
+
+## Capacidad del equipo
+
+- Desarrolladores disponibles: 5
+- Puntos/horas disponibles: 42
+
+## Issues seleccionados para el Sprint
+
+| ID | Título | Tipo | Estimación | Responsable |
+|---|---|---|---:|---|
+| HU-16 | Crear cuenta de usuario | Frontend / Base de datos | 3 | https://github.com/valeriacortess |
+| HU-17 | Iniciar sesión en la plataforma | Frontend / Base de datos | 3 | https://github.com/valeriacortess |
+| HU-18 | Registrar y gestionar la información básica del usuario | Frontend / Base de datos | 3 | https://github.com/valeriacortess |
+| HU-19 | Registrar el lugar de origen del viaje | Frontend | 3 | https://github.com/isaposada |
+| HU-20 | Seleccionar preferencias de viaje | Frontend | 3 | https://github.com/isaposada |
+| HU-21 | Guardar las preferencias del usuario en la base de datos | Base de datos | 3 | https://github.com/isaposada |
+| HU-22 | Ingresar las fechas del viaje | Frontend | 3 | https://github.com/MalejaRodri |
+| HU-23 | Ingresar el presupuesto disponible | Frontend | 3 | https://github.com/MalejaRodri |
+| HU-24 | Almacenar la información del viaje en la base de datos | Base de datos | 3 | https://github.com/MalejaRodri |
+| HU-25 | Diseñar la estructura de la página de recomendaciones | Frontend | 3 | https://github.com/GabrielaMeloG |
+| HU-26 | Consultar la información almacenada para generar recomendaciones | Base de datos | 3 | https://github.com/GabrielaMeloG |
+| HU-27 | Mostrar entre 3 y 5 destinos recomendados al usuario | Frontend | 3 | https://github.com/GabrielaMeloG |
+| HU-28 | Diseñar el flujo de navegación entre las pantallas | Frontend | 2 | https://github.com/Santiago-Clavijo |
+| HU-29 | Integrar frontend con la base de datos | Integración | 2 | https://github.com/Santiago-Clavijo |
+| HU-30 | Realizar pruebas del flujo completo de la aplicación | Pruebas | 2 | https://github.com/Santiago-Clavijo |
+
+## Riesgos / Bloqueos identificados
+
+- Que la conexión entre el frontend y la base de datos presente dificultades durante la implementación.
+- Que la estructura inicial de la base de datos necesite modificaciones a medida que se desarrollen las diferentes funcionalidades.
+- Que se presenten dificultades al almacenar y consultar correctamente la información ingresada por los usuarios.
+- Que el flujo de navegación entre las diferentes pantallas no quede completamente integrado.
+- Que algunas funcionalidades requieran más tiempo del estimado inicialmente.
+- Que se presenten problemas al integrar los avances realizados por los diferentes integrantes.
+- Que la magnitud del proyecto genere nuevas tareas o requerimientos durante el desarrollo del Sprint.
+
+<img width="1242" height="628" alt="Captura de pantalla 2026-08-24 220204" src="https://github.com/user-attachments/assets/84bef945-3886-4b6b-bee6-b844c9dcb574" />
