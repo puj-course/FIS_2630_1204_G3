@@ -186,3 +186,4 @@ Proyecto desarrollado con fines académicos.
 
 ## Taller Git
 - [Valeria Cortés](https://github.com/valeriacortess)
+- [Isabella Posada](https://github.com/isaposada)
