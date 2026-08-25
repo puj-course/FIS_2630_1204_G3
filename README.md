@@ -14,7 +14,7 @@ El objetivo principal de WiseTrip es simplificar la planificación de viajes, re
 ## Equipo del Proyecto
 | Nombre        | Rol                   | GitHub / Perfil |
 |--------------|-----------------------|-----------------|
-| Maria Alejandra Rodriguez | Scrum Master          | https://github.com/MalejaRodri |
+| Maria Alejandra Rodriguez | Scrum Master,fronted         | https://github.com/MalejaRodri |
 | Gabriela Melo Gualteros | Product Owner         | https://github.com/GabrielaMeloG|
 | Valeria Cortes Rendon | Sprint Planner , Database enginner        | https://github.com/valeriacortess|
 | Isabella Posada | Configuration Manager | https://github.com/isaposada |
@@ -163,7 +163,7 @@ docker-compose run ai-model pytest
 Estudiante de Ingeniería en Sistemas, Pontificia Universidad Javeriana  
 📧 cortesvaleria@javeriana.edu.co  
 
-**Maria Alejandra Rodriguez Betancur**  
+**Maria Alejandra Rodriguez Betancourt**  
 Estudiante de Ingeniería en Sistemas, Pontificia Universidad Javeriana  
 📧 rodriguez_malejandra@javeriana.edu.co  
 
