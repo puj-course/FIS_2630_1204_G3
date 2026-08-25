@@ -796,9 +796,9 @@ De manera paralela, se desarrollará la estructura inicial de la base de datos y
 | HU-21 | Guardar las preferencias del usuario en la base de datos | Base de datos | 3 | https://github.com/isaposada |
 | HU-22 | Ingresar las fechas del viaje | Frontend | 3 | https://github.com/MalejaRodri |
 | HU-23 | Ingresar el presupuesto disponible | Frontend | 3 | https://github.com/MalejaRodri |
-| HU-24 | Almacenar la información del viaje en la base de datos | Base de datos | 3 | https://github.com/MalejaRodri |
+| HU-24 | Almacenar la información del viaje en la base de datos | Front/back/Diseño | 3 | https://github.com/MalejaRodri |
 | HU-25 | Diseñar la estructura de la página de recomendaciones | Frontend | 3 | https://github.com/GabrielaMeloG |
-| HU-26 | Consultar la información almacenada para generar recomendaciones | Base de datos | 3 | https://github.com/GabrielaMeloG |
+| HU-26 | Consultar la información almacenada para generar recomendaciones | Base de datos/ front | 3 | https://github.com/GabrielaMeloG |
 | HU-27 | Mostrar entre 3 y 5 destinos recomendados al usuario | Frontend | 3 | https://github.com/GabrielaMeloG |
 | HU-28 | Diseñar el flujo de navegación entre las pantallas | Frontend | 2 | https://github.com/Santiago-Clavijo |
 | HU-29 | Integrar frontend con la base de datos | Integración | 2 | https://github.com/Santiago-Clavijo |
