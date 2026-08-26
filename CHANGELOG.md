@@ -815,3 +815,89 @@ De manera paralela, se desarrollará la estructura inicial de la base de datos y
 - Que la magnitud del proyecto genere nuevas tareas o requerimientos durante el desarrollo del Sprint.
 
 <img width="1242" height="628" alt="Captura de pantalla 2026-08-24 220204" src="https://github.com/user-attachments/assets/84bef945-3886-4b6b-bee6-b844c9dcb574" />
+
+
+## Daily Scrum - 25/08/2026
+
+### Maria Alejandra Rodriguez
+
+1. **¿Qué hice ayer?**
+
+Reconocimos nuestras actividades entregables para la primera entrega y definimos diferentes historias de usuario dividas en Bases de datos y desarrollo de las funciones principales de la pagina wisetrip
+
+2. **¿Qué voy a hacer hoy?**
+
+  Empezamos a plantear y repartir tareas para el desarrollo de las actividades de la semana, ademas terminamos nuestro conocimiento en git para subir cosas al proyecto
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+   No.
+
+---
+
+### Gabriela Melo Gualteros
+
+1. **¿Qué hice ayer?**
+
+Estuvimos en reunion para nuestro Sprint Planning y he quedado en hacer esta semana trabajo del Backend, especificamente las areas para que el usuario ingrese la fecha, que el usuario pueda escoger el tipo de moneda de su pais origen para realizar los pagos, y que el usuario pueda responder a las preguntas de preferencias
+
+2. **¿Qué voy a hacer hoy?**
+
+   Hoy realizaré un documento donde estarán varias preguntas de preferencias para que como equipo decidamos cuales preguntas se quedna definitivas para la implementacion y cuales no vemos muy relevantes y descartarlas.
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+   No.
+
+---
+
+### Valeria Cortes Rendon
+
+1. **¿Qué hice ayer?**
+
+Realizamos el sprint planning y se definieron que historias de usuario, milestone vamos a realizar para la primera funcionalidad. Se hicieron correciones respecto a las entregas pasadas y se entendio mas o menos como funciona el git bash
+
+
+2. **¿Qué voy a hacer hoy?**
+
+   Continuacion con informacion de base de datos que se va a implementar dentro del proyecto
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+  Dudas sobre el uso del GitBASH
+
+---
+
+### Isabella Posada
+
+1. **¿Qué hice ayer?**
+
+   estuvimos reunidos en grupo haciendo el product backlog
+
+2. **¿Qué voy a hacer hoy?**
+
+   hoy me ajuste un poco con el tema del git bash
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+   No.
+
+---
+
+### Santiago Clavijo
+
+1. **¿Qué hice ayer?**
+
+   Nos reunimos e hicimos el product backlog
+
+2. **¿Qué voy a hacer hoy?**
+
+  Definimos que tareas se van a hacer en el sprint backlog, asi como definir el milestone y preguntar en clase algunas dudas acerca del funcionamiento del gitbash.
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+   Por ahora tengo poco conocimiento acerca de como realizar las historias de usuario que me fueron asignadas.
+   
+   <img width="1241" height="628" alt="Captura de pantalla 2026-08-25 201902" src="https://github.com/user-attachments/assets/7dffd6f9-9f73-46ad-89d0-4e631e2d93b1" />
+
+
