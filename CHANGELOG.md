@@ -578,15 +578,21 @@ codificar las primeras acciones de recolección de datos y estructura para el in
 
 ---
 
-##Daily Scrum - []
+## Daily Scrum - [22/08/2026]
 
 ### Maria Alejandra Rodriguez
 
 1. **¿Qué hice ayer?**
 
+   Termine algunos detalles y envie mis aportes al grupo para ver el los comentarios
+
 2. **¿Qué voy a hacer hoy?**
 
+   Arregle los comentarios y correcciones de mis compañeros
+
 3. **¿Tengo algún impedimento o bloqueo?**
+
+   Ninguno
 
 ---
 
@@ -594,9 +600,15 @@ codificar las primeras acciones de recolección de datos y estructura para el in
 
 1. **¿Qué hice ayer?**
 
+   Documentación de investigación de APIs de pasarelas de pago
+
 2. **¿Qué voy a hacer hoy?**
 
+   Investigar de la integración de la API seleccionada, ver como seria implementarlo en nuestra pagina web
+
 3. **¿Tengo algún impedimento o bloqueo?**
+
+   Ninguno
 
 ---
 
@@ -604,9 +616,15 @@ codificar las primeras acciones de recolección de datos y estructura para el in
 
 1. **¿Qué hice ayer?**
 
+   Creacion de tablas para base de datos y finalizacion de documento de la semana
+
 2. **¿Qué voy a hacer hoy?**
 
+   Presentacion de las tablas iniciales al equipo, muestra de supuestos y reglas de negocio
+
 3. **¿Tengo algún impedimento o bloqueo?**
+
+   Ninguno
 
 ---
 
@@ -614,9 +632,15 @@ codificar las primeras acciones de recolección de datos y estructura para el in
 
 1. **¿Qué hice ayer?**
 
+   ayer termine el documento de restaurantes y hoteles, y deje en proceso la de actividades, donde también delimite el sprint en únicamente pasos de implementación mas no de una ves implementarla.
+
 2. **¿Qué voy a hacer hoy?**
 
+   hoy voy a continuar con el documento, además de incluir más contenido como aportes, citas y procesos de implementación especifica para cuando ya tengamos que poner las APIs en el JavaFX.
+
 3. **¿Tengo algún impedimento o bloqueo?**
+
+   solamente que todos estemos de acuerdo de que ciudades se van a trabajar, mañana las decidimos no influye tanto en mi trabajo
 
 ---
 
@@ -624,6 +648,125 @@ codificar las primeras acciones de recolección de datos y estructura para el in
 
 1. **¿Qué hice ayer?**
 
+   Continue con el documento de la API del clima
+
 2. **¿Qué voy a hacer hoy?**
 
+   Finalice el documento de ivestigacion y decidi que servicio utilizaremos
+
 3. **¿Tengo algún impedimento o bloqueo?**
+
+   ninguno
+
+
+   <img width="1600" height="785" alt="PHOTO-2026-08-22-20-29-01" src="https://github.com/user-attachments/assets/b7201f80-61b5-4fbe-88a7-28e55848057d" />
+
+---
+
+# Sprint Review y Sprint Retrospective - 23/08/2026
+
+## Maria Alejandra Rodriguez
+
+### Sprint Review
+
+1. **¿Qué logramos?**
+
+   Avanzamos en la definición de la base de datos, seleccionamos y justificamos las APIs a utilizar y dejamos planteada la lógica de conexión en el código además con este primer borrador del código nos da una perspectiva mucho más clara del rumbo y la construcción del proyecto.
+
+### Sprint Retrospective
+
+2. **¿Cómo trabajamos?**
+
+   Bien, escuchamos varios puntos de vista, arreglamos par de cosas y terminamos de definir otras
+   
+3. **¿Qué podríamos mejorar?**
+
+   En que deberiamos tener mas claridad del orden del proyecto, es decir que partes van construyendo el proyecto y cuales son las mas escenciales e importantes para el desarrollo del proyecto
+
+
+---
+
+## Gabriela Melo Gualteros
+
+### Sprint Review
+
+1. **¿Qué logramos?**
+
+   Pudimos reconocer varios acpectos en los que nos faltaba mejorar para la implementación de la metodologia SCRUM y con respecto al proyecto se pudo realizar una investigación profunda de las APIs de pasarela de pagos. Pudimos reconocer cual de las APIs de pasarelas de pago era por el momento la mas indicada.
+
+### Sprint Retrospective
+
+2. **¿Cómo trabajamos?**
+
+   Se dividio el trabajo de investigación en cada integrante del equipo para sentar todas las bases de como se va a elaborar el proyecto
+
+3. **¿Qué podríamos mejorar?**
+
+   La comunicación y el poder tener la mayoria de recursos de como se maneja SCRUM para no tener que cambiar las cosas que ya hemos realizado solo porque no teniamos la idea clara.
+
+---
+
+## Valeria Cortes Rendon
+
+### Sprint Review
+
+1. **¿Qué logramos?**
+
+   Pudimos realizar la parte inicial de la base de datos y proponer como vamos a implementar las apis dentro de la pagina web
+
+### Sprint Retrospective
+
+2. **¿Cómo trabajamos?**
+
+   Se dividio la informacion en los integrantes y se les dio un objetivo a cada uno de ellos, el trabajo esta semana fue un poco complejo ya que ninguno se ponia de acuerdo como realizar las implementaciones dentro la pagina web con las APIS
+
+3. **¿Qué podríamos mejorar?**
+
+   La comunicación y como se van a realizar las entregas de ahora en adelante
+
+---
+
+## Isabella Posada
+
+### Sprint Review
+
+1. **¿Qué logramos?**
+
+   Armamos la base de datos, armamos qué APIs usar, por qué escogimos esas y no otras, y hasta cómo se conecta técnicamente en el código, además que ya va teniendo forma el proyecto
+
+### Sprint Retrospective
+
+2. **¿Cómo trabajamos?**
+
+   Bien, porque nos reunimos todos los días lo cual nos permitía compartir nuestras inquietudes y aportes
+
+3. **¿Qué podríamos mejorar?**
+
+   Hablar un poco mas para cuadrar los rangos de presupuesto por ciudad, es literal algo muy importante del algoritmo, tocaría ponerle fecha para resolverlo pronto, aparte de manejar bien las limitaciones del issue desde el inicio.
+
+
+---
+
+## Santiago Clavijo
+
+### Sprint Review
+
+1. **¿Qué logramos?**
+
+   Logramos mejorar en el git la parte de la metodologia SCRUM y saber que API del clima vamos a usar por medio de una investigacion que quedo reflejada en un documento.
+
+### Sprint Retrospective
+
+2. **¿Cómo trabajamos?**
+
+   Siento que cada vez estamos trabajando mejor en el tema del git, pero siempre tuvimos nuestros problemas.
+
+3. **¿Qué podríamos mejorar?**
+
+   La comunicacion ya que casi no nos decidimos acerca de las implementaciones de las APIs y soy conciente de que de ahora en adelante toca ser muy meticuloso con todo el tema del git.
+
+---
+<img width="1600" height="1041" alt="PHOTO-2026-08-23-20-17-50" src="https://github.com/user-attachments/assets/d4e26494-1fa4-428d-b453-d6032bede94c" />
+
+---
+
