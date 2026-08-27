@@ -897,7 +897,95 @@ Realizamos el sprint planning y se definieron que historias de usuario, mileston
 3. **¿Tengo algún impedimento o bloqueo?**
 
    Por ahora tengo poco conocimiento acerca de como realizar las historias de usuario que me fueron asignadas.
+
+   
    
    <img width="1241" height="628" alt="Captura de pantalla 2026-08-25 201902" src="https://github.com/user-attachments/assets/7dffd6f9-9f73-46ad-89d0-4e631e2d93b1" />
+   
+
+## Daily Scrum - 26/08/2026
+
+### Maria Alejandra Rodriguez
+
+1. **¿Qué hice ayer?**
+
+Terminamos de repartir las tareas y empezamos a realizar nuestras partes y a buscar herramientas o repos que nos puedan ayudar con nuestras tareas
 
 
+2. **¿Qué voy a hacer hoy?**
+
+  Terminar de investigar y continuar con las tareas para poder cumplir con la meta
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+   No.
+
+
+
+### Gabriela Melo Gualteros
+
+1. **¿Qué hice ayer?**
+
+estuve haciendo el documento de las preguntas que aparecerean en la pagina de las preferencias del usuario
+
+
+2. **¿Qué voy a hacer hoy?**
+
+hoy le compartí al equipo el documento para poder decidir que preguntas se qeudan y cuales se van
+
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+   No.
+
+---
+
+### Valeria Cortes Rendon
+
+1. **¿Qué hice ayer?**
+
+Documentacion y recopilacion de informacion para las nuevas tablas de la base de datos.
+
+2. **¿Qué voy a hacer hoy?**
+
+Creacion de las primeras tablas en la base de datos utilizada.
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+ No
+
+---
+
+### Isabella Posada
+
+1. **¿Qué hice ayer?**
+
+Documentacion para lo largo de la semans con wl grupo
+
+2. **¿Qué voy a hacer hoy?**
+
+Hablar con mi equipo para coordinar la entrada de datos
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+   No.
+
+---
+
+### Santiago Clavijo
+
+1. **¿Qué hice ayer?**
+
+Repartimos las tareas y cada uno empezo a hacer sus tareas
+
+
+2. **¿Qué voy a hacer hoy?**
+
+Ivestigue acerca de mis tareas y como realizarlas
+
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+  No
+
+  <img width="1247" height="621" alt="Captura de pantalla 2026-08-26 210652" src="https://github.com/user-attachments/assets/d6e2ca62-393f-49ee-aaec-47f005941fad" />
