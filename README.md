@@ -18,8 +18,7 @@ El objetivo principal de WiseTrip es simplificar la planificación de viajes, re
 | Gabriela Melo Gualteros | Product Owner, Backend         | https://github.com/GabrielaMeloG|
 | Valeria Cortes Rendon | Sprint Planner , Database enginner        | https://github.com/valeriacortess|
 | Isabella Posada | Configuration Manager | https://github.com/isaposada |
-| Santiago Clavijo | QA Lead               | https://github.com/Santiago-Clavijo |
-| Santiago Clavijo | DevOps Engineer       | https://github.com/Santiago-Clavijo |
+| Santiago Clavijo | QA Lead, DevOps Engineer               | https://github.com/Santiago-Clavijo |
 
 ---
 
