@@ -186,5 +186,5 @@ Proyecto desarrollado con fines académicos.
 ## Taller Git
 - [Valeria Cortés](https://github.com/valeriacortess)
 - [Maria Alejandra Rodriguez](https://github.com/MalejaRodri)
-
+- [Santiago Clavijo](https://github.com/Santiago-Clavijo)
 
