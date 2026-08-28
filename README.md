@@ -14,12 +14,11 @@ El objetivo principal de WiseTrip es simplificar la planificación de viajes, re
 ## Equipo del Proyecto
 | Nombre        | Rol                   | GitHub / Perfil |
 |--------------|-----------------------|-----------------|
-| Maria Alejandra Rodriguez | Scrum Master          | https://github.com/MalejaRodri |
-| Gabriela Melo Gualteros | Product Owner         | https://github.com/GabrielaMeloG|
+| Maria Alejandra Rodriguez | Scrum Master,fronted         | https://github.com/MalejaRodri |
+| Gabriela Melo Gualteros | Product Owner, Backend Developer         | https://github.com/GabrielaMeloG|
 | Valeria Cortes Rendon | Sprint Planner , Database enginner        | https://github.com/valeriacortess|
 | Isabella Posada | Configuration Manager | https://github.com/isaposada |
-| Santiago Clavijo | QA Lead               | https://github.com/Santiago-Clavijo |
-| Santiago Clavijo | DevOps Engineer       | https://github.com/Santiago-Clavijo |
+| Santiago Clavijo | QA Lead, DevOps Engineer               | https://github.com/Santiago-Clavijo |
 
 ---
 
@@ -38,7 +37,7 @@ El objetivo principal de WiseTrip es simplificar la planificación de viajes, re
 project-name/
 ├── app/
 │   ├── index.js
-│   │   └── Punto de entrada principal de la aplicación.
+│   │   └── Punto de entrada principal de la aplicació
 │   ├── package.json
 │   │   └── Define las dependencias, scripts y configuración del proyecto.
 │   ├── routes/
@@ -163,7 +162,7 @@ docker-compose run ai-model pytest
 Estudiante de Ingeniería en Sistemas, Pontificia Universidad Javeriana  
 📧 cortesvaleria@javeriana.edu.co  
 
-**Maria Alejandra Rodriguez Betancur**  
+**Maria Alejandra Rodriguez Betancourt**  
 Estudiante de Ingeniería en Sistemas, Pontificia Universidad Javeriana  
 📧 rodriguez_malejandra@javeriana.edu.co  
 
@@ -186,5 +185,6 @@ Proyecto desarrollado con fines académicos.
 
 ## Taller Git
 - [Valeria Cortés](https://github.com/valeriacortess)
-
+- [Maria Alejandra Rodriguez](https://github.com/MalejaRodri)
 - [Santiago Clavijo](https://github.com/Santiago-Clavijo)
+
