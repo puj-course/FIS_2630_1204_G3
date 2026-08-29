@@ -989,3 +989,175 @@ Ivestigue acerca de mis tareas y como realizarlas
   No
 
   <img width="1247" height="621" alt="Captura de pantalla 2026-08-26 210652" src="https://github.com/user-attachments/assets/d6e2ca62-393f-49ee-aaec-47f005941fad" />
+
+
+  ## Daily Scrum - 27/08/2026
+
+### Maria Alejandra Rodriguez
+
+1. **¿Qué hice ayer?**
+
+Finalizar par de detalles de planeación y diseño de la página
+
+2. **¿Qué voy a hacer hoy?**
+
+  Perfeccionar el código para que mis compañeros puedan integrar sus partes
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+   No.
+
+
+
+### Gabriela Melo Gualteros
+
+1. **¿Qué hice ayer?**
+
+Ayer estuve aprendiendo sobre los frameworks de Java para poder realizar el proyeto en esto y no en HTML
+
+
+2. **¿Qué voy a hacer hoy?**
+
+Hoy vere unos videos para guiarme en como empezar a implementar las diferentes pantallas en un programa, ademas estuvimos socializando como iriamos a trabajar los integrantes que tenemos la responsabilidad de crear las pantallas y decidimos que primero lo hariamos independiente y depsues buscariamos la manera de como unir el trabajo de todos
+
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+  falta de más conocimiento o entendimiento del uso de git y sus comandos
+
+---
+
+### Valeria Cortes Rendon
+
+1. **¿Qué hice ayer?**
+
+Creacion de las primeras tablas en la base de datos utilizada.
+
+2. **¿Qué voy a hacer hoy?**
+
+Hoy se realizo nuevas tablas siguiendo las 3 formas normales. Y se agregaron las nuevas tablas a la rama
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+ No
+
+---
+
+### Isabella Posada
+
+1. **¿Qué hice ayer?**
+
+Documentacion
+
+2. **¿Qué voy a hacer hoy?**
+
+ver como las api devuelve las coordenadas de las ciudades
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+   No.
+
+---
+
+### Santiago Clavijo
+
+1. **¿Qué hice ayer?**
+
+Sigo aprendiendo acerca del back y lo que me pideen las hitorias de usuario con videos e IAs
+
+2. **¿Qué voy a hacer hoy?**
+
+Tratar de implementar mis partes en el codigo existente
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+  No
+
+  <img width="1600" height="1041" alt="WhatsApp Image 2026-08-29 at 6 10 10 PM" src="https://github.com/user-attachments/assets/5e7d18fe-ab5b-45fd-a2ea-f7dc2fb04886" />
+
+
+   ## Daily Scrum - 28/08/2026
+
+### Maria Alejandra Rodriguez
+
+1. **¿Qué hice ayer?**
+
+Avancé en la implementación de las interfaces de registro, inicio de sesión y ubicación de origen.
+
+2. **¿Qué voy a hacer hoy?**
+
+Continuar con las validaciones y funcionalidades de las historias de usuario pendientes.
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+   No.
+
+
+
+### Gabriela Melo Gualteros
+
+1. **¿Qué hice ayer?**
+
+vi los videos guia en como empezar a implementar las diferentes pantallas del programa, estuve mirando como se ven otras paginas similares o pues de viajes, para tener ideas del diseño
+
+
+2. **¿Qué voy a hacer hoy?**
+
+Hoy subi el documento porque hubo modificaciones y hasta la aprobacion de todos los integrantes del grupo
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+  No
+
+---
+
+### Valeria Cortes Rendon
+
+1. **¿Qué hice ayer?**
+
+Hoy se realizo nuevas tablas siguiendo las 3 formas normales. Y se agregaron las nuevas tablas a la rama
+
+2. **¿Qué voy a hacer hoy?**
+
+
+Se trato de instalar mongodb para implementar y probar las tablas ya realizadas de la base de datos, no se pudo entonces se uso posgressql en linea alli se pudo verificar que no habian impedimentos con las tablas creadas, sin embargo falta realizar los checks dentro de las tablas. Se añadio al develop esta informacion y realizacion del documento
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+La base de datos no se como se puede implementar
+
+---
+
+### Isabella Posada
+
+1. **¿Qué hice ayer?**
+
+Ver como se devuelven los valores que se guardan de los lugares.
+
+2. **¿Qué voy a hacer hoy?**
+
+Terminar lo asignado hasta hoy
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+   No.
+
+---
+
+### Santiago Clavijo
+
+1. **¿Qué hice ayer?**
+
+Ayer no solo segui investigando y comparando opciones a "copiar",tambien pense en alternativas del diseño
+
+2. **¿Qué voy a hacer hoy?**
+
+Hoy trate de desarrollar encima de lo que tenemos
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+  No
+  <img width="1600" height="783" alt="WhatsApp Image 2026-08-29 at 6 09 59 PM" src="https://github.com/user-attachments/assets/762417df-568e-4ccb-922e-258c9fdfabbb" />
+
+
+
