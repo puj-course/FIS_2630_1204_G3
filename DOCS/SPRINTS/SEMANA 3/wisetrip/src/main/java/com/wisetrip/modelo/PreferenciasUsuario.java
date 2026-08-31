@@ -1,19 +1,35 @@
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Preferencias y presupuesto ingresados por el usuario.
- * atributos: mismos nombres de intereses usados en Ciudad; true = le interesa al usuario.
- */
 public class PreferenciasUsuario {
-    private final double presupuesto;
-    private final Map<String, Boolean> atributos;
 
-    public PreferenciasUsuario(double presupuesto, Map<String, Boolean> atributos) {
-        this.presupuesto = presupuesto;
-        this.atributos = new HashMap<>(atributos);
+    private double presupuesto;
+
+    private Map<String, Boolean> atributos;
+
+    public PreferenciasUsuario() {
+        atributos = new HashMap<>();
     }
 
-    public double getPresupuesto() { return presupuesto; }
-    public Map<String, Boolean> getAtributos() { return atributos; }
+    public double getPresupuesto() {
+        return presupuesto;
+    }
+
+    public void setPresupuesto(double presupuesto) {
+        this.presupuesto = presupuesto;
+    }
+
+    public Map<String, Boolean> getAtributos() {
+        return atributos;
+    }
+
+    public void setAtributos(
+            Map<String, Boolean> atributos
+    ) {
+
+        this.atributos =
+                atributos != null
+                        ? atributos
+                        : new HashMap<>();
+    }
 }
