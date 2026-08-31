@@ -12,6 +12,8 @@ public class Ciudad {
     private final String pais;
     private final double costoPromedio;
     private final Map<String, Boolean> atributos;
+    private final double latitud;
+    private final double longitud;
 
     public Ciudad(int id, String nombre, String pais, double costoPromedio, Map<String, Boolean> atributos) {
         this.id = id;
@@ -19,6 +21,8 @@ public class Ciudad {
         this.pais = pais;
         this.costoPromedio = costoPromedio;
         this.atributos = new HashMap<>(atributos);
+        this.latitud = latitud;
+        this.longitud = longitud;
     }
 
     public int getId() { return id; }
@@ -26,4 +30,6 @@ public class Ciudad {
     public String getPais() { return pais; }
     public double getCostoPromedio() { return costoPromedio; }
     public Map<String, Boolean> getAtributos() { return atributos; }
+    public double getLatitud() { return latitud; }
+    public double getLongitud() { return longitud; }
 }
