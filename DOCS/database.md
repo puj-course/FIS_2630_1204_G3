@@ -9,7 +9,7 @@ CREATE TABLE usuario (
 
     CONSTRAINT pk_usuario PRIMARY KEY (id_usuario),
     CONSTRAINT uk_usuario_correo UNIQUE (correo),
-
+    CONSTRAINT chk_usuario_rol CHECK (rol IN ('cliente', 'administrador'))
 );
 
 CREATE TABLE viajes (
@@ -27,7 +27,8 @@ CREATE TABLE viajes (
         FOREIGN KEY (id_usuario)
         REFERENCES usuario(id_usuario)
         ON DELETE CASCADE,
-
+    CONSTRAINT chk_viajes_fechas CHECK (fecha_fin >= fecha_inicio),
+    CONSTRAINT chk_viajes_presupuesto CHECK (presupuesto > 0)
 );
 
 CREATE TABLE preferencias (
@@ -61,7 +62,7 @@ CREATE TABLE itinerario (
         FOREIGN KEY (id_viaje)
         REFERENCES viajes(id_viaje)
         ON DELETE CASCADE,
-
+    CONSTRAINT chk_itinerario_costo CHECK (costo_estimado >= 0)
 
 );
 
@@ -80,7 +81,7 @@ CREATE TABLE gastos (
         REFERENCES viajes(id_viaje)
         ON DELETE CASCADE,
 
-
+    CONSTRAINT chk_gastos_monto CHECK (monto > 0)
 );
 
 CREATE TABLE reservas (
@@ -97,7 +98,8 @@ CREATE TABLE reservas (
         FOREIGN KEY (id_viaje)
         REFERENCES viajes(id_viaje)
         ON DELETE CASCADE,
-
+    CONSTRAINT chk_reservas_estado
+        CHECK (estado IN ('confirmada', 'pendiente', 'cancelada'))
 );
 
 CREATE TABLE canales_notificacion (
@@ -113,7 +115,8 @@ CREATE TABLE canales_notificacion (
         FOREIGN KEY (id_usuario)
         REFERENCES usuario(id_usuario)
         ON DELETE CASCADE,
-
+    CONSTRAINT chk_canal_tipo
+        CHECK (tipo_canal IN ('correo', 'telegram'))
 );
 
 CREATE TABLE alertas (
@@ -136,5 +139,8 @@ CREATE TABLE alertas (
         FOREIGN KEY (id_canal)
         REFERENCES canales_notificacion(id_canal)
         ON DELETE RESTRICT,
-
+    CONSTRAINT chk_alerta_tipo
+        CHECK (tipo_alerta IN ('clima', 'presupuesto', 'recomendacion')),
+    CONSTRAINT chk_alerta_estado
+        CHECK (estado IN ('pendiente', 'enviada'))
 );
