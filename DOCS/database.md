@@ -1,146 +1,120 @@
 CREATE TABLE usuario (
-    id_usuario INT,
-    nombre VARCHAR(100) NOT NULL,
-    correo VARCHAR(150) NOT NULL,
-    contraseña VARCHAR(255) NOT NULL,
-    rol VARCHAR(20) NOT NULL,
-    fecha_registro TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    estado BOOLEAN NOT NULL,
-
-    CONSTRAINT pk_usuario PRIMARY KEY (id_usuario),
-    CONSTRAINT uk_usuario_correo UNIQUE (correo),
-    CONSTRAINT chk_usuario_rol CHECK (rol IN ('cliente', 'administrador'))
+id_usuario SERIAL PRIMARY KEY,
+nombre VARCHAR(100) NOT NULL,
+correo VARCHAR(150) NOT NULL,
+contraseña VARCHAR(255) NOT NULL,
+rol VARCHAR(20) NOT NULL,
+fecha_registro TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+estado BOOLEAN NOT NULL,
+CONSTRAINT uk_usuario_correo UNIQUE (correo),
+CONSTRAINT chk_usuario_rol CHECK (rol IN ('cliente', 'administrador'))
 );
 
 CREATE TABLE viajes (
-    id_viaje INT,
-    id_usuario INT NOT NULL,
-    destino VARCHAR(150) NOT NULL,
-    fecha_inicio DATE NOT NULL,
-    fecha_fin DATE NOT NULL,
-    presupuesto DECIMAL(12,2) NOT NULL,
-    fecha_creacion TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-
-    CONSTRAINT pk_viajes PRIMARY KEY (id_viaje),
-
-    CONSTRAINT fk_viajes_usuario
-        FOREIGN KEY (id_usuario)
-        REFERENCES usuario(id_usuario)
-        ON DELETE CASCADE,
-    CONSTRAINT chk_viajes_fechas CHECK (fecha_fin >= fecha_inicio),
-    CONSTRAINT chk_viajes_presupuesto CHECK (presupuesto > 0)
+id_viaje SERIAL PRIMARY KEY,
+id_usuario INT NOT NULL,
+destino VARCHAR(150) NOT NULL,
+fecha_inicio DATE NOT NULL,
+fecha_fin DATE NOT NULL,
+presupuesto DECIMAL(12,2) NOT NULL,
+fecha_creacion TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+CONSTRAINT fk_viajes_usuario FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario) ON DELETE CASCADE,
+CONSTRAINT chk_viajes_fechas CHECK (fecha_fin >= fecha_inicio),
+CONSTRAINT chk_viajes_presupuesto CHECK (presupuesto > 0)
 );
 
 CREATE TABLE preferencias (
-    id_preferencia INT,
-    id_viaje INT NOT NULL,
-    tipo_preferencia VARCHAR(50) NOT NULL,
-
-    CONSTRAINT pk_preferencias PRIMARY KEY (id_preferencia),
-
-    CONSTRAINT fk_preferencia_viaje
-        FOREIGN KEY (id_viaje)
-        REFERENCES viajes(id_viaje)
-        ON DELETE CASCADE,
-
-    CONSTRAINT uk_preferencias_viaje_tipo
-        UNIQUE (id_viaje, tipo_preferencia)
+id_preferencia SERIAL PRIMARY KEY,
+id_viaje INT NOT NULL,
+tipo_preferencia VARCHAR(50) NOT NULL,
+CONSTRAINT fk_preferencia_viaje FOREIGN KEY (id_viaje) REFERENCES viajes(id_viaje) ON DELETE CASCADE,
+CONSTRAINT uk_preferencias_viaje_tipo UNIQUE (id_viaje, tipo_preferencia)
 );
 
 CREATE TABLE itinerario (
-    id_itinerario INT,
-    id_viaje INT NOT NULL,
-    nombre VARCHAR(150) NOT NULL,
-    fecha_actividad DATE NOT NULL,
-    hora_actividad VARCHAR(5) NOT NULL,
-    tipo VARCHAR(50) NOT NULL,
-    costo_estimado DECIMAL(12,2) NOT NULL,
-
-    CONSTRAINT pk_itinerario PRIMARY KEY (id_itinerario),
-
-    CONSTRAINT fk_itinerario_viaje
-        FOREIGN KEY (id_viaje)
-        REFERENCES viajes(id_viaje)
-        ON DELETE CASCADE,
-    CONSTRAINT chk_itinerario_costo CHECK (costo_estimado >= 0)
-
+id_itinerario SERIAL PRIMARY KEY,
+id_viaje INT NOT NULL,
+nombre VARCHAR(150) NOT NULL,
+fecha_actividad DATE NOT NULL,
+hora_actividad VARCHAR(5) NOT NULL,
+tipo VARCHAR(50) NOT NULL,
+costo_estimado DECIMAL(12,2) NOT NULL,
+CONSTRAINT fk_itinerario_viaje FOREIGN KEY (id_viaje) REFERENCES viajes(id_viaje) ON DELETE CASCADE,
+CONSTRAINT chk_itinerario_costo CHECK (costo_estimado >= 0)
 );
 
 CREATE TABLE gastos (
-    id_gasto INT,
-    id_viaje INT NOT NULL,
-    descripcion VARCHAR(200) NOT NULL,
-    monto DECIMAL(12,2) NOT NULL,
-    fecha_gasto DATE NOT NULL,
-    categoria VARCHAR(50) NOT NULL,
-
-    CONSTRAINT pk_gastos PRIMARY KEY (id_gasto),
-
-    CONSTRAINT fk_gastos_viaje
-        FOREIGN KEY (id_viaje)
-        REFERENCES viajes(id_viaje)
-        ON DELETE CASCADE,
-
-    CONSTRAINT chk_gastos_monto CHECK (monto > 0)
+id_gasto SERIAL PRIMARY KEY,
+id_viaje INT NOT NULL,
+descripcion VARCHAR(200) NOT NULL,
+monto DECIMAL(12,2) NOT NULL,
+fecha_gasto DATE NOT NULL,
+categoria VARCHAR(50) NOT NULL,
+CONSTRAINT fk_gastos_viaje FOREIGN KEY (id_viaje) REFERENCES viajes(id_viaje) ON DELETE CASCADE,
+CONSTRAINT chk_gastos_monto CHECK (monto > 0)
 );
 
 CREATE TABLE reservas (
-    id_reserva INT,
-    id_viaje INT NOT NULL,
-    tipo VARCHAR(30) NOT NULL,
-    descripcion VARCHAR(250) NOT NULL,
-    fecha_reserva DATE NOT NULL,
-    estado VARCHAR(20) NOT NULL,
-
-    CONSTRAINT pk_reservas PRIMARY KEY (id_reserva),
-
-    CONSTRAINT fk_reservas_viaje
-        FOREIGN KEY (id_viaje)
-        REFERENCES viajes(id_viaje)
-        ON DELETE CASCADE,
-    CONSTRAINT chk_reservas_estado
-        CHECK (estado IN ('confirmada', 'pendiente', 'cancelada'))
+id_reserva SERIAL PRIMARY KEY,
+id_viaje INT NOT NULL,
+tipo VARCHAR(30) NOT NULL,
+descripcion VARCHAR(250) NOT NULL,
+fecha_reserva DATE NOT NULL,
+estado VARCHAR(20) NOT NULL,
+CONSTRAINT fk_reservas_viaje FOREIGN KEY (id_viaje) REFERENCES viajes(id_viaje) ON DELETE CASCADE,
+CONSTRAINT chk_reservas_estado CHECK (estado IN ('confirmada', 'pendiente', 'cancelada'))
 );
 
 CREATE TABLE canales_notificacion (
-    id_canal INT,
-    id_usuario INT NOT NULL,
-    tipo_canal VARCHAR(20) NOT NULL,
-    identificador VARCHAR(150) NOT NULL,
-    activo BOOLEAN NOT NULL,
-
-    CONSTRAINT pk_canales_notificacion PRIMARY KEY (id_canal),
-
-    CONSTRAINT fk_canal_usuario
-        FOREIGN KEY (id_usuario)
-        REFERENCES usuario(id_usuario)
-        ON DELETE CASCADE,
-    CONSTRAINT chk_canal_tipo
-        CHECK (tipo_canal IN ('correo', 'telegram'))
+id_canal SERIAL PRIMARY KEY,
+id_usuario INT NOT NULL,
+tipo_canal VARCHAR(20) NOT NULL,
+identificador VARCHAR(150) NOT NULL,
+activo BOOLEAN NOT NULL,
+CONSTRAINT fk_canal_usuario FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario) ON DELETE CASCADE,
+CONSTRAINT chk_canal_tipo CHECK (tipo_canal IN ('correo', 'telegram'))
 );
 
 CREATE TABLE alertas (
-    id_alerta INT,
-    id_viaje INT NOT NULL,
-    id_canal INT NOT NULL,
-    tipo_alerta VARCHAR(30) NOT NULL,
-    mensaje VARCHAR(500) NOT NULL,
-    fecha_envio TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    estado VARCHAR(20) NOT NULL,
+id_alerta SERIAL PRIMARY KEY,
+id_viaje INT NOT NULL,
+id_canal INT NOT NULL,
+tipo_alerta VARCHAR(30) NOT NULL,
+mensaje VARCHAR(500) NOT NULL,
+fecha_envio TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+estado VARCHAR(20) NOT NULL,
+CONSTRAINT fk_alerta_viaje FOREIGN KEY (id_viaje) REFERENCES viajes(id_viaje) ON DELETE CASCADE,
+CONSTRAINT fk_alerta_canal FOREIGN KEY (id_canal) REFERENCES canales_notificacion(id_canal) ON DELETE RESTRICT,
+CONSTRAINT chk_alerta_tipo CHECK (tipo_alerta IN ('clima', 'presupuesto', 'recomendacion')),
+CONSTRAINT chk_alerta_estado CHECK (estado IN ('pendiente', 'enviada'))
+);
 
-    CONSTRAINT pk_alertas PRIMARY KEY (id_alerta),
+-- Tablas para el módulo de recomendación de destinos
+CREATE TABLE nivel_costo (
+id_nivel SERIAL PRIMARY KEY,
+nombre VARCHAR(20) NOT NULL UNIQUE
+);
 
-    CONSTRAINT fk_alerta_viaje
-        FOREIGN KEY (id_viaje)
-        REFERENCES viajes(id_viaje)
-        ON DELETE CASCADE,
+CREATE TABLE ciudad (
+id_ciudad SERIAL PRIMARY KEY,
+nombre VARCHAR(100) NOT NULL,
+pais VARCHAR(100) NOT NULL,
+latitud DECIMAL(9,6) NOT NULL,
+longitud DECIMAL(9,6) NOT NULL,
+costo_promedio DECIMAL(12,2) NOT NULL,
+id_nivel INT NOT NULL,
+CONSTRAINT fk_ciudad_nivel FOREIGN KEY (id_nivel) REFERENCES nivel_costo(id_nivel)
+);
 
-    CONSTRAINT fk_alerta_canal
-        FOREIGN KEY (id_canal)
-        REFERENCES canales_notificacion(id_canal)
-        ON DELETE RESTRICT,
-    CONSTRAINT chk_alerta_tipo
-        CHECK (tipo_alerta IN ('clima', 'presupuesto', 'recomendacion')),
-    CONSTRAINT chk_alerta_estado
-        CHECK (estado IN ('pendiente', 'enviada'))
+CREATE TABLE atributo (
+id_atributo SERIAL PRIMARY KEY,
+nombre VARCHAR(50) NOT NULL UNIQUE
+);
+
+CREATE TABLE ciudad_atributo (
+id_ciudad INT NOT NULL,
+id_atributo INT NOT NULL,
+PRIMARY KEY (id_ciudad, id_atributo),
+CONSTRAINT fk_ca_ciudad FOREIGN KEY (id_ciudad) REFERENCES ciudad(id_ciudad) ON DELETE CASCADE,
+CONSTRAINT fk_ca_atributo FOREIGN KEY (id_atributo) REFERENCES atributo(id_atributo) ON DELETE CASCADE
 );

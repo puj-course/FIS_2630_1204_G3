@@ -1,4 +1,13 @@
-package com.wisetrip.modelo;
+public enum TipoAtributo {
 
-public class TipoAtributo {
+    AUTO,
+
+    MANUAL,
+
+    /**
+     * La respuesta sirve para fases de despues
+     * como itinerario, alimentacion, etc.
+     * No modifica nada solo para q no se me olvide...
+     */
+    PERFIL
 }
