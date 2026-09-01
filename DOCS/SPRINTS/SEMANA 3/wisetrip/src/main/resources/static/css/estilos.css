@@ -1,0 +1,122 @@
+* { box-sizing: border-box; }
+
+body {
+    font-family: system-ui, -apple-system, sans-serif;
+    background: #F6F1E6;
+    color: #0E3A53;
+    margin: 0;
+    padding: 40px 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.tarjeta {
+    background: #FFFFFF;
+    border: 1px solid #D8CFBC;
+    border-radius: 14px;
+    padding: 32px;
+    width: 100%;
+    max-width: 520px;
+}
+
+.centrado { text-align: center; }
+
+h1 { font-size: 24px; margin: 0 0 6px; }
+
+.subtitulo { color: #5B6B75; font-size: 14px; margin: 0 0 24px; }
+
+label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+input, select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1.5px solid #D8CFBC;
+    border-radius: 8px;
+    font-size: 14px;
+    margin-bottom: 14px;
+    background: #FFFFFF;
+    color: #0A2A3E;
+}
+
+input:focus, select:focus { outline: none; border-color: #1BA3A0; }
+
+.fila { display: flex; gap: 16px; }
+.fila > div { flex: 1; }
+
+.error {
+    display: block;
+    color: #E8623D;
+    font-size: 13px;
+    margin: -10px 0 14px;
+}
+
+button, .boton {
+    display: inline-block;
+    width: 100%;
+    background: #1BA3A0;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 8px;
+    padding: 12px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    margin-top: 8px;
+}
+
+button:hover, .boton:hover { background: #128784; }
+
+.pie { text-align: center; font-size: 14px; color: #5B6B75; margin-top: 20px; }
+.pie a, .volver { color: #128784; font-weight: 600; text-decoration: none; }
+.volver { display: block; font-size: 14px; margin-bottom: 16px; }
+
+.check {
+    width: 56px; height: 56px;
+    margin: 0 auto 16px;
+    border-radius: 50%;
+    background: #E4F5F1;
+    color: #128784;
+    font-size: 28px;
+    line-height: 56px;
+}
+.alerta {
+    background: #FDEDE8;
+    border: 1px solid #E8623D;
+    color: #A83A1C;
+    border-radius: 8px;
+    padding: 12px;
+    font-size: 14px;
+    margin-bottom: 18px;
+}
+.barra {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    color: #5B6B75;
+    padding-bottom: 14px;
+    border-bottom: 1px solid #D8CFBC;
+    margin-bottom: 20px;
+}
+
+.barra a { color: #128784; font-weight: 600; text-decoration: none; }
+
+.opcional { font-weight: 400; color: #93A3AC; }
+
+.dato {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid #EDE4D3;
+    font-size: 14px;
+}
+
+.etiqueta { color: #5B6B75; }
+.valor { font-weight: 600; color: #0E3A53; }
