@@ -1269,5 +1269,6 @@ Los conocimientos que tenemos como equipo para evitar tener errores como los del
 
 ---
 
+<img width="1600" height="1041" alt="WhatsApp Image 2026-08-30 at 10 05 10 PM" src="https://github.com/user-attachments/assets/1d1049d1-2062-41ef-8cf2-5731b01e232a" />
 
 
