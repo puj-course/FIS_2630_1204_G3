@@ -1160,4 +1160,114 @@ Hoy trate de desarrollar encima de lo que tenemos
   <img width="1600" height="783" alt="WhatsApp Image 2026-08-29 at 6 09 59 PM" src="https://github.com/user-attachments/assets/762417df-568e-4ccb-922e-258c9fdfabbb" />
 
 
+  # Sprint Review y Sprint Retrospective - 30/08/2026
+
+## Maria Alejandra Rodriguez
+
+### Sprint Review
+
+1. **¿Qué logramos?**
+
+Logre hacer las pantalla inicial, las de crear sesion y las de iniciar sesion, ademas de eso una pequeña encuesta desde donde sale o se ubica el viajero o de donde va a salir
+
+
+### Sprint Retrospective
+
+2. **¿Cómo trabajamos?**
+
+   Nos dividimos el trabajo, entre dos creaban la base de datos y los otros tres crearon las pantallas utilizando derivados del javaFX como lo es Java Sprint Boot, JSP y algunos frameworks.
+
+3. **¿Qué podríamos mejorar?**
+
+   La comunicacion de las actividades propuestas, la definicion y claridad de los entregables, un poco mas del manejo del codigo cooperativo.
+
+
+---
+
+## Gabriela Melo Gualteros
+
+### Sprint Review
+
+1. **¿Qué logramos?**
+
+Se logro hacer las pantallas principales funcionales pero independientes de cada una.
+
+
+### Sprint Retrospective
+
+2. **¿Cómo trabajamos?**
+
+Nos dividimos el trabajo, entre dos creaban la base de datos y los otros tres crearon las pantallas utilizando derivados del javaFX como lo es Java Sprint Boot, JSP y algunos frameworks.
+
+3. **¿Qué podríamos mejorar?**
+
+  No adelantarnos tanto del trabajo y querer abarcar mucho del proyecto cuando no nos va a dar el tiempo en una semana de hacer tanto. Repartirnos bien el trabajo en que algunos quedan con mucha carga para la semana.
+
+
+---
+
+## Valeria Cortes Rendon
+
+### Sprint Review
+
+1. **¿Qué logramos?**
+
+En esta semana termine la arquitectura de la base de datos junto con el documento explicativo de la misma
+
+### Sprint Retrospective
+
+2. **¿Cómo trabajamos?**
+
+Yo trabaje en conjunto junto con isabella en la base de datos ella realizando la implementacion de la misma
+
+
+3. **¿Qué podríamos mejorar?**
+
+La falta de comunicacion ya que en la parte del front se estaba haciendo uso de distintos lenguajes. Toma de decisiones y organizacion entre cada uno de nosotros
+
+---
+
+## Isabella Posada
+
+### Sprint Review
+
+1. **¿Qué logramos?**
+
+Se logro integrar la base de datos con el código, además de la api Geoapify que devuelve y filtra las categorías de las 44 ciudades alrededor con latinoamerica, y se guardan los atributos.
+
+### Sprint Retrospective
+
+2. **¿Cómo trabajamos?**
+
+  Nos dividimos el trabajo, entre dos creaban la base de datos y los otros tres crearon las pantallas utilizando derivados del javaFX como lo es Java Sprint Boot, JSP y algunos frameworks.
+  
+3. **¿Qué podríamos mejorar?**
+
+   La comunicación entre el equipo al tomar desiciones de valor en el proceso del trabajo para completar nuestras tareas. Ademas de cierta confusion con el manejo del lenguaje de programacion.
+
+---
+
+## Santiago Clavijo
+
+### Sprint Review
+
+1. **¿Qué logramos?**
+
+Logramos completar las historias de usuario
+
+
+### Sprint Retrospective
+
+2. **¿Cómo trabajamos?**
+
+En general bien, pero al no tener mucho conocimiento acerca del tema se nos complico ya que unos lo hicimos en java.fx otros lo hicieron en JSP entonces toca cambiar algunas cosas para poder implementarlo
+
+
+3. **¿Qué podríamos mejorar?**
+
+Los conocimientos que tenemos como equipo para evitar tener errores como los del sprint de esta semana
+
+---
+
+
 
