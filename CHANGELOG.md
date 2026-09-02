@@ -1271,4 +1271,95 @@ Los conocimientos que tenemos como equipo para evitar tener errores como los del
 
 <img width="1600" height="1041" alt="WhatsApp Image 2026-08-30 at 10 05 10 PM" src="https://github.com/user-attachments/assets/1d1049d1-2062-41ef-8cf2-5731b01e232a" />
 
+---
+
+# Sprint 4 - 
+
+## Daily Scrum - 01/09/2026
+
+### Maria Alejandra Rodriguez
+
+1. **¿Qué hice ayer?**
+
+ayer planeamos y organizamos las actividades de esta semana, donde nos encargaremos de que le flujo de las pantallas y pagina web sean coherentes con la primera entrega
+
+
+2. **¿Qué voy a hacer hoy?**
+
+Hoy realice el merge entre las diferentes hirstorias de usuario de la semana pasada de mis compañeros para asi poderla unir con la base de datos
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+No por ahora
+
+---
+
+### Gabriela Melo Gualteros
+
+1. **¿Qué hice ayer?**
+
+ayer estuvimos planeando los issues que iriamos a trabajar esta semama con el SPRINT 4. Se dicidió que ya que teniamos una base de la pagina web lo que seguia era realizar corrección de detalles, union de codigo y base de datos.
+
+2. **¿Qué voy a hacer hoy?**
+
+Hoy voy a estudiar el codigo y hacer la presentación con la vamos a exponer nuestro proyecto.
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+No.
+
+---
+
+### Valeria Cortes Rendon
+
+1. **¿Qué hice ayer?**
+
+Se hizo la planeacion de los nuevos sprints de la semana, ademas se hizo una reunion antes de finalizar el primer milestone, en donde corregimos errores y arreglamos un poco mas los errores que teniamos
+
+2. **¿Qué voy a hacer hoy?**
+
+Realice de nuevo cambios es la base de datos ya que se necesitaban unas tablas en especifico para poder hacer uso de ellas en cuanto se implementará la base de datos a estas pantallas. Buscamos que esto pudiera funcionar con el codigo que tenemos de las pantallas
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+No por ahora.
+
+---
+
+### Isabella Posada
+
+1. **¿Qué hice ayer?**
+
+implementamos los issues mayor mente para organizar, revisar e integrar la primera parte del proyecto, son mas que todo pruebas y detalles.
+
+2. **¿Qué voy a hacer hoy?**
+
+   Configuración del repositorio, definir propuesta de valor, identificar funcionalidades principales y definir requerimientos funcionales.
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+   No.
+
+---
+
+### Santiago Clavijo
+
+1. **¿Qué hice ayer?**
+
+Ayer realizamos el product backlog, y todos concordamos en que lo que tenemos estaba un poco disperso, entonces decidimos que el sprint de esta semana estara dirigido a la correcion de errores y la finalizacion del primer milestone
+
+2. **¿Qué voy a hacer hoy?**
+
+Hoy empezamos a realizar el documento que se entregara este jueves con el milestone 1, en el que explicamos cada sprint que realizamos semanalmente
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+No.
+
+---
+
+<img width="1600" height="1200" alt="image" src="https://github.com/user-attachments/assets/61c93386-0e61-48ca-b487-db43a04bd6b9" />
+
+
+---
 
