@@ -1,5 +1,6 @@
 package com.wisetrip.controlador;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.stereotype.Controller;
@@ -23,13 +24,12 @@ public class ViajeControlador {
         this.viajeServicio = viajeServicio;
     }
 
-    // Muestra el formulario de ubicacion de origen
     @GetMapping("/origen")
     public String mostrarOrigen(HttpSession sesion, Model model) {
 
         Usuario usuario = (Usuario) sesion.getAttribute("usuarioActivo");
         if (usuario == null) {
-            return "redirect:/login";   // no hay sesion activa
+            return "redirect:/login";
         }
 
         Ubicacion guardada = (Ubicacion) sesion.getAttribute("ubicacionOrigen");
@@ -38,11 +38,10 @@ public class ViajeControlador {
         model.addAttribute("ubicacion", guardada != null ? guardada : new Ubicacion());
         model.addAttribute("paises", viajeServicio.listarPaises());
         model.addAttribute("ciudades",
-                guardada != null ? viajeServicio.listarCiudades(guardada.getPais()) : java.util.List.of());
+                guardada != null ? viajeServicio.listarCiudades(guardada.getPais()) : List.of());
         return "origen";
     }
 
-    // Procesa el formulario
     @PostMapping("/origen")
     public String guardarOrigen(@ModelAttribute("ubicacion") Ubicacion ubicacion,
                                 HttpSession sesion,
@@ -67,27 +66,7 @@ public class ViajeControlador {
             ubicacion.setDetalle(ubicacion.getDetalle().trim());
         }
 
-        // Guarda la ubicacion en la sesion del usuario
         sesion.setAttribute("ubicacionOrigen", ubicacion);
-        return "redirect:/resumen";
-    }
-
-    // Pantalla de confirmacion
-    @GetMapping("/resumen")
-    public String mostrarResumen(HttpSession sesion, Model model) {
-
-        Usuario usuario = (Usuario) sesion.getAttribute("usuarioActivo");
-        if (usuario == null) {
-            return "redirect:/login";
-        }
-
-        Ubicacion ubicacion = (Ubicacion) sesion.getAttribute("ubicacionOrigen");
-        if (ubicacion == null) {
-            return "redirect:/origen";
-        }
-
-        model.addAttribute("usuario", usuario);
-        model.addAttribute("ubicacion", ubicacion);
-        return "resumen";
+        return "redirect:/preferencias";
     }
 }
