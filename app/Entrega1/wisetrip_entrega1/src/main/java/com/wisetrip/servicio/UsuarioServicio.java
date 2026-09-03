@@ -9,30 +9,32 @@ import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
+import com.wisetrip.datos.UsuarioDAO;
 import com.wisetrip.modelo.Usuario;
 
 @Service
 public class UsuarioServicio {
 
-    // Equivalente al useState([]) de React: se borra al reiniciar el servidor
-    private final List<Usuario> usuarios = new ArrayList<>();
+    private final UsuarioDAO usuarioDAO;
+
+    public UsuarioServicio(UsuarioDAO usuarioDAO) {
+        this.usuarioDAO = usuarioDAO;
+    }
 
     public List<Usuario> listarUsuarios() {
-        return usuarios;
+        return new ArrayList<>();
     }
 
     public void registrar(Usuario usuario) {
-        usuarios.add(usuario);
+        usuarioDAO.registrar(usuario);
     }
 
     public boolean existeCorreo(String correo) {
-        return usuarios.stream()
-                .anyMatch(u -> u.getCorreo().equalsIgnoreCase(correo.trim()));
+        return usuarioDAO.existeCorreo(correo);
     }
 
     public boolean existeDocumento(String numeroDocumento) {
-        return usuarios.stream()
-                .anyMatch(u -> u.getNumeroDocumento().equals(numeroDocumento.trim()));
+        return usuarioDAO.existeDocumento(numeroDocumento);
     }
 
     public int calcularEdad(LocalDate fechaNacimiento) {
@@ -118,10 +120,10 @@ public class UsuarioServicio {
      */
     public Usuario autenticar(String correo, String password) {
         if (correo == null || password == null) return null;
-        return usuarios.stream()
-                .filter(u -> u.getCorreo().equalsIgnoreCase(correo.trim())
-                          && u.getPassword().equals(password))
-                .findFirst()
-                .orElse(null);
+        Usuario usuario = usuarioDAO.buscarPorCorreo(correo.trim());
+        if (usuario == null || !usuario.getPassword().equals(password)) {
+            return null;
+        }
+        return usuario;
     }
 }

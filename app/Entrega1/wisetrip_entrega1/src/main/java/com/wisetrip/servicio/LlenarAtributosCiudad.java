@@ -7,6 +7,8 @@ import com.wisetrip.negocio.DefPregunta;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
@@ -20,9 +22,21 @@ public class LlenarAtributosCiudad {
     }
 
     public void enriquecer(Ciudad ciudad, CiudadSemilla semilla) {
+        enriquecer(ciudad, semilla, null);
+    }
+
+    public void enriquecer(Ciudad ciudad, CiudadSemilla semilla, Map<String, Boolean> atributosUsuario) {
         Map<String, Boolean> atributos = new HashMap<>(semilla.atributosManuales());
+        Set<String> atributosActivos = atributosUsuario == null ? Set.of() :
+                atributosUsuario.entrySet().stream()
+                        .filter(entry -> Boolean.TRUE.equals(entry.getValue()))
+                        .map(Map.Entry::getKey)
+                        .collect(Collectors.toSet());
 
         for (DefPregunta pregunta : CatalogoPreguntas.atributosAuto()) {
+            if (atributosUsuario != null && !atributosActivos.contains(pregunta.id)) {
+                continue;
+            }
             int cantidad = geo.contarLugares(ciudad.getLatitud(), ciudad.getLongitud(),
                     pregunta.categorias, 50_000, 500);
             atributos.put(pregunta.id, cantidad >= pregunta.umbral);
