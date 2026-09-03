@@ -7,12 +7,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import com.wisetrip.datos.CiudadDAO;
+import com.wisetrip.datos.CiudadSemilla;
+import com.wisetrip.datos.DatosCiudades;
 import com.wisetrip.modelo.Ciudad;
 import com.wisetrip.modelo.PreferenciasUsuario;
 import com.wisetrip.modelo.ResultadoRecomendacion;
 import com.wisetrip.modelo.SeleccionDestinos;
 import com.wisetrip.modelo.Usuario;
 import com.wisetrip.servicio.CatalogoCiudades;
+import com.wisetrip.servicio.LlenarAtributosCiudad;
 import com.wisetrip.servicio.RecomendadorDestinos;
 import com.wisetrip.servicio.SelectorDestinos;
 
@@ -22,13 +26,19 @@ import jakarta.servlet.http.HttpSession;
 public class RecomendacionControlador {
 
     private final CatalogoCiudades catalogoCiudades;
+    private final CiudadDAO ciudadDAO;
+    private final LlenarAtributosCiudad llenarAtributosCiudad;
     private final RecomendadorDestinos recomendadorDestinos;
     private final SelectorDestinos selectorDestinos;
 
     public RecomendacionControlador(CatalogoCiudades catalogoCiudades,
+                                    CiudadDAO ciudadDAO,
+                                    LlenarAtributosCiudad llenarAtributosCiudad,
                                     RecomendadorDestinos recomendadorDestinos,
                                     SelectorDestinos selectorDestinos) {
         this.catalogoCiudades = catalogoCiudades;
+        this.ciudadDAO = ciudadDAO;
+        this.llenarAtributosCiudad = llenarAtributosCiudad;
         this.recomendadorDestinos = recomendadorDestinos;
         this.selectorDestinos = selectorDestinos;
     }
@@ -51,7 +61,14 @@ public class RecomendacionControlador {
         Map<String, Boolean> atributos = catalogoCiudades.traducir(atributosCuestionario);
 
         PreferenciasUsuario preferencias = new PreferenciasUsuario(presupuestoUsd, atributos);
-        List<Ciudad> ciudades = catalogoCiudades.listarCiudades();
+        List<Ciudad> ciudades = ciudadDAO.obtenerTodas();
+
+        for (Ciudad ciudad : ciudades) {
+            CiudadSemilla semilla = DatosCiudades.porNombreYPais(ciudad.getNombre(), ciudad.getPais());
+            if (semilla != null) {
+                llenarAtributosCiudad.enriquecer(ciudad, semilla);
+            }
+        }
 
         List<ResultadoRecomendacion> resultados =
                 recomendadorDestinos.recomendarDestinos(ciudades, preferencias);
