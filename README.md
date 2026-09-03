@@ -25,7 +25,7 @@ El objetivo principal de WiseTrip es simplificar la planificación de viajes, re
 ## Tecnologías Utilizadas
 - **Frontend:** HTML/CC/JS
 - **Backend:** Java – Spring Boot
-- **Base de Datos:** MySQL
+- **Base de Datos:** PostgresSQL
 - **IA / Data Science:** Python, Pandas, Scikit-learn
 - **DevOps:** GitHub Actions, Docker, SonarQube
 - **Control de versiones:** Git
@@ -34,77 +34,76 @@ El objetivo principal de WiseTrip es simplificar la planificación de viajes, re
 
 ## Estructura del Proyecto
 ```text
-project-name/
+FIS_2630_1204_G3/
 ├── app/
 │   ├── index.js
-│   │   └── Punto de entrada principal de la aplicació
+│   │   └── Archivo JavaScript base del proyecto.
 │   ├── package.json
-│   │   └── Define las dependencias, scripts y configuración del proyecto.
-│   ├── routes/
-│   │   ├── index.js
-│   │   └── Define las rutas o endpoints principales de la aplicación.
-│   ├── controllers/
-│   │   ├── userController.js
-│   │   └── Contiene la lógica encargada de procesar las solicitudes.
-│   └── services/
-│       ├── userService.js
-│       └── Contiene la lógica de negocio y servicios reutilizables.
+│   │   └── Define scripts y configuración del módulo Node inicial.
+│   └── Entrega1/
+│       └── wisetrip_entrega1/
+│           ├── pom.xml
+│           │   └── Configuración Maven del proyecto Spring Boot.
+│           ├── mvnw / mvnw.cmd
+│           │   └── Wrappers para ejecutar Maven en Linux/Mac o Windows.
+│           ├── .mvn/
+│           │   └── Configuración del Maven Wrapper.
+│           ├── src/
+│           │   ├── main/
+│           │   │   ├── java/com/wisetrip/
+│           │   │   │   ├── WisetripApplication.java
+│           │   │   │   │   └── Clase principal de la aplicación Spring Boot.
+│           │   │   │   ├── ServletInitializer.java
+│           │   │   │   │   └── Inicializador para despliegue como aplicación web.
+│           │   │   │   ├── controlador/
+│           │   │   │   │   └── Controladores MVC de autenticación, inicio, viajes, planificación y recomendaciones.
+│           │   │   │   ├── datos/
+│           │   │   │   │   └── Clases DAO, conexión a base de datos y datos semilla.
+│           │   │   │   ├── modelo/
+│           │   │   │   │   └── Entidades y objetos del dominio de WiseTrip.
+│           │   │   │   ├── negocio/
+│           │   │   │   │   └── Catálogo y reglas de preguntas/preferencias.
+│           │   │   │   └── servicio/
+│           │   │   │       └── Servicios de usuarios, viajes, presupuesto, preferencias, ciudades y recomendaciones.
+│           │   │   ├── resources/
+│           │   │   │   ├── application.properties
+│           │   │   │   │   └── Configuración de la aplicación.
+│           │   │   │   ├── sql/
+│           │   │   │   │   └── Scripts SQL de usuarios y ciudades.
+│           │   │   │   └── static/css/
+│           │   │   │       └── Hojas de estilo de la interfaz.
+│           │   │   └── webapp/WEB-INF/vistas/
+│           │   │       └── Vistas JSP de login, registro, planificación, recomendaciones y resumen.
+│           │   └── test/
+│           │       └── java/com/wisetrip/
+│           │           └── Pruebas automatizadas de la aplicación.
+│           └── target/
+│               └── Carpeta generada por Maven con clases compiladas y reportes de pruebas.
 │
 ├── conf/
-│   ├── config.json
-│   │   └── Contiene parámetros generales de configuración.
-│   ├── database.js
-│   │   └── Configura la conexión con la base de datos.
-│   └── environment.example
-│       └── Ejemplo de las variables de entorno necesarias para ejecutar el proyecto.
+│   └── .gitkeep
+│       └── Mantiene la carpeta de configuración dentro del repositorio.
 │
-├── docs/
-│   ├── architecture.md
-│   │   └── Describe la arquitectura general del sistema.
-│   ├── api.md
-│   │   └── Documenta los endpoints, parámetros y respuestas de la API.
-│   ├── installation.md
-│   │   └── Explica cómo instalar y configurar el proyecto.
-│   └── user_guide.md
-│       └── Guía básica para el uso de la aplicación.
-│
-├── scripts/
-│   ├── setup.sh
-│   │   └── Automatiza la instalación y configuración inicial del proyecto.
-│   ├── start.sh
-│   │   └── Permite iniciar la aplicación.
-│   ├── test.sh
-│   │   └── Ejecuta las pruebas automatizadas.
-│   └── deploy.sh
-│       └── Automatiza tareas relacionadas con el despliegue.
-│
-├── src/
-│   ├── models/
-│   │   ├── user.js
-│   │   └── Define las estructuras o modelos de datos del sistema.
-│   ├── utils/
-│   │   ├── helpers.js
-│   │   └── Contiene funciones auxiliares reutilizables.
-│   ├── middleware/
-│   │   ├── auth.js
-│   │   └── Contiene funciones que se ejecutan antes o después de una solicitud.
-│   └── tests/
-│       ├── user.test.js
-│       └── Contiene pruebas unitarias o de integración del proyecto.
-│
-├── temp/
-│   ├── .gitkeep
-│   │   └── Permite conservar la carpeta vacía dentro del repositorio.
-│   ├── example.tmp
-│   │   └── Ejemplo de archivo temporal generado durante la ejecución.
-│   └── uploads/
-│       └── Carpeta destinada a almacenar archivos temporales cargados por usuarios.
+├── DOCS/
+│   ├── database.md
+│   │   └── Documentación de la base de datos.
+│   ├── prueba.txt
+│   │   └── Archivo de prueba.
+│   ├── SPRINTS/
+│   │   ├── SEMANA 1/
+│   │   │   └── Documentos y diagrama de arquitectura inicial.
+│   │   ├── SEMANA 2/
+│   │   │   └── Documentos sobre APIs, base de datos, preferencias y bocetos.
+│   │   └── SEMANA 3/
+│   │       └── Documentos y diagramas de base de datos.
+│   └── TALLERES/
+│       └── Documentos de talleres de Git y GitHub.
 │
 ├── BOILERPLATE_template.md
 │   └── Documento que explica la estructura base y cómo utilizar este boilerplate.
 │
-├── CONTRIBUTING.md
-│   └── Define las normas y recomendaciones para contribuir al proyecto.
+├── CHANGELOG.md
+│   └── Registro de cambios del proyecto.
 │
 ├── LICENSE
 │   └── Especifica la licencia bajo la cual se distribuye el proyecto.
@@ -112,31 +111,9 @@ project-name/
 ├── README.md
 │   └── Documento principal con la descripción, instalación, uso y características del proyecto.
 │
-├── .gitignore
-│   └── Define los archivos y carpetas que Git no debe versionar.
-│
-└── .env.example
-    └── Plantilla de las variables de entorno necesarias para ejecutar la aplicación.
-```
+└── .gitignore
+    └── Define los archivos y carpetas que Git no debe versionar.
 
----
-
-## Instalación y Ejecución
-**Requisitos**
-- Docker y Docker Compose
-- Git
-- Java 17+
-- Python 3.10+
-
-## Clonar el repositorio
-```text
-git clone https://github.com/organizacion/proyecto.git
-cd proyecto
-```
-
-## Ejecución con Docker
-```text
-docker-compose up --build
 ```
 
 ## Ejecución de pruebas
