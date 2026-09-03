@@ -1363,3 +1363,86 @@ No.
 
 ---
 
+## Daily Scrum - 02/09/2026
+
+### Maria Alejandra Rodriguez
+
+1. **¿Qué hice ayer?**
+
+Terminar por completo la pagina y correr el localhost en la nube
+
+2. **¿Qué voy a hacer hoy?**
+
+Arreglar algunos detalles de compatibilidad de la base de datos con la pagina web, el ingreso y almacenamiento de datos
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+No 
+
+---
+
+### Gabriela Melo Gualteros
+
+1. **¿Qué hice ayer?**
+
+Ayer se compartió el codigo de las pantallas para que se pudieran implementar unidas, con el mismo diseoño y en si, que se pudiera unir y no que fueran pantallas independientes.
+
+2. **¿Qué voy a hacer hoy?**
+
+Hoy estuve revisando las pantallas, en equipo nos quedamos checkeando que todo estuviera bien implementado y haciendo la presentación.
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+No.
+
+---
+
+### Valeria Cortes Rendon
+
+1. **¿Qué hice ayer?**
+
+Se realizaron cambios a la base de datos ya que habian atributos que no funcionaban
+
+2. **¿Qué voy a hacer hoy?**
+
+Hicimos la implementacion con la base datos a las pantallas
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+No 
+
+---
+
+### Isabella Posada
+
+1. **¿Qué hice ayer?**
+
+ayer verifique que el front de mi compañera funcionara
+
+2. **¿Qué voy a hacer hoy?**
+
+Hoy arregle parte de la logica que se habia perdido inicialmente en la semana 2, lo que es llamar a la api y parte de los atrubutos, ademas de la integracion de la base de datos
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+No.
+
+---
+
+### Santiago Clavijo
+
+1. **¿Qué hice ayer?**
+
+Ayer aparte de hacer el sprint planning, empezamos a preparar todo para las sustentaciones, el documento, la presentacion, corregir errores
+
+2. **¿Qué voy a hacer hoy?**
+
+Hoy acabamos el documento e implementamos las pantallas, asi como tratar de unir la base de datos
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+No
+
+---
+<img width="1600" height="952" alt="image" src="https://github.com/user-attachments/assets/cde4d688-1ad3-4904-905e-999032e733a2" />
+
