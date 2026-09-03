@@ -36,9 +36,8 @@ public class RecomendadorDestinos {
 
     /**
      * Proporcion de preferencias activas del usuario que la ciudad cumple.
-     * La ciudad cumple un atributo si su valor es mayor que cero.
      */
-    public double calcularPuntajePreferencias(Map<String, Integer> atributosCiudad,
+    public double calcularPuntajePreferencias(Map<String, Boolean> atributosCiudad,
                                               Map<String, Boolean> atributosUsuario) {
         List<String> preferenciasActivas = new ArrayList<>();
         for (Map.Entry<String, Boolean> entry : atributosUsuario.entrySet()) {
@@ -52,10 +51,7 @@ public class RecomendadorDestinos {
         }
 
         long coincidencias = preferenciasActivas.stream()
-                .filter(attr -> {
-                    Integer valor = atributosCiudad.get(attr);
-                    return valor != null && valor > 0;
-                })
+                .filter(attr -> Boolean.TRUE.equals(atributosCiudad.get(attr)))
                 .count();
 
         return (double) coincidencias / preferenciasActivas.size();
