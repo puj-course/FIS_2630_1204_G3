@@ -11,7 +11,11 @@ public class CiudadDAO {
 
     public List<Ciudad> obtenerTodas() {
         List<Ciudad> ciudades = new ArrayList<>();
-        String sql = "SELECT id_ciudad, nombre, pais, latitud, longitud, costo_promedio FROM ciudad";
+        String sql = """
+        SELECT id_ciudad, nombre, pais, latitud, longitud, costo_promedio
+        FROM ciudad
+        ORDER BY nombre
+        """;
         try (Connection conn = ConexionBD.obtenerConexion();
              PreparedStatement stmt = conn.prepareStatement(sql);
              ResultSet rs = stmt.executeQuery()) {
