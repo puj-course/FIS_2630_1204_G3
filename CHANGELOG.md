@@ -1272,8 +1272,37 @@ Los conocimientos que tenemos como equipo para evitar tener errores como los del
 <img width="1600" height="1041" alt="WhatsApp Image 2026-08-30 at 10 05 10 PM" src="https://github.com/user-attachments/assets/1d1049d1-2062-41ef-8cf2-5731b01e232a" />
 
 ---
-
 # Sprint 4 - 
+
+# Sprint Planning - [31/08/2026]
+
+## Sprint Goal
+
+
+
+## Capacidad del equipo
+
+* Desarrolladores disponibles: 5
+* Puntos/horas disponibles: 42
+
+## Issues seleccionados para el Sprint
+
+| ID | Título | Tipo | Estimación | Responsable |
+|----|--------|------|------------|-------------|
+
+
+
+## Riesgos / Bloqueos identificados
+
+
+
+## Notas adicionales
+
+<img width="1280" height="624" alt="image" src="https://github.com/user-attachments/assets/89474993-e37a-4f57-944f-235c1bd251c6" />
+
+
+---
+
 
 ## Daily Scrum - 01/09/2026
 
