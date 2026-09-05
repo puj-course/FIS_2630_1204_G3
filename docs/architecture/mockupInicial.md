@@ -25,3 +25,4 @@ Muestra actividades recomendadas de acuerdo con las preferencias del usuario, or
 ## Objetivo de los mockups
 
 Estos diseños sirven como referencia para el desarrollo y perfeccionamiento de las interfaces de WiseTrip, buscando mantener una navegación clara, una presentación uniforme de la información y una experiencia integrada durante la planificación del viaje.
+
