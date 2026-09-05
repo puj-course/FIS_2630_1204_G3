@@ -1475,3 +1475,92 @@ No
 ---
 <img width="1600" height="952" alt="image" src="https://github.com/user-attachments/assets/cde4d688-1ad3-4904-905e-999032e733a2" />
 
+---
+
+## Daily Scrum - 03/09/2026
+
+### Maria Alejandra Rodriguez
+
+1. **¿Qué hice ayer?**
+
+se termino la estructura de la union del software con la base de datos y la api
+
+2. **¿Qué voy a hacer hoy?**
+
+Recibimos retroalimentacion de parte del profesor y empezamos correcciones inmediatas
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+conexion entre HU con issues y commits, falta de conocimiento sobre como hacerlo
+
+---
+
+### Gabriela Melo Gualteros
+
+1. **¿Qué hice ayer?**
+
+Tuvimos la reunion de retroalimentacion con el profesor
+
+2. **¿Qué voy a hacer hoy?**
+
+Ayer hice la presentación que ibamos a presentarle al profesor en esta retroalimentación
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+Conexion entre HU con issues y commits
+
+---
+
+### Valeria Cortes Rendon
+
+1. **¿Qué hice ayer?**
+
+Hicimos cambios finales en la base de datos antes de la retroalimentacion y sustentamos al profesor
+
+2. **¿Qué voy a hacer hoy?**
+
+Se hicieron cambios en el Github y en el codigo para compilar la pantallas con la base de datos y la API
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+Muchas dudas con respecto del funcionamiento del github y como se conectan las cosas a los commits e historias de usuario
+
+---
+
+### Isabella Posada
+
+1. **¿Qué hice ayer?**
+
+ayer arreglamos ciertos aspectos de la base de datos y unas partes del codigo.
+
+2. **¿Qué voy a hacer hoy?**
+
+Hoy escuchamos la primera retroalimentacion del semestre del profesor para mejor guia en el proyecto
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+No entiendo bien como es que los commits se asocian a los issues, tampoco si en el la parte de stadistics se ven todos los commits de diferentes ramas o solo los del main y saber si se puede asociar un solo issue a varios integrantes del equipo.
+
+---
+
+### Santiago Clavijo
+
+1. **¿Qué hice ayer?**
+
+Se termino el documento para la sustentacion 
+
+2. **¿Qué voy a hacer hoy?**
+
+Sustentamos al profesor y estamos empezando a corregir los errores
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+Conexion entre HU con issues y commits
+
+---
+<img width="1600" height="774" alt="image" src="https://github.com/user-attachments/assets/89b9bf52-5f48-453c-a562-82f846753fa3" />
+
+
+
+
+
