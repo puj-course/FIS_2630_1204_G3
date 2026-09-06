@@ -1,53 +1,158 @@
 # fis_boilerplate
 ## Descripción de cada directorio y archivos
 ```bash
-project-name/
-├── .github/
-│   ├── ISSUE_TEMPLATE/
-│   │   ├── bug_report.md
-│   │   ├── feature_request.md
-│   ├── PULL_REQUEST_TEMPLATE.md
-│   └── workflows/
-│       ├── ci.yml
-│       └── cd.yml
+FIS_2630_1204_G3/
+├── .idea/
+│   ├── compiler.xml
+│   ├── encodings.xml
+│   ├── FIS_2630_1204_G3.iml
+│   ├── inspectionProfiles/
+│   │   └── Project_Default.xml
+│   ├── jarRepositories.xml
+│   ├── misc.xml
+│   ├── modules.xml
+│   ├── vcs.xml
+│   └── workspace.xml
+├── app/
+│   ├── Entrega1/
+│   │   └── wisetrip_entrega1/
+│   │       ├── .mvn/
+│   │       │   └── wrapper/
+│   │       │       └── maven-wrapper.properties
+│   │       ├── mvnw
+│   │       ├── mvnw.cmd
+│   │       ├── pom.xml
+│   │       └── src/
+│   │           ├── main/
+│   │           │   ├── java/com/wisetrip/
+│   │           │   │   ├── controlador/
+│   │           │   │   │   ├── AuthControlador.java
+│   │           │   │   │   ├── InicioControlador.java
+│   │           │   │   │   ├── PlanificacionControlador.java
+│   │           │   │   │   ├── RecomendacionControlador.java
+│   │           │   │   │   └── ViajeControlador.java
+│   │           │   │   ├── datos/
+│   │           │   │   │   ├── CiudadDAO.java
+│   │           │   │   │   ├── CiudadSemilla.java
+│   │           │   │   │   ├── ConexionBD.java
+│   │           │   │   │   ├── DatosCiudades.java
+│   │           │   │   │   ├── PreferenciaDAO.java
+│   │           │   │   │   ├── UsuarioDAO.java
+│   │           │   │   │   └── ViajeDAO.java
+│   │           │   │   ├── modelo/
+│   │           │   │   │   ├── CategoriaPreferencia.java
+│   │           │   │   │   ├── Ciudad.java
+│   │           │   │   │   ├── FechasViaje.java
+│   │           │   │   │   ├── Peso.java
+│   │           │   │   │   ├── Preferencias.java
+│   │           │   │   │   ├── PreferenciasUsuario.java
+│   │           │   │   │   ├── Pregunta.java
+│   │           │   │   │   ├── Presupuesto.java
+│   │           │   │   │   ├── ResultadoRecomendacion.java
+│   │           │   │   │   ├── SeleccionDestinos.java
+│   │           │   │   │   ├── TipoAtributo.java
+│   │           │   │   │   ├── Ubicacion.java
+│   │           │   │   │   └── Usuario.java
+│   │           │   │   ├── negocio/
+│   │           │   │   │   ├── CatalogoPreguntas.java
+│   │           │   │   │   └── DefPregunta.java
+│   │           │   │   ├── servicio/
+│   │           │   │   │   ├── CatalogoCiudades.java
+│   │           │   │   │   ├── FechasServicio.java
+│   │           │   │   │   ├── LlenarAtributosCiudad.java
+│   │           │   │   │   ├── LlenarLasCiudades.java
+│   │           │   │   │   ├── PreferenciasServicio.java
+│   │           │   │   │   ├── PresupuestoServicio.java
+│   │           │   │   │   ├── RecomendadorDestinos.java
+│   │           │   │   │   ├── SelectorDestinos.java
+│   │           │   │   │   ├── ServicioGeoapify.java
+│   │           │   │   │   ├── UsuarioServicio.java
+│   │           │   │   │   └── ViajeServicio.java
+│   │           │   │   ├── ServletInitializer.java
+│   │           │   │   └── WisetripApplication.java
+│   │           │   └── resources/
+│   │           │       ├── application.properties
+│   │           │       ├── sql/
+│   │           │       │   ├── alter_usuario_registro.sql
+│   │           │       │   └── insert_ciudades.sql
+│   │           │       └── static/css/
+│   │           │           ├── estilos.css
+│   │           │           └── landing.css
+│   │           ├── webapp/WEB-INF/vistas/
+│   │           │   ├── fechas.jsp
+│   │           │   ├── landing.jsp
+│   │           │   ├── login.jsp
+│   │           │   ├── origen.jsp
+│   │           │   ├── preferencias.jsp
+│   │           │   ├── presupuesto.jsp
+│   │           │   ├── recomendaciones.jsp
+│   │           │   ├── registro-exitoso.jsp
+│   │           │   ├── registro.jsp
+│   │           │   └── resumen.jsp
+│   │           ├── README.md
+│   │           └── test/java/com/wisetrip/
+│   │               └── WisetripApplicationTests.java
+│   ├── index.js
+│   └── package.json
 ├── conf/
 │   ├── config.yaml
 │   └── settings.json
+├── database/
+│   ├── BasesNegocio.md
+│   ├── database.md
+│   ├── DDL.md
+│   ├── Diagrama entidad-relacion bdd 2.svg
+│   └── DiccionarioDatos.md
 ├── docs/
 │   ├── api/
+│   │   ├── APIs de clima wisetrip (3).pdf
+│   │   ├── API_Geoapify_WiseTrip.pdf
+│   │   └── F.I.S Implementación API Pasarela de Pagos.pdf
 │   ├── architecture/
-│   └── user_guide/
+│   │   ├── Arquitectura WiseTrip.svg
+│   │   ├── ArquitecturaInicial.md
+│   │   ├── CodigoInicialBoceto.jsx
+│   │   ├── DocumentacionTecnicaPaginaWeb.md
+│   │   └── mockupInicial.md
+│   ├── user_guide/
+│   │   └── README.md
+│   ├── DefinicionProyecto.md
+│   ├── RequerimientosFuncionales.md
+│   └── RequerimientosNoFuncionales.md
 ├── jupyter/
-│   ├── notebooks/
-│   │   ├── exploration.ipynb
-│   │   └── analysis.ipynb
-│   └── datasets/
-│       ├── data1.csv
-│       └── data2.csv
+│   ├── datasets/
+│   └── notebooks/
 ├── scripts/
-│   ├── setup.sh
 │   ├── deploy.sh
+│   ├── setup.sh
 │   └── test.sh
 ├── src/
 │   ├── main/
-│   │   ├── java/ (o python/, etc. según el lenguaje)
-│   │   └── resources/
-│   ├── test/
-│   │   ├── java/ (o python/, etc. según el lenguaje)
-│   │   └── resources/
+│   └── test/
+│       ├── java/
+│       └── resources/
 ├── temp/
-│   ├── temp_file.txt
-│   └── temp_data/
-│       ├── temp1.tmp
-│       └── temp2.tmp
-├── .gitignore
-├── README.md
-├── LICENSE
+│   ├── Preguntas_de_Preferencia_FIS.pdf
+│   ├── temp_data/
+│   │   ├── Captura de pantalla 2026-08-31 221922.png
+│   │   ├── Ciudad.java
+│   │   ├── PreferenciasUsuario.java
+│   │   ├── RecomendadorDestinos.java
+│   │   ├── ResultadoRecomendacion.java
+│   │   ├── SeleccionDestinos.java
+│   │   ├── SelectorDestinos.java
+│   │   ├── temp1.tmp
+│   │   └── temp2.tmp
+│   └── temp_file.txt
+├── BOILERPLATE_template.md
 ├── CHANGELOG.md
 ├── CONTRIBUTING.md
-├── Dockerfile
 ├── docker-compose.yml
-└── Makefile
+├── Dockerfile
+├── estructura.txt
+├── LICENSE
+├── Makefile
+├── README.md
 ```
 
 
