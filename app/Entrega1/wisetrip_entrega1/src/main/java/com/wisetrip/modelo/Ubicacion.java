@@ -4,7 +4,7 @@ public class Ubicacion {
 
     private String pais;
     private String ciudad;
-    private String detalle;   // barrio, aeropuerto o punto de partida, opcional
+    private String detalle;   // barrio, aeropuerto o punto de partida
 
     public Ubicacion() {
     }
