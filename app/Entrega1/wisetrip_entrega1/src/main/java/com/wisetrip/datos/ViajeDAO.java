@@ -10,6 +10,15 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 
+//mejoras 
+//validar fecha_inicio >= fecha_actual (regla de negocio)
+//Validar fecha_fin >= fecha_inicio (regla de negocio)
+//Validar presupuesto > 0 (regla de negocio)
+//Manejo de SQLException (unique, foreign key, check)
+//Verificar que idUsuario e idCiudad existan en BD
+//Agregar validación de duplicados (evitar viajes idénticos)
+//Agregar logs de auditoría
+
 @Repository
 public class ViajeDAO {
 
