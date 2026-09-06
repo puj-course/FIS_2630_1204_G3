@@ -1,3 +1,6 @@
+//esto toca completarlo en el otro sprint 
+//Niveles de peso para el puntaje de preferencias
+
 package com.wisetrip.modelo;
 
 public enum Peso {
