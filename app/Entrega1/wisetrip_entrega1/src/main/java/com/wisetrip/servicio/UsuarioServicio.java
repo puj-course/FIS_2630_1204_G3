@@ -42,7 +42,6 @@ public class UsuarioServicio {
     /**
      * Valida los datos del registro.
      * Devuelve un mapa vacio si todo esta bien, o con los mensajes de error.
-     * Es la version en Java del objeto "errs" que tenias en RegisterScreen.
      */
     public Map<String, String> validarRegistro(Usuario u, String confirmarPassword) {
         Map<String, String> errores = new LinkedHashMap<>();
