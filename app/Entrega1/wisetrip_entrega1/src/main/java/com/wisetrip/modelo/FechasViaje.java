@@ -1,3 +1,8 @@
+/**
+ * Fechas de viaje.
+ * Modelo que almacena la fecha de inicio y fin del viaje, y calcula
+ * la cantidad de días de duración (devuelve 0 si las fechas no son válidas).
+ */
 package com.wisetrip.modelo;
 
 import java.time.LocalDate;
