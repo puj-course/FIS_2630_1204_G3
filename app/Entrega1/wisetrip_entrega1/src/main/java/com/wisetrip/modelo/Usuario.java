@@ -3,13 +3,14 @@ package com.wisetrip.modelo;
 // Modelo que representa la información de un usuario de WiseTrip
 public class Usuario {
 
-    // Datos personales y de acceso del usuario
+    private int idUsuario;
     private String nombreCompleto;
     private String tipoDocumento;
     private String numeroDocumento;
     private String fechaNacimiento;
     private String correo;
     private String password;
+    private String rol = "cliente";
 
     // Constructor vacío necesario para que Spring pueda
     // crear y llenar el objeto con los datos del formulario
@@ -30,6 +31,11 @@ public class Usuario {
     public String getTipoDocumento() {
         return tipoDocumento;
     }
+    public int getIdUsuario() { return idUsuario; }
+    public void setIdUsuario(int idUsuario) { this.idUsuario = idUsuario; }
+
+    public String getNombreCompleto() { return nombreCompleto; }
+    public void setNombreCompleto(String nombreCompleto) { this.nombreCompleto = nombreCompleto; }
 
     // Modifica el tipo de documento
     public void setTipoDocumento(String tipoDocumento) {
@@ -51,6 +57,11 @@ public class Usuario {
         return fechaNacimiento;
     }
 
+    public String getPassword() { return password; }
+    public void setPassword(String password) { this.password = password; }
+
+    public String getRol() { return rol; }
+    public void setRol(String rol) { this.rol = rol; }
     // Modifica la fecha de nacimiento
     public void setFechaNacimiento(String fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;

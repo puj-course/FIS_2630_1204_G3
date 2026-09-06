@@ -80,6 +80,7 @@ public class PlanificacionControlador {
         sesion.setAttribute("preferenciasViaje", preferencias);
         sesion.setAttribute("atributosSeleccionados",
                 preferenciasServicio.obtenerAtributosSeleccionados(preferencias));
+        sesion.removeAttribute("idViajeGuardado");
 
         return "redirect:/fechas";
     }
@@ -119,6 +120,7 @@ public class PlanificacionControlador {
         }
 
         sesion.setAttribute("fechasViaje", fechas);
+        sesion.removeAttribute("idViajeGuardado");
         return "redirect:/presupuesto";
     }
 
@@ -166,6 +168,7 @@ public class PlanificacionControlador {
 
         sesion.setAttribute("presupuestoViaje", presupuesto);
         sesion.setAttribute("presupuestoEnUsd", enUsd);
+        sesion.removeAttribute("idViajeGuardado");
 
         return "redirect:/resumen";
     }
