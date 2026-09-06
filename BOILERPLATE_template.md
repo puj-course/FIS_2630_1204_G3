@@ -1,3 +1,5 @@
+En el boilerplate se ve una app Spring Boot en capas (controlador/servicio/datos/modelo)
+
 # fis_boilerplate
 ## Descripción de cada directorio y archivos
 ```bash
