@@ -1,3 +1,11 @@
+/**
+ * Presupuesto y moneda.
+ * Servicio que mapea cada país LATAM con su moneda local, ofrece las monedas
+ * disponibles según el destino, valida el monto y la moneda ingresados,
+ * y convierte el presupuesto a USD (con tasas aproximadas y fijas) para que
+ * el algoritmo de recomendación pueda comparar.
+ */
+
 package com.wisetrip.servicio;
 
 import java.util.LinkedHashMap;
