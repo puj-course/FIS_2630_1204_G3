@@ -116,7 +116,7 @@ public class PlanificacionControlador {
         return "redirect:/presupuesto";
     }
 
-    // ---------- HU#27 Presupuesto ----------
+    // -PRESUPUESTO
 
     @GetMapping("/presupuesto")
     public String mostrarPresupuesto(HttpSession sesion, Model model) {
