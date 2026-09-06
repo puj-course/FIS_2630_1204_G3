@@ -1278,7 +1278,9 @@ Los conocimientos que tenemos como equipo para evitar tener errores como los del
 
 ## Sprint Goal
 
+Implementar y validar el flujo principal de planificación de viajes de WiseTrip, permitiendo al usuario autenticarse, ingresar y conservar su información de viaje, navegar de forma continua entre las pantallas y visualizar recomendaciones de destinos acordes con su presupuesto, fechas y preferencias.
 
+Además, se busca garantizar que los datos ingresados sean validados correctamente, que no se pierdan durante la navegación y que la información presentada al usuario sea clara, consistente y visualmente organizada.
 
 ## Capacidad del equipo
 
@@ -1289,17 +1291,42 @@ Los conocimientos que tenemos como equipo para evitar tener errores como los del
 
 | ID | Título | Tipo | Estimación | Responsable |
 |----|--------|------|------------|-------------|
-
-
+| #31 | Como usuario quiero ingresar con mi correo y contraseña en la pantalla de acceso, para autenticarme y gestionar mis viajes. | Historia de Usuario | TBD | Valeria |
+| #32 | Como viajero, quiero consultar los destinos disponibles con sus características principales, para comparar las ciudades y elegir la que mejor se adapte a mis preferencias. | Historia de Usuario | TBD | Valeria |
+| #33 | Como administrador del sistema quiero verificar que se rechacen datos inválidos, para asegurar coherencia en los datos. | Historia de Usuario | TBD | Valeria |
+| #34 | Como viajero, quiero revisar un resumen visual de la información ingresada para confirmar que todos los datos de mi viaje sean correctos antes de continuar. | Historia de Usuario | TBD | Isa |
+| #35 | Como usuario quiero que las ciudades sean accesibles en comparación a mi presupuesto y tiempo de viaje, para que las recomendaciones no se vean afectadas por mi dinero. | Historia de Usuario | TBD | Isa |
+| #36 | Como usuario, quiero recibir recomendaciones de destinos ubicados en Latinoamérica, para explorar opciones de viaje dentro de la región y conocer diferentes culturas. | Historia de Usuario | TBD | Isa |
+| #37 | Como viajero, quiero ingresar mis datos de viaje de forma continua y ordenada, para completar mi plan fácilmente sin tener que saltar entre páginas sueltas. | Historia de Usuario | TBD | Gaby |
+| #38 | Como viajero, quiero ver destinos preseleccionados según el presupuesto y fechas de mi viaje, para ahorrar tiempo en la búsqueda y encontrar rápidamente opciones a mi medida. | Historia de Usuario | TBD | Gaby |
+| #39 | Como viajero quiero que la información que ingreso en presupuesto, fechas y preferencias quede guardada mientras avanzo en el flujo del sistema, para no tener que ingresarla cada vez que retrocedo o continúo entre pantallas. | Historia de Usuario | TBD | Gaby |
+| #40 | Como viajero, quiero navegar de forma clara y continua entre las pantallas de WiseTrip, para completar fácilmente el proceso de planificación de mi viaje. | Historia de Usuario | TBD | Maleja |
+| #41 | Como viajero, quiero que la plataforma me indique con claridad qué datos faltan o son incorrectos, para completar el registro de mi viaje correctamente. | Historia de Usuario | TBD | Maleja |
+| #42 | Como viajero, quiero consultar el resumen de mi viaje con una estructura visual uniforme en cada pantalla, para ubicar rápidamente los datos importantes de mi itinerario y presupuesto. | Historia de Usuario | TBD | Maleja |
+| #43 | Como viajero quiero ver mientras completo las pantallas de presupuesto, fechas y preferencias, para saber en qué etapa de la planificación me encuentro y cuánto me falta. | Historia de Usuario | TBD | Clavijo |
+| #44 | Como viajero quiero poder regresar a una pantalla anterior sin perder los datos ya ingresados en las siguientes, para corregir o ajustar mi información sin repetir todo el proceso. | Historia de Usuario | TBD | Clavijo |
+| #45 | Como viajero quiero recibir una confirmación antes de salir del proceso de planificación sin haberlo terminado, para evitar perder accidentalmente los datos que ya ingresé. | Historia de Usuario | TBD | Clavijo |
 
 ## Riesgos / Bloqueos identificados
 
-
+- Dependencia entre las historias relacionadas con el flujo de navegación (#37, #40, #43 y #44).
+- Posible pérdida de información si no se implementa correctamente la persistencia de los datos durante la navegación (#39).
+- Las recomendaciones de destinos dependen de que el presupuesto, las fechas y las preferencias estén correctamente registrados y validados (#35, #36 y #38).
+- Las validaciones de datos (#33 y #41) deben estar implementadas antes de utilizar la información para generar recomendaciones.
+- Posibles inconsistencias visuales entre las diferentes pantallas del sistema (#34 y #42).
+- La autenticación (#31) puede convertirse en un bloqueo para las funcionalidades que requieren un usuario autenticado.
+- Se debe coordinar el trabajo entre los integrantes para evitar conflictos en componentes compartidos del frontend.
+- Las estimaciones de las historias deben validarse durante la planificación para garantizar que el trabajo no supere la capacidad disponible de 42 puntos/horas.
 
 ## Notas adicionales
 
-<img width="1280" height="624" alt="image" src="https://github.com/user-attachments/assets/89474993-e37a-4f57-944f-235c1bd251c6" />
-
+- El sprint se enfocará principalmente en consolidar el flujo completo de planificación de viajes.
+- Se priorizará que el usuario pueda avanzar entre presupuesto, fechas y preferencias sin perder información.
+- Las historias relacionadas con validación y persistencia deben considerarse dependencias importantes para las recomendaciones.
+- Se recomienda realizar pruebas de navegación y validación antes de considerar completadas las historias.
+- La interfaz debe mantener una estructura visual consistente en todas las etapas del proceso.
+- Se debe verificar que los mensajes de error sean claros y permitan al usuario corregir fácilmente la información ingresada.
+- Las historias #31–#45 deberán cumplir los criterios de aceptación definidos para cada Historia de Usuario antes de ser consideradas terminadas.
 
 ---
 
