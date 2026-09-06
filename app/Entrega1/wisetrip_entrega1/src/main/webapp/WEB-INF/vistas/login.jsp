@@ -25,7 +25,7 @@
         <label>Contrasena</label>
         <input type="password" name="password" placeholder="Tu contrasena">
 
-        <button type="submit">Iniciar sesion</button>
+        <button type="submit">Iniciar sesión</button>
     </form>
 
     <p class="pie">No tienes cuenta? <a href="<c:url value='/registro'/>">Crea una aqui</a></p>
