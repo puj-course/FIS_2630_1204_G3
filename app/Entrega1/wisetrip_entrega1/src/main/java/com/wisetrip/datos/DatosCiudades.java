@@ -1,3 +1,6 @@
+//DatosCiudades: todo lo que involucra costoPromedio y el filtro de presupuesto
+//pero toca corregirlo
+
 package com.wisetrip.datos;
 
 import java.util.Arrays;
