@@ -16,6 +16,7 @@ import java.time.LocalDate;
 //manejo de excepciones en SQLException 
 //Normalizacion de variables 
 //Agregar campo de ultimo_acceso 
+//Se relaciona la historia de usuario 140
 
 @Repository
 public class UsuarioDAO {
