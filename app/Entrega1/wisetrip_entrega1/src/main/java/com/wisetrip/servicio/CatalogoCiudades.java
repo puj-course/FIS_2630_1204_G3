@@ -32,19 +32,16 @@ public class CatalogoCiudades {
         EQUIVALENCIAS.put("aventura_actividades", "aventura");
         EQUIVALENCIAS.put("aventura_extremos",    "deportes_extremos");
         EQUIVALENCIAS.put("gastro_tipica",        "comida_tipica");
-        EQUIVALENCIAS.put("gastro_gourmet",       "alta_cocina");
-        EQUIVALENCIAS.put("gastro_internacional", "comida_internacional");
+        EQUIVALENCIAS.put("gastro_gourmet",       "gourmet");
         EQUIVALENCIAS.put("ritmo_nocturna",       "vida_nocturna");
         EQUIVALENCIAS.put("ritmo_urbano",         "urbano");
         EQUIVALENCIAS.put("ritmo_tranquilo",      "tranquilo");
         EQUIVALENCIAS.put("ritmo_compras",        "compras");
-        EQUIVALENCIAS.put("cultura_local",        "cultura");
+        EQUIVALENCIAS.put("cultura_local",        "cultura_historia");
         EQUIVALENCIAS.put("cultura_museos",       "museos");
         EQUIVALENCIAS.put("cultura_religioso",    "sitios_religiosos");
         EQUIVALENCIAS.put("estilo_lujo",          "lujo");
-        EQUIVALENCIAS.put("estilo_mochilero",     "economico");
-        EQUIVALENCIAS.put("compania_ninos",       "apto_ninos");
-        EQUIVALENCIAS.put("compania_mascotas",    "pet_friendly");
+        EQUIVALENCIAS.put("estilo_mochilero",     "mochilero");
     }
 
     /**
@@ -100,12 +97,18 @@ public class CatalogoCiudades {
         return ciudades;
     }
 
-    /** Crea una ciudad marcando con valor 1 los atributos que cumple. */
+    /** Crea una ciudad marcando como true los atributos que cumple. */
     private Ciudad crear(int id, String nombre, String pais, double costo, String... atributos) {
-        Map<String, Integer> mapa = new LinkedHashMap<>();
+        Map<String, Boolean> mapa = new LinkedHashMap<>();
         for (String atributo : atributos) {
-            mapa.put(atributo, 1);
+            mapa.put(atributo, true);
         }
-        return new Ciudad(id, nombre, pais, costo, mapa);
+        Ciudad ciudad = new Ciudad();
+        ciudad.setId(id);
+        ciudad.setNombre(nombre);
+        ciudad.setPais(pais);
+        ciudad.setCostoPromedio(costo);
+        ciudad.setAtributos(mapa);
+        return ciudad;
     }
 }
