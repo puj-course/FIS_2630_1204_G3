@@ -1,3 +1,5 @@
+//Calculo de la recomendacion por preguntas del usuario tipo si/no
+
 package com.wisetrip.modelo;
 
 public class ResultadoRecomendacion {
