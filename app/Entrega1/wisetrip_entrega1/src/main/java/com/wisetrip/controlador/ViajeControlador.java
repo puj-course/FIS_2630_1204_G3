@@ -74,7 +74,7 @@ public class ViajeControlador {
             return "redirect:/login";
         }
 
-        // Valida los datos de ubicación mediante ViajeServicio
+        // Valida los datos de ubicación mediante viajeServicio
         Map<String, String> errores = viajeServicio.validarUbicacion(ubicacion);
 
         // Si existen errores, vuelve a mostrar el formulario
