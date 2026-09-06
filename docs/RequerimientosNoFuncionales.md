@@ -1,10 +1,10 @@
 ## Requisitos No Funcionales (RNF)
 
 ### RNF01 - Compatibilidad multiplataforma
-La plataforma debe funcionar correctamente en computadores, tabletas y dispositivos móviles, manteniendo una resolución mínima soportada de 360px de ancho (móvil) hasta 1920px (escritorio), sin pérdida de funcionalidad.
+La plataforma debe funcionar correctamente en computadores, tabletas y dispositivos móviles, manteniendo una resolución mínima soportada de 360px de ancho (móvil) hasta 1920px (escritorio). En todos los tamaños de pantalla, el usuario debe poder acceder al 100% de las funcionalidades core del sistema (creación de viajes, gestión de presupuesto, itinerarios y reservas), aunque la disposición visual de los elementos pueda adaptarse a cada dispositivo.
 
 ### RNF02 - Usabilidad
-Un usuario sin experiencia previa en la plataforma debe poder completar el flujo de planificación de un viaje (presupuesto, fechas, preferencias) sin asistencia externa, en un máximo de 3 intentos fallidos por pantalla antes de abandonar el proceso.
+Un usuario sin experiencia previa en la plataforma debe poder completar el flujo de planificación de un viaje (presupuesto, fechas, preferencias) sin asistencia externa, requiriendo no más de 3 intentos fallidos por pantalla. Esto debe verificarse mediante pruebas de usabilidad con al menos 10 usuarios representativos, midiendo la tasa de finalización del flujo y el número de intentos por pantalla.
 
 ### RNF03 - Seguridad de la información
 La plataforma debe proteger la información personal, presupuestos, reservas e intereses de los usuarios mediante cifrado de datos en tránsito (HTTPS/TLS) y en reposo, además de control de acceso basado en autenticación de usuario.
@@ -29,3 +29,9 @@ La plataforma debe integrarse con servicios externos de clima, movilidad, reserv
 
 ### RNF10 - Mantenibilidad
 La plataforma debe estar diseñada de forma modular, de manera que la incorporación de nuevas funcionalidades o la corrección de errores no afecte el funcionamiento de los módulos existentes, verificable mediante pruebas de regresión antes de cada despliegue.
+
+### RNF11 - Accesibilidad
+La plataforma debe cumplir con el nivel AA de las pautas WCAG 2.1, garantizando que usuarios con discapacidad visual, auditiva o motriz puedan navegar y completar el flujo de planificación de viajes mediante lectores de pantalla, navegación por teclado y contrastes de color adecuados, verificable mediante herramientas automatizadas de auditoría con un puntaje mínimo de 90/100.
+
+## RNF12 - Recuperación ante fallos (backup y restauración)
+Ante una falla del sistema (caída de base de datos, corrupción de almacenamiento), la plataforma debe permitir restaurar la información de los usuarios (viajes, presupuestos, reservas) con una pérdida máxima de datos de 1 hora y un tiempo de recuperación del servicio no mayor a 4 horas, mediante respaldos automáticos periódicos.
