@@ -1,5 +1,13 @@
 package com.wisetrip.modelo;
 
+//mejoras pendientes
+
+//agregar validacion con not null, email y size 
+//no exponer la contraseña en tostring()
+//agregar metodo normalizarcorreo para que todo se guarde en minusculas
+//quitar getters y setters duplicados
+//agregar campos: estado, fecha registro, ultimo acceso
+
 // Modelo que representa la información de un usuario de WiseTrip
 public class Usuario {
 
