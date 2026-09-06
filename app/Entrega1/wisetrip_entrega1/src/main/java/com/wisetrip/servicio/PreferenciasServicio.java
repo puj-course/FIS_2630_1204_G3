@@ -1,3 +1,11 @@
+/**
+ * Preferencias de viaje.
+ * Servicio que contiene el banco de preguntas (8 categorías, 26 preguntas),
+ * valida que estén todas respondidas, y convierte las respuestas en el
+ * formato que consume el algoritmo de recomendación (atributos booleanos).
+ * También genera el resumen de preferencias elegidas para mostrarlo al usuario.
+ */
+
 package com.wisetrip.servicio;
 
 import java.util.LinkedHashMap;
