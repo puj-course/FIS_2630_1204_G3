@@ -1,3 +1,9 @@
+<%-- Presupuesto y moneda.
+     Vista donde el usuario elige la moneda (local o USD si ya hay destino)
+     e ingresa el monto total del viaje. Muestra la duración del viaje como
+     referencia y los errores de validación si los hay.
+     Es el último paso del flujo (Origen > Preferencias > Fechas > Presupuesto). --%>
+
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <!DOCTYPE html>
