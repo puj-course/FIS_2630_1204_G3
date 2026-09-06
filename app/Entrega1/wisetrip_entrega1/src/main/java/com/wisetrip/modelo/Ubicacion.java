@@ -8,7 +8,7 @@ public class Ubicacion {
 
     public Ubicacion() {
     }
-
+    
     public String getPais() { return pais; }
     public void setPais(String pais) { this.pais = pais; }
 
