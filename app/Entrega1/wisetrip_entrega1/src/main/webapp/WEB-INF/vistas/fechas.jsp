@@ -1,3 +1,8 @@
+<%-- Fechas de viaje.
+     Vista donde el usuario elige fecha de inicio y regreso, muestra la
+     duración calculada del viaje y los errores de validación si los hay.
+     Es el tercer paso del flujo (Origen > Preferencias > Fechas > Presupuesto). --%>
+
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <!DOCTYPE html>
