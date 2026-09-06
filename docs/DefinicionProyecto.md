@@ -1,3 +1,34 @@
+## 1. Definir el objetivo del producto
+
+Nuestro proyecto, **WiseTrip**, es una plataforma web que ayudará a centralizar la mayoría de la planificación de un viaje. Su idea principal es poder recomendar diferentes destinos y sus respectivos planes de acuerdo al presupuesto con el que el usuario cuente. El usuario contará con recomendación de destinos, reservas, itinerarios, además de información del clima de la ciudad destino.
+
+El objetivo es poder simplificar y personalizar el proceso de planeación de viajes, generando itinerarios con respecto al presupuesto y a las preferencias de cada usuario (aventura, cultura, gastronomía, entre otras), de manera que se elimine la incertidumbre sobre si el dinero disponible alcanzará para las actividades o la idea de nunca contar con "suficiente" dinero para viajar.
+
+Con esto se espera que el viajero pueda tener todo el control sobre su economía antes, durante y después del viaje sin imprevistos y que deje de abstenerse a darse el lujo de conocer otros países latinoamericanos.
+
+## 2. Definir los usuarios objetivo
+
+WiseTrip está especialmente pensada para tres tipos de viajeros entre los 18 y 40 años (aunque su interfaz es amigable para que cualquier persona de cualquier edad pueda utilizarla). Dentro de este grupo se encuentran los siguientes perfiles:
+
+- **Estudiantes y jóvenes con presupuesto limitado:** muchas veces se limitan a viajar por pensar que el presupuesto que tienen no les alcanzará para viajar, lo cual puede ser completamente erróneo y se perderían de increíbles experiencias.
+- **Viajeros frecuentes o "planificadores autónomos":** aquellos que prefieren planificar sus propios itinerarios sin ayuda de agencias de viajes y que actualmente requieren del uso de varias aplicaciones para gestionar la información de sus actividades.
+- **Turistas que buscan experiencias personalizadas:** usuarios que tienen en mente viajar con un interés en particular, ya sea vivir aventuras desafiantes, conocer la cultura del país destino o poder probar cada plato típico entre muchas más opciones. Estos viajeros aprecian recibir recomendaciones ajustadas a sus gustos en lugar de itinerarios genéricos o improvisados.
+
+En común, estos usuarios valoran el control sobre su presupuesto, la organización centralizada de su viaje y el ahorro de tiempo frente al uso de múltiples plataformas dispersas.
+
+## 3. Definir el problema
+
+Como equipo percibimos un problema a la hora de planificar un viaje y fue que esto implica recurrir a múltiples plataformas; una para hospedaje, otra para el clima, otra para calcular los gastos, y diversas para planificar el itinerario del día a día en el viaje, lo cual lo hace demasiado dispendioso y propenso a errores.
+
+Detallamos ciertos errores a la hora de viajar que fueron los siguientes:
+
+- Llegar al destino sin itinerario.
+- No saber cómo moverse dentro del país.
+- No tener claro si el presupuesto realmente alcanza para todo lo que se planea realizar.
+- No tener conocimiento de destinos asequibles solo porque no son muy turísticos.
+
+Estas dificultades evidencian la necesidad de una herramienta que integre presupuesto, reservas, clima e itinerario en un solo lugar, y que es precisamente lo que da origen al desarrollo de WiseTrip.
+
 ## 4. Definir la propuesta de valor
 
 WiseTrip no es solo una página para planear viajes alrededor de Latinoamérica. La plataforma busca ofrecer al usuario una experiencia de planificación personalizada a partir de su presupuesto, las fechas del viaje y sus intereses.
