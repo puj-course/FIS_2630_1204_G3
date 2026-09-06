@@ -10,6 +10,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 
+//Mejoras 
+//encriptar la constraseña 
+//Validacion de los campos not null 
+//manejo de excepciones en SQLException 
+//Normalizacion de variables 
+//Agregar campo de ultimo_acceso 
+
 @Repository
 public class UsuarioDAO {
 
