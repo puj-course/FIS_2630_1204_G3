@@ -1590,6 +1590,181 @@ Conexion entre HU con issues y commits
 ---
 <img width="1600" height="774" alt="image" src="https://github.com/user-attachments/assets/89b9bf52-5f48-453c-a562-82f846753fa3" />
 
+---
+
+## Daily Scrum - 04/09/2026
+
+### Maria Alejandra Rodriguez
+
+1. **¿Qué hice ayer?**
+
+Se estima el cambio y aprobacion de las HU de esta semana y la creacion, complemento y perfeccion de ellas
+
+2. **¿Qué voy a hacer hoy?**
+
+Recibir retroalimentacion y buscar soluciones a lo que teniamos y lo que haremos
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+Desconocimiento de como arreglar mi proyecto contra el Boilerplate
+
+---
+
+### Gabriela Melo Gualteros
+
+1. **¿Qué hice ayer?**
+
+Corrección de algunas historias de usuario que no cumplian con los criterios o formato establecido
+
+2. **¿Qué voy a hacer hoy?**
+
+Se escuchó por primera vez la opinion del profesor con respecto a la primera entrega del proyecto
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+Desconocimiento de como conectar las HU a los issues respectivos
+
+---
+
+### Valeria Cortes Rendon
+
+1. **¿Qué hice ayer?**
+
+Se realizaron los cambios en las historias de usuario, se creo la Wiki dentro del repo
+
+2. **¿Qué voy a hacer hoy?**
+
+Se realizo la retroalimentacion con el profesor con respecto al repositorio
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+Desconocimiento en la creacion del Wiki y cambios en la estructura del proyecto
+
+---
+
+### Isabella Posada
+
+1. **¿Qué hice ayer?**
+
+Revise los HU que hay que corregir
+
+2. **¿Qué voy a hacer hoy?**
+
+Ayer volví a pensar en las recomendaciones del profesor
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+Tengo que practicar como asociar los issues con los commits
+
+---
+
+### Santiago Clavijo
+
+1. **¿Qué hice ayer?**
+
+Recibimos la retroalimentación del git
+
+2. **¿Qué voy a hacer hoy?**
+
+Revise las historias de usuario a corregir
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+No he tenido tiempo, ya que el parcial de estructuras fue hoy
+
+---
+<img width="1600" height="1200" alt="image" src="https://github.com/user-attachments/assets/2e58571b-9edb-4cb3-8f62-93eb327fcdcc" />
+---
+
+## Daily Scrum - 04/09/2026
+
+### Maria Alejandra Rodriguez
+
+1. **¿Qué hice ayer?**
+
+Arreglar todo lo que nos indico el monitor, boilerplate carpetas de trabajos, sprints de las semanas, documentos y enlazar los commits en los issues de todas las sprints, ademas de eso agregamos los issues a los milestones.
+
+2. **¿Qué voy a hacer hoy?**
+
+arreglar todas las historias de usuario de los sprints, una por una revision de la redaccion de estos
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+No
+
+---
+
+### Gabriela Melo Gualteros
+
+1. **¿Qué hice ayer?**
+
+Estuve corrigiendo las Historias de Usuario que no estaban bien escritas, tuvimos una reunion con el monitor, el cual nos acalró demasiadas dudas, creamos nuevos Milestone sbien redactados y asignamos los diferentes Sprints a los nuevos Milestones que corresponden, trazamos las issues a los commits correspondientes y estuvimos en llamada por 10horas
+
+2. **¿Qué voy a hacer hoy?**
+
+Revisar cuales eran las historias de usuario que tenia que corregir, cuales eran los cambios segun el profesor que debiamos corregir
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+No, solo que vamos muchisimo más adelantados en el proyecto y no nos podemos quedar sin ideas de HUs
+
+---
+
+### Valeria Cortes Rendon
+
+1. **¿Qué hice ayer?**
+
+Mejorar el repositorio, mejorar todas las mejoras que propuso el profesor y reunion con Monitor explicacion de como realizar de forma mejor los issues y la organizacion del git.
+
+2. **¿Qué voy a hacer hoy?**
+
+Ayer se realizo la wiki de WiseTrip se revisaron como organizar mejor las HU y se creo un documentos de correccion
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+No , tengo que aprender a como manejar algunos comandos
+
+---
+
+### Isabella Posada
+
+1. **¿Qué hice ayer?**
+
+Ayer solo cambie las historias de usuario que estaban mal redactadas, la verdad no pude adelantar mucho ya que todos teniamos parcial de 6 a 8..
+
+2. **¿Qué voy a hacer hoy?**
+
+hoy asociamos todos los issues de cada integrante del equipo, ademas de corregir las historias de usuario, hablando todos en equipo desde las 3 de la tarde hasta las 12 de la medianoche, y la organizacion de las carpetas.
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+sigo sin entender muy bien el gitbash y sus comandos adicionales, como el merge y los errores que podian aparecer.
+<img width="1942" height="1020" alt="image" src="https://github.com/user-attachments/assets/88eeecb4-7be3-41d1-909e-61c2dd329607" />
+
+
+---
+
+### Santiago Clavijo
+
+1. **¿Qué hice ayer?**
+
+Empezamos a corregir las historias de usuario que estaban mal pero no se pudo hacer mucho ya que el parcial de estructuras fue ayer
+
+2. **¿Qué voy a hacer hoy?**
+
+Hoy hemos estado hablando desde las 3 de la tarde corrigiendo los errores de la retroalimentacion del jueves (las historias de usuario, los commits asociados con las historias de usuario, toda la parte del boilerplate, las carpetas), asi como subiendo el trabajo de esta semana, hablamos con el monitor para que nos diga que podemos hacer para corregir todas las correcciones del jueves
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+seguimos sin entender el uso el github y se no sigue dificultando toda la parte de los merge y los commits
+
+---
+<img width="1600" height="757" alt="image" src="https://github.com/user-attachments/assets/c4a35f1d-d646-4796-9026-50eaa635cc2f" />
+
+
+---
+
+
 
 
 
