@@ -66,7 +66,7 @@ public class AuthControlador {
         return "login";
     }
 
-    // Procesa el inicio de sesion
+    // Procesa el inicio de sesion 
     @PostMapping("/login")
     public String procesarLogin(@RequestParam("correo") String correo,
                                 @RequestParam("password") String password,
