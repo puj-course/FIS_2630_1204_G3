@@ -1,3 +1,8 @@
+/**
+ * Preferencias de viaje.
+ * Modelo que asocia las respuestas de preferencias con el usuario activo en sesión.
+ */
+
 package com.wisetrip.modelo;
 
 import java.util.LinkedHashMap;
