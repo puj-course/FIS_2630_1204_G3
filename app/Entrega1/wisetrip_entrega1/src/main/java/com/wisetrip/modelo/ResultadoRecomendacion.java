@@ -3,7 +3,7 @@ package com.wisetrip.modelo;
 public class ResultadoRecomendacion {
 
     private final Ciudad ciudad;
-    private final double puntajeTotal;          // 0.0 a 1.0
+    private final double puntajeTotal;
     private final double puntajePresupuesto;
     private final double puntajePreferencias;
 
@@ -19,9 +19,4 @@ public class ResultadoRecomendacion {
     public double getPuntajeTotal() { return puntajeTotal; }
     public double getPuntajePresupuesto() { return puntajePresupuesto; }
     public double getPuntajePreferencias() { return puntajePreferencias; }
-
-    /** Puntaje como porcentaje entero, para mostrar en la vista. */
-    public int getPorcentaje() { return (int) Math.round(puntajeTotal * 100); }
-    public int getPorcentajePresupuesto() { return (int) Math.round(puntajePresupuesto * 100); }
-    public int getPorcentajePreferencias() { return (int) Math.round(puntajePreferencias * 100); }
 }
