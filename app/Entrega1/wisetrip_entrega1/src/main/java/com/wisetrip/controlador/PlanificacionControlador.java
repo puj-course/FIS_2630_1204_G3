@@ -1,3 +1,9 @@
+/**
+ * HU-25, HU-26, HU-27: Preferencias, fechas y presupuesto de viaje.
+ * Controlador que orquesta el flujo de planificación, conectando las vistas
+ * de preferencias, fechas y presupuesto con sus respectivos servicios.
+ */
+
 package com.wisetrip.controlador;
 
 import java.util.Map;
