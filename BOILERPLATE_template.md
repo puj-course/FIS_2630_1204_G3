@@ -1,4 +1,5 @@
-En el boilerplate se ve una app Spring Boot en capas (controlador/servicio/datos/modelo)
+En el boilerplate se ve la estructura general del proyecto: una app en Spring Boot organizada por capas (controlador, servicio, datos, modelo), junto con la documentación, 
+scripts y demás archivos de configuración del repositorio.
 
 # fis_boilerplate
 ## Descripción de cada directorio y archivos
