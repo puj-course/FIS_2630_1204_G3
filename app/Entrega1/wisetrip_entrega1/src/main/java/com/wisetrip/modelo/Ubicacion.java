@@ -18,7 +18,7 @@ public class Ubicacion {
     public String getDetalle() { return detalle; }
     public void setDetalle(String detalle) { this.detalle = detalle; }
 
-    // Texto listo para mostrar: "Bogota, Colombia"
+    // Texto listo para mostrar: "Bogotá, Colombia"
     public String getDescripcion() {
         String texto = ciudad + ", " + pais;
         if (detalle != null && !detalle.isBlank()) {
