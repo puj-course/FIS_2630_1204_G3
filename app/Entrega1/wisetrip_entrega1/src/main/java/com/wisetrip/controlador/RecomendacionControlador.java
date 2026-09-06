@@ -1,3 +1,9 @@
+/*
+ * El controlador arma las recomendaciones de destinos para el viajero.
+ * Revisa que tenga una sesion iniciada, preferencias y presupuesto guardados,
+ * Si todo esta, calcula las recomendaciones y elige los mejores destinos 
+ * para mostrarlos.
+ */
 package com.wisetrip.controlador;
 
 import java.util.List;
