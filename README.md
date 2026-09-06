@@ -21,12 +21,60 @@ El objetivo principal de WiseTrip es simplificar la planificación de viajes, re
 ---
 
 ## Tecnologías Utilizadas
-- **Frontend:** HTML/CC/JS
-- **Backend:** Java – Spring Boot
-- **Base de Datos:** PostgresSQL
-- **IA / Data Science:** Python, Pandas, Scikit-learn
-- **DevOps:** GitHub Actions, Docker, SonarQube
-- **Control de versiones:** Git
+- Java 21
+- Spring Boot 4.1.1 (Spring MVC + JSP/JSTL)
+- Maven Wrapper (no hace falta instalar Maven)
+- Docker (opcional)
+
+La persistencia sigue en memoria en este milestone. El esquema previsto está en `docs/database.md`. No hay módulo Python ni PostgreSQL conectado todavía.
+
+## Requisitos
+
+- JDK 21 o superior
+
+## Cómo ejecutar
+
+En la raíz del repositorio:
+
+Windows:
+
+```bat
+mvnw.cmd spring-boot:run
+```
+
+Linux / macOS:
+
+```bash
+./mvnw spring-boot:run
+```
+
+Abrir http://localhost:8090
+
+El puerto se cambia con `SERVER_PORT` o en `src/main/resources/application.properties`.
+
+### Docker
+
+```bash
+docker compose up --build
+```
+
+## Configuración
+
+Variables opcionales (ver `.env.example`):
+
+| Variable | Descripción | Valor por defecto |
+| -------- | ----------- | ----------------- |
+| `SERVER_PORT` | Puerto HTTP | `8090` |
+
+## Tests
+
+```bash
+./mvnw test
+```
+
+Windows: `mvnw.cmd test`
+
+También: `scripts/test.sh` o `make test`.
 
 ---
 
@@ -113,14 +161,6 @@ FIS_2630_1204_G3/
     └── Define los archivos y carpetas que Git no debe versionar.
 
 ```
-
-## Ejecución de pruebas
-```text
-docker-compose run backend mvn test
-docker-compose run ai-model pytest
-```
-
----
 
 ## Contexto Académico
 - **Asignatura:** Fundamentos de Ingeniería de Software
