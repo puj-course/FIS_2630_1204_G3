@@ -1328,6 +1328,9 @@ Además, se busca garantizar que los datos ingresados sean validados correctamen
 - Se debe verificar que los mensajes de error sean claros y permitan al usuario corregir fácilmente la información ingresada.
 - Las historias #31–#45 deberán cumplir los criterios de aceptación definidos para cada Historia de Usuario antes de ser consideradas terminadas.
 
+<img width="1600" height="780" alt="image" src="https://github.com/user-attachments/assets/2c7b0e03-794a-4c2b-9078-ff2d2687eca8" />
+
+
 ---
 
 
