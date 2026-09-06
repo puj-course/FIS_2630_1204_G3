@@ -1,6 +1,7 @@
 /**
  * Preferencias de viaje.
- * Modelo que asocia las respuestas de preferencias con el usuario activo en sesión.
+ * Modelo que agrupa el presupuesto (en USD) y los atributos de preferencia (sí/no)
+ * del usuario, usados para comparar o filtrar opciones de viaje.
  */
 
 package com.wisetrip.modelo;
