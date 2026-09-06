@@ -1,3 +1,6 @@
+//toca entenderlo mucho mas 
+//algoritmo de recomendacion por presupuesto y preferencias
+
 package com.wisetrip.servicio;
 
 import java.util.ArrayList;
