@@ -1,3 +1,5 @@
+//todo lo que toca conexion y estructura general de la base de datos.
+
 package com.wisetrip.datos;
 
 import java.sql.Connection;
