@@ -1,3 +1,5 @@
+//Modelo de ciudad con costo y atributos
+
 package com.wisetrip.modelo;
 
 import java.util.HashMap;
