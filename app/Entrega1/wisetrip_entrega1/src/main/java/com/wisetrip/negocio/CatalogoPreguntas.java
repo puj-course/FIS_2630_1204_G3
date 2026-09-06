@@ -1,3 +1,8 @@
+//esto toca definirlo bien porque hay unos atributos y unas ciudades que deberian tener mas peso 
+//que otras, ademas que no todos los atributos que tenemos puestas coinciden con una de las preguntas
+
+//Catalogo de preguntas del cuestionario de preferencias
+
 package com.wisetrip.negocio;
 
 import com.wisetrip.modelo.Peso;
