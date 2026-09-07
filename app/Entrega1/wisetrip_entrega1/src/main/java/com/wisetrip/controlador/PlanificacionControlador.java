@@ -41,13 +41,19 @@ public class PlanificacionControlador {
     }
 
     // ---------- HU#25 Preferencias ----------
-
     @GetMapping("/preferencias")
     public String mostrarPreferencias(HttpSession sesion, Model model) {
 
         Usuario usuario = (Usuario) sesion.getAttribute("usuarioActivo");
         if (usuario == null) return "redirect:/login";
+        // HU-37: Flujo continuo y ordenado.
+        // Bloquea el acceso directo a esta pantalla si el viajero no ha pasado
+        // por el paso anterior (origen), forzando el mismo orden para todos.
         if (sesion.getAttribute("ubicacionOrigen") == null) return "redirect:/origen";
+
+        // HU-39: Persistencia de datos en sesión.
+        // Recupera las preferencias ya guardadas, si existen, para no perderlas
+        // si el viajero retrocede a esta pantalla.
 
         Preferencias guardadas = (Preferencias) sesion.getAttribute("preferenciasViaje");
 
@@ -76,12 +82,17 @@ public class PlanificacionControlador {
             model.addAttribute("totalPreguntas", preferenciasServicio.totalPreguntas());
             return "preferencias";
         }
-
+        
+        // HU-39: Persistencia de datos en sesión.
+        // Guarda las preferencias respondidas para que estén disponibles
+        // mientras dure la sesión de planificación del viajero.
         sesion.setAttribute("preferenciasViaje", preferencias);
         sesion.setAttribute("atributosSeleccionados",
                 preferenciasServicio.obtenerAtributosSeleccionados(preferencias));
         sesion.removeAttribute("idViajeGuardado");
-
+        
+        // HU-37: Botón "Siguiente".
+        // Al guardar sin errores, avanza automáticamente al siguiente paso del flujo.
         return "redirect:/fechas";
     }
 
@@ -92,8 +103,14 @@ public class PlanificacionControlador {
 
         Usuario usuario = (Usuario) sesion.getAttribute("usuarioActivo");
         if (usuario == null) return "redirect:/login";
+        // HU-37: Flujo continuo y ordenado.
+        // Si el viajero no ha completado preferencias, lo redirige de vuelta
+        // en lugar de dejarlo saltar directamente a fechas.
         if (sesion.getAttribute("preferenciasViaje") == null) return "redirect:/preferencias";
-
+        
+        // HU-39: Persistencia de datos en sesión.
+        // Recupera las fechas ya guardadas, si existen, para no perderlas
+        // si el viajero retrocede a esta pantalla.
         FechasViaje guardadas = (FechasViaje) sesion.getAttribute("fechasViaje");
 
         model.addAttribute("usuario", usuario);
@@ -118,9 +135,15 @@ public class PlanificacionControlador {
             model.addAttribute("hoy", fechasServicio.hoy());
             return "fechas";
         }
-
+        
+        // HU-39: Persistencia de datos en sesión.
+        // Guarda las fechas para que estén disponibles mientras dure
+        // la sesión de planificación del viajero.
         sesion.setAttribute("fechasViaje", fechas);
         sesion.removeAttribute("idViajeGuardado");
+
+        // HU-37: Botón "Siguiente".
+        // Avanza al paso de presupuesto una vez las fechas son válidas.
         return "redirect:/presupuesto";
     }
 
@@ -131,9 +154,16 @@ public class PlanificacionControlador {
 
         Usuario usuario = (Usuario) sesion.getAttribute("usuarioActivo");
         if (usuario == null) return "redirect:/login";
+        // HU-37: Flujo continuo y ordenado.
+        // Exige que ya existan fechas guardadas en sesión antes de mostrar
+        // esta pantalla, manteniendo el orden del flujo.
         if (sesion.getAttribute("fechasViaje") == null) return "redirect:/fechas";
 
         String paisDestino = (String) sesion.getAttribute("paisDestino");
+
+        // HU-39: Persistencia de datos en sesión.
+        // Recupera el presupuesto ya guardado, si existe, para no perderlo
+        // si el viajero retrocede a esta pantalla.
         Presupuesto guardado = (Presupuesto) sesion.getAttribute("presupuestoViaje");
 
         model.addAttribute("usuario", usuario);
@@ -166,10 +196,15 @@ public class PlanificacionControlador {
 
         double enUsd = presupuestoServicio.convertirAUsd(presupuesto);
 
+        // HU-39: Persistencia de datos en sesión.
+        // Guarda el presupuesto y su equivalente en USD mientras dure
+        // la sesión de planificación del viajero.
         sesion.setAttribute("presupuestoViaje", presupuesto);
         sesion.setAttribute("presupuestoEnUsd", enUsd);
         sesion.removeAttribute("idViajeGuardado");
 
+        // HU-37: Botón "Siguiente".
+        // Al completar el último paso, avanza al resumen final del viaje.
         return "redirect:/resumen";
     }
 
