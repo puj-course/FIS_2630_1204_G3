@@ -22,6 +22,7 @@
     </div>
 
     <div class="pasos">
+<%-- HU-37: Indicador visual de en qué paso del flujo está el viajero. --%>
         <span class="paso hecho">Origen</span>
         <span class="paso hecho">Preferencias</span>
         <span class="paso activo">Fechas</span>
@@ -39,6 +40,8 @@
             <div>
                 <label>Fecha de inicio</label>
                 <input type="date" name="fechaInicio" min="${hoy}" value="${fechas.fechaInicio}">
+<%-- HU-39: Si ya hay una fecha guardada en sesión, se precarga aquí
+     para que el viajero no la pierda al retroceder. --%>
                 <c:if test="${not empty errores.fechaInicio}">
                     <span class="error">${errores.fechaInicio}</span>
                 </c:if>
@@ -60,6 +63,7 @@
     </form>
 
     <a class="volver" href="<c:url value='/preferencias'/>">&larr; Volver a preferencias</a>
+<%-- HU-37: Botón "Atrás" del flujo, sin perder los datos ya ingresados. --%>
 </div>
 </body>
 </html>
