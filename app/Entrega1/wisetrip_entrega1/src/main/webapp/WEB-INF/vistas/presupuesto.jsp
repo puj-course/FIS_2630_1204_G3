@@ -23,6 +23,7 @@
     </div>
 
     <div class="pasos">
+<%-- HU-37: Indicador visual de en qué paso del flujo está el viajero. --%>
         <span class="paso hecho">Origen</span>
         <span class="paso hecho">Preferencias</span>
         <span class="paso hecho">Fechas</span>
@@ -58,6 +59,7 @@
         <label>Presupuesto total</label>
         <input type="text" name="monto" value="${presupuesto.monto}"
                placeholder="Ej: 2500000" inputmode="decimal">
+<%-- HU-39: Si ya hay un monto guardado en sesión, se precarga aquí. --%>
         <c:if test="${not empty errores.monto}">
             <span class="error">${errores.monto}</span>
         </c:if>
@@ -73,6 +75,7 @@
     </form>
 
     <a class="volver" href="<c:url value='/fechas'/>">&larr; Volver a las fechas</a>
+<%-- HU-37: Botón "Atrás" del flujo. --%>
 </div>
 </body>
 </html>
