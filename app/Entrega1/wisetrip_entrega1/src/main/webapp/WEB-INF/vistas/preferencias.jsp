@@ -22,6 +22,7 @@
     </div>
 
     <div class="pasos">
+<%-- HU-37: Indicador visual de en qué paso del flujo está el viajero. --%>
         <span class="paso hecho">Origen</span>
         <span class="paso activo">Preferencias</span>
         <span class="paso">Fechas</span>
@@ -66,6 +67,9 @@
                             <input type="radio" id="${p.clave}_no"
                                    name="respuestas[${p.clave}]" value="no"
                                    ${preferencias.respuestas[p.clave] == 'no' ? 'checked' : ''}>
+<%-- HU-39: Marca la respuesta ya guardada en sesión, si el viajero
+     retrocede a esta pantalla. --%>
+
                             <label for="${p.clave}_no" class="op-no">No</label>
                         </div>
                     </div>
@@ -83,6 +87,7 @@
     </form>
 
     <a class="volver" href="<c:url value='/origen'/>">&larr; Volver a la ubicación de origen</a>
+<%-- HU-37: Botón "Atrás" del flujo. --%>
 </div>
 
 <script>
