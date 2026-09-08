@@ -1726,6 +1726,22 @@ No , tengo que aprender a como manejar algunos comandos
 
 ---
 
+### Santiago Clavijo
+
+1. **¿Qué hice ayer?**
+
+Empezamos a corregir las historias de usuario que estaban mal pero no se pudo hacer mucho ya que el parcial de estructuras fue ayer
+
+2. **¿Qué voy a hacer hoy?**
+
+Hoy hemos estado hablando desde las 3 de la tarde corrigiendo los errores de la retroalimentacion del jueves (las historias de usuario, los commits asociados con las historias de usuario, toda la parte del boilerplate, las carpetas), asi como subiendo el trabajo de esta semana, hablamos con el monitor para que nos diga que podemos hacer para corregir todas las correcciones del jueves
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+seguimos sin entender el uso el github y se no sigue dificultando toda la parte de los merge y los commits
+
+---
+
 ### Isabella Posada
 
 1. **¿Qué hice ayer?**
@@ -1742,21 +1758,6 @@ sigo sin entender muy bien el gitbash y sus comandos adicionales, como el merge 
 <img width="1942" height="1020" alt="image" src="https://github.com/user-attachments/assets/88eeecb4-7be3-41d1-909e-61c2dd329607" />
 
 
----
-
-### Santiago Clavijo
-
-1. **¿Qué hice ayer?**
-
-Empezamos a corregir las historias de usuario que estaban mal pero no se pudo hacer mucho ya que el parcial de estructuras fue ayer
-
-2. **¿Qué voy a hacer hoy?**
-
-Hoy hemos estado hablando desde las 3 de la tarde corrigiendo los errores de la retroalimentacion del jueves (las historias de usuario, los commits asociados con las historias de usuario, toda la parte del boilerplate, las carpetas), asi como subiendo el trabajo de esta semana, hablamos con el monitor para que nos diga que podemos hacer para corregir todas las correcciones del jueves
-
-3. **¿Tengo algún impedimento o bloqueo?**
-
-seguimos sin entender el uso el github y se no sigue dificultando toda la parte de los merge y los commits
 
 ---
 <img width="1600" height="757" alt="image" src="https://github.com/user-attachments/assets/c4a35f1d-d646-4796-9026-50eaa635cc2f" />
