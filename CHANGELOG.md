@@ -1676,7 +1676,7 @@ No he tenido tiempo, ya que el parcial de estructuras fue hoy
 <img width="1600" height="1200" alt="image" src="https://github.com/user-attachments/assets/2e58571b-9edb-4cb3-8f62-93eb327fcdcc" />
 ---
 
-## Daily Scrum - 04/09/2026
+## Daily Scrum - 05/09/2026
 
 ### Maria Alejandra Rodriguez
 
@@ -1757,13 +1757,168 @@ hoy asociamos todos los issues de cada integrante del equipo, ademas de corregir
 sigo sin entender muy bien el gitbash y sus comandos adicionales, como el merge y los errores que podian aparecer.
 <img width="1942" height="1020" alt="image" src="https://github.com/user-attachments/assets/88eeecb4-7be3-41d1-909e-61c2dd329607" />
 
-
-
----
 <img width="1600" height="757" alt="image" src="https://github.com/user-attachments/assets/c4a35f1d-d646-4796-9026-50eaa635cc2f" />
 
+---
+
+  # Sprint Review y Sprint Retrospective - 06/09/2026
+
+## Maria Alejandra Rodriguez
+
+### Sprint Review
+
+1. **¿Qué logramos?**
+   
+Logramos una implementacion bastante adelantada a nuestro proyecto con respecto a la base de datos y el diseño de la pagina web, sin embargo teniendo en cuenta la retroalimentacion arreglamos el repositorio con la ayuda de los monitores
+
+
+### Sprint Retrospective
+
+2. **¿Cómo trabajamos?**
+
+   Siento que esta semana la carga de trabajo fue un poco desproporcional porque las fallas se centraban en unas areas solamente, de todas formas todos tratamos de contribuir como se podia.
+
+3. **¿Qué podríamos mejorar?**
+
+   La organizacion del repocitorio, la asignacion de tareas, la magnitud de las historias de usuario. Poco a poco vamos entendiendo mucho mejor la metodologia.
+
 
 ---
+
+## Gabriela Melo Gualteros
+
+### Sprint Review
+
+1. **¿Qué logramos?**
+
+Logramos corregir bastante (si no todo) de lo que el profesor nos corrigio en la pre-entrega, porfin entendimos el fujo que lleva esta metodologia
+
+### Sprint Retrospective
+
+2. **¿Cómo trabajamos?**
+
+Trabajamos bastante bien como grupo al proponernos que teniamos que mejorar mucho nuestro repo y correcciones. Pero trabajamos muy bien y muy unidos
+
+3. **¿Qué podríamos mejorar?**
+
+La carga, habiamos entendido que tocaba entregar en 50% del proyecto entero cuando solo era el 50% de dos HUs., tener a los monitores mas cercanos para que nos puedan ayudar en cualquier duda, aprovechar cualquier espacio para preguntarles.
+
+
+---
+
+## Valeria Cortes Rendon
+
+### Sprint Review
+
+1. **¿Qué logramos?**
+
+Mejorar todo el repositorio teniendo en cuenta las observaciones que nos hizo el profesor y el moitor
+
+### Sprint Retrospective
+
+2. **¿Cómo trabajamos?**
+
+Trabajamos en equipo y pudimos mejorar los aspectos que teniamos a trabajar, se completaron todas las tareas y se aprendieron nuevos aspectos de la utilizacion del github
+
+
+3. **¿Qué podríamos mejorar?**
+
+En el momento me gustaria que mis compañeros se unieran a la hora acordada a las reuniones
+
+---
+
+## Isabella Posada
+
+### Sprint Review
+
+1. **¿Qué logramos?**
+
+
+
+### Sprint Retrospective
+
+2. **¿Cómo trabajamos?**
+
+
+  
+3. **¿Qué podríamos mejorar?**
+
+
+
+---
+
+## Santiago Clavijo
+
+### Sprint Review
+
+1. **¿Qué logramos?**
+
+Esta semana gracias a la retroalimentacion del profesor pudimos asociar los commits a la mayoria de las historias de usuario, asi como corregir todas las historias de usuario con su formato invest, su DoD (definition of done), y en mi caso entendi mas como funciona git para futuros sprints ya que no me seguia quedando claro la parte de los commits.
+
+
+### Sprint Retrospective
+
+2. **¿Cómo trabajamos?**
+
+Esta semana logramos trabajar como equipo para pulir el git con las correciones dadas
+
+
+3. **¿Qué podríamos mejorar?**
+
+mas cordinacion pero vamos mejorando comparado con otros sprints
+
+---
+
+<img width="425" height="207" alt="image" src="https://github.com/user-attachments/assets/c467bbea-75ef-4711-b23e-4a4f4debd853" />
+
+# Sprint 5 - Sprint Planning - [07/09/2026]
+
+## Sprint Goal
+
+Consolidar la experiencia de usuario en las etapas iniciales del flujo de WiseTrip, mejorando la interfaz de registro, inicio de sesión y selección de preferencias de viaje. Se busca que el usuario reconozca fácilmente la identidad visual de la plataforma, interactúe de forma intuitiva con los componentes (calendario, selector de moneda, botones de preferencias) y que toda la información ingresada sea clara, legible y visualmente coherente con la marca.
+
+Además, se pretende vincular correctamente las ciudades y sus características con el sistema, para que las recomendaciones de destinos se generen sin errores y se puedan visualizar en el mapa.
+
+## Capacidad del equipo
+
+* Desarrolladores disponibles: 5
+* Puntos/horas disponibles: 42 (por ajustar según refinamiento)
+
+## Issues seleccionados para el Sprint
+
+| ID | Título | Tipo | Estimación | Responsable |
+|----|--------|------|------------|-------------|
+| #46 | Como viajero, quiero ver el logo de WiseTrip para identificar la marca de la aplicación y regresar al inicio con solo un clic. | Historia de Usuario | TBD | Valeria |
+| #47 | Como administrador de WiseTrip, quiero vincular las ciudades y sus características con el sistema, para clasificar los destinos según las elecciones del viajero y mostrarlos ubicados en el mapa sin errores. | Historia de Usuario | TBD | Valeria |
+| #48 | Como usuario, quiero que el registro y el inicio de sesión tengan el mismo estilo visual de WiseTrip, para reconocer fácilmente dónde ingresar mis datos y acceder a mi cuenta. | Historia de Usuario | TBD | Maleja |
+| #49 | Como viajero, quiero ingresar de dónde salgo mediante un diseño que mantenga el estilo de WiseTrip, para continuar con la planificación de mi viaje de forma sencilla. | Historia de Usuario | TBD | Maleja |
+| #50 | Como viajero, quiero elegir mis preferencias de viaje de forma visual e interactiva, para terminar la encuesta rápidamente y conocer mis destinos sugeridos. | Historia de Usuario | TBD | Gaby |
+| #51 | Como viajero, quiero seleccionar mis fechas en un calendario visual, para elegir el rango de días sin escribirlos manualmente. | Historia de Usuario | TBD | Gaby |
+| #52 | Como viajero, quiero indicar desde qué ciudad salgo, para organizar mi itinerario teniendo en cuenta mi lugar de partida. | Historia de Usuario | TBD | Isa |
+| #53 | Como viajero, quiero indicar qué me gusta hacer en mis vacaciones, para que la plataforma filtre y me muestre solo opciones afines a mí. | Historia de Usuario | TBD | Isa |
+| #54 | Como viajero, quiero que la interfaz tenga una tipografía legible y una selección de colores adecuada para que la información sea fácil de leer y comprender. | Historia de Usuario | TBD | Clavijo |
+| #55 | Como viajero, quiero ver el icono de cada bandera dependiendo la moneda escogida en el selector del presupuesto, para identificar más rápido la moneda que estoy escogiendo. | Historia de Usuario | TBD | Clavijo |
+
+## Riesgos / Bloqueos identificados
+
+- La vinculación de ciudades y características (#47) depende de que los datos estén correctamente estructurados en la base de datos y que el administrador tenga una interfaz funcional para gestionarlos.
+- Las historias relacionadas con estilo visual (#48, #49, #54) deben mantener coherencia con el diseño ya establecido en sprints anteriores.
+- La implementación del calendario visual (#51) puede presentar complejidad técnica si no se utiliza una librería adecuada o si no se integra correctamente con el backend para validar fechas.
+- Las preferencias visuales e interactivas (#50, #53) deben estar sincronizadas con la lógica de filtrado de destinos; si no se capturan correctamente, las recomendaciones pueden ser incorrectas.
+- El selector de moneda con banderas (#55) requiere un mapeo preciso entre moneda y país/bandera, lo que podría generar errores visuales si no se configura adecuadamente.
+- Posibles conflictos en componentes compartidos del frontend entre los responsables de las HU (#48, #49, #54, #55), ya que varias tocan estilos y diseño.
+- Las estimaciones deben ser validadas durante la planificación para no superar la capacidad del equipo.
+
+## Notas adicionales
+
+- Este sprint se centrará en la mejora de la experiencia de usuario en las pantallas iniciales y de configuración del viaje.
+- Se priorizará la consistencia visual con la identidad de WiseTrip en todas las pantallas involucradas.
+- El equipo debe asegurar que los componentes interactivos (calendario, selector de preferencias, selector de moneda) funcionen correctamente en diferentes dispositivos y navegadores.
+- Todas las HU deberán cumplir con los criterios de aceptación definidos antes de darlas por finalizadas.
+
+
+
+<img width="1600" height="1200" alt="image" src="https://github.com/user-attachments/assets/4a06669d-efcc-429e-948c-3a2376eef882" />
 
 
 
