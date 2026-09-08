@@ -1,5 +1,3 @@
-En el boilerplate se ve la estructura general del proyecto: una app en Spring Boot organizada por capas (controlador, servicio, datos, modelo), junto con la documentación, 
-scripts y demás archivos de configuración del repositorio.
 
 # fis_boilerplate
 ## Descripción de cada directorio y archivos
@@ -119,6 +117,7 @@ FIS_2630_1204_G3/
 │   │   └── mockupInicial.md
 │   ├── user_guide/
 │   │   └── README.md
+|   └── 1raEntrega_FIS_G3.pdf
 │   ├── DefinicionProyecto.md
 │   ├── RequerimientosFuncionales.md
 │   └── RequerimientosNoFuncionales.md
