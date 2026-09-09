@@ -1920,6 +1920,90 @@ Además, se pretende vincular correctamente las ciudades y sus características 
 
 <img width="1600" height="1200" alt="image" src="https://github.com/user-attachments/assets/4a06669d-efcc-429e-948c-3a2376eef882" />
 
+# Sprint 5 - 
+
+## Daily Scrum - 09/09/2026
+
+### Valeria Cortes Rendon
+
+1. **¿Qué hice ayer?**
+
+   Se realizó el Sprint Planning de la semana y se distribuyó el trabajo entre los integrantes. Además, se ajustaron los últimos detalles del repositorio.
+
+2. **¿Qué voy a hacer hoy?**
+
+   Realicé la búsqueda de colores y conceptos para construir la identidad de la marca. También participamos en la retroalimentación del proyecto con el profesor y revisamos los últimos cambios realizados en la base de datos.
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+   No.
+
+---
+
+### Santiago Clavijo
+
+1. **¿Qué hice ayer?**
+
+   Iniciamos el Sprint, organizamos el Product Backlog, asignamos las historias de usuario y ajustamos los últimos detalles para la sustentación.
+
+2. **¿Qué voy a hacer hoy?**
+
+   Participé en la sustentación de la primera entrega y comencé a trabajar en la historia de usuario **HU #187**.
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+   No.
+
+---
+
+### Isabella Posada
+
+1. **¿Qué hice ayer?**
+
+   Nos reunimos como equipo y comenzamos a organizar el Product Backlog.
+
+2. **¿Qué voy a hacer hoy?**
+
+   Avancé en el issue #52 desde mi rama y participé en la sustentación de la primera entrega del proyecto.
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+   No.
+
+---
+
+### Gabriela Melo Gualteros
+
+1. **¿Qué hice ayer?**
+
+   Realizamos el Sprint Planning, en el cual cada integrante se comprometió a desarrollar dos historias de usuario.
+
+2. **¿Qué voy a hacer hoy?**
+
+   Participé en la sustentación de la primera entrega del proyecto. Además, definimos la colorimetría que utilizaremos para mantener un diseño uniforme en la página web.
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+   No.
+
+---
+
+### Maria Alejandra Rodriguez
+
+1. **¿Qué hice ayer?**
+
+   Terminamos de definir algunas historias de usuario y comenzamos a integrar las ideas para el diseño de la plataforma.
+
+2. **¿Qué voy a hacer hoy?**
+
+   Recibimos una nueva retroalimentación del proyecto, en la cual obtuvimos buenos resultados e identificamos algunos aspectos por mejorar. Además, comencé a investigar cómo optimizar la experiencia de usuario de la página web.
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+   No.
+
+<img width="1600" height="786" alt="IMG_2809" src="https://github.com/user-attachments/assets/fc517cae-9737-4c7b-8044-d9b4350af4d9" />
+
 
 
 
