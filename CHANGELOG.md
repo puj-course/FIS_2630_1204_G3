@@ -1922,7 +1922,7 @@ Además, se pretende vincular correctamente las ciudades y sus características 
 
 # Sprint 5 - 
 
-## Daily Scrum - 09/09/2026
+## Daily Scrum - 08/09/2026
 
 ### Valeria Cortes Rendon
 
@@ -2004,6 +2004,90 @@ Además, se pretende vincular correctamente las ciudades y sus características 
 
 <img width="1600" height="786" alt="IMG_2809" src="https://github.com/user-attachments/assets/fc517cae-9737-4c7b-8044-d9b4350af4d9" />
 
+
+---
+
+## Daily Scrum - 09/09/2026
+
+### Isabella Posada
+
+1. **¿Qué hice ayer?**
+
+   Trabajé en el issue #52, específicamente en la corrección del proceso en el que se almacenan las ciudades.
+
+2. **¿Qué voy a hacer hoy?**
+
+   Continuaré trabajando en el **issue #52**. También dedicaré tiempo a estudiar para el parcial de mañana.
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+   No solamente que estudiar para el parcial me ha retrasado.
+
+---
+
+### Gabriela Melo Gualteros
+
+1. **¿Qué hice ayer?**
+
+   Trabajamos en la definición de la colorimetría de la página web.
+
+2. **¿Qué voy a hacer hoy?**
+
+   Trabajaré desde mi rama en el diseño de la selección de fechas y del calendario, correspondiente a la HU #51. También estudiaré para el parcial de mañana.
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+   Dispongo de poco tiempo debido a la preparación para el parcial.
+
+---
+
+### Santiago Clavijo
+
+1. **¿Qué hice ayer?**
+
+   Comencé a trabajar en mi historia de usuario relacionada con la tipografía de la página web.
+
+2. **¿Qué voy a hacer hoy?**
+
+   Definiré los elementos de diseño que modificaré, como la tipografía de las etiquetas de ingreso de datos. Además, buscaré referencias tipográficas en páginas web relacionadas con viajes.
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+   Dispongo de poco tiempo debido a la preparación para el parcial de mañana.
+
+---
+
+### Valeria Cortes Rendon
+
+1. **¿Qué hice ayer?**
+
+   Participé en la sustentación del proyecto y revisé los pasos iniciales para desarrollar la identidad de la marca.
+
+2. **¿Qué voy a hacer hoy?**
+
+   Investigaré qué colores se deben utilizar para la marca y cómo mejorar visualmente la página para hacerla más atractiva para el usuario final. También estudiaré para el parcial de mañana.
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+   Dispongo de poco tiempo debido a que me encuentro en semana de parciales.
+
+---
+
+### Maria Alejandra Rodriguez
+
+1. **¿Qué hice ayer?**
+
+   Investigué páginas web relacionadas con la búsqueda de vuelos y la planificación de viajes para identificar ideas que puedan adaptarse a la implementación actual.
+
+2. **¿Qué voy a hacer hoy?**
+
+   Continuaré investigando un modelo gráfico más adecuado y trabajando en el diseño visual de la página web. Además, realizaré cambios importantes relacionados con los datos presentados en la plataforma.
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+   Dispongo de poco tiempo para avanzar en profundidad en el diseño de la página web.
+
+<img width="973" height="737" alt="image" src="https://github.com/user-attachments/assets/76b2b892-f67f-48bc-abad-5829aff58692" />
 
 
 
