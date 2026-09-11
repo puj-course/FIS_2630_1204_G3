@@ -9,25 +9,78 @@ public class Usuario {
     private String correo;
     private String password;
 
-    // Constructor vacio: Spring lo necesita para llenar el objeto con los datos del formulario
+    // Constructor vacío necesario para que Spring pueda
+    // crear y llenar el objeto con los datos del formulario
     public Usuario() {
     }
+
+    // Obtiene el nombre completo
+    public String getNombreCompleto() {
+        return nombreCompleto;
+    }
+
+    // Modifica el nombre completo
+    public void setNombreCompleto(String nombreCompleto) {
+        this.nombreCompleto = nombreCompleto;
+    }
+
+    // Obtiene el tipo de documento
+    public String getTipoDocumento() {
+        return tipoDocumento;
+    }
+    public int getIdUsuario() { return idUsuario; }
+    public void setIdUsuario(int idUsuario) { this.idUsuario = idUsuario; }
 
     public String getNombreCompleto() { return nombreCompleto; }
     public void setNombreCompleto(String nombreCompleto) { this.nombreCompleto = nombreCompleto; }
 
-    public String getTipoDocumento() { return tipoDocumento; }
-    public void setTipoDocumento(String tipoDocumento) { this.tipoDocumento = tipoDocumento; }
+    // Modifica el tipo de documento
+    public void setTipoDocumento(String tipoDocumento) {
+        this.tipoDocumento = tipoDocumento;
+    }
 
-    public String getNumeroDocumento() { return numeroDocumento; }
-    public void setNumeroDocumento(String numeroDocumento) { this.numeroDocumento = numeroDocumento; }
+    // Obtiene el número de documento
+    public String getNumeroDocumento() {
+        return numeroDocumento;
+    }
 
-    public String getFechaNacimiento() { return fechaNacimiento; }
-    public void setFechaNacimiento(String fechaNacimiento) { this.fechaNacimiento = fechaNacimiento; }
+    // Modifica el número de documento
+    public void setNumeroDocumento(String numeroDocumento) {
+        this.numeroDocumento = numeroDocumento;
+    }
 
-    public String getCorreo() { return correo; }
-    public void setCorreo(String correo) { this.correo = correo; }
+    // Obtiene la fecha de nacimiento
+    public String getFechaNacimiento() {
+        return fechaNacimiento;
+    }
 
     public String getPassword() { return password; }
     public void setPassword(String password) { this.password = password; }
+
+    public String getRol() { return rol; }
+    public void setRol(String rol) { this.rol = rol; }
+    // Modifica la fecha de nacimiento
+    public void setFechaNacimiento(String fechaNacimiento) {
+        this.fechaNacimiento = fechaNacimiento;
+    }
+
+    // Obtiene el correo electrónico
+    public String getCorreo() {
+        return correo;
+    }
+
+    // Modifica el correo electrónico
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
+    // Obtiene la contraseña
+    public String getPassword() {
+        return password;
+    }
+
+    // Modifica la contraseña
+    public void setPassword(String password) {
+        this.password = password;
+    }
 }
