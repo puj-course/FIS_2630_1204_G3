@@ -1,3 +1,9 @@
+/**
+ * Preferencias de viaje.
+ * Modelo que representa una categoría de preferencias, con su nombre, ícono,
+ * descripción y la lista de preguntas que agrupa.
+ */
+
 package com.wisetrip.modelo;
 
 import java.util.List;

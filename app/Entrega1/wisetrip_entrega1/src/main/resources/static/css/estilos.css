@@ -71,7 +71,7 @@ h2 {
     margin: 0 0 26px;
 }
 
-/* ===== Formularios ===== */
+/* ===== Formularios, preguntas de preferencia  ===== */
 
 label {
     display: block;
@@ -319,7 +319,7 @@ button:active { transform: translateY(1px); }
 .opciones input[type=radio]:focus-visible + label { outline: 2px solid var(--turquesa); outline-offset: -2px; }
 
 /* ===== Barra de progreso ===== */
-
+/*Barra de progreso visual: muestra cuánto ha avanzado el usuario en el flujo (presupuesto, fechas, preferencias), con un relleno que se actualiza dinámicamente y un texto de estado tipo "2/3"*/
 .pie-fijo {
     position: sticky;
     bottom: 0;

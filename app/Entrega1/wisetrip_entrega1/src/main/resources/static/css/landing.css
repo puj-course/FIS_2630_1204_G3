@@ -269,5 +269,5 @@
 @media (max-width: 560px) {
     .lp-pasos { grid-template-columns: 1fr; }
     .lp-nav-links a:not(.lp-btn) { display: none; }
-    .lp-titulo { letter-spacing: -1px; }
+    .lp-pase { transform: none; }
 }

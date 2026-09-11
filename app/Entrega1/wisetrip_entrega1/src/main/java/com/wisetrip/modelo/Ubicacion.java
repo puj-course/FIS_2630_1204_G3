@@ -4,11 +4,11 @@ public class Ubicacion {
 
     private String pais;
     private String ciudad;
-    private String detalle;   // barrio, aeropuerto o punto de partida, opcional
+    private String detalle;   // barrio, aeropuerto o punto de partida
 
     public Ubicacion() {
     }
-
+    
     public String getPais() { return pais; }
     public void setPais(String pais) { this.pais = pais; }
 
@@ -18,7 +18,7 @@ public class Ubicacion {
     public String getDetalle() { return detalle; }
     public void setDetalle(String detalle) { this.detalle = detalle; }
 
-    // Texto listo para mostrar: "Bogota, Colombia"
+    // Texto listo para mostrar: "Bogotá, Colombia"
     public String getDescripcion() {
         String texto = ciudad + ", " + pais;
         if (detalle != null && !detalle.isBlank()) {

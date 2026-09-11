@@ -1,3 +1,6 @@
+//Aca ya le aparecen al usuario los destinos recomendados y que solo salgan 3. 
+//Seleccion de los mejores destinos recomendados
+
 package com.wisetrip.servicio;
 
 import java.util.ArrayList;

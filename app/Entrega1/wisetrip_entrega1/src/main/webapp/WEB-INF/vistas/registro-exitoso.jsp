@@ -13,7 +13,7 @@
     <h1>Cuenta creada con exito</h1>
     <p class="subtitulo">
         Hola <strong>${nombre}</strong>, tu cuenta <strong>${correo}</strong> ya esta lista.
-        Ahora inicia sesion para continuar con la planificacion de tu viaje.
+        Ahora inicia sesión para continuar con la planificacion de tu viaje.
     </p>
     <a class="boton" href="<c:url value='/login'/>">Ir a iniciar sesion</a>
 </div>
