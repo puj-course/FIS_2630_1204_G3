@@ -122,3 +122,101 @@ El usuario podrá comunicarse con el soporte mediante chat o correo electrónico
 Además, al finalizar el viaje, la plataforma podrá solicitar retroalimentación sobre la experiencia, permitiendo que el usuario indique si el itinerario y las recomendaciones fueron útiles, qué aspectos fueron satisfactorios y qué elementos podrían mejorarse.
 
 Esta información podrá utilizarse para identificar oportunidades de mejora y desarrollar recomendaciones cada vez más ajustadas a las necesidades de los viajeros.
+
+
+## 6. Identidad visual de WiseTrip
+La entidad visual es el conjunto de elementos graficos que permiten reconocer y diferenciar a una marca. Dentro de estos elementos se encuentran el color, la tipografia, las formas, simbolos y estilo general. En el caso de nuestra marca buscamos representar la pagina web relacionada con la planificacion inteligente de viajes. La marca debe transmitir conceptos de confianza, exploracion, tecnologia y personalizacion. Ya que nuestra plataforma recomendara destinos de acuerdo a las preferencias, fechas y presupuesto de cada usuario.
+
+Por esta razon la identidad visual de WiseTrip se planteara con un estilo moderno, evitando representar al turismo tradicionalmente. En lugar de basarnos en los tipicos simbolos como aviones o maletas, buscaremos representar la experienicia de la toma de decisiones y encontrar un viaje adecuado. 
+
+Como parte fundamental del branding, decidimos usar una paleta de colores como azul profundo, turquesa, coral y colores arena. Creando una identidad entre tecnologia y viajes. 
+
+- tinta: #0E3A53;
+- tinta-honda: #0A2A3E;
+- turquesa: #1BA3A0;
+- turquesa-hondo: #128784;
+- turquesa-suave: #E4F5F1;
+- coral: #E8623D;
+- coral-hondo: #A83A1C;
+- arena: #F6F1E6;
+- arena-honda: #EDE4D3;
+- linea: #D8CFBC;
+- gris: #5B6B75;
+- gris-claro: #93A3AC;
+
+## Tipografia 
+
+La tipografia no se considera como un elemento decorativo. Dentro del logo e interfaces graficas, influyen en la legibilidad, personalidad y experiencia del usuario. Por ello en WiseTrip usaremos tres tipografias principales: 
+
+- Fraunces
+- Instrument Sans
+- IBM Plex Mono, para etiquetas
+
+Estos tres tipos de tipografias se usaron para diferentes aspectos; La tipografia de Fraunces es usada principalmente en titulos y elementos destacados. Instrument Sans para el contenido general y la interfaz. Y para finalizar IBM Plex Mono Para datos, etiquetas y elementos estructurados. 
+
+## Proceso de creacion logo WiseTrip 
+
+El objetivo fue buscar una identidad que pueda representar la idea de viajar de forma personalizada e inteligente. Entre las diferentes posibilidades encontramos: 
+
+- Iniciales de la marca
+- Simbolos
+- Referencias a rutas y trayectorias
+- Elementos relacionados con exploracion
+- Formas asociadas con la direccion
+- Representaciones de viaje
+
+Para ello se propusieron los siguientes diseños 
+
+1. Logo 1 
+<img width="344" height="342" alt="image" src="https://github.com/user-attachments/assets/98742a4e-156e-4191-b414-23f5ebe6ad5f" />
+
+2. Logo 2 
+<img width="342" height="343" alt="image" src="https://github.com/user-attachments/assets/53f66d12-7fbf-4568-b47d-fbe4718f90a1" />
+
+3. Logo 3
+<img width="341" height="344" alt="image" src="https://github.com/user-attachments/assets/56c449fc-5876-45ea-b943-d6fad93a0931" />
+
+4. Logo 4
+<img width="341" height="340" alt="image" src="https://github.com/user-attachments/assets/46b7925d-0e6f-4b81-bc5c-c28ef18ed308" />
+
+## Analisis Logo
+
+Para realizar la elección del logo WiseTrip nos basamos en 5 criterios principales
+
+1. Simplicidad.
+2. Memorabilidad.
+3. Versatilidad.
+4. Escalabilidad.
+4. Relación con WiseTrip.
+
+| Logo       | Criterio                 | Valeria | Isabella | María Alejandra | Santiago | Gabriela |
+| ---------- | ------------------------ | ------: | -------: | --------------: | -------: | -------: |
+| **Logo 1** | Simplicidad              |       3 |        4 |               3 |        3 |        3 |
+|            | Memorabilidad            |       4 |        4 |               4 |        3 |        4 |
+|            | Versatilidad             |       3 |        3 |               3 |        4 |        3 |
+|            | Escalabilidad            |       4 |        3 |               3 |        3 |        3 |
+|            | Pertinencia con la marca |       5 |        4 |               4 |        4 |        5 |
+| **Logo 2** | Simplicidad              |       4 |        4 |               2 |        2 |        3 |
+|            | Memorabilidad            |       4 |        3 |               4 |        3 |        3 |
+|            | Versatilidad             |       4 |        3 |               4 |        2 |        1 |
+|            | Escalabilidad            |       3 |        3 |               3 |        2 |        2 |
+|            | Pertinencia con la marca |       1 |        1 |               1 |        1 |        2 |
+| **Logo 3** | Simplicidad              |       4 |        4 |               4 |        3 |        3 |
+|            | Memorabilidad            |       4 |        3 |               3 |        3 |        3 |
+|            | Versatilidad             |       2 |        3 |               3 |        2 |        2 |
+|            | Escalabilidad            |       2 |        4 |               3 |        4 |        2 |
+|            | Pertinencia con la marca |       4 |        3 |               4 |        4 |        3 |
+| **Logo 4** | Simplicidad              |       5 |        3 |               4 |        3 |        4 |
+|            | Memorabilidad            |       3 |        3 |               3 |        4 |        4 |
+|            | Versatilidad             |       4 |        4 |               4 |        4 |        3 |
+|            | Escalabilidad            |       4 |        4 |               4 |        3 |        3 |
+|            | Pertinencia con la marca |       5 |        5 |               5 |        5 |        5 |
+
+## Tabla Final de Eleccion 
+
+| Logo       | Valeria | Isabella | María Alejandra | Santiago | Gabriela | **Total** |
+| ---------- | ------: | -------: | --------------: | -------: | -------: | --------: |
+| **Logo 1** |      19 |       18 |              17 |       17 |       18 |    **89** |
+| **Logo 2** |      16 |       14 |              14 |       10 |       11 |    **65** |
+| **Logo 3** |      16 |       17 |              17 |       16 |       13 |    **79** |
+| **Logo 4** |      21 |       19 |              20 |       19 |       19 |    **98** |
