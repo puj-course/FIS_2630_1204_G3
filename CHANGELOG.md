@@ -2089,6 +2089,90 @@ Además, se pretende vincular correctamente las ciudades y sus características 
 
 <img width="973" height="737" alt="image" src="https://github.com/user-attachments/assets/76b2b892-f67f-48bc-abad-5829aff58692" />
 
+---
+
+## Daily Scrum - 10/09/2026
+
+### Isabella Posada
+
+1. **¿Qué hice ayer?**
+
+   
+
+2. **¿Qué voy a hacer hoy?**
+
+   
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+   
+
+---
+
+### Gabriela Melo Gualteros
+
+1. **¿Qué hice ayer?**
+
+   Estuve trabajando en la vista de la pantalla de fechas
+
+2. **¿Qué voy a hacer hoy?**
+
+   cambie la tipografia de los labels del ingreso de datos para que se viera mejor
+   
+4. **¿Tengo algún impedimento o bloqueo?**
+
+   hasta hoy pude hacer commits ya que estaba estudiando para el parcial de fis
+---
+
+### Santiago Clavijo
+
+1. **¿Qué hice ayer?**
+
+   Ayer decidi que tipografia se iba a usar en los labels
+
+2. **¿Qué voy a hacer hoy?**
+
+   Definiré los elementos de diseño que modificaré, como la tipografía de las etiquetas de ingreso de datos. Además, buscaré referencias tipográficas en páginas web relacionadas con viajes.
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+   Dispongo de poco tiempo debido a la preparación para el parcial de mañana.
+
+---
+
+### Valeria Cortes Rendon
+
+1. **¿Qué hice ayer?**
+
+   Envie los primeros logotipos adaptados a nuestra empresa, bansandome en los colores de las pantallas y buscando una tipografia /branding que sea adecuada a nuestro objetivo
+
+2. **¿Qué voy a hacer hoy?**
+
+   Investigaré qué colores se deben utilizar para la marca y cómo mejorar visualmente la página para hacerla más atractiva para el usuario final. También estudiaré para el parcial de mañana.
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+  Tengo que esperar que mi equipo decida que branding / logo vamos a usar
+---
+
+### Maria Alejandra Rodriguez
+
+1. **¿Qué hice ayer?**
+
+   Termine la investigacion y encontre par de frameworks, diseños y colores que pueden ayudarme a mejorar la apariencia de la pagina web
+
+2. **¿Qué voy a hacer hoy?**
+
+  Agregue par de commits donde se arreglablan unos problemas de ejecucion, y arregle la portada de la pagina web que se supone que pues es la que mas llama la atencion en la pagina
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+   no por ahora
+
+---   
+
+   
+
 
 
 
