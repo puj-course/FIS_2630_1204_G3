@@ -36,6 +36,7 @@ public class AuthControlador {
     @PostMapping("/registro")
     public String procesarRegistro(@ModelAttribute("usuario") Usuario usuario,
                                    @RequestParam(name = "confirmarPassword", required = false) String confirmarPassword,
+                                   HttpSession sesion,
                                    Model model,
                                    RedirectAttributes flash) {
 
@@ -50,6 +51,7 @@ public class AuthControlador {
         usuario.setCorreo(usuario.getCorreo().trim());
         usuario.setNumeroDocumento(usuario.getNumeroDocumento().trim());
         usuarioServicio.registrar(usuario);
+        sesion.setAttribute("usuarioActivo", usuario);
 
         flash.addFlashAttribute("nombre", usuario.getNombreCompleto());
         flash.addFlashAttribute("correo", usuario.getCorreo());
@@ -66,7 +68,7 @@ public class AuthControlador {
         return "login";
     }
 
-    // Procesa el inicio de sesion
+    // Procesa el inicio de sesion 
     @PostMapping("/login")
     public String procesarLogin(@RequestParam("correo") String correo,
                                 @RequestParam("password") String password,

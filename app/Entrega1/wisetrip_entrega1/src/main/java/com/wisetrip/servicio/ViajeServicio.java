@@ -12,7 +12,7 @@ import com.wisetrip.modelo.Ubicacion;
 @Service
 public class ViajeServicio {
 
-    // Paises disponibles con sus ciudades
+    // Paises disponibles con ciudades recomendadas 
     private static final Map<String, List<String>> CIUDADES_POR_PAIS = new LinkedHashMap<>();
 
     static {

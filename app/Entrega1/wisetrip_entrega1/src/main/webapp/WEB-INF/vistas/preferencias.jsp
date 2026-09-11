@@ -1,3 +1,8 @@
+<%-- Preferencias de viaje.
+     Vista con las 26 preguntas organizadas por categoría, mostradas como sí/no.
+     Incluye barra de progreso en vivo (JS) y marca las preguntas sin responder.
+     Es el segundo paso del flujo (Origen > Preferencias > Fechas > Presupuesto). --%>
+
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <!DOCTYPE html>
@@ -17,6 +22,7 @@
     </div>
 
     <div class="pasos">
+<%-- HU-37: Indicador visual de en qué paso del flujo está el viajero. --%>
         <span class="paso hecho">Origen</span>
         <span class="paso activo">Preferencias</span>
         <span class="paso">Fechas</span>
@@ -61,6 +67,9 @@
                             <input type="radio" id="${p.clave}_no"
                                    name="respuestas[${p.clave}]" value="no"
                                    ${preferencias.respuestas[p.clave] == 'no' ? 'checked' : ''}>
+<%-- HU-39: Marca la respuesta ya guardada en sesión, si el viajero
+     retrocede a esta pantalla. --%>
+
                             <label for="${p.clave}_no" class="op-no">No</label>
                         </div>
                     </div>
@@ -68,7 +77,7 @@
             </section>
         </c:forEach>
 
-        <div class="pie-fijo">
+        <div class="pie-fijo" data-total="${totalPreguntas}">
             <div class="progreso">
                 <div class="progreso-barra"><span id="progresoRelleno"></span></div>
                 <span class="progreso-texto"><b id="contador">0</b> de ${totalPreguntas} respondidas</span>
@@ -78,11 +87,12 @@
     </form>
 
     <a class="volver" href="<c:url value='/origen'/>">&larr; Volver a la ubicación de origen</a>
+<%-- HU-37: Botón "Atrás" del flujo. --%>
 </div>
 
 <script>
     const pie = document.querySelector('.pie-fijo');
-    const total = parseInt(pie.getAttribute('data-total'), 10) || 26;
+    const total = parseInt(pie.getAttribute('data-total'), 10) || 0;
     const contador = document.getElementById('contador');
     const relleno = document.getElementById('progresoRelleno');
 
