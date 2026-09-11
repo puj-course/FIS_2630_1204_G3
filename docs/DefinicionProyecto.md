@@ -220,3 +220,5 @@ Para realizar la elección del logo WiseTrip nos basamos en 5 criterios principa
 | **Logo 2** |      16 |       14 |              14 |       10 |       11 |    **65** |
 | **Logo 3** |      16 |       17 |              17 |       16 |       13 |    **79** |
 | **Logo 4** |      21 |       19 |              20 |       19 |       19 |    **98** |
+
+El diseño ganador fue el logotipo #4. Por una decision democratica del equipo.
