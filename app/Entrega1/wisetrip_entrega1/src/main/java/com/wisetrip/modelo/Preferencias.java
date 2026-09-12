@@ -1,3 +1,8 @@
+/**
+ * Preferencias de viaje.
+ * Modelo que representa la información de preferencias seleccionadas por el usuario.
+ */
+
 package com.wisetrip.modelo;
 
 import java.util.LinkedHashMap;

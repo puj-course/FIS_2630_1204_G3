@@ -1,3 +1,11 @@
+/**
+ * Fechas de viaje.
+ * Servicio que valida las fechas del viaje: que no sean anteriores a hoy,
+ * que la fecha de fin sea posterior a la de inicio y que el viaje no supere
+ * los 60 días. También calcula la duración y da la fecha de hoy para el
+ * formulario.
+ */
+
 package com.wisetrip.servicio;
 
 import java.time.LocalDate;

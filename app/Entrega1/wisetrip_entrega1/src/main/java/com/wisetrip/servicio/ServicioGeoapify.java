@@ -1,3 +1,8 @@
+//hicimos que en la terminal mostrara el numero de request que se le hacia a la api 
+//para saber cuantas API calls se hacian en tiempo real 
+//muy util para controlar los 3000 requests gratis y ver cuanto se demora 
+
+
 package com.wisetrip.servicio;
 
 import org.springframework.beans.factory.annotation.Value;

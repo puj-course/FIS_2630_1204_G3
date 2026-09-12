@@ -7,9 +7,11 @@
     <title>Iniciar sesion | WiseTrip</title>
     <link rel="stylesheet" href="<c:url value='/css/estilos.css'/>">
 </head>
-<body>
+<body class="auth">
 <div class="tarjeta">
     <a class="volver" href="<c:url value='/'/>">&larr; Volver al inicio</a>
+     <span class="sello-auth">Gratis · 20 países LATAM</span>
+      <span class="sello-auth">Continúa donde quedaste</span>
     <h1>Bienvenido de vuelta</h1>
     <p class="subtitulo">Inicia sesion para continuar con la configuracion de tu viaje.</p>
 
@@ -25,7 +27,7 @@
         <label>Contrasena</label>
         <input type="password" name="password" placeholder="Tu contrasena">
 
-        <button type="submit">Iniciar sesion</button>
+        <button type="submit">Iniciar sesión</button>
     </form>
 
     <p class="pie">No tienes cuenta? <a href="<c:url value='/registro'/>">Crea una aqui</a></p>

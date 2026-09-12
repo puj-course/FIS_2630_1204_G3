@@ -1,5 +1,14 @@
 package com.wisetrip.modelo;
 
+//mejoras pendientes
+
+//agregar validacion con not null, email y size 
+//no exponer la contraseña en tostring()
+//agregar metodo normalizarcorreo para que todo se guarde en minusculas
+//quitar getters y setters duplicados
+//agregar campos: estado, fecha registro, ultimo acceso
+
+// Modelo que representa la información de un usuario de WiseTrip
 public class Usuario {
 
     private int idUsuario;
@@ -11,31 +20,78 @@ public class Usuario {
     private String password;
     private String rol = "cliente";
 
-    // Constructor vacio: Spring lo necesita para llenar el objeto con los datos del formulario
+    // Constructor vacío necesario para que Spring pueda
+    // crear y llenar el objeto con los datos del formulario
     public Usuario() {
     }
 
-    public int getIdUsuario() { return idUsuario; }
-    public void setIdUsuario(int idUsuario) { this.idUsuario = idUsuario; }
+    public int getIdUsuario() {
+        return idUsuario;
+    }
 
-    public String getNombreCompleto() { return nombreCompleto; }
-    public void setNombreCompleto(String nombreCompleto) { this.nombreCompleto = nombreCompleto; }
+    public void setIdUsuario(int idUsuario) {
+        this.idUsuario = idUsuario;
+    }
 
-    public String getTipoDocumento() { return tipoDocumento; }
-    public void setTipoDocumento(String tipoDocumento) { this.tipoDocumento = tipoDocumento; }
+    public String getNombreCompleto() {
+        return nombreCompleto;
+    }
 
-    public String getNumeroDocumento() { return numeroDocumento; }
-    public void setNumeroDocumento(String numeroDocumento) { this.numeroDocumento = numeroDocumento; }
+    public void setNombreCompleto(String nombreCompleto) {
+        this.nombreCompleto = nombreCompleto;
+    }
 
-    public String getFechaNacimiento() { return fechaNacimiento; }
-    public void setFechaNacimiento(String fechaNacimiento) { this.fechaNacimiento = fechaNacimiento; }
+    public String getTipoDocumento() {
+        return tipoDocumento;
+    }
 
-    public String getCorreo() { return correo; }
-    public void setCorreo(String correo) { this.correo = correo; }
+    public void setTipoDocumento(String tipoDocumento) {
+        this.tipoDocumento = tipoDocumento;
+    }
 
-    public String getPassword() { return password; }
-    public void setPassword(String password) { this.password = password; }
+    public String getNumeroDocumento() {
+        return numeroDocumento;
+    }
 
-    public String getRol() { return rol; }
-    public void setRol(String rol) { this.rol = rol; }
+    public void setNumeroDocumento(String numeroDocumento) {
+        this.numeroDocumento = numeroDocumento;
+    }
+
+    public String getFechaNacimiento() {
+        return fechaNacimiento;
+    }
+
+    public void setFechaNacimiento(String fechaNacimiento) {
+        this.fechaNacimiento = fechaNacimiento;
+    }
+
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo != null ? correo.trim().toLowerCase() : null;
+    }
+
+    public void normalizarCorreo() {
+        if (this.correo != null) {
+            this.correo = this.correo.trim().toLowerCase();
+        }
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getRol() {
+        return rol;
+    }
+
+    public void setRol(String rol) {
+        this.rol = rol;
+    }
 }
