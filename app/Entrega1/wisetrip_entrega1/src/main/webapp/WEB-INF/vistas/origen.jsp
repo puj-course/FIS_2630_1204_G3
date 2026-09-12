@@ -49,9 +49,11 @@
             <span class="error">${errores.ciudad}</span>
         </c:if>
 
-        <label>Punto de partida <span class="opcional">(opcional)</span></label>
-        <input type="text" name="detalle" value="${ubicacion.detalle}"
+        <label for="detalle">Punto de partida <span class="opcional">(opcional)</span></label>
+        <input type="text" id="detalle" name="detalle" value="${ubicacion.detalle}"
+               maxlength="60" aria-describedby="contadorDetalle"
                placeholder="Ej: Aeropuerto El Dorado, barrio Chapinero">
+        <small id="contadorDetalle">0/60 caracteres</small>
         <c:if test="${not empty errores.detalle}">
             <span class="error">${errores.detalle}</span>
         </c:if>
@@ -59,5 +61,16 @@
         <button type="submit">Continuar</button>
     </form>
 </div>
+<script>
+    const detalle = document.getElementById('detalle');
+    const contadorDetalle = document.getElementById('contadorDetalle');
+
+    function actualizarContadorDetalle() {
+        contadorDetalle.textContent = detalle.value.length + '/60 caracteres';
+    }
+
+    detalle.addEventListener('input', actualizarContadorDetalle);
+    actualizarContadorDetalle();
+</script>
 </body>
 </html>
