@@ -56,6 +56,13 @@
             <svg viewBox="0 0 400 530" xmlns="http://www.w3.org/2000/svg" role="img"
                  aria-label="Mapa ilustrado de Latinoamérica">
 
+                <!-- Camino invisible que sigue el rotulo del continente -->
+                <defs>
+                    <path id="curvaLatam"
+                          d="M64 300 q6 100 64 160 q58 54 130 40"
+                          fill="none"/>
+                </defs>
+
                 <!-- Mar -->
                 <rect x="0" y="0" width="400" height="530" rx="10" fill="#6BB8E8"/>
 
@@ -150,9 +157,11 @@
                           font-size="13" fill="#16161D">SÍ ALCANZA</text>
                 </g>
 
-                <!-- Rótulo del continente -->
-                <text x="74" y="500" font-family="Archivo Black, sans-serif" font-size="21"
-                      fill="#16161D" opacity=".75" transform="rotate(-6 74 500)">LATINOAMÉRICA</text>
+                <!-- Rótulo del continente, siguiendo la costa -->
+                <text font-family="Archivo Black, sans-serif" font-size="19"
+                      fill="#16161D" opacity=".8" letter-spacing="2.5">
+                    <textPath href="#curvaLatam" startOffset="8%">LATINOAMÉRICA</textPath>
+                </text>
             </svg>
         </div>
 
