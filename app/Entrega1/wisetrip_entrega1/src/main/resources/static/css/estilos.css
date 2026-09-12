@@ -71,7 +71,7 @@ h2 {
     margin: 0 0 26px;
 }
 
-/* ===== Formularios ===== */
+/* ===== Formularios, preguntas de preferencia  ===== */
 
 label {
     display: block;
@@ -319,7 +319,7 @@ button:active { transform: translateY(1px); }
 .opciones input[type=radio]:focus-visible + label { outline: 2px solid var(--turquesa); outline-offset: -2px; }
 
 /* ===== Barra de progreso ===== */
-
+/*Barra de progreso visual: muestra cuánto ha avanzado el usuario en el flujo (presupuesto, fechas, preferencias), con un relleno que se actualiza dinámicamente y un texto de estado tipo "2/3"*/
 .pie-fijo {
     position: sticky;
     bottom: 0;
@@ -450,4 +450,74 @@ button:active { transform: translateY(1px); }
 @media (max-width: 620px) {
     .ticket { flex-direction: column; }
     .ticket-talon { border-left: none; border-top: 2px dashed var(--linea); min-width: 0; }
+}
+/* ===== Estilo poster: formularios ===== */
+
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap');
+
+body.auth {
+    --tinta: #16161D;
+    --crema: #EFE9DC;
+    --morado: #5B3FA8;
+    --amarillo: #FFC627;
+    --turquesa: #2FBFAF;
+    background: var(--crema);
+    align-items: flex-start;
+}
+
+.auth .tarjeta {
+    background: #fff;
+    border: 3px solid var(--tinta);
+    border-radius: 18px;
+    box-shadow: 8px 8px 0 var(--morado);
+    padding: 34px 32px;
+}
+
+.auth h1 {
+    font-family: 'Archivo Black', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: -1.2px;
+    font-size: 30px;
+    line-height: 1.02;
+}
+
+.auth input, .auth select {
+    border: 2.5px solid var(--tinta);
+    border-radius: 10px;
+}
+.auth input:focus, .auth select:focus {
+    border-color: var(--morado);
+    box-shadow: 3px 3px 0 var(--amarillo);
+}
+
+.auth button {
+    background: var(--morado);
+    border: 2.5px solid var(--tinta);
+    border-radius: 30px;
+    box-shadow: 4px 4px 0 var(--tinta);
+    font-weight: 700;
+    padding: 14px;
+    transition: transform .12s ease, box-shadow .12s ease;
+}
+.auth button:hover {
+    background: var(--morado);
+    transform: translate(-1px, -1px);
+    box-shadow: 6px 6px 0 var(--tinta);
+}
+.auth button:active { transform: translate(2px, 2px); box-shadow: 2px 2px 0 var(--tinta); }
+
+.auth .volver, .auth .pie a { color: var(--morado); }
+.sello-auth {
+    display: inline-block;
+    background: var(--turquesa);
+    border: 2.5px solid var(--tinta);
+    border-radius: 30px;
+    font-family: var(--dato);
+    font-size: 11.5px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    padding: 6px 14px;
+    margin-bottom: 14px;
+    transform: rotate(-1.5deg);
 }

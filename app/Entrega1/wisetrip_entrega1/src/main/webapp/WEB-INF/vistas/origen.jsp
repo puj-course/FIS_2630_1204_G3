@@ -11,7 +11,7 @@
 <div class="tarjeta">
     <div class="barra">
         <span>Hola, <strong>${usuario.nombreCompleto}</strong></span>
-        <a href="<c:url value='/logout'/>">Cerrar sesion</a>
+        <a href="<c:url value='/logout'/>">Cerrar sesión</a>
     </div>
 
     <h1>De donde sales?</h1>

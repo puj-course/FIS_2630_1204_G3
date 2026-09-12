@@ -1,3 +1,9 @@
+/**
+ * Preferencias de viaje.
+ * Modelo que representa una pregunta del cuestionario de preferencias,
+ * identificada por una clave y su texto correspondiente.
+ */
+
 package com.wisetrip.modelo;
 
 public class Pregunta {

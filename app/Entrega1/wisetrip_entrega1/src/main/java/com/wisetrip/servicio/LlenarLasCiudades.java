@@ -1,3 +1,5 @@
+//llena las ciudades en la base de datos usando CiudadSemilla
+
 package com.wisetrip.servicio;
 
 import com.wisetrip.datos.CiudadDAO;

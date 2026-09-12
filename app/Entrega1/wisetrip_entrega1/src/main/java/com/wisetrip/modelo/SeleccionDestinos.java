@@ -1,3 +1,5 @@
+//Ya mostrar los destinos 
+
 package com.wisetrip.modelo;
 
 import java.util.List;
