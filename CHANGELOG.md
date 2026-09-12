@@ -2097,15 +2097,15 @@ Además, se pretende vincular correctamente las ciudades y sus características 
 
 1. **¿Qué hice ayer?**
 
-   
+   Ayer no tuve mucho tiempo por el parcial pero igual adelante lo de las ciudades
 
 2. **¿Qué voy a hacer hoy?**
 
-   
+   Hoy hice el arreglo de las ciudades
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
-   
+   no
 
 ---
 
@@ -2171,7 +2171,9 @@ Además, se pretende vincular correctamente las ciudades y sus características 
 
 ---   
 
-   
+<img width="1600" height="1041" alt="image" src="https://github.com/user-attachments/assets/9a64565b-fa92-44ce-a6a6-f0186fd62fc1" />
+
+
 
 
 
