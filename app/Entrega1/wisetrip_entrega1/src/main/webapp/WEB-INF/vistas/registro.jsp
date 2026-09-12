@@ -8,7 +8,7 @@
     <title>Crear cuenta | WiseTrip</title>
     <link rel="stylesheet" href="<c:url value='/css/estilos.css'/>">
 </head>
-<body>
+<body class="auth">
 <div class="tarjeta">
     <a class="volver" href="<c:url value='/'/>">&larr; Volver al inicio</a>
     <h1>Crea tu cuenta</h1>
