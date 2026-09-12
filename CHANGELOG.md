@@ -2173,6 +2173,93 @@ Además, se pretende vincular correctamente las ciudades y sus características 
 
 <img width="1600" height="1041" alt="image" src="https://github.com/user-attachments/assets/9a64565b-fa92-44ce-a6a6-f0186fd62fc1" />
 
+---
+
+## Daily Scrum - 04/09/2026
+
+### Maria Alejandra Rodriguez
+
+1. **¿Qué hice ayer?**
+
+Arregle y cambie colores diseño y otras cosas a la pagina web de las pantallas portada, inicio sesion y creacion de cuenta
+
+2. **¿Qué voy a hacer hoy?**
+
+Recibir retroalimentacion y buscar soluciones a lo que teniamos y lo que haremos
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+no
+
+---
+
+### Gabriela Melo Gualteros
+
+1. **¿Qué hice ayer?**
+
+
+
+2. **¿Qué voy a hacer hoy?**
+
+
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+
+
+---
+
+### Valeria Cortes Rendon
+
+1. **¿Qué hice ayer?**
+
+
+
+2. **¿Qué voy a hacer hoy?**
+
+
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+
+
+---
+
+### Isabella Posada
+
+1. **¿Qué hice ayer?**
+
+adelante unicamente en la HU 52
+
+2. **¿Qué voy a hacer hoy?**
+
+Termine la HU 52 y deje bastante adelantada la 53
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+No
+---
+
+### Santiago Clavijo
+
+1. **¿Qué hice ayer?**
+
+ayer termine mi primera hu, y corregi los labels del ingreso
+
+2. **¿Qué voy a hacer hoy?**
+
+hoy seleccione los iconos de las banderas de todos lo paises que aparece al seleccionar la moneda deseada
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+No
+
+---
+<img width="736" height="1600" alt="image" src="https://github.com/user-attachments/assets/00889b61-b3a9-43e2-ad5c-5e77627b8b06" />
+<img width="736" height="1600" alt="image" src="https://github.com/user-attachments/assets/00740ea8-e3f1-4178-8a2b-6f32c33f4e7c" />
+
+---
+
 
 
 
