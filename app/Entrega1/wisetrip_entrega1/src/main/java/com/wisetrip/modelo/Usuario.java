@@ -5,7 +5,6 @@ package com.wisetrip.modelo;
 //agregar validacion con not null, email y size 
 //no exponer la contraseña en tostring()
 //agregar metodo normalizarcorreo para que todo se guarde en minusculas
-//quitar getters y setters duplicados
 //agregar campos: estado, fecha registro, ultimo acceso
 
 // Modelo que representa la información de un usuario de WiseTrip
@@ -42,9 +41,6 @@ public class Usuario {
     public int getIdUsuario() { return idUsuario; }
     public void setIdUsuario(int idUsuario) { this.idUsuario = idUsuario; }
 
-    public String getNombreCompleto() { return nombreCompleto; }
-    public void setNombreCompleto(String nombreCompleto) { this.nombreCompleto = nombreCompleto; }
-
     // Modifica el tipo de documento
     public void setTipoDocumento(String tipoDocumento) {
         this.tipoDocumento = tipoDocumento;
@@ -64,9 +60,6 @@ public class Usuario {
     public String getFechaNacimiento() {
         return fechaNacimiento;
     }
-
-    public String getPassword() { return password; }
-    public void setPassword(String password) { this.password = password; }
 
     public String getRol() { return rol; }
     public void setRol(String rol) { this.rol = rol; }

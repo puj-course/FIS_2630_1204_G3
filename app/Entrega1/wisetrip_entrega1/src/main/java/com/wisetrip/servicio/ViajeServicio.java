@@ -1,30 +1,36 @@
 package com.wisetrip.servicio;
 
-import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-
 import org.springframework.stereotype.Service;
-
 import com.wisetrip.modelo.Ubicacion;
+import com.wisetrip.datos.CiudadSemilla;
+import com.wisetrip.datos.DatosCiudades;
+import java.util.ArrayList;
 
 @Service
 public class ViajeServicio {
 
-    // Paises disponibles con ciudades recomendadas 
-    private static final Map<String, List<String>> CIUDADES_POR_PAIS = new LinkedHashMap<>();
+    // Paises recomendados ya arreglado
+    private static final Map<String, List<String>> CIUDADES_POR_PAIS = construirCiudadesPorPais();
 
-    static {
-        CIUDADES_POR_PAIS.put("Colombia", List.of("Bogota", "Medellin", "Cali", "Cartagena", "Barranquilla", "Bucaramanga", "Pereira", "Santa Marta"));
-        CIUDADES_POR_PAIS.put("Mexico", List.of("Ciudad de Mexico", "Guadalajara", "Monterrey", "Cancun"));
-        CIUDADES_POR_PAIS.put("Peru", List.of("Lima", "Cusco", "Arequipa", "Trujillo"));
-        CIUDADES_POR_PAIS.put("Chile", List.of("Santiago", "Valparaiso", "Concepcion"));
-        CIUDADES_POR_PAIS.put("Argentina", List.of("Buenos Aires", "Cordoba", "Mendoza", "Rosario"));
-        CIUDADES_POR_PAIS.put("Ecuador", List.of("Quito", "Guayaquil", "Cuenca"));
-        CIUDADES_POR_PAIS.put("Costa Rica", List.of("San Jose", "Liberia", "Puntarenas"));
-        CIUDADES_POR_PAIS.put("Espana", List.of("Madrid", "Barcelona", "Sevilla", "Valencia"));
+    private static Map<String, List<String>> construirCiudadesPorPais() {
+        List<CiudadSemilla> ciudades = DatosCiudades.ciudades();
+        Map<String, List<String>> map = new LinkedHashMap<>();
+        for (int i = 0; i < ciudades.size(); i++) {
+            CiudadSemilla semilla = ciudades.get(i);
+            String pais = semilla.pais();
+            String nombreCiudad = semilla.nombre();
+
+            if(!map.containsKey(pais)){
+                map.put(pais, new ArrayList<>());
+            }
+            map.get(pais).add(nombreCiudad);
+        }
+        return map;
     }
+
 
     public List<String> listarPaises() {
         return new ArrayList<>(CIUDADES_POR_PAIS.keySet());
@@ -41,6 +47,7 @@ public class ViajeServicio {
      * Valida la ubicacion de origen.
      * Devuelve un mapa vacio si todo esta bien.
      */
+
     public Map<String, String> validarUbicacion(Ubicacion ubicacion) {
         Map<String, String> errores = new LinkedHashMap<>();
 
