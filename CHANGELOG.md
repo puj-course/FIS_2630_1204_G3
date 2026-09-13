@@ -2197,15 +2197,16 @@ no
 
 1. **¿Qué hice ayer?**
 
-
+Ayer termine de el diseño de la pantalla de las fechas, quedo muy parecido a lo que otras paginas de viajes muestran en sus paginas web
 
 2. **¿Qué voy a hacer hoy?**
 
+Estuve trabajando ahora en el diseño de las preferencias, la idea es que no se vea como una encuesta, sino un diseño más intuitivo, con mejor diseño y que sea atractivo al ojo del usuario
 
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
-
+no
 
 ---
 
@@ -2213,15 +2214,15 @@ no
 
 1. **¿Qué hice ayer?**
 
-
+Realice el logo y coloque la informacion encontrada sobre branding a lo largo de la semana, Se escogio el logo que mas representa a la marca.
 
 2. **¿Qué voy a hacer hoy?**
 
-
+Realice la revision de la base de datos y su funcionamiento dentro del programa
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
-
+entendimiento de como esta conectada la base de datos al programa y pantallas
 
 ---
 
