@@ -105,11 +105,12 @@
     const campoFin = document.getElementById('campoFin');
     const flotante = document.getElementById('calendarioFlotante');
 
-    let mesBase = new Date(HOY.getFullYear(), HOY.getMonth(), 1);
-    let seleccionando = 'inicio';
-    let fechaInicio = inputInicio.value ? new Date(inputInicio.value) : null;
-    let fechaFin = inputFin.value ? new Date(inputFin.value) : null;
-    let hoverFecha = null;
+    // Convierte "yyyy-mm-dd" a Date en horario LOCAL (evita el corrimiento
+    // de un día que causa `new Date("yyyy-mm-dd")` al interpretarlo como UTC).
+    function parseISO(str) {
+        const [y, m, d] = str.split('-').map(Number);
+        return new Date(y, m - 1, d);
+    }
 
     function iso(d) {
         return d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0');
@@ -120,6 +121,12 @@
     function mismoDia(a, b) {
         return a && b && a.getFullYear()===b.getFullYear() && a.getMonth()===b.getMonth() && a.getDate()===b.getDate();
     }
+
+    let mesBase = new Date(HOY.getFullYear(), HOY.getMonth(), 1);
+    let seleccionando = 'inicio';
+    let fechaInicio = inputInicio.value ? parseISO(inputInicio.value) : null;
+    let fechaFin = inputFin.value ? parseISO(inputFin.value) : null;
+    let hoverFecha = null;
 
     function actualizarCampos() {
         valorInicio.textContent = fechaInicio ? formatoCorto(fechaInicio) : 'Selecciona';
@@ -164,10 +171,33 @@
             boton.type = 'button';
             boton.className = 'dia';
             boton.textContent = dia;
+            boton.dataset.fecha = iso(fecha);
 
-            const minimo = limiteMinimo();
+            boton.addEventListener('mouseenter', () => {
+                if (boton.disabled) return;
+                hoverFecha = fecha;
+                actualizarEstadosDias();
+            });
+            boton.addEventListener('click', () => {
+                if (boton.disabled) return;
+                elegir(fecha);
+            });
+
+            grilla.appendChild(boton);
+        }
+        contenedor.appendChild(grilla);
+    }
+
+    function actualizarEstadosDias() {
+        const minimo = limiteMinimo();
+        document.querySelectorAll('.dia[data-fecha]').forEach(boton => {
+            const fecha = parseISO(boton.dataset.fecha);
             const deshabilitado = fecha < minimo;
-            if (deshabilitado) boton.disabled = true;
+            boton.disabled = deshabilitado;
+
+            boton.classList.remove('dia-inicio', 'dia-fin', 'dia-en-rango');
+            const globoViejo = boton.querySelector('.noches-globo');
+            if (globoViejo) globoViejo.remove();
 
             if (mismoDia(fecha, fechaInicio)) boton.classList.add('dia-inicio');
             if (mismoDia(fecha, fechaFin)) boton.classList.add('dia-fin');
@@ -184,14 +214,7 @@
             } else if (fechaInicio && fechaFin && fecha > fechaInicio && fecha < fechaFin) {
                 boton.classList.add('dia-en-rango');
             }
-
-            if (!deshabilitado) {
-                boton.addEventListener('mouseenter', () => { hoverFecha = fecha; pintar(); });
-                boton.addEventListener('click', () => elegir(fecha));
-            }
-            grilla.appendChild(boton);
-        }
-        contenedor.appendChild(grilla);
+        });
     }
 
     function pintar() {
@@ -199,19 +222,28 @@
         const b = new Date(mesBase.getFullYear(), mesBase.getMonth()+1, 1);
         renderMes(document.getElementById('mesA'), a.getFullYear(), a.getMonth());
         renderMes(document.getElementById('mesB'), b.getFullYear(), b.getMonth());
+        actualizarEstadosDias();
     }
 
+    // HU-51 (ajuste): elegir un día SIEMPRE cierra el calendario.
+    // El usuario debe hacer clic explícito en "Salida" para abrir
+    // el segundo calendario — no se abre automáticamente.
     function elegir(fecha) {
         if (seleccionando === 'inicio') {
             fechaInicio = fecha;
             fechaFin = null;
-            seleccionando = 'fin';
         } else {
-            if (fecha < fechaInicio) { fechaInicio = fecha; fechaFin = null; }
-            else { fechaFin = fecha; seleccionando = 'inicio'; cerrar(); }
+            if (fecha < fechaInicio) {
+                fechaInicio = fecha;
+                fechaFin = null;
+            } else {
+                fechaFin = fecha;
+            }
         }
+        hoverFecha = null;
         actualizarCampos();
         pintar();
+        cerrar();
     }
 
     function abrir(campo) {
@@ -227,7 +259,8 @@
     document.getElementById('mesAnterior').addEventListener('click', () => { mesBase.setMonth(mesBase.getMonth()-1); pintar(); });
     document.getElementById('mesSiguiente').addEventListener('click', () => { mesBase.setMonth(mesBase.getMonth()+1); pintar(); });
     document.addEventListener('click', (e) => {
-        if (!document.getElementById('selectorFechas').contains(e.target)) cerrar();
+        const dentro = e.composedPath().includes(document.getElementById('selectorFechas'));
+        if (!dentro) cerrar();
     });
 
     actualizarCampos();
