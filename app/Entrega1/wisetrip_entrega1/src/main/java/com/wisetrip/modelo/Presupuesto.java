@@ -1,3 +1,9 @@
+/**
+ * Presupuesto y moneda.
+ * Modelo que representa el presupuesto ingresado por el usuario (monto como texto
+ * para validar formato, y código de moneda ISO). Incluye utilidad para convertir
+ * el monto a número, devolviendo -1 si no es válido.
+ */
 package com.wisetrip.modelo;
 
 public class Presupuesto {

@@ -24,6 +24,7 @@
 
     <div class="pasos">
 <%-- HU-37: Indicador visual de en qué paso del flujo está el viajero. --%>
+<%-- HU-37: Indicador visual de en qué paso del flujo está el viajero. --%>
         <span class="paso hecho">Origen</span>
         <span class="paso hecho">Preferencias</span>
         <span class="paso activo">Fechas</span>

@@ -80,6 +80,7 @@
         </c:forEach>
 
         <div class="pie-fijo" data-total="${totalPreguntas}">
+        <div class="pie-fijo" data-total="${totalPreguntas}">
             <div class="progreso">
                 <div class="progreso-barra"><span id="progresoRelleno"></span></div>
                 <span class="progreso-texto"><b id="contador">0</b> de ${totalPreguntas} respondidas</span>
@@ -90,10 +91,12 @@
 
     <a class="volver" href="<c:url value='/origen'/>">&larr; Volver a la ubicación de origen</a>
 <%-- HU-37: Botón "Atrás" del flujo. --%>
+<%-- HU-37: Botón "Atrás" del flujo. --%>
 </div>
 
 <script>
     const pie = document.querySelector('.pie-fijo');
+    const total = parseInt(pie.getAttribute('data-total'), 10) || 0;
     const total = parseInt(pie.getAttribute('data-total'), 10) || 0;
     const contador = document.getElementById('contador');
     const relleno = document.getElementById('progresoRelleno');
