@@ -1917,10 +1917,7 @@ Además, se pretende vincular correctamente las ciudades y sus características 
 - Todas las HU deberán cumplir con los criterios de aceptación definidos antes de darlas por finalizadas.
 
 
-
 <img width="1600" height="1200" alt="image" src="https://github.com/user-attachments/assets/4a06669d-efcc-429e-948c-3a2376eef882" />
-
-# Sprint 5 - 
 
 ## Daily Scrum - 08/09/2026
 
@@ -2175,7 +2172,7 @@ Además, se pretende vincular correctamente las ciudades y sus características 
 
 ---
 
-## Daily Scrum - 04/09/2026
+## Daily Scrum - 11/09/2026
 
 ### Maria Alejandra Rodriguez
 
