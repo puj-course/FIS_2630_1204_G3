@@ -1,7 +1,5 @@
 <%-- Preferencias de viaje.
-     Vista con las 26 preguntas organizadas por categoría, mostradas como sí/no.
-     Incluye barra de progreso en vivo (JS) y marca las preguntas sin responder.
-     Es el segundo paso del flujo (Origen > Preferencias > Fechas > Presupuesto). --%>
+     Vista con las 26 preguntas organizadas por categoría, mostradas como sí/no.--%>
 
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
@@ -31,8 +29,7 @@
 
     <h1>¿Qué tipo de viajero eres?</h1>
     <p class="subtitulo">
-        Responde sí o no a cada pregunta. Con esto WiseTrip elige destinos y
-        actividades que de verdad te gusten. Son ${totalPreguntas} preguntas rápidas.
+      
     </p>
 
     <c:if test="${not empty faltantes}">
@@ -55,10 +52,16 @@
                 </div>
 
                 <c:forEach var="p" items="${categoria.preguntas}">
+                    <%-- HU-50: Cada pregunta muestra una foto real relacionada. --%>
                     <div class="pregunta ${not empty errores[p.clave] ? 'pregunta-error' : ''}">
+                        <div class="pregunta-imagen">
+                            <img src="<c:url value='/img/preferencias/${p.clave}.png'/>"
+                                 alt=""
+                                 onerror="this.parentElement.classList.add('sin-imagen'); this.remove();">
+                        </div>
                         <span class="pregunta-texto">${p.texto}</span>
 
-                        <div class="opciones">
+                        <div class="opciones opciones-grande">
                             <input type="radio" id="${p.clave}_si"
                                    name="respuestas[${p.clave}]" value="si"
                                    ${preferencias.respuestas[p.clave] == 'si' ? 'checked' : ''}>
@@ -69,7 +72,6 @@
                                    ${preferencias.respuestas[p.clave] == 'no' ? 'checked' : ''}>
 <%-- HU-39: Marca la respuesta ya guardada en sesión, si el viajero
      retrocede a esta pantalla. --%>
-
                             <label for="${p.clave}_no" class="op-no">No</label>
                         </div>
                     </div>
@@ -77,6 +79,7 @@
             </section>
         </c:forEach>
 
+        <div class="pie-fijo" data-total="${totalPreguntas}">
         <div class="pie-fijo" data-total="${totalPreguntas}">
             <div class="progreso">
                 <div class="progreso-barra"><span id="progresoRelleno"></span></div>
