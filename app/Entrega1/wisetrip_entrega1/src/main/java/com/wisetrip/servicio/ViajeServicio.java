@@ -12,18 +12,30 @@ import com.wisetrip.modelo.Ubicacion;
 @Service
 public class ViajeServicio {
 
-    // Paises disponibles con sus ciudades
+    // Paises disponibles con ciudades recomendadas 
     private static final Map<String, List<String>> CIUDADES_POR_PAIS = new LinkedHashMap<>();
 
     static {
-        CIUDADES_POR_PAIS.put("Colombia", List.of("Bogota", "Medellin", "Cali", "Cartagena", "Barranquilla", "Bucaramanga", "Pereira", "Santa Marta"));
-        CIUDADES_POR_PAIS.put("Mexico", List.of("Ciudad de Mexico", "Guadalajara", "Monterrey", "Cancun"));
-        CIUDADES_POR_PAIS.put("Peru", List.of("Lima", "Cusco", "Arequipa", "Trujillo"));
-        CIUDADES_POR_PAIS.put("Chile", List.of("Santiago", "Valparaiso", "Concepcion"));
-        CIUDADES_POR_PAIS.put("Argentina", List.of("Buenos Aires", "Cordoba", "Mendoza", "Rosario"));
-        CIUDADES_POR_PAIS.put("Ecuador", List.of("Quito", "Guayaquil", "Cuenca"));
-        CIUDADES_POR_PAIS.put("Costa Rica", List.of("San Jose", "Liberia", "Puntarenas"));
-        CIUDADES_POR_PAIS.put("Espana", List.of("Madrid", "Barcelona", "Sevilla", "Valencia"));
+       CIUDADES_POR_PAIS.put("México", List.of("Ciudad de México", "Guadalajara", "Monterrey", "Cancún", "Puebla", "Tijuana"));
+        CIUDADES_POR_PAIS.put("Guatemala", List.of("Ciudad de Guatemala", "Antigua Guatemala", "Quetzaltenango"));
+        CIUDADES_POR_PAIS.put("Honduras", List.of("Tegucigalpa", "San Pedro Sula", "La Ceiba"));
+        CIUDADES_POR_PAIS.put("El Salvador", List.of("San Salvador", "Santa Ana", "San Miguel"));
+        CIUDADES_POR_PAIS.put("Nicaragua", List.of("Managua", "León", "Granada"));
+        CIUDADES_POR_PAIS.put("Costa Rica", List.of("San José", "Liberia", "Puntarenas", "Alajuela"));
+        CIUDADES_POR_PAIS.put("Panamá", List.of("Ciudad de Panamá", "Colón", "David"));
+        CIUDADES_POR_PAIS.put("Belice", List.of("Ciudad de Belice", "San Ignacio", "Belmopán"));
+        CIUDADES_POR_PAIS.put("Colombia", List.of("Bogotá", "Medellín", "Cali", "Cartagena", "Barranquilla", "Bucaramanga", "Pereira", "Santa Marta"));
+        CIUDADES_POR_PAIS.put("Venezuela", List.of("Caracas", "Maracaibo", "Valencia", "Mérida"));
+        CIUDADES_POR_PAIS.put("Cuba", List.of("La Habana", "Santiago de Cuba", "Varadero"));
+        CIUDADES_POR_PAIS.put("República Dominicana", List.of("Santo Domingo", "Punta Cana", "Santiago de los Caballeros"));
+        CIUDADES_POR_PAIS.put("Ecuador", List.of("Quito", "Guayaquil", "Cuenca", "Manta"));
+        CIUDADES_POR_PAIS.put("Perú", List.of("Lima", "Cusco", "Arequipa", "Trujillo", "Iquitos"));
+        CIUDADES_POR_PAIS.put("Bolivia", List.of("La Paz", "Santa Cruz de la Sierra", "Cochabamba", "Sucre"));
+        CIUDADES_POR_PAIS.put("Brasil", List.of("São Paulo", "Río de Janeiro", "Brasilia", "Salvador", "Florianópolis"));
+        CIUDADES_POR_PAIS.put("Chile", List.of("Santiago", "Valparaíso", "Concepción", "Puerto Montt"));
+        CIUDADES_POR_PAIS.put("Argentina", List.of("Buenos Aires", "Córdoba", "Mendoza", "Rosario", "Bariloche"));
+        CIUDADES_POR_PAIS.put("Uruguay", List.of("Montevideo", "Punta del Este", "Colonia del Sacramento"));
+        CIUDADES_POR_PAIS.put("Paraguay", List.of("Asunción", "Ciudad del Este", "Encarnación"));
     }
 
     public List<String> listarPaises() {

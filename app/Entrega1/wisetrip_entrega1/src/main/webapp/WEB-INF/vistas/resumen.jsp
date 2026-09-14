@@ -1,3 +1,9 @@
+<%-- 
+    Este archivo muestra el resumen del viaje antes de que el usuario vea las recomendaciones.
+    Basicamente junta todo lo que la persona ya lleno (fechas, presupuesto y preferencias) 
+    y lo pinta en pantalla para que confirme que todo está bien antes de continuar
+--%>
+
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <!DOCTYPE html>

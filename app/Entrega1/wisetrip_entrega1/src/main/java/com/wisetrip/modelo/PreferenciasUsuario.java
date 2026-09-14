@@ -1,3 +1,10 @@
+/**
+ * Preferencias de viaje.
+ * Modelo que agrupa el presupuesto (en USD) y los atributos de preferencia (sí/no)
+ * del usuario, usados para comparar o filtrar opciones de viaje.
+ *Preferencias y presupuesto ingresados por el usuario
+ */
+
 package com.wisetrip.modelo;
 
 import java.util.LinkedHashMap;

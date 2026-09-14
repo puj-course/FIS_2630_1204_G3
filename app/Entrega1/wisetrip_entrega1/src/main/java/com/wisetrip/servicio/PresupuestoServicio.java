@@ -1,3 +1,11 @@
+/**
+ * Presupuesto y moneda.
+ * Servicio que mapea cada país LATAM con su moneda local, ofrece las monedas
+ * disponibles según el destino, valida el monto y la moneda ingresados,
+ * y convierte el presupuesto a USD (con tasas aproximadas y fijas) para que
+ * el algoritmo de recomendación pueda comparar.
+ */
+
 package com.wisetrip.servicio;
 
 import java.util.LinkedHashMap;
@@ -84,11 +92,12 @@ public class PresupuestoServicio {
         UNIDADES_POR_USD.put("PYG", 7300.0);
     }
 
-    /**
-     * Monedas que se le ofrecen al usuario.
-     * Si ya se conoce el pais destino, solo su moneda local y USD.
-     * Si no, las 19 monedas de la region.
-     */
+   /**
+ * HU-38: Selector de moneda dinámico según país.
+ * Si ya se conoce el país destino, reduce las opciones a su moneda local
+ * y USD como referencia (sin duplicar si el país ya usa USD). Si no hay
+ * destino aún, muestra las 19 monedas disponibles de la región.
+ */
     public Map<String, String> monedasDisponibles(String paisDestino) {
         if (paisDestino != null && MONEDA_POR_PAIS.containsKey(paisDestino)) {
             Map<String, String> reducidas = new LinkedHashMap<>();
