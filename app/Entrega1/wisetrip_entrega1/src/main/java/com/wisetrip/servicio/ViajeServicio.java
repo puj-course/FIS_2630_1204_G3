@@ -1,42 +1,36 @@
 package com.wisetrip.servicio;
 
-import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-
 import org.springframework.stereotype.Service;
-
 import com.wisetrip.modelo.Ubicacion;
+import com.wisetrip.datos.CiudadSemilla;
+import com.wisetrip.datos.DatosCiudades;
+import java.util.ArrayList;
 
 @Service
 public class ViajeServicio {
 
-    // Paises disponibles con ciudades recomendadas 
-    private static final Map<String, List<String>> CIUDADES_POR_PAIS = new LinkedHashMap<>();
+    // Paises recomendados ya arreglado
+    private static final Map<String, List<String>> CIUDADES_POR_PAIS = construirCiudadesPorPais();
 
-    static {
-       CIUDADES_POR_PAIS.put("México", List.of("Ciudad de México", "Guadalajara", "Monterrey", "Cancún", "Puebla", "Tijuana"));
-        CIUDADES_POR_PAIS.put("Guatemala", List.of("Ciudad de Guatemala", "Antigua Guatemala", "Quetzaltenango"));
-        CIUDADES_POR_PAIS.put("Honduras", List.of("Tegucigalpa", "San Pedro Sula", "La Ceiba"));
-        CIUDADES_POR_PAIS.put("El Salvador", List.of("San Salvador", "Santa Ana", "San Miguel"));
-        CIUDADES_POR_PAIS.put("Nicaragua", List.of("Managua", "León", "Granada"));
-        CIUDADES_POR_PAIS.put("Costa Rica", List.of("San José", "Liberia", "Puntarenas", "Alajuela"));
-        CIUDADES_POR_PAIS.put("Panamá", List.of("Ciudad de Panamá", "Colón", "David"));
-        CIUDADES_POR_PAIS.put("Belice", List.of("Ciudad de Belice", "San Ignacio", "Belmopán"));
-        CIUDADES_POR_PAIS.put("Colombia", List.of("Bogotá", "Medellín", "Cali", "Cartagena", "Barranquilla", "Bucaramanga", "Pereira", "Santa Marta"));
-        CIUDADES_POR_PAIS.put("Venezuela", List.of("Caracas", "Maracaibo", "Valencia", "Mérida"));
-        CIUDADES_POR_PAIS.put("Cuba", List.of("La Habana", "Santiago de Cuba", "Varadero"));
-        CIUDADES_POR_PAIS.put("República Dominicana", List.of("Santo Domingo", "Punta Cana", "Santiago de los Caballeros"));
-        CIUDADES_POR_PAIS.put("Ecuador", List.of("Quito", "Guayaquil", "Cuenca", "Manta"));
-        CIUDADES_POR_PAIS.put("Perú", List.of("Lima", "Cusco", "Arequipa", "Trujillo", "Iquitos"));
-        CIUDADES_POR_PAIS.put("Bolivia", List.of("La Paz", "Santa Cruz de la Sierra", "Cochabamba", "Sucre"));
-        CIUDADES_POR_PAIS.put("Brasil", List.of("São Paulo", "Río de Janeiro", "Brasilia", "Salvador", "Florianópolis"));
-        CIUDADES_POR_PAIS.put("Chile", List.of("Santiago", "Valparaíso", "Concepción", "Puerto Montt"));
-        CIUDADES_POR_PAIS.put("Argentina", List.of("Buenos Aires", "Córdoba", "Mendoza", "Rosario", "Bariloche"));
-        CIUDADES_POR_PAIS.put("Uruguay", List.of("Montevideo", "Punta del Este", "Colonia del Sacramento"));
-        CIUDADES_POR_PAIS.put("Paraguay", List.of("Asunción", "Ciudad del Este", "Encarnación"));
+    private static Map<String, List<String>> construirCiudadesPorPais() {
+        List<CiudadSemilla> ciudades = DatosCiudades.ciudades();
+        Map<String, List<String>> map = new LinkedHashMap<>();
+        for (int i = 0; i < ciudades.size(); i++) {
+            CiudadSemilla semilla = ciudades.get(i);
+            String pais = semilla.pais();
+            String nombreCiudad = semilla.nombre();
+
+            if(!map.containsKey(pais)){
+                map.put(pais, new ArrayList<>());
+            }
+            map.get(pais).add(nombreCiudad);
+        }
+        return map;
     }
+
 
     public List<String> listarPaises() {
         return new ArrayList<>(CIUDADES_POR_PAIS.keySet());
@@ -53,6 +47,7 @@ public class ViajeServicio {
      * Valida la ubicacion de origen.
      * Devuelve un mapa vacio si todo esta bien.
      */
+
     public Map<String, String> validarUbicacion(Ubicacion ubicacion) {
         Map<String, String> errores = new LinkedHashMap<>();
 
