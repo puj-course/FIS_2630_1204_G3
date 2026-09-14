@@ -91,12 +91,10 @@
 
     <a class="volver" href="<c:url value='/origen'/>">&larr; Volver a la ubicación de origen</a>
 <%-- HU-37: Botón "Atrás" del flujo. --%>
-<%-- HU-37: Botón "Atrás" del flujo. --%>
 </div>
 
 <script>
     const pie = document.querySelector('.pie-fijo');
-    const total = parseInt(pie.getAttribute('data-total'), 10) || 0;
     const total = parseInt(pie.getAttribute('data-total'), 10) || 0;
     const contador = document.getElementById('contador');
     const relleno = document.getElementById('progresoRelleno');
