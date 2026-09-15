@@ -2236,6 +2236,7 @@ Termine la HU 52 y deje bastante adelantada la 53
 3. **¿Tengo algún impedimento o bloqueo?**
 
 No
+
 ---
 
 ### Santiago Clavijo
