@@ -27,26 +27,26 @@
 
 body {
     font-family: var(--texto);
-    background: var(--arena);
+    background: var(--crema);
     color: var(--tinta);
     margin: 0;
-    padding: 40px 20px;
+    padding: 44px 24px;
     display: flex;
     justify-content: center;
+    align-items: flex-start;
     -webkit-font-smoothing: antialiased;
 }
-
-.tarjeta {
+tarjeta {
     background: #FFFFFF;
-    border: 1px solid var(--linea);
-    border-radius: 14px;
-    padding: 34px;
+    border: 3px solid var(--tinta);
+    border-radius: 18px;
+    box-shadow: 8px 8px 0 var(--morado);
+    padding: 34px 32px;
     width: 100%;
     max-width: 520px;
 }
 
-.tarjeta.ancha { max-width: 780px; }
-
+.tarjeta.ancha { max-width: 780px; box-shadow: 8px 8px 0 var(--turquesa); }
 .centrado { text-align: center; }
 
 /* ===== Tipografía ===== */
