@@ -1,22 +1,26 @@
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,600&family=IBM+Plex+Mono:wght@400;500;600&family=Instrument+Sans:wght@400;500;600;700&display=swap');
 
 :root {
-    --tinta: #0E3A53;
-    --tinta-honda: #0A2A3E;
-    --turquesa: #1BA3A0;
-    --turquesa-hondo: #128784;
-    --turquesa-suave: #E4F5F1;
-    --coral: #E8623D;
-    --coral-hondo: #A83A1C;
-    --arena: #F6F1E6;
-    --arena-honda: #EDE4D3;
-    --linea: #D8CFBC;
-    --gris: #5B6B75;
-    --gris-claro: #93A3AC;
+    --tinta: #16161D;
+    --tinta-honda: #000006;
+    --morado: #5B3FA8;
+    --morado-claro: #8A6FD4;
+    --turquesa: #2FBFAF;
+    --turquesa-suave: #D6F2EE;
+    --amarillo: #FFC627;
+    --coral: #E8452C;
+    --coral-hondo: #B02E19;
+    --rosa: #F3A6C0;
+    --verde: #56A860;
+    --crema: #EFE9DC;
+    --crema-clara: #F7F3EA;
+    --linea: #16161D;
+    --gris: #5B5B66;
+    --gris-claro: #9A9AA6;
 
-    --display: 'Fraunces', Georgia, 'Times New Roman', serif;
-    --texto: 'Instrument Sans', system-ui, -apple-system, sans-serif;
-    --dato: 'IBM Plex Mono', 'Courier New', monospace;
+    --display: 'Fraunces', Georgia, serif;
+    --texto: 'Instrument Sans', system-ui, sans-serif;
+    --dato: 'IBM Plex Mono', monospace;
 }
 
 * { box-sizing: border-box; }
