@@ -2426,6 +2426,4 @@ Las historias del Sprint se distribuyen entre los cinco integrantes del equipo, 
 
 ## Resultado esperado del Sprint
 
-Al finalizar el Sprint 6, WiseTrip deberá contar con una identidad visual más definida y una interacción más dinámica durante la planificación del viaje. El usuario podrá reconocer la aplicación desde su ingreso, consultar una lista de chequeo de equipaje, encontrar una misma línea gráfica durante su recorrido y visualizar imágenes relacionadas con el contenido.
-
-Además, las preguntas del cuestionario deberán mantener una presentación consistente, las selecciones realizadas deberán relacionarse con las preferencias del viajero y la moneda escogida deberá identificarse mediante su respectiva bandera tanto en el presupuesto como en el resumen final del viaje.
+Al finalizar el Sprint 6, WiseTrip deberá contar con una identidad visual más definida y una interacción más dinámica durante la planificación del viaje. El usuario podrá reconocer la aplicación desde su ingreso, consultar una lista de chequeo de equipaje, encontrar una misma línea gráfica durante su recorrido y visualizar imágenes relacionadas con el contenido. Además, las preguntas del cuestionario deberán mantener una presentación consistente, las selecciones realizadas deberán relacionarse con las preferencias del viajero y la moneda escogida deberá identificarse mediante su respectiva bandera tanto en el presupuesto como en el resumen final del viaje.
