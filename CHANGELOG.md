@@ -2267,18 +2267,17 @@ No
 
 1. **¿Qué logramos?**
 
-
+   Logramos muchos cambios esteticos de la pagina y de legibilidad para ella
    
 ### Sprint Retrospective
 
 2. **¿Cómo trabajamos?**
 
-   
+   Muy bien, siento que esta semana mejoramos demasiado, ya tenemos mas orden y claridad respecto a las cosas que hay que hacer
    
 3. **¿Qué podríamos mejorar?**
 
-   
-
+   Hay cosas del manejo de git que aun sigo sin entender
 
 ---
 
@@ -2288,17 +2287,17 @@ No
 
 1. **¿Qué logramos?**
 
-   
+   Pude corregir el diseño de dospantallas, mejoraron un monton la estetica de la pagina web
 
 ### Sprint Retrospective
 
 2. **¿Cómo trabajamos?**
 
-   
+   Tres integrantes trabajamos en el diseño de las pantallas y dos en la base de datos, y nos fue muy bien esta semana trabajando
 
 3. **¿Qué podríamos mejorar?**
 
-
+   En mi caso, me hace falta mejorar el diseño de las paginas que trabaje esta semana, no quedaron a su 100% terminadas y quisiera seguir mejorandolas en algunos aspectos.
    
 ---
 
@@ -2308,17 +2307,17 @@ No
 
 1. **¿Qué logramos?**
 
-   
+   Se realizaron cambios importantes en la interfaz de la pagina, se explico el funcionamiento de la base de datos
 
 ### Sprint Retrospective
 
 2. **¿Cómo trabajamos?**
 
-   
+   Muy bien, se realizaron las reuniones diarias siguiendo la metodologia.
 
 3. **¿Qué podríamos mejorar?**
 
-
+   En el momento considero que deberiamos reunirnos un dia para probar las funcionalidades de manera correcta en los computadores de todos los integrates del equipo
    
 ---
 
@@ -2328,18 +2327,17 @@ No
 
 1. **¿Qué logramos?**
 
-   
+   Esta semana avanzamos principalmente con las HUs de cada uno, en mi caso mejorando la selección de la ciudad de origen para que el usuario pueda indicar correctamente desde dónde inicia su viaje. También el enfoque fue hacia el diseño de la pagina, lo que demuestra que cada vez vamos afinando mejor WiseTrip.
 
 ### Sprint Retrospective
 
 2. **¿Cómo trabajamos?**
 
-   
+   Trabajamos dividiendo las historias de usuario en procesos más pequeños para poder avanzar de forma organizada. Primero ajustamos la lógica y la interfaz necesarias para cada funcionalidad. También fuimos validando los cambios realizados antes de integrarlos al proyecto
 
 3. **¿Qué podríamos mejorar?**
 
-   
-
+   Podríamos mejorar la organización del trabajo antes de comenzar a programar, especialmente lo del git y lo de coordinar que es lo que sigue
 
 ---
 
@@ -2349,16 +2347,17 @@ No
 
 1. **¿Qué logramos?**
 
-   
+   Logramos acabar todas las historias de usuario satisfactoriamente cada uno y vamos a hacer merge de develop a main para subir todo el trabajo hecho
 
 ### Sprint Retrospective
 
 2. **¿Cómo trabajamos?**
 
-   
+   Trabajamos bien, esta semana hicimos mas que todo trabajo individual pero si nos comunicabamos por medio del grupo para que se aprobara el trabajo
 
 3. **¿Qué podríamos mejorar?**
 
+   el manejo de git
    
 ---
 
