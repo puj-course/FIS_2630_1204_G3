@@ -36,6 +36,7 @@ body {
     align-items: flex-start;
     -webkit-font-smoothing: antialiased;
 }
+
 tarjeta {
     background: #FFFFFF;
     border: 3px solid var(--tinta);
@@ -122,27 +123,35 @@ input::placeholder { color: var(--gris-claro); }
     line-height: 1.45;
     margin: -11px 0 15px;
 }
-
 button, .boton {
     display: inline-block;
     width: 100%;
-    background: var(--turquesa);
+    background: var(--morado);
     color: #FFFFFF;
-    border: none;
-    border-radius: 8px;
-    padding: 13px;
+    border: 2.5px solid var(--tinta);
+    border-radius: 30px;
+    padding: 14px;
     font-family: var(--texto);
     font-size: 15px;
-    font-weight: 600;
+    font-weight: 700;
     cursor: pointer;
     text-align: center;
     text-decoration: none;
-    margin-top: 8px;
-    transition: background .15s ease, transform .12s ease;
+    margin-top: 10px;
+    box-shadow: 4px 4px 0 var(--tinta);
+    transition: transform .12s ease, box-shadow .12s ease;
 }
 
-button:hover, .boton:hover { background: var(--turquesa-hondo); }
-button:active { transform: translateY(1px); }
+button:hover, .boton:hover {
+    background: var(--morado);
+    transform: translate(-1px, -1px);
+    box-shadow: 6px 6px 0 var(--tinta);
+}
+
+button:active, .boton:active {
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0 var(--tinta);
+}
 
 /* ===== Enlaces y encabezados ===== */
 
