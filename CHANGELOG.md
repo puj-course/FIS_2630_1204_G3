@@ -2363,6 +2363,67 @@ No
 
 <img width="1536" height="2048" alt="image" src="https://github.com/user-attachments/assets/8cf79cc2-f322-4378-b052-4627dc414fc6" />
 
+# Sprint Planning [15/09/2026]
+
+## Sprint Goal
+
+El objetivo principal de este Sprint es mejorar la **experiencia visual e interactiva de WiseTrip**, aplicando una nueva identidad gráfica a lo largo de la página web e incorporando elementos que hagan más dinámico y agradable el proceso de planificación del viaje.
+
+Durante este Sprint se busca implementar una identidad visual común mediante el uso de **colores, tipografías, imágenes y elementos gráficos**, además de mejorar la interacción del usuario en la selección de preferencias, preguntas de la encuesta, selección de moneda y presentación del presupuesto.
+
+Al finalizar el Sprint se espera contar con una versión de WiseTrip visualmente más completa, en la que los diferentes elementos mantengan un mismo estilo y permitan al usuario avanzar por el proceso de planificación de una manera más interactiva.
+
+---
+
+## Capacidad del equipo
+
+- **Desarrolladores disponibles:** 5
+- **Puntos/horas disponibles:** 42
+
+---
+
+## Issues seleccionados para el Sprint
+
+| ID | Título | Tipo | Estimación | Prioridad |
+|---|---|---|---|---|
+| HU-58 | Implementar una misma identidad visual durante todo el recorrido en WiseTrip | Frontend / Diseño | L | Media |
+| HU-59 | Incorporar imágenes y elementos gráficos relacionados con los viajes | Frontend / Diseño | L | Media |
+| HU-60 | Incorporar una imagen relacionada con cada pregunta de la encuesta | Frontend / Diseño | M | Media |
+| HU-61 | Ajustar el texto de las preguntas de la encuesta para mantener un estilo consistente | Frontend / Diseño | M | Media |
+| HU-62 | Permitir responder las preguntas de selección para continuar con la planificación después de iniciar sesión | Frontend / Interacción | M | Media |
+| HU-63 | Relacionar la selección del viaje con las preferencias del usuario | Frontend / Integración | L | Alta |
+| HU-64 | Mostrar la bandera de la moneda seleccionada en el resumen final del viaje | Frontend / Diseño | M | Media |
+| HU-65 | Mostrar la bandera junto al selector de moneda en la sección de presupuesto | Frontend / Diseño | S | Media |
+
+---
+
+## Distribución de las historias
+
+Las historias de este Sprint se concentran principalmente en dos componentes del proyecto.
+
+Por una parte, las **HU-58, HU-59, HU-60, HU-61, HU-64 y HU-65** están enfocadas en fortalecer la parte visual de WiseTrip mediante colores, tipografías, imágenes y elementos que permitan identificar información como las preferencias y la moneda seleccionada.
+
+Por otra parte, las **HU-62 y HU-63** se enfocan en mejorar la interacción del usuario con el proceso de planificación, permitiendo responder las preguntas de selección y relacionar las elecciones realizadas con sus gustos personales.
+
+---
+
+## Riesgos / Bloqueos identificados
+
+- Que la aplicación de la nueva identidad visual requiera modificar estilos que actualmente son utilizados por varias secciones de WiseTrip.
+- Que las imágenes incorporadas no mantengan el mismo tamaño o proporción en los diferentes espacios donde se utilicen.
+- Que algunos cambios visuales afecten botones, formularios o elementos que ya se encuentran funcionando.
+- Que la relación entre las preferencias seleccionadas y el viaje requiera ajustes adicionales en la lógica existente.
+- Que la incorporación de banderas dependa de que la moneda seleccionada esté disponible y almacenada durante el flujo.
+- Que la integración de los avances realizados por diferentes integrantes genere conflictos al unir los cambios.
+- Que algunas historias requieran ajustes adicionales para conservar una misma identidad visual en todo WiseTrip.
+
+---
+
+## Resultado esperado del Sprint
+
+Al finalizar el Sprint 6, WiseTrip deberá contar con una **identidad visual más definida**, utilizando de manera consistente los colores, tipografías, imágenes y demás elementos gráficos establecidos.
+
+Además, el usuario deberá poder interactuar con las preguntas y preferencias del viaje, visualizar elementos relacionados con sus elecciones y reconocer de forma gráfica información como la moneda utilizada durante la planificación.
 
 
 
