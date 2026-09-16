@@ -2259,6 +2259,109 @@ No
 
 ---
 
+# Sprint Review y Sprint Retrospective - 23/08/2026
+
+## Maria Alejandra Rodriguez
+
+### Sprint Review
+
+1. **¿Qué logramos?**
+
+
+   
+### Sprint Retrospective
+
+2. **¿Cómo trabajamos?**
+
+   
+   
+3. **¿Qué podríamos mejorar?**
+
+   
+
+
+---
+
+## Gabriela Melo Gualteros
+
+### Sprint Review
+
+1. **¿Qué logramos?**
+
+   
+
+### Sprint Retrospective
+
+2. **¿Cómo trabajamos?**
+
+   
+
+3. **¿Qué podríamos mejorar?**
+
+
+   
+---
+
+## Valeria Cortes Rendon
+
+### Sprint Review
+
+1. **¿Qué logramos?**
+
+   
+
+### Sprint Retrospective
+
+2. **¿Cómo trabajamos?**
+
+   
+
+3. **¿Qué podríamos mejorar?**
+
+
+   
+---
+
+## Isabella Posada
+
+### Sprint Review
+
+1. **¿Qué logramos?**
+
+   
+
+### Sprint Retrospective
+
+2. **¿Cómo trabajamos?**
+
+   
+
+3. **¿Qué podríamos mejorar?**
+
+   
+
+
+---
+
+## Santiago Clavijo
+
+### Sprint Review
+
+1. **¿Qué logramos?**
+
+   
+
+### Sprint Retrospective
+
+2. **¿Cómo trabajamos?**
+
+   
+
+3. **¿Qué podríamos mejorar?**
+
+   
+---
+
 
 
 
