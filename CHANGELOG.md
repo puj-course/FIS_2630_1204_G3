@@ -2367,66 +2367,64 @@ No
 
 ## Sprint Goal
 
-El objetivo principal de este Sprint es mejorar la **experiencia visual e interactiva de WiseTrip**, aplicando una nueva identidad gráfica a lo largo de la página web e incorporando elementos que hagan más dinámico y agradable el proceso de planificación del viaje.
+El objetivo principal de este Sprint es mejorar la experiencia visual e interactiva de WiseTrip, trabajando tanto en la identidad de la página como en diferentes elementos que acompañan al usuario durante la planificación de su viaje. Durante este Sprint se busca incorporar una bienvenida que permita identificar WiseTrip desde el inicio, agregar una lista de chequeo de equipaje, implementar una misma identidad visual mediante colores, tipografías, imágenes y elementos gráficos, y mejorar la forma en la que se presentan y responden las preguntas relacionadas con las preferencias del viaje.
 
-Durante este Sprint se busca implementar una identidad visual común mediante el uso de **colores, tipografías, imágenes y elementos gráficos**, además de mejorar la interacción del usuario en la selección de preferencias, preguntas de la encuesta, selección de moneda y presentación del presupuesto.
-
-Al finalizar el Sprint se espera contar con una versión de WiseTrip visualmente más completa, en la que los diferentes elementos mantengan un mismo estilo y permitan al usuario avanzar por el proceso de planificación de una manera más interactiva.
+También se trabajará en la relación entre las preferencias seleccionadas y el viaje, así como en la representación visual de la moneda utilizada en el presupuesto. Al finalizar el Sprint se espera contar con una versión más completa visualmente y con una interacción más dinámica durante el proceso de planificación.
 
 ---
 
 ## Capacidad del equipo
 
 - **Desarrolladores disponibles:** 5
-- **Puntos/horas disponibles:** 42
+- **Horas disponibles:** 42
 
 ---
 
 ## Issues seleccionados para el Sprint
 
-| ID | Título | Tipo | Estimación | Prioridad |
-|---|---|---|---|---|
-| HU-58 | Implementar una misma identidad visual durante todo el recorrido en WiseTrip | Frontend / Diseño | L | Media |
-| HU-59 | Incorporar imágenes y elementos gráficos relacionados con los viajes | Frontend / Diseño | L | Media |
-| HU-60 | Incorporar una imagen relacionada con cada pregunta de la encuesta | Frontend / Diseño | M | Media |
-| HU-61 | Ajustar el texto de las preguntas de la encuesta para mantener un estilo consistente | Frontend / Diseño | M | Media |
-| HU-62 | Permitir responder las preguntas de selección para continuar con la planificación después de iniciar sesión | Frontend / Interacción | M | Media |
-| HU-63 | Relacionar la selección del viaje con las preferencias del usuario | Frontend / Integración | L | Alta |
-| HU-64 | Mostrar la bandera de la moneda seleccionada en el resumen final del viaje | Frontend / Diseño | M | Media |
-| HU-65 | Mostrar la bandera junto al selector de moneda en la sección de presupuesto | Frontend / Diseño | S | Media |
+| ID | Issue | Título | Tipo | Estimación | Prioridad | Responsable |
+|---|---|---|---|---|---|---|
+| HU-56 | #219 | Visualizar una bienvenida con el logo y nombre de WiseTrip al iniciar la aplicación | Frontend / Diseño | M | Media | Valeria |
+| HU-57 | #220 | Consultar una lista de chequeo de equipaje con elementos básicos para empacar | Frontend / Interacción | M | Media | Valeria |
+| HU-58 | #225 | Implementar una misma identidad visual durante todo el recorrido en WiseTrip | Frontend / Diseño | L | Media | Maleja |
+| HU-59 | #226 | Incorporar imágenes y elementos gráficos relacionados con los viajes | Frontend / Diseño | L | Media | Maleja |
+| HU-60 | #217 | Mostrar una imagen relacionada con el elemento principal de cada pregunta | Frontend / Diseño | M | Media | Gaby |
+| HU-61 | #218 | Mantener un texto claro y consistente entre las preguntas del cuestionario | Frontend / Diseño | M | Media | Gaby |
+| HU-62 | #223 | Permitir responder las preguntas de selección después de iniciar sesión | Frontend / Interacción | M | Media | Isa |
+| HU-63 | #224 | Relacionar la selección del viaje con las preferencias del usuario | Frontend / Integración | L | Alta | Isa |
+| HU-64 | #222 | Mostrar la bandera de la moneda seleccionada en el resumen final del viaje | Frontend / Diseño | M | Media | Clavijo |
+| HU-65 | #221 | Mostrar correctamente el icono de la bandera junto al selector de moneda | Frontend / Diseño | S | Media | Clavijo |
 
 ---
 
-## Distribución de las historias
+## Distribución del trabajo
 
-Las historias de este Sprint se concentran principalmente en dos componentes del proyecto.
+Las historias del Sprint se distribuyen entre los cinco integrantes del equipo, asignando dos historias de usuario a cada uno.
 
-Por una parte, las **HU-58, HU-59, HU-60, HU-61, HU-64 y HU-65** están enfocadas en fortalecer la parte visual de WiseTrip mediante colores, tipografías, imágenes y elementos que permitan identificar información como las preferencias y la moneda seleccionada.
-
-Por otra parte, las **HU-62 y HU-63** se enfocan en mejorar la interacción del usuario con el proceso de planificación, permitiendo responder las preguntas de selección y relacionar las elecciones realizadas con sus gustos personales.
+- **Valeria:** HU-56 y HU-57, enfocadas en la bienvenida a WiseTrip y la lista de chequeo de equipaje.
+- **Maleja:** HU-58 y HU-59, enfocadas en la nueva identidad visual y la incorporación de imágenes y elementos gráficos.
+- **Gaby:** HU-60 y HU-61, enfocadas en mejorar las imágenes y textos utilizados en las preguntas del cuestionario.
+- **Isa:** HU-62 y HU-63, enfocadas en la interacción con las preguntas y la relación de las selecciones con las preferencias del viajero.
+- **Clavijo:** HU-64 y HU-65, enfocadas en la representación visual de la moneda mediante banderas.
 
 ---
 
 ## Riesgos / Bloqueos identificados
 
-- Que la aplicación de la nueva identidad visual requiera modificar estilos que actualmente son utilizados por varias secciones de WiseTrip.
-- Que las imágenes incorporadas no mantengan el mismo tamaño o proporción en los diferentes espacios donde se utilicen.
-- Que algunos cambios visuales afecten botones, formularios o elementos que ya se encuentran funcionando.
-- Que la relación entre las preferencias seleccionadas y el viaje requiera ajustes adicionales en la lógica existente.
-- Que la incorporación de banderas dependa de que la moneda seleccionada esté disponible y almacenada durante el flujo.
-- Que la integración de los avances realizados por diferentes integrantes genere conflictos al unir los cambios.
-- Que algunas historias requieran ajustes adicionales para conservar una misma identidad visual en todo WiseTrip.
+- Que los cambios en colores, tipografías y estilos afecten elementos que ya se encuentran implementados.
+- Que las imágenes agregadas no mantengan el mismo tamaño o proporción en los diferentes espacios.
+- Que algunos recursos gráficos no se visualicen correctamente dentro de la aplicación.
+- Que los cambios realizados en las preguntas afecten el funcionamiento actual del cuestionario.
+- Que la relación entre las selecciones del usuario y sus preferencias requiera cambios adicionales en la lógica existente.
+- Que la moneda seleccionada no se conserve durante todo el flujo y no pueda mostrarse en el resumen final.
+- Que los iconos de las banderas no correspondan con la moneda seleccionada o no carguen correctamente.
+- Que se presenten conflictos al integrar los cambios realizados por los diferentes integrantes.
+- Que los cambios visuales realizados por diferentes integrantes no mantengan la misma identidad definida para WiseTrip.
 
 ---
 
 ## Resultado esperado del Sprint
 
-Al finalizar el Sprint 6, WiseTrip deberá contar con una **identidad visual más definida**, utilizando de manera consistente los colores, tipografías, imágenes y demás elementos gráficos establecidos.
+Al finalizar el Sprint 6, WiseTrip deberá contar con una identidad visual más definida y una interacción más dinámica durante la planificación del viaje. El usuario podrá reconocer la aplicación desde su ingreso, consultar una lista de chequeo de equipaje, encontrar una misma línea gráfica durante su recorrido y visualizar imágenes relacionadas con el contenido.
 
-Además, el usuario deberá poder interactuar con las preguntas y preferencias del viaje, visualizar elementos relacionados con sus elecciones y reconocer de forma gráfica información como la moneda utilizada durante la planificación.
-
-
-
-
-
-
+Además, las preguntas del cuestionario deberán mantener una presentación consistente, las selecciones realizadas deberán relacionarse con las preferencias del viajero y la moneda escogida deberá identificarse mediante su respectiva bandera tanto en el presupuesto como en el resumen final del viaje.
