@@ -2089,6 +2089,180 @@ Además, se pretende vincular correctamente las ciudades y sus características 
 
 <img width="973" height="737" alt="image" src="https://github.com/user-attachments/assets/76b2b892-f67f-48bc-abad-5829aff58692" />
 
+---
+
+## Daily Scrum - 10/09/2026
+
+### Isabella Posada
+
+1. **¿Qué hice ayer?**
+
+   Ayer no tuve mucho tiempo por el parcial pero igual adelante lo de las ciudades
+
+2. **¿Qué voy a hacer hoy?**
+
+   Hoy hice el arreglo de las ciudades
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+   no
+
+---
+
+### Gabriela Melo Gualteros
+
+1. **¿Qué hice ayer?**
+
+   Estuve trabajando en la vista de la pantalla de fechas
+
+2. **¿Qué voy a hacer hoy?**
+
+   cambie la tipografia de los labels del ingreso de datos para que se viera mejor
+   
+4. **¿Tengo algún impedimento o bloqueo?**
+
+   hasta hoy pude hacer commits ya que estaba estudiando para el parcial de fis
+---
+
+### Santiago Clavijo
+
+1. **¿Qué hice ayer?**
+
+   Ayer decidi que tipografia se iba a usar en los labels
+
+2. **¿Qué voy a hacer hoy?**
+
+   Definiré los elementos de diseño que modificaré, como la tipografía de las etiquetas de ingreso de datos. Además, buscaré referencias tipográficas en páginas web relacionadas con viajes.
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+   Dispongo de poco tiempo debido a la preparación para el parcial de mañana.
+
+---
+
+### Valeria Cortes Rendon
+
+1. **¿Qué hice ayer?**
+
+   Envie los primeros logotipos adaptados a nuestra empresa, bansandome en los colores de las pantallas y buscando una tipografia /branding que sea adecuada a nuestro objetivo
+
+2. **¿Qué voy a hacer hoy?**
+
+   Investigaré qué colores se deben utilizar para la marca y cómo mejorar visualmente la página para hacerla más atractiva para el usuario final. También estudiaré para el parcial de mañana.
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+  Tengo que esperar que mi equipo decida que branding / logo vamos a usar
+---
+
+### Maria Alejandra Rodriguez
+
+1. **¿Qué hice ayer?**
+
+   Termine la investigacion y encontre par de frameworks, diseños y colores que pueden ayudarme a mejorar la apariencia de la pagina web
+
+2. **¿Qué voy a hacer hoy?**
+
+  Agregue par de commits donde se arreglablan unos problemas de ejecucion, y arregle la portada de la pagina web que se supone que pues es la que mas llama la atencion en la pagina
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+   no por ahora
+
+---   
+
+<img width="1600" height="1041" alt="image" src="https://github.com/user-attachments/assets/9a64565b-fa92-44ce-a6a6-f0186fd62fc1" />
+
+---
+
+## Daily Scrum - 04/09/2026
+
+### Maria Alejandra Rodriguez
+
+1. **¿Qué hice ayer?**
+
+Arregle y cambie colores diseño y otras cosas a la pagina web de las pantallas portada, inicio sesion y creacion de cuenta
+
+2. **¿Qué voy a hacer hoy?**
+
+Recibir retroalimentacion y buscar soluciones a lo que teniamos y lo que haremos
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+no
+
+---
+
+### Gabriela Melo Gualteros
+
+1. **¿Qué hice ayer?**
+
+Ayer termine de el diseño de la pantalla de las fechas, quedo muy parecido a lo que otras paginas de viajes muestran en sus paginas web
+
+2. **¿Qué voy a hacer hoy?**
+
+Estuve trabajando ahora en el diseño de las preferencias, la idea es que no se vea como una encuesta, sino un diseño más intuitivo, con mejor diseño y que sea atractivo al ojo del usuario
+
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+no
+
+---
+
+### Valeria Cortes Rendon
+
+1. **¿Qué hice ayer?**
+
+Realice el logo y coloque la informacion encontrada sobre branding a lo largo de la semana, Se escogio el logo que mas representa a la marca.
+
+2. **¿Qué voy a hacer hoy?**
+
+Realice la revision de la base de datos y su funcionamiento dentro del programa
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+entendimiento de como esta conectada la base de datos al programa y pantallas
+
+---
+
+### Isabella Posada
+
+1. **¿Qué hice ayer?**
+
+adelante unicamente en la HU 52
+
+2. **¿Qué voy a hacer hoy?**
+
+Termine la HU 52 y deje bastante adelantada la 53
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+No
+---
+
+### Santiago Clavijo
+
+1. **¿Qué hice ayer?**
+
+ayer termine mi primera hu, y corregi los labels del ingreso
+
+2. **¿Qué voy a hacer hoy?**
+
+hoy seleccione los iconos de las banderas de todos lo paises que aparece al seleccionar la moneda deseada
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+No
+
+---
+<img width="736" height="1600" alt="image" src="https://github.com/user-attachments/assets/00889b61-b3a9-43e2-ad5c-5e77627b8b06" />
+<img width="736" height="1600" alt="image" src="https://github.com/user-attachments/assets/00740ea8-e3f1-4178-8a2b-6f32c33f4e7c" />
+
+---
+
+
+
 
 
 
