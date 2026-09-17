@@ -2518,15 +2518,15 @@ falta de tiempo.
 
 1. **¿Qué hice ayer?**
 
-
+revise unas cuantas cosas del diseño inicial para poderlo implementar en las otras pantallas
 
 2. **¿Qué voy a hacer hoy?**
 
-
+Organice y diseñe ya la mitad de la pagina web la idea es continuar mañana para que este listo todo
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
-
+No 
 
 ---
 
