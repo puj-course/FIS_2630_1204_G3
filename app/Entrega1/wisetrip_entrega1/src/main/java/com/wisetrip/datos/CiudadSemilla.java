@@ -21,6 +21,8 @@ public record CiudadSemilla(
         return c;
     }
 
+
+    //esto toca cambiarlo
     private static double costoDeNivel(String nivel) {
         return switch (nivel) {
             case "bajo" -> 500.0;
