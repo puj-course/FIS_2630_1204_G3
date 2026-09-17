@@ -2565,15 +2565,16 @@ No
 ### Isabella Posada
 
 1. **¿Qué hice ayer?**
+hice las historias de usuario de la semana 
 
 
 
-2. **¿Qué voy a hacer hoy?**
+3. **¿Qué voy a hacer hoy?**
+adelante lo de la base de datos en la nube para que mis compañeros puedan probar sus aportes 
 
 
-
-3. **¿Tengo algún impedimento o bloqueo?**
-
+4. **¿Tengo algún impedimento o bloqueo?**
+no 
 
 
 ---
