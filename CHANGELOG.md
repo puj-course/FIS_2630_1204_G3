@@ -2259,7 +2259,7 @@ No
 
 ---
 
-# Sprint Review y Sprint Retrospective - 23/08/2026
+# Sprint Review y Sprint Retrospective - 13/09/2026
 
 ## Maria Alejandra Rodriguez
 
@@ -2363,7 +2363,7 @@ No
 
 <img width="1536" height="2048" alt="image" src="https://github.com/user-attachments/assets/8cf79cc2-f322-4378-b052-4627dc414fc6" />
 
-# Sprint Planning [15/09/2026]
+# Sprint Planning [14/09/2026]
 
 ## Sprint Goal
 
@@ -2427,3 +2427,89 @@ Las historias del Sprint se distribuyen entre los cinco integrantes del equipo, 
 ## Resultado esperado del Sprint
 
 Al finalizar el Sprint 6, WiseTrip deberá contar con una identidad visual más definida y una interacción más dinámica durante la planificación del viaje. El usuario podrá reconocer la aplicación desde su ingreso, consultar una lista de chequeo de equipaje, encontrar una misma línea gráfica durante su recorrido y visualizar imágenes relacionadas con el contenido. Además, las preguntas del cuestionario deberán mantener una presentación consistente, las selecciones realizadas deberán relacionarse con las preferencias del viajero y la moneda escogida deberá identificarse mediante su respectiva bandera tanto en el presupuesto como en el resumen final del viaje.
+
+---
+
+## Daily Scrum - 15/09/2026
+
+### Maria Alejandra Rodriguez
+
+1. **¿Qué hice ayer?**
+
+Realice algunos cambios de diseño a las pantallas, ya que la semana pasada replantee absolutamente toda la imagen de la pagina web
+
+2. **¿Qué voy a hacer hoy?**
+
+Hicimos el planning
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+No
+
+---
+
+### Gabriela Melo Gualteros
+
+1. **¿Qué hice ayer?**
+
+Hoy saque 10 imagenes para poner en la pantalla de preferencias
+
+2. **¿Qué voy a hacer hoy?**
+
+Hicimos el planning
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+No
+
+---
+
+### Valeria Cortes Rendon
+
+1. **¿Qué hice ayer?**
+
+Inicie buscando que aplicaciones o como podre hacer la pantalla para que se vea dinamica y divertida
+
+2. **¿Qué voy a hacer hoy?**
+
+Se realizo el planning de la semana, se acordo quien realizara el changelog y como trabajaremos en conjunto
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+No
+
+---
+
+### Isabella Posada
+
+1. **¿Qué hice ayer?**
+
+Nada, me dedique a descansar
+
+2. **¿Qué voy a hacer hoy?**
+
+Hice las historias de usuario de esta semana
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+No
+
+---
+
+### Santiago Clavijo
+
+1. **¿Qué hice ayer?**
+
+nada
+
+2. **¿Qué voy a hacer hoy?**
+
+hoy solo he actualizado el planning de ayer ya que como grupo acordamos que no iibamos a trabajar esta semana ya que se supone que es la de reflexion y entre todos decidimos que no ibamos a hacer sprint de esta semana
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+falta de tiempo.
+----
+
+---
+
