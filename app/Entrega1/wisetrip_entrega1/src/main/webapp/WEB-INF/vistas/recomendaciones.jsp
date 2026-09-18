@@ -27,7 +27,17 @@
         </a>
     </div>
 
-    <h1>Destinos recomendados</h1>
+    <div class="pasos">
+        <span class="paso hecho">Origen</span>
+        <span class="paso hecho">Preferencias</span>
+        <span class="paso hecho">Fechas</span>
+        <span class="paso hecho">Presupuesto</span>
+        <span class="paso activo">Destinos</span>
+    </div>
+
+    <span class="sello sello-amarillo">Resultado de tu búsqueda</span>
+
+    <h1>Tus destinos</h1>
 
     <p class="subtitulo">
         ${seleccion.mensaje}
@@ -63,6 +73,8 @@
                        varStatus="pos">
 
                 <div class="ticket">
+
+                    <div class="ticket-ilustracion ilu-${r.ciudad.tipo}"></div>
 
                     <div class="ticket-info">
 
