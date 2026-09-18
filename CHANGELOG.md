@@ -2534,14 +2534,14 @@ No
 
 1. **¿Qué hice ayer?**
 
-
+Ayer puse las historias de usuario que voy a trabajar esta semana 
 
 2. **¿Qué voy a hacer hoy?**
-
+Hoy tengo que seguir realizando las imagenes que van en la pantalla de preferencias 
 
 
 3. **¿Tengo algún impedimento o bloqueo?**
-
+falta de tiemp
 
 
 ---
@@ -2618,14 +2618,14 @@ falta de tiempo
 
 1. **¿Qué hice ayer?**
 
-
+Hice las otras 7 imagenes para la pantalla de preferencias, me hacen falta 9 imagenes más para completar
 
 2. **¿Qué voy a hacer hoy?**
 
-
+Hoy pude realizar 4 imagenes para la pantalla de preferencias e hice una lista de las preguntas que estan un poco complejas de entender y unas que no son de respuesta de si o no
 
 3. **¿Tengo algún impedimento o bloqueo?**
-
+Se me ha complicado los timepos al ser semana de reflexión mi familia ya tenia planes diferentes 
 
 
 ---
