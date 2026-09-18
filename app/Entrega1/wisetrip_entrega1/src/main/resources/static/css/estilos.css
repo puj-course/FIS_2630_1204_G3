@@ -712,7 +712,7 @@ body.auth {
 .auth button:active { transform: translate(2px, 2px); box-shadow: 2px 2px 0 var(--tinta); }
 
 .auth .volver, .auth .pie a { color: var(--morado); }
-.sello-auth {
+.sello, .sello-auth {
     display: inline-block;
     background: var(--turquesa);
     border: 2.5px solid var(--tinta);
@@ -726,3 +726,5 @@ body.auth {
     margin-bottom: 14px;
     transform: rotate(-1.5deg);
 }
+.sello-amarillo { background: var(--amarillo); }
+.sello-rosa { background: var(--rosa); }
