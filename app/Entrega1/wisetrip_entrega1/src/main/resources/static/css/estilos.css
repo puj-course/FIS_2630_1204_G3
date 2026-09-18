@@ -789,3 +789,11 @@ body.auth {
     border-right: 24px solid transparent;
     border-bottom: 40px solid var(--verde);
 }
+.ticket:first-of-type {
+    box-shadow: 7px 7px 0 var(--morado);
+    border-width: 3px;
+}
+.ticket:first-of-type .ticket-sello { background: var(--amarillo); color: var(--tinta); }
+.ticket:first-of-type .ticket-ciudad { font-size: 23px; }
+.ticket:nth-of-type(2) .ticket-sello { background: var(--turquesa); color: var(--tinta); }
+.ticket:nth-of-type(3) .ticket-sello { background: var(--rosa); color: var(--tinta); }
