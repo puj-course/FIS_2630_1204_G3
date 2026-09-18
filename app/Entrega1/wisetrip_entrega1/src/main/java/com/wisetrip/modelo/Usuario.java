@@ -44,6 +44,8 @@ public class Usuario {
         return tipoDocumento;
     }
    
+
+
     // Modifica el tipo de documento
 
     public void setTipoDocumento(String tipoDocumento) {

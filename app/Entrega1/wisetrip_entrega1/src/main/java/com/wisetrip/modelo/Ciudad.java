@@ -36,4 +36,22 @@ public class Ciudad {
     public void setAtributos(Map<String, Boolean> atributos) {
         this.atributos = atributos != null ? atributos : new HashMap<>();
     }
+
+    /** La ciudad cumple un atributo si esta marcado como verdadero. */
+    public boolean tiene(String atributo) {
+        return Boolean.TRUE.equals(atributos.get(atributo));
+    }
+
+    /** Tipo de destino, para elegir la ilustracion de la vista. */
+    public String getTipo() {
+        if (tiene("playa")) return "playa";
+        if (tiene("nieve") || tiene("montana")) return "montana";
+        if (tiene("naturaleza")) return "naturaleza";
+        return "ciudad";
+    }
+
+    /** Texto listo para mostrar: "Cartagena, Colombia". */
+    public String getDescripcion() {
+        return nombre + ", " + pais;
+    }
 }
