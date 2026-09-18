@@ -43,9 +43,7 @@ public class Usuario {
     public String getTipoDocumento() {
         return tipoDocumento;
     }
-    public int getIdUsuario() { return idUsuario; }
-    public void setIdUsuario(int idUsuario) { this.idUsuario = idUsuario; }
-
+   
     // Modifica el tipo de documento
 
     public void setTipoDocumento(String tipoDocumento) {
@@ -64,8 +62,7 @@ public class Usuario {
         return fechaNacimiento;
     }
 
-    public String getRol() { return rol; }
-    public void setRol(String rol) { this.rol = rol; }
+   
     // Modifica la fecha de nacimiento
     public void setFechaNacimiento(String fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
@@ -92,7 +89,7 @@ public class Usuario {
     public void setPassword(String password) {
         this.password = password;
     }
-}
+
 
     public String getRol() {
         return rol;
@@ -101,4 +98,5 @@ public class Usuario {
     public void setRol(String rol) {
         this.rol = rol;
     }
+
 }
