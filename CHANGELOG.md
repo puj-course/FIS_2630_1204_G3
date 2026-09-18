@@ -2595,3 +2595,87 @@ falta de tiempo
 
 ---
 
+---
+## Daily Scrum - 17/09/2026
+
+### Maria Alejandra Rodriguez
+
+1. **¿Qué hice ayer?**
+
+
+
+2. **¿Qué voy a hacer hoy?**
+
+
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+
+
+---
+
+### Gabriela Melo Gualteros
+
+1. **¿Qué hice ayer?**
+
+
+
+2. **¿Qué voy a hacer hoy?**
+
+
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+
+
+---
+
+### Valeria Cortes Rendon
+
+1. **¿Qué hice ayer?**
+
+
+
+2. **¿Qué voy a hacer hoy?**
+
+
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+
+
+---
+
+### Isabella Posada
+
+1. **¿Qué hice ayer?**
+
+
+
+
+3. **¿Qué voy a hacer hoy?**
+ 
+
+
+4. **¿Tengo algún impedimento o bloqueo?**
+ 
+
+
+---
+
+### Santiago Clavijo
+
+1. **¿Qué hice ayer?**
+
+
+
+2. **¿Qué voy a hacer hoy?**
+
+
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+
+
+---
+
