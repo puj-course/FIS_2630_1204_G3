@@ -2511,6 +2511,9 @@ hoy solo he actualizado el planning de ayer ya que como grupo acordamos que no i
 falta de tiempo.
 ----
 
+
+
+
 ---
 ## Daily Scrum - 16/09/2026
 
@@ -2553,16 +2556,15 @@ falta de tiempo
 
 1. **¿Qué hice ayer?**
 
-
+Investigacion de como lo podria hacer si como implementado o como una propuesta
 
 2. **¿Qué voy a hacer hoy?**
 
-
+Investigacion y parte del pom.xml de la pantalla que estoy haciendo
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
-
-
+No en el momento
 ---
 
 ### Isabella Posada
@@ -2638,15 +2640,15 @@ Se me ha complicado los timepos al ser semana de reflexión mi familia ya tenia 
 
 1. **¿Qué hice ayer?**
 
-
+Se hizo parte del mismo codigo adjuntando el pom.xml
 
 2. **¿Qué voy a hacer hoy?**
 
-
+Hoy hice y subi la pagina web a mi rama, adjuntando los respectivos commits. Se adjunto en la rama de features-valeria en la carpeta de temp ya que es una propuesta
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
-
+No en el momento. Mas que implementar esa propuesta con el proyecto principal
 
 ---
 
