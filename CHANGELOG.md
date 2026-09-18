@@ -2673,15 +2673,15 @@ No en el momento. Mas que implementar esa propuesta con el proyecto principal
 
 1. **¿Qué hice ayer?**
 
-
+ nada
 
 2. **¿Qué voy a hacer hoy?**
 
-
+hoy busque las fotos en formato .png de todas las banderas de las monedas disponibles
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
-
+falta de tiempo
 
 ---
 
