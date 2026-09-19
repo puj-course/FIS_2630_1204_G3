@@ -2685,3 +2685,84 @@ falta de tiempo
 
 ---
 
+## Daily Scrum - 18/09/2026
+
+### Maria Alejandra Rodriguez
+
+1. **¿Qué hice ayer?**
+
+
+
+2. **¿Qué voy a hacer hoy?**
+
+
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+
+---
+
+### Gabriela Melo Gualteros
+
+1. **¿Qué hice ayer?**
+
+
+
+2. **¿Qué voy a hacer hoy?**
+
+
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+
+
+---
+
+### Valeria Cortes Rendon
+
+1. **¿Qué hice ayer?**
+
+Hice y termine de hacer el checklist propuesta
+
+2. **¿Qué voy a hacer hoy?**
+
+Hoy realice la animacion del logo de wisetrip usando diferentes herramientas para animarlo, se quiere o falta implementar este inicio a lo que queramos, en este caso no se si lo mas adecuado fuera al ingresar a las pantallas
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+No
+
+---
+
+### Isabella Posada
+
+1. **¿Qué hice ayer?**
+
+
+
+2. **¿Qué voy a hacer hoy?**
+
+
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+
+
+---
+
+### Santiago Clavijo
+
+1. **¿Qué hice ayer?**
+
+
+
+2. **¿Qué voy a hacer hoy?**
+
+
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+
+
+---
+
