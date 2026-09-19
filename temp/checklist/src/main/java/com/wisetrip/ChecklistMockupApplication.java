@@ -179,3 +179,96 @@ h2 {
     h1 { font-size: 25px; }
     .item-equipaje { padding: 11px 13px; }
 }
+
+</style>
+</head>
+<body>
+<div class="tarjeta">
+
+    <div class="barra">
+        <span>Propuesta de HU &mdash; Checklist de equipaje</span>
+    </div>
+
+    <h1>Checklist de equipaje</h1>
+    <p class="subtitulo">
+        Repasa los artículos básicos recomendados y marca lo que ya empacaste,
+        para que no se te olvide nada antes de salir de viaje.
+    </p>
+
+    <div class="progreso">
+        <div class="progreso-barra"><span id="relleno" style="width:0%"></span></div>
+        <span class="progreso-texto"><b id="contador">0</b> de <b id="total">0</b> empacados</span>
+    </div>
+
+    <div id="lista"></div>
+
+</div>
+
+<script>
+// Solo para que el mockup se vea vivo al hacer clic; nada se guarda.
+const categorias = [
+    { nombre: "Documentos", icono: "📄", items: [
+        "Pasaporte o cédula", "Tiquetes o reserva de vuelo",
+        "Reserva de alojamiento", "Seguro de viaje", "Efectivo y tarjetas"
+    ]},
+    { nombre: "Ropa", icono: "👕", items: [
+        "Ropa para el clima del destino", "Zapatos cómodos",
+        "Ropa interior y medias", "Pijama", "Chaqueta o abrigo"
+    ]},
+    { nombre: "Electrónica", icono: "🔌", items: [
+        "Cargador de celular", "Cargador portátil (power bank)",
+        "Adaptador de corriente", "Audífonos"
+    ]},
+    { nombre: "Salud e higiene", icono: "🧴", items: [
+        "Cepillo y crema dental", "Medicamentos personales",
+        "Protector solar", "Kit de aseo básico"
+    ]},
+    { nombre: "Varios", icono: "🎒", items: [
+        "Botella de agua reutilizable", "Snacks para el viaje",
+        "Documentos impresos o digitales de reservas", "Candado para maleta"
+    ]}
+];
+
+const lista = document.getElementById("lista");
+let total = 0;
+
+categorias.forEach(cat => {
+    const seccion = document.createElement("section");
+    seccion.className = "categoria";
+    seccion.innerHTML = `
+        <div class="categoria-cabeza">
+            <span class="categoria-num">${cat.icono}</span>
+            <h2>${cat.nombre}</h2>
+        </div>`;
+
+    cat.items.forEach(texto => {
+        total++;
+        const label = document.createElement("label");
+        label.className = "item-equipaje";
+        label.innerHTML = `
+            <input type="checkbox">
+            <span class="item-equipaje-marca">&#10003;</span>
+            <span class="item-equipaje-texto">${texto}</span>`;
+        label.querySelector("input").addEventListener("change", e => {
+            label.classList.toggle("marcado", e.target.checked);
+            actualizarProgreso();
+        });
+        seccion.appendChild(label);
+    });
+
+    lista.appendChild(seccion);
+});
+
+document.getElementById("total").textContent = total;
+
+function actualizarProgreso() {
+    const marcados = document.querySelectorAll(".item-equipaje input:checked").length;
+    document.getElementById("contador").textContent = marcados;
+    document.getElementById("relleno").style.width = (marcados / total * 100) + "%";
+}
+</script>
+</body>
+</html>
+""";
+    }
+}
