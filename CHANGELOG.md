@@ -2615,7 +2615,7 @@ termine con las pantallas de resumen preferencias y ya todo quedo unificado prac
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
- no
+ No
 
 ---
 
