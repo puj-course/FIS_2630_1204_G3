@@ -2740,16 +2740,17 @@ No
 ### Isabella Posada
 
 1. **¿Qué hice ayer?**
+adelante lo de la selección de preguntas
 
 
 
 2. **¿Qué voy a hacer hoy?**
 
-
+probablemente acabarlo 
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
-
+no
 
 ---
 
