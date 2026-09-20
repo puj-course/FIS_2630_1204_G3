@@ -2607,15 +2607,15 @@ falta de tiempo
 
 1. **¿Qué hice ayer?**
 
-
+Modificar las pantallas para que queden con las mismas cosas
 
 2. **¿Qué voy a hacer hoy?**
 
-
+termine con las pantallas de resumen preferencias y ya todo quedo unificado practicamente, la proxima semana la idea es seguir con mas pantallas y mas acciones de la pagina web
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
-
+ no
 
 ---
 
