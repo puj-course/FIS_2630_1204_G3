@@ -2656,16 +2656,18 @@ No en el momento. Mas que implementar esa propuesta con el proyecto principal
 
 1. **¿Qué hice ayer?**
 
+termine lo de la bd
 
 
 
-3. **¿Qué voy a hacer hoy?**
+2. **¿Qué voy a hacer hoy?**
+
+adelantar la siguiente historia de usuario 
+
+
+3. **¿Tengo algún impedimento o bloqueo?**
  
-
-
-4. **¿Tengo algún impedimento o bloqueo?**
- 
-
+no
 
 ---
 
