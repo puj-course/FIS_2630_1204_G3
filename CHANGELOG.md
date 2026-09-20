@@ -2691,14 +2691,15 @@ falta de tiempo
 
 1. **¿Qué hice ayer?**
 
-
+termine la pagina
 
 2. **¿Qué voy a hacer hoy?**
 
-
+Le comente a mi grupo que termine con mis historias de usuario que me dieran un review de lo que ven y tenia entendido que iban a hacer unas cosas de acuerdo con lo que yo hiciera
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
+no
 
 ---
 
