@@ -2783,15 +2783,15 @@ Tenemos que mejorar la comunicacion y proposito de algunas cosas que hacemos en 
 ### Sprint Review
 
 1. **¿Qué logramos?**
-
+Logramos sacar mas imagenes para que la pantalla de las preguntas de preferencia se vea más armonioza, pero por el momento no se pueden ver por algun error que hay en el codigo que no deja mostrarlas
 
 ### Sprint Retrospective
 
 2. **¿Cómo trabajamos?**
-
+No fue mi mejor semana de trabajo porque como eran vacaciones no tuve mucho tiempo para invertirle al proyecto, pero trate de corregir algunas cosas, me falto subir unos cambios al develop por lo que no se vera el trabajo en el main tampoco.
 
 3. **¿Qué podríamos mejorar?**
-
+No logro hacer que se vean las imagenes en la pagina y no se porque. Siento que hemos trabajado mejor las otras semanas, pero esta semana si hubo un declive en trabajo y personalmente porque no siempre pude contar con mi computador en algunos dias ya que eran vacaciones, pero siento que solo fue por lo que era semana de receso, de resto hemos trabajado bien
 
 ---
 
