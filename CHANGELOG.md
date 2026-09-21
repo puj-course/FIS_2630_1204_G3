@@ -2841,17 +2841,17 @@ Mas que todo como tomamos desiciones como equipo, que es lo que se esta haciendo
 
 1. **¿Qué logramos?**
 
-
+seguimos mejorando como se ve la pagina en temas de colores, detalles y marca.
 
 ### Sprint Retrospective
 
 2. **¿Cómo trabajamos?**
 
-
+esta semana no diria que fue trabajamos de la mejor manera ya que en mi caso la hu 65 #221 ya que como era semana de receso tuve muy poco tiempo para hacer el trabajo.
 
 3. **¿Qué podríamos mejorar?**
 
-
+el entendimiento y comprencion hacia el otro como grupo, y el trabajo en equipo ya que yo y todos entendemos que esto es un compromiso y estoy seguro de que todos estamos comprometidos con este proyecto, hablar de que tenemos poca responsabilidad me parece mal, simplemente se queria descansar o ya se tenian otros planes asociados a la semana; en mi caso es mi primera vez usando git y empleando la metodologia SCRUM y siento que parte de la metodologia es ser honestos con el trabajo que se hizo, porque para eso esta el repositorio, asi mismo todos trabajamos en sus hu correspondientes y se terminaron, en mi caso no pude acabarlas por falta de tiempo
 
 ---
 
