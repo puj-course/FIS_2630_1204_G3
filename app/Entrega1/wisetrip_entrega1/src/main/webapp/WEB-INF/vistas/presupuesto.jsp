@@ -119,7 +119,7 @@
         } else {
             // 3. Como guardamos las banderas con el mismo nombre que el código
             //    de moneda (ej: COP.svg, MXN.svg...), armamos la ruta así:
-            bandera.src = "<c:url value='/img/banderas/'/>" + codigoMoneda + ".svg";
+            bandera.src = "<c:url value='/img/banderas/'/>" + codigoMoneda + ".png";
             bandera.style.display = "inline-block";
         }
     }
