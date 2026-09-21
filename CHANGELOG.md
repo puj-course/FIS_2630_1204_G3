@@ -2744,13 +2744,15 @@ No
 
 1. **¿Qué hice ayer?**
 
-
+ayer trate de descargar el postgres para poder probar mis cosas
 
 2. **¿Qué voy a hacer hoy?**
 
-
+hoy acabe la hu 65 y la subi al develop
 
 3. **¿Tengo algún impedimento o bloqueo?**
+
+falta de tiempo
 
 ---
 
