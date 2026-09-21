@@ -2767,6 +2767,110 @@ no
 3. **¿Tengo algún impedimento o bloqueo?**
 
 
+# Sprint Review y Sprint Retrospective - 20/09/2026
+
+## Maria Alejandra Rodriguez
+
+### Sprint Review
+
+1. **¿Qué logramos?**
+
+Logramos un diseño unificado de la pagina web mejorando su estetica y experiencia con el usuario
+
+### Sprint Retrospective
+
+2. **¿Cómo trabajamos?**
+
+Pues trabajamos bien aun asi teniendo en cuenta que estabamos en vacaciones   
+
+3. **¿Qué podríamos mejorar?**
+
+Tenemos que mejorar la comunicacion y proposito de algunas cosas que hacemos en el grupo 
+
+---
+
+## Gabriela Melo Gualteros
+
+### Sprint Review
+
+1. **¿Qué logramos?**
+
+
+
+### Sprint Retrospective
+
+2. **¿Cómo trabajamos?**
+
+
+
+3. **¿Qué podríamos mejorar?**
+
+
+
+---
+
+## Valeria Cortes Rendon
+
+### Sprint Review
+
+1. **¿Qué logramos?**
+
+Logramos trabajar en el diseño y me enfoque principalmente en branding de la marca, Se trabajo de manera unificada para cumplir con las expectatiavs de la marca
+
+### Sprint Retrospective
+
+2. **¿Cómo trabajamos?**
+
+Esta semana cada uno trabajo indivualmente sin embargo se busco que hiciera trabajo
+
+3. **¿Qué podríamos mejorar?**
+
+La responsabilidad de algunos de mis compañeros en cosas tan simples como los dailys que no los llenaban adecuadamente en los dias que eran.
+
+---
+
+## Isabella Posada
+
+### Sprint Review
+
+1. **¿Qué logramos?**
+
+Logramos mejorar en la pagina, poner funciones nuevas y tambien un diseño renovado
+
+### Sprint Retrospective
+
+2. **¿Cómo trabajamos?**
+
+Mas o menos, por lo que era vacaciones la mayoria nos dedicamos mas que todo a descansar
+
+3. **¿Qué podríamos mejorar?**
+
+Mas que todo como tomamos desiciones como equipo, que es lo que se esta haciendo como grupo y tener un poco mas de control como equipo al decidir aspectos importantes del proyecto, ya que debemos mejorar el trabajo en equipo.
+
+---
+
+## Santiago Clavijo
+
+### Sprint Review
+
+1. **¿Qué logramos?**
+
+
+
+### Sprint Retrospective
+
+2. **¿Cómo trabajamos?**
+
+
+
+3. **¿Qué podríamos mejorar?**
+
+
+
+---
+
+
+
 
 ---
 
