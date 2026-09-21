@@ -2509,12 +2509,8 @@ hoy solo he actualizado el planning de ayer ya que como grupo acordamos que no i
 3. **¿Tengo algún impedimento o bloqueo?**
 
 falta de tiempo.
-----
-
-
-
-
 ---
+
 ## Daily Scrum - 16/09/2026
 
 ### Maria Alejandra Rodriguez
@@ -2543,12 +2539,9 @@ Ayer puse las historias de usuario que voy a trabajar esta semana
 
 Hoy tengo que seguir realizando las imagenes que van en la pantalla de preferencias 
 
-
 3. **¿Tengo algún impedimento o bloqueo?**
 
-
 falta de tiempo
-
 
 ---
 
@@ -2570,17 +2563,16 @@ No en el momento
 ### Isabella Posada
 
 1. **¿Qué hice ayer?**
-hice las historias de usuario de la semana 
+   
+Hice las historias de usuario de la semana 
 
+2. **¿Qué voy a hacer hoy?**
 
+Adelante lo de la base de datos en la nube para que mis compañeros puedan probar sus aportes 
 
-3. **¿Qué voy a hacer hoy?**
-adelante lo de la base de datos en la nube para que mis compañeros puedan probar sus aportes 
+3. **¿Tengo algún impedimento o bloqueo?**
 
-
-4. **¿Tengo algún impedimento o bloqueo?**
-no 
-
+No
 
 ---
 
@@ -2588,7 +2580,7 @@ no
 
 1. **¿Qué hice ayer?**
 
-ayer no pude hacer nada
+Ayer no pude hacer nada
 
 2. **¿Qué voy a hacer hoy?**
 
@@ -2596,7 +2588,7 @@ Hoy descargue el postgres para probar la pagina y llegar a la pantalla final de 
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
-falta de tiempo
+Falta de tiempo
 
 ---
 
@@ -2633,7 +2625,6 @@ Hoy pude realizar 4 imagenes para la pantalla de preferencias e hice una lista d
 
 Se me ha complicado los timepos al ser semana de reflexión mi familia ya tenia planes diferentes 
 
-
 ---
 
 ### Valeria Cortes Rendon
@@ -2656,18 +2647,15 @@ No en el momento. Mas que implementar esa propuesta con el proyecto principal
 
 1. **¿Qué hice ayer?**
 
-termine lo de la bd
-
-
+Termine lo de la Base de datos. 
 
 2. **¿Qué voy a hacer hoy?**
 
-adelantar la siguiente historia de usuario 
-
+Adelantar la siguiente historia de usuario 
 
 3. **¿Tengo algún impedimento o bloqueo?**
  
-no
+No
 
 ---
 
@@ -2675,15 +2663,15 @@ no
 
 1. **¿Qué hice ayer?**
 
- nada
+Nada
 
 2. **¿Qué voy a hacer hoy?**
 
-hoy busque las fotos en formato .png de todas las banderas de las monedas disponibles
+Hoy busque las fotos en formato .png de todas las banderas de las monedas disponibles
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
-falta de tiempo
+Falta de tiempo
 
 ---
 
@@ -2693,7 +2681,7 @@ falta de tiempo
 
 1. **¿Qué hice ayer?**
 
-termine la pagina
+Termine la pagina
 
 2. **¿Qué voy a hacer hoy?**
 
@@ -2701,7 +2689,7 @@ Le comente a mi grupo que termine con mis historias de usuario que me dieran un 
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
-no
+No
 
 ---
 
@@ -2740,17 +2728,15 @@ No
 ### Isabella Posada
 
 1. **¿Qué hice ayer?**
-adelante lo de la selección de preguntas
-
-
+Adelante lo de la selección de preguntas
 
 2. **¿Qué voy a hacer hoy?**
 
-probablemente acabarlo 
+Probablemente acabarlo 
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
-no
+No
 
 ---
 
@@ -2766,6 +2752,7 @@ no
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
+---
 
 # Sprint Review y Sprint Retrospective - 20/09/2026
 
@@ -2796,15 +2783,12 @@ Tenemos que mejorar la comunicacion y proposito de algunas cosas que hacemos en 
 1. **¿Qué logramos?**
 
 
-
 ### Sprint Retrospective
 
 2. **¿Cómo trabajamos?**
 
 
-
 3. **¿Qué podríamos mejorar?**
-
 
 
 ---
