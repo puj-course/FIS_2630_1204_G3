@@ -2697,14 +2697,14 @@ No
 
 1. **¿Qué hice ayer?**
 
-
+Saqué más imagenes
 
 2. **¿Qué voy a hacer hoy?**
 
-
+subir las imagenes al visual 
 
 3. **¿Tengo algún impedimento o bloqueo?**
-
+no
 
 
 ---
