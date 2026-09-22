@@ -2855,8 +2855,125 @@ el entendimiento y comprencion hacia el otro como grupo, y el trabajo en equipo 
 
 ---
 
+# Sprint 7 - Sprint Planning - [07/09/2026]
+
+## Sprint Goal
+
+Consolidar la experiencia de usuario en las etapas iniciales del flujo de WiseTrip, mejorando la interfaz de registro, inicio de sesión y selección de preferencias de viaje. Se busca que el usuario reconozca fácilmente la identidad visual de la plataforma, interactúe de forma intuitiva con los componentes (calendario, selector de moneda, botones de preferencias) y que toda la información ingresada sea clara, legible y visualmente coherente con la marca.
+
+Además, se pretende vincular correctamente las ciudades y sus características con el sistema, para que las recomendaciones de destinos se generen sin errores y se puedan visualizar en el mapa.
+
+## Capacidad del equipo
+
+* Desarrolladores disponibles: 5
+* Puntos/horas disponibles: 42 (por ajustar según refinamiento)
+
+## Issues seleccionados para el Sprint
+
+| ID | Título | Tipo | Estimación | Responsable |
+|----|--------|------|------------|-------------|
+| #66 |  | Historia de Usuario | TBD | Valeria |
+| #67 |  | Historia de Usuario | TBD | Valeria |
+| #68 |  | TBD | Maleja |
+| #69 |  | TBD | Maleja |
+| #70 | | TBD | Gaby |
+| #71 |  | Historia de Usuario | TBD | Gaby |
+| #72 |  | Historia de Usuario | TBD | Isa |
+| #73 |  | Historia de Usuario | TBD | Isa |
+| #74 |  | Historia de Usuario | TBD | Clavijo |
+| #75 |  | Historia de Usuario | TBD | Clavijo |
+
+## Riesgos / Bloqueos identificados
+
+- las imágenes que aun no aparecen aun así se encuentre en png. 
 
 
+## Notas adicionales
+
+
+## Daily Scrum - 22/09/2026
+
+### Valeria Cortes Rendon
+
+1. **¿Qué hice ayer?**
+
+2. **¿Qué voy a hacer hoy?**
+
+
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+
+
+---
+
+### Santiago Clavijo
+
+1. **¿Qué hice ayer?**
+
+
+2. **¿Qué voy a hacer hoy?**
+
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+   No.
+
+---
+
+### Isabella Posada
+
+1. **¿Qué hice ayer?**
+
+
+
+2. **¿Qué voy a hacer hoy?**
+
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+ 
+
+---
+
+### Gabriela Melo Gualteros
+
+1. **¿Qué hice ayer?**
+
+ 
+
+2. **¿Qué voy a hacer hoy?**
+
+
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+  
+
+---
+
+### Maria Alejandra Rodriguez
+
+1. **¿Qué hice ayer?**
+
+   
+
+2. **¿Qué voy a hacer hoy?**
+
+   
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+   
+
+<img width="1600" height="786" alt="IMG_2809" src="https://github.com/user-attachments/assets/fc517cae-9737-4c7b-8044-d9b4350af4d9" />
+
+
+---
+
+
+
+<img width="1907" height="773" alt="image" src="https://github.com/user-attachments/assets/db680a5d-0462-4f5b-ad93-307a0c028dcc" />
 
 ---
 
