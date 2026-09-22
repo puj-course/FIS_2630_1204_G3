@@ -2889,7 +2889,10 @@ Además, se pretende vincular correctamente las ciudades y sus características 
 
 
 ## Notas adicionales
-- 
+
+<img width="1907" height="773" alt="image" src="https://github.com/user-attachments/assets/db680a5d-0462-4f5b-ad93-307a0c028dcc" />
+
+---
 
 ## Daily Scrum - 22/09/2026
 
@@ -2966,8 +2969,6 @@ Además, se pretende vincular correctamente las ciudades y sus características 
 
 
 
-
-<img width="1907" height="773" alt="image" src="https://github.com/user-attachments/assets/db680a5d-0462-4f5b-ad93-307a0c028dcc" />
 
 ---
 
