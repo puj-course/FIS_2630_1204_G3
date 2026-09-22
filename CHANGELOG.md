@@ -2764,17 +2764,17 @@ falta de tiempo
 
 1. **¿Qué logramos?**
 
-Logramos un diseño unificado de la pagina web mejorando su estetica y experiencia con el usuario
+Logramos un diseño unificado de la pagina web mejorando su estetica y experiencia con el usuario. Se implementaron nuevos detalles que hacen que la pagina web se vea mejor y entendible para el usuario. la idea es que se vea comoda para el usuario.
 
 ### Sprint Retrospective
 
 2. **¿Cómo trabajamos?**
 
-Pues trabajamos bien aun asi teniendo en cuenta que estabamos en vacaciones   
+Pues trabajamos bien aun asi teniendo en cuenta que estabamos en vacaciones, se lograron mejorar detalles pequeños a los cuales no les habiamos dado mucha importancia 
 
 3. **¿Qué podríamos mejorar?**
 
-Tenemos que mejorar la comunicacion y proposito de algunas cosas que hacemos en el grupo 
+Tenemos que mejorar cosas como grupo, a veces tenemos desacuerdos.
 
 ---
 
