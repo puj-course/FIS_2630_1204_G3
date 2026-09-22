@@ -2859,9 +2859,7 @@ el entendimiento y comprencion hacia el otro como grupo, y el trabajo en equipo 
 
 ## Sprint Goal
 
-Consolidar la experiencia de usuario en las etapas iniciales del flujo de WiseTrip, mejorando la interfaz de registro, inicio de sesión y selección de preferencias de viaje. Se busca que el usuario reconozca fácilmente la identidad visual de la plataforma, interactúe de forma intuitiva con los componentes (calendario, selector de moneda, botones de preferencias) y que toda la información ingresada sea clara, legible y visualmente coherente con la marca.
-
-Además, se pretende vincular correctamente las ciudades y sus características con el sistema, para que las recomendaciones de destinos se generen sin errores y se puedan visualizar en el mapa.
+En este sprint, el equipo de WiseTrip se enfoca en fortalecer tres pilares clave de la experiencia del viajero. Primero, se mejora la comunicación con el usuario mediante la implementación de notificaciones automáticas por correo electrónico y Telegram, permitiendo que reciba alertas oportunas sobre eventos importantes de su viaje sin necesidad de ingresar constantemente a la aplicación. Segundo, se avanza en la personalización del viaje, dando al usuario la posibilidad de seleccionar entre los destinos recomendados, distribuir su presupuesto según sus prioridades y asegurar que sus preferencias se reflejen correctamente en las sugerencias que recibe. Tercero, se trabaja en la estabilidad y usabilidad general de la plataforma, garantizando que las imágenes del cuestionario carguen sin fallos, que las preguntas sean claras y fáciles de responder, que el acceso a la página web funcione sin impedimentos y que la identificación visual de monedas mediante banderas se muestre de forma correcta en la pantalla de presupuesto. Con estas mejoras, el equipo busca entregar una plataforma más confiable, intuitiva y centrada en las necesidades reales del viajero, sentando las bases para futuras iteraciones del producto.
 
 ## Capacidad del equipo
 
@@ -2870,22 +2868,23 @@ Además, se pretende vincular correctamente las ciudades y sus características 
 
 ## Issues seleccionados para el Sprint
 
-| ID | Issue | Título | Tipo | Estimación | Responsable |
-|---|---|---|---|---|---|
-| HU-66 | | TBD | Historia de Usuario | TBD | Valeria |
-| HU-67 |  | TBD | Historia de Usuario | TBD | Valeria |
-| HU-68 | #235 | Selección de destino entre las recomendaciones de WiseTrip | Historia de Usuario | 5 | Maleja |
-| HU-69 | #236 | Personalización de la distribución del presupuesto del viaje | Historia de Usuario | 6 | Maleja |
-| HU-70 | #238| Carga de imágenes del cuestionario sin falla | Historia de Usuario | 8 | Gaby |
-| HU-71 | #239 | Redacción de las preguntas de preferencia| Historia de Usuario | 3 | Gaby |
-| HU-72 | #240 | Acceder a la página web y guardar datos sin que la BD este en local | Historia de Usuario | 3 | Isa |
-| HU-73 | #241 | Recomendaciones  de atributos MANUAL según preferencias | Historia de Usuario | 8 | Isa |
-| HU-74 | #242 | Visuzalizacion de la moneda escogida en el resumen del viaje | Historia de Usuario | TBD | Clavijo |
-| HU-75 | #243 | Visualizacion de la moneda en la planificacion del viaje | Historia de Usuario | TBD | Clavijo |
+| ID | Título | Tipo | Estimación | Responsable |
+|----|--------|------|------------|-------------|
+| #66 | Como usuario, quiero recibir notificaciones por correo electrónico sobre eventos importantes de mi viaje, para estar informado sin necesidad de entrar a la app. | Historia de Usuario | TBD | Valeria |
+| #67 | Como sistema, quiero enviar mensajes al bot de Telegram del usuario, para notificarle eventos importantes de su viaje. | Historia de Usuario | TBD | Valeria |
+| #68 | Como viajero, quiero seleccionar uno de los tres destinos recomendados por WiseTrip, para continuar la planificación con el destino que más me interese. | Historia de Usuario | 5 | Maleja |
+| #69 | Como viajero, quiero distribuir mi presupuesto entre los diferentes gastos del viaje, para decidir cuánto dinero quiero destinar a cada categoría según mis necesidades. | Historia de Usuario | 6 | Maleja |
+| #70 | Como viajero quiero que las imágenes del cuestionario carguen sin fallar, para no perder tiempo recargando la página o dudando si el sistema funciona bien. | Historia de Usuario | 8 | Gaby |
+| #71 | Como viajero quiero que cada pregunta se entienda a la primera lectura, para responder rápido sin detenerme a interpretar lo que me están preguntando. | Historia de Usuario | 3 | Gaby |
+| #72 | Como viajero, quiero poder acceder a la página web sin ningún impedimento, para que mis datos se guarden. | Historia de Usuario | 3 | Isa |
+| #73 | Como viajero, quiero que mis preferencias de destinos concuerden con la elección de la página, para que disfrute al máximo mi viaje. | Historia de Usuario | 8 | Isa |
+| #74 | Como viajero quiero identificar con la bandera del país la moneda que usé en mi presupuesto al ver el resumen final de mi viaje, para confirmar de un vistazo que la moneda es la correcta antes de revisar mis recomendaciones. | Historia de Usuario | TBD | Clavijo |
+| #75 | Como viajero quiero que la bandera junto al selector de moneda se muestre sin fallas en la pantalla de presupuesto, para reconocer de inmediato qué moneda seleccioné sin toparme con íconos rotos o espacios vacíos. | Historia de Usuario | TBD | Clavijo |
 
 ## Riesgos / Bloqueos identificados
 
-- las imágenes que aun no aparecen aun así se encuentre en png. 
+- las imágenes que aun no aparecen aun así se encuentre en png.
+- Encontrar una API que funcione tanto en correo como en Telegram
 
 
 ## Notas adicionales
