@@ -2878,8 +2878,8 @@ Además, se pretende vincular correctamente las ciudades y sus características 
 | HU-69 | #236 | Personalización de la distribución del presupuesto del viaje | Historia de Usuario | 6 | Maleja |
 | HU-70 | #238| Carga de imágenes del cuestionario sin falla | Historia de Usuario | 8 | Gaby |
 | HU-71 | #239 | Redacción de las preguntas de preferencia| Historia de Usuario | 3 | Gaby |
-| HU-72 | TBD | TBD | Historia de Usuario | TBD | Isa |
-| HU-73 | TBD | TBD | Historia de Usuario | TBD | Isa |
+| HU-72 | #240 | Acceder a la página web y guardar datos sin que la BD este en local | Historia de Usuario | 3 | Isa |
+| HU-73 | #241 | Recomendaciones  de atributos MANUAL según preferencias | Historia de Usuario | 8 | Isa |
 | HU-74 | TBD | TBD | Historia de Usuario | TBD | Clavijo |
 | HU-75 | TBD | TBD | Historia de Usuario | TBD | Clavijo |
 
