@@ -2382,18 +2382,18 @@ También se trabajará en la relación entre las preferencias seleccionadas y el
 
 ## Issues seleccionados para el Sprint
 
-| ID | Issue | Título | Tipo | Estimación | Prioridad | Responsable |
-|---|---|---|---|---|---|---|
-| HU-56 | #219 | Visualizar una bienvenida con el logo y nombre de WiseTrip al iniciar la aplicación | Historia de usuario | TBD | Media | Valeria |
-| HU-57 | #220 | Consultar una lista de chequeo de equipaje con elementos básicos para empacar | Historia de usuario | TBD | Media | Valeria |
-| HU-58 | #225 | Implementar una misma identidad visual durante todo el recorrido en WiseTrip | Historia de usuario | TBD | Media | Maleja |
-| HU-59 | #226 | Incorporar imágenes y elementos gráficos relacionados con los viajes | Historia de usuario | TBD | Media | Maleja |
-| HU-60 | #217 | Mostrar una imagen relacionada con el elemento principal de cada pregunta | Historia de usuario | TBD | Media | Gaby |
-| HU-61 | #218 | Mantener un texto claro y consistente entre las preguntas del cuestionario | Historia de usuario | TBD | Media | Gaby |
-| HU-62 | #223 | Permitir responder las preguntas de selección después de iniciar sesión | Historia de usuario | TBD | Media | Isa |
-| HU-63 | #224 | Relacionar la selección del viaje con las preferencias del usuario | Historia de usuario | TBD | Alta | Isa |
-| HU-64 | #222 | Mostrar la bandera de la moneda seleccionada en el resumen final del viaje | Historia de usuario | TBD | Media | Clavijo |
-| HU-65 | #221 | Mostrar correctamente el icono de la bandera junto al selector de moneda | Historia de usuario | TBD | Media | Clavijo |
+| ID | Issue | Título | Tipo | Prioridad | Responsable |
+|---|---|---|---|---|---|
+| HU-56 | #219 | Visualizar una bienvenida con el logo y nombre de WiseTrip al iniciar la aplicación | Historia de usuario | Media | Valeria |
+| HU-57 | #220 | Consultar una lista de chequeo de equipaje con elementos básicos para empacar | Historia de usuario | Media | Valeria |
+| HU-58 | #225 | Implementar una misma identidad visual durante todo el recorrido en WiseTrip | Historia de usuario | Media | Maleja |
+| HU-59 | #226 | Incorporar imágenes y elementos gráficos relacionados con los viajes | Historia de usuario | Media | Maleja |
+| HU-60 | #217 | Mostrar una imagen relacionada con el elemento principal de cada pregunta | Historia de usuario | Media | Gaby |
+| HU-61 | #218 | Mantener un texto claro y consistente entre las preguntas del cuestionario | Historia de usuario | Media | Gaby |
+| HU-62 | #223 | Permitir responder las preguntas de selección después de iniciar sesión | Historia de usuario | Media | Isa |
+| HU-63 | #224 | Relacionar la selección del viaje con las preferencias del usuario | Historia de usuario | Alta | Isa |
+| HU-64 | #222 | Mostrar la bandera de la moneda seleccionada en el resumen final del viaje | Historia de usuario | Media | Clavijo |
+| HU-65 | #221 | Mostrar correctamente el icono de la bandera junto al selector de moneda | Historia de usuario | Media | Clavijo |
 
 
 ---
@@ -2855,7 +2855,7 @@ el entendimiento y comprencion hacia el otro como grupo, y el trabajo en equipo 
 
 ---
 
-# Sprint 7 - Sprint Planning - [07/09/2026]
+# Sprint 7 - Sprint Planning - [21/09/2026]
 
 ## Sprint Goal
 
@@ -2870,18 +2870,18 @@ Además, se pretende vincular correctamente las ciudades y sus características 
 
 ## Issues seleccionados para el Sprint
 
-| ID | Título | Tipo | Estimación | Responsable |
-|----|--------|------|------------|-------------|
-| #66 |  | Historia de Usuario | TBD | Valeria |
-| #67 |  | Historia de Usuario | TBD | Valeria |
-| #68 |  | TBD | Maleja |
-| #69 |  | TBD | Maleja |
-| #70 | | TBD | Gaby |
-| #71 |  | Historia de Usuario | TBD | Gaby |
-| #72 |  | Historia de Usuario | TBD | Isa |
-| #73 |  | Historia de Usuario | TBD | Isa |
-| #74 |  | Historia de Usuario | TBD | Clavijo |
-| #75 |  | Historia de Usuario | TBD | Clavijo |
+| ID | Issue | Título | Tipo | Estimación | Responsable |
+|---|---|---|---|---|---|
+| HU-66 | | TBD | Historia de Usuario | TBD | Valeria |
+| HU-67 |  | TBD | Historia de Usuario | TBD | Valeria |
+| HU-68 | #235 | Selección de destino entre las recomendaciones de WiseTrip | Historia de Usuario | 5 | Maleja |
+| HU-69 | #236 | Personalización de la distribución del presupuesto del viaje | Historia de Usuario | 6 | Maleja |
+| HU-70 | TBD | TBD | Historia de Usuario | TBD | Gaby |
+| HU-71 | TBD | TBD | Historia de Usuario | TBD | Gaby |
+| HU-72 | TBD | TBD | Historia de Usuario | TBD | Isa |
+| HU-73 | TBD | TBD | Historia de Usuario | TBD | Isa |
+| HU-74 | TBD | TBD | Historia de Usuario | TBD | Clavijo |
+| HU-75 | TBD | TBD | Historia de Usuario | TBD | Clavijo |
 
 ## Riesgos / Bloqueos identificados
 
@@ -2889,7 +2889,7 @@ Además, se pretende vincular correctamente las ciudades y sus características 
 
 
 ## Notas adicionales
-
+- 
 
 ## Daily Scrum - 22/09/2026
 
@@ -2964,12 +2964,6 @@ Además, se pretende vincular correctamente las ciudades y sus características 
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
-   
-
-<img width="1600" height="786" alt="IMG_2809" src="https://github.com/user-attachments/assets/fc517cae-9737-4c7b-8044-d9b4350af4d9" />
-
-
----
 
 
 
