@@ -2960,14 +2960,15 @@ No.
 
 1. **¿Qué hice ayer?**
 
-   
+   ayer hicimos el planning de la semana y definimos que iba a trabajar cada uno, ademas se revisaron los diferentes cambios realizados la semana pasada para ver opiniones
 
 2. **¿Qué voy a hacer hoy?**
 
-   
+   Hoy realizare los cambios que no gustaron del todo de la pagina web para despues poder seguir con las demas pantallas
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
+   no
 
 <img width="1443" height="777" alt="image" src="https://github.com/user-attachments/assets/33c39df4-cc93-42da-ad9f-67830ecf0a16" />
 
