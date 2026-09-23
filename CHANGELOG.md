@@ -2969,6 +2969,7 @@ No.
 3. **¿Tengo algún impedimento o bloqueo?**
 
 
+<img width="1443" height="777" alt="image" src="https://github.com/user-attachments/assets/33c39df4-cc93-42da-ad9f-67830ecf0a16" />
 
 
 ---
