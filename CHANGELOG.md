@@ -2382,7 +2382,7 @@ También se trabajará en la relación entre las preferencias seleccionadas y el
 
 ## Issues seleccionados para el Sprint
 
-| ID | Issue | Título | Tipo | Prioridad | Responsable |
+| ID | Issue | Título | Tipo | Prioridad | Estimacion | Responsable |
 |---|---|---|---|---|---|
 | HU-56 | #219 | Visualizar una bienvenida con el logo y nombre de WiseTrip al iniciar la aplicación | Historia de usuario | Media | Valeria |
 | HU-57 | #220 | Consultar una lista de chequeo de equipaje con elementos básicos para empacar | Historia de usuario | Media | Valeria |
@@ -2870,11 +2870,11 @@ En este sprint, el equipo de WiseTrip se enfoca en fortalecer tres pilares clave
 
 | ID | Título | Tipo | Estimación | Responsable |
 |----|--------|------|------------|-------------|
-| #66 | Como usuario, quiero recibir notificaciones por correo electrónico sobre eventos importantes de mi viaje, para estar informado sin necesidad de entrar a la app. | Historia de Usuario | TBD | Valeria |
-| #67 | Como sistema, quiero enviar mensajes al bot de Telegram del usuario, para notificarle eventos importantes de su viaje. | Historia de Usuario | TBD | Valeria |
+| #66 | Como usuario, quiero recibir notificaciones por correo electrónico sobre eventos importantes de mi viaje, para estar informado sin necesidad de entrar a la app. | Historia de Usuario | 3 | Valeria |
+| #67 | Como sistema, quiero enviar mensajes al bot de Telegram del usuario, para notificarle eventos importantes de su viaje. | Historia de Usuario | 5 | Valeria |
 | #68 | Como viajero, quiero seleccionar uno de los tres destinos recomendados por WiseTrip, para continuar la planificación con el destino que más me interese. | Historia de Usuario | 5 | Maleja |
-| #69 | Como viajero, quiero distribuir mi presupuesto entre los diferentes gastos del viaje, para decidir cuánto dinero quiero destinar a cada categoría según mis necesidades. | Historia de Usuario | 6 | Maleja |
-| #70 | Como viajero quiero que las imágenes del cuestionario carguen sin fallar, para no perder tiempo recargando la página o dudando si el sistema funciona bien. | Historia de Usuario | 8 | Gaby |
+| #69 | Como viajero, quiero distribuir mi presupuesto entre los diferentes gastos del viaje, para decidir cuánto dinero quiero destinar a cada categoría según mis necesidades. | Historia de Usuario | 13 | Maleja |
+| #70 | Como viajero quiero que las imágenes del cuestionario carguen sin fallar, para no perder tiempo recargando la página o dudando si el sistema funciona bien. | Historia de Usuario | 3 | Gaby |
 | #71 | Como viajero quiero que cada pregunta se entienda a la primera lectura, para responder rápido sin detenerme a interpretar lo que me están preguntando. | Historia de Usuario | 3 | Gaby |
 | #72 | Como viajero, quiero poder acceder a la página web sin ningún impedimento, para que mis datos se guarden. | Historia de Usuario | 3 | Isa |
 | #73 | Como viajero, quiero que mis preferencias de destinos concuerden con la elección de la página, para que disfrute al máximo mi viaje. | Historia de Usuario | 8 | Isa |
@@ -2903,7 +2903,7 @@ En este sprint, el equipo de WiseTrip se enfoca en fortalecer tres pilares clave
 
 2. **¿Qué voy a hacer hoy?**
 
-   Terminé de comprobar, junto con mi compañero Santiago Clavijo, la conexión con **NeonDB** desde el archivo `application.properties`, debido a que presentaba algunos errores.
+   Terminé de comprobar, junto con mi compañero Santiago Clavijo, la conexión con NeonDB desde el archivo application.properties, debido a que presentaba algunos errores.
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
@@ -2919,7 +2919,7 @@ En este sprint, el equipo de WiseTrip se enfoca en fortalecer tres pilares clave
 
 2. **¿Qué voy a hacer hoy?**
 
-   Investigué diferentes **API** que podrían utilizarse y aportar al desarrollo de nuestro proyecto.
+   Investigué diferentes API que podrían utilizarse y aportar al desarrollo de nuestro proyecto.
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
