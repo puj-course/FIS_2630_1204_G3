@@ -2895,17 +2895,35 @@ En este sprint, el equipo de WiseTrip se enfoca en fortalecer tres pilares clave
 
 ## Daily Scrum - 22/09/2026
 
+### Isabella Posada
+
+1. **¿Qué hice ayer?**
+
+   Trabajé en las historias de usuario que me fueron asignadas durante el Sprint Planning.
+
+2. **¿Qué voy a hacer hoy?**
+
+   Terminé de comprobar, junto con mi compañero Santiago Clavijo, la conexión con **NeonDB** desde el archivo `application.properties`, debido a que presentaba algunos errores.
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+   No.
+
+---
+
 ### Valeria Cortes Rendon
 
 1. **¿Qué hice ayer?**
 
+   Participé en el Sprint Planning de la semana, en el cual se definieron las historias de usuario asignadas a cada integrante. Además, realizamos una reunión para revisar los inconvenientes presentados durante la Semana de Reflexión.
+
 2. **¿Qué voy a hacer hoy?**
 
-
+   Investigué diferentes **API** que podrían utilizarse y aportar al desarrollo de nuestro proyecto.
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
-
+   No tengo ningún impedimento o bloqueo por el momento.
 
 ---
 
@@ -2922,21 +2940,6 @@ hoy estuve investigando porque no he podido completar mis historias de usuario d
 3. **¿Tengo algún impedimento o bloqueo?**
 
 No.
-
----
-
-### Isabella Posada
-
-1. **¿Qué hice ayer?**
-
-
-
-2. **¿Qué voy a hacer hoy?**
-
-
-3. **¿Tengo algún impedimento o bloqueo?**
-
- 
 
 ---
 
