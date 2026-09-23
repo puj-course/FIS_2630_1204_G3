@@ -2944,15 +2944,15 @@ No.
 
 1. **¿Qué hice ayer?**
 
- 
+ Ayer estuvimos reunidos haciendo el sprint planning y se decidió el trabajo de cada uno durante este Sprint
 
 2. **¿Qué voy a hacer hoy?**
 
-
+Hoy verificaré el codigo para ver cual es el error de porque no muestra las imagenes y corregiré las preguntas
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
-  
+  no
 
 ---
 
