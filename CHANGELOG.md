@@ -2913,13 +2913,15 @@ En este sprint, el equipo de WiseTrip se enfoca en fortalecer tres pilares clave
 
 1. **¿Qué hice ayer?**
 
+ayer hicimos el planning de la semana y definimos que iba a trabajar cada uno
 
 2. **¿Qué voy a hacer hoy?**
 
+hoy estuve investigando porque no he podido completar mis historias de usuario de sprints pasados (icono de banderas segun la moneda)
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
-   No.
+No.
 
 ---
 
