@@ -2875,11 +2875,11 @@ En este sprint, el equipo de WiseTrip se enfoca en fortalecer tres pilares clave
 | #68 | Como viajero, quiero seleccionar uno de los tres destinos recomendados por WiseTrip, para continuar la planificación con el destino que más me interese. | Historia de Usuario | 5 | Maleja |
 | #69 | Como viajero, quiero distribuir mi presupuesto entre los diferentes gastos del viaje, para decidir cuánto dinero quiero destinar a cada categoría según mis necesidades. | Historia de Usuario | 13 | Maleja |
 | #70 | Como viajero quiero que las imágenes del cuestionario carguen sin fallar, para no perder tiempo recargando la página o dudando si el sistema funciona bien. | Historia de Usuario | 3 | Gaby |
-| #71 | Como viajero quiero que cada pregunta se entienda a la primera lectura, para responder rápido sin detenerme a interpretar lo que me están preguntando. | Historia de Usuario | 3 | Gaby |
-| #72 | Como viajero, quiero poder acceder a la página web sin ningún impedimento, para que mis datos se guarden. | Historia de Usuario | 3 | Isa |
+| #71 | Como viajero quiero que cada pregunta se entienda a la primera lectura, para responder rápido sin detenerme a interpretar lo que me están preguntando. | Historia de Usuario | 5 | Gaby |
+| #72 | Como viajero, quiero poder acceder a la página web sin ningún impedimento, para que mis datos se guarden. | Historia de Usuario | 5 | Isa |
 | #73 | Como viajero, quiero que mis preferencias de destinos concuerden con la elección de la página, para que disfrute al máximo mi viaje. | Historia de Usuario | 8 | Isa |
-| #74 | Como viajero quiero identificar con la bandera del país la moneda que usé en mi presupuesto al ver el resumen final de mi viaje, para confirmar de un vistazo que la moneda es la correcta antes de revisar mis recomendaciones. | Historia de Usuario | TBD | Clavijo |
-| #75 | Como viajero quiero que la bandera junto al selector de moneda se muestre sin fallas en la pantalla de presupuesto, para reconocer de inmediato qué moneda seleccioné sin toparme con íconos rotos o espacios vacíos. | Historia de Usuario | TBD | Clavijo |
+| #74 | Como viajero quiero identificar con la bandera del país la moneda que usé en mi presupuesto al ver el resumen final de mi viaje, para confirmar de un vistazo que la moneda es la correcta antes de revisar mis recomendaciones. | Historia de Usuario | 3 | Clavijo |
+| #75 | Como viajero quiero que la bandera junto al selector de moneda se muestre sin fallas en la pantalla de presupuesto, para reconocer de inmediato qué moneda seleccioné sin toparme con íconos rotos o espacios vacíos. | Historia de Usuario | 3 | Clavijo |
 
 ## Riesgos / Bloqueos identificados
 
