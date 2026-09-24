@@ -1,6 +1,6 @@
-# Daily Scrum - WiseTrip
+# Daily Sprint - WiseTrip
 
-Este archivo registra las actualizaciones diarias del equipo durante el desarrollo del proyecto **WiseTrip**. En cada Daily Scrum se documentará el avance de las tareas, las actividades realizadas, las tareas pendientes y los posibles impedimentos encontrados.
+Este archivo registra las actualizaciones diarias del equipo durante el desarrollo del proyecto **WiseTrip**. En cada Daily Sprint se documentará el avance de las tareas, las actividades realizadas, las tareas pendientes y los posibles impedimentos encontrados.
 
 **Responsables:**
 
@@ -14,7 +14,7 @@ Este archivo registra las actualizaciones diarias del equipo durante el desarrol
 
 # Sprint 1 - Análisis y planificación
 
-## Daily Scrum - 13/08/2026
+## Daily Sprint - 13/08/2026
 
 ### Maria Alejandra Rodriguez
 
@@ -100,7 +100,7 @@ Este archivo registra las actualizaciones diarias del equipo durante el desarrol
 
 ---
 
-## Daily Scrum - [14/08/2026]
+## Daily Sprint - [14/08/2026]
 
 ### Maria Alejandra Rodriguez
 
@@ -322,7 +322,7 @@ El objetivo principal de esta semana es poder empezar a visualizar nuestro proye
 
 ---
 
-## Daily Scrum - [18/08/2026]
+## Daily Sprint - [18/08/2026]
 
 ### Maria Alejandra Rodriguez
 
@@ -407,7 +407,7 @@ El objetivo principal de esta semana es poder empezar a visualizar nuestro proye
 
 ---
 
-## Daily Scrum - [19/08/2026]
+## Daily Sprint - [19/08/2026]
 
 ### Maria Alejandra Rodriguez
 
@@ -492,7 +492,7 @@ codificar las primeras acciones de recolección de datos y estructura para el in
 
 ---
 
-## Daily Scrum - [20/08/2026]
+## Daily Sprint - [20/08/2026]
 
 ### Maria Alejandra Rodriguez
 
@@ -578,7 +578,7 @@ codificar las primeras acciones de recolección de datos y estructura para el in
 
 ---
 
-## Daily Scrum - [22/08/2026]
+## Daily Sprint - [22/08/2026]
 
 ### Maria Alejandra Rodriguez
 
@@ -817,7 +817,7 @@ De manera paralela, se desarrollará la estructura inicial de la base de datos y
 <img width="1242" height="628" alt="Captura de pantalla 2026-08-24 220204" src="https://github.com/user-attachments/assets/84bef945-3886-4b6b-bee6-b844c9dcb574" />
 
 
-## Daily Scrum - 25/08/2026
+## Daily Sprint - 25/08/2026
 
 ### Maria Alejandra Rodriguez
 
@@ -903,7 +903,7 @@ Realizamos el sprint planning y se definieron que historias de usuario, mileston
    <img width="1241" height="628" alt="Captura de pantalla 2026-08-25 201902" src="https://github.com/user-attachments/assets/7dffd6f9-9f73-46ad-89d0-4e631e2d93b1" />
    
 
-## Daily Scrum - 26/08/2026
+## Daily Sprint - 26/08/2026
 
 ### Maria Alejandra Rodriguez
 
@@ -991,7 +991,7 @@ Ivestigue acerca de mis tareas y como realizarlas
   <img width="1247" height="621" alt="Captura de pantalla 2026-08-26 210652" src="https://github.com/user-attachments/assets/d6e2ca62-393f-49ee-aaec-47f005941fad" />
 
 
-  ## Daily Scrum - 27/08/2026
+  ## Daily Sprint - 27/08/2026
 
 ### Maria Alejandra Rodriguez
 
@@ -1076,7 +1076,7 @@ Tratar de implementar mis partes en el codigo existente
   <img width="1600" height="1041" alt="WhatsApp Image 2026-08-29 at 6 10 10 PM" src="https://github.com/user-attachments/assets/5e7d18fe-ab5b-45fd-a2ea-f7dc2fb04886" />
 
 
-   ## Daily Scrum - 28/08/2026
+   ## Daily Sprint - 28/08/2026
 
 ### Maria Alejandra Rodriguez
 
@@ -1334,7 +1334,7 @@ Además, se busca garantizar que los datos ingresados sean validados correctamen
 ---
 
 
-## Daily Scrum - 01/09/2026
+## Daily Sprint - 01/09/2026
 
 ### Maria Alejandra Rodriguez
 
@@ -1422,7 +1422,7 @@ No.
 
 ---
 
-## Daily Scrum - 02/09/2026
+## Daily Sprint - 02/09/2026
 
 ### Maria Alejandra Rodriguez
 
@@ -1507,7 +1507,7 @@ No
 
 ---
 
-## Daily Scrum - 03/09/2026
+## Daily Sprint - 03/09/2026
 
 ### Maria Alejandra Rodriguez
 
@@ -1592,7 +1592,7 @@ Conexion entre HU con issues y commits
 
 ---
 
-## Daily Scrum - 04/09/2026
+## Daily Sprint - 04/09/2026
 
 ### Maria Alejandra Rodriguez
 
@@ -1676,7 +1676,7 @@ No he tenido tiempo, ya que el parcial de estructuras fue hoy
 <img width="1600" height="1200" alt="image" src="https://github.com/user-attachments/assets/2e58571b-9edb-4cb3-8f62-93eb327fcdcc" />
 ---
 
-## Daily Scrum - 05/09/2026
+## Daily Sprint - 05/09/2026
 
 ### Maria Alejandra Rodriguez
 
@@ -1919,7 +1919,7 @@ Además, se pretende vincular correctamente las ciudades y sus características 
 
 <img width="1600" height="1200" alt="image" src="https://github.com/user-attachments/assets/4a06669d-efcc-429e-948c-3a2376eef882" />
 
-## Daily Scrum - 08/09/2026
+## Daily Sprint - 08/09/2026
 
 ### Valeria Cortes Rendon
 
@@ -2004,7 +2004,7 @@ Además, se pretende vincular correctamente las ciudades y sus características 
 
 ---
 
-## Daily Scrum - 09/09/2026
+## Daily Sprint - 09/09/2026
 
 ### Isabella Posada
 
@@ -2088,7 +2088,7 @@ Además, se pretende vincular correctamente las ciudades y sus características 
 
 ---
 
-## Daily Scrum - 10/09/2026
+## Daily Sprint - 10/09/2026
 
 ### Isabella Posada
 
@@ -2172,7 +2172,7 @@ Además, se pretende vincular correctamente las ciudades y sus características 
 
 ---
 
-## Daily Scrum - 11/09/2026
+## Daily Sprint - 11/09/2026
 
 ### Maria Alejandra Rodriguez
 
@@ -2430,7 +2430,7 @@ Al finalizar el Sprint 6, WiseTrip deberá contar con una identidad visual más 
 
 ---
 
-## Daily Scrum - 15/09/2026
+## Daily Sprint - 15/09/2026
 
 ### Maria Alejandra Rodriguez
 
@@ -2511,7 +2511,7 @@ hoy solo he actualizado el planning de ayer ya que como grupo acordamos que no i
 falta de tiempo.
 ---
 
-## Daily Scrum - 16/09/2026
+## Daily Sprint - 16/09/2026
 
 ### Maria Alejandra Rodriguez
 
@@ -2593,7 +2593,7 @@ Falta de tiempo
 ---
 
 ---
-## Daily Scrum - 17/09/2026
+## Daily Sprint - 17/09/2026
 
 ### Maria Alejandra Rodriguez
 
@@ -2675,7 +2675,7 @@ Falta de tiempo
 
 ---
 
-## Daily Scrum - 18/09/2026
+## Daily Sprint - 18/09/2026
 
 ### Maria Alejandra Rodriguez
 
@@ -2893,7 +2893,7 @@ En este sprint, el equipo de WiseTrip se enfoca en fortalecer tres pilares clave
 
 ---
 
-## Daily Scrum - 22/09/2026
+## Daily Sprint - 22/09/2026
 
 ### Isabella Posada
 
@@ -2977,7 +2977,7 @@ Hoy verificaré el codigo para ver cual es el error de porque no muestra las ima
 <img width="1443" height="777" alt="image" src="https://github.com/user-attachments/assets/33c39df4-cc93-42da-ad9f-67830ecf0a16" />
 
 ---
-## Daily Scrum - 23/09/2026
+## Daily Sprint - 23/09/2026
 
 ### Isabella Posada
 
