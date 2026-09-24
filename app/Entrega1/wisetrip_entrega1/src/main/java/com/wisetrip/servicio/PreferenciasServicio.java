@@ -16,28 +16,24 @@ import java.util.Map;
 public class PreferenciasServicio {
 
     public static final List<CategoriaPreferencia> CATEGORIAS = List.of(
-    categoria("Tipo de destino", "Qué clase de lugar quieres visitar",
-            "playa", "montana", "naturaleza"),
-    categoria("Aventura", "Qué tanta actividad física y adrenalina buscas",
-            "aventura"),
-    categoria("Gastronomía", "Cómo quieres comer durante el viaje",
-            "oferta_gastronomica", "gourmet",
-            "comida_internacional", "restricciones_alimentarias"),
+    categoria("Paisaje y clima", "Qué tipo de paisaje y clima buscas",
+            "playa", "montana", "naturaleza", "nieve", "desierto"),
+    categoria("Tipo de destino", "El ambiente y carácter del destino",
+            "tranquilo", "urbano", "romantico", "off_the_beaten_path", "festivo"),
     categoria("Ritmo de viaje", "Qué tan cargada y movida quieres la agenda",
-            "tranquilo", "urbano", "vida_nocturna", "compras",
-            "tiempo_libre", "muchas_actividades"),
-    categoria("Cultura", "Museos, historia y tradiciones locales",
-            "museos", "religioso"),
+            "vida_nocturna", "compras", "tiempo_libre", "muchas_actividades"),
     categoria("Estilo de viaje", "El nivel de comodidad y gasto que buscas",
             "lujo", "mochilero"),
     categoria("Compañía", "Con quién viajas y qué necesitas por eso",
             "familiar_kids", "pet_friendly"),
+    categoria("Gastronomía", "Cómo quieres comer durante el viaje",
+            "oferta_gastronomica", "gourmet", "comida_internacional", "restricciones_alimentarias"),
+    categoria("Actividades", "Actividades que te gustaría hacer durante el viaje",
+            "aventura", "navegacion_islas", "parque_diversiones"),
+    categoria("Cultura", "Museos, historia y tradiciones locales",
+            "museos", "religioso", "ruinas_arqueologicas"),
     categoria("Características específicas", "Preferencias puntuales del destino",
-            "romantico", "nieve", "desierto",
-            "ruinas_arqueologicas", "festivo", "off_the_beaten_path",
-            "hispanohablante"),
-    categoria("Actividades y lugares", "Lugares disponibles alrededor del destino",
-            "navegacion_islas", "parque_diversiones")
+            "hispanohablante")
 );
 
 private static final Map<String, String> ETIQUETAS = Map.ofEntries(
