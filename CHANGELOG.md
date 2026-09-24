@@ -2983,15 +2983,15 @@ Hoy verificaré el codigo para ver cual es el error de porque no muestra las ima
 
 1. **¿Qué hice ayer?**
 
-   
+   Ayer adelante lo de la base de datos en la nube y termine de configurarla para que mis compañeros pudieran acceder a ella y probar sus aportes de la pagina cuando quisieran
 
 2. **¿Qué voy a hacer hoy?**
 
-   
+   hoy revise la base de datos, como estaban guardandose los datos y haciendo diferentes ajustes, ademas inicie el HU 73 (#241)
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
-  
+no
 
 ---
 
