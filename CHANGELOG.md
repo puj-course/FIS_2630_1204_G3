@@ -2973,7 +2973,89 @@ Hoy verificaré el codigo para ver cual es el error de porque no muestra las ima
 
    no
 
+---   
 <img width="1443" height="777" alt="image" src="https://github.com/user-attachments/assets/33c39df4-cc93-42da-ad9f-67830ecf0a16" />
+
+---
+## Daily Scrum - 23/09/2026
+
+### Isabella Posada
+
+1. **¿Qué hice ayer?**
+
+   
+
+2. **¿Qué voy a hacer hoy?**
+
+   
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+  
+
+---
+
+### Valeria Cortes Rendon
+
+1. **¿Qué hice ayer?**
+
+   
+
+2. **¿Qué voy a hacer hoy?**
+
+
+   
+3. **¿Tengo algún impedimento o bloqueo?**
+
+
+   
+---
+
+### Santiago Clavijo
+
+1. **¿Qué hice ayer?**
+
+
+
+2. **¿Qué voy a hacer hoy?**
+
+
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+
+
+---
+
+### Gabriela Melo Gualteros
+
+1. **¿Qué hice ayer?**
+
+
+
+2. **¿Qué voy a hacer hoy?**
+
+
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+
+
+---
+
+### Maria Alejandra Rodriguez
+
+1. **¿Qué hice ayer?**
+
+   
+
+2. **¿Qué voy a hacer hoy?**
+
+   
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+
 
 
 ---
