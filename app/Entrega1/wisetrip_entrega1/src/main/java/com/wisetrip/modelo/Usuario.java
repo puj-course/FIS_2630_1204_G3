@@ -92,7 +92,6 @@ public class Usuario {
         this.password = password;
     }
 
-
     public String getRol() {
         return rol;
     }
