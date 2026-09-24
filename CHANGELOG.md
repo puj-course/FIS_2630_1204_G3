@@ -3031,15 +3031,15 @@ Hoy verificaré el codigo para ver cual es el error de porque no muestra las ima
 
 1. **¿Qué hice ayer?**
 
-
+Ayer elimine algunas preguntas que se repetian de alguna manera, unifique algunas que se parecian mucho. Pasamos de tener 41 preguntas a 29.
 
 2. **¿Qué voy a hacer hoy?**
 
-
+Ayer no alcance a revisar si el front de la pagina tomo bien los cambios, asi que hoy revisaré eso y resolveré los problemas que aparezcan
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
-
+no
 
 ---
 
