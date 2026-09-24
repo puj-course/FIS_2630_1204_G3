@@ -3058,5 +3058,9 @@ hoy ya empece los cambios para poder seguir con mis historias de usuario
 
 no
 
+
+<img width="1536" height="2048" alt="image" src="https://github.com/user-attachments/assets/49950475-232f-407e-a83d-5e243a31e2d3" />
+
+
 ---
 
