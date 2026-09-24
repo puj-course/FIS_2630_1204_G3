@@ -80,7 +80,6 @@
         </c:forEach>
 
         <div class="pie-fijo" data-total="${totalPreguntas}">
-        <div class="pie-fijo" data-total="${totalPreguntas}">
             <div class="progreso">
                 <div class="progreso-barra"><span id="progresoRelleno"></span></div>
                 <span class="progreso-texto"><b id="contador">0</b> de ${totalPreguntas} respondidas</span>
