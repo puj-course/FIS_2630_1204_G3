@@ -3015,15 +3015,15 @@ Hoy verificaré el codigo para ver cual es el error de porque no muestra las ima
 
 1. **¿Qué hice ayer?**
 
-
+Ayer investigue acerca de como solucionar el error de las imagenes de las fotos y porque
 
 2. **¿Qué voy a hacer hoy?**
 
-
+hoy lo corregi y entendi que el error era que la ruta estaba mal, entonces trataba de mostrar unas imagenes que ni siquiera existian y lo subi al main
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
-
+no por ahora
 
 ---
 
