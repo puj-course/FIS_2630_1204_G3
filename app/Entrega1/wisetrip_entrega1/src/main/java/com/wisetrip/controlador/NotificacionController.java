@@ -12,12 +12,11 @@ public class NotificacionController {
     private EmailNotificationService emailService;
 
     @PostMapping("/email-test")
-    public String enviarCorreoPrueba(@RequestParam String destinatario) {
-        emailService.enviarNotificacion(
-            destinatario,
-            "Prueba WiseTrip",
-            "Este es un correo de prueba desde WiseTrip 🚀"
-        );
-        return "Correo enviado a " + destinatario;
-    }
+    public String enviarCorreoPrueba(
+        @RequestParam String destinatario,
+        @RequestParam String asunto,
+        @RequestParam String cuerpo) {
+    emailService.enviarNotificacion(destinatario, asunto, cuerpo);
+    return "Correo enviado a " + destinatario;
+}
 }
