@@ -24,83 +24,111 @@ public class Usuario {
     public Usuario() {
     }
 
+<<<<<<< HEAD
     // Obtiene el id del usuario
+=======
+>>>>>>> 93c9dcb4bf4be1afc520122d06b1c0afe067913b
     public int getIdUsuario() {
         return idUsuario;
     }
 
+<<<<<<< HEAD
     // Modifica el id del usuario
+=======
+>>>>>>> 93c9dcb4bf4be1afc520122d06b1c0afe067913b
     public void setIdUsuario(int idUsuario) {
         this.idUsuario = idUsuario;
     }
 
+<<<<<<< HEAD
     // Obtiene el nombre completo
+=======
+>>>>>>> 93c9dcb4bf4be1afc520122d06b1c0afe067913b
     public String getNombreCompleto() {
         return nombreCompleto;
     }
 
-    // Modifica el nombre completo
     public void setNombreCompleto(String nombreCompleto) {
         this.nombreCompleto = nombreCompleto;
     }
 
-    // Obtiene el tipo de documento
     public String getTipoDocumento() {
         return tipoDocumento;
     }
+<<<<<<< HEAD
+=======
+   
+
+>>>>>>> 93c9dcb4bf4be1afc520122d06b1c0afe067913b
 
     // Modifica el tipo de documento
+
     public void setTipoDocumento(String tipoDocumento) {
         this.tipoDocumento = tipoDocumento;
     }
 
-    // Obtiene el número de documento
     public String getNumeroDocumento() {
         return numeroDocumento;
     }
 
-    // Modifica el número de documento
     public void setNumeroDocumento(String numeroDocumento) {
         this.numeroDocumento = numeroDocumento;
     }
 
-    // Obtiene la fecha de nacimiento
     public String getFechaNacimiento() {
         return fechaNacimiento;
     }
 
+<<<<<<< HEAD
+=======
+   
+>>>>>>> 93c9dcb4bf4be1afc520122d06b1c0afe067913b
     // Modifica la fecha de nacimiento
     public void setFechaNacimiento(String fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
 
-    // Obtiene el correo electrónico
     public String getCorreo() {
         return correo;
     }
 
-    // Modifica el correo electrónico
     public void setCorreo(String correo) {
-        this.correo = correo;
+        this.correo = correo != null ? correo.trim().toLowerCase() : null;
     }
 
-    // Obtiene la contraseña
+    public void normalizarCorreo() {
+        if (this.correo != null) {
+            this.correo = this.correo.trim().toLowerCase();
+        }
+    }
+
     public String getPassword() {
         return password;
     }
 
-    // Modifica la contraseña
     public void setPassword(String password) {
         this.password = password;
     }
 
+<<<<<<< HEAD
     // Obtiene el rol
+=======
+
+>>>>>>> 93c9dcb4bf4be1afc520122d06b1c0afe067913b
     public String getRol() {
         return rol;
     }
 
+<<<<<<< HEAD
     // Modifica el rol
     public void setRol(String rol) {
         this.rol = rol;
     }
 }
+=======
+    public void setRol(String rol) {
+        this.rol = rol;
+    }
+
+}
+>>>>>>> 93c9dcb4bf4be1afc520122d06b1c0afe067913b
