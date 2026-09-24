@@ -3043,20 +3043,20 @@ no
 
 ---
 
+
 ### Maria Alejandra Rodriguez
 
-1. **¿Qué hice ayer?**
+1. **¿Qué hice ayer?** 
 
-   
+ayer estipule los cambios de diseño de esta semana para la pagina web 
 
-2. **¿Qué voy a hacer hoy?**
+2. **¿Qué voy a hacer hoy?** 
 
-   
+hoy ya empece los cambios para poder seguir con mis historias de usuario 
 
-3. **¿Tengo algún impedimento o bloqueo?**
+3. **¿Tengo algún impedimento o bloqueo?** 
 
-
-
+no
 
 ---
 
