@@ -2999,15 +2999,15 @@ no
 
 1. **¿Qué hice ayer?**
 
-   
+Investigacion sobre las APIs qeu podria usar   
 
 2. **¿Qué voy a hacer hoy?**
 
-
+Entendi la aplicacion que teenmos actualmente y empezar a implementarlo, sin embargo hasta el momento no he realizado Commits
    
 3. **¿Tengo algún impedimento o bloqueo?**
 
-
+No
    
 ---
 
