@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.wisetrip.modelo.Usuario;
+// para notificaciones por correo
+import com.wisetrip.servicio.EmailNotificationService;
 import com.wisetrip.servicio.UsuarioServicio;
 
 import jakarta.servlet.http.HttpSession;
@@ -19,10 +21,12 @@ import jakarta.servlet.http.HttpSession;
 public class AuthControlador {
 
     private final UsuarioServicio usuarioServicio;
+    private final EmailNotificationService emailService; 
 
-    // Spring inyecta el servicio automaticamente al crear el controlador
-    public AuthControlador(UsuarioServicio usuarioServicio) {
+    // Spring inyecta los servicios automaticamente al crear el controlador
+    public AuthControlador(UsuarioServicio usuarioServicio,EmailNotificationService emailService) {   
         this.usuarioServicio = usuarioServicio;
+        this.emailService = emailService;                              
     }
 
     // Muestra el formulario vacio
@@ -51,6 +55,19 @@ public class AuthControlador {
         usuario.setCorreo(usuario.getCorreo().trim());
         usuario.setNumeroDocumento(usuario.getNumeroDocumento().trim());
         usuarioServicio.registrar(usuario);
+        try {
+            emailService.enviarNotificacion(
+                usuario.getCorreo(),
+                "¡Bienvenido a WiseTrip!",
+                "Hola " + usuario.getNombreCompleto() + ",\n\n"
+                + "Tu cuenta en WiseTrip fue creada con éxito. "
+                + "Ya puedes iniciar sesión y empezar a planificar tus viajes.\n\n"
+                + "¡Buen viaje!\n"
+                + "El equipo de WiseTrip"
+            );
+        }catch (Exception e) {
+            System.err.println("No se pudo enviar el correo de confirmación: " + e.getMessage());
+        }
         sesion.setAttribute("usuarioActivo", usuario);
 
         flash.addFlashAttribute("nombre", usuario.getNombreCompleto());
