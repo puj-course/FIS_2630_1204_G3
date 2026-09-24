@@ -5,7 +5,6 @@ package com.wisetrip.modelo;
 //agregar validacion con not null, email y size 
 //no exponer la contraseña en tostring()
 //agregar metodo normalizarcorreo para que todo se guarde en minusculas
-//quitar getters y setters duplicados
 //agregar campos: estado, fecha registro, ultimo acceso
 
 // Modelo que representa la información de un usuario de WiseTrip
@@ -25,6 +24,16 @@ public class Usuario {
     public Usuario() {
     }
 
+    // Obtiene el id del usuario
+    public int getIdUsuario() {
+        return idUsuario;
+    }
+
+    // Modifica el id del usuario
+    public void setIdUsuario(int idUsuario) {
+        this.idUsuario = idUsuario;
+    }
+
     // Obtiene el nombre completo
     public String getNombreCompleto() {
         return nombreCompleto;
@@ -39,11 +48,6 @@ public class Usuario {
     public String getTipoDocumento() {
         return tipoDocumento;
     }
-    public int getIdUsuario() { return idUsuario; }
-    public void setIdUsuario(int idUsuario) { this.idUsuario = idUsuario; }
-
-    public String getNombreCompleto() { return nombreCompleto; }
-    public void setNombreCompleto(String nombreCompleto) { this.nombreCompleto = nombreCompleto; }
 
     // Modifica el tipo de documento
     public void setTipoDocumento(String tipoDocumento) {
@@ -65,11 +69,6 @@ public class Usuario {
         return fechaNacimiento;
     }
 
-    public String getPassword() { return password; }
-    public void setPassword(String password) { this.password = password; }
-
-    public String getRol() { return rol; }
-    public void setRol(String rol) { this.rol = rol; }
     // Modifica la fecha de nacimiento
     public void setFechaNacimiento(String fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
@@ -93,5 +92,15 @@ public class Usuario {
     // Modifica la contraseña
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    // Obtiene el rol
+    public String getRol() {
+        return rol;
+    }
+
+    // Modifica el rol
+    public void setRol(String rol) {
+        this.rol = rol;
     }
 }
