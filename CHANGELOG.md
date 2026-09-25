@@ -3086,15 +3086,17 @@ no
 
 1. **¿Qué hice ayer?**
 
-  
+   Entendi como estaba funcionando la aplicacion internamiente y como podria hacer la conexion con la API
+
 
 2. **¿Qué voy a hacer hoy?**
 
+   Hice la conexion de la API al envio de correos unicamente cuando se crea una nueva cuenta en la aplicacion
 
    
 3. **¿Tengo algún impedimento o bloqueo?**
 
-
+   No
    
 ---
 
@@ -3102,15 +3104,15 @@ no
 
 1. **¿Qué hice ayer?**
 
-ayer logre arreglar las imagenes de las bandera al momento de escoger el presupuesto
+   ayer logre arreglar las imagenes de las bandera al momento de escoger el presupuesto
 
 2. **¿Qué voy a hacer hoy?**
 
-hoy empece a trabjar en mi segunda hu
+   hoy empece a trabjar en mi segunda hu
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
-no
+   no
 
 ---
 
