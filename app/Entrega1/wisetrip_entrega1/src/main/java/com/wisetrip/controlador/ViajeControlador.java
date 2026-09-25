@@ -45,6 +45,9 @@ public class ViajeControlador {
         // Envía el usuario a la vista
         model.addAttribute("usuario", usuario);
 
+        // Iniciales del usuario para el avatar del encabezado
+        model.addAttribute("inicialesUsuario", calcularIniciales(usuario));
+
         // Si existe una ubicación guardada la muestra,
         // de lo contrario crea una ubicación vacía para el formulario
         model.addAttribute("ubicacion", guardada != null ? guardada : new Ubicacion());
@@ -85,6 +88,7 @@ public class ViajeControlador {
 
             // Vuelve a cargar los datos necesarios para el formulario
             model.addAttribute("usuario", usuario);
+            model.addAttribute("inicialesUsuario", calcularIniciales(usuario));
             model.addAttribute("paises", viajeServicio.listarPaises());
             model.addAttribute("ciudades", viajeServicio.listarCiudades(ubicacion.getPais()));
 
@@ -101,5 +105,25 @@ public class ViajeControlador {
 
         // Continúa con el siguiente paso del flujo
         return "redirect:/preferencias";
+    }
+
+    /**
+     * Devuelve las iniciales del usuario para mostrarlas en el avatar.
+     * Con dos o más palabras toma la primera letra de las dos primeras;
+     * con una sola palabra, solo la primera letra.
+     */
+    private String calcularIniciales(Usuario usuario) {
+
+        if (usuario.getNombreCompleto() == null || usuario.getNombreCompleto().isBlank()) {
+            return "?";
+        }
+
+        String[] partes = usuario.getNombreCompleto().trim().split("\\s+");
+
+        if (partes.length > 1) {
+            return ("" + partes[0].charAt(0) + partes[1].charAt(0)).toUpperCase();
+        }
+
+        return partes[0].substring(0, 1).toUpperCase();
     }
 }
