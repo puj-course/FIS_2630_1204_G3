@@ -3118,15 +3118,15 @@ no
 
 1. **¿Qué hice ayer?**
 
-
+Ayer arregle las preguntas y quite redundancias que habian
 
 2. **¿Qué voy a hacer hoy?**
 
-
+Hoy porfin arregle las imagenes y ya aparecen en la pantalla
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
-
+no
 
 ---
 
@@ -3135,13 +3135,15 @@ no
 
 1. **¿Qué hice ayer?** 
 
-
+Revise los cambios hechos por mis compañeros para tener mucho cuidado a la hora de hacer mis cambios
 
 2. **¿Qué voy a hacer hoy?** 
 
-
+hoy segui haciendo cambios en la pagina web de acuerdo a las historias de usuario
 
 3. **¿Tengo algún impedimento o bloqueo?** 
+
+no
 
 
 ---
