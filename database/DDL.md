@@ -25,9 +25,9 @@ CREATE TABLE IF NOT EXISTS usuario (
         CHECK (rol IN ('cliente', 'administrador'))
 );
 
-
-CREATE UNIQUE INDEX IF NOT EXISTS ux_usuario_numero_documento
-ON usuario (numero_documento);
+--por si hay dos personas con el mismo documento pero de diferente pais
+CREATE UNIQUE INDEX IF NOT EXISTS ux_usuario_tipo_numero_documento
+ON usuario (numero_documento, tipo_documento);
 
 
 --dice cuanto vale una ciudad 
