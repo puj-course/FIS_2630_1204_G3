@@ -3102,15 +3102,15 @@ no
 
 1. **¿Qué hice ayer?**
 
-
+ayer logre arreglar las imagenes de las bandera al momento de escoger el presupuesto
 
 2. **¿Qué voy a hacer hoy?**
 
-
+hoy empece a trabjar en mi segunda hu
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
-
+no
 
 ---
 
