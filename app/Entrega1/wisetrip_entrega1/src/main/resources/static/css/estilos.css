@@ -797,3 +797,186 @@ body.auth {
 .ticket:first-of-type .ticket-ciudad { font-size: 23px; }
 .ticket:nth-of-type(2) .ticket-sello { background: var(--turquesa); color: var(--tinta); }
 .ticket:nth-of-type(3) .ticket-sello { background: var(--rosa); color: var(--tinta); }
+
+/* ===== Pantalla de bienvenida ===== */
+
+body.bienvenida { padding: 0; display: block; }
+
+.bienvenida-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 100vh;
+}
+
+/* --- Lado visual --- */
+
+.bienvenida-visual {
+    position: relative;
+    background: #6BB8E8;
+    overflow: hidden;
+    padding: 30px;
+}
+
+.bienvenida-marca {
+    position: relative;
+    z-index: 5;
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    background: var(--crema);
+    border: 3px solid var(--tinta);
+    border-radius: 40px;
+    padding: 9px 22px 9px 12px;
+    text-decoration: none;
+    box-shadow: 4px 4px 0 var(--tinta);
+}
+.bienvenida-marca img { width: 38px; height: 38px; object-fit: contain; }
+.bienvenida-marca span {
+    font-family: var(--display);
+    font-size: 21px;
+    color: var(--tinta);
+    letter-spacing: -.5px;
+}
+.bienvenida-marca em { color: var(--turquesa-hondo); font-style: normal; }
+
+.bienvenida-sol {
+    position: absolute;
+    top: 52px; right: 20%;
+    width: 84px; height: 84px;
+    background: var(--amarillo);
+    border: 3px solid var(--tinta);
+    border-radius: 50%;
+}
+
+.bienvenida-onda {
+    position: absolute;
+    width: 72px; height: 18px;
+    border-bottom: 3px solid #fff;
+    border-radius: 0 0 50% 50%;
+    opacity: .85;
+}
+.onda-1 { top: 128px; left: 40px; }
+.onda-2 { bottom: 60px; right: 90px; }
+
+.bienvenida-curva {
+    position: absolute;
+    bottom: -120px; left: -90px;
+    width: 340px; height: 340px;
+    border: 3px dashed rgba(255,255,255,.8);
+    border-radius: 50%;
+}
+
+/* --- Polaroids --- */
+
+.polaroids { position: absolute; inset: 0; }
+
+.polaroid {
+    position: absolute;
+    width: 228px;
+    margin: 0;
+    background: #fff;
+    border: 3px solid var(--tinta);
+    padding: 11px 11px 34px;
+    box-shadow: 7px 7px 0 var(--tinta);
+}
+.polaroid img { width: 100%; height: 198px; object-fit: cover; display: block; }
+.polaroid figcaption {
+    position: absolute;
+    bottom: 11px; left: 15px;
+    font-family: var(--dato);
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    color: var(--tinta);
+}
+
+.pol-1 { top: 24%; left: 6%;  transform: rotate(-6deg); z-index: 3; }
+.pol-2 { top: 34%; left: 34%; transform: rotate(3deg);  z-index: 2; }
+.pol-3 { top: 58%; left: 16%; transform: rotate(-2deg); z-index: 4; }
+
+/* --- Lado del contenido --- */
+
+.bienvenida-panel {
+    background: var(--crema);
+    padding: 60px 8% 60px 7%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 620px;
+}
+
+.check-grande {
+    width: 74px; height: 74px;
+    background: var(--turquesa);
+    border: 3px solid var(--tinta);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 34px;
+    font-weight: 700;
+    color: var(--tinta);
+    margin-bottom: 28px;
+}
+
+.titulo-bienvenida {
+    font-family: var(--display);
+    font-size: clamp(38px, 4.4vw, 56px);
+    line-height: .98;
+    letter-spacing: -2px;
+    text-transform: uppercase;
+    margin: 0 0 20px;
+}
+
+.tarjeta-cuenta {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: #fff;
+    border: 3px solid var(--tinta);
+    border-radius: 16px;
+    padding: 16px 20px;
+    margin-bottom: 26px;
+}
+.tarjeta-cuenta-datos { flex: 1; min-width: 0; }
+.tarjeta-cuenta-datos strong { display: block; font-size: 16px; line-height: 1.25; }
+.tarjeta-cuenta-datos span {
+    display: block;
+    font-size: 14px;
+    color: var(--gris);
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.tarjeta-cuenta-check {
+    width: 28px; height: 28px;
+    border: 2.5px solid var(--turquesa-hondo);
+    border-radius: 50%;
+    color: var(--turquesa-hondo);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 15px;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.enlace-suave {
+    display: block;
+    text-align: center;
+    margin-top: 18px;
+    font-size: 14.5px;
+    font-weight: 600;
+    color: var(--morado);
+    text-decoration: none;
+    border-bottom: 2.5px solid var(--amarillo);
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+.enlace-suave:hover { background: var(--amarillo); }
+
+@media (max-width: 900px) {
+    .bienvenida-split { grid-template-columns: 1fr; }
+    .bienvenida-visual { min-height: 330px; }
+    .polaroid { width: 160px; }
+    .polaroid img { height: 138px; }
+    .bienvenida-panel { padding: 40px 24px; max-width: none; }
+}
