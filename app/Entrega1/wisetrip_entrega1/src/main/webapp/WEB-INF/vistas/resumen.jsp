@@ -13,6 +13,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Resumen de tu viaje | WiseTrip</title>
     <link rel="stylesheet" href="<c:url value='/css/estilos.css'/>">
+    <style>
+        /* bandera del país junto al monto del presupuesto en el resumen */
+        .valor-con-bandera {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .bandera-resumen {
+            width: 24px;
+            height: 18px;
+            object-fit: cover;
+            border-radius: 2px;
+            border: 1px solid #ddd;
+            flex-shrink: 0;
+        }
+    </style>
 </head>
 <body>
 <div class="tarjeta ancha">
