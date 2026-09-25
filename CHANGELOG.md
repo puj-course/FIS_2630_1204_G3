@@ -3063,7 +3063,7 @@ no
 
 
 ---
----
+
 ## Daily Sprint - 24/09/2026
 
 ### Isabella Posada
@@ -3154,5 +3154,92 @@ no
 
 
 ---
+## Daily Sprint - 25/09/2026
 
+### Isabella Posada
+
+1. **¿Qué hice ayer?**
+
+   
+
+2. **¿Qué voy a hacer hoy?**
+
+
+   
+4. **¿Tengo algún impedimento o bloqueo?**
+
+ 
+
+---
+
+### Valeria Cortes Rendon
+
+1. **¿Qué hice ayer?**
+
+   
+
+
+2. **¿Qué voy a hacer hoy?**
+
+   
+
+   
+3. **¿Tengo algún impedimento o bloqueo?**
+
+   
+   
+---
+
+### Santiago Clavijo
+
+1. **¿Qué hice ayer?**
+
+   
+
+2. **¿Qué voy a hacer hoy?**
+
+
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+   
+
+---
+
+### Gabriela Melo Gualteros
+
+1. **¿Qué hice ayer?**
+
+
+
+2. **¿Qué voy a hacer hoy?**
+
+
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+
+
+---
+
+
+### Maria Alejandra Rodriguez
+
+1. **¿Qué hice ayer?** 
+
+
+
+2. **¿Qué voy a hacer hoy?** 
+
+
+
+3. **¿Tengo algún impedimento o bloqueo?** 
+
+
+
+
+---
+
+
+---
 
