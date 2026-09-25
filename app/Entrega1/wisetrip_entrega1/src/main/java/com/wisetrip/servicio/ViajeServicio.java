@@ -1,36 +1,69 @@
 package com.wisetrip.servicio;
 
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import org.springframework.stereotype.Service;
-import com.wisetrip.modelo.Ubicacion;
 import com.wisetrip.datos.CiudadSemilla;
 import com.wisetrip.datos.DatosCiudades;
-import java.util.ArrayList;
+import com.wisetrip.modelo.Ubicacion;
 
 @Service
 public class ViajeServicio {
 
-    // Paises recomendados ya arreglado
     private static final Map<String, List<String>> CIUDADES_POR_PAIS = construirCiudadesPorPais();
+
+    static {
+        agregarCiudades("México", "Ciudad de México", "Guadalajara", "Monterrey", "Cancún", "Puebla", "Tijuana");
+        agregarCiudades("Guatemala", "Ciudad de Guatemala", "Antigua Guatemala", "Quetzaltenango");
+        agregarCiudades("Honduras", "Tegucigalpa", "San Pedro Sula", "La Ceiba");
+        agregarCiudades("El Salvador", "San Salvador", "Santa Ana", "San Miguel");
+        agregarCiudades("Nicaragua", "Managua", "León", "Granada");
+        agregarCiudades("Costa Rica", "San José", "Liberia", "Puntarenas", "Alajuela");
+        agregarCiudades("Panamá", "Ciudad de Panamá", "Colón", "David");
+        agregarCiudades("Belice", "Ciudad de Belice", "San Ignacio", "Belmopán");
+        agregarCiudades("Colombia", "Bogotá", "Medellín", "Cali", "Cartagena", "Barranquilla", "Bucaramanga", "Pereira", "Santa Marta");
+        agregarCiudades("Venezuela", "Caracas", "Maracaibo", "Valencia", "Mérida");
+        agregarCiudades("Cuba", "La Habana", "Santiago de Cuba", "Varadero");
+        agregarCiudades("República Dominicana", "Santo Domingo", "Punta Cana", "Santiago de los Caballeros");
+        agregarCiudades("Ecuador", "Quito", "Guayaquil", "Cuenca", "Manta");
+        agregarCiudades("Perú", "Lima", "Cusco", "Arequipa", "Trujillo", "Iquitos");
+        agregarCiudades("Bolivia", "La Paz", "Santa Cruz de la Sierra", "Cochabamba", "Sucre");
+        agregarCiudades("Brasil", "São Paulo", "Río de Janeiro", "Brasilia", "Salvador", "Florianópolis");
+        agregarCiudades("Chile", "Santiago", "Valparaíso", "Concepción", "Puerto Montt");
+        agregarCiudades("Argentina", "Buenos Aires", "Córdoba", "Mendoza", "Rosario", "Bariloche");
+        agregarCiudades("Uruguay", "Montevideo", "Punta del Este", "Colonia del Sacramento");
+        agregarCiudades("Paraguay", "Asunción", "Ciudad del Este", "Encarnación");
+    }
 
     private static Map<String, List<String>> construirCiudadesPorPais() {
         List<CiudadSemilla> ciudades = DatosCiudades.ciudades();
         Map<String, List<String>> map = new LinkedHashMap<>();
-        for (int i = 0; i < ciudades.size(); i++) {
-            CiudadSemilla semilla = ciudades.get(i);
+
+        for (CiudadSemilla semilla : ciudades) {
             String pais = semilla.pais();
             String nombreCiudad = semilla.nombre();
-
-            if(!map.containsKey(pais)){
-                map.put(pais, new ArrayList<>());
+            if (pais != null && nombreCiudad != null) {
+                map.computeIfAbsent(pais, k -> new ArrayList<>()).add(nombreCiudad);
             }
-            map.get(pais).add(nombreCiudad);
         }
+
         return map;
     }
 
+    private static void agregarCiudades(String pais, String... ciudades) {
+        if (pais == null || ciudades == null) {
+            return;
+        }
+
+        CIUDADES_POR_PAIS.computeIfAbsent(pais, k -> new ArrayList<>());
+        for (String ciudad : ciudades) {
+            if (ciudad != null && !CIUDADES_POR_PAIS.get(pais).contains(ciudad)) {
+                CIUDADES_POR_PAIS.get(pais).add(ciudad);
+            }
+        }
+    }
 
     public List<String> listarPaises() {
         return new ArrayList<>(CIUDADES_POR_PAIS.keySet());
