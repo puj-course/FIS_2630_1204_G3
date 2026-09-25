@@ -58,6 +58,7 @@ public class PlanificacionControlador {
         Preferencias guardadas = (Preferencias) sesion.getAttribute("preferenciasViaje");
 
         model.addAttribute("usuario", usuario);
+        model.addAttribute("inicialesUsuario", calcularIniciales(usuario));
         model.addAttribute("preferencias", guardadas != null ? guardadas : new Preferencias());
         model.addAttribute("categorias", preferenciasServicio.listarCategorias());
         model.addAttribute("totalPreguntas", preferenciasServicio.totalPreguntas());
@@ -78,11 +79,12 @@ public class PlanificacionControlador {
             model.addAttribute("errores", errores);
             model.addAttribute("faltantes", errores.size());
             model.addAttribute("usuario", usuario);
+            model.addAttribute("inicialesUsuario", calcularIniciales(usuario));
             model.addAttribute("categorias", preferenciasServicio.listarCategorias());
             model.addAttribute("totalPreguntas", preferenciasServicio.totalPreguntas());
             return "preferencias";
         }
-        
+
         // HU-39: Persistencia de datos en sesión.
         // Guarda las preferencias respondidas para que estén disponibles
         // mientras dure la sesión de planificación del viajero.
@@ -90,7 +92,7 @@ public class PlanificacionControlador {
         sesion.setAttribute("atributosSeleccionados",
                 preferenciasServicio.obtenerAtributosSeleccionados(preferencias));
         sesion.removeAttribute("idViajeGuardado");
-        
+
         // HU-37: Botón "Siguiente".
         // Al guardar sin errores, avanza automáticamente al siguiente paso del flujo.
         return "redirect:/fechas";
@@ -107,13 +109,14 @@ public class PlanificacionControlador {
         // Si el viajero no ha completado preferencias, lo redirige de vuelta
         // en lugar de dejarlo saltar directamente a fechas.
         if (sesion.getAttribute("preferenciasViaje") == null) return "redirect:/preferencias";
-        
+
         // HU-39: Persistencia de datos en sesión.
         // Recupera las fechas ya guardadas, si existen, para no perderlas
         // si el viajero retrocede a esta pantalla.
         FechasViaje guardadas = (FechasViaje) sesion.getAttribute("fechasViaje");
 
         model.addAttribute("usuario", usuario);
+        model.addAttribute("inicialesUsuario", calcularIniciales(usuario));
         model.addAttribute("fechas", guardadas != null ? guardadas : new FechasViaje());
         model.addAttribute("hoy", fechasServicio.hoy());
         return "fechas";
@@ -132,10 +135,11 @@ public class PlanificacionControlador {
         if (!errores.isEmpty()) {
             model.addAttribute("errores", errores);
             model.addAttribute("usuario", usuario);
+            model.addAttribute("inicialesUsuario", calcularIniciales(usuario));
             model.addAttribute("hoy", fechasServicio.hoy());
             return "fechas";
         }
-        
+
         // HU-39: Persistencia de datos en sesión.
         // Guarda las fechas para que estén disponibles mientras dure
         // la sesión de planificación del viajero.
@@ -167,6 +171,7 @@ public class PlanificacionControlador {
         Presupuesto guardado = (Presupuesto) sesion.getAttribute("presupuestoViaje");
 
         model.addAttribute("usuario", usuario);
+        model.addAttribute("inicialesUsuario", calcularIniciales(usuario));
         model.addAttribute("presupuesto", guardado != null ? guardado : new Presupuesto());
         model.addAttribute("monedas", presupuestoServicio.monedasDisponibles(paisDestino));
         model.addAttribute("paisDestino", paisDestino);
@@ -188,6 +193,7 @@ public class PlanificacionControlador {
         if (!errores.isEmpty()) {
             model.addAttribute("errores", errores);
             model.addAttribute("usuario", usuario);
+            model.addAttribute("inicialesUsuario", calcularIniciales(usuario));
             model.addAttribute("monedas", presupuestoServicio.monedasDisponibles(paisDestino));
             model.addAttribute("paisDestino", paisDestino);
             model.addAttribute("fechas", sesion.getAttribute("fechasViaje"));
@@ -225,14 +231,19 @@ public class PlanificacionControlador {
         Double enUsd = (Double) sesion.getAttribute("presupuestoEnUsd");
 
         model.addAttribute("usuario", usuario);
+        model.addAttribute("inicialesUsuario", calcularIniciales(usuario));
         model.addAttribute("ubicacion", ubicacion);
         model.addAttribute("preferencias", preferencias);
         model.addAttribute("fechas", fechas);
         model.addAttribute("presupuesto", presupuesto);
 
-             if (preferencias != null) {
+        if (preferencias != null) {
             model.addAttribute("categorias", preferenciasServicio.listarCategorias());
-        
+            model.addAttribute("resumenPreferencias",
+                    preferenciasServicio.resumenPorCategoria(preferencias));
+            model.addAttribute("afirmativas",
+                    preferenciasServicio.contarAfirmativas(preferencias));
+            model.addAttribute("totalPreguntas", preferenciasServicio.totalPreguntas());
         }
         if (presupuesto != null) {
             model.addAttribute("montoFormateado",
@@ -245,5 +256,25 @@ public class PlanificacionControlador {
         }
 
         return "resumen";
+    }
+
+    /**
+     * Devuelve las iniciales del usuario para mostrarlas en el avatar
+     * del encabezado. Con dos o más palabras toma la primera letra de
+     * las dos primeras; con una sola palabra, solo la primera letra.
+     */
+    private String calcularIniciales(Usuario usuario) {
+
+        if (usuario.getNombreCompleto() == null || usuario.getNombreCompleto().isBlank()) {
+            return "?";
+        }
+
+        String[] partes = usuario.getNombreCompleto().trim().split("\\s+");
+
+        if (partes.length > 1) {
+            return ("" + partes[0].charAt(0) + partes[1].charAt(0)).toUpperCase();
+        }
+
+        return partes[0].substring(0, 1).toUpperCase();
     }
 }
