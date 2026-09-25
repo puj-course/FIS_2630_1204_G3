@@ -67,11 +67,14 @@
         <h2 class="seccion">Presupuesto <a class="editar" href="<c:url value='/presupuesto'/>">editar</a></h2>
         <div class="dato">
             <span class="etiqueta">Monto</span>
-            <span class="valor valor-cifra">${montoFormateado} ${presupuesto.moneda}</span>
+            <span class="valor valor-cifra valor-con-bandera">${montoFormateado} ${presupuesto.moneda}
         </div>
-        <div class="dato">
-            <span class="etiqueta">Moneda</span><span class="valor">${nombreMoneda}</span>
-        </div>
+            <div class="dato">
+                <span class="etiqueta">Moneda</span><span class="valor">${nombreMoneda}</span>
+                <%-- HU-74: bandera del país correspondiente a la moneda del presupuesto --%>
+                <c:if test="${not empty presupuesto.moneda}">
+                        <img class="bandera-resumen"
+    
         <c:if test="${not empty usdFormateado}">
             <div class="dato">
                 <span class="etiqueta">Equivalente aproximado</span>
