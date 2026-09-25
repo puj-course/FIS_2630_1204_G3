@@ -7,7 +7,7 @@
     <title>Iniciar sesion | WiseTrip</title>
     <link rel="stylesheet" href="<c:url value='/css/estilos.css'/>">
 </head>
-<body class="auth">
+<body class="tarjeta-centrada">
 <div class="tarjeta">
     <a class="volver" href="<c:url value='/'/>">&larr; Volver al inicio</a>
      <span class="sello-auth">Gratis · 20 países LATAM</span>
