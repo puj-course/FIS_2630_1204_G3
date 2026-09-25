@@ -156,7 +156,7 @@ CREATE TABLE IF NOT EXISTS itinerario (
 
     fecha_actividad DATE NOT NULL,
 
-    hora_actividad VARCHAR(5) NOT NULL,
+    hora_actividad TIME NOT NULL,
 
     tipo VARCHAR(50) NOT NULL,
 
