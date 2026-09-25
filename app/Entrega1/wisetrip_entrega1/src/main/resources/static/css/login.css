@@ -3,7 +3,6 @@
 .lg {
     --tinta: #16161D;
     --morado: #5B3FA8;
-    --morado-hondo: #46307F;
     --turquesa: #2FBFAF;
     --amarillo: #FFC627;
     --crema: #EFE9DC;
@@ -26,20 +25,27 @@
 
 .lg * { box-sizing: border-box; }
 
-/* El formulario va a la izquierda: espejo del registro */
 .lg-split { display: grid; grid-template-columns: 1fr 1fr; min-height: 100vh; }
 
-/* ===== Panel visual: morado con tira de cine ===== */
+/* ===== Panel visual ===== */
 
 .lg-visual {
     position: relative;
     background: var(--morado);
     border-left: 3px solid var(--tinta);
     overflow: hidden;
-    padding: 34px;
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 120px 40px 130px;
+}
+
+.lg-visual::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,.22) 1.5px, transparent 0);
+    background-size: 26px 26px;
 }
 
 .lg-marca {
@@ -65,58 +71,60 @@
 }
 .lg-marca em { color: #1E9487; font-style: normal; }
 
-/* Retícula de puntos sobre el morado */
-.lg-visual::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,.22) 1.5px, transparent 0);
-    background-size: 26px 26px;
-}
+/* ===== Tira de cine ===== */
 
-/* Tira de cine vertical */
 .lg-tira {
     position: relative;
     z-index: 4;
-    width: 330px;
+    width: min(360px, 88%);
+    max-height: 100%;
+    aspect-ratio: 360 / 560;
     background: var(--tinta);
     border: 3px solid var(--tinta);
-    border-radius: 8px;
-    padding: 0 16px;
-    box-shadow: 10px 10px 0 rgba(0,0,0,.28);
+    border-radius: 10px;
+    padding: 18px;
+    box-shadow: 12px 12px 0 rgba(0,0,0,.26);
     transform: rotate(-2.5deg);
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
 }
 .lg-tira::before, .lg-tira::after {
     content: "";
     position: absolute;
-    top: 0; bottom: 0;
-    width: 16px;
+    top: 10px; bottom: 10px;
+    width: 12px;
     background-image: repeating-linear-gradient(180deg,
-        transparent 0 12px, var(--crema) 12px 22px, transparent 22px 34px);
+        transparent 0 12px, var(--crema) 12px 24px, transparent 24px 36px);
 }
-.lg-tira::before { left: 0; }
-.lg-tira::after { right: 0; }
+.lg-tira::before { left: 3px; }
+.lg-tira::after { right: 3px; }
 
-.lg-foto { position: relative; margin: 0; border-bottom: 3px solid var(--tinta); }
-.lg-foto:last-child { border-bottom: none; }
-.lg-foto img { width: 100%; height: 178px; object-fit: cover; display: block; }
+.lg-foto {
+    position: relative;
+    margin: 0;
+    flex: 1 1 0;
+    min-height: 0;
+    overflow: hidden;
+}
+.lg-foto img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .lg-foto figcaption {
     position: absolute;
     left: 12px; bottom: 12px;
     background: var(--crema);
     border: 2px solid var(--tinta);
-    border-radius: 16px;
-    padding: 4px 11px;
+    border-radius: 18px;
+    padding: 4px 12px;
     font-family: var(--dato);
-    font-size: 10px;
-    letter-spacing: .1em;
+    font-size: 10.5px;
+    letter-spacing: .09em;
     text-transform: uppercase;
     color: var(--tinta);
 }
 
 .lg-sello-flotante {
     position: absolute;
-    top: 21%; right: 46px;
+    top: 42px; right: 40px;
     z-index: 5;
     background: var(--amarillo);
     border: 2.5px solid var(--tinta);
@@ -133,7 +141,7 @@
 
 .lg-leyenda {
     position: absolute;
-    bottom: 44px; left: 40px; right: 40px;
+    bottom: 40px; left: 40px; right: 40px;
     z-index: 5;
     margin: 0;
     font-family: var(--dato);
@@ -182,15 +190,7 @@
 .lg-titulo em {
     font-style: normal;
     color: var(--morado);
-    position: relative;
-}
-.lg-titulo em::after {
-    content: "";
-    position: absolute;
-    left: 0; right: 0; bottom: 4px;
-    height: 10px;
-    background: var(--amarillo);
-    z-index: -1;
+    background: linear-gradient(transparent 76%, var(--amarillo) 76%, var(--amarillo) 92%, transparent 92%);
 }
 
 .lg-bajada {
@@ -337,11 +337,12 @@
     color: var(--gris);
 }
 
+/* ===== Pantallas pequeñas ===== */
+
 @media (max-width: 960px) {
     .lg-split { grid-template-columns: 1fr; }
-    .lg-visual { order: -1; min-height: 300px; padding: 28px; }
-    .lg-tira { width: 250px; transform: rotate(-2deg); }
-    .lg-foto img { height: 112px; }
-    .lg-leyenda, .lg-sello-flotante { display: none; }
+    .lg-visual { order: -1; min-height: 400px; padding: 96px 28px 40px; }
+    .lg-tira { width: min(260px, 70%); transform: rotate(-2deg); }
+    .lg-leyenda { display: none; }
     .lg-panel { padding: 44px 24px; max-width: none; margin-left: 0; }
 }
