@@ -3070,15 +3070,15 @@ no
 
 1. **¿Qué hice ayer?**
 
-  
+  ayer estaba viendo lo que estaba conectado en local a lo que ahora esta en Neon para ver si había algún problema, después los compare y arregle ciertas redundancias 
 
 2. **¿Qué voy a hacer hoy?**
 
-   
+   hoy revise los indices de la bd, cambie algunas cosas del codigo en la parte de datos para que la logica fuera menos inconsisa y revise la siguiente "HU #72" (#241) porque no se esta haciendo la recomendacion del destino bien.
 
-3. **¿Tengo algún impedimento o bloqueo?**
+4. **¿Tengo algún impedimento o bloqueo?**
 
-
+no 
 
 ---
 
