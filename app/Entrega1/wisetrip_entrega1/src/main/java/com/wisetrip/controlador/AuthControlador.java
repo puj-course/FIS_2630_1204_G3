@@ -53,8 +53,15 @@ public class AuthControlador {
         usuarioServicio.registrar(usuario);
         sesion.setAttribute("usuarioActivo", usuario);
 
+        String[] partes = usuario.getNombreCompleto().trim().split("\\s+");
+        String iniciales = partes.length > 1
+                ? ("" + partes[0].charAt(0) + partes[1].charAt(0)).toUpperCase()
+                : partes[0].substring(0, 1).toUpperCase();
+
         flash.addFlashAttribute("nombre", usuario.getNombreCompleto());
         flash.addFlashAttribute("correo", usuario.getCorreo());
+        flash.addFlashAttribute("primerNombre", partes[0]);
+        flash.addFlashAttribute("inicialesUsuario", iniciales);
         return "redirect:/registro-exitoso";
     }
 
