@@ -5,7 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ffff6fa2-fe68-4e98-b1ea-8c1f465df6db" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Entrega1/wisetrip_entrega1/src/main/java/com/wisetrip/datos/PreferenciaDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/Entrega1/wisetrip_entrega1/src/main/java/com/wisetrip/datos/PreferenciaDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Entrega1/wisetrip_entrega1/src/main/java/com/wisetrip/datos/UsuarioDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/Entrega1/wisetrip_entrega1/src/main/java/com/wisetrip/datos/UsuarioDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Entrega1/wisetrip_entrega1/src/main/java/com/wisetrip/datos/ViajeDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/Entrega1/wisetrip_entrega1/src/main/java/com/wisetrip/datos/ViajeDAO.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -137,6 +140,22 @@
     <option featureType="dependencySupport" implementationName="maven-packaging:war" />
     <option featureType="dependencySupport" implementationName="java:org.springframework.boot:spring-boot" />
     <option featureType="dependencySupport" implementationName="java:org.springframework:spring-webmvc" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="OPEN_GENERIC_TABS">
+      <map>
+        <entry key="e3659bb8-a352-4731-8b52-48bc0cd3d1ff" value="TOOL_WINDOW" />
+      </map>
+    </option>
+    <option name="TAB_STATES">
+      <map>
+        <entry key="e3659bb8-a352-4731-8b52-48bc0cd3d1ff">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

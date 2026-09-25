@@ -1,3 +1,16 @@
+package com.wisetrip.datos;
+
+import com.wisetrip.modelo.Usuario;
+import org.springframework.stereotype.Repository;
+
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.time.LocalDate;
+
+@Repository
 public class UsuarioDAO {
 
     public Usuario registrar(Usuario usuario) {
@@ -26,6 +39,10 @@ public class UsuarioDAO {
             return usuario;
         } catch (SQLException e) {
             if ("23505".equals(e.getSQLState())) {
+                String constraint = e.getMessage() != null ? e.getMessage() : "";
+                if (constraint.contains("ux_usuario_numero_documento")) {
+                    throw new IllegalStateException("Ya existe un usuario registrado con aquel numero de documento.", e);
+                }
                 throw new IllegalStateException("Ya existe un usuario registrado con ese correo.", e);
             }
             throw new IllegalStateException("No se pudo registrar el usuario en PostgreSQL.", e);
@@ -39,6 +56,7 @@ public class UsuarioDAO {
     public boolean existeDocumento(String numeroDocumento) {
         return existe("SELECT 1 FROM usuario WHERE numero_documento = ?", numeroDocumento);
     }
+
 
     public Usuario buscarPorCorreo(String correo) {
         String sql = """
@@ -72,7 +90,7 @@ public class UsuarioDAO {
                 return usuario;
             }
         } catch (SQLException e) {
-            throw new IllegalStateException("No se pudo consultar el usuario en PostgreSQL.", e);
+            throw new IllegalStateException("No se pudo consultar el usuario en la base de datos.", e);
         }
     }
 
@@ -88,7 +106,7 @@ public class UsuarioDAO {
                 return rs.next();
             }
         } catch (SQLException e) {
-            throw new IllegalStateException("No se pudo validar el usuario en PostgreSQL.", e);
+            throw new IllegalStateException("No se pudo validar el usuario en la base de datos.", e);
         }
     }
 
