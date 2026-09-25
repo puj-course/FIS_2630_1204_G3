@@ -1,24 +1,3 @@
-package com.wisetrip.datos;
-
-import com.wisetrip.modelo.Usuario;
-import org.springframework.stereotype.Repository;
-
-import java.sql.Connection;
-import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.time.LocalDate;
-
-//Mejoras 
-//encriptar la constraseña 
-//Validacion de los campos not null 
-//manejo de excepciones en SQLException 
-//Normalizacion de variables 
-//Agregar campo de ultimo_acceso 
-//Se relaciona la historia de usuario 140
-
-@Repository
 public class UsuarioDAO {
 
     public Usuario registrar(Usuario usuario) {
@@ -46,12 +25,15 @@ public class UsuarioDAO {
             }
             return usuario;
         } catch (SQLException e) {
+            if ("23505".equals(e.getSQLState())) {
+                throw new IllegalStateException("Ya existe un usuario registrado con ese correo.", e);
+            }
             throw new IllegalStateException("No se pudo registrar el usuario en PostgreSQL.", e);
         }
     }
 
     public boolean existeCorreo(String correo) {
-        return existe("SELECT 1 FROM usuario WHERE LOWER(correo) = LOWER(?)", correo);
+        return existe("SELECT 1 FROM usuario WHERE correo = ?", correo);
     }
 
     public boolean existeDocumento(String numeroDocumento) {
@@ -63,7 +45,7 @@ public class UsuarioDAO {
                 SELECT id_usuario, nombre, correo, contraseña, rol,
                        tipo_documento, numero_documento, fecha_nacimiento
                 FROM usuario
-                WHERE LOWER(correo) = LOWER(?) AND estado = TRUE
+                WHERE correo = ? AND estado = TRUE
                 """;
 
         try (Connection conn = ConexionBD.obtenerConexion();
