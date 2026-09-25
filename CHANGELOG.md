@@ -3058,9 +3058,96 @@ hoy ya empece los cambios para poder seguir con mis historias de usuario
 
 no
 
-
+---
 <img width="1536" height="2048" alt="image" src="https://github.com/user-attachments/assets/49950475-232f-407e-a83d-5e243a31e2d3" />
 
 
 ---
+---
+## Daily Sprint - 24/09/2026
+
+### Isabella Posada
+
+1. **¿Qué hice ayer?**
+
+  
+
+2. **¿Qué voy a hacer hoy?**
+
+   
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+
+
+---
+
+### Valeria Cortes Rendon
+
+1. **¿Qué hice ayer?**
+
+  
+
+2. **¿Qué voy a hacer hoy?**
+
+
+   
+3. **¿Tengo algún impedimento o bloqueo?**
+
+
+   
+---
+
+### Santiago Clavijo
+
+1. **¿Qué hice ayer?**
+
+
+
+2. **¿Qué voy a hacer hoy?**
+
+
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+
+
+---
+
+### Gabriela Melo Gualteros
+
+1. **¿Qué hice ayer?**
+
+
+
+2. **¿Qué voy a hacer hoy?**
+
+
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+
+
+---
+
+
+### Maria Alejandra Rodriguez
+
+1. **¿Qué hice ayer?** 
+
+
+
+2. **¿Qué voy a hacer hoy?** 
+
+
+
+3. **¿Tengo algún impedimento o bloqueo?** 
+
+
+---
+
+
+
+---
+
 
