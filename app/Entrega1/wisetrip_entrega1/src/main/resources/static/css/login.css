@@ -3,6 +3,7 @@
 .lg {
     --tinta: #16161D;
     --morado: #5B3FA8;
+    --morado-hondo: #46307F;
     --turquesa: #2FBFAF;
     --amarillo: #FFC627;
     --crema: #EFE9DC;
@@ -25,19 +26,25 @@
 
 .lg * { box-sizing: border-box; }
 
+/* El formulario va a la izquierda: espejo del registro */
 .lg-split { display: grid; grid-template-columns: 1fr 1fr; min-height: 100vh; }
 
-/* ===== Panel visual ===== */
+/* ===== Panel visual: morado con tira de cine ===== */
 
 .lg-visual {
     position: relative;
-    background: #6BB8E8;
+    background: var(--morado);
+    border-left: 3px solid var(--tinta);
     overflow: hidden;
     padding: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .lg-marca {
-    position: relative;
+    position: absolute;
+    top: 34px; left: 34px;
     z-index: 6;
     display: inline-flex;
     align-items: center;
@@ -58,65 +65,58 @@
 }
 .lg-marca em { color: #1E9487; font-style: normal; }
 
-.lg-sol {
+/* Retícula de puntos sobre el morado */
+.lg-visual::before {
+    content: "";
     position: absolute;
-    top: 52px; right: 78px;
-    width: 92px; height: 92px;
-    background: var(--amarillo);
+    inset: 0;
+    background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,.22) 1.5px, transparent 0);
+    background-size: 26px 26px;
+}
+
+/* Tira de cine vertical */
+.lg-tira {
+    position: relative;
+    z-index: 4;
+    width: 330px;
+    background: var(--tinta);
     border: 3px solid var(--tinta);
-    border-radius: 50%;
+    border-radius: 8px;
+    padding: 0 16px;
+    box-shadow: 10px 10px 0 rgba(0,0,0,.28);
+    transform: rotate(-2.5deg);
 }
+.lg-tira::before, .lg-tira::after {
+    content: "";
+    position: absolute;
+    top: 0; bottom: 0;
+    width: 16px;
+    background-image: repeating-linear-gradient(180deg,
+        transparent 0 12px, var(--crema) 12px 22px, transparent 22px 34px);
+}
+.lg-tira::before { left: 0; }
+.lg-tira::after { right: 0; }
 
-.lg-onda {
+.lg-foto { position: relative; margin: 0; border-bottom: 3px solid var(--tinta); }
+.lg-foto:last-child { border-bottom: none; }
+.lg-foto img { width: 100%; height: 178px; object-fit: cover; display: block; }
+.lg-foto figcaption {
     position: absolute;
-    width: 80px; height: 22px;
-    border-bottom: 3px solid #fff;
-    border-radius: 0 0 50% 50%;
-}
-.lg-onda-1 { top: 176px; left: 44px; opacity: .9; }
-.lg-onda-2 { bottom: 172px; right: 52px; opacity: .75; }
-
-.lg-curva {
-    position: absolute;
-    bottom: -190px; left: -170px;
-    width: 420px; height: 420px;
-    border: 3px dashed rgba(255,255,255,.7);
-    border-radius: 50%;
-}
-.lg-curva-2 {
-    position: absolute;
-    top: -120px; right: -120px;
-    width: 340px; height: 340px;
-    border: 3px dashed rgba(255,255,255,.45);
-    border-radius: 50%;
-}
-
-.lg-polaroid {
-    position: absolute;
-    width: 252px;
-    margin: 0;
-    background: #fff;
-    border: 3px solid var(--tinta);
-    padding: 12px 12px 40px;
-    box-shadow: 8px 8px 0 var(--tinta);
-}
-.lg-polaroid img { width: 100%; height: 196px; object-fit: cover; display: block; }
-.lg-polaroid figcaption {
-    position: absolute;
-    bottom: 13px; left: 16px;
+    left: 12px; bottom: 12px;
+    background: var(--crema);
+    border: 2px solid var(--tinta);
+    border-radius: 16px;
+    padding: 4px 11px;
     font-family: var(--dato);
-    font-size: 10.5px;
+    font-size: 10px;
     letter-spacing: .1em;
     text-transform: uppercase;
     color: var(--tinta);
 }
-.lg-pol-1 { top: 20%; left: 7%;  transform: rotate(-6deg);  z-index: 3; }
-.lg-pol-2 { top: 32%; left: 48%; transform: rotate(4.5deg); z-index: 2; }
-.lg-pol-3 { top: 57%; left: 19%; transform: rotate(-2deg);  z-index: 4; }
 
 .lg-sello-flotante {
     position: absolute;
-    top: 50%; right: 42px;
+    top: 21%; right: 46px;
     z-index: 5;
     background: var(--amarillo);
     border: 2.5px solid var(--tinta);
@@ -128,21 +128,20 @@
     letter-spacing: .09em;
     text-transform: uppercase;
     box-shadow: 4px 4px 0 var(--tinta);
-    transform: rotate(5deg);
+    transform: rotate(6deg);
 }
 
 .lg-leyenda {
     position: absolute;
-    bottom: 48px; left: 44px;
+    bottom: 44px; left: 40px; right: 40px;
     z-index: 5;
-    width: 400px;
     margin: 0;
     font-family: var(--dato);
     font-size: 12px;
     line-height: 1.7;
     letter-spacing: .06em;
     text-transform: uppercase;
-    color: var(--tinta);
+    color: #fff;
 }
 
 /* ===== Panel del formulario ===== */
@@ -153,12 +152,13 @@
     justify-content: center;
     padding: 64px 9%;
     max-width: 680px;
+    margin-left: auto;
 }
 
 .lg-sello {
     display: inline-block;
     align-self: flex-start;
-    background: var(--turquesa);
+    background: var(--amarillo);
     border: 2.5px solid var(--tinta);
     border-radius: 30px;
     font-family: var(--dato);
@@ -178,6 +178,19 @@
     letter-spacing: -2.4px;
     text-transform: uppercase;
     margin: 0 0 14px;
+}
+.lg-titulo em {
+    font-style: normal;
+    color: var(--morado);
+    position: relative;
+}
+.lg-titulo em::after {
+    content: "";
+    position: absolute;
+    left: 0; right: 0; bottom: 4px;
+    height: 10px;
+    background: var(--amarillo);
+    z-index: -1;
 }
 
 .lg-bajada {
@@ -326,9 +339,9 @@
 
 @media (max-width: 960px) {
     .lg-split { grid-template-columns: 1fr; }
-    .lg-visual { min-height: 340px; }
-    .lg-polaroid { width: 168px; }
-    .lg-polaroid img { height: 132px; }
+    .lg-visual { order: -1; min-height: 300px; padding: 28px; }
+    .lg-tira { width: 250px; transform: rotate(-2deg); }
+    .lg-foto img { height: 112px; }
     .lg-leyenda, .lg-sello-flotante { display: none; }
-    .lg-panel { padding: 44px 24px; max-width: none; }
+    .lg-panel { padding: 44px 24px; max-width: none; margin-left: 0; }
 }

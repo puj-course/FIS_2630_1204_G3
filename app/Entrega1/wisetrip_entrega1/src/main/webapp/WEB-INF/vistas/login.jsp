@@ -12,43 +12,11 @@
 
 <div class="lg-split">
 
-    <aside class="lg-visual">
-        <a class="lg-marca" href="<c:url value='/'/>">
-            <img src="/img/portada/logo.png" alt="">
-            <span>Wise<em>Trip</em></span>
-        </a>
-
-        <span class="lg-sol"></span>
-        <span class="lg-onda lg-onda-1"></span>
-        <span class="lg-onda lg-onda-2"></span>
-        <span class="lg-curva"></span>
-        <span class="lg-curva-2"></span>
-
-        <figure class="lg-polaroid lg-pol-1">
-            <img src="/img/portada/Cartegena.jpg" alt="">
-            <figcaption>Cartagena · COL</figcaption>
-        </figure>
-        <figure class="lg-polaroid lg-pol-2">
-            <img src="/img/portada/Argentina.jpg" alt="">
-            <figcaption>Buenos Aires · ARG</figcaption>
-        </figure>
-        <figure class="lg-polaroid lg-pol-3">
-            <img src="/img/portada/Peru.jpg" alt="">
-            <figcaption>Cusco · PER</figcaption>
-        </figure>
-
-        <span class="lg-sello-flotante">20 países</span>
-
-        <p class="lg-leyenda">
-            Tu plan sigue guardado.<br>Entra y sigue donde lo dejaste.
-        </p>
-    </aside>
-
     <main class="lg-panel">
 
         <span class="lg-sello">Continúa donde quedaste</span>
 
-        <h1 class="lg-titulo">Hola de<br>nuevo</h1>
+        <h1 class="lg-titulo">Hola de<br><em>nuevo</em></h1>
 
         <p class="lg-bajada">
             Inicia sesión para continuar con la configuración de tu viaje
@@ -95,6 +63,34 @@
 
     </main>
 
+    <aside class="lg-visual">
+        <a class="lg-marca" href="<c:url value='/'/>">
+            <img src="/img/portada/logo.png" alt="">
+            <span>Wise<em>Trip</em></span>
+        </a>
+
+        <div class="lg-tira">
+            <figure class="lg-foto">
+                <img src="/img/portada/Cartegena.jpg" alt="">
+                <figcaption>Cartagena · COL</figcaption>
+            </figure>
+            <figure class="lg-foto">
+                <img src="/img/portada/Peru.jpg" alt="">
+                <figcaption>Cusco · PER</figcaption>
+            </figure>
+            <figure class="lg-foto">
+                <img src="/img/portada/desierto.jpg" alt="">
+                <figcaption>Atacama · CHI</figcaption>
+            </figure>
+        </div>
+
+        <span class="lg-sello-flotante">20 países</span>
+
+        <p class="lg-leyenda">
+            Tu plan sigue guardado.<br>Entra y sigue donde lo dejaste.
+        </p>
+    </aside>
+
 </div>
 
 <script>
@@ -108,4 +104,4 @@
     });
 </script>
 </body>
-</html> 
+</html>
