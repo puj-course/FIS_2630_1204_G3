@@ -52,7 +52,17 @@
 
 <main class="rs-pantalla">
 
-    <section>
+    <section class="rs-texto">
+
+        <%-- Fotos de fondo, difuminadas detrás del texto.
+             Imágenes en static/img/resumen/ (no se usan en otras pantallas). --%>
+        <div class="rs-texto-fotos" aria-hidden="true">
+            <img src="/img/resumen/tulum.jpg" alt="">
+            <img src="/img/resumen/pines.jpg" alt="">
+            <img src="/img/resumen/salar.jpg" alt="">
+            <img src="/img/resumen/monteverde.jpg" alt="">
+        </div>
+
         <span class="rs-check">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>
         </span>
@@ -112,115 +122,98 @@
     </section>
 
     <aside class="rs-zona">
-        <div class="rs-collage">
+        <div class="rs-pase">
 
-            <%-- Collage de fondo: cuatro destinos con climas distintos.
-                 Imágenes en static/img/resumen/ (no se usan en otras pantallas). --%>
-            <div class="rs-collage-fotos" aria-hidden="true">
-                <img src="/img/resumen/tulum.jpg" alt="">
-                <img src="/img/resumen/pines.jpg" alt="">
-                <img src="/img/resumen/salar.jpg" alt="">
-                <img src="/img/resumen/monteverde.jpg" alt="">
+            <div class="rs-pase-top">
+                <span>WiseTrip · Pase de abordar</span>
+                <span>${usuario.nombreCompleto}</span>
             </div>
 
-            <span class="rs-sticker rs-sticker-1" aria-hidden="true">Tulum, México</span>
-            <span class="rs-sticker rs-sticker-2" aria-hidden="true">Torres del Paine, Chile</span>
-            <span class="rs-sticker rs-sticker-3" aria-hidden="true">Salar de Uyuni, Bolivia</span>
-            <span class="rs-sticker rs-sticker-4" aria-hidden="true">Monteverde, Costa Rica</span>
+            <div class="rs-pase-columnas">
 
-            <div class="rs-pase">
+                <div class="rs-pase-cuerpo">
 
-                <div class="rs-pase-top">
-                    <span>WiseTrip · Pase de abordar</span>
-                    <span>${usuario.nombreCompleto}</span>
-                </div>
-
-                <div class="rs-pase-columnas">
-
-                    <div class="rs-pase-cuerpo">
-
-                        <div class="rs-ruta">
-                            <div>
-                                <span class="rs-pase-rotulo">Desde</span>
-                                <span class="rs-pase-codigo">${ubicacion.ciudad}</span>
-                                <span class="rs-pase-detalle">
-                                    <c:if test="${not empty ubicacion.detalle}">${ubicacion.detalle} · </c:if>
-                                    ${ubicacion.pais}
-                                </span>
-                            </div>
-                            <span class="rs-flecha" aria-hidden="true">
-                                <svg viewBox="0 0 60 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M2 6h44" stroke-dasharray="5 5"/>
-                                    <path d="M50 1l6 5-6 5"/>
-                                </svg>
+                    <div class="rs-ruta">
+                        <div>
+                            <span class="rs-pase-rotulo">Desde</span>
+                            <span class="rs-pase-codigo">${ubicacion.ciudad}</span>
+                            <span class="rs-pase-detalle">
+                                <c:if test="${not empty ubicacion.detalle}">${ubicacion.detalle} · </c:if>
+                                ${ubicacion.pais}
                             </span>
-                            <div class="rs-ruta-destino">
-                                <span class="rs-pase-rotulo">Hacia</span>
-                                <c:choose>
-                                    <c:when test="${not empty destinoElegido}">
-                                        <span class="rs-pase-codigo">${destinoElegido.ciudad.nombre}</span>
-                                        <span class="rs-pase-detalle">${destinoElegido.ciudad.pais}</span>
-                                    </c:when>
-                                    <c:otherwise>
-                                        <span class="rs-pase-interrogante">???</span>
-                                        <span class="rs-pase-detalle">Lo calculamos ahora</span>
-                                    </c:otherwise>
-                                </c:choose>
-                            </div>
                         </div>
-
-                        <div class="rs-perforado"></div>
-
-                        <div class="rs-fechas">
-                            <div>
-                                <span class="rs-pase-rotulo">Inicio</span>
-                                <strong class="rs-fecha">${fechas.fechaInicio}</strong>
-                            </div>
-                            <div>
-                                <span class="rs-pase-rotulo">Regreso</span>
-                                <strong class="rs-fecha">${fechas.fechaFin}</strong>
-                            </div>
-                            <div>
-                                <span class="rs-pase-rotulo">Duración</span>
-                                <strong class="rs-fecha">${fechas.duracionDias} días</strong>
-                                <a class="rs-enlace-fino" href="<c:url value='/fechas'/>">Editar fechas</a>
-                            </div>
+                        <span class="rs-flecha" aria-hidden="true">
+                            <svg viewBox="0 0 60 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M2 6h44" stroke-dasharray="5 5"/>
+                                <path d="M50 1l6 5-6 5"/>
+                            </svg>
+                        </span>
+                        <div class="rs-ruta-destino">
+                            <span class="rs-pase-rotulo">Hacia</span>
+                            <c:choose>
+                                <c:when test="${not empty destinoElegido}">
+                                    <span class="rs-pase-codigo">${destinoElegido.ciudad.nombre}</span>
+                                    <span class="rs-pase-detalle">${destinoElegido.ciudad.pais}</span>
+                                </c:when>
+                                <c:otherwise>
+                                    <span class="rs-pase-interrogante">???</span>
+                                    <span class="rs-pase-detalle">Lo calculamos ahora</span>
+                                </c:otherwise>
+                            </c:choose>
                         </div>
-
-                        <div class="rs-dinero">
-                            <div class="rs-monto">
-                                <span class="rs-pase-rotulo">Presupuesto</span>
-                                <strong>${montoFormateado} ${presupuesto.moneda}</strong>
-                                <span class="rs-pase-detalle">
-                                    ${nombreMoneda}
-                                    <c:if test="${not empty usdFormateado}"> · ≈ USD ${usdFormateado}</c:if>
-                                </span>
-                            </div>
-                            <div>
-                                <span class="rs-pase-rotulo">Por día</span>
-                                <strong class="rs-fecha">
-                                    <c:choose>
-                                        <c:when test="${fechas.duracionDias > 0}">
-                                            <fmt:formatNumber value="${presupuesto.montoNumerico / fechas.duracionDias}"
-                                                              maxFractionDigits="0"/>
-                                            ${presupuesto.moneda}
-                                        </c:when>
-                                        <c:otherwise>—</c:otherwise>
-                                    </c:choose>
-                                </strong>
-                                <a class="rs-enlace-fino" href="<c:url value='/presupuesto'/>">Editar presupuesto</a>
-                            </div>
-                        </div>
-
                     </div>
 
-                    <div class="rs-talon">
-                        <span class="rs-talon-marca">WiseTrip</span>
-                        <span class="rs-barras"></span>
-                        <span class="rs-talon-pie">${fechas.duracionDias}D · 1 PAX</span>
+                    <div class="rs-perforado"></div>
+
+                    <div class="rs-fechas">
+                        <div>
+                            <span class="rs-pase-rotulo">Inicio</span>
+                            <strong class="rs-fecha">${fechas.fechaInicio}</strong>
+                        </div>
+                        <div>
+                            <span class="rs-pase-rotulo">Regreso</span>
+                            <strong class="rs-fecha">${fechas.fechaFin}</strong>
+                        </div>
+                        <div>
+                            <span class="rs-pase-rotulo">Duración</span>
+                            <strong class="rs-fecha">${fechas.duracionDias} días</strong>
+                            <a class="rs-enlace-fino" href="<c:url value='/fechas'/>">Editar fechas</a>
+                        </div>
+                    </div>
+
+                    <div class="rs-dinero">
+                        <div class="rs-monto">
+                            <span class="rs-pase-rotulo">Presupuesto</span>
+                            <strong>${montoFormateado} ${presupuesto.moneda}</strong>
+                            <span class="rs-pase-detalle">
+                                ${nombreMoneda}
+                                <c:if test="${not empty usdFormateado}"> · ≈ USD ${usdFormateado}</c:if>
+                            </span>
+                        </div>
+                        <div>
+                            <span class="rs-pase-rotulo">Por día</span>
+                            <strong class="rs-fecha">
+                                <c:choose>
+                                    <c:when test="${fechas.duracionDias > 0}">
+                                        <fmt:formatNumber value="${presupuesto.montoNumerico / fechas.duracionDias}"
+                                                          maxFractionDigits="0"/>
+                                        ${presupuesto.moneda}
+                                    </c:when>
+                                    <c:otherwise>—</c:otherwise>
+                                </c:choose>
+                            </strong>
+                            <a class="rs-enlace-fino" href="<c:url value='/presupuesto'/>">Editar presupuesto</a>
+                        </div>
                     </div>
 
                 </div>
+
+                <div class="rs-talon">
+                    <span class="rs-talon-marca">WiseTrip</span>
+                    <span class="rs-barras"></span>
+                    <span class="rs-talon-pie">${fechas.duracionDias}D · 1 PAX</span>
+                </div>
+
             </div>
         </div>
     </aside>
