@@ -5,7 +5,7 @@
      de moneda se muestra la bandera del país correspondiente (HU-55).
      Es el último paso del flujo (Origen > Preferencias > Fechas > Presupuesto).
 
-     Rediseño: hoja propia presupuesto.css con prefijo pp-.
+     Rediseño: solo visual. Hoja propia presupuesto.css con prefijo pp-.
      HU-55 intacta: select id="moneda", img id="bandera-moneda" y la función
      actualizarBanderaMoneda() no cambian. --%>
 
@@ -68,11 +68,11 @@
                 </c:choose>
             </p>
 
-            <form action="<c:url value='/presupuesto'/>" method="post" id="formPresupuesto">
+            <form action="<c:url value='/presupuesto'/>" method="post">
 
                 <div class="pp-campo">
                     <label for="moneda" class="pp-etiqueta">Moneda</label>
-                    <div class="campo-moneda pp-moneda">
+                    <div class="campo-moneda">
                         <div class="pp-select">
                             <select name="moneda" id="moneda" onchange="actualizarBanderaMoneda()">
                                 <option value="">Selecciona una moneda</option>
@@ -82,7 +82,7 @@
                             </select>
                         </div>
                         <%-- HU-55: aquí se muestra la bandera de la moneda escogida --%>
-                        <span class="pp-bandera-marco" id="ppBanderaMarco">
+                        <span class="pp-bandera-marco">
                             <svg class="pp-bandera-vacia" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 21V4M5 4h11l-2 4 2 4H5"/></svg>
                             <img id="bandera-moneda" class="bandera-moneda" src="" alt="">
                         </span>
@@ -100,7 +100,7 @@
                     <div class="pp-monto ${not empty errores.monto ? 'pp-monto-error' : ''}">
                         <span class="pp-prefijo" id="ppPrefijo">---</span>
                         <input type="text" name="monto" id="monto" value="${presupuesto.monto}"
-                               placeholder="Ej: 2500000" inputmode="decimal" autocomplete="off">
+                               placeholder="Ej: 2500000" inputmode="decimal">
                     </div>
                     <%-- HU-39: Si ya hay un monto guardado en sesión, se precarga aquí. --%>
                     <c:if test="${not empty errores.monto}">
@@ -132,7 +132,7 @@
             </form>
         </section>
 
-        <%-- Panel ilustrado: recibo que se llena mientras el usuario escribe. --%>
+        <%-- Panel ilustrado: recibo que copia lo que el usuario escribe. --%>
         <aside class="pp-panel" aria-hidden="true"
                data-dias="${not empty fechas ? fechas.duracionDias : 0}">
             <span class="pp-sol"></span>
@@ -171,9 +171,9 @@
                                     <strong id="ppPorDia">--</strong>
                                 </div>
                                 <div class="pp-linea">
-                                    <span>En dólares (aprox.)</span>
+                                    <span>Moneda</span>
                                     <span class="pp-puntos"></span>
-                                    <strong id="ppUsd">--</strong>
+                                    <strong id="ppNombreMoneda">--</strong>
                                 </div>
                             </div>
                         </div>
@@ -187,14 +187,6 @@
                 </div>
 
                 <span class="pp-sello" id="ppSello">Falta el monto</span>
-            </div>
-
-            <%-- Tasas para el equivalente en USD (vienen de PresupuestoServicio).
-                 Van en HTML para que el script no tenga etiquetas JSP. --%>
-            <div id="ppTasas" hidden>
-                <c:forEach var="t" items="${tasasUsd}">
-                    <span data-moneda="${t.key}" data-tasa="${t.value}"></span>
-                </c:forEach>
             </div>
 
             <svg class="pp-colinas" viewBox="0 0 600 140" preserveAspectRatio="none">
@@ -236,30 +228,15 @@
     document.addEventListener("DOMContentLoaded", actualizarBanderaMoneda);
 </script>
 
-<%-- ===== Rediseño: vista previa del recibo =====
-     Script aparte. No modifica la función de la bandera: solo escucha
-     los mismos campos y pinta el panel de la derecha. --%>
+<%-- ===== Rediseño: solo visual =====
+     Copia en el recibo lo que el usuario escribe. No valida, no envía
+     nada y no toca el formulario ni la bandera. --%>
 <script>
-    // Unidades de cada moneda por 1 USD, leídas del bloque oculto #ppTasas
-    const TASAS_USD = {};
-    document.querySelectorAll('#ppTasas span').forEach(function (s) {
-        TASAS_USD[s.dataset.moneda] = Number(s.dataset.tasa);
-    });
-
     (function () {
         const select = document.getElementById('moneda');
         const monto = document.getElementById('monto');
-        const bandera = document.getElementById('bandera-moneda');
-        const panel = document.querySelector('.pp-panel');
-        const dias = Number(panel.dataset.dias) || 0;
+        const dias = Number(document.querySelector('.pp-panel').dataset.dias) || 0;
         const formato = new Intl.NumberFormat('es-CO', { maximumFractionDigits: 0 });
-
-        // Si el archivo de la bandera no existe, se oculta el ícono roto
-        // y queda visible el dibujo de bandera del marco.
-        bandera.addEventListener('error', function () {
-            if (!bandera.getAttribute('src')) return;
-            bandera.style.display = 'none';
-        });
 
         // Mismo criterio que Presupuesto.getMontoNumerico():
         // el punto separa miles y la coma separa decimales.
@@ -275,20 +252,20 @@
             const codigo = select.value;
             const valor = leerMonto(monto.value);
             const sello = document.getElementById('ppSello');
+            const opcion = select.options[select.selectedIndex];
 
             document.getElementById('ppPrefijo').textContent = codigo || '---';
             document.getElementById('ppCodigoTotal').textContent = codigo || '---';
+            document.getElementById('ppNombreMoneda').textContent =
+                codigo && opcion ? opcion.text.replace(/\s*\(.*$/, '') : '--';
 
             if (valor > 0) {
                 document.getElementById('ppTotal').textContent = formato.format(valor);
                 document.getElementById('ppPorDia').textContent =
                     dias > 0 ? formato.format(valor / dias) + (codigo ? ' ' + codigo : '') : '--';
-                document.getElementById('ppUsd').textContent =
-                    codigo && TASAS_USD[codigo] ? 'USD ' + formato.format(valor / TASAS_USD[codigo]) : '--';
             } else {
                 document.getElementById('ppTotal').textContent = '0';
                 document.getElementById('ppPorDia').textContent = '--';
-                document.getElementById('ppUsd').textContent = '--';
             }
 
             if (!codigo) {
