@@ -3240,6 +3240,8 @@ si aun tenemos algunos problemas con la nube para que funcione como la pagina we
 
 ---
 
+<img width="738" height="1600" alt="image" src="https://github.com/user-attachments/assets/a6bc8f9e-5aa5-430b-9bef-e38cc659887a" />
+
 
 ---
 
