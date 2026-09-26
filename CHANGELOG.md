@@ -3194,15 +3194,15 @@ hoy realice algunos índices con llaves foráneas de una tabla que se llama nive
 
 1. **¿Qué hice ayer?**
 
-   
+   ayer empece a trabajar en mi segunda hu que se refiere a ver la moneda del presupuesto en el resumen antes de continuar a las recomendaciones
 
 2. **¿Qué voy a hacer hoy?**
 
-
+hoy segui trabajando en esta hu y estoy a punto de acabarla, y esta semana con isa estamos organizando en changelog
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
-   
+   no
 
 ---
 
