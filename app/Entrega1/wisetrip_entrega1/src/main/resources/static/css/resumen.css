@@ -145,10 +145,10 @@
     inset: 0;
     z-index: -1;
     background: linear-gradient(90deg,
-        rgba(239, 233, 220, .88) 0%,
-        rgba(239, 233, 220, .74) 32%,
-        rgba(239, 233, 220, .40) 55%,
-        rgba(239, 233, 220, .10) 100%);
+        rgba(239, 233, 220, .74) 0%,
+        rgba(239, 233, 220, .56) 32%,
+        rgba(239, 233, 220, .24) 55%,
+        rgba(239, 233, 220, 0) 100%);
 }
 
 /* ===== Columna de texto ===== */
@@ -418,9 +418,9 @@
     /* En una columna la capa va de arriba (texto) hacia abajo (pase) */
     .rs-escena::before {
         background: linear-gradient(180deg,
-            rgba(239, 233, 220, .88) 0%,
-            rgba(239, 233, 220, .70) 45%,
-            rgba(239, 233, 220, .25) 100%);
+            rgba(239, 233, 220, .76) 0%,
+            rgba(239, 233, 220, .54) 45%,
+            rgba(239, 233, 220, .10) 100%);
     }
     .rs-zona { justify-content: center; }
     .rs-pase { transform: none; max-width: none; }
