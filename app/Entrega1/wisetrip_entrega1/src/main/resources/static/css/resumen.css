@@ -75,8 +75,8 @@
     color: #fff;
     border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
-    font-size: 10px;
 }
+.rs-paso-check svg { width: 12px; height: 12px; }
 .rs-linea { width: 24px; height: 2.5px; background: var(--gris-claro); flex-shrink: 0; }
 
 .rs-usuario { display: flex; align-items: center; gap: 11px; flex-shrink: 0; }
@@ -106,6 +106,49 @@
     align-items: center;
 }
 
+/* ===== Recuadro del texto con fotos difuminadas detrás ===== */
+
+.rs-texto {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    padding: 48px 44px 52px;
+    border: 3px solid var(--tinta);
+    border-radius: 28px;
+}
+
+/* Collage 2x2 al fondo */
+.rs-texto-fotos {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 3px;
+    background: var(--tinta);
+}
+.rs-texto-fotos img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: blur(1.5px) saturate(.95);
+    transform: scale(1.06);   /* evita bordes borrosos en las orillas */
+}
+
+/* Capa crema que aclara las fotos para que el texto se lea */
+.rs-texto::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(160deg,
+        rgba(239, 233, 220, .93) 0%,
+        rgba(239, 233, 220, .86) 55%,
+        rgba(239, 233, 220, .78) 100%);
+}
+
 .rs-check {
     width: 74px; height: 74px;
     background: var(--turquesa);
@@ -113,11 +156,10 @@
     border-radius: 50%;
     box-shadow: 5px 5px 0 var(--tinta);
     display: flex; align-items: center; justify-content: center;
-    font-size: 34px;
-    font-weight: 700;
     color: var(--tinta);
     margin-bottom: 30px;
 }
+.rs-check svg { width: 36px; height: 36px; }
 
 .rs-titulo {
     font-family: var(--display);
@@ -131,7 +173,7 @@
 .rs-bajada {
     font-size: 17px;
     line-height: 1.6;
-    color: #43434D;
+    color: #2E2E36;
     margin: 0 0 34px;
     max-width: 44ch;
 }
@@ -172,7 +214,7 @@
 .rs-pastilla:nth-child(3n+2) { background: var(--verde); }
 .rs-pastilla:nth-child(3n) { background: var(--rosa); }
 .rs-pastilla-mas {
-    background: transparent;
+    background: var(--crema);
     border: 2.5px dashed var(--tinta);
     font-size: 14px;
     font-weight: 600;
@@ -229,7 +271,8 @@
 .rs-pase-cuerpo { flex: 1; min-width: 0; padding: 28px 26px 24px; }
 
 .rs-ruta { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; }
-.rs-ruta-destino { text-align: right; }
+.rs-ruta > div:first-child { min-width: 0; }
+.rs-ruta-destino { text-align: right; flex-shrink: 0; }
 
 .rs-pase-rotulo {
     display: block;
@@ -257,7 +300,14 @@
     color: var(--morado);
 }
 .rs-pase-detalle { display: block; font-size: 13px; color: var(--gris); margin-top: 7px; line-height: 1.45; }
-.rs-flecha { font-family: var(--dato); font-size: 14px; padding-top: 30px; }
+.rs-ruta-destino .rs-pase-detalle { white-space: nowrap; }
+
+.rs-flecha {
+    flex-shrink: 0;
+    padding-top: 34px;
+    color: var(--tinta);
+}
+.rs-flecha svg { display: block; width: 60px; height: 12px; }
 
 .rs-perforado { border-top: 2.5px dashed var(--tinta); margin: 22px 0 20px; }
 
@@ -335,6 +385,7 @@
     .rs-pantalla { grid-template-columns: 1fr; gap: 40px; padding: 32px 20px 52px; }
     .rs-cabecera { flex-wrap: wrap; gap: 14px; padding: 14px 20px; }
     .rs-pasos { order: 3; width: 100%; justify-content: flex-start; }
+    .rs-texto { padding: 36px 26px 40px; }
     .rs-pase { transform: none; max-width: none; }
     .rs-pase-columnas { flex-direction: column; }
     .rs-talon {
@@ -353,4 +404,10 @@
     }
     .rs-fechas { grid-template-columns: 1fr 1fr; }
     .rs-dinero { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 600px) {
+    .rs-ruta { flex-wrap: wrap; }
+    .rs-flecha { display: none; }
+    .rs-ruta-destino { text-align: left; }
 }

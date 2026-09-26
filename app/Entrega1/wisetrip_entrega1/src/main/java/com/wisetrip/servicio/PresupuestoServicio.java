@@ -152,11 +152,6 @@ public class PresupuestoServicio {
         return MONEDAS.getOrDefault(codigo, codigo);
     }
 
-    /** Devuelve la tasa de cambio usada en el frontend para mostrar el equivalente en USD. */
-    public Map<String, Double> tasasPorUsd() {
-        return new LinkedHashMap<>(UNIDADES_POR_USD);
-    }
-
     /** Formatea un numero con separador de miles, para mostrarlo. */
     public String formatear(double valor) {
         return String.format(Locale.US, "%,.2f", valor);
