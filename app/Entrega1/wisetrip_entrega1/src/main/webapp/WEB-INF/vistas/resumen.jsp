@@ -51,173 +51,174 @@
 </header>
 
 <main class="rs-pantalla">
+    <div class="rs-escena">
 
-    <section class="rs-texto">
-
-        <%-- Fotos de fondo, difuminadas detrás del texto.
+        <%-- Fotos de fondo detrás del texto y del pase.
              Imágenes en static/img/resumen/ (no se usan en otras pantallas). --%>
-        <div class="rs-texto-fotos" aria-hidden="true">
+        <div class="rs-escena-fotos" aria-hidden="true">
             <img src="/img/resumen/tulum.jpg" alt="">
             <img src="/img/resumen/pines.jpg" alt="">
             <img src="/img/resumen/salar.jpg" alt="">
             <img src="/img/resumen/monteverde.jpg" alt="">
         </div>
 
-        <span class="rs-check">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>
-        </span>
+        <section class="rs-texto">
+            <span class="rs-check">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>
+            </span>
 
-        <c:choose>
-            <c:when test="${not empty destinoElegido}">
-                <h1 class="rs-titulo">Tu viaje<br>a ${destinoElegido.ciudad.nombre}</h1>
-                <p class="rs-bajada">
-                    Ya elegiste tu destino. Revisa que todo esté bien y continúa
-                    con el reparto de tu presupuesto.
-                </p>
-            </c:when>
-            <c:otherwise>
-                <h1 class="rs-titulo">Tu viaje está<br>listo para<br>calcularse</h1>
-                <p class="rs-bajada">
-                    Revisa tu pase. Con estos datos WiseTrip busca los tres destinos
-                    que mejor encajan contigo y con tu presupuesto.
-                </p>
-            </c:otherwise>
-        </c:choose>
+            <c:choose>
+                <c:when test="${not empty destinoElegido}">
+                    <h1 class="rs-titulo">Tu viaje<br>a ${destinoElegido.ciudad.nombre}</h1>
+                    <p class="rs-bajada">
+                        Ya elegiste tu destino. Revisa que todo esté bien y continúa
+                        con el reparto de tu presupuesto.
+                    </p>
+                </c:when>
+                <c:otherwise>
+                    <h1 class="rs-titulo">Tu viaje está<br>listo para<br>calcularse</h1>
+                    <p class="rs-bajada">
+                        Revisa tu pase. Con estos datos WiseTrip busca los tres destinos
+                        que mejor encajan contigo y con tu presupuesto.
+                    </p>
+                </c:otherwise>
+            </c:choose>
 
-        <c:if test="${not empty resumenPreferencias}">
-            <div class="rs-bloque-cabeza">
-                <span class="rs-rotulo">Tus preferencias</span>
-                <a class="rs-editar" href="<c:url value='/preferencias'/>">Editar</a>
-            </div>
+            <c:if test="${not empty resumenPreferencias}">
+                <div class="rs-bloque-cabeza">
+                    <span class="rs-rotulo">Tus preferencias</span>
+                    <a class="rs-editar" href="<c:url value='/preferencias'/>">Editar</a>
+                </div>
 
-            <div class="rs-pastillas">
-                <c:set var="mostradas" value="0"/>
-                <c:forEach var="entrada" items="${resumenPreferencias}">
-                    <c:forEach var="etiqueta" items="${entrada.value}">
-                        <c:if test="${mostradas < 6}">
-                            <span class="rs-pastilla">${etiqueta}</span>
-                            <c:set var="mostradas" value="${mostradas + 1}"/>
-                        </c:if>
+                <div class="rs-pastillas">
+                    <c:set var="mostradas" value="0"/>
+                    <c:forEach var="entrada" items="${resumenPreferencias}">
+                        <c:forEach var="etiqueta" items="${entrada.value}">
+                            <c:if test="${mostradas < 6}">
+                                <span class="rs-pastilla">${etiqueta}</span>
+                                <c:set var="mostradas" value="${mostradas + 1}"/>
+                            </c:if>
+                        </c:forEach>
                     </c:forEach>
-                </c:forEach>
 
-                <c:if test="${afirmativas > 6}">
-                    <span class="rs-pastilla-mas">+${afirmativas - 6} más</span>
-                </c:if>
-            </div>
-        </c:if>
+                    <c:if test="${afirmativas > 6}">
+                        <span class="rs-pastilla-mas">+${afirmativas - 6} más</span>
+                    </c:if>
+                </div>
+            </c:if>
 
-        <c:choose>
-            <c:when test="${not empty destinoElegido}">
-                <a class="rs-calcular" href="<c:url value='/plan'/>">
-                    Repartir mi presupuesto &rarr;
-                </a>
-            </c:when>
-            <c:otherwise>
-                <a class="rs-calcular" href="<c:url value='/recomendaciones'/>">
-                    Calcular mis destinos &rarr;
-                </a>
-            </c:otherwise>
-        </c:choose>
-    </section>
+            <c:choose>
+                <c:when test="${not empty destinoElegido}">
+                    <a class="rs-calcular" href="<c:url value='/plan'/>">
+                        Repartir mi presupuesto &rarr;
+                    </a>
+                </c:when>
+                <c:otherwise>
+                    <a class="rs-calcular" href="<c:url value='/recomendaciones'/>">
+                        Calcular mis destinos &rarr;
+                    </a>
+                </c:otherwise>
+            </c:choose>
+        </section>
 
-    <aside class="rs-zona">
-        <div class="rs-pase">
+        <aside class="rs-zona">
+            <div class="rs-pase">
 
-            <div class="rs-pase-top">
-                <span>WiseTrip · Pase de abordar</span>
-                <span>${usuario.nombreCompleto}</span>
-            </div>
+                <div class="rs-pase-top">
+                    <span>WiseTrip · Pase de abordar</span>
+                    <span>${usuario.nombreCompleto}</span>
+                </div>
 
-            <div class="rs-pase-columnas">
+                <div class="rs-pase-columnas">
 
-                <div class="rs-pase-cuerpo">
+                    <div class="rs-pase-cuerpo">
 
-                    <div class="rs-ruta">
-                        <div>
-                            <span class="rs-pase-rotulo">Desde</span>
-                            <span class="rs-pase-codigo">${ubicacion.ciudad}</span>
-                            <span class="rs-pase-detalle">
-                                <c:if test="${not empty ubicacion.detalle}">${ubicacion.detalle} · </c:if>
-                                ${ubicacion.pais}
+                        <div class="rs-ruta">
+                            <div>
+                                <span class="rs-pase-rotulo">Desde</span>
+                                <span class="rs-pase-codigo">${ubicacion.ciudad}</span>
+                                <span class="rs-pase-detalle">
+                                    <c:if test="${not empty ubicacion.detalle}">${ubicacion.detalle} · </c:if>
+                                    ${ubicacion.pais}
+                                </span>
+                            </div>
+                            <span class="rs-flecha" aria-hidden="true">
+                                <svg viewBox="0 0 60 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M2 6h44" stroke-dasharray="5 5"/>
+                                    <path d="M50 1l6 5-6 5"/>
+                                </svg>
                             </span>
-                        </div>
-                        <span class="rs-flecha" aria-hidden="true">
-                            <svg viewBox="0 0 60 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M2 6h44" stroke-dasharray="5 5"/>
-                                <path d="M50 1l6 5-6 5"/>
-                            </svg>
-                        </span>
-                        <div class="rs-ruta-destino">
-                            <span class="rs-pase-rotulo">Hacia</span>
-                            <c:choose>
-                                <c:when test="${not empty destinoElegido}">
-                                    <span class="rs-pase-codigo">${destinoElegido.ciudad.nombre}</span>
-                                    <span class="rs-pase-detalle">${destinoElegido.ciudad.pais}</span>
-                                </c:when>
-                                <c:otherwise>
-                                    <span class="rs-pase-interrogante">???</span>
-                                    <span class="rs-pase-detalle">Lo calculamos ahora</span>
-                                </c:otherwise>
-                            </c:choose>
-                        </div>
-                    </div>
-
-                    <div class="rs-perforado"></div>
-
-                    <div class="rs-fechas">
-                        <div>
-                            <span class="rs-pase-rotulo">Inicio</span>
-                            <strong class="rs-fecha">${fechas.fechaInicio}</strong>
-                        </div>
-                        <div>
-                            <span class="rs-pase-rotulo">Regreso</span>
-                            <strong class="rs-fecha">${fechas.fechaFin}</strong>
-                        </div>
-                        <div>
-                            <span class="rs-pase-rotulo">Duración</span>
-                            <strong class="rs-fecha">${fechas.duracionDias} días</strong>
-                            <a class="rs-enlace-fino" href="<c:url value='/fechas'/>">Editar fechas</a>
-                        </div>
-                    </div>
-
-                    <div class="rs-dinero">
-                        <div class="rs-monto">
-                            <span class="rs-pase-rotulo">Presupuesto</span>
-                            <strong>${montoFormateado} ${presupuesto.moneda}</strong>
-                            <span class="rs-pase-detalle">
-                                ${nombreMoneda}
-                                <c:if test="${not empty usdFormateado}"> · ≈ USD ${usdFormateado}</c:if>
-                            </span>
-                        </div>
-                        <div>
-                            <span class="rs-pase-rotulo">Por día</span>
-                            <strong class="rs-fecha">
+                            <div class="rs-ruta-destino">
+                                <span class="rs-pase-rotulo">Hacia</span>
                                 <c:choose>
-                                    <c:when test="${fechas.duracionDias > 0}">
-                                        <fmt:formatNumber value="${presupuesto.montoNumerico / fechas.duracionDias}"
-                                                          maxFractionDigits="0"/>
-                                        ${presupuesto.moneda}
+                                    <c:when test="${not empty destinoElegido}">
+                                        <span class="rs-pase-codigo">${destinoElegido.ciudad.nombre}</span>
+                                        <span class="rs-pase-detalle">${destinoElegido.ciudad.pais}</span>
                                     </c:when>
-                                    <c:otherwise>—</c:otherwise>
+                                    <c:otherwise>
+                                        <span class="rs-pase-interrogante">???</span>
+                                        <span class="rs-pase-detalle">Lo calculamos ahora</span>
+                                    </c:otherwise>
                                 </c:choose>
-                            </strong>
-                            <a class="rs-enlace-fino" href="<c:url value='/presupuesto'/>">Editar presupuesto</a>
+                            </div>
                         </div>
+
+                        <div class="rs-perforado"></div>
+
+                        <div class="rs-fechas">
+                            <div>
+                                <span class="rs-pase-rotulo">Inicio</span>
+                                <strong class="rs-fecha">${fechas.fechaInicio}</strong>
+                            </div>
+                            <div>
+                                <span class="rs-pase-rotulo">Regreso</span>
+                                <strong class="rs-fecha">${fechas.fechaFin}</strong>
+                            </div>
+                            <div>
+                                <span class="rs-pase-rotulo">Duración</span>
+                                <strong class="rs-fecha">${fechas.duracionDias} días</strong>
+                                <a class="rs-enlace-fino" href="<c:url value='/fechas'/>">Editar fechas</a>
+                            </div>
+                        </div>
+
+                        <div class="rs-dinero">
+                            <div class="rs-monto">
+                                <span class="rs-pase-rotulo">Presupuesto</span>
+                                <strong>${montoFormateado} ${presupuesto.moneda}</strong>
+                                <span class="rs-pase-detalle">
+                                    ${nombreMoneda}
+                                    <c:if test="${not empty usdFormateado}"> · ≈ USD ${usdFormateado}</c:if>
+                                </span>
+                            </div>
+                            <div>
+                                <span class="rs-pase-rotulo">Por día</span>
+                                <strong class="rs-fecha">
+                                    <c:choose>
+                                        <c:when test="${fechas.duracionDias > 0}">
+                                            <fmt:formatNumber value="${presupuesto.montoNumerico / fechas.duracionDias}"
+                                                              maxFractionDigits="0"/>
+                                            ${presupuesto.moneda}
+                                        </c:when>
+                                        <c:otherwise>—</c:otherwise>
+                                    </c:choose>
+                                </strong>
+                                <a class="rs-enlace-fino" href="<c:url value='/presupuesto'/>">Editar presupuesto</a>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="rs-talon">
+                        <span class="rs-talon-marca">WiseTrip</span>
+                        <span class="rs-barras"></span>
+                        <span class="rs-talon-pie">${fechas.duracionDias}D · 1 PAX</span>
                     </div>
 
                 </div>
-
-                <div class="rs-talon">
-                    <span class="rs-talon-marca">WiseTrip</span>
-                    <span class="rs-barras"></span>
-                    <span class="rs-talon-pie">${fechas.duracionDias}D · 1 PAX</span>
-                </div>
-
             </div>
-        </div>
-    </aside>
+        </aside>
 
+    </div>
 </main>
 
 </body>
