@@ -43,12 +43,22 @@
     <section>
         <span class="rs-check">✓</span>
 
-        <h1 class="rs-titulo">Tu viaje está<br>listo para<br>calcularse</h1>
-
-        <p class="rs-bajada">
-            Revisa tu pase. Con estos datos WiseTrip busca los tres destinos
-            que mejor encajan contigo y con tu presupuesto.
-        </p>
+        <c:choose>
+            <c:when test="${not empty destinoElegido}">
+                <h1 class="rs-titulo">Tu viaje<br>a ${destinoElegido.ciudad.nombre}</h1>
+                <p class="rs-bajada">
+                    Ya elegiste tu destino. Revisa que todo esté bien y continúa
+                    con el reparto de tu presupuesto.
+                </p>
+            </c:when>
+            <c:otherwise>
+                <h1 class="rs-titulo">Tu viaje está<br>listo para<br>calcularse</h1>
+                <p class="rs-bajada">
+                    Revisa tu pase. Con estos datos WiseTrip busca los tres destinos
+                    que mejor encajan contigo y con tu presupuesto.
+                </p>
+            </c:otherwise>
+        </c:choose>
 
         <c:if test="${not empty resumenPreferencias}">
             <div class="rs-bloque-cabeza">
@@ -73,9 +83,18 @@
             </div>
         </c:if>
 
-        <a class="rs-calcular" href="<c:url value='/recomendaciones'/>">
-            Calcular mis destinos &rarr;
-        </a>
+        <c:choose>
+            <c:when test="${not empty destinoElegido}">
+                <a class="rs-calcular" href="<c:url value='/plan'/>">
+                    Repartir mi presupuesto &rarr;
+                </a>
+            </c:when>
+            <c:otherwise>
+                <a class="rs-calcular" href="<c:url value='/recomendaciones'/>">
+                    Calcular mis destinos &rarr;
+                </a>
+            </c:otherwise>
+        </c:choose>
     </section>
 
     <aside class="rs-zona">
@@ -102,8 +121,16 @@
                         <span class="rs-flecha">- - - &rarr;</span>
                         <div class="rs-ruta-destino">
                             <span class="rs-pase-rotulo">Hacia</span>
-                            <span class="rs-pase-interrogante">???</span>
-                            <span class="rs-pase-detalle">Lo calculamos ahora</span>
+                            <c:choose>
+                                <c:when test="${not empty destinoElegido}">
+                                    <span class="rs-pase-codigo">${destinoElegido.ciudad.nombre}</span>
+                                    <span class="rs-pase-detalle">${destinoElegido.ciudad.pais}</span>
+                                </c:when>
+                                <c:otherwise>
+                                    <span class="rs-pase-interrogante">???</span>
+                                    <span class="rs-pase-detalle">Lo calculamos ahora</span>
+                                </c:otherwise>
+                            </c:choose>
                         </div>
                     </div>
 
