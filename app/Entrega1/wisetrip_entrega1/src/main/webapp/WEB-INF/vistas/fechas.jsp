@@ -2,7 +2,11 @@
      Vista donde el usuario elige fecha de inicio y regreso con un selector
      de rango tipo calendario, muestra la duración calculada del viaje y
      los errores de validación si los hay.
-     Es el tercer paso del flujo (Origen > Preferencias > Fechas > Presupuesto). --%>
+     Es el tercer paso del flujo (Origen > Preferencias > Fechas > Presupuesto).
+
+     Rediseño: hoja propia fechas.css con prefijo fc-.
+     Las clases sin prefijo (campo-fecha, calendario-*, dia, activo...) y
+     los id los usa el script del calendario (HU-51). No renombrarlos. --%>
 
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
@@ -12,86 +16,203 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Fechas del viaje | WiseTrip</title>
-    <link rel="stylesheet" href="<c:url value='/css/estilos.css'/>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=IBM+Plex+Mono:wght@400;500;600&family=Instrument+Sans:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="/css/fechas.css">
 </head>
-<body>
-<div class="tarjeta">
+<body class="fc">
+<div class="fc-pagina">
 
-    <div class="barra">
-        <span>Hola, <strong>${usuario.nombreCompleto}</strong></span>
-        <a href="<c:url value='/logout'/>">Cerrar sesión</a>
-    </div>
-
-    <div class="pasos">
-<%-- HU-37: Indicador visual de en qué paso del flujo está el viajero. --%>
-<%-- HU-37: Indicador visual de en qué paso del flujo está el viajero. --%>
-        <span class="paso hecho">Origen</span>
-        <span class="paso hecho">Preferencias</span>
-        <span class="paso activo">Fechas</span>
-        <span class="paso">Presupuesto</span>
-    </div>
-
-    <h1>¿Cuándo viajas?</h1>
-    <p class="subtitulo">
-        Con las fechas calculamos cuántos días dura el viaje y cómo repartir tu presupuesto.
-    </p>
-
-    <%-- HU-51: Selector de rango de fechas tipo calendario, con hover
-         que muestra el rango y las noches antes de confirmar. --%>
-    <form action="<c:url value='/fechas'/>" method="post" id="formFechas">
-
-        <div class="selector-fechas" id="selectorFechas">
-            <div class="campo-fecha activo" id="campoInicio" data-campo="inicio">
-                <span class="campo-fecha-icono">&#128197;</span>
-                <div>
-                    <label>Entrada</label>
-                    <span class="campo-fecha-valor" id="valorInicio">Selecciona</span>
-                </div>
-            </div>
-            <div class="campo-fecha-divisor"></div>
-            <div class="campo-fecha" id="campoFin" data-campo="fin">
-                <div>
-                    <label>Salida</label>
-                    <span class="campo-fecha-valor" id="valorFin">Selecciona</span>
-                </div>
-            </div>
-
-            <div class="calendario-flotante" id="calendarioFlotante" hidden>
-                <div class="calendario-nav">
-                    <button type="button" class="calendario-flecha" id="mesAnterior">&larr;</button>
-                    <button type="button" class="calendario-flecha" id="mesSiguiente">&rarr;</button>
-                </div>
-                <div class="calendario-meses">
-                    <div class="calendario-mes" id="mesA"></div>
-                    <div class="calendario-mes" id="mesB"></div>
-                </div>
-            </div>
+    <header class="fc-barra">
+        <a class="fc-logo" href="/"><img src="/img/portada/logo.png" alt="WiseTrip"></a>
+        <div class="fc-usuario">
+            <span class="fc-avatar" aria-hidden="true">${inicialesUsuario}</span>
+            <span class="fc-hola">Hola, <strong>${usuario.nombreCompleto}</strong></span>
+            <a class="fc-salir" href="<c:url value='/logout'/>">Cerrar sesión</a>
         </div>
+    </header>
 
-        <input type="hidden" name="fechaInicio" id="inputFechaInicio" value="${fechas.fechaInicio}">
-        <input type="hidden" name="fechaFin" id="inputFechaFin" value="${fechas.fechaFin}">
+    <%-- HU-37: Indicador visual de en qué paso del flujo está el viajero. --%>
+    <nav class="fc-pasos" aria-label="Pasos de la planificación">
+        <span class="fc-paso fc-paso-hecho">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>
+            Origen
+        </span>
+        <span class="fc-paso fc-paso-hecho">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>
+            Preferencias
+        </span>
+        <span class="fc-paso fc-paso-activo" aria-current="step">Fechas</span>
+        <span class="fc-paso">Presupuesto</span>
+    </nav>
 
-<%-- HU-39: Si ya hay fechas guardadas en sesión, quedan precargadas
-     en los inputs ocultos y el JS las muestra en las casillas. --%>
+    <main class="fc-grid">
 
-        <c:if test="${not empty errores.fechaInicio}">
-            <span class="error">${errores.fechaInicio}</span>
-        </c:if>
-        <c:if test="${not empty errores.fechaFin}">
-            <span class="error">${errores.fechaFin}</span>
-        </c:if>
+        <section class="fc-columna">
+            <p class="fc-eyebrow">Paso 3 de 4</p>
+            <h1 class="fc-titulo">¿Cuándo<br>viajas?</h1>
+            <p class="fc-sub">
+                Con las fechas calculamos cuántos días dura el viaje y cómo repartir tu presupuesto.
+            </p>
 
-        <c:if test="${fechas.duracionDias > 0}">
-            <div class="nota">Tu viaje duraría <strong>${fechas.duracionDias} días</strong>.</div>
-        </c:if>
+            <%-- HU-51: Selector de rango de fechas tipo calendario, con hover
+                 que muestra el rango y las noches antes de confirmar. --%>
+            <form action="<c:url value='/fechas'/>" method="post" id="formFechas">
 
-        <button type="submit">Continuar</button>
-    </form>
+                <div class="selector-fechas fc-selector" id="selectorFechas">
+                    <div class="campo-fecha fc-campo activo" id="campoInicio" data-campo="inicio">
+                        <span class="fc-campo-icono" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2.5"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
+                        </span>
+                        <div>
+                            <label>Entrada</label>
+                            <span class="campo-fecha-valor fc-campo-valor" id="valorInicio">Selecciona</span>
+                        </div>
+                    </div>
 
-    <a class="volver" href="<c:url value='/preferencias'/>">&larr; Volver a preferencias</a>
-<%-- HU-37: Botón "Atrás" del flujo, sin perder los datos ya ingresados. --%>
+                    <div class="campo-fecha-divisor fc-divisor">
+                        <span aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                        </span>
+                    </div>
+
+                    <div class="campo-fecha fc-campo" id="campoFin" data-campo="fin">
+                        <span class="fc-campo-icono fc-campo-icono-salida" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2.5"/><path d="M3 10h18M8 3v4M16 3v4M9 15.5l2 2 4-4"/></svg>
+                        </span>
+                        <div>
+                            <label>Salida</label>
+                            <span class="campo-fecha-valor fc-campo-valor" id="valorFin">Selecciona</span>
+                        </div>
+                    </div>
+
+                    <div class="calendario-flotante" id="calendarioFlotante" hidden>
+                        <div class="calendario-nav">
+                            <button type="button" class="calendario-flecha" id="mesAnterior" aria-label="Mes anterior">&larr;</button>
+                            <button type="button" class="calendario-flecha" id="mesSiguiente" aria-label="Mes siguiente">&rarr;</button>
+                        </div>
+                        <div class="calendario-meses">
+                            <div class="calendario-mes" id="mesA"></div>
+                            <div class="calendario-mes" id="mesB"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <input type="hidden" name="fechaInicio" id="inputFechaInicio" value="${fechas.fechaInicio}">
+                <input type="hidden" name="fechaFin" id="inputFechaFin" value="${fechas.fechaFin}">
+
+                <%-- HU-39: Si ya hay fechas guardadas en sesión, quedan precargadas
+                     en los inputs ocultos y el JS las muestra en las casillas. --%>
+
+                <c:if test="${not empty errores.fechaInicio}">
+                    <p class="fc-error">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7.5v5.5M12 16.5v.01"/></svg>
+                        ${errores.fechaInicio}
+                    </p>
+                </c:if>
+                <c:if test="${not empty errores.fechaFin}">
+                    <p class="fc-error">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7.5v5.5M12 16.5v.01"/></svg>
+                        ${errores.fechaFin}
+                    </p>
+                </c:if>
+
+                <div class="fc-duracion">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
+                    <span id="fcDuracionTexto">
+                        <c:choose>
+                            <c:when test="${fechas.duracionDias > 0}">Tu viaje duraría <strong>${fechas.duracionDias} días</strong>.</c:when>
+                            <c:otherwise>Elige la entrada y la salida para calcular la duración.</c:otherwise>
+                        </c:choose>
+                    </span>
+                </div>
+
+                <div class="fc-acciones">
+                    <%-- HU-37: Botón "Atrás" del flujo, sin perder los datos ya ingresados. --%>
+                    <a class="fc-volver" href="<c:url value='/preferencias'/>">&larr; Volver a preferencias</a>
+                    <button type="submit" class="fc-boton">
+                        Continuar
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                    </button>
+                </div>
+            </form>
+        </section>
+
+        <%-- Panel ilustrado: boleto con las dos hojas de calendario.
+             Se actualiza solo al elegir fechas (script de vista previa, abajo). --%>
+        <aside class="fc-panel" aria-hidden="true">
+            <span class="fc-sol"></span>
+            <span class="fc-nube fc-nube-1"></span>
+            <span class="fc-nube fc-nube-2"></span>
+
+            <div class="fc-boleto-envoltura">
+                <div class="fc-boleto">
+                    <div class="fc-boleto-cabeza">
+                        <span>WISETRIP</span>
+                        <span>ITINERARIO</span>
+                    </div>
+
+                    <div class="fc-boleto-cuerpo">
+                        <div class="fc-hojas">
+                            <div class="fc-hoja">
+                                <span class="fc-hoja-tira fc-hoja-tira-ida">Ida</span>
+                                <span class="fc-hoja-mes" id="fcIdaMes">Por elegir</span>
+                                <span class="fc-hoja-dia" id="fcIdaDia">--</span>
+                                <span class="fc-hoja-semana" id="fcIdaSemana">&nbsp;</span>
+                            </div>
+
+                            <span class="fc-hojas-flecha">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                            </span>
+
+                            <div class="fc-hoja">
+                                <span class="fc-hoja-tira fc-hoja-tira-vuelta">Regreso</span>
+                                <span class="fc-hoja-mes" id="fcVueltaMes">Por elegir</span>
+                                <span class="fc-hoja-dia" id="fcVueltaDia">--</span>
+                                <span class="fc-hoja-semana" id="fcVueltaSemana">&nbsp;</span>
+                            </div>
+                        </div>
+
+                        <div class="fc-boleto-corte"></div>
+
+                        <div class="fc-boleto-datos">
+                            <div>
+                                <span class="fc-dato-etiqueta">Días</span>
+                                <span class="fc-dato-valor" id="fcDias">--</span>
+                            </div>
+                            <div>
+                                <span class="fc-dato-etiqueta">Noches</span>
+                                <span class="fc-dato-valor" id="fcNoches">--</span>
+                            </div>
+                            <div>
+                                <span class="fc-dato-etiqueta">Estado</span>
+                                <span class="fc-dato-valor fc-dato-estado" id="fcEstado">Pendiente</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="fc-boleto-pie">
+                        <span class="fc-codigo"></span>
+                        <span>PASO 3 / 4</span>
+                    </div>
+                </div>
+
+                <span class="fc-sello" id="fcSello">Sin fechas</span>
+            </div>
+
+            <svg class="fc-colinas" viewBox="0 0 600 140" preserveAspectRatio="none">
+                <path d="M0 90 C 90 40, 170 40, 260 80 S 430 30, 600 70 L600 140 L0 140 Z"
+                      fill="#2FBFAF" stroke="#16161D" stroke-width="3" vector-effect="non-scaling-stroke"/>
+                <path d="M0 115 C 120 80, 220 95, 330 110 S 500 85, 600 105 L600 140 L0 140 Z"
+                      fill="#7BC97F" stroke="#16161D" stroke-width="3" vector-effect="non-scaling-stroke"/>
+            </svg>
+        </aside>
+
+    </main>
 </div>
 
+<%-- ===== Script del calendario (HU-51). Sin cambios. ===== --%>
 <script>
 (function () {
     const HOY = new Date(new Date().toDateString());
@@ -265,6 +386,73 @@
     });
 
     actualizarCampos();
+})();
+</script>
+
+<%-- ===== Vista previa del boleto (rediseño) =====
+     No toca el calendario: solo observa cuándo cambian los textos de
+     Entrada y Salida, lee los inputs ocultos y pinta el panel. --%>
+<script>
+(function () {
+    const MESES = ["Ene","Feb","Mar","Abr","May","Jun","Jul","Ago","Sep","Oct","Nov","Dic"];
+    const SEMANA = ["Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado"];
+
+    const inputInicio = document.getElementById('inputFechaInicio');
+    const inputFin = document.getElementById('inputFechaFin');
+
+    function leer(valor) {
+        if (!valor) return null;
+        const [y, m, d] = valor.split('-').map(Number);
+        return new Date(y, m - 1, d);
+    }
+
+    function pintarHoja(prefijo, fecha) {
+        document.getElementById(prefijo + 'Mes').textContent =
+            fecha ? MESES[fecha.getMonth()] + ' ' + fecha.getFullYear() : 'Por elegir';
+        document.getElementById(prefijo + 'Dia').textContent =
+            fecha ? fecha.getDate() : '--';
+        document.getElementById(prefijo + 'Semana').innerHTML =
+            fecha ? SEMANA[fecha.getDay()] : '&nbsp;';
+    }
+
+    function actualizar() {
+        const inicio = leer(inputInicio.value);
+        const fin = leer(inputFin.value);
+
+        pintarHoja('fcIda', inicio);
+        pintarHoja('fcVuelta', fin);
+
+        const texto = document.getElementById('fcDuracionTexto');
+        const sello = document.getElementById('fcSello');
+        const estado = document.getElementById('fcEstado');
+
+        if (inicio && fin) {
+            const noches = Math.round((fin - inicio) / 86400000);
+            const dias = noches + 1;   // mismo cálculo que FechasViaje.getDuracionDias()
+            document.getElementById('fcDias').textContent = dias;
+            document.getElementById('fcNoches').textContent = noches;
+            estado.textContent = 'Listo';
+            sello.textContent = dias + (dias === 1 ? ' día' : ' días');
+            sello.classList.add('fc-sello-listo');
+            texto.innerHTML = 'Tu viaje duraría <strong>' + dias + (dias === 1 ? ' día' : ' días') + '</strong>.';
+        } else {
+            document.getElementById('fcDias').textContent = '--';
+            document.getElementById('fcNoches').textContent = '--';
+            estado.textContent = 'Pendiente';
+            sello.textContent = inicio ? 'Falta el regreso' : 'Sin fechas';
+            sello.classList.remove('fc-sello-listo');
+            texto.textContent = inicio
+                ? 'Ahora elige el día de salida.'
+                : 'Elige la entrada y la salida para calcular la duración.';
+        }
+    }
+
+    const observador = new MutationObserver(actualizar);
+    ['valorInicio', 'valorFin'].forEach(id => {
+        observador.observe(document.getElementById(id), { childList: true, characterData: true, subtree: true });
+    });
+
+    actualizar();
 })();
 </script>
 </body>
