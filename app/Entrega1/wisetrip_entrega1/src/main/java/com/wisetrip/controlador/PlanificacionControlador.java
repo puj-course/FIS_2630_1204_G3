@@ -254,7 +254,7 @@ public class PlanificacionControlador {
         if (enUsd != null) {
             model.addAttribute("usdFormateado", presupuestoServicio.formatear(enUsd));
         }
-
+             model.addAttribute("destinoElegido", sesion.getAttribute("destinoElegido"));
         return "resumen";
     }
 
