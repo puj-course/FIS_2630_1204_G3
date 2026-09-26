@@ -37,8 +37,9 @@ public class LlenarAtributosCiudad {
             if (atributosUsuario != null && !atributosActivos.contains(pregunta.id)) {
                 continue;
             }
+            // Solo necesitamos comprobar el umbral, no descargar todos los lugares.
             int cantidad = geo.contarLugares(ciudad.getLatitud(), ciudad.getLongitud(),
-                    pregunta.categorias, 50_000, 500);
+                    pregunta.categorias, 50_000, pregunta.umbral);
             atributos.put(pregunta.id, cantidad >= pregunta.umbral);
         }
         ciudad.setAtributos(atributos);

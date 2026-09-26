@@ -6,9 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="ffff6fa2-fe68-4e98-b1ea-8c1f465df6db" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Entrega1/wisetrip_entrega1/src/main/java/com/wisetrip/datos/PreferenciaDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/Entrega1/wisetrip_entrega1/src/main/java/com/wisetrip/datos/PreferenciaDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Entrega1/wisetrip_entrega1/src/main/java/com/wisetrip/datos/UsuarioDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/Entrega1/wisetrip_entrega1/src/main/java/com/wisetrip/datos/UsuarioDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Entrega1/wisetrip_entrega1/src/main/java/com/wisetrip/datos/ViajeDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/Entrega1/wisetrip_entrega1/src/main/java/com/wisetrip/datos/ViajeDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Entrega1/wisetrip_entrega1/src/main/java/com/wisetrip/servicio/LlenarAtributosCiudad.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/Entrega1/wisetrip_entrega1/src/main/java/com/wisetrip/servicio/LlenarAtributosCiudad.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,7 +14,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="245" />
+    <option name="cachedIndexableFilesCount" value="308" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
