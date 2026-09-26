@@ -3160,15 +3160,15 @@ no
 
 1. **¿Qué hice ayer?**
 
-   
+   ayer acomode mejor la lógica de la base de datos para que sea mas coherente, además de unas acomodaciones al código y estuve revisando el calculo de destinos para WiseTrip, ya que es uno de los aspectos mas importantes de la plataforma
 
 2. **¿Qué voy a hacer hoy?**
 
-
+hoy realice algunos índices con llaves foráneas de una tabla que se llama nivel_costo, cambiar el Diccionario de datos para finalizar el HU 72 (#240) y a continuación con el HU 73 (#241) empecé a revisar la api places porque se demora mucho en hacer los request y con respecto al calculo de las ciudades, identifique ciertos problemas con aquel calculo que abordare mañana 
    
 4. **¿Tengo algún impedimento o bloqueo?**
 
- 
+ si, en parte carencia de conocimiento al manejar la base de datos en neon porque no se el motivo de que a veces funcione o no, y solo puedo probarla con mis compañeros, aprecio su paciencia y comprensión. 
 
 ---
 
@@ -3210,15 +3210,15 @@ no
 
 1. **¿Qué hice ayer?**
 
-
+Ayer pude arreglar el error que no dejaba mostrar las imagenes en la pantalla de preguntas de preferencias, y subi algunas imagenes  
 
 2. **¿Qué voy a hacer hoy?**
 
-
+Hoy subi mas imagenes y verifique que estuvieran bien las rutas de cada una, ademas de hacer una lista de sus IDs para tener ya como nombrar el resto de imagenes que hacen falta 
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
-
+no 
 
 ---
 
@@ -3227,15 +3227,15 @@ no
 
 1. **¿Qué hice ayer?** 
 
-
+Empece con la planificacion de diseño total con algunos mock ups ya que estaba perdiendo por completo la idea y la identidad visual de la pagina entonces hice eso  
 
 2. **¿Qué voy a hacer hoy?** 
 
-
+ Hoy hice la gran mayoria de commits donde arregle el diseño, añadí algunas cuantas que tenian que ver por completo como en la organizacion de codigo lo que son creacion de vistas, de css y de mas clases para la organizacion ¿tengo algun impedimento o bloqueo?
 
 3. **¿Tengo algún impedimento o bloqueo?** 
 
-
+si aun tenemos algunos problemas con la nube para que funcione como la pagina web de la mano con la base de datos, pero pues no pasa nada, realmente se que mi compañera isa ha buscado mil maneras de hacer que nos funcione y podamos ver las cosas de la pagina web, incluso me consta que hablo con el monitor a ver si nos podia dar algun tipo de solución y bueno en parte funciono pero a veces no
 
 
 ---
