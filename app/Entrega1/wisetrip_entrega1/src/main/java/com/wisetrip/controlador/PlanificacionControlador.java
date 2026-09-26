@@ -176,6 +176,8 @@ public class PlanificacionControlador {
         model.addAttribute("monedas", presupuestoServicio.monedasDisponibles(paisDestino));
         model.addAttribute("paisDestino", paisDestino);
         model.addAttribute("fechas", sesion.getAttribute("fechasViaje"));
+        // Rediseño: tasas para mostrar el equivalente en USD en el recibo
+        model.addAttribute("tasasUsd", presupuestoServicio.tasasPorUsd());
         return "presupuesto";
     }
 
@@ -197,6 +199,8 @@ public class PlanificacionControlador {
             model.addAttribute("monedas", presupuestoServicio.monedasDisponibles(paisDestino));
             model.addAttribute("paisDestino", paisDestino);
             model.addAttribute("fechas", sesion.getAttribute("fechasViaje"));
+            // Rediseño: tasas para mostrar el equivalente en USD en el recibo
+            model.addAttribute("tasasUsd", presupuestoServicio.tasasPorUsd());
             return "presupuesto";
         }
 
