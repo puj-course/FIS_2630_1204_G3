@@ -189,6 +189,14 @@
                 <span class="pp-sello" id="ppSello">Falta el monto</span>
             </div>
 
+            <%-- Tasas para el equivalente en USD (vienen de PresupuestoServicio).
+                 Van en HTML para que el script no tenga etiquetas JSP. --%>
+            <div id="ppTasas" hidden>
+                <c:forEach var="t" items="${tasasUsd}">
+                    <span data-moneda="${t.key}" data-tasa="${t.value}"></span>
+                </c:forEach>
+            </div>
+
             <svg class="pp-colinas" viewBox="0 0 600 140" preserveAspectRatio="none">
                 <path d="M0 80 C 110 40, 200 50, 300 85 S 470 40, 600 75 L600 140 L0 140 Z"
                       fill="#F3A6C0" stroke="#16161D" stroke-width="3" vector-effect="non-scaling-stroke"/>
@@ -232,16 +240,16 @@
      Script aparte. No modifica la función de la bandera: solo escucha
      los mismos campos y pinta el panel de la derecha. --%>
 <script>
-    // Unidades de cada moneda por 1 USD (vienen de PresupuestoServicio)
-    const TASAS_USD = {
-        <c:forEach var="t" items="${tasasUsd}" varStatus="st">"${t.key}": ${t.value}<c:if test="${not st.last}">,</c:if></c:forEach>
-    };
+    // Unidades de cada moneda por 1 USD, leídas del bloque oculto #ppTasas
+    const TASAS_USD = {};
+    document.querySelectorAll('#ppTasas span').forEach(function (s) {
+        TASAS_USD[s.dataset.moneda] = Number(s.dataset.tasa);
+    });
 
     (function () {
         const select = document.getElementById('moneda');
         const monto = document.getElementById('monto');
         const bandera = document.getElementById('bandera-moneda');
-        const marco = document.getElementById('ppBanderaMarco');
         const panel = document.querySelector('.pp-panel');
         const dias = Number(panel.dataset.dias) || 0;
         const formato = new Intl.NumberFormat('es-CO', { maximumFractionDigits: 0 });
