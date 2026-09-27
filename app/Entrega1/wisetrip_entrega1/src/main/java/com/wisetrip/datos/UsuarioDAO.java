@@ -23,30 +23,31 @@ public class UsuarioDAO {
 
     public Usuario registrar(Usuario usuario) {
         String sql = """
-                INSERT INTO usuario
-                    (nombre, correo, contraseña, rol, estado, tipo_documento, numero_documento, fecha_nacimiento)
-                VALUES (?, ?, ?, ?, TRUE, ?, ?, ?)
-                RETURNING id_usuario
-                """;
+            INSERT INTO usuario
+                (nombre, correo, contraseña, rol, estado, tipo_documento, numero_documento, fecha_nacimiento, chat_id)
+            VALUES (?, ?, ?, ?, TRUE, ?, ?, ?, ?)
+            RETURNING id_usuario
+            """;
 
         try (Connection conn = ConexionBD.obtenerConexion();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setString(1, usuario.getNombreCompleto());
-            stmt.setString(2, usuario.getCorreo());
-            stmt.setString(3, usuario.getPassword());
-            stmt.setString(4, usuario.getRol() != null ? usuario.getRol() : "cliente");
-            stmt.setString(5, usuario.getTipoDocumento());
-            stmt.setString(6, usuario.getNumeroDocumento());
-            stmt.setDate(7, parseFecha(usuario.getFechaNacimiento()));
+         PreparedStatement stmt = conn.prepareStatement(sql)) {
+        stmt.setString(1, usuario.getNombreCompleto());
+        stmt.setString(2, usuario.getCorreo());
+        stmt.setString(3, usuario.getPassword());
+        stmt.setString(4, usuario.getRol() != null ? usuario.getRol() : "cliente");
+        stmt.setString(5, usuario.getTipoDocumento());
+        stmt.setString(6, usuario.getNumeroDocumento());
+        stmt.setDate(7, parseFecha(usuario.getFechaNacimiento()));
+        stmt.setString(8, usuario.getChatId());
 
-            try (ResultSet rs = stmt.executeQuery()) {
-                if (rs.next()) {
-                    usuario.setIdUsuario(rs.getInt("id_usuario"));
-                }
+        try (ResultSet rs = stmt.executeQuery()) {
+            if (rs.next()) {
+                usuario.setIdUsuario(rs.getInt("id_usuario"));
             }
-            return usuario;
+        }
+        return usuario;
         } catch (SQLException e) {
-            throw new IllegalStateException("No se pudo registrar el usuario en PostgreSQL.", e);
+        throw new IllegalStateException("No se pudo registrar el usuario en PostgreSQL.", e);
         }
     }
 
@@ -59,40 +60,41 @@ public class UsuarioDAO {
     }
 
     public Usuario buscarPorCorreo(String correo) {
-        String sql = """
-                SELECT id_usuario, nombre, correo, contraseña, rol,
-                       tipo_documento, numero_documento, fecha_nacimiento
-                FROM usuario
-                WHERE LOWER(correo) = LOWER(?) AND estado = TRUE
-                """;
+    String sql = """
+            SELECT id_usuario, nombre, correo, contraseña, rol,
+                   tipo_documento, numero_documento, fecha_nacimiento, chat_id
+            FROM usuario
+            WHERE LOWER(correo) = LOWER(?) AND estado = TRUE
+            """;
 
         try (Connection conn = ConexionBD.obtenerConexion();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setString(1, correo);
+         PreparedStatement stmt = conn.prepareStatement(sql)) {
+        stmt.setString(1, correo);
 
-            try (ResultSet rs = stmt.executeQuery()) {
-                if (!rs.next()) {
-                    return null;
-                }
-
-                Usuario usuario = new Usuario();
-                usuario.setIdUsuario(rs.getInt("id_usuario"));
-                usuario.setNombreCompleto(rs.getString("nombre"));
-                usuario.setCorreo(rs.getString("correo"));
-                usuario.setPassword(rs.getString("contraseña"));
-                usuario.setRol(rs.getString("rol"));
-                usuario.setTipoDocumento(rs.getString("tipo_documento"));
-                usuario.setNumeroDocumento(rs.getString("numero_documento"));
-                Date fechaNacimiento = rs.getDate("fecha_nacimiento");
-                if (fechaNacimiento != null) {
-                    usuario.setFechaNacimiento(fechaNacimiento.toLocalDate().toString());
-                }
-                return usuario;
+        try (ResultSet rs = stmt.executeQuery()) {
+            if (!rs.next()) {
+                return null;
             }
-        } catch (SQLException e) {
-            throw new IllegalStateException("No se pudo consultar el usuario en PostgreSQL.", e);
+
+            Usuario usuario = new Usuario();
+            usuario.setIdUsuario(rs.getInt("id_usuario"));
+            usuario.setNombreCompleto(rs.getString("nombre"));
+            usuario.setCorreo(rs.getString("correo"));
+            usuario.setPassword(rs.getString("contraseña"));
+            usuario.setRol(rs.getString("rol"));
+            usuario.setTipoDocumento(rs.getString("tipo_documento"));
+            usuario.setNumeroDocumento(rs.getString("numero_documento"));
+            usuario.setChatId(rs.getString("chat_id"));
+            Date fechaNacimiento = rs.getDate("fecha_nacimiento");
+            if (fechaNacimiento != null) {
+                usuario.setFechaNacimiento(fechaNacimiento.toLocalDate().toString());
+            }
+            return usuario;
         }
+    } catch (SQLException e) {
+        throw new IllegalStateException("No se pudo consultar el usuario en PostgreSQL.", e);
     }
+}
 
     private boolean existe(String sql, String valor) {
         if (valor == null || valor.isBlank()) {
@@ -115,5 +117,18 @@ public class UsuarioDAO {
             return null;
         }
         return Date.valueOf(LocalDate.parse(fecha));
+    }
+
+    public void actualizarChatId(int idUsuario, String chatId) {
+    String sql = "UPDATE usuario SET chat_id = ? WHERE id_usuario = ?";
+
+        try (Connection conn = ConexionBD.obtenerConexion();
+            PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, chatId);
+            stmt.setInt(2, idUsuario);
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new IllegalStateException("No se pudo actualizar el chat_id en PostgreSQL.", e);
+        }
     }
 }
