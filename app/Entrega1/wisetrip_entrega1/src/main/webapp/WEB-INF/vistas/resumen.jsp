@@ -54,12 +54,12 @@
     <div class="rs-escena">
 
         <%-- Fotos de fondo detrás del texto y del pase.
-             Imágenes en static/img/resumen/ (no se usan en otras pantallas). --%>
+             Por ahora se usan las fotos de static/img/portada/. --%>
         <div class="rs-escena-fotos" aria-hidden="true">
-            <img src="/img/resumen/tulum.jpg" alt="">
-            <img src="/img/resumen/pines.jpg" alt="">
-            <img src="/img/resumen/salar.jpg" alt="">
-            <img src="/img/resumen/monteverde.jpg" alt="">
+            <img src="/img/portada/Rio.jpg" alt="">
+            <img src="/img/portada/Argentina.jpg" alt="">
+            <img src="/img/portada/desierto.jpg" alt="">
+            <img src="/img/portada/Amazonas.jpg" alt="">
         </div>
 
         <section class="rs-texto">
