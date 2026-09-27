@@ -16,6 +16,8 @@ import java.util.Map;
 public class PreferenciasServicio {
 
     public static final List<CategoriaPreferencia> CATEGORIAS = List.of(
+        // desierto y nieve se agruparon aqui (paisaje/clima) y no en "caracteristicas
+        // especificas", donde estaban antes, esto porque se organizó mejor las categorias 
     categoria("Paisaje y clima", "Qué tipo de paisaje y clima buscas",
             "playa", "montana", "naturaleza", "nieve", "desierto"),
     categoria("Tipo de destino", "El ambiente y carácter del destino",
