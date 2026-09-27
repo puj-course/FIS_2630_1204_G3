@@ -149,7 +149,6 @@
 
 .rc-bajada { font-size: 17px; line-height: 1.6; color: #43434D; margin: 0; max-width: 46ch; }
 
-/* Ficha de la búsqueda */
 .rc-ficha {
     background: #fff;
     border: 2.5px solid var(--tinta);
