@@ -23,6 +23,7 @@ La tabla usuario guarda quien usa la aplicacion: su nombre, correo, contraseña 
     rol            VARCHAR(20) NOT NULL,
     fecha_registro TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     estado         BOOLEAN NOT NULL DEFAULT TRUE,
+    chat_id VARCHAR(50),
 
     tipo_documento VARCHAR(30),
     numero_documento VARCHAR(30),
