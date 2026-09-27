@@ -3,6 +3,7 @@
 
 //Catalogo de preguntas del cuestionario de preferencias
 
+
 package com.wisetrip.negocio;
 
 import com.wisetrip.modelo.Peso;
