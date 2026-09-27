@@ -10,13 +10,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 
-//Mejoras 
-//encriptar la constraseña 
-//Validacion de los campos not null 
-//manejo de excepciones en SQLException 
-//Normalizacion de variables 
-//Agregar campo de ultimo_acceso 
-//Se relaciona la historia de usuario 140
 
 @Repository
 public class UsuarioDAO {
@@ -47,19 +40,34 @@ public class UsuarioDAO {
         }
         return usuario;
         } catch (SQLException e) {
-        throw new IllegalStateException("No se pudo registrar el usuario en PostgreSQL.", e);
+            if ("23505".equals(e.getSQLState())) {
+                String constraint = e.getMessage() != null ? e.getMessage() : "";
+                if (constraint.contains("ux_usuario_numero_documento")) {
+                    throw new IllegalStateException("Ya existe un usuario registrado con aquel numero de documento.", e);
+                }
+                throw new IllegalStateException("Ya existe un usuario registrado con ese correo.", e);
+            }
+            throw new IllegalStateException("No se pudo registrar el usuario en la base de datos.", e);
+        throw new IllegalStateException("No se pudo registrar el usuario en la base de datos.", e);
         }
     }
 
     public boolean existeCorreo(String correo) {
-        return existe("SELECT 1 FROM usuario WHERE LOWER(correo) = LOWER(?)", correo);
+        return existe("SELECT 1 FROM usuario WHERE correo = ?", correo);
     }
 
     public boolean existeDocumento(String numeroDocumento) {
         return existe("SELECT 1 FROM usuario WHERE numero_documento = ?", numeroDocumento);
     }
 
+
     public Usuario buscarPorCorreo(String correo) {
+        String sql = """
+                SELECT id_usuario, nombre, correo, contraseña, rol,
+                       tipo_documento, numero_documento, fecha_nacimiento
+                FROM usuario
+                WHERE correo = ? AND estado = TRUE
+                """;
     String sql = """
             SELECT id_usuario, nombre, correo, contraseña, rol,
                    tipo_documento, numero_documento, fecha_nacimiento, chat_id
@@ -76,25 +84,24 @@ public class UsuarioDAO {
                 return null;
             }
 
-            Usuario usuario = new Usuario();
-            usuario.setIdUsuario(rs.getInt("id_usuario"));
-            usuario.setNombreCompleto(rs.getString("nombre"));
-            usuario.setCorreo(rs.getString("correo"));
-            usuario.setPassword(rs.getString("contraseña"));
-            usuario.setRol(rs.getString("rol"));
-            usuario.setTipoDocumento(rs.getString("tipo_documento"));
-            usuario.setNumeroDocumento(rs.getString("numero_documento"));
-            usuario.setChatId(rs.getString("chat_id"));
-            Date fechaNacimiento = rs.getDate("fecha_nacimiento");
-            if (fechaNacimiento != null) {
-                usuario.setFechaNacimiento(fechaNacimiento.toLocalDate().toString());
+                Usuario usuario = new Usuario();
+                usuario.setIdUsuario(rs.getInt("id_usuario"));
+                usuario.setNombreCompleto(rs.getString("nombre"));
+                usuario.setCorreo(rs.getString("correo"));
+                usuario.setPassword(rs.getString("contraseña"));
+                usuario.setRol(rs.getString("rol"));
+                usuario.setTipoDocumento(rs.getString("tipo_documento"));
+                usuario.setNumeroDocumento(rs.getString("numero_documento"));
+                Date fechaNacimiento = rs.getDate("fecha_nacimiento");
+                if (fechaNacimiento != null) {
+                    usuario.setFechaNacimiento(fechaNacimiento.toLocalDate().toString());
+                }
+                return usuario;
             }
-            return usuario;
+        } catch (SQLException e) {
+            throw new IllegalStateException("No se pudo consultar el usuario en la base de datos.", e);
         }
-    } catch (SQLException e) {
-        throw new IllegalStateException("No se pudo consultar el usuario en PostgreSQL.", e);
     }
-}
 
     private boolean existe(String sql, String valor) {
         if (valor == null || valor.isBlank()) {
@@ -108,7 +115,7 @@ public class UsuarioDAO {
                 return rs.next();
             }
         } catch (SQLException e) {
-            throw new IllegalStateException("No se pudo validar el usuario en PostgreSQL.", e);
+            throw new IllegalStateException("No se pudo validar el usuario en la base de datos.", e);
         }
     }
 
@@ -128,7 +135,7 @@ public class UsuarioDAO {
             stmt.setInt(2, idUsuario);
             stmt.executeUpdate();
         } catch (SQLException e) {
-            throw new IllegalStateException("No se pudo actualizar el chat_id en PostgreSQL.", e);
+            throw new IllegalStateException("No se pudo actualizar el chat_id en La base de datos.", e);
         }
     }
 }
