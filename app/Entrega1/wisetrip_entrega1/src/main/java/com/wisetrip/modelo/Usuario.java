@@ -18,6 +18,7 @@ public class Usuario {
     private String correo;
     private String password;
     private String rol = "cliente";
+    private String chatId;
 
     // Constructor vacío necesario para que Spring pueda
     // crear y llenar el objeto con los datos del formulario
@@ -43,7 +44,6 @@ public class Usuario {
     public String getTipoDocumento() {
         return tipoDocumento;
     }
-   
 
 
     // Modifica el tipo de documento
@@ -64,7 +64,7 @@ public class Usuario {
         return fechaNacimiento;
     }
 
-   
+    
     // Modifica la fecha de nacimiento
     public void setFechaNacimiento(String fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
@@ -92,7 +92,6 @@ public class Usuario {
         this.password = password;
     }
 
-
     public String getRol() {
         return rol;
     }
@@ -101,4 +100,11 @@ public class Usuario {
         this.rol = rol;
     }
 
+    public String getChatId() {
+        return chatId;
+    }
+
+    public void setChatId(String chatId) {
+        this.chatId = chatId;
+    }
 }
