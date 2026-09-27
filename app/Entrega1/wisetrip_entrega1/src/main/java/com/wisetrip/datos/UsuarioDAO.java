@@ -10,70 +10,79 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 
-//Mejoras 
-//encriptar la constraseña 
-//Validacion de los campos not null 
-//manejo de excepciones en SQLException 
-//Normalizacion de variables 
-//Agregar campo de ultimo_acceso 
-//Se relaciona la historia de usuario 140
 
 @Repository
 public class UsuarioDAO {
 
     public Usuario registrar(Usuario usuario) {
         String sql = """
-                INSERT INTO usuario
-                    (nombre, correo, contraseña, rol, estado, tipo_documento, numero_documento, fecha_nacimiento)
-                VALUES (?, ?, ?, ?, TRUE, ?, ?, ?)
-                RETURNING id_usuario
-                """;
+            INSERT INTO usuario
+                (nombre, correo, contraseña, rol, estado, tipo_documento, numero_documento, fecha_nacimiento, chat_id)
+            VALUES (?, ?, ?, ?, TRUE, ?, ?, ?, ?)
+            RETURNING id_usuario
+            """;
 
         try (Connection conn = ConexionBD.obtenerConexion();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setString(1, usuario.getNombreCompleto());
-            stmt.setString(2, usuario.getCorreo());
-            stmt.setString(3, usuario.getPassword());
-            stmt.setString(4, usuario.getRol() != null ? usuario.getRol() : "cliente");
-            stmt.setString(5, usuario.getTipoDocumento());
-            stmt.setString(6, usuario.getNumeroDocumento());
-            stmt.setDate(7, parseFecha(usuario.getFechaNacimiento()));
+         PreparedStatement stmt = conn.prepareStatement(sql)) {
+        stmt.setString(1, usuario.getNombreCompleto());
+        stmt.setString(2, usuario.getCorreo());
+        stmt.setString(3, usuario.getPassword());
+        stmt.setString(4, usuario.getRol() != null ? usuario.getRol() : "cliente");
+        stmt.setString(5, usuario.getTipoDocumento());
+        stmt.setString(6, usuario.getNumeroDocumento());
+        stmt.setDate(7, parseFecha(usuario.getFechaNacimiento()));
+        stmt.setString(8, usuario.getChatId());
 
-            try (ResultSet rs = stmt.executeQuery()) {
-                if (rs.next()) {
-                    usuario.setIdUsuario(rs.getInt("id_usuario"));
-                }
+        try (ResultSet rs = stmt.executeQuery()) {
+            if (rs.next()) {
+                usuario.setIdUsuario(rs.getInt("id_usuario"));
             }
-            return usuario;
+        }
+        return usuario;
         } catch (SQLException e) {
-            throw new IllegalStateException("No se pudo registrar el usuario en PostgreSQL.", e);
+            if ("23505".equals(e.getSQLState())) {
+                String constraint = e.getMessage() != null ? e.getMessage() : "";
+                if (constraint.contains("ux_usuario_numero_documento")) {
+                    throw new IllegalStateException("Ya existe un usuario registrado con aquel numero de documento.", e);
+                }
+                throw new IllegalStateException("Ya existe un usuario registrado con ese correo.", e);
+            }
+            throw new IllegalStateException("No se pudo registrar el usuario en la base de datos.", e);
+        throw new IllegalStateException("No se pudo registrar el usuario en la base de datos.", e);
         }
     }
 
     public boolean existeCorreo(String correo) {
-        return existe("SELECT 1 FROM usuario WHERE LOWER(correo) = LOWER(?)", correo);
+        return existe("SELECT 1 FROM usuario WHERE correo = ?", correo);
     }
 
     public boolean existeDocumento(String numeroDocumento) {
         return existe("SELECT 1 FROM usuario WHERE numero_documento = ?", numeroDocumento);
     }
 
+
     public Usuario buscarPorCorreo(String correo) {
         String sql = """
                 SELECT id_usuario, nombre, correo, contraseña, rol,
                        tipo_documento, numero_documento, fecha_nacimiento
                 FROM usuario
-                WHERE LOWER(correo) = LOWER(?) AND estado = TRUE
+                WHERE correo = ? AND estado = TRUE
                 """;
+    String sql = """
+            SELECT id_usuario, nombre, correo, contraseña, rol,
+                   tipo_documento, numero_documento, fecha_nacimiento, chat_id
+            FROM usuario
+            WHERE LOWER(correo) = LOWER(?) AND estado = TRUE
+            """;
 
         try (Connection conn = ConexionBD.obtenerConexion();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setString(1, correo);
+         PreparedStatement stmt = conn.prepareStatement(sql)) {
+        stmt.setString(1, correo);
 
-            try (ResultSet rs = stmt.executeQuery()) {
-                if (!rs.next()) {
-                    return null;
-                }
+        try (ResultSet rs = stmt.executeQuery()) {
+            if (!rs.next()) {
+                return null;
+            }
 
                 Usuario usuario = new Usuario();
                 usuario.setIdUsuario(rs.getInt("id_usuario"));
@@ -90,7 +99,7 @@ public class UsuarioDAO {
                 return usuario;
             }
         } catch (SQLException e) {
-            throw new IllegalStateException("No se pudo consultar el usuario en PostgreSQL.", e);
+            throw new IllegalStateException("No se pudo consultar el usuario en la base de datos.", e);
         }
     }
 
@@ -106,7 +115,7 @@ public class UsuarioDAO {
                 return rs.next();
             }
         } catch (SQLException e) {
-            throw new IllegalStateException("No se pudo validar el usuario en PostgreSQL.", e);
+            throw new IllegalStateException("No se pudo validar el usuario en la base de datos.", e);
         }
     }
 
@@ -115,5 +124,18 @@ public class UsuarioDAO {
             return null;
         }
         return Date.valueOf(LocalDate.parse(fecha));
+    }
+
+    public void actualizarChatId(int idUsuario, String chatId) {
+    String sql = "UPDATE usuario SET chat_id = ? WHERE id_usuario = ?";
+
+        try (Connection conn = ConexionBD.obtenerConexion();
+            PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, chatId);
+            stmt.setInt(2, idUsuario);
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new IllegalStateException("No se pudo actualizar el chat_id en La base de datos.", e);
+        }
     }
 }
