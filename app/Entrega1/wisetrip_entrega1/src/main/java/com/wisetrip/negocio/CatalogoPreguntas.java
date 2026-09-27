@@ -12,6 +12,9 @@ import com.wisetrip.modelo.TipoAtributo;
 import java.util.Arrays;
 import java.util.List;
 
+// HU-71 (#239): se depuraron 12 preguntas redundantes
+// en el caso de  "aventura", esta fusiono con las categorias de las extintas "deportes_extremos" y
+// "buceo_snorkel" 
 public final class CatalogoPreguntas {
 
     private CatalogoPreguntas() {
