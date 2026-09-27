@@ -7,7 +7,7 @@
 
      Rediseño: solo visual. Hoja propia presupuesto.css con prefijo pp-.
      HU-55 intacta: select id="moneda", img id="bandera-moneda" y la función
-     actualizarBanderaMoneda() no cambian. --%>
+     actualizarBanderaMoneda() (banderas en .png, #243) no cambian. --%>
 
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
@@ -200,7 +200,7 @@
     </main>
 </div>
 
-<%-- ===== HU-55: bandera de la moneda. Sin cambios. ===== --%>
+<%-- ===== HU-55: bandera de la moneda. Sin cambios (banderas en .png, #243). ===== --%>
 <script>
     // HU-55: cada vez que el usuario cambia la moneda en el select,
     // esta función busca el archivo de bandera correspondiente y lo muestra.
@@ -218,7 +218,7 @@
         } else {
             // 3. Como guardamos las banderas con el mismo nombre que el código
             //    de moneda (ej: COP.svg, MXN.svg...), armamos la ruta así:
-            bandera.src = "<c:url value='/img/banderas/'/>" + codigoMoneda + ".svg";
+            bandera.src = "<c:url value='/img/banderas/'/>" + codigoMoneda + ".png";
             bandera.style.display = "inline-block";
         }
     }
