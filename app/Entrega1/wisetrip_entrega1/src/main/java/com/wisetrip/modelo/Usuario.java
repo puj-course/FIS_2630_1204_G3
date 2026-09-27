@@ -18,6 +18,7 @@ public class Usuario {
     private String correo;
     private String password;
     private String rol = "cliente";
+    private String chatId; // para telegram
 
     // Constructor vacío necesario para que Spring pueda
     // crear y llenar el objeto con los datos del formulario
@@ -98,6 +99,16 @@ public class Usuario {
 
     public void setRol(String rol) {
         this.rol = rol;
+    }
+
+    // Obtiene el chat id de Telegram
+    public String getChatId() {
+        return chatId;
+    }
+
+// Modifica el chat id de Telegram
+    public void setChatId(String chatId) {
+        this.chatId = chatId;
     }
 
 }

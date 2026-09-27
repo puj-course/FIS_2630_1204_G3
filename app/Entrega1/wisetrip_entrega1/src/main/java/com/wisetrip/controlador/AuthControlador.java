@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import com.wisetrip.servicio.TelegramNotificationService;
 
 import com.wisetrip.modelo.Usuario;
 // para notificaciones por correo
@@ -21,12 +22,16 @@ import jakarta.servlet.http.HttpSession;
 public class AuthControlador {
 
     private final UsuarioServicio usuarioServicio;
-    private final EmailNotificationService emailService; 
+    private final EmailNotificationService emailService;
+    private final TelegramNotificationService telegramService;
 
     // Spring inyecta los servicios automaticamente al crear el controlador
-    public AuthControlador(UsuarioServicio usuarioServicio,EmailNotificationService emailService) {   
+    public AuthControlador(UsuarioServicio usuarioServicio,
+                           EmailNotificationService emailService,
+                           TelegramNotificationService telegramService) {
         this.usuarioServicio = usuarioServicio;
-        this.emailService = emailService;                              
+        this.emailService = emailService;
+        this.telegramService = telegramService;
     }
 
     // Muestra el formulario vacio
@@ -108,6 +113,17 @@ public class AuthControlador {
 
         // Guarda al usuario en la sesion: es el equivalente al useState del usuario logueado
         sesion.setAttribute("usuarioActivo", usuario);
+
+        // Notificacion de confirmacion de inicio de sesion por Telegram
+        try {
+            telegramService.enviarMensaje(
+                usuario.getChatId(),
+                "Hola " + usuario.getNombreCompleto() + ", iniciaste sesión en WiseTrip correctamente. Si no fuiste tú, cambia tu contraseña."
+            );
+        } catch (Exception e) {
+            System.err.println("No se pudo enviar la notificacion de Telegram: " + e.getMessage());
+        }
+
         return "redirect:/origen";
     }
 
