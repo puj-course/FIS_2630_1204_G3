@@ -53,6 +53,8 @@
 
                 <c:forEach var="p" items="${categoria.preguntas}">
                     <%-- HU-50: Cada pregunta muestra una foto real relacionada. --%>
+                    <%-- HU-70 (#238): busca el archivo por el id exacto de la pregunta
+                        (static/img/preferencias/<id>.png). --%>
                     <div class="pregunta ${not empty errores[p.clave] ? 'pregunta-error' : ''}">
                         <div class="pregunta-imagen">
                             <img src="<c:url value='/img/preferencias/${p.clave}.png'/>"
