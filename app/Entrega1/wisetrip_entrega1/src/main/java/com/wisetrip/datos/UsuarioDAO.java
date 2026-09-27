@@ -1,14 +1,15 @@
 package com.wisetrip.datos;
 
-import com.wisetrip.modelo.Usuario;
-import org.springframework.stereotype.Repository;
-
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
+
+import org.springframework.stereotype.Repository;
+
+import com.wisetrip.modelo.Usuario;
 
 
 @Repository
@@ -48,7 +49,6 @@ public class UsuarioDAO {
                 throw new IllegalStateException("Ya existe un usuario registrado con ese correo.", e);
             }
             throw new IllegalStateException("No se pudo registrar el usuario en la base de datos.", e);
-        throw new IllegalStateException("No se pudo registrar el usuario en la base de datos.", e);
         }
     }
 
@@ -62,13 +62,7 @@ public class UsuarioDAO {
 
 
     public Usuario buscarPorCorreo(String correo) {
-        String sql = """
-                SELECT id_usuario, nombre, correo, contraseña, rol,
-                       tipo_documento, numero_documento, fecha_nacimiento
-                FROM usuario
-                WHERE correo = ? AND estado = TRUE
-                """;
-    String sql = """
+         String sql = """
             SELECT id_usuario, nombre, correo, contraseña, rol,
                    tipo_documento, numero_documento, fecha_nacimiento, chat_id
             FROM usuario
@@ -96,6 +90,7 @@ public class UsuarioDAO {
                 if (fechaNacimiento != null) {
                     usuario.setFechaNacimiento(fechaNacimiento.toLocalDate().toString());
                 }
+                usuario.setChatId(rs.getString("chat_id"));
                 return usuario;
             }
         } catch (SQLException e) {
