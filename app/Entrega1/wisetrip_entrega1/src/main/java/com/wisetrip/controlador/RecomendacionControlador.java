@@ -72,15 +72,26 @@ public class RecomendacionControlador {
             }
         }
 
-        List<ResultadoRecomendacion> resultados =
+         List<ResultadoRecomendacion> resultados =
                 recomendadorDestinos.recomendarDestinos(ciudades, preferencias);
         SeleccionDestinos seleccion = selectorDestinos.seleccionarMejoresDestinos(resultados);
         guardarPlanificacionSiHaceFalta(sesion, usuario, atributosCuestionario, presupuestoUsd, seleccion);
+
+        // Iniciales para el avatar del encabezado
+        String[] partes = usuario.getNombreCompleto().trim().split("\\s+");
+        model.addAttribute("inicialesUsuario", partes.length > 1
+                ? ("" + partes[0].charAt(0) + partes[1].charAt(0)).toUpperCase()
+                : partes[0].substring(0, 1).toUpperCase());
 
         model.addAttribute("usuario", usuario);
         model.addAttribute("seleccion", seleccion);
         model.addAttribute("fechas", sesion.getAttribute("fechasViaje"));
         model.addAttribute("presupuestoUsd", presupuestoUsd);
+
+        // Datos de la ficha de búsqueda
+        model.addAttribute("ubicacion", sesion.getAttribute("ubicacionOrigen"));
+        model.addAttribute("presupuesto", sesion.getAttribute("presupuestoViaje"));
+
         return "recomendaciones";
     }
 
