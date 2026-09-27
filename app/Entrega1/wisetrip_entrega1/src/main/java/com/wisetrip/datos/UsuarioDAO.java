@@ -60,8 +60,8 @@ public class UsuarioDAO {
 
     public Usuario buscarPorCorreo(String correo) {
         String sql = """
-                SELECT id_usuario, nombre, correo, contraseña, rol,
-                       tipo_documento, numero_documento, fecha_nacimiento
+                  SELECT id_usuario, nombre, correo, contraseña, rol,
+                      tipo_documento, numero_documento, fecha_nacimiento, chat_id
                 FROM usuario
                 WHERE LOWER(correo) = LOWER(?) AND estado = TRUE
                 """;
@@ -87,6 +87,7 @@ public class UsuarioDAO {
                 if (fechaNacimiento != null) {
                     usuario.setFechaNacimiento(fechaNacimiento.toLocalDate().toString());
                 }
+                usuario.setChatId(rs.getString("chat_id"));
                 return usuario;
             }
         } catch (SQLException e) {
@@ -107,6 +108,19 @@ public class UsuarioDAO {
             }
         } catch (SQLException e) {
             throw new IllegalStateException("No se pudo validar el usuario en PostgreSQL.", e);
+        }
+    }
+
+    public void vincularTelegram(int idUsuario, String chatId) {
+        String sql = "UPDATE usuario SET chat_id = ? WHERE id_usuario = ?";
+
+        try (Connection conn = ConexionBD.obtenerConexion();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, chatId);
+            stmt.setInt(2, idUsuario);
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new IllegalStateException("No se pudo vincular Telegram al usuario.", e);
         }
     }
 

@@ -125,4 +125,8 @@ public class UsuarioServicio {
         }
         return usuario;
     }
+
+    public void vincularTelegram(int idUsuario, String chatId) {
+        usuarioDAO.vincularTelegram(idUsuario, chatId);
+    }
 }

@@ -18,6 +18,7 @@ public class Usuario {
     private String correo;
     private String password;
     private String rol = "cliente";
+    private String chatId;
 
     // Constructor vacío necesario para que Spring pueda
     // crear y llenar el objeto con los datos del formulario
@@ -97,5 +98,13 @@ public class Usuario {
 
     public void setRol(String rol) {
         this.rol = rol;
+    }
+
+    public String getChatId() {
+        return chatId;
+    }
+
+    public void setChatId(String chatId) {
+        this.chatId = chatId;
     }
 }
