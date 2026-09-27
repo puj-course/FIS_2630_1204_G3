@@ -6,10 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.stereotype.Service;
-<<<<<<< HEAD
 
-=======
->>>>>>> 3f2935c (style(portada): rediseña el heroe con fotos de fondo y barra superior)
 import com.wisetrip.datos.CiudadSemilla;
 import com.wisetrip.datos.DatosCiudades;
 import com.wisetrip.modelo.Ubicacion;
