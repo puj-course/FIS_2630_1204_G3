@@ -3176,17 +3176,15 @@ hoy realice algunos índices con llaves foráneas de una tabla que se llama nive
 
 1. **¿Qué hice ayer?**
 
+Empece a revisar como puedo implementar telegram dentro de la aplicacion teniendo en cuenta que telegram puede usar el chatbot que incluye para poder hacer menajes menos genericos, sin mebargo aun se encuentra en proceso de revision hasta el momento
    
-
-
 2. **¿Qué voy a hacer hoy?**
 
-   
+   Ayer se hizo la implementacion de la funcionalidad de correo electronico a la aplicacion, se hizo la creacion de nuevas clases para ejecutar la funcionalidad, sin embargo datos sensibles quedaron expuestos en la clase de application properties.
 
-   
 3. **¿Tengo algún impedimento o bloqueo?**
 
-   
+   En que parte de la aplicacion vamos a ejecutar en telegram y que queremos que se muestre alli.
    
 ---
 
