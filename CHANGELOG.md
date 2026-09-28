@@ -3251,16 +3251,17 @@ si aun tenemos algunos problemas con la nube para que funcione como la pagina we
 
 1. **¿Qué logramos?**
 
-
+Logramos completar algunas otras pantallas ya dejándolas listas, además se agregaron nuevas funciones a la página, realmente nos hace falta muy poco para acabarla sin embargo en el próximo sprint tenemos que empezar a mirar lo de la entrega Gof en el código
 
 ### Sprint Retrospective
 
 2. **¿Cómo trabajamos?**
 
-
+Siento que esta semana todos trabajamos muy bien, todos realizaron la tarea de forma efectiva y a todos nos quedó muy bien, todos nos esforzamos para entregar un producto entero y único hacia el usuario.
 
 3. **¿Qué podríamos mejorar?**
 
+En lo personal tengo que mejorar mi atención, a veces hago commits en main que tenían que ir en mi rama, esta semana por ejemplo tuve un error metiendo un correo que no pertenecía al proyecto y hice commits ahí sin notarlo y luego tuve que cambiar los commits que había hecho a la otra cuenta que si estoy usando para el proyecto y eso causó muchos conflictos en mi rama y a la hora de hacer merge hacía develop y hacía main. La herramienta aún me confunde mucho, pero estoy trabajando en entenderla cada vez más.
 
 
 ---
@@ -3271,14 +3272,18 @@ si aun tenemos algunos problemas con la nube para que funcione como la pagina we
 
 1. **¿Qué logramos?**
 
+Logramos tener la pagina como la queriamos tener, en terminos de diseño, se logro solucionar varios errores que estaban impidiendo que s emostraron las imagenes en las pantallas principalmente. En mi caso pude subir profin las imagenes a la pantalla de Preguntas de Preferencia aunque siguen faltando algunas, pero ya se corrigio la ruta para que aparezcan.
 
 ### Sprint Retrospective
 
 2. **¿Cómo trabajamos?**
 
+Esta semana se vio el trabajo en grupo, se vio que el Sprint Retrospective anterior valio la pena hablar y cmunicarnos bien como equipo. Esto ayudo a que esta semana se viera de verdad el progreso en el proyecto.
+
 
 3. **¿Qué podríamos mejorar?**
 
+En mi parte a veces me confundo y termino trabajando directamente en el develop y me olvido de mi rama, pero pude corregirlo en esta semana y tambien hubo un error porque ahora solo a mi me muestra las fotos en pantalla y no a mis compañeros despues de hacer el merge porque las imagenes quedaron con los IDs anteriores y claramente el codigo no los va a identificar y no lo va a correr bien.
 
 ---
 
