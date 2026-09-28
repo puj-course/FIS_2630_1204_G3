@@ -16,6 +16,8 @@ import java.util.Map;
 public class PreferenciasServicio {
 
     public static final List<CategoriaPreferencia> CATEGORIAS = List.of(
+        // desierto y nieve se agruparon aqui (paisaje/clima) y no en "caracteristicas
+        // especificas", donde estaban antes, esto porque se organizó mejor las categorias 
     categoria("Paisaje y clima", "Qué tipo de paisaje y clima buscas",
             "playa", "montana", "naturaleza", "nieve", "desierto"),
     categoria("Tipo de destino", "El ambiente y carácter del destino",
@@ -36,37 +38,49 @@ public class PreferenciasServicio {
             "hispanohablante")
 );
 
-private static final Map<String, String> ETIQUETAS = Map.ofEntries(
-    Map.entry("playa", "Playa"),
-    Map.entry("montana", "Montaña"),
-    Map.entry("naturaleza", "Naturaleza"),
-    Map.entry("aventura", "Aventura"),
-    Map.entry("oferta_gastronomica", "Opciones gastronómicas"),
-    Map.entry("gourmet", "Alta cocina"),
-    Map.entry("comida_internacional", "Comida internacional"),
-    Map.entry("restricciones_alimentarias", "Restricciones alimentarias"),
-    Map.entry("tranquilo", "Destino tranquilo"),
-    Map.entry("urbano", "Ciudad grande"),
-    Map.entry("vida_nocturna", "Vida nocturna"),
-    Map.entry("compras", "Compras"),
-    Map.entry("tiempo_libre", "Tiempo libre"),
-    Map.entry("muchas_actividades", "Agenda cargada"),
-    Map.entry("museos", "Museos"),
-    Map.entry("religioso", "Sitios religiosos"),
-    Map.entry("lujo", "Lujo"),
-    Map.entry("mochilero", "Mochilero"),
-    Map.entry("familiar_kids", "Actividades para niños"),
-    Map.entry("pet_friendly", "Pet-friendly"),
-    Map.entry("romantico", "Romántico"),
-    Map.entry("nieve", "Nieve"),
-    Map.entry("desierto", "Desierto"),
-    Map.entry("ruinas_arqueologicas", "Ruinas arqueológicas"),
-    Map.entry("festivo", "Festivales"),
-    Map.entry("off_the_beaten_path", "Menos turístico"),
-    Map.entry("hispanohablante", "Hispanohablante"),
-    Map.entry("navegacion_islas", "Navegación"),
-    Map.entry("parque_diversiones", "Parques de diversiones")
-);
+    private static final Map<String, String> ETIQUETAS = Map.ofEntries(
+        Map.entry("playa", "Playa"),
+        Map.entry("montana", "Montaña"),
+        Map.entry("naturaleza", "Naturaleza"),
+        Map.entry("aventura", "Aventura"),
+        Map.entry("deportes_extremos", "Deportes extremos"),
+        Map.entry("gastronomico_destacado", "Gastronomía destacada"),
+        Map.entry("oferta_gastronomica", "Opciones gastronómicas"),
+        Map.entry("gourmet", "Alta cocina"),
+        Map.entry("comida_internacional", "Comida internacional"),
+        Map.entry("restricciones_alimentarias", "Restricciones alimentarias"),
+        Map.entry("relajacion", "Descanso"),
+        Map.entry("tranquilo", "Destino tranquilo"),
+        Map.entry("urbano", "Ciudad grande"),
+        Map.entry("vida_nocturna", "Vida nocturna"),
+        Map.entry("compras", "Compras"),
+        Map.entry("tiempo_libre", "Tiempo libre"),
+        Map.entry("muchas_actividades", "Agenda cargada"),
+        Map.entry("cultura_historia", "Cultura e historia"),
+        Map.entry("museos", "Museos"),
+        Map.entry("religioso", "Sitios religiosos"),
+        Map.entry("lujo", "Lujo"),
+        Map.entry("mochilero", "Mochilero"),
+        Map.entry("familiar", "Viaje familiar"),
+        Map.entry("familiar_kids", "Actividades para niños"),
+        Map.entry("pet_friendly", "Pet-friendly"),
+        Map.entry("romantico", "Romántico"),
+        Map.entry("nieve", "Nieve"),
+        Map.entry("desierto", "Desierto"),
+        Map.entry("isla_caribe", "Isla o Caribe"),
+        Map.entry("vino", "Vinos"),
+        Map.entry("ruinas_arqueologicas", "Ruinas arqueológicas"),
+        Map.entry("festivo", "Festivales"),
+        Map.entry("off_the_beaten_path", "Menos turístico"),
+        Map.entry("hispanohablante", "Hispanohablante"),
+        Map.entry("navegacion_islas", "Navegación"),
+        Map.entry("aguas_termales", "Aguas termales"),
+        Map.entry("cascadas_rios", "Cascadas o ríos"),
+        Map.entry("buceo_snorkel", "Buceo o snorkel"),
+        Map.entry("teatro_musica", "Teatro o música"),
+        Map.entry("parque_diversiones", "Parques de diversiones"),
+        Map.entry("golf", "Golf")
+    );
 
     public List<CategoriaPreferencia> listarCategorias() {
         return CATEGORIAS;
