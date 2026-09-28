@@ -7,6 +7,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Resumen de tu viaje | WiseTrip</title>
+    <link rel="stylesheet" href="<c:url value='/css/estilos.css'/>">
+    <style>
+        /* HU-74: bandera del país junto al monto del presupuesto en el resumen */
+        .valor-con-bandera {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .bandera-resumen {
+            width: 24px;
+            height: 18px;
+            object-fit: cover;
+            border-radius: 2px;
+            border: 1px solid #ddd;
+            flex-shrink: 0;
+        }
+    </style>
     <link rel="stylesheet" href="<c:url value='/css/resumen.css'/>">
 </head>
 <body class="rs">
@@ -53,6 +70,25 @@
 <main class="rs-pantalla">
     <div class="rs-escena">
 
+    <c:if test="${not empty presupuesto}">
+        <h2 class="seccion">Presupuesto <a class="editar" href="<c:url value='/presupuesto'/>">editar</a></h2>
+        <div class="dato">
+            <span class="etiqueta">Monto</span>
+            <span class="valor valor-cifra valor-con-bandera">
+                ${montoFormateado} ${presupuesto.moneda}
+                <%-- HU-74: bandera del país correspondiente a la moneda del presupuesto.
+                     Si el archivo no existe (código inesperado), el onerror la oculta
+                     en vez de dejar un ícono roto. --%>
+                <c:if test="${not empty presupuesto.moneda}">
+                    <img class="bandera-resumen"
+                         src="<c:url value='/img/banderas/${presupuesto.moneda}.png'/>"
+                         alt="Bandera de ${presupuesto.moneda}"
+                         onerror="this.style.display='none'">
+                </c:if>
+            </span>
+        </div>
+        <div class="dato">
+            <span class="etiqueta">Moneda</span><span class="valor">${nombreMoneda}</span>
         <%-- Fotos de fondo detrás del texto y del pase.
              Por ahora se usan las fotos de static/img/portada/. --%>
         <div class="rs-escena-fotos" aria-hidden="true">
