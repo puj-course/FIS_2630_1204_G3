@@ -3293,17 +3293,17 @@ En mi parte a veces me confundo y termino trabajando directamente en el develop 
 
 1. **¿Qué logramos?**
 
-
+Se realizo la implementacion de los correos y telegram, seguimos mejorando tanto en backend y en frontend. En las proximas entregas esperamos empezar a integrar las apis restantes. Sin embargo nos toca verificar en el flujo y como las usaremos.
 
 ### Sprint Retrospective
 
 2. **¿Cómo trabajamos?**
 
-
+Hemos mejorado como equipo, la comunicacion ha mejorado, en mi percepcion esta semana se trabajo en conjunto y todo ha funcionado hasta el momento
 
 3. **¿Qué podríamos mejorar?**
 
-
+Podria mejorar en colocar una hora especifica para realizar las reuniones y que todos podamos unirnos ya que a veces nos pasa que alguno del equipo no ve la llamada a tiempo. De resto trabajamos muy bien.
 
 ---
 
