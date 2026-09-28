@@ -3313,17 +3313,17 @@ En mi parte a veces me confundo y termino trabajando directamente en el develop 
 
 1. **¿Qué logramos?**
 
-
+Logramos trabajar nuevamente como grupo, siento que cada vez va afinándose mas el diseño de la pagina que le da un toque verdaderamente único y creativo! sin embargo no hay que dejar atrás el como funciona, siento que será clave en las próximas semanas ya que nos falta trabajar un poco mas en el back
 
 ### Sprint Retrospective
 
 2. **¿Cómo trabajamos?**
 
-
+Bien, esta semana si se vio muy coherente el trabajo en equipo, tenemos que seguir asi
 
 3. **¿Qué podríamos mejorar?**
 
-
+la verdad, mi única observación es aprovechar un poco mas los dailys, estamos teniendo problemas al hacer merge con main principalmente porque no sabemos que cambios en el código son los que hacemos como grupo, y cuando lo vamos a unir tenemos algunos problemas, pero se que no va a frenar el como trabajamos.
 
 ---
 
@@ -3333,13 +3333,21 @@ En mi parte a veces me confundo y termino trabajando directamente en el develop 
 
 1. **¿Qué logramos?**
 
+en terminos de diseño seguimos mejorando, ya se ve mas como una pagina verdadera de viajes, acabamos nuestras issues, y resolver problemas de la pagina
 
 ### Sprint Retrospective
 
 2. **¿Cómo trabajamos?**
 
+trabajamos bien como equipo, mejoramos la comunicacion ya sea interna correspondiente al proyecto, ya sea hablando de errores, si se veia el trabajo del otro en la pagina, y tambien afuera del proyecto en conflictos relacionados al proyecto.
 
 3. **¿Qué podríamos mejorar?**
+
+como equipo esta semana lo hicimos muy bien, espero que todos los sprints que falten los trabajemos igual de bien, en mi caso tengo problemas con el tiempo, ya entiendo el git y la metodologia scrum, pero al momento de trabajar en mis issues se me olvida subirlas a mi rama, entonces a veces subi todo mi trabajo de una y no como tendria que ser.
+
+---
+
+---
 
 
 ---
