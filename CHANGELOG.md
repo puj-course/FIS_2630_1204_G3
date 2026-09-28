@@ -3346,10 +3346,8 @@ trabajamos bien como equipo, mejoramos la comunicacion ya sea interna correspond
 como equipo esta semana lo hicimos muy bien, espero que todos los sprints que falten los trabajemos igual de bien, en mi caso tengo problemas con el tiempo, ya entiendo el git y la metodologia scrum, pero al momento de trabajar en mis issues se me olvida subirlas a mi rama, entonces a veces subi todo mi trabajo de una y no como tendria que ser.
 
 ---
-<img width="1445" height="494" alt="image" src="https://github.com/user-attachments/assets/8f7a689a-26b3-46a9-9541-a33bccec69e2" />
+<img width="1600" height="548" alt="image" src="https://github.com/user-attachments/assets/1042da06-9a97-4812-9830-7061389e4d72" />
 
 ---
 
-
----
 
