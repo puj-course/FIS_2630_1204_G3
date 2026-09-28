@@ -33,7 +33,7 @@ public class PreferenciaDAO {
             }
             stmt.executeBatch();
         } catch (SQLException e) {
-            throw new IllegalStateException("No se pudieron guardar las preferencias en PostgreSQL.", e);
+            throw new IllegalStateException("No se pudieron guardar las preferencias en la base de datos.", e);
         }
     }
 }

@@ -44,7 +44,7 @@ public class ViajeDAO {
             }
             throw new IllegalStateException("PostgreSQL no devolvió id_viaje.");
         } catch (SQLException e) {
-            throw new IllegalStateException("No se pudo guardar el viaje en PostgreSQL.", e);
+            throw new IllegalStateException("No se pudo guardar el viaje en la base de datos.", e);
         }
     }
 }

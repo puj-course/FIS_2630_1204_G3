@@ -12,210 +12,218 @@
 </head>
 <body class="lp">
 
-<div class="lp-contenedor">
+<section class="lp-hero">
+
+    <div class="lp-hero-fondos">
+        <div class="lp-hero-foto" style="background-image:url('/img/portada/Cartegena.jpg')"></div>
+        <div class="lp-hero-foto" style="background-image:url('/img/portada/Rio.jpg')"></div>
+        <div class="lp-hero-foto" style="background-image:url('/img/portada/Argentina.jpg')"></div>
+    </div>
 
     <nav class="lp-nav">
-        <div class="lp-marca">
-            <svg width="30" height="30" viewBox="0 0 32 32" fill="none">
-                <circle cx="16" cy="16" r="14" fill="#FFC627" stroke="#16161D" stroke-width="2.5"/>
-                <path d="M6 17l18-8-4 8 4 8-18-8z" fill="#5B3FA8" stroke="#16161D" stroke-width="2"
-                      stroke-linejoin="round"/>
-            </svg>
-            WiseTrip
-        </div>
+        <a class="lp-marca" href="<c:url value='/'/>">
+            <img src="/img/portada/logo.png" alt="">
+            <span>Wise<em>Trip</em></span>
+        </a>
         <div class="lp-nav-links">
+            <a href="#destinos">Destinos</a>
+            <a href="#como-funciona">Cómo funciona</a>
             <a href="<c:url value='/login'/>">Iniciar sesión</a>
             <a class="lp-btn" href="<c:url value='/registro'/>">Crear cuenta</a>
         </div>
     </nav>
 
-    <section class="lp-hero">
+    <div class="lp-hero-contenido">
+        <span class="lp-sello">20 países de Latinoamérica</span>
 
-        <div>
-            <span class="lp-sello">20 países de Latinoamérica</span>
+        <h1 class="lp-titulo">
+            Viaja lejos<br>
+            sin <span class="resalte">gastar</span> de más
+        </h1>
 
-            <h1 class="lp-titulo">
-                Viaja lejos<br>
-                sin <span class="subrayado">gastar</span><br>
-                de más
-            </h1>
+        <p class="lp-bajada">
+            Cuéntanos de dónde sales, cuánto tienes y qué te gusta hacer.
+            WiseTrip reparte tu presupuesto y te recomienda los destinos
+            de la región que sí puedes pagar.
+        </p>
 
-            <p class="lp-bajada">
-                Cuéntanos de dónde sales, cuánto tienes y qué te gusta hacer.
-                WiseTrip reparte tu presupuesto y te recomienda los destinos
-                de la región que sí puedes pagar.
+        <div class="lp-acciones">
+            <a class="lp-btn-morado" href="<c:url value='/registro'/>">Empezar a planear</a>
+            <a class="lp-btn-blanco" href="<c:url value='/login'/>">Ya tengo cuenta</a>
+        </div>
+    </div>
+
+    <div class="lp-hero-pie">
+        <span>Cartagena · Colombia</span>
+        <span>Río de Janeiro · Brasil</span>
+        <span>Buenos Aires · Argentina</span>
+    </div>
+
+</section>
+
+<section class="lp-cifras">
+    <div class="lp-cifra">
+        <span class="lp-cifra-num">20</span>
+        <span class="lp-cifra-lbl">Países de<br>Latinoamérica</span>
+    </div>
+    <div class="lp-cifra">
+        <span class="lp-cifra-num">19</span>
+        <span class="lp-cifra-lbl">Monedas<br>soportadas</span>
+    </div>
+    <div class="lp-cifra">
+        <span class="lp-cifra-num">41</span>
+        <span class="lp-cifra-lbl">Preguntas para<br>tu perfil</span>
+    </div>
+    <div class="lp-cifra">
+        <span class="lp-cifra-num">3</span>
+        <span class="lp-cifra-lbl">Destinos<br>a tu medida</span>
+    </div>
+</section>
+
+<div class="lp-contenedor">
+
+    <section class="lp-seccion" id="destinos">
+        <div class="lp-seccion-cabeza">
+            <div>
+                <span class="lp-rotulo">Inspírate</span>
+                <h2 class="lp-seccion-titulo">Destinos que<br>te están esperando</h2>
+            </div>
+            <p class="lp-seccion-nota">
+                Playas, ciudades con historia y montaña. Te mostramos solo
+                los que caben en tu bolsillo.
             </p>
+        </div>
 
-            <div class="lp-acciones">
-                <a class="lp-btn" href="<c:url value='/registro'/>">Empezar a planear</a>
-                <a class="lp-btn-claro" href="<c:url value='/login'/>">Ya tengo cuenta</a>
+        <div class="lp-destinos">
+            <a class="lp-destino" href="<c:url value='/registro'/>"
+               style="background-image:url('/img/portada/Cartegena.jpg')">
+                <span class="lp-destino-pais">Colombia</span>
+                <div class="lp-destino-info">
+                    <span class="lp-destino-nombre">Cartagena</span>
+                    <span class="lp-destino-tags">Playa · Ciudad amurallada · Gastronomía</span>
+                </div>
+            </a>
+
+            <a class="lp-destino" href="<c:url value='/registro'/>"
+               style="background-image:url('/img/portada/Argentina.jpg')">
+                <span class="lp-destino-pais">Argentina</span>
+                <div class="lp-destino-info">
+                    <span class="lp-destino-nombre">Buenos Aires</span>
+                    <span class="lp-destino-tags">Museos · Vida nocturna · Teatro</span>
+                </div>
+            </a>
+
+            <a class="lp-destino" href="<c:url value='/registro'/>"
+               style="background-image:url('/img/portada/Peru.jpg')">
+                <span class="lp-destino-pais">Perú</span>
+                <div class="lp-destino-info">
+                    <span class="lp-destino-nombre">Cusco</span>
+                    <span class="lp-destino-tags">Ruinas · Montaña · Cultura</span>
+                </div>
+            </a>
+        </div>
+
+        <div class="lp-experiencias">
+            <div class="lp-experiencia">
+                <div class="lp-experiencia-foto"
+                     style="background-image:url('/img/portada/Amazonas.jpg')"></div>
+                <div>
+                    <span class="lp-experiencia-temporada">Jun — Nov</span>
+                    <strong>Navega la Amazonía</strong>
+                    <p>Selva, río y comunidades</p>
+                </div>
+            </div>
+
+            <div class="lp-experiencia">
+                <div class="lp-experiencia-foto"
+                     style="background-image:url('/img/portada/desierto.jpg')"></div>
+                <div>
+                    <span class="lp-experiencia-temporada">Mar — Nov</span>
+                    <strong>Cielos del desierto</strong>
+                    <p>Paisajes áridos y estrellas</p>
+                </div>
+            </div>
+
+            <div class="lp-experiencia">
+                <div class="lp-experiencia-foto"
+                     style="background-image:url('/img/portada/Rio.jpg')"></div>
+                <div>
+                    <span class="lp-experiencia-temporada">Feb</span>
+                    <strong>Carnaval en Río</strong>
+                    <p>La fiesta más grande del mundo</p>
+                </div>
             </div>
         </div>
-
-        <div class="lp-mapa">
-            <svg viewBox="0 0 400 530" xmlns="http://www.w3.org/2000/svg" role="img"
-                 aria-label="Mapa ilustrado de Latinoamérica">
-
-                <!-- Camino invisible que sigue el rotulo del continente -->
-                <defs>
-                    <path id="curvaLatam"
-                          d="M64 300 q6 100 64 160 q58 54 130 40"
-                          fill="none"/>
-                </defs>
-
-                <!-- Mar -->
-                <rect x="0" y="0" width="400" height="530" rx="10" fill="#6BB8E8"/>
-
-                <!-- Olas decorativas -->
-                <path d="M20 440q10-7 20 0t20 0" stroke="#fff" stroke-width="2.5" fill="none" opacity=".7"/>
-                <path d="M20 458q10-7 20 0t20 0" stroke="#fff" stroke-width="2.5" fill="none" opacity=".7"/>
-                <path d="M330 90q10-7 20 0t20 0" stroke="#fff" stroke-width="2.5" fill="none" opacity=".7"/>
-
-                <!-- Sol -->
-                <circle cx="345" cy="52" r="20" fill="#FFC627" stroke="#16161D" stroke-width="2.5"/>
-                <g stroke="#16161D" stroke-width="2.5" stroke-linecap="round">
-                    <path d="M345 20v-8M345 92v8M313 52h-8M385 52h8M322 29l-6-6M368 75l6 6M368 29l6-6M322 75l-6 6"/>
-                </g>
-
-                <!-- Continente -->
-                <path d="M28 62 L92 36 L128 52 L152 46 L168 72 L152 92 L176 104 L156 118
-                         L172 140 L198 160 L218 174 L250 176 L292 168 L330 190 L345 228
-                         L352 268 L332 318 L302 352 L288 398 L272 438 L252 502
-                         L236 468 L226 418 L218 372 L204 326 L192 282 L180 246
-                         L190 210 L206 186 L196 176 L170 150 L150 128 L138 112
-                         L118 96 L92 86 L60 78 Z"
-                      fill="#56A860" stroke="#16161D" stroke-width="3" stroke-linejoin="round"/>
-
-                <!-- Selva amazónica -->
-                <path d="M240 220 q40-10 70 14 q14 40-10 62 q-46 16-70-10 q-14-40 10-66z"
-                      fill="#3E8A4B" opacity=".85"/>
-
-                <!-- Cordillera de los Andes -->
-                <g fill="#8A6FD4" stroke="#16161D" stroke-width="2" stroke-linejoin="round">
-                    <path d="M200 250 l13-22 13 22z"/>
-                    <path d="M208 296 l13-22 13 22z"/>
-                    <path d="M214 344 l13-22 13 22z"/>
-                    <path d="M222 392 l13-22 13 22z"/>
-                </g>
-
-                <!-- Desierto / cactus -->
-                <g stroke="#16161D" stroke-width="2.5" stroke-linecap="round">
-                    <path d="M78 62v18" stroke="#2FBFAF"/>
-                    <path d="M78 70h-7v-7M78 74h7v-8" stroke="#2FBFAF"/>
-                </g>
-
-                <!-- Playa: palmera -->
-                <g>
-                    <path d="M300 196v22" stroke="#16161D" stroke-width="3" stroke-linecap="round"/>
-                    <path d="M300 196q-14-8-20 2M300 196q14-8 20 2M300 196q-4-14 4-16"
-                          stroke="#16161D" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-                </g>
-
-                <!-- Avión -->
-                <g transform="translate(60 150) rotate(-18)">
-                    <path d="M0 10l34-14-7 14 7 14z" fill="#E8452C" stroke="#16161D"
-                          stroke-width="2.5" stroke-linejoin="round"/>
-                </g>
-                <path d="M40 176q30 16 62 8" stroke="#fff" stroke-width="2.5"
-                      stroke-dasharray="6 7" fill="none" stroke-linecap="round"/>
-
-                <!-- Pines de ciudades -->
-                <g>
-                    <!-- Ciudad de México -->
-                    <path d="M104 78c0-8 7-15 15-15s15 7 15 15c0 11-15 24-15 24s-15-13-15-24z"
-                          fill="#5B3FA8" stroke="#16161D" stroke-width="2.5"/>
-                    <circle cx="119" cy="78" r="5" fill="#EFE9DC"/>
-
-                    <!-- Cartagena -->
-                    <path d="M228 186c0-8 7-15 15-15s15 7 15 15c0 11-15 24-15 24s-15-13-15-24z"
-                          fill="#E8452C" stroke="#16161D" stroke-width="2.5"/>
-                    <circle cx="243" cy="186" r="5" fill="#EFE9DC"/>
-
-                    <!-- Río de Janeiro -->
-                    <path d="M300 282c0-8 7-15 15-15s15 7 15 15c0 11-15 24-15 24s-15-13-15-24z"
-                          fill="#FFC627" stroke="#16161D" stroke-width="2.5"/>
-                    <circle cx="315" cy="282" r="5" fill="#16161D"/>
-
-                    <!-- Cusco -->
-                    <path d="M188 300c0-8 7-15 15-15s15 7 15 15c0 11-15 24-15 24s-15-13-15-24z"
-                          fill="#2FBFAF" stroke="#16161D" stroke-width="2.5"/>
-                    <circle cx="203" cy="300" r="5" fill="#16161D"/>
-
-                    <!-- Bariloche -->
-                    <path d="M212 412c0-8 7-15 15-15s15 7 15 15c0 11-15 24-15 24s-15-13-15-24z"
-                          fill="#F3A6C0" stroke="#16161D" stroke-width="2.5"/>
-                    <circle cx="227" cy="412" r="5" fill="#16161D"/>
-                </g>
-
-                <!-- Etiqueta de precio -->
-                <g transform="translate(276 356) rotate(-6)">
-                    <rect x="0" y="0" width="104" height="38" rx="8" fill="#fff"
-                          stroke="#16161D" stroke-width="2.5"/>
-                    <text x="52" y="17" text-anchor="middle" font-family="IBM Plex Mono, monospace"
-                          font-size="9" fill="#5B5B66">TU PRESUPUESTO</text>
-                    <text x="52" y="31" text-anchor="middle" font-family="Archivo Black, sans-serif"
-                          font-size="13" fill="#16161D">SÍ ALCANZA</text>
-                </g>
-
-                <!-- Rótulo del continente, siguiendo la costa -->
-                <text font-family="Archivo Black, sans-serif" font-size="19"
-                      fill="#16161D" opacity=".8" letter-spacing="2.5">
-                    <textPath href="#curvaLatam" startOffset="8%">LATINOAMÉRICA</textPath>
-                </text>
-            </svg>
-        </div>
-
     </section>
 
-    <section class="lp-cifras">
-        <div class="lp-cifra">
-            <span class="lp-cifra-num">20</span>
-            <span class="lp-cifra-lbl">Países de<br>Latinoamérica</span>
-        </div>
-        <div class="lp-cifra">
-            <span class="lp-cifra-num">19</span>
-            <span class="lp-cifra-lbl">Monedas<br>soportadas</span>
-        </div>
-        <div class="lp-cifra">
-            <span class="lp-cifra-num">26</span>
-            <span class="lp-cifra-lbl">Preguntas para<br>conocer tu perfil</span>
-        </div>
-        <div class="lp-cifra">
-            <span class="lp-cifra-num">3</span>
-            <span class="lp-cifra-lbl">Destinos<br>recomendados</span>
-        </div>
-    </section>
+    <section class="lp-seccion" id="como-funciona">
+        <span class="lp-rotulo">En menos de cinco minutos</span>
+        <h2 class="lp-seccion-titulo" style="margin-bottom:34px">Cómo funciona</h2>
 
-    <h2 class="lp-seccion-titulo">Cómo funciona</h2>
-    <p class="lp-seccion-bajada">Cuatro pasos y tienes tu plan. No toma más de cinco minutos.</p>
+        <div class="lp-pasos-linea">
+            <span class="lp-paso-circulo">1</span>
+            <span class="lp-paso-circulo">2</span>
+            <span class="lp-paso-circulo">3</span>
+            <span class="lp-paso-circulo">4</span>
+        </div>
 
-    <section class="lp-pasos">
-        <article class="lp-paso">
-            <span class="lp-paso-num">1</span>
-            <h3>Dinos de dónde sales</h3>
-            <p>Tu ciudad de origen define las rutas, el transporte y lo que te cuesta llegar.</p>
-        </article>
-        <article class="lp-paso">
-            <span class="lp-paso-num">2</span>
-            <h3>Cuéntanos qué te gusta</h3>
-            <p>Playa o montaña, museos o vida nocturna, lujo o mochilero. Responde sí o no.</p>
-        </article>
-        <article class="lp-paso">
-            <span class="lp-paso-num">3</span>
-            <h3>Pon fechas y presupuesto</h3>
-            <p>En tu moneda local. Nosotros hacemos la conversión para comparar destinos.</p>
-        </article>
-        <article class="lp-paso">
-            <span class="lp-paso-num">4</span>
-            <h3>Recibe tus destinos</h3>
-            <p>Tres ciudades ordenadas por qué tanto coinciden contigo y con tu bolsillo.</p>
-        </article>
+        <div class="lp-pasos">
+            <article class="lp-paso">
+                <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M12 22s7-6.2 7-11.2A7 7 0 0 0 5 10.8C5 15.8 12 22 12 22z"
+                          stroke="#16161D" stroke-width="2.2"/>
+                    <circle cx="12" cy="10.4" r="2.6" fill="#16161D"/>
+                </svg>
+                <h3>Dinos de dónde sales</h3>
+                <p>Tu ciudad de origen define las rutas, el transporte y lo que te cuesta llegar.</p>
+            </article>
+
+            <article class="lp-paso">
+                <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M12 20.5S3.5 14.8 3.5 9.2a4.7 4.7 0 0 1 8.5-2.8 4.7 4.7 0 0 1 8.5 2.8c0 5.6-8.5 11.3-8.5 11.3z"
+                          stroke="#16161D" stroke-width="2.2" stroke-linejoin="round"/>
+                </svg>
+                <h3>Cuéntanos qué te gusta</h3>
+                <p>Playa o montaña, museos o vida nocturna, lujo o mochilero. Responde sí o no.</p>
+            </article>
+
+            <article class="lp-paso">
+                <svg viewBox="0 0 24 24" fill="none">
+                    <rect x="3" y="5" width="18" height="16" rx="2.5" stroke="#16161D" stroke-width="2.2"/>
+                    <path d="M3 10h18M8 2.5v5M16 2.5v5" stroke="#16161D" stroke-width="2.2" stroke-linecap="round"/>
+                </svg>
+                <h3>Pon fechas y presupuesto</h3>
+                <p>En tu moneda local. Nosotros hacemos la conversión para comparar destinos.</p>
+            </article>
+
+            <article class="lp-paso">
+                <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M21.5 2.5 2.5 10.2l8 3.3 3.3 8z" stroke="#16161D"
+                          stroke-width="2.2" stroke-linejoin="round"/>
+                </svg>
+                <h3>Recibe tus destinos</h3>
+                <p>Tres ciudades ordenadas por qué tanto coinciden contigo y con tu bolsillo.</p>
+            </article>
+        </div>
     </section>
 
     <section class="lp-cierre">
-        <h2>Tu próximo viaje empieza aquí</h2>
-        <p>Crear la cuenta es gratis y toma menos de un minuto.</p>
-        <a class="lp-btn-claro" href="<c:url value='/registro'/>">Crear mi cuenta</a>
+        <div class="lp-cierre-texto">
+            <h2>Tu próximo<br>viaje empieza aquí</h2>
+            <p>Crear la cuenta es gratis y toma menos de un minuto.</p>
+            <a class="lp-btn" href="<c:url value='/registro'/>">Crear mi cuenta</a>
+        </div>
+
+        <div class="lp-polaroids">
+            <div class="lp-polaroid">
+                <img src="/img/portada/Amazonas.jpg" alt="">
+                <span>Amazonas · COL</span>
+            </div>
+            <div class="lp-polaroid">
+                <img src="/img/portada/Peru.jpg" alt="">
+                <span>Cusco · PER</span>
+            </div>
+        </div>
     </section>
 
     <footer class="lp-pie">
@@ -224,5 +232,6 @@
     </footer>
 
 </div>
+
 </body>
 </html>
