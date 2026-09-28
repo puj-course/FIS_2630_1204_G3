@@ -7,7 +7,7 @@ CREATE TABLE IF NOT EXISTS usuario (
     id_usuario SERIAL PRIMARY KEY,
 
     nombre VARCHAR(100) NOT NULL,
-    correo CITEXT NOT NULL,
+    correo VARCHAR(150) NOT NULL,
     contraseña VARCHAR(255) NOT NULL,
     rol VARCHAR(20) NOT NULL,
     chat_id VARCHAR(50),
@@ -157,7 +157,7 @@ CREATE TABLE IF NOT EXISTS itinerario (
 
     fecha_actividad DATE NOT NULL,
 
-    hora_actividad TIME NOT NULL,
+    hora_actividad VARCHAR(5) NOT NULL,
 
     tipo VARCHAR(50) NOT NULL,
 
@@ -299,11 +299,6 @@ CREATE TABLE IF NOT EXISTS alertas (
                 'pendiente',
                 'enviada'
             )
-
--- Extensión para los correos
---este solo se ejecuta una vez y ya fue en el Neon, no es necesario correrlo varias veces
---es para que diferencie correos si tiene mayúsculas 
-CREATE EXTENSION IF NOT EXISTS citext;
         )
 );
 

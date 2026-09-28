@@ -1,5 +1,5 @@
 <%-- Preferencias de viaje.
-     Vista con las 26 preguntas organizadas por categoría, mostradas como sí/no.--%>
+     Vista con las preguntas organizadas por categoría (HU-71, #239), mostradas como sí/no. --%>
 
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
@@ -53,6 +53,8 @@
 
                 <c:forEach var="p" items="${categoria.preguntas}">
                     <%-- HU-50: Cada pregunta muestra una foto real relacionada. --%>
+                    <%-- HU-70 (#238): busca el archivo por el id exacto de la pregunta
+                        (static/img/preferencias/<id>.png). --%>
                     <div class="pregunta ${not empty errores[p.clave] ? 'pregunta-error' : ''}">
                         <div class="pregunta-imagen">
                             <img src="<c:url value='/img/preferencias/${p.clave}.png'/>"
@@ -79,6 +81,7 @@
             </section>
         </c:forEach>
 
+        <div class="pie-fijo" data-total="${totalPreguntas}">
         <div class="pie-fijo" data-total="${totalPreguntas}">
             <div class="progreso">
                 <div class="progreso-barra"><span id="progresoRelleno"></span></div>

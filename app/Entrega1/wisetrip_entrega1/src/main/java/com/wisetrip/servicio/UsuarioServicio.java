@@ -127,6 +127,6 @@ public class UsuarioServicio {
     }
 
     public void vincularTelegram(int idUsuario, String chatId) {
-        usuarioDAO.actualizarChatId(idUsuario, chatId);
+        usuarioDAO.vincularTelegram(idUsuario, chatId);
     }
 }
