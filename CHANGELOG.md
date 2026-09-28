@@ -1,6 +1,6 @@
-# Daily Scrum - WiseTrip
+# Daily Sprint - WiseTrip
 
-Este archivo registra las actualizaciones diarias del equipo durante el desarrollo del proyecto **WiseTrip**. En cada Daily Scrum se documentará el avance de las tareas, las actividades realizadas, las tareas pendientes y los posibles impedimentos encontrados.
+Este archivo registra las actualizaciones diarias del equipo durante el desarrollo del proyecto **WiseTrip**. En cada Daily Sprint se documentará el avance de las tareas, las actividades realizadas, las tareas pendientes y los posibles impedimentos encontrados.
 
 **Responsables:**
 
@@ -14,7 +14,7 @@ Este archivo registra las actualizaciones diarias del equipo durante el desarrol
 
 # Sprint 1 - Análisis y planificación
 
-## Daily Scrum - 13/08/2026
+## Daily Sprint - 13/08/2026
 
 ### Maria Alejandra Rodriguez
 
@@ -100,7 +100,7 @@ Este archivo registra las actualizaciones diarias del equipo durante el desarrol
 
 ---
 
-## Daily Scrum - [14/08/2026]
+## Daily Sprint - [14/08/2026]
 
 ### Maria Alejandra Rodriguez
 
@@ -322,7 +322,7 @@ El objetivo principal de esta semana es poder empezar a visualizar nuestro proye
 
 ---
 
-## Daily Scrum - [18/08/2026]
+## Daily Sprint - [18/08/2026]
 
 ### Maria Alejandra Rodriguez
 
@@ -407,7 +407,7 @@ El objetivo principal de esta semana es poder empezar a visualizar nuestro proye
 
 ---
 
-## Daily Scrum - [19/08/2026]
+## Daily Sprint - [19/08/2026]
 
 ### Maria Alejandra Rodriguez
 
@@ -492,7 +492,7 @@ codificar las primeras acciones de recolección de datos y estructura para el in
 
 ---
 
-## Daily Scrum - [20/08/2026]
+## Daily Sprint - [20/08/2026]
 
 ### Maria Alejandra Rodriguez
 
@@ -578,7 +578,7 @@ codificar las primeras acciones de recolección de datos y estructura para el in
 
 ---
 
-## Daily Scrum - [22/08/2026]
+## Daily Sprint - [22/08/2026]
 
 ### Maria Alejandra Rodriguez
 
@@ -817,7 +817,7 @@ De manera paralela, se desarrollará la estructura inicial de la base de datos y
 <img width="1242" height="628" alt="Captura de pantalla 2026-08-24 220204" src="https://github.com/user-attachments/assets/84bef945-3886-4b6b-bee6-b844c9dcb574" />
 
 
-## Daily Scrum - 25/08/2026
+## Daily Sprint - 25/08/2026
 
 ### Maria Alejandra Rodriguez
 
@@ -903,7 +903,7 @@ Realizamos el sprint planning y se definieron que historias de usuario, mileston
    <img width="1241" height="628" alt="Captura de pantalla 2026-08-25 201902" src="https://github.com/user-attachments/assets/7dffd6f9-9f73-46ad-89d0-4e631e2d93b1" />
    
 
-## Daily Scrum - 26/08/2026
+## Daily Sprint - 26/08/2026
 
 ### Maria Alejandra Rodriguez
 
@@ -991,7 +991,7 @@ Ivestigue acerca de mis tareas y como realizarlas
   <img width="1247" height="621" alt="Captura de pantalla 2026-08-26 210652" src="https://github.com/user-attachments/assets/d6e2ca62-393f-49ee-aaec-47f005941fad" />
 
 
-  ## Daily Scrum - 27/08/2026
+  ## Daily Sprint - 27/08/2026
 
 ### Maria Alejandra Rodriguez
 
@@ -1076,7 +1076,7 @@ Tratar de implementar mis partes en el codigo existente
   <img width="1600" height="1041" alt="WhatsApp Image 2026-08-29 at 6 10 10 PM" src="https://github.com/user-attachments/assets/5e7d18fe-ab5b-45fd-a2ea-f7dc2fb04886" />
 
 
-   ## Daily Scrum - 28/08/2026
+   ## Daily Sprint - 28/08/2026
 
 ### Maria Alejandra Rodriguez
 
@@ -1334,7 +1334,7 @@ Además, se busca garantizar que los datos ingresados sean validados correctamen
 ---
 
 
-## Daily Scrum - 01/09/2026
+## Daily Sprint - 01/09/2026
 
 ### Maria Alejandra Rodriguez
 
@@ -1422,7 +1422,7 @@ No.
 
 ---
 
-## Daily Scrum - 02/09/2026
+## Daily Sprint - 02/09/2026
 
 ### Maria Alejandra Rodriguez
 
@@ -1507,7 +1507,7 @@ No
 
 ---
 
-## Daily Scrum - 03/09/2026
+## Daily Sprint - 03/09/2026
 
 ### Maria Alejandra Rodriguez
 
@@ -1592,7 +1592,7 @@ Conexion entre HU con issues y commits
 
 ---
 
-## Daily Scrum - 04/09/2026
+## Daily Sprint - 04/09/2026
 
 ### Maria Alejandra Rodriguez
 
@@ -1676,7 +1676,7 @@ No he tenido tiempo, ya que el parcial de estructuras fue hoy
 <img width="1600" height="1200" alt="image" src="https://github.com/user-attachments/assets/2e58571b-9edb-4cb3-8f62-93eb327fcdcc" />
 ---
 
-## Daily Scrum - 05/09/2026
+## Daily Sprint - 05/09/2026
 
 ### Maria Alejandra Rodriguez
 
@@ -1919,7 +1919,7 @@ Además, se pretende vincular correctamente las ciudades y sus características 
 
 <img width="1600" height="1200" alt="image" src="https://github.com/user-attachments/assets/4a06669d-efcc-429e-948c-3a2376eef882" />
 
-## Daily Scrum - 08/09/2026
+## Daily Sprint - 08/09/2026
 
 ### Valeria Cortes Rendon
 
@@ -2004,7 +2004,7 @@ Además, se pretende vincular correctamente las ciudades y sus características 
 
 ---
 
-## Daily Scrum - 09/09/2026
+## Daily Sprint - 09/09/2026
 
 ### Isabella Posada
 
@@ -2088,7 +2088,7 @@ Además, se pretende vincular correctamente las ciudades y sus características 
 
 ---
 
-## Daily Scrum - 10/09/2026
+## Daily Sprint - 10/09/2026
 
 ### Isabella Posada
 
@@ -2172,7 +2172,7 @@ Además, se pretende vincular correctamente las ciudades y sus características 
 
 ---
 
-## Daily Scrum - 11/09/2026
+## Daily Sprint - 11/09/2026
 
 ### Maria Alejandra Rodriguez
 
@@ -2430,7 +2430,7 @@ Al finalizar el Sprint 6, WiseTrip deberá contar con una identidad visual más 
 
 ---
 
-## Daily Scrum - 15/09/2026
+## Daily Sprint - 15/09/2026
 
 ### Maria Alejandra Rodriguez
 
@@ -2511,7 +2511,7 @@ hoy solo he actualizado el planning de ayer ya que como grupo acordamos que no i
 falta de tiempo.
 ---
 
-## Daily Scrum - 16/09/2026
+## Daily Sprint - 16/09/2026
 
 ### Maria Alejandra Rodriguez
 
@@ -2593,7 +2593,7 @@ Falta de tiempo
 ---
 
 ---
-## Daily Scrum - 17/09/2026
+## Daily Sprint - 17/09/2026
 
 ### Maria Alejandra Rodriguez
 
@@ -2675,7 +2675,7 @@ Falta de tiempo
 
 ---
 
-## Daily Scrum - 18/09/2026
+## Daily Sprint - 18/09/2026
 
 ### Maria Alejandra Rodriguez
 
@@ -2893,7 +2893,7 @@ En este sprint, el equipo de WiseTrip se enfoca en fortalecer tres pilares clave
 
 ---
 
-## Daily Scrum - 22/09/2026
+## Daily Sprint - 22/09/2026
 
 ### Isabella Posada
 
@@ -2973,7 +2973,272 @@ Hoy verificaré el codigo para ver cual es el error de porque no muestra las ima
 
    no
 
+---   
 <img width="1443" height="777" alt="image" src="https://github.com/user-attachments/assets/33c39df4-cc93-42da-ad9f-67830ecf0a16" />
+
+---
+## Daily Sprint - 23/09/2026
+
+### Isabella Posada
+
+1. **¿Qué hice ayer?**
+
+   Ayer adelante lo de la base de datos en la nube y termine de configurarla para que mis compañeros pudieran acceder a ella y probar sus aportes de la pagina cuando quisieran
+
+2. **¿Qué voy a hacer hoy?**
+
+   hoy revise la base de datos, como estaban guardandose los datos y haciendo diferentes ajustes, ademas inicie el HU 73 (#241)
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+no
+
+---
+
+### Valeria Cortes Rendon
+
+1. **¿Qué hice ayer?**
+
+Investigacion sobre las APIs qeu podria usar   
+
+2. **¿Qué voy a hacer hoy?**
+
+Entendi la aplicacion que teenmos actualmente y empezar a implementarlo, sin embargo hasta el momento no he realizado Commits
+   
+3. **¿Tengo algún impedimento o bloqueo?**
+
+No
+   
+---
+
+### Santiago Clavijo
+
+1. **¿Qué hice ayer?**
+
+Ayer investigue acerca de como solucionar el error de las imagenes de las fotos y porque
+
+2. **¿Qué voy a hacer hoy?**
+
+hoy lo corregi y entendi que el error era que la ruta estaba mal, entonces trataba de mostrar unas imagenes que ni siquiera existian y lo subi al main
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+no por ahora
+
+---
+
+### Gabriela Melo Gualteros
+
+1. **¿Qué hice ayer?**
+
+Ayer elimine algunas preguntas que se repetian de alguna manera, unifique algunas que se parecian mucho. Pasamos de tener 41 preguntas a 29.
+
+2. **¿Qué voy a hacer hoy?**
+
+Ayer no alcance a revisar si el front de la pagina tomo bien los cambios, asi que hoy revisaré eso y resolveré los problemas que aparezcan
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+no
+
+---
+
+
+### Maria Alejandra Rodriguez
+
+1. **¿Qué hice ayer?** 
+
+ayer estipule los cambios de diseño de esta semana para la pagina web 
+
+2. **¿Qué voy a hacer hoy?** 
+
+hoy ya empece los cambios para poder seguir con mis historias de usuario 
+
+3. **¿Tengo algún impedimento o bloqueo?** 
+
+no
+
+---
+<img width="1536" height="2048" alt="image" src="https://github.com/user-attachments/assets/49950475-232f-407e-a83d-5e243a31e2d3" />
+
+
+---
+
+## Daily Sprint - 24/09/2026
+
+### Isabella Posada
+
+1. **¿Qué hice ayer?**
+
+  ayer estaba viendo lo que estaba conectado en local a lo que ahora esta en Neon para ver si había algún problema, después los compare y arregle ciertas redundancias 
+
+2. **¿Qué voy a hacer hoy?**
+
+   hoy revise los indices de la bd, cambie algunas cosas del codigo en la parte de datos para que la logica fuera menos inconsisa y revise la siguiente "HU #72" (#241) porque no se esta haciendo la recomendacion del destino bien.
+
+4. **¿Tengo algún impedimento o bloqueo?**
+
+no 
+
+---
+
+### Valeria Cortes Rendon
+
+1. **¿Qué hice ayer?**
+
+   Entendi como estaba funcionando la aplicacion internamiente y como podria hacer la conexion con la API
+
+
+2. **¿Qué voy a hacer hoy?**
+
+   Hice la conexion de la API al envio de correos unicamente cuando se crea una nueva cuenta en la aplicacion
+
+   
+3. **¿Tengo algún impedimento o bloqueo?**
+
+   No
+   
+---
+
+### Santiago Clavijo
+
+1. **¿Qué hice ayer?**
+
+   ayer logre arreglar las imagenes de las bandera al momento de escoger el presupuesto
+
+2. **¿Qué voy a hacer hoy?**
+
+   hoy empece a trabjar en mi segunda hu
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+   no
+
+---
+
+### Gabriela Melo Gualteros
+
+1. **¿Qué hice ayer?**
+
+Ayer arregle las preguntas y quite redundancias que habian
+
+2. **¿Qué voy a hacer hoy?**
+
+Hoy porfin arregle las imagenes y ya aparecen en la pantalla
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+no
+
+---
+
+
+### Maria Alejandra Rodriguez
+
+1. **¿Qué hice ayer?** 
+
+Revise los cambios hechos por mis compañeros para tener mucho cuidado a la hora de hacer mis cambios
+
+2. **¿Qué voy a hacer hoy?** 
+
+hoy segui haciendo cambios en la pagina web de acuerdo a las historias de usuario
+
+3. **¿Tengo algún impedimento o bloqueo?** 
+
+no
+
+
+---
+
+<img width="1555" height="1012" alt="WhatsApp Image 2026-09-24 at 10 44 09 PM" src="https://github.com/user-attachments/assets/ed5ae8a5-d632-46b4-9a14-7d56ad49990e" />
+
+
+---
+## Daily Sprint - 25/09/2026
+
+### Isabella Posada
+
+1. **¿Qué hice ayer?**
+
+   ayer acomode mejor la lógica de la base de datos para que sea mas coherente, además de unas acomodaciones al código y estuve revisando el calculo de destinos para WiseTrip, ya que es uno de los aspectos mas importantes de la plataforma
+
+2. **¿Qué voy a hacer hoy?**
+
+hoy realice algunos índices con llaves foráneas de una tabla que se llama nivel_costo, cambiar el Diccionario de datos para finalizar el HU 72 (#240) y a continuación con el HU 73 (#241) empecé a revisar la api places porque se demora mucho en hacer los request y con respecto al calculo de las ciudades, identifique ciertos problemas con aquel calculo que abordare mañana 
+   
+4. **¿Tengo algún impedimento o bloqueo?**
+
+ si, en parte carencia de conocimiento al manejar la base de datos en neon porque no se el motivo de que a veces funcione o no, y solo puedo probarla con mis compañeros, aprecio su paciencia y comprensión. 
+
+---
+
+### Valeria Cortes Rendon
+
+1. **¿Qué hice ayer?**
+
+Empece a revisar como puedo implementar telegram dentro de la aplicacion teniendo en cuenta que telegram puede usar el chatbot que incluye para poder hacer menajes menos genericos, sin mebargo aun se encuentra en proceso de revision hasta el momento
+   
+2. **¿Qué voy a hacer hoy?**
+
+   Ayer se hizo la implementacion de la funcionalidad de correo electronico a la aplicacion, se hizo la creacion de nuevas clases para ejecutar la funcionalidad, sin embargo datos sensibles quedaron expuestos en la clase de application properties.
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+   En que parte de la aplicacion vamos a ejecutar en telegram y que queremos que se muestre alli.
+   
+---
+
+### Santiago Clavijo
+
+1. **¿Qué hice ayer?**
+
+   ayer empece a trabajar en mi segunda hu que se refiere a ver la moneda del presupuesto en el resumen antes de continuar a las recomendaciones
+
+2. **¿Qué voy a hacer hoy?**
+
+hoy segui trabajando en esta hu y estoy a punto de acabarla, y esta semana con isa estamos organizando en changelog
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+   no
+
+---
+
+### Gabriela Melo Gualteros
+
+1. **¿Qué hice ayer?**
+
+Ayer pude arreglar el error que no dejaba mostrar las imagenes en la pantalla de preguntas de preferencias, y subi algunas imagenes  
+
+2. **¿Qué voy a hacer hoy?**
+
+Hoy subi mas imagenes y verifique que estuvieran bien las rutas de cada una, ademas de hacer una lista de sus IDs para tener ya como nombrar el resto de imagenes que hacen falta 
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+no 
+
+---
+
+
+### Maria Alejandra Rodriguez
+
+1. **¿Qué hice ayer?** 
+
+Empece con la planificacion de diseño total con algunos mock ups ya que estaba perdiendo por completo la idea y la identidad visual de la pagina entonces hice eso  
+
+2. **¿Qué voy a hacer hoy?** 
+
+ Hoy hice la gran mayoria de commits donde arregle el diseño, añadí algunas cuantas que tenian que ver por completo como en la organizacion de codigo lo que son creacion de vistas, de css y de mas clases para la organizacion ¿tengo algun impedimento o bloqueo?
+
+3. **¿Tengo algún impedimento o bloqueo?** 
+
+si aun tenemos algunos problemas con la nube para que funcione como la pagina web de la mano con la base de datos, pero pues no pasa nada, realmente se que mi compañera isa ha buscado mil maneras de hacer que nos funcione y podamos ver las cosas de la pagina web, incluso me consta que hablo con el monitor a ver si nos podia dar algun tipo de solución y bueno en parte funciono pero a veces no
+
+
+---
+
+<img width="738" height="1600" alt="image" src="https://github.com/user-attachments/assets/a6bc8f9e-5aa5-430b-9bef-e38cc659887a" />
 
 
 ---

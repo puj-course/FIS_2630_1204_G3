@@ -11,7 +11,7 @@
 | `rol` | `VARCHAR` | 20 | - | `NOT NULL` | Define el rol del usuario dentro de la plataforma, por ejemplo, cliente o administrador. |
 | `fecha_registro` | `TIMESTAMP` | - | - | `NOT NULL`, `DEFAULT CURRENT_TIMESTAMP` | Fecha y hora de creación de la cuenta. |
 | `estado` | `BOOLEAN` | - | - | `NOT NULL` | Indica si la cuenta del usuario se encuentra activa o inactiva. |
-
+| `chat_id` | `VARCHAR` | 50 | - | - | Identifica el numero de chat al cual se debe enviar la informacion en la aplicacion de Telegram |
 ---
 
 ## Entidad: Viaje
