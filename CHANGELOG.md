@@ -3369,8 +3369,8 @@ como equipo esta semana lo hicimos muy bien, espero que todos los sprints que fa
 | #79 | | Historia de Usuario |  | Maleja |
 | #80 | | Historia de Usuario |  | Gaby |
 | #81 | | Historia de Usuario |  | Gaby |
-| #82 | | Historia de Usuario |  | Isa |
-| #83 | | Historia de Usuario |  | Isa |
+| #82 |HU "82" #277 - Como viajero, quiero que los destinos recomendados cumplan los requisitos obligatorios y tengan un nivel mínimo de compatibilidad con mis preferencias, para recibir opciones que realmente sean adecuadas para mi viaje. | Historia de Usuario |  | Isa |
+| #83 |HU "83" #279 - Como viajero, quiero que las recomendaciones respeten mi presupuesto y que el destino solo se guarde cuando yo lo seleccione explícitamente, para evitar opciones económicamente inadecuadas o registrar un destino que no he elegido. | Historia de Usuario |  | Isa |
 | #84 | Como viajero quiero ver en el resumen del viaje y en las recomendaciones una bandera de la moneda escogida en el presupuesto en el nuevo diseño de la página para distinguir más fácil mi moneda escogida | Historia de Usuario |  | Clavijo |
 | #85 |  Como viajero quiero que mis recomendaciones de destino se calculan comparando correctamente mi presupuesto contra el costo real del viaje para recibir destinos acordes a mi presupuesto | Historia de Usuario |  | Clavijo |
 
