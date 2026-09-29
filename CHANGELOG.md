@@ -3369,8 +3369,8 @@ como equipo esta semana lo hicimos muy bien, espero que todos los sprints que fa
 | Historia de Usuario | 4 | Maleja |
 | #79 | Como viajero, quiero ajustar el porcentaje de mi presupuesto destinado a cada tipo de gasto, para distribuir mi dinero de acuerdo con lo que considero más importante durante mi viaje. 
 | Historia de Usuario | 6 | Maleja |
-| #80 | | Historia de Usuario |  | Gaby |
-| #81 | | Historia de Usuario |  | Gaby |
+| #80 | Como viajero quiero que el sistema le dé más peso a los intereses que más me importan, para que una ciudad no gane puntos solo por acumular gustos secundarios. | Historia de Usuario |  | Gaby |
+| #81 | Como viajero quiero que la pantalla de preferencias no tenga errores, para confiar en que el cuestionario está bien hecho.| Historia de Usuario |  | Gaby |
 | #82 |Como viajero, quiero que los destinos recomendados cumplan los requisitos obligatorios y tengan un nivel mínimo de compatibilidad con mis preferencias, para recibir opciones que realmente sean adecuadas para mi viaje. | Historia de Usuario |  | Isa |
 | #83 |Como viajero, quiero que las recomendaciones respeten mi presupuesto y que el destino solo se guarde cuando yo lo seleccione explícitamente, para evitar opciones económicamente inadecuadas o registrar un destino que no he elegido. | Historia de Usuario |  | Isa |
 | #84 | Como viajero quiero ver en el resumen del viaje y en las recomendaciones una bandera de la moneda escogida en el presupuesto en el nuevo diseño de la página para distinguir más fácil mi moneda escogida | Historia de Usuario |  | Clavijo |
@@ -3378,7 +3378,7 @@ como equipo esta semana lo hicimos muy bien, espero que todos los sprints que fa
 
 ## Riesgos / Bloqueos identificados
 
--  
+-  Que se pisen el trabajo en github y a la hora de hacer merge se generen conflictos 
 - 
 
 ---
