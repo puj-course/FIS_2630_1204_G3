@@ -3363,16 +3363,16 @@ como equipo esta semana lo hicimos muy bien, espero que todos los sprints que fa
 
 | ID | Título | Tipo | Estimación | Responsable |
 |----|--------|------|------------|-------------|
-| # | | Historia de Usuario |  | Valeria |
-| # | | Historia de Usuario |  | Valeria |
-| # | | Historia de Usuario |  | Maleja |
-| # | | Historia de Usuario |  | Maleja |
-| # | | Historia de Usuario |  | Gaby |
-| # | | Historia de Usuario |  | Gaby |
-| # | | Historia de Usuario |  | Isa |
-| # | | Historia de Usuario |  | Isa |
-| # | | Historia de Usuario |  | Clavijo |
-| # | | Historia de Usuario |  | Clavijo |
+| #76 | | Historia de Usuario |  | Valeria |
+| #77 | | Historia de Usuario |  | Valeria |
+| #78 | | Historia de Usuario |  | Maleja |
+| #79 | | Historia de Usuario |  | Maleja |
+| #80 | | Historia de Usuario |  | Gaby |
+| #81 | | Historia de Usuario |  | Gaby |
+| #82 | | Historia de Usuario |  | Isa |
+| #83 | | Historia de Usuario |  | Isa |
+| #84 | Como viajero quiero ver en el resumen del viaje y en las recomendaciones una bandera de la moneda escogida en el presupuesto en el nuevo diseño de la página para distinguir más fácil mi moneda escogida | Historia de Usuario |  | Clavijo |
+| #85 |  Como viajero quiero que mis recomendaciones de destino se calculan comparando correctamente mi presupuesto contra el costo real del viaje para recibir destinos acordes a mi presupuesto | Historia de Usuario |  | Clavijo |
 
 ## Riesgos / Bloqueos identificados
 
