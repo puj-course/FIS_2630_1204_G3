@@ -3349,5 +3349,38 @@ como equipo esta semana lo hicimos muy bien, espero que todos los sprints que fa
 <img width="1600" height="548" alt="image" src="https://github.com/user-attachments/assets/1042da06-9a97-4812-9830-7061389e4d72" />
 
 ---
+# Sprint 8 - Sprint Planning - [28/09/2026]
+
+## Sprint Goal
+
+
+## Capacidad del equipo
+
+* Desarrolladores disponibles: 5
+* Puntos/horas disponibles: 42 (por ajustar según refinamiento)
+
+## Issues seleccionados para el Sprint
+
+| ID | Título | Tipo | Estimación | Responsable |
+|----|--------|------|------------|-------------|
+| # | | Historia de Usuario |  | Valeria |
+| # | | Historia de Usuario |  | Valeria |
+| # | | Historia de Usuario |  | Maleja |
+| # | | Historia de Usuario |  | Maleja |
+| # | | Historia de Usuario |  | Gaby |
+| # | | Historia de Usuario |  | Gaby |
+| # | | Historia de Usuario |  | Isa |
+| # | | Historia de Usuario |  | Isa |
+| # | | Historia de Usuario |  | Clavijo |
+| # | | Historia de Usuario |  | Clavijo |
+
+## Riesgos / Bloqueos identificados
+
+-  
+- 
+
+---
+
+---
 
 
