@@ -3365,8 +3365,10 @@ como equipo esta semana lo hicimos muy bien, espero que todos los sprints que fa
 |----|--------|------|------------|-------------|
 | #76 | | Historia de Usuario |  | Valeria |
 | #77 | | Historia de Usuario |  | Valeria |
-| #78 | | Historia de Usuario |  | Maleja |
-| #79 | | Historia de Usuario |  | Maleja |
+| #78 | Como viajero, quiero que los destinos recomendados tengan imágenes diferentes y relacionadas con cada lugar, para identificar mejor las opciones y comparar los destinos antes de seleccionar uno 
+| Historia de Usuario |  | Maleja |
+| #79 | Como viajero, quiero ajustar el porcentaje de mi presupuesto destinado a cada tipo de gasto, para distribuir mi dinero de acuerdo con lo que considero más importante durante mi viaje. 
+| Historia de Usuario |  | Maleja |
 | #80 | | Historia de Usuario |  | Gaby |
 | #81 | | Historia de Usuario |  | Gaby |
 | #82 |Como viajero, quiero que los destinos recomendados cumplan los requisitos obligatorios y tengan un nivel mínimo de compatibilidad con mis preferencias, para recibir opciones que realmente sean adecuadas para mi viaje. | Historia de Usuario |  | Isa |
