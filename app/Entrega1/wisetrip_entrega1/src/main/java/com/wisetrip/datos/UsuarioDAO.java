@@ -121,7 +121,7 @@ public class UsuarioDAO {
         return Date.valueOf(LocalDate.parse(fecha));
     }
 
-    public void actualizarChatId(int idUsuario, String chatId) {
+    public void vincularTelegram(int idUsuario, String chatId) {
     String sql = "UPDATE usuario SET chat_id = ? WHERE id_usuario = ?";
 
         try (Connection conn = ConexionBD.obtenerConexion();
