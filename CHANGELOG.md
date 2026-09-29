@@ -2382,18 +2382,18 @@ También se trabajará en la relación entre las preferencias seleccionadas y el
 
 ## Issues seleccionados para el Sprint
 
-| ID | Issue | Título | Tipo | Prioridad | Estimacion | Responsable |
-|---|---|---|---|---|---|
-| HU-56 | #219 | Visualizar una bienvenida con el logo y nombre de WiseTrip al iniciar la aplicación | Historia de usuario | Media | Valeria |
-| HU-57 | #220 | Consultar una lista de chequeo de equipaje con elementos básicos para empacar | Historia de usuario | Media | Valeria |
-| HU-58 | #225 | Implementar una misma identidad visual durante todo el recorrido en WiseTrip | Historia de usuario | Media | Maleja |
-| HU-59 | #226 | Incorporar imágenes y elementos gráficos relacionados con los viajes | Historia de usuario | Media | Maleja |
-| HU-60 | #217 | Mostrar una imagen relacionada con el elemento principal de cada pregunta | Historia de usuario | Media | Gaby |
-| HU-61 | #218 | Mantener un texto claro y consistente entre las preguntas del cuestionario | Historia de usuario | Media | Gaby |
-| HU-62 | #223 | Permitir responder las preguntas de selección después de iniciar sesión | Historia de usuario | Media | Isa |
-| HU-63 | #224 | Relacionar la selección del viaje con las preferencias del usuario | Historia de usuario | Alta | Isa |
-| HU-64 | #222 | Mostrar la bandera de la moneda seleccionada en el resumen final del viaje | Historia de usuario | Media | Clavijo |
-| HU-65 | #221 | Mostrar correctamente el icono de la bandera junto al selector de moneda | Historia de usuario | Media | Clavijo |
+| ID | Issue | Título | Tipo | Prioridad | Estimación | Responsable |
+|---|---|---|---|---|---|---|
+| HU-56 | #219 | Visualizar una bienvenida con el logo y nombre de WiseTrip al iniciar la aplicación | Historia de usuario | Media | TBD | Valeria |
+| HU-57 | #220 | Consultar una lista de chequeo de equipaje con elementos básicos para empacar | Historia de usuario | Media | TBD | Valeria |
+| HU-58 | #225 | Implementar una misma identidad visual durante todo el recorrido en WiseTrip | Historia de usuario | Media | TBD | Maleja |
+| HU-59 | #226 | Incorporar imágenes y elementos gráficos relacionados con los viajes | Historia de usuario | Media | TBD | Maleja |
+| HU-60 | #217 | Mostrar una imagen relacionada con el elemento principal de cada pregunta | Historia de usuario | Media | TBD | Gaby |
+| HU-61 | #218 | Mantener un texto claro y consistente entre las preguntas del cuestionario | Historia de usuario | Media | TBD | Gaby |
+| HU-62 | #223 | Permitir responder las preguntas de selección después de iniciar sesión | Historia de usuario | Media | TBD | Isa |
+| HU-63 | #224 | Relacionar la selección del viaje con las preferencias del usuario | Historia de usuario | Alta | TBD | Isa |
+| HU-64 | #222 | Mostrar la bandera de la moneda seleccionada en el resumen final del viaje | Historia de usuario | Media | TBD | Clavijo |
+| HU-65 | #221 | Mostrar correctamente el icono de la bandera junto al selector de moneda | Historia de usuario | Media | TBD | Clavijo |
 
 
 ---
@@ -3366,9 +3366,9 @@ como equipo esta semana lo hicimos muy bien, espero que todos los sprints que fa
 | #76 | | Historia de Usuario |  | Valeria |
 | #77 | | Historia de Usuario |  | Valeria |
 | #78 | Como viajero, quiero que los destinos recomendados tengan imágenes diferentes y relacionadas con cada lugar, para identificar mejor las opciones y comparar los destinos antes de seleccionar uno 
-| Historia de Usuario |  | Maleja |
+| Historia de Usuario | 4 | Maleja |
 | #79 | Como viajero, quiero ajustar el porcentaje de mi presupuesto destinado a cada tipo de gasto, para distribuir mi dinero de acuerdo con lo que considero más importante durante mi viaje. 
-| Historia de Usuario |  | Maleja |
+| Historia de Usuario | 6 | Maleja |
 | #80 | | Historia de Usuario |  | Gaby |
 | #81 | | Historia de Usuario |  | Gaby |
 | #82 |Como viajero, quiero que los destinos recomendados cumplan los requisitos obligatorios y tengan un nivel mínimo de compatibilidad con mis preferencias, para recibir opciones que realmente sean adecuadas para mi viaje. | Historia de Usuario |  | Isa |
