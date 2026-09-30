@@ -3390,15 +3390,17 @@ como equipo esta semana lo hicimos muy bien, espero que todos los sprints que fa
 
 1. **¿Qué hice ayer?**
 
-  
+ayer acomode mis hus, tanto en el changelog como en los comentarios del issue, resumiendo los issues de esta semana, van mas que todo a organizar mas el codigo con respecto a las recomendaciones, que sea coherente y conciso.
+
 
 2. **¿Qué voy a hacer hoy?**
 
+hoy arreglamos el error del repositorio
 
    
 4. **¿Tengo algún impedimento o bloqueo?**
 
-
+si lo del repositorio, ojala se arregle pronto.
 
 ---
 
