@@ -3408,15 +3408,15 @@ si lo del repositorio, ojala se arregle pronto.
 
 1. **¿Qué hice ayer?**
 
-
+Realizamos el sprint planning de la semana, acordamos y revisamos el codigo que llevamos hasta el momento, se hicieron diferentes recomendaciones para esta semana, ocurrio un problema ya que la rama de maleja duplico lo que tenemos sin embargo, se esta buscando una solucion.
    
 2. **¿Qué voy a hacer hoy?**
 
-  
+  Hoy nos dimos cuenta que nos falta el mapa que representa los componentes e interfaces del sistema. Se busca que hagamos esta representacion, busqueda de informacion sobre patrones goff y edicion de informacion
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
-   
+   Lo del la clonacion de maleja en el repo, no he podido subir la informacion ya que se podria eliminar luego
    
 ---
 
