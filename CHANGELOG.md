@@ -3450,17 +3450,17 @@ poder arreglar el duplicado del repo, de todos los commits
 
 ---
 
-
-### Maria Alejandra Rodriguez
-
 1. **¿Qué hice ayer?** 
 
+hicimos el sprint planning y designamos que teniamos que hacer esta semana, en lo personal arreglar el problema con el repo
 
 2. **¿Qué voy a hacer hoy?** 
 
+el monitor nos esta ayudando a arreglar el repo porque se me duplicaron los commits y eso puede llegar a afectar a mis compañeros
 
 3. **¿Tengo algún impedimento o bloqueo?** 
 
+si ya esta semana hice unos commits y tras de que se me duplicaron pues no se si pueda subir gran cosa esta semana, sin embargo borre mi rama y cree una nueva porque desde mi rama era como de donde se estaban presentando los errores
 
 ---
 <img width="1600" height="1200" alt="image" src="https://github.com/user-attachments/assets/1757fd41-b12e-4e87-a4ac-70a591c2b7dd" />
