@@ -3435,14 +3435,16 @@ como equipo esta semana lo hicimos muy bien, espero que todos los sprints que fa
 ### Gabriela Melo Gualteros
 
 1. **¿Qué hice ayer?**
-
   
+Ayer estuvimos en el Sprint Planning y esta semana espero poder terminar la realización e implementación de todas las imagenes de las preguntas de preferencias, además de corregir el codigo porque aun siguen apareciendo cierto IDs que no se estan utilizando y a evaluar el nivel de preferencia para que la recomendación de destino sea la mas accurate. 
 
 2. **¿Qué voy a hacer hoy?**
 
-
+La semama pasada al hacer el merge de develop a main tuvimos ciertos percances porque al hacer el ultimo merge con unos cambios que no se habian subido se duplico todo el repo, entonces hoy estuvimos hablando con monitores y el profesor para poder solucionar esto y ya mañana continuar comun y corriente
 
 3. **¿Tengo algún impedimento o bloqueo?**
+
+poder arreglar el duplicado del repo, de todos los commits 
 
  
 
