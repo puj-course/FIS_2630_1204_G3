@@ -3,102 +3,212 @@
 ## Descripción de cada directorio y archivos
 ```bash
 FIS_2630_1204_G3/
+├── .github/
+│   ├── ISSUE_TEMPLATE/
+│   │   ├── bug_report.md
+│   │   └── feature_request.md
+│   └── PULL_REQUEST_TEMPLATE.md
 ├── .idea/
+│   ├── inspectionProfiles/
+│   │   └── Project_Default.xml
+│   ├── .gitignore
 │   ├── compiler.xml
 │   ├── encodings.xml
 │   ├── FIS_2630_1204_G3.iml
-│   ├── inspectionProfiles/
-│   │   └── Project_Default.xml
 │   ├── jarRepositories.xml
 │   ├── misc.xml
 │   ├── modules.xml
 │   ├── vcs.xml
 │   └── workspace.xml
+├── .vscode/
+│   └── launch.json
 ├── app/
 │   ├── Entrega1/
 │   │   └── wisetrip_entrega1/
 │   │       ├── .mvn/
 │   │       │   └── wrapper/
 │   │       │       └── maven-wrapper.properties
+│   │       ├── src/
+│   │       │   ├── main/
+│   │       │   │   ├── java/com/wisetrip/
+│   │       │   │   │   ├── controlador/
+│   │       │   │   │   │   ├── AuthControlador.java
+│   │       │   │   │   │   ├── InicioControlador.java
+│   │       │   │   │   │   ├── NotificacionController.java
+│   │       │   │   │   │   ├── PlanControlador.java
+│   │       │   │   │   │   ├── PlanificacionControlador.java
+│   │       │   │   │   │   ├── RecomendacionControlador.java
+│   │       │   │   │   │   ├── SeleccionControlador.java
+│   │       │   │   │   │   ├── TelegramControlador.java
+│   │       │   │   │   │   └── ViajeControlador.java
+│   │       │   │   │   ├── datos/
+│   │       │   │   │   │   ├── CiudadDAO.java
+│   │       │   │   │   │   ├── CiudadSemilla.java
+│   │       │   │   │   │   ├── ConexionBD.java
+│   │       │   │   │   │   ├── DatosCiudades.java
+│   │       │   │   │   │   ├── PreferenciaDAO.java
+│   │       │   │   │   │   ├── UsuarioDAO.java
+│   │       │   │   │   │   └── ViajeDAO.java
+│   │       │   │   │   ├── modelo/
+│   │       │   │   │   │   ├── CategoriaPreferencia.java
+│   │       │   │   │   │   ├── Ciudad.java
+│   │       │   │   │   │   ├── FechasViaje.java
+│   │       │   │   │   │   ├── Peso.java
+│   │       │   │   │   │   ├── Preferencias.java
+│   │       │   │   │   │   ├── PreferenciasUsuario.java
+│   │       │   │   │   │   ├── Pregunta.java
+│   │       │   │   │   │   ├── Presupuesto.java
+│   │       │   │   │   │   ├── RepartoPresupuesto.java
+│   │       │   │   │   │   ├── ResultadoRecomendacion.java
+│   │       │   │   │   │   ├── SeleccionDestinos.java
+│   │       │   │   │   │   ├── TipoAtributo.java
+│   │       │   │   │   │   ├── Ubicacion.java
+│   │       │   │   │   │   └── Usuario.java
+│   │       │   │   │   ├── negocio/
+│   │       │   │   │   │   ├── CatalogoPreguntas.java
+│   │       │   │   │   │   └── DefPregunta.java
+│   │       │   │   │   ├── servicio/
+│   │       │   │   │   │   ├── CatalogoCiudades.java
+│   │       │   │   │   │   ├── EmailNotificationService.java
+│   │       │   │   │   │   ├── FechasServicio.java
+│   │       │   │   │   │   ├── LlenarAtributosCiudad.java
+│   │       │   │   │   │   ├── LlenarLasCiudades.java
+│   │       │   │   │   │   ├── PreferenciasServicio.java
+│   │       │   │   │   │   ├── PresupuestoServicio.java
+│   │       │   │   │   │   ├── RecomendadorDestinos.java
+│   │       │   │   │   │   ├── RepartoServicio.java
+│   │       │   │   │   │   ├── SelectorDestinos.java
+│   │       │   │   │   │   ├── ServicioGeoapify.java
+│   │       │   │   │   │   ├── TelegramNotificationService.java
+│   │       │   │   │   │   ├── UsuarioServicio.java
+│   │       │   │   │   │   └── ViajeServicio.java
+│   │       │   │   │   ├── ServletInitializer.java
+│   │       │   │   │   └── WisetripApplication.java
+│   │       │   │   ├── resources/
+│   │       │   │   │   ├── sql/
+│   │       │   │   │   │   ├── alter_usuario_registro.sql
+│   │       │   │   │   │   └── insert_ciudades.sql
+│   │       │   │   │   ├── static/
+│   │       │   │   │   │   ├── css/
+│   │       │   │   │   │   │   ├── img/
+│   │       │   │   │   │   │   │   └── banderas/
+│   │       │   │   │   │   │   │       ├── ARS.svg
+│   │       │   │   │   │   │   │       ├── BOB.svg
+│   │       │   │   │   │   │   │       ├── BRL.svg
+│   │       │   │   │   │   │   │       ├── BZD.svg
+│   │       │   │   │   │   │   │       ├── CLP.svg
+│   │       │   │   │   │   │   │       ├── COP.svg
+│   │       │   │   │   │   │   │       ├── CRC.svg
+│   │       │   │   │   │   │   │       ├── CUP.svg
+│   │       │   │   │   │   │   │       ├── DOP.svg
+│   │       │   │   │   │   │   │       ├── GTQ.svg
+│   │       │   │   │   │   │   │       ├── HNL.svg
+│   │       │   │   │   │   │   │       ├── MXN.svg
+│   │       │   │   │   │   │   │       ├── NIO.svg
+│   │       │   │   │   │   │   │       ├── PAB.svg
+│   │       │   │   │   │   │   │       ├── PEN.svg
+│   │       │   │   │   │   │   │       ├── PYG.svg
+│   │       │   │   │   │   │   │       ├── USD.svg
+│   │       │   │   │   │   │   │       ├── UYU.svg
+│   │       │   │   │   │   │   │       └── VES.svg
+│   │       │   │   │   │   │   ├── estilos.css
+│   │       │   │   │   │   │   ├── fechas.css
+│   │       │   │   │   │   │   ├── landing.css
+│   │       │   │   │   │   │   ├── login.css
+│   │       │   │   │   │   │   ├── origen.css
+│   │       │   │   │   │   │   ├── plan.css
+│   │       │   │   │   │   │   ├── presupuesto.css
+│   │       │   │   │   │   │   ├── recomendaciones.css
+│   │       │   │   │   │   │   ├── registro.css
+│   │       │   │   │   │   │   └── resumen.css
+│   │       │   │   │   │   └── img/
+│   │       │   │   │   │       ├── banderas/
+│   │       │   │   │   │       │   ├── ARS.png
+│   │       │   │   │   │       │   ├── BOB.png
+│   │       │   │   │   │       │   ├── BRL.png
+│   │       │   │   │   │       │   ├── BZD.png
+│   │       │   │   │   │       │   ├── CLP.png
+│   │       │   │   │   │       │   ├── COP.png
+│   │       │   │   │   │       │   ├── CRC.png
+│   │       │   │   │   │       │   ├── CUP.png
+│   │       │   │   │   │       │   ├── DOP.png
+│   │       │   │   │   │       │   ├── GTQ.png
+│   │       │   │   │   │       │   ├── HNL.png
+│   │       │   │   │   │       │   ├── MXN.png
+│   │       │   │   │   │       │   ├── NIO.png
+│   │       │   │   │   │       │   ├── PAB.png
+│   │       │   │   │   │       │   ├── PEN.png
+│   │       │   │   │   │       │   ├── PYG.png
+│   │       │   │   │   │       │   ├── USD.png
+│   │       │   │   │   │       │   ├── UYU.png
+│   │       │   │   │   │       │   └── VES.png
+│   │       │   │   │   │       ├── portada/
+│   │       │   │   │   │       │   ├── Amazonas.jpg
+│   │       │   │   │   │       │   ├── Argentina.jpg
+│   │       │   │   │   │       │   ├── Cartegena.jpg
+│   │       │   │   │   │       │   ├── desierto.jpg
+│   │       │   │   │   │       │   ├── logo.png
+│   │       │   │   │   │       │   ├── Peru.jpg
+│   │       │   │   │   │       │   └── Rio.jpg
+│   │       │   │   │   │       ├── preferencias/
+│   │       │   │   │   │       │   ├── aventura.png
+│   │       │   │   │   │       │   ├── comida_internacional.png
+│   │       │   │   │   │       │   ├── compras.png
+│   │       │   │   │   │       │   ├── desierto.png
+│   │       │   │   │   │       │   ├── festivo.png
+│   │       │   │   │   │       │   ├── gourmet.png
+│   │       │   │   │   │       │   ├── lujo.png
+│   │       │   │   │   │       │   ├── mochilero.png
+│   │       │   │   │   │       │   ├── montana.png
+│   │       │   │   │   │       │   ├── muchas_actividades.png
+│   │       │   │   │   │       │   ├── naturaleza.png
+│   │       │   │   │   │       │   ├── nieve.png
+│   │       │   │   │   │       │   ├── off_the_beaten_path.png
+│   │       │   │   │   │       │   ├── playa.png
+│   │       │   │   │   │       │   ├── restricciones_alimentarias.png
+│   │       │   │   │   │       │   ├── romantico.png
+│   │       │   │   │   │       │   ├── tiempo_libre.png
+│   │       │   │   │   │       │   ├── tranquilo.png
+│   │       │   │   │   │       │   ├── urbano.png
+│   │       │   │   │   │       │   └── vida_nocturna.png
+│   │       │   │   │   │       └── resumen/
+│   │       │   │   │   │           ├── monteverde.jpg
+│   │       │   │   │   │           ├── pines.jpg
+│   │       │   │   │   │           ├── salar.jpg
+│   │       │   │   │   │           └── tulum.jpg
+│   │       │   │   │   └── application.properties
+│   │       │   │   └── webapp/WEB-INF/vistas/
+│   │       │   │       ├── encabezado.jsp
+│   │       │   │       ├── fechas.jsp
+│   │       │   │       ├── landing.jsp
+│   │       │   │       ├── login.jsp
+│   │       │   │       ├── origen.jsp
+│   │       │   │       ├── plan.jsp
+│   │       │   │       ├── preferencias.jsp
+│   │       │   │       ├── presupuesto.jsp
+│   │       │   │       ├── recomendaciones.jsp
+│   │       │   │       ├── registro-exitoso.jsp
+│   │       │   │       ├── registro.jsp
+│   │       │   │       ├── resumen.jsp
+│   │       │   │       └── vincular-telegram.jsp
+│   │       │   ├── test/
+│   │       │   │   └── java/com/wisetrip/
+│   │       │   │       └── WisetripApplicationTests.java
+│   │       │   ├── .gitignore
+│   │       │   └── README.md
+│   │       ├── .gitattributes
+│   │       ├── .gitignore
 │   │       ├── mvnw
 │   │       ├── mvnw.cmd
-│   │       ├── pom.xml
-│   │       └── src/
-│   │           ├── main/
-│   │           │   ├── java/com/wisetrip/
-│   │           │   │   ├── controlador/
-│   │           │   │   │   ├── AuthControlador.java
-│   │           │   │   │   ├── InicioControlador.java
-│   │           │   │   │   ├── PlanificacionControlador.java
-│   │           │   │   │   ├── RecomendacionControlador.java
-│   │           │   │   │   └── ViajeControlador.java
-│   │           │   │   ├── datos/
-│   │           │   │   │   ├── CiudadDAO.java
-│   │           │   │   │   ├── CiudadSemilla.java
-│   │           │   │   │   ├── ConexionBD.java
-│   │           │   │   │   ├── DatosCiudades.java
-│   │           │   │   │   ├── PreferenciaDAO.java
-│   │           │   │   │   ├── UsuarioDAO.java
-│   │           │   │   │   └── ViajeDAO.java
-│   │           │   │   ├── modelo/
-│   │           │   │   │   ├── CategoriaPreferencia.java
-│   │           │   │   │   ├── Ciudad.java
-│   │           │   │   │   ├── FechasViaje.java
-│   │           │   │   │   ├── Peso.java
-│   │           │   │   │   ├── Preferencias.java
-│   │           │   │   │   ├── PreferenciasUsuario.java
-│   │           │   │   │   ├── Pregunta.java
-│   │           │   │   │   ├── Presupuesto.java
-│   │           │   │   │   ├── ResultadoRecomendacion.java
-│   │           │   │   │   ├── SeleccionDestinos.java
-│   │           │   │   │   ├── TipoAtributo.java
-│   │           │   │   │   ├── Ubicacion.java
-│   │           │   │   │   └── Usuario.java
-│   │           │   │   ├── negocio/
-│   │           │   │   │   ├── CatalogoPreguntas.java
-│   │           │   │   │   └── DefPregunta.java
-│   │           │   │   ├── servicio/
-│   │           │   │   │   ├── CatalogoCiudades.java
-│   │           │   │   │   ├── FechasServicio.java
-│   │           │   │   │   ├── LlenarAtributosCiudad.java
-│   │           │   │   │   ├── LlenarLasCiudades.java
-│   │           │   │   │   ├── PreferenciasServicio.java
-│   │           │   │   │   ├── PresupuestoServicio.java
-│   │           │   │   │   ├── RecomendadorDestinos.java
-│   │           │   │   │   ├── SelectorDestinos.java
-│   │           │   │   │   ├── ServicioGeoapify.java
-│   │           │   │   │   ├── UsuarioServicio.java
-│   │           │   │   │   └── ViajeServicio.java
-│   │           │   │   ├── ServletInitializer.java
-│   │           │   │   └── WisetripApplication.java
-│   │           │   └── resources/
-│   │           │       ├── application.properties
-│   │           │       ├── sql/
-│   │           │       │   ├── alter_usuario_registro.sql
-│   │           │       │   └── insert_ciudades.sql
-│   │           │       └── static/css/
-│   │           │           ├── estilos.css
-│   │           │           └── landing.css
-│   │           ├── webapp/WEB-INF/vistas/
-│   │           │   ├── fechas.jsp
-│   │           │   ├── landing.jsp
-│   │           │   ├── login.jsp
-│   │           │   ├── origen.jsp
-│   │           │   ├── preferencias.jsp
-│   │           │   ├── presupuesto.jsp
-│   │           │   ├── recomendaciones.jsp
-│   │           │   ├── registro-exitoso.jsp
-│   │           │   ├── registro.jsp
-│   │           │   └── resumen.jsp
-│   │           ├── README.md
-│   │           └── test/java/com/wisetrip/
-│   │               └── WisetripApplicationTests.java
+│   │       └── pom.xml
 │   ├── index.js
 │   └── package.json
 ├── conf/
 │   ├── config.yaml
 │   └── settings.json
 ├── database/
+│   ├── .gitkeep
+│   ├── Base_de_datos_Compartida.pdf
 │   ├── BasesNegocio.md
 │   ├── database.md
 │   ├── DDL.md
@@ -106,35 +216,37 @@ FIS_2630_1204_G3/
 │   └── DiccionarioDatos.md
 ├── docs/
 │   ├── api/
-│   │   ├── APIs de clima wisetrip (3).pdf
+│   │   ├── .gitkeep
 │   │   ├── API_Geoapify_WiseTrip.pdf
+│   │   ├── APIs de clima wisetrip (3).pdf
 │   │   └── F.I.S Implementación API Pasarela de Pagos.pdf
 │   ├── architecture/
+│   │   ├── .gitkeep
 │   │   ├── Arquitectura WiseTrip.svg
 │   │   ├── ArquitecturaInicial.md
 │   │   ├── CodigoInicialBoceto.jsx
 │   │   ├── DocumentacionTecnicaPaginaWeb.md
 │   │   └── mockupInicial.md
 │   ├── user_guide/
+│   │   ├── .gitkeep
 │   │   └── README.md
-|   └── 1raEntrega_FIS_G3.pdf
+│   ├── 1raEntrega_FIS_G3.pdf
 │   ├── DefinicionProyecto.md
 │   ├── RequerimientosFuncionales.md
-│   └── RequerimientosNoFuncionales.md
-├── jupyter/
-│   ├── datasets/
-│   └── notebooks/
+│   ├── RequerimientosNoFuncionales.md
+│   └── WiseTrip.mp4
 ├── scripts/
 │   ├── deploy.sh
 │   ├── setup.sh
 │   └── test.sh
-├── src/
-│   ├── main/
-│   └── test/
-│       ├── java/
-│       └── resources/
 ├── temp/
-│   ├── Preguntas_de_Preferencia_FIS.pdf
+│   ├── checklist/
+│   │   ├── src/main/java/com/wisetrip/
+│   │   │   └── ChecklistMockupApplication.java
+│   │   ├── target/classes/com/wisetrip/
+│   │   │   ├── ChecklistMockupApplication$ChecklistControlador.class
+│   │   │   └── ChecklistMockupApplication.class
+│   │   └── pom.xml
 │   ├── temp_data/
 │   │   ├── Captura de pantalla 2026-08-31 221922.png
 │   │   ├── Ciudad.java
@@ -144,17 +256,23 @@ FIS_2630_1204_G3/
 │   │   ├── SeleccionDestinos.java
 │   │   ├── SelectorDestinos.java
 │   │   ├── temp1.tmp
-│   │   └── temp2.tmp
+│   │   ├── temp2.tmp
+│   │   └── VistaDestinosFX.java
+│   ├── .gitkeep
+│   ├── Preguntas_de_Preferencia_FIS.pdf
 │   └── temp_file.txt
+├── .gitignore
 ├── BOILERPLATE_template.md
 ├── CHANGELOG.md
 ├── CONTRIBUTING.md
 ├── docker-compose.yml
 ├── Dockerfile
 ├── estructura.txt
+├── FIS_2630_1204_G3
+├── FIS_2630_1204_G3-1
 ├── LICENSE
 ├── Makefile
-├── README.md
+└── README.md
 ```
 
 
