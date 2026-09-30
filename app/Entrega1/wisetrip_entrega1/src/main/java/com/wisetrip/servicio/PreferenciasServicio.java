@@ -38,6 +38,7 @@ public class PreferenciasServicio {
             "hispanohablante")
 );
 
+//comentario prueba 
     private static final Map<String, String> ETIQUETAS = Map.ofEntries(
         Map.entry("playa", "Playa"),
         Map.entry("montana", "Montaña"),
