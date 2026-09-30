@@ -3664,13 +3664,15 @@ como equipo esta semana lo hicimos muy bien, espero que todos los sprints que fa
 
 1. **¿Qué hice ayer?**
 
+Ayer hicimos el product backlog, todos hicimos nuestras historias de usuario y hablamos que ibamos a hacer esta semana
 
 2. **¿Qué voy a hacer hoy?**
 
-
+hoy no pude trabajar ya que estabamos corrigiendo unos duplicados en el repositorio y necesitabamos corregirlo antes de hacer cualquier cosa para no dañar el repositorio
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
+no
 
 ---
 
