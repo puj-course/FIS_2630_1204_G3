@@ -3384,4 +3384,327 @@ como equipo esta semana lo hicimos muy bien, espero que todos los sprints que fa
 
 ---
 
+## Daily Sprint - 29/09/2026
+
+### Isabella Posada
+
+1. **¿Qué hice ayer?**
+
+  
+
+2. **¿Qué voy a hacer hoy?**
+
+
+   
+4. **¿Tengo algún impedimento o bloqueo?**
+
+
+
+---
+
+### Valeria Cortes Rendon
+
+1. **¿Qué hice ayer?**
+
+
+   
+2. **¿Qué voy a hacer hoy?**
+
+  
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+   
+   
+---
+
+### Santiago Clavijo
+
+1. **¿Qué hice ayer?**
+
+
+2. **¿Qué voy a hacer hoy?**
+
+
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+
+---
+
+### Gabriela Melo Gualteros
+
+1. **¿Qué hice ayer?**
+
+  
+
+2. **¿Qué voy a hacer hoy?**
+
+
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+ 
+
+---
+
+
+### Maria Alejandra Rodriguez
+
+1. **¿Qué hice ayer?** 
+
+
+2. **¿Qué voy a hacer hoy?** 
+
+
+3. **¿Tengo algún impedimento o bloqueo?** 
+
+
+---
+
+---
+
+## Daily Sprint - 30/09/2026
+
+### Isabella Posada
+
+1. **¿Qué hice ayer?**
+
+  
+
+2. **¿Qué voy a hacer hoy?**
+
+
+   
+4. **¿Tengo algún impedimento o bloqueo?**
+
+
+
+---
+
+### Valeria Cortes Rendon
+
+1. **¿Qué hice ayer?**
+
+
+   
+2. **¿Qué voy a hacer hoy?**
+
+  
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+   
+   
+---
+
+### Santiago Clavijo
+
+1. **¿Qué hice ayer?**
+
+
+2. **¿Qué voy a hacer hoy?**
+
+
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+
+---
+
+### Gabriela Melo Gualteros
+
+1. **¿Qué hice ayer?**
+
+  
+
+2. **¿Qué voy a hacer hoy?**
+
+
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+ 
+
+---
+
+
+### Maria Alejandra Rodriguez
+
+1. **¿Qué hice ayer?** 
+
+
+2. **¿Qué voy a hacer hoy?** 
+
+
+3. **¿Tengo algún impedimento o bloqueo?** 
+
+
+---
+
+
+---
+
+## Daily Sprint - 01/10/2026
+
+### Isabella Posada
+
+1. **¿Qué hice ayer?**
+
+  
+
+2. **¿Qué voy a hacer hoy?**
+
+
+   
+4. **¿Tengo algún impedimento o bloqueo?**
+
+
+
+---
+
+### Valeria Cortes Rendon
+
+1. **¿Qué hice ayer?**
+
+
+   
+2. **¿Qué voy a hacer hoy?**
+
+  
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+   
+   
+---
+
+### Santiago Clavijo
+
+1. **¿Qué hice ayer?**
+
+
+2. **¿Qué voy a hacer hoy?**
+
+
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+
+---
+
+### Gabriela Melo Gualteros
+
+1. **¿Qué hice ayer?**
+
+  
+
+2. **¿Qué voy a hacer hoy?**
+
+
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+ 
+
+---
+
+
+### Maria Alejandra Rodriguez
+
+1. **¿Qué hice ayer?** 
+
+
+2. **¿Qué voy a hacer hoy?** 
+
+
+3. **¿Tengo algún impedimento o bloqueo?** 
+
+
+---
+
+---
+
+## Daily Sprint - 02/10/2026
+
+### Isabella Posada
+
+1. **¿Qué hice ayer?**
+
+  
+
+2. **¿Qué voy a hacer hoy?**
+
+
+   
+4. **¿Tengo algún impedimento o bloqueo?**
+
+
+
+---
+
+### Valeria Cortes Rendon
+
+1. **¿Qué hice ayer?**
+
+
+   
+2. **¿Qué voy a hacer hoy?**
+
+  
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+   
+   
+---
+
+### Santiago Clavijo
+
+1. **¿Qué hice ayer?**
+
+
+2. **¿Qué voy a hacer hoy?**
+
+
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+
+---
+
+### Gabriela Melo Gualteros
+
+1. **¿Qué hice ayer?**
+
+  
+
+2. **¿Qué voy a hacer hoy?**
+
+
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+ 
+
+---
+
+
+### Maria Alejandra Rodriguez
+
+1. **¿Qué hice ayer?** 
+
+
+2. **¿Qué voy a hacer hoy?** 
+
+
+3. **¿Tengo algún impedimento o bloqueo?** 
+
+
+---
+
+
+
+
+
 
