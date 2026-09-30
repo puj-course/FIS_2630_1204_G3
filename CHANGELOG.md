@@ -3461,6 +3461,7 @@ como equipo esta semana lo hicimos muy bien, espero que todos los sprints que fa
 
 
 ---
+<img width="1600" height="1200" alt="image" src="https://github.com/user-attachments/assets/1757fd41-b12e-4e87-a4ac-70a591c2b7dd" />
 
 ---
 
