@@ -297,3 +297,50 @@ CREATE TABLE gastos (
 );
 ```
 ---
+## 7. RESERVAS
+
+La tabla `reservas` centraliza las reservas realizadas para un viaje, como hospedaje, transporte o actividades.
+
+Cada reserva contiene su tipo, descripción, fecha y estado.
+
+El campo `estado` permite representar si la reserva está:
+
+- confirmada
+- pendiente
+- cancelada
+
+Cada reserva pertenece a un único viaje mediante `id_viaje`.
+
+### Campos
+
+| Campo | Tipo | Clave | Descripción |
+|---|---|---|---|
+| `id_reserva` | integer | PK | Identificador único de la reserva. |
+| `id_viaje` | integer | FK | Viaje al que pertenece la reserva. |
+| `tipo` | character varying | | Tipo de reserva, por ejemplo hospedaje o transporte. |
+| `descripcion` | character varying | | Descripción de la reserva. |
+| `fecha_reserva` | date | | Fecha de la reserva. |
+| `estado` | character varying | | Estado actual de la reserva. |
+
+### Script SQL
+
+```sql
+CREATE TABLE reservas (
+
+    id_reserva     SERIAL PRIMARY KEY,
+    id_viaje       INT NOT NULL,
+    tipo           VARCHAR(30) NOT NULL,
+    descripcion    VARCHAR(250) NOT NULL,
+    fecha_reserva  DATE NOT NULL,
+    estado         VARCHAR(20) NOT NULL,
+
+    CONSTRAINT fk_reservas_viaje
+        FOREIGN KEY (id_viaje)
+        REFERENCES viajes(id_viaje)
+        ON DELETE CASCADE,
+
+    CONSTRAINT chk_reservas_estado
+        CHECK (estado IN ('confirmada', 'pendiente', 'cancelada'))
+);
+```
+---
