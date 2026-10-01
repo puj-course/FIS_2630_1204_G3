@@ -170,3 +170,38 @@ CREATE TABLE viajes (
 ```
 ---
 
+## 4. PREFERENCIAS
+
+La tabla `preferencias` guarda los intereses que el usuario definió para un viaje específico, por ejemplo, aventura, cultura o gastronomía.
+
+No está ligada directamente al usuario, sino al viaje, porque una misma persona puede querer diferentes tipos de experiencias dependiendo del viaje que esté planeando.
+
+La combinación de `id_viaje` y `tipo_preferencia` es única, por lo que no se permite registrar dos veces la misma preferencia dentro de un mismo viaje.
+
+### Campos
+
+| Campo | Tipo | Clave | Descripción |
+|---|---|---|---|
+| `id_preferencia` | integer | PK | Identificador único de la preferencia. |
+| `id_viaje` | integer | FK | Viaje al que pertenece la preferencia. |
+| `tipo_preferencia` | character varying | | Tipo de interés seleccionado por el usuario. |
+
+### Script SQL
+
+```sql
+CREATE TABLE preferencias (
+
+    id_preferencia   SERIAL PRIMARY KEY,
+    id_viaje         INT NOT NULL,
+    tipo_preferencia VARCHAR(50) NOT NULL,
+
+    CONSTRAINT fk_preferencia_viaje
+        FOREIGN KEY (id_viaje)
+        REFERENCES viajes(id_viaje)
+        ON DELETE CASCADE,
+
+    CONSTRAINT uk_preferencias_viaje_tipo
+        UNIQUE (id_viaje, tipo_preferencia)
+);
+```
+---
