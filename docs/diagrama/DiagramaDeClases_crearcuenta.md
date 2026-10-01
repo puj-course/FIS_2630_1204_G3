@@ -2,12 +2,9 @@
 
 ```plantuml
 @startuml
-skinparam classAttributeIconSize 0
-
 class AuthControlador {
     - usuarioServicio : UsuarioServicio
     - emailService : EmailNotificationService
-    - telegramService : TelegramNotificationService
 
     + mostrarRegistro(model : Model) : String
     + procesarRegistro(usuario : Usuario, confirmarPassword : String, sesion : HttpSession, model : Model, flash : RedirectAttributes) : String
@@ -29,10 +26,6 @@ class EmailNotificationService {
     - mailSender : JavaMailSender
 
     + enviarNotificacion(destinatario : String, asunto : String, cuerpo : String) : void
-}
-
-class TelegramNotificationService {
-    + enviarMensaje(chatId : String, mensaje : String) : void
 }
 
 class UsuarioDAO {
@@ -64,22 +57,24 @@ class ConexionBD {
     {static} - cargarPropiedades() : Properties
 }
 
+
 AuthControlador "1" --> "1" UsuarioServicio 
-AuthControlador "1" --> "1" EmailNotificationService 
-AuthControlador "1" --> "1" TelegramNotificationService 
+AuthControlador "1" --> "1" EmailNotificationService  
 AuthControlador ..> Usuario 
 
 UsuarioServicio "1" --> "1" UsuarioDAO 
+
 UsuarioServicio ..> Usuario
 UsuarioDAO ..> Usuario 
 UsuarioDAO ..> ConexionBD
-UsuarioServicio ..> Usuario
 @enduml
 ```
 
 # Imagen del diagrama 
 
-<img width="1118" height="640" alt="crearcuenta_clases123" src="https://github.com/user-attachments/assets/39f2328b-515a-4d07-88da-484ee44870d7" />
+<img width="1086" height="641" alt="image" src="https://github.com/user-attachments/assets/d2e4797d-b7c9-4b28-bccd-568cc53a22e7" />
+
+
 
 
 
