@@ -462,3 +462,51 @@ CREATE TABLE alertas (
 );
 ```
 ---
+## 10. CIUDAD_ATRIBUTO
+
+La tabla `ciudad_atributo` conecta una ciudad con uno o varios atributos.
+
+Esta tabla es necesaria porque la relación entre ciudades y atributos es de muchos a muchos:
+
+- Una ciudad puede tener múltiples atributos.
+- Un mismo atributo puede estar asociado a múltiples ciudades.
+
+Por ejemplo, una ciudad podría estar asociada con cultura, gastronomía y aventura, mientras que el atributo cultura podría estar asociado con múltiples ciudades.
+
+Por esta razón, la clave primaria está compuesta por:
+
+```
+(id_ciudad, id_atributo)
+```
+
+Esto evita que la misma combinación de ciudad y atributo se registre más de una vez.
+
+### Campos
+
+| Campo | Tipo | Clave | Apunta a |
+|---|---|---|---|
+| `id_ciudad` | integer | PK, FK | `ciudad.id_ciudad` |
+| `id_atributo` | integer | PK, FK | `atributo.id_atributo` |
+
+### Script SQL
+
+```sql
+CREATE TABLE IF NOT EXISTS ciudad_atributo (
+
+    id_ciudad INT NOT NULL,
+    id_atributo INT NOT NULL,
+
+    CONSTRAINT pk_ciudad_atributo
+        PRIMARY KEY (id_ciudad, id_atributo),
+
+    CONSTRAINT fk_ciudad_atributo_ciudad
+        FOREIGN KEY (id_ciudad)
+        REFERENCES ciudad(id_ciudad)
+        ON DELETE CASCADE,
+
+    CONSTRAINT fk_ciudad_atributo_atributo
+        FOREIGN KEY (id_atributo)
+        REFERENCES atributo(id_atributo)
+        ON DELETE CASCADE
+);
+```
