@@ -549,3 +549,39 @@ CREATE TABLE IF NOT EXISTS atributo (
 );
 ```
 ---
+## 12. NIVEL_COSTO
+
+La tabla `nivel_costo` es un catálogo que clasifica los niveles de gasto asociados a los destinos.
+
+Por ejemplo:
+
+- económico
+- medio
+- alto
+
+Cada registro tiene un identificador y un nombre único.
+
+Actualmente esta tabla está aislada del resto del modelo. No existe una clave foránea desde `ciudad` hacia `nivel_costo`, por lo que la estructura actual no establece directamente qué nivel de costo corresponde a una ciudad determinada.
+
+Esta tabla está preparada para una futura función de recomendación o clasificación de destinos, en la que podría utilizarse el nivel de costo como uno de los criterios para filtrar o recomendar ciudades.
+
+### Campos
+
+| Campo | Tipo | Clave | Descripción |
+|---|---|---|---|
+| `id_nivel` | integer | PK | Identificador único del nivel de costo. |
+| `nombre` | character varying | | Nombre del nivel de costo. |
+
+### Script SQL
+
+```sql
+CREATE TABLE IF NOT EXISTS nivel_costo (
+
+    id_nivel SERIAL PRIMARY KEY,
+    nombre VARCHAR(20) NOT NULL,
+
+    CONSTRAINT uk_nivel_costo_nombre
+        UNIQUE (nombre)
+);
+```
+--
