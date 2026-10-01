@@ -3531,7 +3531,7 @@ Ayer estuvamos corrigiendo el error del duplicado del repo
 
 2. **¿Qué voy a hacer hoy?**
 
-
+Hoy ya se encontro una solución al problema, realice imagenes para la pantalla de preferencias, por otros compromisos familiares no pude hacer mas
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
