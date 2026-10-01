@@ -510,3 +510,42 @@ CREATE TABLE IF NOT EXISTS ciudad_atributo (
         ON DELETE CASCADE
 );
 ```
+---
+
+## 11. ATRIBUTO
+
+La tabla `atributo` guarda las características o intereses que pueden utilizarse para describir un destino.
+
+Algunos ejemplos son:
+
+- playa
+- cultura
+- aventura
+- gastronomía
+- descanso
+
+Actualmente funciona como catálogo para la futura función de recomendación de destinos.
+
+El nombre de cada atributo es único, evitando registrar dos veces la misma característica.
+
+### Campos
+
+| Campo | Tipo | Clave | Descripción |
+|---|---|---|---|
+| `id_atributo` | integer | PK | Identificador único del atributo. |
+| `nombre` | character varying | | Nombre de la característica del destino. |
+
+### Script SQL
+
+```sql
+CREATE TABLE IF NOT EXISTS atributo (
+
+    id_atributo SERIAL PRIMARY KEY,
+
+    nombre VARCHAR(50) NOT NULL,
+
+    CONSTRAINT uk_atributo_nombre
+        UNIQUE (nombre)
+);
+```
+---
