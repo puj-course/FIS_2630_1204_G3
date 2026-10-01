@@ -250,3 +250,50 @@ CREATE TABLE itinerario (
 );
 ```
 ---
+## 6. GASTOS
+
+La tabla `gastos` registra el dinero que realmente se ha gastado durante el viaje, a diferencia del presupuesto, que representa el valor disponible o planeado inicialmente.
+
+Cada gasto contiene una descripción, monto, fecha y categoría. Esta información permite llevar control del consumo del presupuesto y comparar el presupuesto inicial con los gastos realizados.
+
+El presupuesto restante puede obtenerse mediante:
+
+```
+Presupuesto restante = presupuesto del viaje − suma de los gastos registrados
+```
+
+No es necesario almacenar el presupuesto restante como una columna independiente porque puede calcularse a partir de los datos existentes.
+
+### Campos
+
+| Campo | Tipo | Clave | Descripción |
+|---|---|---|---|
+| `id_gasto` | integer | PK | Identificador único del gasto. |
+| `id_viaje` | integer | FK | Viaje al que pertenece el gasto. |
+| `descripcion` | character varying | | Descripción del gasto realizado. |
+| `monto` | numeric | | Valor monetario del gasto. |
+| `fecha_gasto` | date | | Fecha en que se realizó el gasto. |
+| `categoria` | character varying | | Categoría a la que pertenece el gasto. |
+
+### Script SQL
+
+```sql
+CREATE TABLE gastos (
+
+    id_gasto      SERIAL PRIMARY KEY,
+    id_viaje      INT NOT NULL,
+    descripcion   VARCHAR(200) NOT NULL,
+    monto         DECIMAL(12,2) NOT NULL,
+    fecha_gasto   DATE NOT NULL,
+    categoria     VARCHAR(50) NOT NULL,
+
+    CONSTRAINT fk_gastos_viaje
+        FOREIGN KEY (id_viaje)
+        REFERENCES viajes(id_viaje)
+        ON DELETE CASCADE,
+
+    CONSTRAINT chk_gastos_monto
+        CHECK (monto > 0)
+);
+```
+---
