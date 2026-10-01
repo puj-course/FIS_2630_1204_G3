@@ -2,11 +2,23 @@
 
 En conjunto, la base de datos de WiseTrip está diseñada alrededor de una idea simple: un usuario se registra, planifica un viaje, y todo lo demás que hace dentro de esa planificación —sus preferencias, su itinerario de actividades, sus gastos reales, sus reservas y las alertas que recibe— queda organizado y conectado a ese viaje en particular, de modo que en cualquier momento se puede reconstruir el panorama completo de un viaje consultando únicamente su identificador; adicionalmente, existe un pequeño grupo de tablas de catálogo (`ciudad`, `atributo`, `ciudad_atributo` y `nivel_costo`) que por ahora funcionan aparte y que en el futuro permitirían que el sistema recomiende destinos automáticamente según los intereses y el nivel de costo que el usuario haya seleccionado.
 
+## Relaciones principales
 
+El modelo puede entenderse mediante las siguientes relaciones:
 
+- **`usuario` → `viajes`:** un usuario puede tener múltiples viajes, pero cada viaje pertenece a un único usuario.
+- **`usuario` → `canales_notificacion`:** un usuario puede tener uno o varios canales de notificación.
+- **`viajes` → `preferencias`:** un viaje puede tener múltiples preferencias.
+- **`viajes` → `itinerario`:** un viaje puede contener múltiples actividades.
+- **`viajes` → `gastos`:** un viaje puede tener múltiples gastos.
+- **`viajes` → `reservas`:** un viaje puede tener múltiples reservas.
+- **`viajes` → `alertas`:** un viaje puede generar múltiples alertas.
+- **`canales_notificacion` → `alertas`:** un canal puede ser utilizado para gestionar múltiples alertas.
+- **`ciudad` ↔ `atributo`:** una ciudad puede tener múltiples atributos y un atributo puede pertenecer a múltiples ciudades. Esta relación se implementa mediante `ciudad_atributo`.
 
--- NOTA: ciudad, atributo, ciudad_atributo
-Son catálogos pensados para una futura función de recomendación de destinos: ciudad guarda información de lugares (ubicación, costo promedio), atributo guarda características (playa, cultura, aventura, etc.), y ciudad_atributo los conecta entre sí. Actualmente estas tablas existen de forma independiente y no están conectadas con viajes ni preferencias, por lo que todavía no participan en el funcionamiento activo de la aplicación.
+Las relaciones dependientes de `viajes` utilizan eliminación en cascada (`ON DELETE CASCADE`), por lo que al eliminar un viaje también se eliminan sus preferencias, actividades del itinerario, gastos, reservas y alertas asociadas.
+
+---
 
 
 
