@@ -125,3 +125,48 @@ CREATE TABLE ciudad (
 ```
 ---
 
+# 3. VIAJES
+
+Es una de las tablas más importantes porque representa el núcleo de la planificación de un viaje.
+Cada fila representa un viaje planeado por un usuario: a dónde quiere ir, cuándo empieza y termina y cuánto presupuesto tiene disponible.
+Cada viaje está obligatoriamente ligado a un usuario mediante `id_usuario`, por lo que nunca debería existir un viaje sin propietario.
+La base de datos valida que la fecha de finalización no sea anterior a la fecha de inicio y que el presupuesto sea mayor que cero.
+Si se elimina el usuario, todos sus viajes se eliminan automáticamente mediante `ON DELETE CASCADE`. De igual manera, al eliminar un viaje se eliminan los registros dependientes asociados a este.
+
+### Campos
+
+| Campo            | Tipo                        | Clave | Descripción                           |
+| ---------------- | --------------------------- | ----- | ------------------------------------- |
+| `id_viaje`       | integer                     | PK    | Identificador único del viaje.        |
+| `id_usuario`     | integer                     | FK    | Usuario propietario del viaje.        |
+| `destino`        | character varying           |       | Destino seleccionado para el viaje.   |
+| `fecha_inicio`   | date                        |       | Fecha de inicio del viaje.            |
+| `fecha_fin`      | date                        |       | Fecha de finalización del viaje.      |
+| `presupuesto`    | numeric                     |       | Presupuesto disponible para el viaje. |
+| `fecha_creacion` | timestamp without time zone |       | Fecha y hora de creación del viaje.   |
+
+```sql
+CREATE TABLE viajes (
+
+    id_viaje        SERIAL PRIMARY KEY,
+    id_usuario      INT NOT NULL,
+    destino         VARCHAR(150) NOT NULL,
+    fecha_inicio    DATE NOT NULL,
+    fecha_fin       DATE NOT NULL,
+    presupuesto     DECIMAL(12,2) NOT NULL,
+    fecha_creacion  TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT fk_viajes_usuario
+        FOREIGN KEY (id_usuario)
+        REFERENCES usuario(id_usuario)
+        ON DELETE CASCADE,
+
+    CONSTRAINT chk_viajes_fechas
+        CHECK (fecha_fin >= fecha_inicio),
+
+    CONSTRAINT chk_viajes_presupuesto
+        CHECK (presupuesto > 0)
+);
+```
+---
+
