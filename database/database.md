@@ -344,3 +344,49 @@ CREATE TABLE reservas (
 );
 ```
 ---
+## 8. CANALES DE NOTIFICACIÓN
+
+La tabla `canales_notificacion` define los medios mediante los cuales un usuario puede recibir notificaciones de WiseTrip.
+
+Actualmente se contemplan dos tipos de canal:
+
+- correo
+- telegram
+
+El campo `identificador` almacena el dato necesario para utilizar el canal. Por ejemplo, puede almacenar una dirección de correo electrónico o el identificador correspondiente a Telegram.
+
+El campo `activo` permite determinar si el canal está habilitado para recibir notificaciones.
+
+Un usuario puede tener varios canales de notificación y cada canal pertenece a un único usuario mediante `id_usuario`.
+
+### Campos
+
+| Campo | Tipo | Clave | Descripción |
+|---|---|---|---|
+| `id_canal` | integer | PK | Identificador único del canal. |
+| `id_usuario` | integer | FK | Usuario propietario del canal. |
+| `tipo_canal` | character varying | | Tipo de canal: correo o telegram. |
+| `identificador` | character varying | | Dato necesario para utilizar el canal. |
+| `activo` | boolean | | Indica si el canal está habilitado. |
+
+### Script SQL
+
+```sql
+CREATE TABLE canales_notificacion (
+
+    id_canal       SERIAL PRIMARY KEY,
+    id_usuario     INT NOT NULL,
+    tipo_canal     VARCHAR(20) NOT NULL,
+    identificador  VARCHAR(150) NOT NULL,
+    activo         BOOLEAN NOT NULL,
+
+    CONSTRAINT fk_canal_usuario
+        FOREIGN KEY (id_usuario)
+        REFERENCES usuario(id_usuario)
+        ON DELETE CASCADE,
+
+    CONSTRAINT chk_canal_tipo
+        CHECK (tipo_canal IN ('correo', 'telegram'))
+);
+```
+---
