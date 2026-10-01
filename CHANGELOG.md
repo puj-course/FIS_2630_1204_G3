@@ -3527,7 +3527,7 @@ errores en si no tengo, pero me da miedo hacer algo mal y dañar todos los commi
 
 1. **¿Qué hice ayer?**
 
-  
+Ayer estuvamos corrigiendo el error del duplicado del repo  
 
 2. **¿Qué voy a hacer hoy?**
 
