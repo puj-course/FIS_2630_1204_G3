@@ -390,3 +390,75 @@ CREATE TABLE canales_notificacion (
 );
 ```
 ---
+## 9. ALERTAS
+
+La tabla `alertas` almacena las notificaciones que el sistema genera para informar al usuario sobre diferentes eventos relacionados con su viaje.
+
+Actualmente se contemplan tres tipos de alerta:
+
+- clima
+- presupuesto
+- recomendacion
+
+Cada alerta está relacionada con un viaje mediante `id_viaje` y con un canal específico mediante `id_canal`.
+
+De esta forma es posible identificar qué alerta se generó, para qué viaje, mediante qué canal fue gestionada y cuál es su estado.
+
+El campo `estado` permite distinguir entre una alerta pendiente y una alerta enviada.
+
+### Campos
+
+| Campo | Tipo | Clave | Descripción |
+|---|---|---|---|
+| `id_alerta` | integer | PK | Identificador único de la alerta. |
+| `id_viaje` | integer | FK | Viaje al que pertenece la alerta. |
+| `id_canal` | integer | FK | Canal mediante el cual se gestiona la alerta. |
+| `tipo_alerta` | character varying | | Tipo de alerta: clima, presupuesto o recomendacion. |
+| `mensaje` | character varying | | Contenido del mensaje de la alerta. |
+| `fecha_envio` | timestamp without time zone | | Fecha y hora asociada al envío de la alerta. |
+| `estado` | character varying | | Estado de la alerta: pendiente o enviada. |
+
+### Relaciones de alertas
+
+La tabla `alertas` tiene dos relaciones principales:
+
+- `alertas` → `viajes`
+- `alertas` → `canales_notificacion`
+
+La primera permite identificar a qué viaje pertenece la alerta.
+
+La segunda permite identificar mediante qué canal se gestiona la notificación.
+
+El uso de `ON DELETE RESTRICT` en `id_canal` evita eliminar un canal que todavía está siendo referenciado por alertas existentes.
+
+### Script SQL
+
+```sql
+CREATE TABLE alertas (
+
+    id_alerta     SERIAL PRIMARY KEY,
+    id_viaje      INT NOT NULL,
+    id_canal      INT NOT NULL,
+    tipo_alerta   VARCHAR(30) NOT NULL,
+    mensaje       VARCHAR(500) NOT NULL,
+    fecha_envio   TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    estado        VARCHAR(20) NOT NULL,
+
+    CONSTRAINT fk_alerta_viaje
+        FOREIGN KEY (id_viaje)
+        REFERENCES viajes(id_viaje)
+        ON DELETE CASCADE,
+
+    CONSTRAINT fk_alerta_canal
+        FOREIGN KEY (id_canal)
+        REFERENCES canales_notificacion(id_canal)
+        ON DELETE RESTRICT,
+
+    CONSTRAINT chk_alerta_tipo
+        CHECK (tipo_alerta IN ('clima', 'presupuesto', 'recomendacion')),
+
+    CONSTRAINT chk_alerta_estado
+        CHECK (estado IN ('pendiente', 'enviada'))
+);
+```
+---
