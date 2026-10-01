@@ -3477,15 +3477,15 @@ si ya esta semana hice unos commits y tras de que se me duplicaron pues no se si
 
 1. **¿Qué hice ayer?**
 
-  
+  Ayer Trabajamos en la revisión del repositorio en cuanto a recuperar la información errada e inconclusa acerca de carpetas duplicadas y commits extra
 
 2. **¿Qué voy a hacer hoy?**
 
-
+Hoy trabajé en la parte investigative acerca de indicadores únicos y comprobables sobre la economía de algunas ciudades implementadas para wisetrip, para que los atributos manuales tengan no solo sentido sino que sean comprobables, como el PIB y otros, no lo he implementado en código
    
-4. **¿Tengo algún impedimento o bloqueo?**
+3. **¿Tengo algún impedimento o bloqueo?**
 
-
+Si, aún no he borrado el pull que hice cuando seguía el error, me da un poco de angustia subir algo por error o que se. Uelva a dañar el repositorio por mi culpa
 
 ---
 
@@ -3493,15 +3493,17 @@ si ya esta semana hice unos commits y tras de que se me duplicaron pues no se si
 
 1. **¿Qué hice ayer?**
 
-
+se empezo a mirar como hacer el boton dentro de la aplicacion y el flujo donde lo podriamos colocar hasta el momento
    
 2. **¿Qué voy a hacer hoy?**
 
-  
+  se realizo el diagrama de interfaces, flujo para la clase del dia de mañana, se actualizo el diccionario de datos, ddl y database.md que tiene toda la informacion actual de la base de datos con los cambios correspondientes que se han realizado hasta este momento.
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
-   
+   me pone nerviosa un poco la implementacion de los nuevos temas vistos en clase y como haremos para implementarlo al poryecto actual
+
+
    
 ---
 
@@ -3509,13 +3511,15 @@ si ya esta semana hice unos commits y tras de que se me duplicaron pues no se si
 
 1. **¿Qué hice ayer?**
 
+ayer seguimos corrigiendo el error de los commits duplicados
 
 2. **¿Qué voy a hacer hoy?**
 
-
+hoy iba a empezar a hacer la hu 84, pero al momento de correr la pagina, encontramos errores en el resumen.jsp por ende lo corregi y eso me llevo bastante tiempo y mañana empezare con mis hu en forma
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
+errores en si no tengo, pero me da miedo hacer algo mal y dañar todos los commits y qu me pase lo que le paso a mi compañera
 
 ---
 
@@ -3540,15 +3544,19 @@ si ya esta semana hice unos commits y tras de que se me duplicaron pues no se si
 
 1. **¿Qué hice ayer?** 
 
+Ayer estuve investigando con lo monitores como solucionar lo de los duplicados del repo
 
 2. **¿Qué voy a hacer hoy?** 
 
+hoy arregle los duplicados, las estadisticas ya se ven bien, pero aun hay problemas cuando mis compañeros hacen pull request, entonces estoy tratando de solucionar eso
 
 3. **¿Tengo algún impedimento o bloqueo?** 
 
+No pero tengo que tener mucha precaución con el trabajo de mis compañeros y los commits
 
 ---
 
+<img width="1600" height="1041" alt="image" src="https://github.com/user-attachments/assets/c4b61e7b-d2fc-43c3-9911-2f543ffb4e43" />
 
 ---
 
