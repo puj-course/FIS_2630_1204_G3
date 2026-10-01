@@ -2,19 +2,65 @@
 
 En conjunto, la base de datos de WiseTrip está diseñada alrededor de una idea simple: un usuario se registra, planifica un viaje, y todo lo demás que hace dentro de esa planificación —sus preferencias, su itinerario de actividades, sus gastos reales, sus reservas y las alertas que recibe— queda organizado y conectado a ese viaje en particular, de modo que en cualquier momento se puede reconstruir el panorama completo de un viaje consultando únicamente su identificador; adicionalmente, existe un pequeño grupo de tablas de catálogo (`ciudad`, `atributo`, `ciudad_atributo` y `nivel_costo`) que por ahora funcionan aparte y que en el futuro permitirían que el sistema recomiende destinos automáticamente según los intereses y el nivel de costo que el usuario haya seleccionado.
 
+## Relaciones principales
 
+El modelo puede entenderse mediante las siguientes relaciones:
 
+- **`usuario` → `viajes`:** un usuario puede tener múltiples viajes, pero cada viaje pertenece a un único usuario.
+- **`usuario` → `canales_notificacion`:** un usuario puede tener uno o varios canales de notificación.
+- **`viajes` → `preferencias`:** un viaje puede tener múltiples preferencias.
+- **`viajes` → `itinerario`:** un viaje puede contener múltiples actividades.
+- **`viajes` → `gastos`:** un viaje puede tener múltiples gastos.
+- **`viajes` → `reservas`:** un viaje puede tener múltiples reservas.
+- **`viajes` → `alertas`:** un viaje puede generar múltiples alertas.
+- **`canales_notificacion` → `alertas`:** un canal puede ser utilizado para gestionar múltiples alertas.
+- **`ciudad` ↔ `atributo`:** una ciudad puede tener múltiples atributos y un atributo puede pertenecer a múltiples ciudades. Esta relación se implementa mediante `ciudad_atributo`.
 
--- NOTA: ciudad, atributo, ciudad_atributo
-Son catálogos pensados para una futura función de recomendación de destinos: ciudad guarda información de lugares (ubicación, costo promedio), atributo guarda características (playa, cultura, aventura, etc.), y ciudad_atributo los conecta entre sí. Actualmente estas tablas existen de forma independiente y no están conectadas con viajes ni preferencias, por lo que todavía no participan en el funcionamiento activo de la aplicación.
+Las relaciones dependientes de `viajes` utilizan eliminación en cascada (`ON DELETE CASCADE`), por lo que al eliminar un viaje también se eliminan sus preferencias, actividades del itinerario, gastos, reservas y alertas asociadas.
 
+## Nota: `ciudad`, `atributo`, `ciudad_atributo` y `nivel_costo`
 
+Son catálogos pensados para una futura función de recomendación de destinos:
 
-## 1 USUARIO
-La tabla usuario guarda quien usa la aplicacion: su nombre, correo, contraseña y tipo de cuenta si es cliente o administrador. Tambien guarda su documento de identidad y fecha de nacimiento, para verificar que es una persona real y unica en el sistema, no pueden haber dos personas con el mismo correo ni numero de documento.
+- `ciudad` guarda información de lugares que pueden ser recomendados, incluyendo nombre, país, ubicación geográfica y costo promedio.
+- `atributo` guarda características que pueden describir una ciudad, como playa, cultura, aventura o gastronomía.
+- `ciudad_atributo` establece la relación entre ciudades y atributos.
+- `nivel_costo` almacena categorías generales de costo, como económico, medio o alto.
 
+Actualmente estas tablas no participan directamente en el flujo principal de planificación de viajes.
 
-    CREATE TABLE usuario (
+En particular, `nivel_costo` se encuentra aislada porque ninguna de las tablas actuales la referencia mediante una clave foránea.
+
+---
+
+# 1. USUARIO
+
+La tabla `usuario` guarda la información de las personas que utilizan la aplicación. Contiene los datos básicos de identificación y acceso, como nombre, correo y contraseña, además del tipo de cuenta, que puede ser `cliente` o `administrador`.
+
+También almacena información adicional de identificación (`tipo_documento` y `numero_documento`), fecha de nacimiento, estado de la cuenta y fecha de registro.
+
+El campo `chat_id` permite almacenar el identificador necesario para relacionar al usuario con un servicio de mensajería, principalmente Telegram, y facilitar posteriormente el envío de notificaciones.
+
+El correo electrónico es único dentro del sistema y el número de documento también se maneja como único, evitando registros duplicados.
+
+### Campos
+
+| Campo | Tipo | Clave | Descripción |
+|---|---|---|---|
+| `id_usuario` | integer | PK | Identificador único del usuario. |
+| `nombre` | character varying | | Nombre del usuario. |
+| `correo` | USER-DEFINED | | Correo electrónico utilizado para la cuenta. |
+| `contraseña` | character varying | | Contraseña de acceso. |
+| `rol` | character varying | | Define si el usuario es `cliente` o `administrador`. |
+| `fecha_registro` | timestamp without time zone | | Fecha y hora de registro de la cuenta. |
+| `estado` | boolean | | Indica si la cuenta se encuentra activa. |
+| `tipo_documento` | character varying | | Tipo de documento de identificación. |
+| `numero_documento` | character varying | | Número del documento de identificación. |
+| `fecha_nacimiento` | date | | Fecha de nacimiento del usuario. |
+| `chat_id` | character varying | | Identificador utilizado para la comunicación mediante Telegram. |
+
+```sql
+CREATE TABLE usuario (
 
     id_usuario      SERIAL PRIMARY KEY,
     nombre         VARCHAR(100) NOT NULL,
@@ -23,7 +69,7 @@ La tabla usuario guarda quien usa la aplicacion: su nombre, correo, contraseña 
     rol            VARCHAR(20) NOT NULL,
     fecha_registro TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     estado         BOOLEAN NOT NULL DEFAULT TRUE,
-    chat_id VARCHAR(50), 
+    chat_id        VARCHAR(50),
 
     tipo_documento VARCHAR(30),
     numero_documento VARCHAR(30),
@@ -34,41 +80,77 @@ La tabla usuario guarda quien usa la aplicacion: su nombre, correo, contraseña 
 
     CONSTRAINT chk_usuario_rol
         CHECK (rol IN ('cliente', 'administrador'))
-    );
+);
 
-    CREATE UNIQUE INDEX IF NOT EXISTS ux_usuario_numero_documento
-    ON usuario (numero_documento); 
+CREATE UNIQUE INDEX IF NOT EXISTS ux_usuario_numero_documento
+ON usuario (numero_documento);
 
+```
+--- 
 
-## 2 CIUDAD
-Guarda informacion de lugares que el usuario podria visitar
+## 2. CIUDAD
 
-    CREATE TABLE ciudad (
+La tabla `ciudad` guarda información de los lugares que el usuario podría visitar.
 
+Además del nombre y país, almacena las coordenadas geográficas mediante `latitud` y `longitud`, lo que permite utilizar posteriormente la información para mapas o servicios relacionados con localización.
+
+El campo `costo_promedio` representa una estimación del costo promedio asociado a una ciudad y puede utilizarse como uno de los criterios para la futura recomendación de destinos.
+
+Una ciudad se identifica de manera única mediante la combinación de `nombre` y `pais`, evitando tener dos registros para la misma ciudad dentro del mismo país.
+
+### Campos
+
+| Campo | Tipo | Clave | Descripción |
+|---|---|---|---|
+| `id_ciudad` | integer | PK | Identificador único de la ciudad. |
+| `nombre` | character varying | | Nombre de la ciudad. |
+| `pais` | character varying | | País al que pertenece la ciudad. |
+| `latitud` | numeric | | Coordenada geográfica de latitud. |
+| `longitud` | numeric | | Coordenada geográfica de longitud. |
+| `costo_promedio` | numeric | | Costo promedio estimado de la ciudad. |
+
+### SQL
+
+```sql
+CREATE TABLE ciudad (
     id_ciudad       SERIAL PRIMARY KEY,
     nombre          VARCHAR(100) NOT NULL,
     pais            VARCHAR(100) NOT NULL,
     latitud         DECIMAL(9,6) NOT NULL,
     longitud        DECIMAL(9,6) NOT NULL,
     costo_promedio  DECIMAL(12,2) NOT NULL,
+    CONSTRAINT chk_ciudad_costo CHECK (costo_promedio > 0),
+    CONSTRAINT uk_ciudad_nombre_pais UNIQUE (nombre, pais)
+);
+```
+---
 
-    CONSTRAINT chk_ciudad_costo
-        CHECK (costo_promedio > 0),
+# 3. VIAJES
 
-    CONSTRAINT uk_ciudad_nombre_pais
-        UNIQUE (nombre, pais)
-    );
+Es una de las tablas más importantes porque representa el núcleo de la planificación de un viaje.
+Cada fila representa un viaje planeado por un usuario: a dónde quiere ir, cuándo empieza y termina y cuánto presupuesto tiene disponible.
+Cada viaje está obligatoriamente ligado a un usuario mediante `id_usuario`, por lo que nunca debería existir un viaje sin propietario.
+La base de datos valida que la fecha de finalización no sea anterior a la fecha de inicio y que el presupuesto sea mayor que cero.
+Si se elimina el usuario, todos sus viajes se eliminan automáticamente mediante `ON DELETE CASCADE`. De igual manera, al eliminar un viaje se eliminan los registros dependientes asociados a este.
 
+### Campos
 
+| Campo            | Tipo                        | Clave | Descripción                           |
+| ---------------- | --------------------------- | ----- | ------------------------------------- |
+| `id_viaje`       | integer                     | PK    | Identificador único del viaje.        |
+| `id_usuario`     | integer                     | FK    | Usuario propietario del viaje.        |
+| `destino`        | character varying           |       | Destino seleccionado para el viaje.   |
+| `fecha_inicio`   | date                        |       | Fecha de inicio del viaje.            |
+| `fecha_fin`      | date                        |       | Fecha de finalización del viaje.      |
+| `presupuesto`    | numeric                     |       | Presupuesto disponible para el viaje. |
+| `fecha_creacion` | timestamp without time zone |       | Fecha y hora de creación del viaje.   |
 
-## 3 VIAJES
-Es una de las tablas mas importantes por que casi todas las demas dependen de ella. Cada fila representa un viaje planeado por un usuario: a dónde quiere ir (destino), cuándo empieza y termina, y cuánto presupuesto tiene disponible. Cada viaje está obligatoriamente ligado a un usuario (mediante id_usuario), así que nunca existe un viaje sin dueño. Si se elimina el usuario, todos sus viajes se eliminan automáticamente junto con él.
-
-    CREATE TABLE viajes (
+```sql
+CREATE TABLE viajes (
 
     id_viaje        SERIAL PRIMARY KEY,
     id_usuario      INT NOT NULL,
-    destino VARCHAR(150) NOT NULL,
+    destino         VARCHAR(150) NOT NULL,
     fecha_inicio    DATE NOT NULL,
     fecha_fin       DATE NOT NULL,
     presupuesto     DECIMAL(12,2) NOT NULL,
@@ -84,12 +166,30 @@ Es una de las tablas mas importantes por que casi todas las demas dependen de el
 
     CONSTRAINT chk_viajes_presupuesto
         CHECK (presupuesto > 0)
-    );
+);
+```
+---
 
-## 4 PREFERENCIAS
-Guarda los intereses que el usuario definió para un viaje específico, por ejemplo, aventura, cultura o gastronomía. No está ligada al usuario directamente, sino al viaje, porque una misma persona puede querer cosas distintas dependiendo del viaje que esté planeando. No se permite repetir la misma preferencia dos veces dentro de un mismo viaje.
+## 4. PREFERENCIAS
 
-    CREATE TABLE preferencias (
+La tabla `preferencias` guarda los intereses que el usuario definió para un viaje específico, por ejemplo, aventura, cultura o gastronomía.
+
+No está ligada directamente al usuario, sino al viaje, porque una misma persona puede querer diferentes tipos de experiencias dependiendo del viaje que esté planeando.
+
+La combinación de `id_viaje` y `tipo_preferencia` es única, por lo que no se permite registrar dos veces la misma preferencia dentro de un mismo viaje.
+
+### Campos
+
+| Campo | Tipo | Clave | Descripción |
+|---|---|---|---|
+| `id_preferencia` | integer | PK | Identificador único de la preferencia. |
+| `id_viaje` | integer | FK | Viaje al que pertenece la preferencia. |
+| `tipo_preferencia` | character varying | | Tipo de interés seleccionado por el usuario. |
+
+### Script SQL
+
+```sql
+CREATE TABLE preferencias (
 
     id_preferencia   SERIAL PRIMARY KEY,
     id_viaje         INT NOT NULL,
@@ -102,12 +202,35 @@ Guarda los intereses que el usuario definió para un viaje específico, por ejem
 
     CONSTRAINT uk_preferencias_viaje_tipo
         UNIQUE (id_viaje, tipo_preferencia)
-    );
+);
+```
+---
+## 5. ITINERARIO
 
-## 5 ITINERARIO
-Organiza las actividades día por día dentro de un viaje: qué se va a hacer, en qué fecha, a qué hora y cuánto cuesta aproximadamente. Cada actividad pertenece a un único viaje.
+La tabla `itinerario` organiza las actividades día por día dentro de un viaje.
 
-    CREATE TABLE itinerario (
+Cada registro representa una actividad e indica qué se va a hacer, en qué fecha, a qué hora, qué tipo de actividad es y cuál es su costo estimado.
+
+Cada actividad pertenece a un único viaje mediante `id_viaje`.
+
+El campo `costo_estimado` permite diferenciar entre el costo que se había previsto para una actividad y los gastos reales registrados posteriormente en `gastos`.
+
+### Campos
+
+| Campo | Tipo | Clave | Descripción |
+|---|---|---|---|
+| `id_itinerario` | integer | PK | Identificador único de la actividad. |
+| `id_viaje` | integer | FK | Viaje al que pertenece la actividad. |
+| `nombre` | character varying | | Nombre o descripción de la actividad. |
+| `fecha_actividad` | date | | Fecha en la que se realizará la actividad. |
+| `hora_actividad` | time without time zone | | Hora programada para la actividad. |
+| `tipo` | character varying | | Tipo de actividad. |
+| `costo_estimado` | numeric | | Costo estimado de la actividad. |
+
+### Script SQL
+
+```sql
+CREATE TABLE itinerario (
 
     id_itinerario   SERIAL PRIMARY KEY,
     id_viaje        INT NOT NULL,
@@ -125,11 +248,37 @@ Organiza las actividades día por día dentro de un viaje: qué se va a hacer, e
     CONSTRAINT chk_itinerario_costo
         CHECK (costo_estimado >= 0)
 );
+```
+---
+## 6. GASTOS
 
-## 6 GASTOS
-Registra el dinero que realmente se ha gastado durante el viaje, a diferencia del presupuesto (que es solo una estimación inicial). Cada gasto tiene una descripción, un monto, una fecha y una categoría, y sirve para que el usuario pueda comparar cuánto había planeado gastar contra lo que efectivamente gastó.
+La tabla `gastos` registra el dinero que realmente se ha gastado durante el viaje, a diferencia del presupuesto, que representa el valor disponible o planeado inicialmente.
 
-    CREATE TABLE gastos (
+Cada gasto contiene una descripción, monto, fecha y categoría. Esta información permite llevar control del consumo del presupuesto y comparar el presupuesto inicial con los gastos realizados.
+
+El presupuesto restante puede obtenerse mediante:
+
+```
+Presupuesto restante = presupuesto del viaje − suma de los gastos registrados
+```
+
+No es necesario almacenar el presupuesto restante como una columna independiente porque puede calcularse a partir de los datos existentes.
+
+### Campos
+
+| Campo | Tipo | Clave | Descripción |
+|---|---|---|---|
+| `id_gasto` | integer | PK | Identificador único del gasto. |
+| `id_viaje` | integer | FK | Viaje al que pertenece el gasto. |
+| `descripcion` | character varying | | Descripción del gasto realizado. |
+| `monto` | numeric | | Valor monetario del gasto. |
+| `fecha_gasto` | date | | Fecha en que se realizó el gasto. |
+| `categoria` | character varying | | Categoría a la que pertenece el gasto. |
+
+### Script SQL
+
+```sql
+CREATE TABLE gastos (
 
     id_gasto      SERIAL PRIMARY KEY,
     id_viaje      INT NOT NULL,
@@ -145,12 +294,38 @@ Registra el dinero que realmente se ha gastado durante el viaje, a diferencia de
 
     CONSTRAINT chk_gastos_monto
         CHECK (monto > 0)
-    );
+);
+```
+---
+## 7. RESERVAS
 
-## 7 RESERVAS
-Centraliza las reservas hechas para un viaje —hospedaje, transporte, actividades, etc. Junto con su estado actual pendiente, confirmada o cancelada. Permite tener en un solo lugar todo lo que el usuario ya aseguró para su viaje.
+La tabla `reservas` centraliza las reservas realizadas para un viaje, como hospedaje, transporte o actividades.
 
-    CREATE TABLE reservas (
+Cada reserva contiene su tipo, descripción, fecha y estado.
+
+El campo `estado` permite representar si la reserva está:
+
+- confirmada
+- pendiente
+- cancelada
+
+Cada reserva pertenece a un único viaje mediante `id_viaje`.
+
+### Campos
+
+| Campo | Tipo | Clave | Descripción |
+|---|---|---|---|
+| `id_reserva` | integer | PK | Identificador único de la reserva. |
+| `id_viaje` | integer | FK | Viaje al que pertenece la reserva. |
+| `tipo` | character varying | | Tipo de reserva, por ejemplo hospedaje o transporte. |
+| `descripcion` | character varying | | Descripción de la reserva. |
+| `fecha_reserva` | date | | Fecha de la reserva. |
+| `estado` | character varying | | Estado actual de la reserva. |
+
+### Script SQL
+
+```sql
+CREATE TABLE reservas (
 
     id_reserva     SERIAL PRIMARY KEY,
     id_viaje       INT NOT NULL,
@@ -166,13 +341,38 @@ Centraliza las reservas hechas para un viaje —hospedaje, transporte, actividad
 
     CONSTRAINT chk_reservas_estado
         CHECK (estado IN ('confirmada', 'pendiente', 'cancelada'))
-    );
+);
+```
+---
+## 8. CANALES DE NOTIFICACIÓN
 
+La tabla `canales_notificacion` define los medios mediante los cuales un usuario puede recibir notificaciones de WiseTrip.
 
-## 8 CANALES DE NOTIFICACIÓN
-Define por qué medio quiere un usuario recibir sus avisos: correo electrónico o Telegram. Guarda el dato de contacto necesario para ese canal el correo o el usuario de Telegram.
+Actualmente se contemplan dos tipos de canal:
 
-    CREATE TABLE canales_notificacion (
+- correo
+- telegram
+
+El campo `identificador` almacena el dato necesario para utilizar el canal. Por ejemplo, puede almacenar una dirección de correo electrónico o el identificador correspondiente a Telegram.
+
+El campo `activo` permite determinar si el canal está habilitado para recibir notificaciones.
+
+Un usuario puede tener varios canales de notificación y cada canal pertenece a un único usuario mediante `id_usuario`.
+
+### Campos
+
+| Campo | Tipo | Clave | Descripción |
+|---|---|---|---|
+| `id_canal` | integer | PK | Identificador único del canal. |
+| `id_usuario` | integer | FK | Usuario propietario del canal. |
+| `tipo_canal` | character varying | | Tipo de canal: correo o telegram. |
+| `identificador` | character varying | | Dato necesario para utilizar el canal. |
+| `activo` | boolean | | Indica si el canal está habilitado. |
+
+### Script SQL
+
+```sql
+CREATE TABLE canales_notificacion (
 
     id_canal       SERIAL PRIMARY KEY,
     id_usuario     INT NOT NULL,
@@ -187,12 +387,54 @@ Define por qué medio quiere un usuario recibir sus avisos: correo electrónico 
 
     CONSTRAINT chk_canal_tipo
         CHECK (tipo_canal IN ('correo', 'telegram'))
-    );
+);
+```
+---
+## 9. ALERTAS
 
-## 9 ALERTAS
-Almacena las notificaciones que el sistema genera automáticamente, como avisos de clima, alertas de presupuesto o recomendaciones. Cada alerta sabe a qué viaje pertenece y por qué canal fue enviada, lo que permite rastrear qué se comunicó y cómo llegó al usuario.
+La tabla `alertas` almacena las notificaciones que el sistema genera para informar al usuario sobre diferentes eventos relacionados con su viaje.
 
-    CREATE TABLE alertas (
+Actualmente se contemplan tres tipos de alerta:
+
+- clima
+- presupuesto
+- recomendacion
+
+Cada alerta está relacionada con un viaje mediante `id_viaje` y con un canal específico mediante `id_canal`.
+
+De esta forma es posible identificar qué alerta se generó, para qué viaje, mediante qué canal fue gestionada y cuál es su estado.
+
+El campo `estado` permite distinguir entre una alerta pendiente y una alerta enviada.
+
+### Campos
+
+| Campo | Tipo | Clave | Descripción |
+|---|---|---|---|
+| `id_alerta` | integer | PK | Identificador único de la alerta. |
+| `id_viaje` | integer | FK | Viaje al que pertenece la alerta. |
+| `id_canal` | integer | FK | Canal mediante el cual se gestiona la alerta. |
+| `tipo_alerta` | character varying | | Tipo de alerta: clima, presupuesto o recomendacion. |
+| `mensaje` | character varying | | Contenido del mensaje de la alerta. |
+| `fecha_envio` | timestamp without time zone | | Fecha y hora asociada al envío de la alerta. |
+| `estado` | character varying | | Estado de la alerta: pendiente o enviada. |
+
+### Relaciones de alertas
+
+La tabla `alertas` tiene dos relaciones principales:
+
+- `alertas` → `viajes`
+- `alertas` → `canales_notificacion`
+
+La primera permite identificar a qué viaje pertenece la alerta.
+
+La segunda permite identificar mediante qué canal se gestiona la notificación.
+
+El uso de `ON DELETE RESTRICT` en `id_canal` evita eliminar un canal que todavía está siendo referenciado por alertas existentes.
+
+### Script SQL
+
+```sql
+CREATE TABLE alertas (
 
     id_alerta     SERIAL PRIMARY KEY,
     id_viaje      INT NOT NULL,
@@ -217,12 +459,40 @@ Almacena las notificaciones que el sistema genera automáticamente, como avisos 
 
     CONSTRAINT chk_alerta_estado
         CHECK (estado IN ('pendiente', 'enviada'))
-    );
+);
+```
+---
+## 10. CIUDAD_ATRIBUTO
 
-## 10. CIUDAD ATRIBUTO 
-Conecta una ciudad y sus atributos entre si. 
+La tabla `ciudad_atributo` conecta una ciudad con uno o varios atributos.
 
-    CREATE TABLE IF NOT EXISTS ciudad_atributo (
+Esta tabla es necesaria porque la relación entre ciudades y atributos es de muchos a muchos:
+
+- Una ciudad puede tener múltiples atributos.
+- Un mismo atributo puede estar asociado a múltiples ciudades.
+
+Por ejemplo, una ciudad podría estar asociada con cultura, gastronomía y aventura, mientras que el atributo cultura podría estar asociado con múltiples ciudades.
+
+Por esta razón, la clave primaria está compuesta por:
+
+```
+(id_ciudad, id_atributo)
+```
+
+Esto evita que la misma combinación de ciudad y atributo se registre más de una vez.
+
+### Campos
+
+| Campo | Tipo | Clave | Apunta a |
+|---|---|---|---|
+| `id_ciudad` | integer | PK, FK | `ciudad.id_ciudad` |
+| `id_atributo` | integer | PK, FK | `atributo.id_atributo` |
+
+### Script SQL
+
+```sql
+CREATE TABLE IF NOT EXISTS ciudad_atributo (
+
     id_ciudad INT NOT NULL,
     id_atributo INT NOT NULL,
 
@@ -238,28 +508,123 @@ Conecta una ciudad y sus atributos entre si.
         FOREIGN KEY (id_atributo)
         REFERENCES atributo(id_atributo)
         ON DELETE CASCADE
-    );
+);
+```
+---
 
-## 11. ATRIBUTO 
-Guarda caracteristicas (playa, cultura, aventura, etc)
+## 11. ATRIBUTO
 
-    CREATE TABLE IF NOT EXISTS atributo (
+La tabla `atributo` guarda las características o intereses que pueden utilizarse para describir un destino.
+
+Algunos ejemplos son:
+
+- playa
+- cultura
+- aventura
+- gastronomía
+- descanso
+
+Actualmente funciona como catálogo para la futura función de recomendación de destinos.
+
+El nombre de cada atributo es único, evitando registrar dos veces la misma característica.
+
+### Campos
+
+| Campo | Tipo | Clave | Descripción |
+|---|---|---|---|
+| `id_atributo` | integer | PK | Identificador único del atributo. |
+| `nombre` | character varying | | Nombre de la característica del destino. |
+
+### Script SQL
+
+```sql
+CREATE TABLE IF NOT EXISTS atributo (
+
     id_atributo SERIAL PRIMARY KEY,
 
     nombre VARCHAR(50) NOT NULL,
 
     CONSTRAINT uk_atributo_nombre
         UNIQUE (nombre)
-    );
+);
+```
+---
+## 12. NIVEL_COSTO
 
+La tabla `nivel_costo` es un catálogo que clasifica los niveles de gasto asociados a los destinos.
 
-## 12. NIVEL COSTO
-Es un catálogo simple que clasifica los niveles de gasto que puede tener un destino — por ejemplo, económico, medio o alto. Cada fila representa una categoría de costo con su nombre, y el nombre no se puede repetir. Al igual que ciudad, atributo y ciudad_atributo, está pensada para la futura función de recomendación de destinos (permitiría filtrar ciudades según qué tan costoso es viajar ahí), pero actualmente no está conectada con ninguna otra tabla del modelo — ni ciudad la referencia, así que por ahora existe de forma aislada, sin participar en el funcionamiento activo de la aplicación.
+Por ejemplo:
 
-    CREATE TABLE IF NOT EXISTS nivel_costo (
+- económico
+- medio
+- alto
+
+Cada registro tiene un identificador y un nombre único.
+
+Actualmente esta tabla está aislada del resto del modelo. No existe una clave foránea desde `ciudad` hacia `nivel_costo`, por lo que la estructura actual no establece directamente qué nivel de costo corresponde a una ciudad determinada.
+
+Esta tabla está preparada para una futura función de recomendación o clasificación de destinos, en la que podría utilizarse el nivel de costo como uno de los criterios para filtrar o recomendar ciudades.
+
+### Campos
+
+| Campo | Tipo | Clave | Descripción |
+|---|---|---|---|
+| `id_nivel` | integer | PK | Identificador único del nivel de costo. |
+| `nombre` | character varying | | Nombre del nivel de costo. |
+
+### Script SQL
+
+```sql
+CREATE TABLE IF NOT EXISTS nivel_costo (
+
     id_nivel SERIAL PRIMARY KEY,
     nombre VARCHAR(20) NOT NULL,
 
     CONSTRAINT uk_nivel_costo_nombre
         UNIQUE (nombre)
-    );
+);
+```
+---
+
+## Resumen de las tablas
+
+| Tabla | Propósito | Relación principal |
+|---|---|---|
+| `usuario` | Almacena los usuarios del sistema. | Tiene muchos viajes y canales de notificación. |
+| `viajes` | Representa cada viaje planificado. | Pertenece a un usuario. |
+| `preferencias` | Almacena los intereses seleccionados para un viaje. | Pertenece a un viaje. |
+| `itinerario` | Almacena las actividades planificadas. | Pertenece a un viaje. |
+| `gastos` | Registra los gastos realizados. | Pertenece a un viaje. |
+| `reservas` | Almacena las reservas del viaje. | Pertenece a un viaje. |
+| `canales_notificacion` | Define los medios para recibir notificaciones. | Pertenece a un usuario. |
+| `alertas` | Registra las notificaciones generadas. | Pertenece a un viaje y a un canal. |
+| `ciudad` | Catálogo de destinos disponibles. | Se relaciona con atributos. |
+| `atributo` | Catálogo de características de destinos. | Se relaciona con ciudades. |
+| `ciudad_atributo` | Relaciona ciudades y atributos. | Tabla intermedia N:M. |
+| `nivel_costo` | Catálogo de niveles de costo. | Actualmente aislada. |
+
+## Relaciones y dependencias
+
+La estructura general de dependencias de la base de datos puede resumirse de la siguiente manera:
+
+```
+usuario
+├── viajes
+│   ├── preferencias
+│   ├── itinerario
+│   ├── gastos
+│   ├── reservas
+│   └── alertas
+│
+└── canales_notificacion
+    └── alertas
+
+ciudad
+└── ciudad_atributo
+    └── atributo
+
+nivel_costo
+└── Actualmente sin relaciones
+```
+
+Las tablas relacionadas directamente con la planificación de viajes forman el núcleo funcional de WiseTrip, mientras que las tablas `ciudad`, `atributo`, `ciudad_atributo` y `nivel_costo` funcionan como estructuras de apoyo para futuras funcionalidades de

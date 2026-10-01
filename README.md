@@ -81,84 +81,136 @@ También: `scripts/test.sh` o `make test`.
 ## Estructura del Proyecto
 ```text
 FIS_2630_1204_G3/
+├── .github/
+│   ├── ISSUE_TEMPLATE/
+│   │   ├── bug_report.md
+│   │   │   └── Plantilla para el reporte estandarizado de errores y bugs.
+│   │   └── feature_request.md
+│   │       └── Plantilla para propuestas de nuevas características.
+│   └── PULL_REQUEST_TEMPLATE.md
+│       └── Plantilla base para revisión y apertura de Pull Requests.
+│
 ├── app/
 │   ├── index.js
 │   │   └── Archivo JavaScript base del proyecto.
 │   ├── package.json
-│   │   └── Define scripts y configuración del módulo Node inicial.
+│   │   └── Define scripts y dependencias del entorno Node auxiliar.
 │   └── Entrega1/
 │       └── wisetrip_entrega1/
 │           ├── pom.xml
-│           │   └── Configuración Maven del proyecto Spring Boot.
+│           │   └── Configuración de dependencias y plugins Maven (Spring Boot).
 │           ├── mvnw / mvnw.cmd
-│           │   └── Wrappers para ejecutar Maven en Linux/Mac o Windows.
+│           │   └── Wrappers para ejecutar Maven sin instalación global previa.
 │           ├── .mvn/
-│           │   └── Configuración del Maven Wrapper.
-│           ├── src/
-│           │   ├── main/
-│           │   │   ├── java/com/wisetrip/
-│           │   │   │   ├── WisetripApplication.java
-│           │   │   │   │   └── Clase principal de la aplicación Spring Boot.
-│           │   │   │   ├── ServletInitializer.java
-│           │   │   │   │   └── Inicializador para despliegue como aplicación web.
-│           │   │   │   ├── controlador/
-│           │   │   │   │   └── Controladores MVC de autenticación, inicio, viajes, planificación y recomendaciones.
-│           │   │   │   ├── datos/
-│           │   │   │   │   └── Clases DAO, conexión a base de datos y datos semilla.
-│           │   │   │   ├── modelo/
-│           │   │   │   │   └── Entidades y objetos del dominio de WiseTrip.
-│           │   │   │   ├── negocio/
-│           │   │   │   │   └── Catálogo y reglas de preguntas/preferencias.
-│           │   │   │   └── servicio/
-│           │   │   │       └── Servicios de usuarios, viajes, presupuesto, preferencias, ciudades y recomendaciones.
-│           │   │   ├── resources/
-│           │   │   │   ├── application.properties
-│           │   │   │   │   └── Configuración de la aplicación.
-│           │   │   │   ├── sql/
-│           │   │   │   │   └── Scripts SQL de usuarios y ciudades.
-│           │   │   │   └── static/css/
-│           │   │   │       └── Hojas de estilo de la interfaz.
-│           │   │   └── webapp/WEB-INF/vistas/
-│           │   │       └── Vistas JSP de login, registro, planificación, recomendaciones y resumen.
-│           │   └── test/
-│           │       └── java/com/wisetrip/
-│           │           └── Pruebas automatizadas de la aplicación.
-│           └── target/
-│               └── Carpeta generada por Maven con clases compiladas y reportes de pruebas.
+│           │   └── wrapper/
+│           │       └── Configuración interna del Maven Wrapper.
+│           └── src/
+│               ├── main/
+│               │   ├── java/com/wisetrip/
+│               │   │   ├── WisetripApplication.java
+│               │   │   │   └── Clase principal y punto de entrada de la aplicación Spring Boot.
+│               │   │   ├── ServletInitializer.java
+│               │   │   │   └── Soporte para despliegue en contenedores servlet externos.
+│               │   │   ├── controlador/
+│               │   │   │   └── Controladores MVC (Auth, Plan, Recomendaciones, Telegram, etc.).
+│               │   │   ├── datos/
+│               │   │   │   └── Acceso a datos (DAOs, conexión JDBC y datos semilla de ciudades).
+│               │   │   ├── modelo/
+│               │   │   │   └── Clases de dominio (Usuario, Viaje, Presupuesto, Preferencias, Ciudad).
+│               │   │   ├── negocio/
+│               │   │   │   └── Lógica de negocio y catálogo de preguntas dinámicas.
+│               │   │   └── servicio/
+│               │   │       └── Servicios de recomendación, APIs externas, notificaciones y reglas de negocio.
+│               │   ├── resources/
+│               │   │   ├── application.properties
+│               │   │   │   └── Configuración de base de datos, puertos y credenciales de APIs.
+│               │   │   ├── sql/
+│               │   │   │   └── Scripts DDL y DML para inicialización y parches de base de datos.
+│               │   │   └── static/
+│               │   │       ├── css/
+│               │   │       │   └── Hojas de estilo organizadas por vista y componentes.
+│               │   │       └── img/
+│               │   │           └── Recursos gráficos (banderas SVG/PNG, fotos de portada, iconos de preferencias y resumen).
+│               │   └── webapp/WEB-INF/vistas/
+│               │       └── Vistas JSP (login, registro, orígenes, fechas, presupuesto, recomendaciones, resumen, Telegram).
+│               └── test/
+│                   └── java/com/wisetrip/
+│                       └── WisetripApplicationTests.java
+│                           └── Pruebas unitarias y de integración de la aplicación.
 │
 ├── conf/
-│   └── .gitkeep
-│       └── Mantiene la carpeta de configuración dentro del repositorio.
+│   ├── config.yaml
+│   │   └── Archivo general de configuración del entorno y servicios.
+│   └── settings.json
+│       └── Parámetros y ajustes específicos de ejecución.
 │
-├── DOCS/
-│   ├── database.md
-│   │   └── Documentación de la base de datos.
-│   ├── prueba.txt
-│   │   └── Archivo de prueba.
-│   ├── SPRINTS/
-│   │   ├── SEMANA 1/
-│   │   │   └── Documentos y diagrama de arquitectura inicial.
-│   │   ├── SEMANA 2/
-│   │   │   └── Documentos sobre APIs, base de datos, preferencias y bocetos.
-│   │   └── SEMANA 3/
-│   │       └── Documentos y diagramas de base de datos.
-│   └── TALLERES/
-│       └── Documentos de talleres de Git y GitHub.
+├── database/
+│   ├── Base_de_datos_Compartida.pdf
+│   │   └── Documento de diseño y acuerdos de la base de datos compartida.
+│   ├── BasesNegocio.md / DiccionarioDatos.md
+│   │   └── Reglas del negocio de datos y descripción detallada de tablas/campos.
+│   ├── DDL.md / database.md
+│   │   └── Definición de esquemas de datos y documentación relacional.
+│   └── Diagrama entidad-relacion bdd 2.svg
+│       └── Esquema gráfico del modelo Entidad-Relación.
+│
+├── docs/
+│   ├── 1raEntrega_FIS_G3.pdf
+│   │   └── Informe formal correspondiente a la primera entrega del proyecto.
+│   ├── DefinicionProyecto.md
+│   │   └── Alcance, objetivos y contexto general de WiseTrip.
+│   ├── RequerimientosFuncionales.md / RequerimientosNoFuncionales.md
+│   │   └── Especificación completa de requisitos del sistema.
+│   ├── WiseTrip.mp4
+│   │   └── Video demostrativo de funcionalidades del sistema.
+│   ├── api/
+│   │   └── Documentación técnica de APIs integradas (Geoapify, Clima, Pasarela de Pagos).
+│   ├── architecture/
+│   │   └── Diagramas de arquitectura (.svg), bocetos iniciales y documentación técnica del sitio.
+│   └── user_guide/
+│       └── README.md
+│           └── Manual de usuario e instrucciones de uso para el cliente final.
+│
+├── scripts/
+│   ├── deploy.sh
+│   │   └── Script de automatización de despliegue en servidor/ambiente objetivo.
+│   ├── setup.sh
+│   │   └── Script de inicialización de dependencias y entorno local.
+│   └── test.sh
+│       └── Script para ejecución centralizada del conjunto de pruebas.
+│
+├── temp/
+│   ├── checklist/
+│   │   └── Prototipo Spring Boot de pruebas para el módulo de checklist.
+│   └── temp_data/
+│       └── Algoritmos experimentales preliminares de recomendación y selección.
 │
 ├── BOILERPLATE_template.md
-│   └── Documento que explica la estructura base y cómo utilizar este boilerplate.
+│   └── Guía explicativa sobre la plantilla base y convenciones del repositorio.
 │
 ├── CHANGELOG.md
-│   └── Registro de cambios del proyecto.
+│   └── Historial cronológico de cambios, mejoras y correcciones.
+│
+├── CONTRIBUTING.md
+│   └── Guía de contribución, flujo de ramas y normas de código para colaboradores.
+│
+├── docker-compose.yml
+│   └── Orquestación de contenedores Docker para levantar servicios locales.
+│
+├── Dockerfile
+│   └── Instrucciones de construcción de la imagen de la aplicación.
 │
 ├── LICENSE
-│   └── Especifica la licencia bajo la cual se distribuye el proyecto.
+│   └── Licencia legal de distribución del proyecto.
+│
+├── Makefile
+│   └── Accesos directos para compilación, ejecución de scripts y tareas comunes.
 │
 ├── README.md
-│   └── Documento principal con la descripción, instalación, uso y características del proyecto.
+│   └── Documentación general de bienvenida, instalación y puesta en marcha del proyecto.
 │
 └── .gitignore
-    └── Define los archivos y carpetas que Git no debe versionar.
+    └── Reglas de exclusión para evitar subir binarios, entornos de IDEs y temporales.
 
 ```
 

@@ -2382,18 +2382,18 @@ También se trabajará en la relación entre las preferencias seleccionadas y el
 
 ## Issues seleccionados para el Sprint
 
-| ID | Issue | Título | Tipo | Prioridad | Estimacion | Responsable |
-|---|---|---|---|---|---|
-| HU-56 | #219 | Visualizar una bienvenida con el logo y nombre de WiseTrip al iniciar la aplicación | Historia de usuario | Media | Valeria |
-| HU-57 | #220 | Consultar una lista de chequeo de equipaje con elementos básicos para empacar | Historia de usuario | Media | Valeria |
-| HU-58 | #225 | Implementar una misma identidad visual durante todo el recorrido en WiseTrip | Historia de usuario | Media | Maleja |
-| HU-59 | #226 | Incorporar imágenes y elementos gráficos relacionados con los viajes | Historia de usuario | Media | Maleja |
-| HU-60 | #217 | Mostrar una imagen relacionada con el elemento principal de cada pregunta | Historia de usuario | Media | Gaby |
-| HU-61 | #218 | Mantener un texto claro y consistente entre las preguntas del cuestionario | Historia de usuario | Media | Gaby |
-| HU-62 | #223 | Permitir responder las preguntas de selección después de iniciar sesión | Historia de usuario | Media | Isa |
-| HU-63 | #224 | Relacionar la selección del viaje con las preferencias del usuario | Historia de usuario | Alta | Isa |
-| HU-64 | #222 | Mostrar la bandera de la moneda seleccionada en el resumen final del viaje | Historia de usuario | Media | Clavijo |
-| HU-65 | #221 | Mostrar correctamente el icono de la bandera junto al selector de moneda | Historia de usuario | Media | Clavijo |
+| ID | Issue | Título | Tipo | Prioridad | Estimación | Responsable |
+|---|---|---|---|---|---|---|
+| HU-56 | #219 | Visualizar una bienvenida con el logo y nombre de WiseTrip al iniciar la aplicación | Historia de usuario | Media | TBD | Valeria |
+| HU-57 | #220 | Consultar una lista de chequeo de equipaje con elementos básicos para empacar | Historia de usuario | Media | TBD | Valeria |
+| HU-58 | #225 | Implementar una misma identidad visual durante todo el recorrido en WiseTrip | Historia de usuario | Media | TBD | Maleja |
+| HU-59 | #226 | Incorporar imágenes y elementos gráficos relacionados con los viajes | Historia de usuario | Media | TBD | Maleja |
+| HU-60 | #217 | Mostrar una imagen relacionada con el elemento principal de cada pregunta | Historia de usuario | Media | TBD | Gaby |
+| HU-61 | #218 | Mantener un texto claro y consistente entre las preguntas del cuestionario | Historia de usuario | Media | TBD | Gaby |
+| HU-62 | #223 | Permitir responder las preguntas de selección después de iniciar sesión | Historia de usuario | Media | TBD | Isa |
+| HU-63 | #224 | Relacionar la selección del viaje con las preferencias del usuario | Historia de usuario | Alta | TBD | Isa |
+| HU-64 | #222 | Mostrar la bandera de la moneda seleccionada en el resumen final del viaje | Historia de usuario | Media | TBD | Clavijo |
+| HU-65 | #221 | Mostrar correctamente el icono de la bandera junto al selector de moneda | Historia de usuario | Media | TBD | Clavijo |
 
 
 ---
@@ -3242,4 +3242,477 @@ si aun tenemos algunos problemas con la nube para que funcione como la pagina we
 
 
 ---
+
+# Sprint Review y Sprint Retrospective - 27/09/2026
+
+## Maria Alejandra Rodriguez
+
+### Sprint Review
+
+1. **¿Qué logramos?**
+
+Logramos completar algunas otras pantallas ya dejándolas listas, además se agregaron nuevas funciones a la página, realmente nos hace falta muy poco para acabarla sin embargo en el próximo sprint tenemos que empezar a mirar lo de la entrega Gof en el código
+
+### Sprint Retrospective
+
+2. **¿Cómo trabajamos?**
+
+Siento que esta semana todos trabajamos muy bien, todos realizaron la tarea de forma efectiva y a todos nos quedó muy bien, todos nos esforzamos para entregar un producto entero y único hacia el usuario.
+
+3. **¿Qué podríamos mejorar?**
+
+En lo personal tengo que mejorar mi atención, a veces hago commits en main que tenían que ir en mi rama, esta semana por ejemplo tuve un error metiendo un correo que no pertenecía al proyecto y hice commits ahí sin notarlo y luego tuve que cambiar los commits que había hecho a la otra cuenta que si estoy usando para el proyecto y eso causó muchos conflictos en mi rama y a la hora de hacer merge hacía develop y hacía main. La herramienta aún me confunde mucho, pero estoy trabajando en entenderla cada vez más.
+
+
+---
+
+## Gabriela Melo Gualteros
+
+### Sprint Review
+
+1. **¿Qué logramos?**
+
+Logramos tener la pagina como la queriamos tener, en terminos de diseño, se logro solucionar varios errores que estaban impidiendo que s emostraron las imagenes en las pantallas principalmente. En mi caso pude subir profin las imagenes a la pantalla de Preguntas de Preferencia aunque siguen faltando algunas, pero ya se corrigio la ruta para que aparezcan.
+
+### Sprint Retrospective
+
+2. **¿Cómo trabajamos?**
+
+Esta semana se vio el trabajo en grupo, se vio que el Sprint Retrospective anterior valio la pena hablar y cmunicarnos bien como equipo. Esto ayudo a que esta semana se viera de verdad el progreso en el proyecto.
+
+
+3. **¿Qué podríamos mejorar?**
+
+En mi parte a veces me confundo y termino trabajando directamente en el develop y me olvido de mi rama, pero pude corregirlo en esta semana y tambien hubo un error porque ahora solo a mi me muestra las fotos en pantalla y no a mis compañeros despues de hacer el merge porque las imagenes quedaron con los IDs anteriores y claramente el codigo no los va a identificar y no lo va a correr bien.
+
+---
+
+## Valeria Cortes Rendon
+
+### Sprint Review
+
+1. **¿Qué logramos?**
+
+Se realizo la implementacion de los correos y telegram, seguimos mejorando tanto en backend y en frontend. En las proximas entregas esperamos empezar a integrar las apis restantes. Sin embargo nos toca verificar en el flujo y como las usaremos.
+
+### Sprint Retrospective
+
+2. **¿Cómo trabajamos?**
+
+Hemos mejorado como equipo, la comunicacion ha mejorado, en mi percepcion esta semana se trabajo en conjunto y todo ha funcionado hasta el momento
+
+3. **¿Qué podríamos mejorar?**
+
+Podria mejorar en colocar una hora especifica para realizar las reuniones y que todos podamos unirnos ya que a veces nos pasa que alguno del equipo no ve la llamada a tiempo. De resto trabajamos muy bien.
+
+---
+
+## Isabella Posada
+
+### Sprint Review
+
+1. **¿Qué logramos?**
+
+Logramos trabajar nuevamente como grupo, siento que cada vez va afinándose mas el diseño de la pagina que le da un toque verdaderamente único y creativo! sin embargo no hay que dejar atrás el como funciona, siento que será clave en las próximas semanas ya que nos falta trabajar un poco mas en el back
+
+### Sprint Retrospective
+
+2. **¿Cómo trabajamos?**
+
+Bien, esta semana si se vio muy coherente el trabajo en equipo, tenemos que seguir asi
+
+3. **¿Qué podríamos mejorar?**
+
+la verdad, mi única observación es aprovechar un poco mas los dailys, estamos teniendo problemas al hacer merge con main principalmente porque no sabemos que cambios en el código son los que hacemos como grupo, y cuando lo vamos a unir tenemos algunos problemas, pero se que no va a frenar el como trabajamos.
+
+---
+
+## Santiago Clavijo
+
+### Sprint Review
+
+1. **¿Qué logramos?**
+
+en terminos de diseño seguimos mejorando, ya se ve mas como una pagina verdadera de viajes, acabamos nuestras issues, y resolver problemas de la pagina
+
+### Sprint Retrospective
+
+2. **¿Cómo trabajamos?**
+
+trabajamos bien como equipo, mejoramos la comunicacion ya sea interna correspondiente al proyecto, ya sea hablando de errores, si se veia el trabajo del otro en la pagina, y tambien afuera del proyecto en conflictos relacionados al proyecto.
+
+3. **¿Qué podríamos mejorar?**
+
+como equipo esta semana lo hicimos muy bien, espero que todos los sprints que falten los trabajemos igual de bien, en mi caso tengo problemas con el tiempo, ya entiendo el git y la metodologia scrum, pero al momento de trabajar en mis issues se me olvida subirlas a mi rama, entonces a veces subi todo mi trabajo de una y no como tendria que ser.
+
+---
+<img width="1600" height="548" alt="image" src="https://github.com/user-attachments/assets/1042da06-9a97-4812-9830-7061389e4d72" />
+
+---
+# Sprint 8 - Sprint Planning - [28/09/2026]
+
+## Sprint Goal
+
+
+## Capacidad del equipo
+
+* Desarrolladores disponibles: 5
+* Puntos/horas disponibles: 42 (por ajustar según refinamiento)
+
+## Issues seleccionados para el Sprint
+
+| ID | Título | Tipo | Estimación | Responsable |
+|----|--------|------|------------|-------------|
+| #76 | Como usuario, quiero que la app me deje conectar mi Telegram, para empezar a recibir notificaciones sobre el viaje.| Historia de Usuario  | 8 | Valeria |
+| #77 | Como usuario, quiero que mi información esté guardada de forma clara y ordenada, para comprender el uso de mis datos| Historia de Usuario | 5 | Valeria |
+| #78 | Como viajero, quiero que los destinos recomendados tengan imágenes diferentes y relacionadas con cada lugar, para identificar mejor las opciones y comparar los destinos antes de seleccionar uno| Historia de Usuario | 8 | Maleja |
+| #79 | Como viajero, quiero ajustar el porcentaje de mi presupuesto destinado a cada tipo de gasto, para distribuir mi dinero de acuerdo con lo que considero más importante durante mi viaje.| Historia de Usuario | 5 | Maleja |
+| #80 | Como viajero quiero que el sistema le dé más peso a los intereses que más me importan, para que una ciudad no gane puntos solo por acumular gustos secundarios. | Historia de Usuario | 8 | Gaby |
+| #81 | Como viajero quiero que la pantalla de preferencias no tenga errores, para confiar en que el cuestionario está bien hecho.| Historia de Usuario | 5 | Gaby |
+| #82 |Como viajero, quiero que los destinos recomendados cumplan los requisitos obligatorios y tengan un nivel mínimo de compatibilidad con mis preferencias, para recibir opciones que realmente sean adecuadas para mi viaje. | Historia de Usuario | 13 | Isa |
+| #83 |Como viajero, quiero que las recomendaciones respeten mi presupuesto y que el destino solo se guarde cuando yo lo seleccione explícitamente, para evitar opciones económicamente inadecuadas o registrar un destino que no he elegido. | Historia de Usuario | 8 | Isa |
+| #84 | Como viajero quiero ver en el resumen del viaje y en las recomendaciones una bandera de la moneda escogida en el presupuesto en el nuevo diseño de la página para distinguir más fácil mi moneda escogida | Historia de Usuario | 5 | Clavijo |
+| #85 |  Como viajero quiero que mis recomendaciones de destino se calculan comparando correctamente mi presupuesto contra el costo real del viaje para recibir destinos acordes a mi presupuesto | Historia de Usuario | 8 | Clavijo |
+
+## Riesgos / Bloqueos identificados
+
+-  Que se pisen el trabajo en github y a la hora de hacer merge se generen conflictos 
+- 
+
+---
+<img width="682" height="738" alt="image" src="https://github.com/user-attachments/assets/39161c9a-c676-4240-b59a-98220bf0c34a" />
+
+---
+
+## Daily Sprint - 29/09/2026
+
+### Isabella Posada
+
+1. **¿Qué hice ayer?**
+
+ayer acomode mis hus, tanto en el changelog como en los comentarios del issue, resumiendo los issues de esta semana, van mas que todo a organizar mas el codigo con respecto a las recomendaciones, que sea coherente y conciso.
+
+
+2. **¿Qué voy a hacer hoy?**
+
+hoy arreglamos el error del repositorio
+
+   
+4. **¿Tengo algún impedimento o bloqueo?**
+
+si lo del repositorio, ojala se arregle pronto.
+
+---
+
+### Valeria Cortes Rendon
+
+1. **¿Qué hice ayer?**
+
+Realizamos el sprint planning de la semana, acordamos y revisamos el codigo que llevamos hasta el momento, se hicieron diferentes recomendaciones para esta semana, ocurrio un problema ya que la rama de maleja duplico lo que tenemos sin embargo, se esta buscando una solucion.
+   
+2. **¿Qué voy a hacer hoy?**
+
+  Hoy nos dimos cuenta que nos falta el mapa que representa los componentes e interfaces del sistema. Se busca que hagamos esta representacion, busqueda de informacion sobre patrones goff y edicion de informacion
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+   Lo del la clonacion de maleja en el repo, no he podido subir la informacion ya que se podria eliminar luego
+   
+---
+
+### Santiago Clavijo
+
+1. **¿Qué hice ayer?**
+
+Ayer hicimos el product backlog, todos hicimos nuestras historias de usuario y hablamos que ibamos a hacer esta semana
+
+2. **¿Qué voy a hacer hoy?**
+
+hoy no pude trabajar ya que estabamos corrigiendo unos duplicados en el repositorio y necesitabamos corregirlo antes de hacer cualquier cosa para no dañar el repositorio
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+no
+
+---
+
+### Gabriela Melo Gualteros
+
+1. **¿Qué hice ayer?**
+  
+Ayer estuvimos en el Sprint Planning y esta semana espero poder terminar la realización e implementación de todas las imagenes de las preguntas de preferencias, además de corregir el codigo porque aun siguen apareciendo cierto IDs que no se estan utilizando y a evaluar el nivel de preferencia para que la recomendación de destino sea la mas accurate. 
+
+2. **¿Qué voy a hacer hoy?**
+
+La semama pasada al hacer el merge de develop a main tuvimos ciertos percances porque al hacer el ultimo merge con unos cambios que no se habian subido se duplico todo el repo, entonces hoy estuvimos hablando con monitores y el profesor para poder solucionar esto y ya mañana continuar comun y corriente
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+poder arreglar el duplicado del repo, de todos los commits 
+
+ 
+
+---
+
+1. **¿Qué hice ayer?** 
+
+hicimos el sprint planning y designamos que teniamos que hacer esta semana, en lo personal arreglar el problema con el repo
+
+2. **¿Qué voy a hacer hoy?** 
+
+el monitor nos esta ayudando a arreglar el repo porque se me duplicaron los commits y eso puede llegar a afectar a mis compañeros
+
+3. **¿Tengo algún impedimento o bloqueo?** 
+
+si ya esta semana hice unos commits y tras de que se me duplicaron pues no se si pueda subir gran cosa esta semana, sin embargo borre mi rama y cree una nueva porque desde mi rama era como de donde se estaban presentando los errores
+
+---
+<img width="1600" height="1200" alt="image" src="https://github.com/user-attachments/assets/1757fd41-b12e-4e87-a4ac-70a591c2b7dd" />
+
+---
+
+## Daily Sprint - 30/09/2026
+
+### Isabella Posada
+
+1. **¿Qué hice ayer?**
+
+  
+
+2. **¿Qué voy a hacer hoy?**
+
+
+   
+4. **¿Tengo algún impedimento o bloqueo?**
+
+
+
+---
+
+### Valeria Cortes Rendon
+
+1. **¿Qué hice ayer?**
+
+
+   
+2. **¿Qué voy a hacer hoy?**
+
+  
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+   
+   
+---
+
+### Santiago Clavijo
+
+1. **¿Qué hice ayer?**
+
+
+2. **¿Qué voy a hacer hoy?**
+
+
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+
+---
+
+### Gabriela Melo Gualteros
+
+1. **¿Qué hice ayer?**
+
+  
+
+2. **¿Qué voy a hacer hoy?**
+
+
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+ 
+
+---
+
+
+### Maria Alejandra Rodriguez
+
+1. **¿Qué hice ayer?** 
+
+
+2. **¿Qué voy a hacer hoy?** 
+
+
+3. **¿Tengo algún impedimento o bloqueo?** 
+
+
+---
+
+
+---
+
+## Daily Sprint - 01/10/2026
+
+### Isabella Posada
+
+1. **¿Qué hice ayer?**
+
+  
+
+2. **¿Qué voy a hacer hoy?**
+
+
+   
+4. **¿Tengo algún impedimento o bloqueo?**
+
+
+
+---
+
+### Valeria Cortes Rendon
+
+1. **¿Qué hice ayer?**
+
+
+   
+2. **¿Qué voy a hacer hoy?**
+
+  
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+   
+   
+---
+
+### Santiago Clavijo
+
+1. **¿Qué hice ayer?**
+
+
+2. **¿Qué voy a hacer hoy?**
+
+
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+
+---
+
+### Gabriela Melo Gualteros
+
+1. **¿Qué hice ayer?**
+
+  
+
+2. **¿Qué voy a hacer hoy?**
+
+
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+ 
+
+---
+
+
+### Maria Alejandra Rodriguez
+
+1. **¿Qué hice ayer?** 
+
+
+2. **¿Qué voy a hacer hoy?** 
+
+
+3. **¿Tengo algún impedimento o bloqueo?** 
+
+
+---
+
+---
+
+## Daily Sprint - 02/10/2026
+
+### Isabella Posada
+
+1. **¿Qué hice ayer?**
+
+  
+
+2. **¿Qué voy a hacer hoy?**
+
+
+   
+4. **¿Tengo algún impedimento o bloqueo?**
+
+
+
+---
+
+### Valeria Cortes Rendon
+
+1. **¿Qué hice ayer?**
+
+
+   
+2. **¿Qué voy a hacer hoy?**
+
+  
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+   
+   
+---
+
+### Santiago Clavijo
+
+1. **¿Qué hice ayer?**
+
+
+
+2. **¿Qué voy a hacer hoy?**
+
+
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+
+---
+
+### Gabriela Melo Gualteros
+
+1. **¿Qué hice ayer?**
+
+  
+
+2. **¿Qué voy a hacer hoy?**
+
+
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+ 
+
+---
+
+
+### Maria Alejandra Rodriguez
+
+1. **¿Qué hice ayer?** 
+
+
+2. **¿Qué voy a hacer hoy?** 
+
+
+3. **¿Tengo algún impedimento o bloqueo?** 
+
+
+---
+
+
+
+
+
 
