@@ -3363,16 +3363,16 @@ como equipo esta semana lo hicimos muy bien, espero que todos los sprints que fa
 
 | ID | Título | Tipo | Estimación | Responsable |
 |----|--------|------|------------|-------------|
-| #76 | Como usuario, quiero que la app me deje conectar mi Telegram, para empezar a recibir notificaciones sobre el viaje.| Historia de Usuario  |  | Valeria |
-| #77 | Como usuario, quiero que mi información esté guardada de forma clara y ordenada, para comprender el uso de mis datos| Historia de Usuario |  | Valeria |
-| #78 | Como viajero, quiero que los destinos recomendados tengan imágenes diferentes y relacionadas con cada lugar, para identificar mejor las opciones y comparar los destinos antes de seleccionar uno| Historia de Usuario | 4 | Maleja |
-| #79 | Como viajero, quiero ajustar el porcentaje de mi presupuesto destinado a cada tipo de gasto, para distribuir mi dinero de acuerdo con lo que considero más importante durante mi viaje.| Historia de Usuario | 6 | Maleja |
-| #80 | Como viajero quiero que el sistema le dé más peso a los intereses que más me importan, para que una ciudad no gane puntos solo por acumular gustos secundarios. | Historia de Usuario |  | Gaby |
-| #81 | Como viajero quiero que la pantalla de preferencias no tenga errores, para confiar en que el cuestionario está bien hecho.| Historia de Usuario |  | Gaby |
-| #82 |Como viajero, quiero que los destinos recomendados cumplan los requisitos obligatorios y tengan un nivel mínimo de compatibilidad con mis preferencias, para recibir opciones que realmente sean adecuadas para mi viaje. | Historia de Usuario |  | Isa |
-| #83 |Como viajero, quiero que las recomendaciones respeten mi presupuesto y que el destino solo se guarde cuando yo lo seleccione explícitamente, para evitar opciones económicamente inadecuadas o registrar un destino que no he elegido. | Historia de Usuario |  | Isa |
-| #84 | Como viajero quiero ver en el resumen del viaje y en las recomendaciones una bandera de la moneda escogida en el presupuesto en el nuevo diseño de la página para distinguir más fácil mi moneda escogida | Historia de Usuario |  | Clavijo |
-| #85 |  Como viajero quiero que mis recomendaciones de destino se calculan comparando correctamente mi presupuesto contra el costo real del viaje para recibir destinos acordes a mi presupuesto | Historia de Usuario |  | Clavijo |
+| #76 | Como usuario, quiero que la app me deje conectar mi Telegram, para empezar a recibir notificaciones sobre el viaje.| Historia de Usuario  | 8 | Valeria |
+| #77 | Como usuario, quiero que mi información esté guardada de forma clara y ordenada, para comprender el uso de mis datos| Historia de Usuario | 5 | Valeria |
+| #78 | Como viajero, quiero que los destinos recomendados tengan imágenes diferentes y relacionadas con cada lugar, para identificar mejor las opciones y comparar los destinos antes de seleccionar uno| Historia de Usuario | 8 | Maleja |
+| #79 | Como viajero, quiero ajustar el porcentaje de mi presupuesto destinado a cada tipo de gasto, para distribuir mi dinero de acuerdo con lo que considero más importante durante mi viaje.| Historia de Usuario | 5 | Maleja |
+| #80 | Como viajero quiero que el sistema le dé más peso a los intereses que más me importan, para que una ciudad no gane puntos solo por acumular gustos secundarios. | Historia de Usuario | 8 | Gaby |
+| #81 | Como viajero quiero que la pantalla de preferencias no tenga errores, para confiar en que el cuestionario está bien hecho.| Historia de Usuario | 5 | Gaby |
+| #82 |Como viajero, quiero que los destinos recomendados cumplan los requisitos obligatorios y tengan un nivel mínimo de compatibilidad con mis preferencias, para recibir opciones que realmente sean adecuadas para mi viaje. | Historia de Usuario | 13 | Isa |
+| #83 |Como viajero, quiero que las recomendaciones respeten mi presupuesto y que el destino solo se guarde cuando yo lo seleccione explícitamente, para evitar opciones económicamente inadecuadas o registrar un destino que no he elegido. | Historia de Usuario | 8 | Isa |
+| #84 | Como viajero quiero ver en el resumen del viaje y en las recomendaciones una bandera de la moneda escogida en el presupuesto en el nuevo diseño de la página para distinguir más fácil mi moneda escogida | Historia de Usuario | 5 | Clavijo |
+| #85 |  Como viajero quiero que mis recomendaciones de destino se calculan comparando correctamente mi presupuesto contra el costo real del viaje para recibir destinos acordes a mi presupuesto | Historia de Usuario | 8 | Clavijo |
 
 ## Riesgos / Bloqueos identificados
 
