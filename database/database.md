@@ -86,4 +86,42 @@ CREATE UNIQUE INDEX IF NOT EXISTS ux_usuario_numero_documento
 ON usuario (numero_documento);
 
 ```
+--- 
+
+## 2. CIUDAD
+
+La tabla `ciudad` guarda información de los lugares que el usuario podría visitar.
+
+Además del nombre y país, almacena las coordenadas geográficas mediante `latitud` y `longitud`, lo que permite utilizar posteriormente la información para mapas o servicios relacionados con localización.
+
+El campo `costo_promedio` representa una estimación del costo promedio asociado a una ciudad y puede utilizarse como uno de los criterios para la futura recomendación de destinos.
+
+Una ciudad se identifica de manera única mediante la combinación de `nombre` y `pais`, evitando tener dos registros para la misma ciudad dentro del mismo país.
+
+### Campos
+
+| Campo | Tipo | Clave | Descripción |
+|---|---|---|---|
+| `id_ciudad` | integer | PK | Identificador único de la ciudad. |
+| `nombre` | character varying | | Nombre de la ciudad. |
+| `pais` | character varying | | País al que pertenece la ciudad. |
+| `latitud` | numeric | | Coordenada geográfica de latitud. |
+| `longitud` | numeric | | Coordenada geográfica de longitud. |
+| `costo_promedio` | numeric | | Costo promedio estimado de la ciudad. |
+
+### SQL
+
+```sql
+CREATE TABLE ciudad (
+    id_ciudad       SERIAL PRIMARY KEY,
+    nombre          VARCHAR(100) NOT NULL,
+    pais            VARCHAR(100) NOT NULL,
+    latitud         DECIMAL(9,6) NOT NULL,
+    longitud        DECIMAL(9,6) NOT NULL,
+    costo_promedio  DECIMAL(12,2) NOT NULL,
+    CONSTRAINT chk_ciudad_costo CHECK (costo_promedio > 0),
+    CONSTRAINT uk_ciudad_nombre_pais UNIQUE (nombre, pais)
+);
+```
+---
 
