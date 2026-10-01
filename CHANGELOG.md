@@ -3535,7 +3535,7 @@ Hoy ya se encontro una solución al problema, realice imagenes para la pantalla 
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
- 
+no, solo que miedo que al eliminar el repo y clonarlo salga todo bien y se hayan guardado los anteriores commits bien 
 
 ---
 
