@@ -584,4 +584,47 @@ CREATE TABLE IF NOT EXISTS nivel_costo (
         UNIQUE (nombre)
 );
 ```
---
+---
+
+## Resumen de las tablas
+
+| Tabla | Propósito | Relación principal |
+|---|---|---|
+| `usuario` | Almacena los usuarios del sistema. | Tiene muchos viajes y canales de notificación. |
+| `viajes` | Representa cada viaje planificado. | Pertenece a un usuario. |
+| `preferencias` | Almacena los intereses seleccionados para un viaje. | Pertenece a un viaje. |
+| `itinerario` | Almacena las actividades planificadas. | Pertenece a un viaje. |
+| `gastos` | Registra los gastos realizados. | Pertenece a un viaje. |
+| `reservas` | Almacena las reservas del viaje. | Pertenece a un viaje. |
+| `canales_notificacion` | Define los medios para recibir notificaciones. | Pertenece a un usuario. |
+| `alertas` | Registra las notificaciones generadas. | Pertenece a un viaje y a un canal. |
+| `ciudad` | Catálogo de destinos disponibles. | Se relaciona con atributos. |
+| `atributo` | Catálogo de características de destinos. | Se relaciona con ciudades. |
+| `ciudad_atributo` | Relaciona ciudades y atributos. | Tabla intermedia N:M. |
+| `nivel_costo` | Catálogo de niveles de costo. | Actualmente aislada. |
+
+## Relaciones y dependencias
+
+La estructura general de dependencias de la base de datos puede resumirse de la siguiente manera:
+
+```
+usuario
+├── viajes
+│   ├── preferencias
+│   ├── itinerario
+│   ├── gastos
+│   ├── reservas
+│   └── alertas
+│
+└── canales_notificacion
+    └── alertas
+
+ciudad
+└── ciudad_atributo
+    └── atributo
+
+nivel_costo
+└── Actualmente sin relaciones
+```
+
+Las tablas relacionadas directamente con la planificación de viajes forman el núcleo funcional de WiseTrip, mientras que las tablas `ciudad`, `atributo`, `ciudad_atributo` y `nivel_costo` funcionan como estructuras de apoyo para futuras funcionalidades de
