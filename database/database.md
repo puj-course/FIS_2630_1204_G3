@@ -205,3 +205,48 @@ CREATE TABLE preferencias (
 );
 ```
 ---
+## 5. ITINERARIO
+
+La tabla `itinerario` organiza las actividades día por día dentro de un viaje.
+
+Cada registro representa una actividad e indica qué se va a hacer, en qué fecha, a qué hora, qué tipo de actividad es y cuál es su costo estimado.
+
+Cada actividad pertenece a un único viaje mediante `id_viaje`.
+
+El campo `costo_estimado` permite diferenciar entre el costo que se había previsto para una actividad y los gastos reales registrados posteriormente en `gastos`.
+
+### Campos
+
+| Campo | Tipo | Clave | Descripción |
+|---|---|---|---|
+| `id_itinerario` | integer | PK | Identificador único de la actividad. |
+| `id_viaje` | integer | FK | Viaje al que pertenece la actividad. |
+| `nombre` | character varying | | Nombre o descripción de la actividad. |
+| `fecha_actividad` | date | | Fecha en la que se realizará la actividad. |
+| `hora_actividad` | time without time zone | | Hora programada para la actividad. |
+| `tipo` | character varying | | Tipo de actividad. |
+| `costo_estimado` | numeric | | Costo estimado de la actividad. |
+
+### Script SQL
+
+```sql
+CREATE TABLE itinerario (
+
+    id_itinerario   SERIAL PRIMARY KEY,
+    id_viaje        INT NOT NULL,
+    nombre          VARCHAR(150) NOT NULL,
+    fecha_actividad DATE NOT NULL,
+    hora_actividad  TIME NOT NULL,
+    tipo            VARCHAR(50) NOT NULL,
+    costo_estimado  DECIMAL(12,2) NOT NULL,
+
+    CONSTRAINT fk_itinerario_viaje
+        FOREIGN KEY (id_viaje)
+        REFERENCES viajes(id_viaje)
+        ON DELETE CASCADE,
+
+    CONSTRAINT chk_itinerario_costo
+        CHECK (costo_estimado >= 0)
+);
+```
+---
