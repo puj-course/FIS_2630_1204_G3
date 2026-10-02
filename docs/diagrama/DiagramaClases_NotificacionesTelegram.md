@@ -3,7 +3,6 @@
 ```
 @startuml
 
-```
 title Diagrama de clases - Notificaciones Telegram
 
 class TelegramControlador {
@@ -78,7 +77,6 @@ UsuarioDAO ..> TablaUsuario
 UsuarioDAO ..> Usuario
 TelegramNotificationService ..> TelegramBotAPI
 
-```
 @enduml
 
 ```
