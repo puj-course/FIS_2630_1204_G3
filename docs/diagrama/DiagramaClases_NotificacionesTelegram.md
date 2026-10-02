@@ -84,5 +84,5 @@ TelegramNotificationService ..> TelegramBotAPI
 
 ## Imagen Diagrama de clases - Notificaciones Telegram
 
-![Diagrama de clases - Notificaciones Telegram](<img width="2241" height="1241" alt="DiagramaClasesTelegram (1)" src="https://github.com/user-attachments/assets/a8b0b954-a1c2-4b44-93be-14d8d0021030" />
+![Diagrama de clases - Notificaciones Telegram](<img width="1864" height="946" alt="DiagramaClasesN_Telegram" src="https://github.com/user-attachments/assets/a2b99c3f-2dbd-4841-b258-ae3aa82794b6" />
 )
