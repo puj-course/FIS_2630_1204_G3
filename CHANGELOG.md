@@ -3572,7 +3572,8 @@ No pero tengo que tener mucha precaución con el trabajo de mis compañeros y lo
 
 hoy la verdad no he podido adelantar por el taller y por otras cosas de otras materias, pero no es impedimento, seguiré mañana.
    
-4. **¿Tengo algún impedimento o bloqueo?**
+3. **¿Tengo algún impedimento o bloqueo?**
+
 como ya vamos a empezar semana de parciales he estudiando mucho y a veces no puedo adelantar tanto, pero ya mañana intentare adelantar la mayoria de las hu's
 
 
@@ -3605,6 +3606,7 @@ ayer resolvi unos conflictos que habian en el resumen.jsp
 hoy hicimos un taller de diseño en clase y llevamos todo el dia en eso, ni siquiera he podido empezar con mis hu de la semana
 
 3. **¿Tengo algún impedimento o bloqueo?**
+
 no he tenido tiempo esta semana
 
 ---
@@ -3620,6 +3622,7 @@ ayer investigue como iria a solucionar el HU de que prioridad el usuario de la a
 hoy estuvimos realizando el taller asi que no pude realizar mucho del proyecto, lo unico que realizare pero que no se veran como commits de hoy sino de mañan ajajaj es subir las imagenes con el ID correcto
 
 3. **¿Tengo algún impedimento o bloqueo?**
+
 no
  
 
@@ -3636,7 +3639,8 @@ Ayer hable con mis compañeros para ver si todo les estaba funcionando de manera
 
 Hoy ya voy a empezar a hacer mis commits en mi rama de manera cuidadosa para que no se dupliquen y además voy a tener mucho cuidado con algunas pantallas de mis comapañeros, cosas que no quiero que causen conflicto porque despues resolver el conflicto se vuelve mamon entonces voy a seguir implementando las pantallas y arreglando las cosas que me hacen falta
 
-3. **¿Tengo algún impedimento o bloqueo?** 
+3. **¿Tengo algún impedimento o bloqueo?**
+
 Pues hasta hoy se soluciono por completo lo de los commits además estamos en el desarrollo del taller apenas este finalizado empezare con mis commits semanales
 
 ---
