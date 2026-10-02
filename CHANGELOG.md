@@ -3613,14 +3613,14 @@ no he tenido tiempo esta semana
 
 1. **¿Qué hice ayer?**
 
-  
+ayer investigue como iria a solucionar el HU de que prioridad el usuario de la a las respuestas de preferencia y termine de generar las imagenes de la pantalla  
 
 2. **¿Qué voy a hacer hoy?**
 
-
+hoy estuvimos realizando el taller asi que no pude realizar mucho del proyecto, lo unico que realizare pero que no se veran como commits de hoy sino de mañan ajajaj es subir las imagenes con el ID correcto
 
 3. **¿Tengo algún impedimento o bloqueo?**
-
+no
  
 
 ---
@@ -3640,6 +3640,7 @@ Hoy ya voy a empezar a hacer mis commits en mi rama de manera cuidadosa para que
 Pues hasta hoy se soluciono por completo lo de los commits además estamos en el desarrollo del taller apenas este finalizado empezare con mis commits semanales
 
 ---
+<img width="1421" height="813" alt="PHOTO-2026-10-01-20-28-24" src="https://github.com/user-attachments/assets/492a2cc2-1353-4f33-a0ba-ef584d4ea59c" />
 
 ---
 
