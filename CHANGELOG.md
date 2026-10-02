@@ -3598,13 +3598,14 @@ como ya vamos a empezar semana de parciales he estudiando mucho y a veces no pue
 
 1. **¿Qué hice ayer?**
 
+ayer resolvi unos conflictos que habian en el resumen.jsp
 
 2. **¿Qué voy a hacer hoy?**
 
-
+hoy hicimos un taller de diseño en clase y llevamos todo el dia en eso, ni siquiera he podido empezar con mis hu de la semana
 
 3. **¿Tengo algún impedimento o bloqueo?**
-
+no he tenido tiempo esta semana
 
 ---
 
