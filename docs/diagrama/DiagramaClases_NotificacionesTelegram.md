@@ -1,69 +1,69 @@
 # Diagrama de clases - Notificaciones Telegram
 
-```
-@startuml
+```plantuml
 
+@startuml
 title Diagrama de clases - Notificaciones Telegram
 
 class TelegramControlador {
--usuarioServicio: UsuarioServicio
-+TelegramControlador(usuarioServicio: UsuarioServicio)
-+mostrarVinculacion(sesion: HttpSession, model: Model): String
-+procesarVinculacion(chatId: String, sesion: HttpSession, flash: RedirectAttributes): String
+    -usuarioServicio: UsuarioServicio
+    +TelegramControlador(usuarioServicio: UsuarioServicio)
+    +mostrarVinculacion(sesion: HttpSession, model: Model): String
+    +procesarVinculacion(chatId: String, sesion: HttpSession, flash: RedirectAttributes): String
 }
 
 class AuthControlador {
--usuarioServicio: UsuarioServicio
--emailService: EmailNotificationService
--telegramService: TelegramNotificationService
-+procesarLogin(correo: String, password: String, sesion: HttpSession, model: Model): String
+    -usuarioServicio: UsuarioServicio
+    -emailService: EmailNotificationService
+    -telegramService: TelegramNotificationService
+    +procesarLogin(correo: String, password: String, sesion: HttpSession, model: Model): String
 }
 
 class NotificacionController {
--emailService: EmailNotificationService
--telegramService: TelegramNotificationService
-+enviarTelegramPrueba(chatId: String, mensaje: String): String
+    -emailService: EmailNotificationService
+    -telegramService: TelegramNotificationService
+    +enviarTelegramPrueba(chatId: String, mensaje: String): String
 }
 
 class UsuarioServicio {
--usuarioDAO: UsuarioDAO
-+autenticar(correo: String, password: String): Usuario
-+vincularTelegram(idUsuario: int, chatId: String): void
+    -usuarioDAO: UsuarioDAO
+    +autenticar(correo: String, password: String): Usuario
+    +vincularTelegram(idUsuario: int, chatId: String): void
 }
 
 class UsuarioDAO {
-+buscarPorCorreo(correo: String): Usuario
-+actualizarChatId(idUsuario: int, chatId: String): void
+    +buscarPorCorreo(correo: String): Usuario
+    +actualizarChatId(idUsuario: int, chatId: String): void
 }
 
 class Usuario {
--idUsuario: int
--nombreCompleto: String
--tipoDocumento: String
--numeroDocumento: String
--fechaNacimiento: String
--correo: String
--password: String
--rol: String
--chatId: String
-+getIdUsuario(): int
-+getNombreCompleto(): String
-+getChatId(): String
-+setChatId(chatId: String): void
+    -idUsuario: int
+    -nombreCompleto: String
+    -tipoDocumento: String
+    -numeroDocumento: String
+    -fechaNacimiento: String
+    -correo: String
+    -password: String
+    -rol: String
+    -chatId: String
+    +getIdUsuario(): int
+    +getNombreCompleto(): String
+    +getChatId(): String
+    +setChatId(chatId: String): void
 }
 
 class TelegramNotificationService {
--botToken: String
--httpClient: HttpClient
-+enviarMensaje(chatId: String, texto: String): void
+    -botToken: String
+    -httpClient: HttpClient
+    +enviarMensaje(chatId: String, texto: String): void
 }
 
 class TablaUsuario <<database>> {
-+chat_id: String
+    +chat_id: String
 }
 
 class TelegramBotAPI <<external_system>> {
-+sendMessage(chat_id: String, text: String)
+    +sendMessage(chat_id: String, text: String)
 }
 
 TelegramControlador "1" --> "1" UsuarioServicio
@@ -78,11 +78,8 @@ UsuarioDAO ..> Usuario
 TelegramNotificationService ..> TelegramBotAPI
 
 @enduml
-
 ```
-
 
 ## Imagen Diagrama de clases - Notificaciones Telegram
 
-![Diagrama de clases - Notificaciones Telegram](<img width="1864" height="946" alt="DiagramaClasesN_Telegram" src="https://github.com/user-attachments/assets/a2b99c3f-2dbd-4841-b258-ae3aa82794b6" />
-)
+![Diagrama de clases - Notificaciones Telegram](https://github.com/user-attachments/assets/3236621e-ea38-4ea4-ba09-4bf1fab34a84)
