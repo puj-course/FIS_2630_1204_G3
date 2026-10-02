@@ -3630,12 +3630,14 @@ no he tenido tiempo esta semana
 
 1. **¿Qué hice ayer?** 
 
+Ayer hable con mis compañeros para ver si todo les estaba funcionando de manera correcta en el github con respecto a los commits duplicados y tuvimos un percance pero ya esta solucionado
 
 2. **¿Qué voy a hacer hoy?** 
 
+Hoy ya voy a empezar a hacer mis commits en mi rama de manera cuidadosa para que no se dupliquen y además voy a tener mucho cuidado con algunas pantallas de mis comapañeros, cosas que no quiero que causen conflicto porque despues resolver el conflicto se vuelve mamon entonces voy a seguir implementando las pantallas y arreglando las cosas que me hacen falta
 
 3. **¿Tengo algún impedimento o bloqueo?** 
-
+Pues hasta hoy se soluciono por completo lo de los commits además estamos en el desarrollo del taller apenas este finalizado empezare con mis commits semanales
 
 ---
 
