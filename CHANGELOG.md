@@ -3566,14 +3566,14 @@ No pero tengo que tener mucha precaución con el trabajo de mis compañeros y lo
 
 1. **¿Qué hice ayer?**
 
-  
+ ayer investigue lo de que tan cara es una ciudad dependiendo de ciertos indicadores, y cambie algunas cosas, seguí investigando y ahí voy. 
 
 2. **¿Qué voy a hacer hoy?**
 
-
+hoy la verdad no he podido adelantar por el taller y por otras cosas de otras materias, pero no es impedimento, seguiré mañana.
    
 4. **¿Tengo algún impedimento o bloqueo?**
-
+como ya vamos a empezar semana de parciales he estudiando mucho y a veces no puedo adelantar tanto, pero ya mañana intentare adelantar la mayoria de las hu's
 
 
 ---
