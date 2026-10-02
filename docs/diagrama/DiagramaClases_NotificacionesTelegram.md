@@ -1,6 +1,9 @@
 # Diagrama de clases - Notificaciones Telegram
 
+```
 @startuml
+
+```
 title Diagrama de clases - Notificaciones Telegram
 
 class TelegramControlador {
@@ -75,7 +78,10 @@ UsuarioDAO ..> TablaUsuario
 UsuarioDAO ..> Usuario
 TelegramNotificationService ..> TelegramBotAPI
 
+```
 @enduml
+
+```
 
 
 ## Imagen Diagrama de clases - Notificaciones Telegram
