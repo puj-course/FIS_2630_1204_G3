@@ -3718,12 +3718,15 @@ Pues hasta hoy se soluciono por completo lo de los commits además estamos en el
 
 1. **¿Qué hice ayer?** 
 
+Empecé a hacer mis HU de esta semana
 
 2. **¿Qué voy a hacer hoy?** 
 
+Tratar de adelantar la segunda HU asignada
 
 3. **¿Tengo algún impedimento o bloqueo?** 
 
+No
 
 ---
 
