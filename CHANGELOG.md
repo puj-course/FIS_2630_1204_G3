@@ -3654,15 +3654,15 @@ Pues hasta hoy se soluciono por completo lo de los commits además estamos en el
 
 1. **¿Qué hice ayer?**
 
-  
+  ayer investigue un poco mas de como hacer los atributos manuales mas concretos
 
 2. **¿Qué voy a hacer hoy?**
 
-
+hoy ya voy a empezar la implementacion en codigo teniendo en cuenta todo lo que el profe nos ha dicho de clases abstracas, interfaces,y los principios SOLID y GRASP
    
 4. **¿Tengo algún impedimento o bloqueo?**
 
-
+no ya no, ya pude arreglar mi rama local
 
 ---
 
