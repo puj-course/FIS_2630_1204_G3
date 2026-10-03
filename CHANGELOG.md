@@ -3686,14 +3686,15 @@ no ya no, ya pude arreglar mi rama local
 
 1. **¿Qué hice ayer?**
 
-
+ayer hicimos el taller de diseño
 
 2. **¿Qué voy a hacer hoy?**
 
-
+hoy termine mi primera hu que se referia a la bandera al lado del presupuesto en el resumen del viaje e investigue y trate de comprender
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
+no
 
 ---
 
