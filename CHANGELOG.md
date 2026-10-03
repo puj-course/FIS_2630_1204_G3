@@ -3702,15 +3702,15 @@ no
 
 1. **¿Qué hice ayer?**
 
-  
+ayer estuvimos realizando el taller, lo unico que hice es subir las imagenes con el ID correcto
 
 2. **¿Qué voy a hacer hoy?**
 
-
+hoy corregi unas imagenes e investigue como solucionar mi segundo HU
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
- 
+no
 
 ---
 
