@@ -16,8 +16,8 @@
 
     <div class="lp-hero-fondos">
         <div class="lp-hero-foto" style="background-image:url('/img/portada/Cartegena.jpg')"></div>
-        <div class="lp-hero-foto" style="background-image:url('/img/portada/Rio.jpg')"></div>
-        <div class="lp-hero-foto" style="background-image:url('/img/portada/Argentina.jpg')"></div>
+        <div class="lp-hero-foto" style="background-image:url('/img/portada/habana.jpg')"></div>
+        <div class="lp-hero-foto" style="background-image:url('/img/portada/cusco.jpg')"></div>
     </div>
 
     <nav class="lp-nav">
@@ -55,8 +55,8 @@
 
     <div class="lp-hero-pie">
         <span>Cartagena · Colombia</span>
-        <span>Río de Janeiro · Brasil</span>
-        <span>Buenos Aires · Argentina</span>
+        <span>La Habana · Cuba</span>
+        <span>Cusco · Perú</span>
     </div>
 
 </section>
@@ -96,29 +96,29 @@
 
         <div class="lp-destinos">
             <a class="lp-destino" href="<c:url value='/registro'/>"
-               style="background-image:url('/img/portada/Cartegena.jpg')">
-                <span class="lp-destino-pais">Colombia</span>
-                <div class="lp-destino-info">
-                    <span class="lp-destino-nombre">Cartagena</span>
-                    <span class="lp-destino-tags">Playa · Ciudad amurallada · Gastronomía</span>
-                </div>
-            </a>
-
-            <a class="lp-destino" href="<c:url value='/registro'/>"
-               style="background-image:url('/img/portada/Argentina.jpg')">
-                <span class="lp-destino-pais">Argentina</span>
-                <div class="lp-destino-info">
-                    <span class="lp-destino-nombre">Buenos Aires</span>
-                    <span class="lp-destino-tags">Museos · Vida nocturna · Teatro</span>
-                </div>
-            </a>
-
-            <a class="lp-destino" href="<c:url value='/registro'/>"
                style="background-image:url('/img/portada/Peru.jpg')">
                 <span class="lp-destino-pais">Perú</span>
                 <div class="lp-destino-info">
-                    <span class="lp-destino-nombre">Cusco</span>
-                    <span class="lp-destino-tags">Ruinas · Montaña · Cultura</span>
+                    <span class="lp-destino-nombre">Lima</span>
+                    <span class="lp-destino-tags">Gastronomía · Historia · Ciudad</span>
+                </div>
+            </a>
+
+            <a class="lp-destino" href="<c:url value='/registro'/>"
+               style="background-image:url('/img/portada/cdmx.jpg')">
+                <span class="lp-destino-pais">México</span>
+                <div class="lp-destino-info">
+                    <span class="lp-destino-nombre">Ciudad de México</span>
+                    <span class="lp-destino-tags">Cultura · Museos · Gastronomía</span>
+                </div>
+            </a>
+
+            <a class="lp-destino" href="<c:url value='/registro'/>"
+               style="background-image:url('/img/portada/bariloche.jpg')">
+                <span class="lp-destino-pais">Argentina</span>
+                <div class="lp-destino-info">
+                    <span class="lp-destino-nombre">Bariloche</span>
+                    <span class="lp-destino-tags">Nieve · Montaña · Lagos</span>
                 </div>
             </a>
         </div>
@@ -126,31 +126,31 @@
         <div class="lp-experiencias">
             <div class="lp-experiencia">
                 <div class="lp-experiencia-foto"
-                     style="background-image:url('/img/portada/Amazonas.jpg')"></div>
+                     style="background-image:url('/img/portada/fortuna.jpg')"></div>
                 <div>
-                    <span class="lp-experiencia-temporada">Jun — Nov</span>
-                    <strong>Navega la Amazonía</strong>
-                    <p>Selva, río y comunidades</p>
+                    <span class="lp-experiencia-temporada">Dic — Abr</span>
+                    <strong>Mira el volcán Arenal</strong>
+                    <p>Termas, selva y cascadas en La Fortuna</p>
                 </div>
             </div>
 
             <div class="lp-experiencia">
                 <div class="lp-experiencia-foto"
-                     style="background-image:url('/img/portada/desierto.jpg')"></div>
+                     style="background-image:url('/img/portada/roatan.jpg')"></div>
                 <div>
-                    <span class="lp-experiencia-temporada">Mar — Nov</span>
-                    <strong>Cielos del desierto</strong>
-                    <p>Paisajes áridos y estrellas</p>
+                    <span class="lp-experiencia-temporada">Mar — Ago</span>
+                    <strong>Bucea en Roatán</strong>
+                    <p>Arrecife y agua turquesa en el Caribe</p>
                 </div>
             </div>
 
             <div class="lp-experiencia">
                 <div class="lp-experiencia-foto"
-                     style="background-image:url('/img/portada/Rio.jpg')"></div>
+                     style="background-image:url('/img/portada/mendoza.jpg')"></div>
                 <div>
-                    <span class="lp-experiencia-temporada">Feb</span>
-                    <strong>Carnaval en Río</strong>
-                    <p>La fiesta más grande del mundo</p>
+                    <span class="lp-experiencia-temporada">Mar</span>
+                    <strong>Vendimia en Mendoza</strong>
+                    <p>Viñedos al pie de los Andes</p>
                 </div>
             </div>
         </div>
@@ -216,12 +216,12 @@
 
         <div class="lp-polaroids">
             <div class="lp-polaroid">
-                <img src="/img/portada/Amazonas.jpg" alt="">
-                <span>Amazonas · COL</span>
+                <img src="/img/portada/granada.jpg" alt="Calle colonial de Granada, Nicaragua">
+                <span>Granada · NIC</span>
             </div>
             <div class="lp-polaroid">
-                <img src="/img/portada/Peru.jpg" alt="">
-                <span>Cusco · PER</span>
+                <img src="/img/portada/quito.jpg" alt="Centro histórico de Quito, Ecuador">
+                <span>Quito · ECU</span>
             </div>
         </div>
     </section>
