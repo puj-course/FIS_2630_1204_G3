@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.stereotype.Service;
+import org.springframework.beans.factory.annotation.Value;
 
 import com.wisetrip.modelo.Ciudad;
 import com.wisetrip.modelo.Importancia;
@@ -20,6 +21,12 @@ public class RecomendadorDestinos {
 
     private static final double PESO_PRESUPUESTO = 0.4;
     private static final double PESO_PREFERENCIAS = 0.6;
+    private final boolean presupuestoObligatorio;
+
+    public RecomendadorDestinos(
+            @Value("${wisetrip.presupuesto.obligatorio:true}") boolean presupuestoObligatorio) {
+        this.presupuestoObligatorio = presupuestoObligatorio;
+    }
 
     /**
      * Puntaje (0 a 1) de viabilidad presupuestal. Dentro del limite todos
@@ -93,6 +100,11 @@ public class RecomendadorDestinos {
         List<ResultadoRecomendacion> resultados = new ArrayList<>();
         for (Ciudad ciudad : ciudades) {
             if (Double.isFinite(ciudad.getCostoPromedio()) && ciudad.getCostoPromedio() > 0) {
+                double costoTotal = ciudad.getCostoPromedio() * preferencias.getDuracionDias();
+                // El filtro obligatorio se aplica antes de calcular cualquier puntaje.
+                if (presupuestoObligatorio && costoTotal > preferencias.getPresupuesto()) {
+                    continue;
+                }
                 resultados.add(calcularPuntajeTotal(ciudad, preferencias));
             }
         }

@@ -11,7 +11,7 @@ import java.util.Map;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class RecomendadorDestinosTest {
-    private final RecomendadorDestinos recomendador = new RecomendadorDestinos();
+    private final RecomendadorDestinos recomendador = new RecomendadorDestinos(false);
 
     @Test
     void gastarHastaElLimiteNoMejoraElPuntaje() {
@@ -38,6 +38,38 @@ class RecomendadorDestinosTest {
         assertEquals(List.of(alLimite, economica), recomendador.recomendarDestinos(
                 List.of(alLimite, economica), preferencias).stream()
                 .map(ResultadoRecomendacion::getCiudad).toList());
+    }
+
+    @Test
+    void presupuestoObligatorioDescartaExcedidasAntesDePuntuar() {
+        Ciudad economica = ciudad(250);
+        Ciudad alLimite = ciudad(500);
+        Ciudad excedida = ciudad(500.01);
+        var puntuadas = new java.util.ArrayList<Ciudad>();
+        var estricto = new RecomendadorDestinos(true) {
+            @Override
+            public ResultadoRecomendacion calcularPuntajeTotal(
+                    Ciudad ciudad, PreferenciasUsuario preferencias) {
+                puntuadas.add(ciudad);
+                return super.calcularPuntajeTotal(ciudad, preferencias);
+            }
+        };
+        var preferencias = new PreferenciasUsuario(1000, Map.of(), 2);
+
+        var resultados = estricto.recomendarDestinos(
+                List.of(excedida, economica, alLimite), preferencias);
+
+        assertEquals(List.of(economica, alLimite), puntuadas);
+        assertEquals(List.of(alLimite, economica), resultados.stream()
+                .map(ResultadoRecomendacion::getCiudad).toList());
+    }
+
+    @Test
+    void presupuestoObligatorioPuedeDejarSinCandidatos() {
+        var estricto = new RecomendadorDestinos(true);
+        var resultados = estricto.recomendarDestinos(List.of(ciudad(600)),
+                new PreferenciasUsuario(1000, Map.of(), 2));
+        assertEquals(List.of(), resultados);
     }
 
     private Ciudad ciudad(double costoDiario) {
