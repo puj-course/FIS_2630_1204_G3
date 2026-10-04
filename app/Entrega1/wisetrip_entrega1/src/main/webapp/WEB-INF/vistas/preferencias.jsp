@@ -1,7 +1,6 @@
 <%-- Preferencias de viaje.
      Vista con las preguntas organizadas por categoría (HU-71, #239).
-     Los niveles de importancia son visuales por ahora: las tres opciones positivas
-     siguen enviando "si" hasta implementar Importancia en el servidor. --%>
+     Cada opción envía el nivel correspondiente de Importancia. --%>
 
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
@@ -78,16 +77,18 @@ HU #82 - Como viajero, quiero que los destinos recomendados cumplan los requisit
 #277 --%>
 
                             <input type="radio" id="${p.clave}_gusto"
-                                   name="respuestas[${p.clave}]" value="si"
-                                   ${preferencias.respuestas[p.clave] == 'si' ? 'checked' : ''}>
+                                   name="respuestas[${p.clave}]" value="gustar"
+                                   ${preferencias.respuestas[p.clave] == 'gustar' ? 'checked' : ''}>
                             <label for="${p.clave}_gusto" class="op-si">Me gustaría</label>
 
                             <input type="radio" id="${p.clave}_prefiero"
-                                   name="respuestas[${p.clave}]" value="si">
+                                   name="respuestas[${p.clave}]" value="prefiero"
+                                   ${preferencias.respuestas[p.clave] == 'prefiero' ? 'checked' : ''}>
                             <label for="${p.clave}_prefiero" class="op-si">Lo prefiero</label>
 
                             <input type="radio" id="${p.clave}_indispensable"
-                                   name="respuestas[${p.clave}]" value="si">
+                                   name="respuestas[${p.clave}]" value="si"
+                                   ${preferencias.respuestas[p.clave] == 'si' ? 'checked' : ''}>
                             <label for="${p.clave}_indispensable" class="op-si">Es indispensable</label>
                         </div>
                     </div>

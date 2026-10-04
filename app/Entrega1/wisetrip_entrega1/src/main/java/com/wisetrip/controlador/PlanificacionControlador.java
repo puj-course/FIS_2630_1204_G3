@@ -89,6 +89,8 @@ public class PlanificacionControlador {
         // Guarda las preferencias respondidas para que estén disponibles
         // mientras dure la sesión de planificación del viajero.
         sesion.setAttribute("preferenciasViaje", preferencias);
+        sesion.setAttribute("importanciasSeleccionadas",
+                preferenciasServicio.obtenerImportancias(preferencias));
         sesion.setAttribute("atributosSeleccionados",
                 preferenciasServicio.obtenerAtributosSeleccionados(preferencias));
         sesion.removeAttribute("idViajeGuardado");

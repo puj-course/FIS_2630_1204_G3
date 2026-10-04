@@ -10,7 +10,7 @@ import java.util.Map;
 
 public class Preferencias {
 
-    // clave de la pregunta -> "si" / "no"
+    // clave de la pregunta -> nombre de Importancia: no, gustar, prefiero, si.
     private Map<String, String> respuestas = new LinkedHashMap<>();
 
     public Preferencias() {

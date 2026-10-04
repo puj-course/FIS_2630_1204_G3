@@ -13,6 +13,7 @@ import com.wisetrip.datos.DatosCiudades;
 import com.wisetrip.datos.PreferenciaDAO;
 import com.wisetrip.datos.ViajeDAO;
 import com.wisetrip.modelo.Ciudad;
+import com.wisetrip.modelo.Importancia;
 import com.wisetrip.modelo.FechasViaje;
 import com.wisetrip.modelo.PreferenciasUsuario;
 import com.wisetrip.modelo.ResultadoRecomendacion;
@@ -58,6 +59,9 @@ public class RecomendacionControlador {
         Map<String, Boolean> atributosCuestionario =
                 (Map<String, Boolean>) sesion.getAttribute("atributosSeleccionados");
         if (atributosCuestionario == null) return "redirect:/preferencias";
+        Map<String, Importancia> importancias =
+                (Map<String, Importancia>) sesion.getAttribute("importanciasSeleccionadas");
+        if (importancias == null) return "redirect:/preferencias";
 
         Double presupuestoUsd = (Double) sesion.getAttribute("presupuestoEnUsd");
         if (presupuestoUsd == null) return "redirect:/presupuesto";
@@ -66,7 +70,7 @@ public class RecomendacionControlador {
         if (fechas == null || fechas.getDuracionDias() < 1) return "redirect:/fechas";
         PreferenciasUsuario preferencias = new PreferenciasUsuario(
                 presupuestoUsd,
-                PreferenciasUsuario.desdeBooleanos(atributosCuestionario),
+                importancias,
                 fechas.getDuracionDias());
         List<Ciudad> ciudades = ciudadDAO.obtenerTodas();
 
