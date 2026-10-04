@@ -34,11 +34,10 @@
 
     <section>
         <span class="pl-rotulo">Último paso</span>
-        <h1 class="pl-titulo">Reparte tu<br>presupuesto</h1>
+        <h1 class="pl-titulo">¿Cómo repartimos<br>tu presupuesto?</h1>
         <p class="pl-bajada">
-            Estos son los porcentajes que sugerimos para un viaje a
-            ${destino.ciudad.nombre}. Puedes dejarlos así o ajustarlos
-            a tu manera.
+            Antes de empezar tu viaje a ${destino.ciudad.nombre}, cuéntanos
+            cómo quieres distribuir tu dinero entre los gastos del viaje.
         </p>
 
         <c:if test="${not empty errores.general}">
@@ -51,124 +50,239 @@
             <div class="pl-aviso pl-aviso-ok">Tu reparto quedó guardado.</div>
         </c:if>
 
-        <form action="<c:url value='/plan'/>" method="post" id="formPlan">
+        <form action="<c:url value='/plan'/>" method="post" id="formPlan"
+              data-total="${presupuesto.monto}"
+              data-moneda="${presupuesto.moneda}"
+              data-dias="${dias}"
+              data-abrir="${not empty errores.general or not empty errores.basicos ? 'personalizado' : ''}">
 
-            <div class="pl-total">
-                <div class="pl-total-cabeza">
-                    <span class="pl-total-rotulo">Total repartido</span>
-                    <span class="pl-total-cifra" id="totalCifra">100%</span>
-                </div>
-                <div class="pl-total-barra">
-                    <span class="pl-seg-hospedaje"   id="segHospedaje"></span>
-                    <span class="pl-seg-alimentacion" id="segAlimentacion"></span>
-                    <span class="pl-seg-transporte"  id="segTransporte"></span>
-                    <span class="pl-seg-actividades" id="segActividades"></span>
-                    <span class="pl-seg-imprevistos" id="segImprevistos"></span>
-                </div>
+            <div class="pl-opciones" role="radiogroup" aria-label="Forma de repartir el presupuesto">
+                <label class="pl-opcion">
+                    <input type="radio" name="modoReparto" value="auto">
+                    <span class="pl-opcion-marca">
+                        <svg viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                            <path d="M3 7.3l2.5 2.5L11 4.3" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </span>
+                    <span class="pl-opcion-icono">
+                        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                            <circle cx="12" cy="12" r="9" stroke="#16161D" stroke-width="2.2"/>
+                            <path d="M12 3v9l6.4 6.4" stroke="#16161D" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </span>
+                    <strong>Háganlo ustedes</strong>
+                    <span class="pl-opcion-texto">
+                        Usamos el reparto que sugerimos para ${destino.ciudad.nombre}.
+                    </span>
+                </label>
+
+                <label class="pl-opcion">
+                    <input type="radio" name="modoReparto" value="personalizado">
+                    <span class="pl-opcion-marca">
+                        <svg viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                            <path d="M3 7.3l2.5 2.5L11 4.3" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </span>
+                    <span class="pl-opcion-icono">
+                        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                            <path d="M4 7h16M4 12h16M4 17h16" stroke="#16161D" stroke-width="2.2" stroke-linecap="round"/>
+                            <circle cx="9" cy="7" r="2.4" fill="#fff" stroke="#16161D" stroke-width="2.2"/>
+                            <circle cx="16" cy="12" r="2.4" fill="#fff" stroke="#16161D" stroke-width="2.2"/>
+                            <circle cx="7" cy="17" r="2.4" fill="#fff" stroke="#16161D" stroke-width="2.2"/>
+                        </svg>
+                    </span>
+                    <strong>Lo personalizo yo</strong>
+                    <span class="pl-opcion-texto">
+                        Tú decides qué porcentaje va a cada tipo de gasto.
+                    </span>
+                </label>
             </div>
 
-            <div class="pl-categoria">
-                <div class="pl-cat-cabeza">
-                    <span class="pl-cat-punto" style="background:#FFC627"></span>
-                    <label class="pl-cat-nombre" for="hospedaje">Hospedaje</label>
-                    <span class="pl-cat-monto" data-monto="hospedaje"></span>
-                    <span class="pl-cat-pct" data-pct="hospedaje">${reparto.hospedaje}%</span>
-                </div>
-                <input class="pl-slider" type="range" id="hospedaje" name="hospedaje"
-                       min="0" max="100" step="1" value="${reparto.hospedaje}" disabled>
-            </div>
+            <div class="pl-reparto" id="plReparto" hidden>
 
-            <div class="pl-categoria">
-                <div class="pl-cat-cabeza">
-                    <span class="pl-cat-punto" style="background:#2FBFAF"></span>
-                    <label class="pl-cat-nombre" for="alimentacion">Alimentación</label>
-                    <span class="pl-cat-monto" data-monto="alimentacion"></span>
-                    <span class="pl-cat-pct" data-pct="alimentacion">${reparto.alimentacion}%</span>
+                <div class="pl-medidor" id="plMedidor">
+                    <div class="pl-medidor-cifras">
+                        <div>
+                            <span class="pl-medidor-rotulo">Usado</span>
+                            <span class="pl-medidor-cifra" id="plUsado">100%</span>
+                        </div>
+                        <div>
+                            <span class="pl-medidor-rotulo">Disponible</span>
+                            <span class="pl-medidor-cifra" id="plDisponible">0%</span>
+                        </div>
+                    </div>
+                    <div class="pl-medidor-barra">
+                        <span class="pl-hospedaje"    data-seg="hospedaje"></span>
+                        <span class="pl-alimentacion" data-seg="alimentacion"></span>
+                        <span class="pl-transporte"   data-seg="transporte"></span>
+                        <span class="pl-actividades"  data-seg="actividades"></span>
+                        <span class="pl-imprevistos"  data-seg="imprevistos"></span>
+                    </div>
+                    <p class="pl-exceso" id="plExceso" hidden></p>
                 </div>
-                <input class="pl-slider" type="range" id="alimentacion" name="alimentacion"
-                       min="0" max="100" step="1" value="${reparto.alimentacion}" disabled>
-            </div>
 
-            <div class="pl-categoria">
-                <div class="pl-cat-cabeza">
-                    <span class="pl-cat-punto" style="background:#F3A6C0"></span>
-                    <label class="pl-cat-nombre" for="transporte">Transporte</label>
-                    <span class="pl-cat-monto" data-monto="transporte"></span>
-                    <span class="pl-cat-pct" data-pct="transporte">${reparto.transporte}%</span>
+                <div class="pl-cat pl-hospedaje">
+                    <div class="pl-cat-cabeza">
+                        <label class="pl-cat-nombre" for="pct-hospedaje">Hospedaje</label>
+                        <span class="pl-cat-monto" data-monto="hospedaje"></span>
+                    </div>
+                    <div class="pl-pildora">
+                        <div class="pl-pct">
+                            <input type="number" id="pct-hospedaje" name="hospedaje"
+                                   min="0" max="100" step="1" inputmode="numeric"
+                                   value="${reparto.hospedaje}" data-sugerido="${reparto.hospedaje}" readonly>
+                            <span>%</span>
+                        </div>
+                        <div class="pl-pista" data-pista="hospedaje">
+                            <span class="pl-pista-relleno" data-relleno="hospedaje"></span>
+                        </div>
+                    </div>
                 </div>
-                <input class="pl-slider" type="range" id="transporte" name="transporte"
-                       min="0" max="100" step="1" value="${reparto.transporte}" disabled>
-            </div>
 
-            <div class="pl-categoria">
-                <div class="pl-cat-cabeza">
-                    <span class="pl-cat-punto" style="background:#7BC97F"></span>
-                    <label class="pl-cat-nombre" for="actividades">Actividades</label>
-                    <span class="pl-cat-monto" data-monto="actividades"></span>
-                    <span class="pl-cat-pct" data-pct="actividades">${reparto.actividades}%</span>
+                <div class="pl-cat pl-alimentacion">
+                    <div class="pl-cat-cabeza">
+                        <label class="pl-cat-nombre" for="pct-alimentacion">Alimentación</label>
+                        <span class="pl-cat-monto" data-monto="alimentacion"></span>
+                    </div>
+                    <div class="pl-pildora">
+                        <div class="pl-pct">
+                            <input type="number" id="pct-alimentacion" name="alimentacion"
+                                   min="0" max="100" step="1" inputmode="numeric"
+                                   value="${reparto.alimentacion}" data-sugerido="${reparto.alimentacion}" readonly>
+                            <span>%</span>
+                        </div>
+                        <div class="pl-pista" data-pista="alimentacion">
+                            <span class="pl-pista-relleno" data-relleno="alimentacion"></span>
+                        </div>
+                    </div>
                 </div>
-                <input class="pl-slider" type="range" id="actividades" name="actividades"
-                       min="0" max="100" step="1" value="${reparto.actividades}" disabled>
-            </div>
 
-            <div class="pl-categoria">
-                <div class="pl-cat-cabeza">
-                    <span class="pl-cat-punto" style="background:#6BB8E8"></span>
-                    <label class="pl-cat-nombre" for="imprevistos">Imprevistos</label>
-                    <span class="pl-cat-monto" data-monto="imprevistos"></span>
-                    <span class="pl-cat-pct" data-pct="imprevistos">${reparto.imprevistos}%</span>
+                <div class="pl-cat pl-transporte">
+                    <div class="pl-cat-cabeza">
+                        <label class="pl-cat-nombre" for="pct-transporte">Transporte</label>
+                        <span class="pl-cat-monto" data-monto="transporte"></span>
+                    </div>
+                    <div class="pl-pildora">
+                        <div class="pl-pct">
+                            <input type="number" id="pct-transporte" name="transporte"
+                                   min="0" max="100" step="1" inputmode="numeric"
+                                   value="${reparto.transporte}" data-sugerido="${reparto.transporte}" readonly>
+                            <span>%</span>
+                        </div>
+                        <div class="pl-pista" data-pista="transporte">
+                            <span class="pl-pista-relleno" data-relleno="transporte"></span>
+                        </div>
+                    </div>
                 </div>
-                <input class="pl-slider" type="range" id="imprevistos" name="imprevistos"
-                       min="0" max="100" step="1" value="${reparto.imprevistos}" disabled>
-            </div>
 
-            <div class="pl-acciones">
-                <button type="button" class="pl-btn-claro" id="btnEditar">Editar montos</button>
-                <button type="submit" class="pl-btn" id="btnGuardar">Guardar reparto</button>
-                <a class="pl-volver" href="<c:url value='/recomendaciones'/>">&larr; Cambiar destino</a>
+                <div class="pl-cat pl-actividades">
+                    <div class="pl-cat-cabeza">
+                        <label class="pl-cat-nombre" for="pct-actividades">Actividades</label>
+                        <span class="pl-cat-monto" data-monto="actividades"></span>
+                    </div>
+                    <div class="pl-pildora">
+                        <div class="pl-pct">
+                            <input type="number" id="pct-actividades" name="actividades"
+                                   min="0" max="100" step="1" inputmode="numeric"
+                                   value="${reparto.actividades}" data-sugerido="${reparto.actividades}" readonly>
+                            <span>%</span>
+                        </div>
+                        <div class="pl-pista" data-pista="actividades">
+                            <span class="pl-pista-relleno" data-relleno="actividades"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pl-cat pl-imprevistos">
+                    <div class="pl-cat-cabeza">
+                        <label class="pl-cat-nombre" for="pct-imprevistos">Imprevistos</label>
+                        <span class="pl-cat-monto" data-monto="imprevistos"></span>
+                    </div>
+                    <div class="pl-pildora">
+                        <div class="pl-pct">
+                            <input type="number" id="pct-imprevistos" name="imprevistos"
+                                   min="0" max="100" step="1" inputmode="numeric"
+                                   value="${reparto.imprevistos}" data-sugerido="${reparto.imprevistos}" readonly>
+                            <span>%</span>
+                        </div>
+                        <div class="pl-pista" data-pista="imprevistos">
+                            <span class="pl-pista-relleno" data-relleno="imprevistos"></span>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </form>
     </section>
 
-    <aside>
+    <aside class="pl-lateral">
         <div class="pl-sobre">
             <div class="pl-sobre-top">
                 <span>WiseTrip · Plan de gastos</span>
-                <span>${dias}D</span>
+                <span>${dias} días</span>
             </div>
 
             <div class="pl-sobre-cuerpo">
-                <div class="pl-sobre-destino">
+                <div>
                     <span class="pl-sobre-rotulo">Tu destino</span>
                     <span class="pl-sobre-ciudad">${destino.ciudad.nombre}</span>
                     <span class="pl-sobre-pais">${destino.ciudad.pais}</span>
                 </div>
 
+                <div class="pl-sobre-barra">
+                    <span class="pl-hospedaje"    data-seg="hospedaje"></span>
+                    <span class="pl-alimentacion" data-seg="alimentacion"></span>
+                    <span class="pl-transporte"   data-seg="transporte"></span>
+                    <span class="pl-actividades"  data-seg="actividades"></span>
+                    <span class="pl-imprevistos"  data-seg="imprevistos"></span>
+                </div>
+
                 <div class="pl-sobre-perforado"></div>
 
-                <c:forEach var="m" items="${montos}">
-                    <div class="pl-linea">
-                        <span class="pl-linea-nombre">${m.key}</span>
-                        <span class="pl-linea-monto" data-sobre="${m.key}">
-                            <fmt:formatNumber value="${m.value}" maxFractionDigits="0"/>
-                        </span>
-                    </div>
-                </c:forEach>
+                <div class="pl-linea pl-hospedaje">
+                    <span class="pl-linea-nombre"><span class="pl-linea-punto"></span>Hospedaje</span>
+                    <span class="pl-linea-monto" data-sobre="hospedaje"></span>
+                </div>
+                <div class="pl-linea pl-alimentacion">
+                    <span class="pl-linea-nombre"><span class="pl-linea-punto"></span>Alimentación</span>
+                    <span class="pl-linea-monto" data-sobre="alimentacion"></span>
+                </div>
+                <div class="pl-linea pl-transporte">
+                    <span class="pl-linea-nombre"><span class="pl-linea-punto"></span>Transporte</span>
+                    <span class="pl-linea-monto" data-sobre="transporte"></span>
+                </div>
+                <div class="pl-linea pl-actividades">
+                    <span class="pl-linea-nombre"><span class="pl-linea-punto"></span>Actividades</span>
+                    <span class="pl-linea-monto" data-sobre="actividades"></span>
+                </div>
+                <div class="pl-linea pl-imprevistos">
+                    <span class="pl-linea-nombre"><span class="pl-linea-punto"></span>Imprevistos</span>
+                    <span class="pl-linea-monto" data-sobre="imprevistos"></span>
+                </div>
 
                 <div class="pl-sobre-total">
                     <span class="pl-sobre-total-rotulo">Total</span>
-                    <span class="pl-sobre-total-cifra">${montoTotalFormateado} ${presupuesto.moneda}</span>
+                    <span class="pl-sobre-total-cifra" id="plSobreTotal">${montoTotalFormateado} ${presupuesto.moneda}</span>
                 </div>
             </div>
 
             <div class="pl-sobre-abajo">
                 <span>Por día</span>
-                <span>${porDiaTotal} ${presupuesto.moneda}</span>
+                <span id="plSobreDia">${porDiaTotal} ${presupuesto.moneda}</span>
+            </div>
+        </div>
+
+        <div class="pl-acciones">
+            <button type="submit" form="formPlan" class="pl-btn" id="btnGuardar" hidden>Usar este reparto</button>
+            <div class="pl-acciones-fila">
+                <button type="button" class="pl-btn-claro" id="btnRestaurar" hidden>Volver al sugerido</button>
+                <a class="pl-volver" href="<c:url value='/recomendaciones'/>">&larr; Cambiar destino</a>
             </div>
         </div>
     </aside>
 
 </main>
 
+<script src="/js/plan-reparto.js"></script>
 </body>
 </html>

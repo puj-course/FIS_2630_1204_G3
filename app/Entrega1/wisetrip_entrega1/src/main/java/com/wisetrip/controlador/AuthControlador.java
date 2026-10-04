@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.wisetrip.modelo.Usuario;
+import com.wisetrip.servicio.EmailNotificationService;
+import com.wisetrip.servicio.TelegramNotificationService;
 import com.wisetrip.servicio.UsuarioServicio;
 
 import jakarta.servlet.http.HttpSession;
@@ -19,10 +21,16 @@ import jakarta.servlet.http.HttpSession;
 public class AuthControlador {
 
     private final UsuarioServicio usuarioServicio;
+    private final EmailNotificationService emailService;
+    private final TelegramNotificationService telegramService;
 
-    // Spring inyecta el servicio automaticamente al crear el controlador
-    public AuthControlador(UsuarioServicio usuarioServicio) {
+    // Spring inyecta los servicios automaticamente al crear el controlador
+    public AuthControlador(UsuarioServicio usuarioServicio,
+                           EmailNotificationService emailService,
+                           TelegramNotificationService telegramService) {
         this.usuarioServicio = usuarioServicio;
+        this.emailService = emailService;
+        this.telegramService = telegramService;
     }
 
     // Muestra el formulario vacio
@@ -51,6 +59,22 @@ public class AuthControlador {
         usuario.setCorreo(usuario.getCorreo().trim());
         usuario.setNumeroDocumento(usuario.getNumeroDocumento().trim());
         usuarioServicio.registrar(usuario);
+
+        // Correo de confirmacion; si falla, el registro no se rompe
+        try {
+            emailService.enviarNotificacion(
+                usuario.getCorreo(),
+                "¡Bienvenido a WiseTrip!",
+                "Hola " + usuario.getNombreCompleto() + ",\n\n"
+                + "Tu cuenta en WiseTrip fue creada con éxito. "
+                + "Ya puedes iniciar sesión y empezar a planificar tus viajes.\n\n"
+                + "¡Buen viaje!\n"
+                + "El equipo de WiseTrip"
+            );
+        } catch (Exception e) {
+            System.err.println("No se pudo enviar el correo de confirmación: " + e.getMessage());
+        }
+
         sesion.setAttribute("usuarioActivo", usuario);
 
         String[] partes = usuario.getNombreCompleto().trim().split("\\s+");
@@ -98,6 +122,17 @@ public class AuthControlador {
 
         // Guarda al usuario en la sesion: es el equivalente al useState del usuario logueado
         sesion.setAttribute("usuarioActivo", usuario);
+
+        // Notificacion de confirmacion de inicio de sesion por Telegram
+        try {
+            telegramService.enviarMensaje(
+                usuario.getChatId(),
+                "Hola " + usuario.getNombreCompleto() + ", iniciaste sesión en WiseTrip correctamente. Si no fuiste tú, cambia tu contraseña."
+            );
+        } catch (Exception e) {
+            System.err.println("No se pudo enviar la notificacion de Telegram: " + e.getMessage());
+        }
+
         return "redirect:/origen";
     }
 
