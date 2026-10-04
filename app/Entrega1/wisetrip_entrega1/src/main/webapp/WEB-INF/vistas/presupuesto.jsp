@@ -96,7 +96,8 @@
                 </div>
 
                 <div class="pp-campo">
-                    <label for="monto" class="pp-etiqueta">Presupuesto total</label>
+                    <label for="monto" class="pp-etiqueta">Presupuesto total por persona</label>
+                    <p>Para todos los días de estancia: alojamiento, comida y transporte local. No incluye el traslado hasta el destino.</p>
                     <div class="pp-monto ${not empty errores.monto ? 'pp-monto-error' : ''}">
                         <span class="pp-prefijo" id="ppPrefijo">---</span>
                         <input type="text" name="monto" id="monto" value="${presupuesto.monto}"

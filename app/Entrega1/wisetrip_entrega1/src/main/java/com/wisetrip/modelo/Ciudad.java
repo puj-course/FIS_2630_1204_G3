@@ -10,6 +10,7 @@ public class Ciudad {
     private int id;
     private String nombre;
     private String pais;
+    // USD por persona y por dia: alojamiento, comida y transporte local.
     private double costoPromedio;
     private double latitud;
     private double longitud;

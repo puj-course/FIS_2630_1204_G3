@@ -12,13 +12,18 @@ import java.util.Map;
 
 public class PreferenciasUsuario {
 
+    private final long duracionDias;
     private final double presupuesto;   // en USD, para poder comparar
     private final Map<String, Boolean> atributos;
 
-    public PreferenciasUsuario(double presupuesto, Map<String, Boolean> atributos) {
+    public PreferenciasUsuario(double presupuesto, Map<String, Boolean> atributos, long duracionDias) {
+        if (duracionDias < 1) throw new IllegalArgumentException("La duracion debe ser positiva.");
+        this.duracionDias = duracionDias;
         this.presupuesto = presupuesto;
         this.atributos = atributos != null ? atributos : new LinkedHashMap<>();
     }
+
+    public long getDuracionDias() { return duracionDias; }
 
     public double getPresupuesto() { return presupuesto; }
 

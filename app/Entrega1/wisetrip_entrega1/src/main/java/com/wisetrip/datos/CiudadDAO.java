@@ -15,6 +15,7 @@ public class CiudadDAO {
         String sql = """
         SELECT id_ciudad, nombre, pais, latitud, longitud, costo_promedio
         FROM ciudad
+        WHERE costo_promedio > 0
         ORDER BY nombre
         """;
         try (Connection conn = ConexionBD.obtenerConexion();

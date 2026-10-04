@@ -92,6 +92,8 @@ public class PlanificacionControlador {
         sesion.setAttribute("atributosSeleccionados",
                 preferenciasServicio.obtenerAtributosSeleccionados(preferencias));
         sesion.removeAttribute("idViajeGuardado");
+        sesion.removeAttribute("seleccionRecomendada");
+        sesion.removeAttribute("destinoElegido");
 
         // HU-37: Botón "Siguiente".
         // Al guardar sin errores, avanza automáticamente al siguiente paso del flujo.
@@ -145,6 +147,8 @@ public class PlanificacionControlador {
         // la sesión de planificación del viajero.
         sesion.setAttribute("fechasViaje", fechas);
         sesion.removeAttribute("idViajeGuardado");
+        sesion.removeAttribute("seleccionRecomendada");
+        sesion.removeAttribute("destinoElegido");
 
         // HU-37: Botón "Siguiente".
         // Avanza al paso de presupuesto una vez las fechas son válidas.
@@ -208,6 +212,8 @@ public class PlanificacionControlador {
         sesion.setAttribute("presupuestoViaje", presupuesto);
         sesion.setAttribute("presupuestoEnUsd", enUsd);
         sesion.removeAttribute("idViajeGuardado");
+        sesion.removeAttribute("seleccionRecomendada");
+        sesion.removeAttribute("destinoElegido");
 
         // HU-37: Botón "Siguiente".
         // Al completar el último paso, avanza al resumen final del viaje.

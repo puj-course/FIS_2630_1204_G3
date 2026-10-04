@@ -4,7 +4,26 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ffff6fa2-fe68-4e98-b1ea-8c1f465df6db" name="Changes" comment="" />
+    <list default="true" id="ffff6fa2-fe68-4e98-b1ea-8c1f465df6db" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Entrega1/wisetrip_entrega1/src/main/java/com/wisetrip/controlador/PlanificacionControlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/Entrega1/wisetrip_entrega1/src/main/java/com/wisetrip/controlador/PlanificacionControlador.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Entrega1/wisetrip_entrega1/src/main/java/com/wisetrip/controlador/RecomendacionControlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/Entrega1/wisetrip_entrega1/src/main/java/com/wisetrip/controlador/RecomendacionControlador.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Entrega1/wisetrip_entrega1/src/main/java/com/wisetrip/controlador/SeleccionControlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/Entrega1/wisetrip_entrega1/src/main/java/com/wisetrip/controlador/SeleccionControlador.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Entrega1/wisetrip_entrega1/src/main/java/com/wisetrip/datos/CiudadDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/Entrega1/wisetrip_entrega1/src/main/java/com/wisetrip/datos/CiudadDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Entrega1/wisetrip_entrega1/src/main/java/com/wisetrip/datos/CiudadSemilla.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/Entrega1/wisetrip_entrega1/src/main/java/com/wisetrip/datos/CiudadSemilla.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Entrega1/wisetrip_entrega1/src/main/java/com/wisetrip/datos/DatosCiudades.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/Entrega1/wisetrip_entrega1/src/main/java/com/wisetrip/datos/DatosCiudades.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Entrega1/wisetrip_entrega1/src/main/java/com/wisetrip/modelo/Ciudad.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/Entrega1/wisetrip_entrega1/src/main/java/com/wisetrip/modelo/Ciudad.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Entrega1/wisetrip_entrega1/src/main/java/com/wisetrip/modelo/PreferenciasUsuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/Entrega1/wisetrip_entrega1/src/main/java/com/wisetrip/modelo/PreferenciasUsuario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Entrega1/wisetrip_entrega1/src/main/java/com/wisetrip/servicio/CatalogoCiudades.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/Entrega1/wisetrip_entrega1/src/main/java/com/wisetrip/servicio/CatalogoCiudades.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Entrega1/wisetrip_entrega1/src/main/java/com/wisetrip/servicio/LlenarLasCiudades.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/Entrega1/wisetrip_entrega1/src/main/java/com/wisetrip/servicio/LlenarLasCiudades.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Entrega1/wisetrip_entrega1/src/main/java/com/wisetrip/servicio/RecomendadorDestinos.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/Entrega1/wisetrip_entrega1/src/main/java/com/wisetrip/servicio/RecomendadorDestinos.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Entrega1/wisetrip_entrega1/src/main/resources/sql/insert_ciudades.sql" beforeDir="false" afterPath="$PROJECT_DIR$/app/Entrega1/wisetrip_entrega1/src/main/resources/sql/insert_ciudades.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Entrega1/wisetrip_entrega1/src/main/webapp/WEB-INF/vistas/presupuesto.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/app/Entrega1/wisetrip_entrega1/src/main/webapp/WEB-INF/vistas/presupuesto.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Entrega1/wisetrip_entrega1/src/main/webapp/WEB-INF/vistas/recomendaciones.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/app/Entrega1/wisetrip_entrega1/src/main/webapp/WEB-INF/vistas/recomendaciones.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/DDL.md" beforeDir="false" afterPath="$PROJECT_DIR$/database/DDL.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/DiccionarioDatos.md" beforeDir="false" afterPath="$PROJECT_DIR$/database/DiccionarioDatos.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/database.md" beforeDir="false" afterPath="$PROJECT_DIR$/database/database.md" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -66,7 +85,7 @@
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
-    "git-widget-placeholder": "1raEntregaJueves",
+    "git-widget-placeholder": "features-isabella",
     "ignore.virus.scanning.warn.message": "true",
     "junie.onboarding.icon.badge.shown": "true",
     "kotlin-language-version-configured": "true",

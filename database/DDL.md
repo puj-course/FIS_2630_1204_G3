@@ -22,19 +22,13 @@ CREATE TABLE IF NOT EXISTS usuario (
 CREATE UNIQUE INDEX IF NOT EXISTS ux_usuario_tipo_numero_documento 
 ON usuario (numero_documento, tipo_documento);
 
-CREATE TABLE IF NOT EXISTS nivel_costo (
-    id_nivel SERIAL PRIMARY KEY,
-    nombre VARCHAR(20) NOT NULL,
-    CONSTRAINT uk_nivel_costo_nombre UNIQUE (nombre)
-);
-
 CREATE TABLE IF NOT EXISTS ciudad (
     id_ciudad SERIAL PRIMARY KEY,
     nombre VARCHAR(100) NOT NULL,
     pais VARCHAR(100) NOT NULL,
     latitud NUMERIC(9,6) NOT NULL,
     longitud NUMERIC(9,6) NOT NULL,
-    costo_promedio NUMERIC(12,2) NOT NULL,
+    costo_promedio NUMERIC(12,2), -- USD por persona/dia; NULL si no se conoce
     CONSTRAINT uk_ciudad_nombre_pais UNIQUE (nombre, pais),
     CONSTRAINT chk_ciudad_costo CHECK (costo_promedio > 0)
 );

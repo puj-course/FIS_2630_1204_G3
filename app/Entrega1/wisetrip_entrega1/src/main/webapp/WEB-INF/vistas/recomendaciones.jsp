@@ -64,8 +64,8 @@
                 <span class="rc-vacio-rotulo">Sin destinos disponibles</span>
                 <h2>No encontramos coincidencias</h2>
                 <p>
-                    Ninguna ciudad se ajusta a tu presupuesto y tus preferencias.
-                    Prueba ampliando el presupuesto o cambiando algunas respuestas.
+                    No hay destinos disponibles con un costo diario registrado.
+                    Estamos completando la información de costos de los destinos.
                 </p>
                 <a class="rc-elegir" href="<c:url value='/presupuesto'/>">Ajustar presupuesto</a>
             </div>
@@ -134,7 +134,7 @@
     <div class="rc-pie">
         <p class="rc-nota">
             La coincidencia combina qué tanto se ajusta el costo del destino a tu
-            presupuesto (40%) y cuántas de tus preferencias cumple (60%).
+            presupuesto por persona para todos los días (40%) y cuántas de tus preferencias cumple (60%).
         </p>
         <a class="rc-volver" href="<c:url value='/resumen'/>">&larr; Volver al resumen</a>
     </div>

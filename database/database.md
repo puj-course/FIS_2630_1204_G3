@@ -1,6 +1,7 @@
 ## Funcionamiento general
 
-En conjunto, la base de datos de WiseTrip está diseñada alrededor de una idea simple: un usuario se registra, planifica un viaje, y todo lo demás que hace dentro de esa planificación —sus preferencias, su itinerario de actividades, sus gastos reales, sus reservas y las alertas que recibe— queda organizado y conectado a ese viaje en particular, de modo que en cualquier momento se puede reconstruir el panorama completo de un viaje consultando únicamente su identificador; adicionalmente, existe un pequeño grupo de tablas de catálogo (`ciudad`, `atributo`, `ciudad_atributo` y `nivel_costo`) que por ahora funcionan aparte y que en el futuro permitirían que el sistema recomiende destinos automáticamente según los intereses y el nivel de costo que el usuario haya seleccionado.
+Cada usuario planifica viajes con sus preferencias, itinerarios y gastos. Las ciudades aportan el costo diario estimado en USD por persona. El presupuesto se interpreta como total por persona para la estancia.
+
 
 ## Relaciones principales
 
@@ -18,18 +19,15 @@ El modelo puede entenderse mediante las siguientes relaciones:
 
 Las relaciones dependientes de `viajes` utilizan eliminación en cascada (`ON DELETE CASCADE`), por lo que al eliminar un viaje también se eliminan sus preferencias, actividades del itinerario, gastos, reservas y alertas asociadas.
 
-## Nota: `ciudad`, `atributo`, `ciudad_atributo` y `nivel_costo`
 
 Son catálogos pensados para una futura función de recomendación de destinos:
 
 - `ciudad` guarda información de lugares que pueden ser recomendados, incluyendo nombre, país, ubicación geográfica y costo promedio.
 - `atributo` guarda características que pueden describir una ciudad, como playa, cultura, aventura o gastronomía.
 - `ciudad_atributo` establece la relación entre ciudades y atributos.
-- `nivel_costo` almacena categorías generales de costo, como económico, medio o alto.
 
 Actualmente estas tablas no participan directamente en el flujo principal de planificación de viajes.
 
-En particular, `nivel_costo` se encuentra aislada porque ninguna de las tablas actuales la referencia mediante una clave foránea.
 
 ---
 
@@ -107,7 +105,7 @@ Una ciudad se identifica de manera única mediante la combinación de `nombre` y
 | `pais` | character varying | | País al que pertenece la ciudad. |
 | `latitud` | numeric | | Coordenada geográfica de latitud. |
 | `longitud` | numeric | | Coordenada geográfica de longitud. |
-| `costo_promedio` | numeric | | Costo promedio estimado de la ciudad. |
+| `costo_promedio` | numeric | | Costo diario estimado en USD por persona (alojamiento, comida y transporte local). |
 
 ### SQL
 
@@ -118,7 +116,7 @@ CREATE TABLE ciudad (
     pais            VARCHAR(100) NOT NULL,
     latitud         DECIMAL(9,6) NOT NULL,
     longitud        DECIMAL(9,6) NOT NULL,
-    costo_promedio  DECIMAL(12,2) NOT NULL,
+    costo_promedio  DECIMAL(12,2),
     CONSTRAINT chk_ciudad_costo CHECK (costo_promedio > 0),
     CONSTRAINT uk_ciudad_nombre_pais UNIQUE (nombre, pais)
 );
@@ -549,43 +547,6 @@ CREATE TABLE IF NOT EXISTS atributo (
 );
 ```
 ---
-## 12. NIVEL_COSTO
-
-La tabla `nivel_costo` es un catálogo que clasifica los niveles de gasto asociados a los destinos.
-
-Por ejemplo:
-
-- económico
-- medio
-- alto
-
-Cada registro tiene un identificador y un nombre único.
-
-Actualmente esta tabla está aislada del resto del modelo. No existe una clave foránea desde `ciudad` hacia `nivel_costo`, por lo que la estructura actual no establece directamente qué nivel de costo corresponde a una ciudad determinada.
-
-Esta tabla está preparada para una futura función de recomendación o clasificación de destinos, en la que podría utilizarse el nivel de costo como uno de los criterios para filtrar o recomendar ciudades.
-
-### Campos
-
-| Campo | Tipo | Clave | Descripción |
-|---|---|---|---|
-| `id_nivel` | integer | PK | Identificador único del nivel de costo. |
-| `nombre` | character varying | | Nombre del nivel de costo. |
-
-### Script SQL
-
-```sql
-CREATE TABLE IF NOT EXISTS nivel_costo (
-
-    id_nivel SERIAL PRIMARY KEY,
-    nombre VARCHAR(20) NOT NULL,
-
-    CONSTRAINT uk_nivel_costo_nombre
-        UNIQUE (nombre)
-);
-```
----
-
 ## Resumen de las tablas
 
 | Tabla | Propósito | Relación principal |
@@ -601,7 +562,6 @@ CREATE TABLE IF NOT EXISTS nivel_costo (
 | `ciudad` | Catálogo de destinos disponibles. | Se relaciona con atributos. |
 | `atributo` | Catálogo de características de destinos. | Se relaciona con ciudades. |
 | `ciudad_atributo` | Relaciona ciudades y atributos. | Tabla intermedia N:M. |
-| `nivel_costo` | Catálogo de niveles de costo. | Actualmente aislada. |
 
 ## Relaciones y dependencias
 
@@ -623,8 +583,5 @@ ciudad
 └── ciudad_atributo
     └── atributo
 
-nivel_costo
-└── Actualmente sin relaciones
 ```
 
-Las tablas relacionadas directamente con la planificación de viajes forman el núcleo funcional de WiseTrip, mientras que las tablas `ciudad`, `atributo`, `ciudad_atributo` y `nivel_costo` funcionan como estructuras de apoyo para futuras funcionalidades de

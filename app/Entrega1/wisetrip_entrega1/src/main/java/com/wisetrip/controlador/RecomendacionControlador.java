@@ -62,7 +62,9 @@ public class RecomendacionControlador {
         Double presupuestoUsd = (Double) sesion.getAttribute("presupuestoEnUsd");
         if (presupuestoUsd == null) return "redirect:/presupuesto";
 
-        PreferenciasUsuario preferencias = new PreferenciasUsuario(presupuestoUsd, atributosCuestionario);
+        FechasViaje fechas = (FechasViaje) sesion.getAttribute("fechasViaje");
+        if (fechas == null || fechas.getDuracionDias() < 1) return "redirect:/fechas";
+        PreferenciasUsuario preferencias = new PreferenciasUsuario(presupuestoUsd, atributosCuestionario, fechas.getDuracionDias());
         List<Ciudad> ciudades = ciudadDAO.obtenerTodas();
 
         for (Ciudad ciudad : ciudades) {
@@ -85,6 +87,7 @@ public class RecomendacionControlador {
 
         model.addAttribute("usuario", usuario);
         model.addAttribute("seleccion", seleccion);
+        sesion.setAttribute("seleccionRecomendada", seleccion);
         model.addAttribute("fechas", sesion.getAttribute("fechasViaje"));
         model.addAttribute("presupuestoUsd", presupuestoUsd);
 
