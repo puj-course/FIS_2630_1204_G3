@@ -1,4 +1,4 @@
-//toca entenderlo mucho mas 
+//toca entenderlo mucho mas
 //algoritmo de recomendacion por presupuesto y preferencias
 
 package com.wisetrip.servicio;
@@ -11,6 +11,7 @@ import java.util.Map;
 import org.springframework.stereotype.Service;
 
 import com.wisetrip.modelo.Ciudad;
+import com.wisetrip.modelo.Importancia;
 import com.wisetrip.modelo.PreferenciasUsuario;
 import com.wisetrip.modelo.ResultadoRecomendacion;
 
@@ -24,7 +25,6 @@ public class RecomendadorDestinos {
      * Puntaje (0 a 1) segun que tan bien el costo de la ciudad se ajusta
      * al presupuesto del usuario.
      */
-
     public double calcularPuntajePresupuesto(double costo, double presupuesto) {
         if (presupuesto <= 0) {
             return 0.0;
@@ -39,26 +39,30 @@ public class RecomendadorDestinos {
     }
 
     /**
-     * Proporcion de preferencias activas del usuario que la ciudad cumple.
+     * Coincidencia ponderada de ME_GUSTARIA / LO_PREFIERO.
+     * Los indispensables ({@link Importancia#si}) no suman puntos.
      */
     public double calcularPuntajePreferencias(Map<String, Boolean> oferta,
-                                              Map<String, Boolean> gustos) {
-        List<String> activos = new ArrayList<>();
-        for (Map.Entry<String, Boolean> respuesta : gustos.entrySet()) {
-            if (Boolean.TRUE.equals(respuesta.getValue())) {
-                activos.add(respuesta.getKey());
+                                              Map<String, Importancia> gustos) {
+        int pesoTotal = 0;
+        int pesoLogrado = 0;
+
+        for (Map.Entry<String, Importancia> respuesta : gustos.entrySet()) {
+            Importancia importancia = respuesta.getValue();
+            if (importancia == null || importancia.peso <= 0) {
+                continue;
+            }
+            pesoTotal += importancia.peso;
+            if (Boolean.TRUE.equals(oferta.get(respuesta.getKey()))) {
+                pesoLogrado += importancia.peso;
             }
         }
 
-        if (activos.isEmpty()) {
-            return 1.0;   // sin preferencias activas no se penaliza a nadie
+        if (pesoTotal == 0) {
+            return 1.0;   // sin gustar/prefiero no se penaliza a nadie
         }
 
-        long aciertos = activos.stream()
-                .filter(gusto -> Boolean.TRUE.equals(oferta.get(gusto)))
-                .count();
-
-        return (double) aciertos / activos.size();
+        return (double) pesoLogrado / pesoTotal;
     }
 
     public ResultadoRecomendacion calcularPuntajeTotal(Ciudad ciudad, PreferenciasUsuario preferencias) {
@@ -76,6 +80,15 @@ public class RecomendadorDestinos {
         return new ResultadoRecomendacion(ciudad, total, pCosto, pGustos);
     }
 
+    /**
+     * Diferencia absoluta entre el costo del viaje (diario × días) y el presupuesto.
+     * Menor valor = más cerca del presupuesto del usuario.
+     */
+    public double diferenciaPresupuesto(Ciudad ciudad, PreferenciasUsuario preferencias) {
+        double costoViaje = ciudad.getCostoPromedio() * preferencias.getDuracionDias();
+        return Math.abs(costoViaje - preferencias.getPresupuesto());
+    }
+
     public List<ResultadoRecomendacion> recomendarDestinos(List<Ciudad> ciudades,
                                                            PreferenciasUsuario preferencias) {
         List<ResultadoRecomendacion> resultados = new ArrayList<>();
@@ -84,7 +97,34 @@ public class RecomendadorDestinos {
                 resultados.add(calcularPuntajeTotal(ciudad, preferencias));
             }
         }
-        resultados.sort(Comparator.comparingDouble(ResultadoRecomendacion::getPuntajeTotal).reversed());
+
+        // Desempate / orden por cercanía al presupuesto cuando no hay nada que
+        // puntuar (solo indispensables o ningún gustar/prefiero) o todos empatan.
+        boolean ordenarPorPresupuesto = !preferencias.tienePreferenciasPuntuables()
+                || todosMismoPuntaje(resultados);
+
+        if (ordenarPorPresupuesto) {
+            resultados.sort(Comparator.comparingDouble(
+                    r -> diferenciaPresupuesto(r.getCiudad(), preferencias)));
+        } else {
+            resultados.sort(Comparator
+                    .comparingDouble(ResultadoRecomendacion::getPuntajeTotal).reversed()
+                    .thenComparingDouble(r -> diferenciaPresupuesto(r.getCiudad(), preferencias)));
+        }
+
         return resultados;
+    }
+
+    private static boolean todosMismoPuntaje(List<ResultadoRecomendacion> resultados) {
+        if (resultados.size() <= 1) {
+            return true;
+        }
+        double primero = resultados.get(0).getPuntajeTotal();
+        for (ResultadoRecomendacion resultado : resultados) {
+            if (Double.compare(resultado.getPuntajeTotal(), primero) != 0) {
+                return false;
+            }
+        }
+        return true;
     }
 }

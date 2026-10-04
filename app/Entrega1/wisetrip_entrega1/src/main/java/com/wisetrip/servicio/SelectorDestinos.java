@@ -4,7 +4,6 @@
 package com.wisetrip.servicio;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -24,8 +23,8 @@ public class SelectorDestinos {
                     "No encontramos destinos dentro de tu presupuesto.");
         }
 
+        // Conserva el orden de RecomendadorDestinos (puntaje + desempate por presupuesto).
         List<ResultadoRecomendacion> ordenados = new ArrayList<>(resultados);
-        ordenados.sort(Comparator.comparingDouble(ResultadoRecomendacion::getPuntajeTotal).reversed());
 
         int limite = Math.min(CANTIDAD_DESTINOS, ordenados.size());
         List<ResultadoRecomendacion> seleccionados = new ArrayList<>(ordenados.subList(0, limite));

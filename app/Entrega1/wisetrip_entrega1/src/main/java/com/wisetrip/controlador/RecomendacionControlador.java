@@ -64,7 +64,10 @@ public class RecomendacionControlador {
 
         FechasViaje fechas = (FechasViaje) sesion.getAttribute("fechasViaje");
         if (fechas == null || fechas.getDuracionDias() < 1) return "redirect:/fechas";
-        PreferenciasUsuario preferencias = new PreferenciasUsuario(presupuestoUsd, atributosCuestionario, fechas.getDuracionDias());
+        PreferenciasUsuario preferencias = new PreferenciasUsuario(
+                presupuestoUsd,
+                PreferenciasUsuario.desdeBooleanos(atributosCuestionario),
+                fechas.getDuracionDias());
         List<Ciudad> ciudades = ciudadDAO.obtenerTodas();
 
         for (Ciudad ciudad : ciudades) {
