@@ -96,7 +96,7 @@
 
         <div class="lp-destinos">
             <a class="lp-destino" href="<c:url value='/registro'/>"
-               style="background-image:url('/img/portada/Peru.jpg')">
+               style="background-image:url('/img/portada/lima.jpg')">
                 <span class="lp-destino-pais">Perú</span>
                 <div class="lp-destino-info">
                     <span class="lp-destino-nombre">Lima</span>
