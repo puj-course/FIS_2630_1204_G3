@@ -22,16 +22,15 @@ public class RecomendadorDestinos {
     private static final double PESO_PREFERENCIAS = 0.6;
 
     /**
-     * Puntaje (0 a 1) segun que tan bien el costo de la ciudad se ajusta
-     * al presupuesto del usuario.
+     * Puntaje (0 a 1) de viabilidad presupuestal. Dentro del limite todos
+     * reciben 1: no se premia gastar mas ni ahorrar. El exceso se penaliza.
      */
     public double calcularPuntajePresupuesto(double costo, double presupuesto) {
         if (presupuesto <= 0) {
             return 0.0;
         }
         if (costo <= presupuesto) {
-            double uso = costo / presupuesto;
-            return 0.7 + 0.3 * uso;
+            return 1.0;
         } else {
             double exceso = (costo - presupuesto) / presupuesto;
             return Math.max(0.0, 1 - exceso);
