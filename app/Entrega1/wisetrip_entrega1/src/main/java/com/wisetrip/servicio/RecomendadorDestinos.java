@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
+import java.util.LinkedHashMap;
 
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Value;
@@ -71,6 +72,33 @@ public class RecomendadorDestinos {
         }
 
         return (double) pesoLogrado / pesoTotal;
+    }
+
+    /**
+     * Coincidencia de 0 a 1 por categoria del cuestionario.
+     * Solo participan respuestas con peso positivo en Importancia.
+     * Los datos desconocidos conservan su peso en el denominador.
+     * Se omiten categorias sin preferencias puntuables.
+     */
+    public Map<String, Double> calcularCoincidenciasPorCategoria(Map<String, Boolean> oferta,
+                                                                Map<String, Importancia> gustos) {
+        Map<String, Double> coincidencias = new LinkedHashMap<>();
+        for (var categoria : PreferenciasServicio.CATEGORIAS) {
+            int pesoTotal = 0;
+            int pesoLogrado = 0;
+            for (var pregunta : categoria.getPreguntas()) {
+                Importancia importancia = gustos.get(pregunta.getClave());
+                if (importancia == null || importancia.peso <= 0) continue;
+                pesoTotal += importancia.peso;
+                if (Boolean.TRUE.equals(oferta.get(pregunta.getClave()))) {
+                    pesoLogrado += importancia.peso;
+                }
+            }
+            if (pesoTotal > 0) {
+                coincidencias.put(categoria.getNombre(), (double) pesoLogrado / pesoTotal);
+            }
+        }
+        return coincidencias;
     }
 
     public ResultadoRecomendacion calcularPuntajeTotal(Ciudad ciudad, PreferenciasUsuario preferencias) {

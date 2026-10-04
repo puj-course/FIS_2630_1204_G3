@@ -113,6 +113,24 @@ class RecomendadorDestinosTest {
         assertEquals(List.of(), validacion.pendientes());
     }
 
+    @Test
+    void coincidenciasPorCategoriaUsanImportanciaYConservanDatosFaltantesEnElMaximo() {
+        var gustos = Map.of("playa", Importancia.gustar,
+                "montana", Importancia.prefiero, "nieve", Importancia.no,
+                "desierto", Importancia.si, "museos", Importancia.prefiero,
+                "religioso", Importancia.gustar, "compras", Importancia.no);
+        var oferta = Map.of("playa", true, "nieve", true, "desierto", true,
+                "museos", true, "religioso", false);
+
+        var coincidencias = recomendador.calcularCoincidenciasPorCategoria(oferta, gustos);
+
+        assertEquals(2, coincidencias.size());
+        assertEquals(1.0 / 3, coincidencias.get("Paisaje y clima"), 1e-9);
+        assertEquals(2.0 / 3, coincidencias.get("Cultura"), 1e-9);
+        assertEquals(Map.of(), recomendador.calcularCoincidenciasPorCategoria(
+                oferta, Map.of("playa", Importancia.si, "museos", Importancia.no)));
+    }
+
     private Ciudad ciudad(double costoDiario) {
         Ciudad ciudad = new Ciudad();
         ciudad.setCostoPromedio(costoDiario);
