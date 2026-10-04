@@ -57,6 +57,18 @@
         </div>
     </div>
 
+    <c:if test="${not empty ciudadesPendientes}">
+        <div class="rc-vacio">
+            <h2>Destinos pendientes de verificar</h2>
+            <p>Faltan datos de costo o de algún requisito indispensable. Estos destinos no se incluyen en las recomendaciones:</p>
+            <ul>
+                <c:forEach var="ciudadPendiente" items="${ciudadesPendientes}">
+                    <li><c:out value="${ciudadPendiente.descripcion}"/></li>
+                </c:forEach>
+            </ul>
+        </div>
+    </c:if>
+
     <c:choose>
 
         <c:when test="${seleccion.vacio}">
@@ -64,8 +76,8 @@
                 <span class="rc-vacio-rotulo">Sin destinos disponibles</span>
                 <h2>No encontramos coincidencias</h2>
                 <p>
-                    No hay destinos disponibles con un costo diario registrado.
-                    Estamos completando la información de costos de los destinos.
+                    Ningún destino tiene verificados todos tus requisitos obligatorios
+                    y los datos necesarios para recomendarlo. Revisa tus requisitos y presupuesto.
                 </p>
                 <a class="rc-elegir" href="<c:url value='/presupuesto'/>">Ajustar presupuesto</a>
             </div>

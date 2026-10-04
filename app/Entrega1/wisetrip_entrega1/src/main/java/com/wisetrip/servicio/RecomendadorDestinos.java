@@ -13,6 +13,8 @@ import org.springframework.beans.factory.annotation.Value;
 
 import com.wisetrip.modelo.Ciudad;
 import com.wisetrip.modelo.Importancia;
+import com.wisetrip.modelo.EstadoAtributo;
+import com.wisetrip.modelo.ValidacionCiudades;
 import com.wisetrip.modelo.PreferenciasUsuario;
 import com.wisetrip.modelo.ResultadoRecomendacion;
 
@@ -97,16 +99,37 @@ public class RecomendadorDestinos {
 
     public List<ResultadoRecomendacion> recomendarDestinos(List<Ciudad> ciudades,
                                                            PreferenciasUsuario preferencias) {
-        List<ResultadoRecomendacion> resultados = new ArrayList<>();
+        return puntuarCiudadesValidas(validarCiudades(ciudades, preferencias), preferencias);
+    }
+
+    public ValidacionCiudades validarCiudades(List<Ciudad> ciudades, PreferenciasUsuario preferencias) {
+        List<Ciudad> validas = new ArrayList<>();
+        List<Ciudad> descartadas = new ArrayList<>();
+        List<Ciudad> pendientes = new ArrayList<>();
         for (Ciudad ciudad : ciudades) {
-            if (Double.isFinite(ciudad.getCostoPromedio()) && ciudad.getCostoPromedio() > 0) {
-                double costoTotal = ciudad.getCostoPromedio() * preferencias.getDuracionDias();
-                // El filtro obligatorio se aplica antes de calcular cualquier puntaje.
-                if (presupuestoObligatorio && costoTotal > preferencias.getPresupuesto()) {
-                    continue;
-                }
-                resultados.add(calcularPuntajeTotal(ciudad, preferencias));
+            double costo = ciudad.getCostoPromedio() * preferencias.getDuracionDias();
+            boolean faltaInformacion = !Double.isFinite(costo) || costo <= 0;
+            boolean incumple = !faltaInformacion && presupuestoObligatorio
+                    && costo > preferencias.getPresupuesto();
+            for (var requisito : preferencias.getAtributos().entrySet()) {
+                if (requisito.getValue() != Importancia.si) continue;
+                EstadoAtributo estado = ciudad.estadoAtributo(requisito.getKey());
+                incumple |= estado == EstadoAtributo.noCumple;
+                faltaInformacion |= estado == EstadoAtributo.noSabemos;
             }
+            // Un incumplimiento confirmado basta para descartar, aunque falten otros datos.
+            if (incumple) descartadas.add(ciudad);
+            else if (faltaInformacion) pendientes.add(ciudad);
+            else validas.add(ciudad);
+        }
+        return new ValidacionCiudades(validas, descartadas, pendientes);
+    }
+
+    public List<ResultadoRecomendacion> puntuarCiudadesValidas(ValidacionCiudades validacion,
+                                                              PreferenciasUsuario preferencias) {
+        List<ResultadoRecomendacion> resultados = new ArrayList<>();
+        for (Ciudad ciudad : validacion.validas()) {
+            resultados.add(calcularPuntajeTotal(ciudad, preferencias));
         }
 
         // Desempate / orden por cercanía al presupuesto cuando no hay nada que

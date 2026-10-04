@@ -34,6 +34,11 @@ public class Ciudad {
     public void setLongitud(double longitud) { this.longitud = longitud; }
 
     public Map<String, Boolean> getAtributos() { return atributos; }
+    public EstadoAtributo estadoAtributo(String atributo) {
+        Boolean valor = atributos.get(atributo);
+        if (valor == null) return EstadoAtributo.noSabemos;
+        return valor ? EstadoAtributo.cumple : EstadoAtributo.noCumple;
+    }
     public void setAtributos(Map<String, Boolean> atributos) {
         this.atributos = atributos != null ? atributos : new HashMap<>();
     }

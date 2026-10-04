@@ -20,7 +20,7 @@ public class SelectorDestinos {
 
         if (resultados == null || resultados.isEmpty()) {
             return new SeleccionDestinos(new ArrayList<>(),
-                    "No encontramos destinos dentro de tu presupuesto.");
+                    "No encontramos destinos con todos tus requisitos obligatorios verificados.");
         }
 
         // Conserva el orden de RecomendadorDestinos (puntaje + desempate por presupuesto).

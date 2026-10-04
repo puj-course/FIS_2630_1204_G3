@@ -1,6 +1,7 @@
 package com.wisetrip.servicio;
 
 import com.wisetrip.modelo.Ciudad;
+import com.wisetrip.modelo.Importancia;
 import com.wisetrip.modelo.PreferenciasUsuario;
 import com.wisetrip.modelo.ResultadoRecomendacion;
 import org.junit.jupiter.api.Test;
@@ -70,6 +71,46 @@ class RecomendadorDestinosTest {
         var resultados = estricto.recomendarDestinos(List.of(ciudad(600)),
                 new PreferenciasUsuario(1000, Map.of(), 2));
         assertEquals(List.of(), resultados);
+    }
+
+    @Test
+    void soloPuntuaValidasYSeparaIncumplimientoDeInformacionAusente() {
+        Ciudad valida = ciudad(100);
+        valida.setAtributos(Map.of("playa", true, "museos", true));
+        Ciudad incumple = ciudad(100);
+        incumple.setAtributos(Map.of("playa", false, "museos", true));
+        Ciudad pendiente = ciudad(100);
+        pendiente.setAtributos(Map.of("museos", true));
+        Ciudad sinCosto = ciudad(Double.NaN);
+        sinCosto.setAtributos(Map.of("playa", true));
+        var preferencias = new PreferenciasUsuario(1000,
+                Map.of("playa", Importancia.si, "museos", Importancia.prefiero), 2);
+        var puntuadas = new java.util.ArrayList<Ciudad>();
+        var estricto = new RecomendadorDestinos(true) {
+            @Override
+            public ResultadoRecomendacion calcularPuntajeTotal(Ciudad ciudad, PreferenciasUsuario p) {
+                puntuadas.add(ciudad);
+                return super.calcularPuntajeTotal(ciudad, p);
+            }
+        };
+        var ciudades = List.of(incumple, pendiente, sinCosto, valida);
+        var validacion = estricto.validarCiudades(ciudades, preferencias);
+        assertEquals(List.of(valida), validacion.validas());
+        assertEquals(List.of(incumple), validacion.descartadas());
+        assertEquals(List.of(pendiente, sinCosto), validacion.pendientes());
+        estricto.recomendarDestinos(ciudades, preferencias);
+        assertEquals(List.of(valida), puntuadas);
+    }
+
+    @Test
+    void incumplimientoConfirmadoPrevaleceAunqueOtroRequisitoSeaDesconocido() {
+        Ciudad ciudad = ciudad(100);
+        ciudad.setAtributos(Map.of("playa", false));
+        var preferencias = new PreferenciasUsuario(1000,
+                Map.of("playa", Importancia.si, "museos", Importancia.si), 2);
+        var validacion = recomendador.validarCiudades(List.of(ciudad), preferencias);
+        assertEquals(List.of(ciudad), validacion.descartadas());
+        assertEquals(List.of(), validacion.pendientes());
     }
 
     private Ciudad ciudad(double costoDiario) {

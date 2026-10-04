@@ -77,8 +77,10 @@ public class RecomendacionControlador {
             }
         }
 
-         List<ResultadoRecomendacion> resultados =
-                recomendadorDestinos.recomendarDestinos(ciudades, preferencias);
+        var validacion = recomendadorDestinos.validarCiudades(ciudades, preferencias);
+        model.addAttribute("ciudadesPendientes", validacion.pendientes());
+        List<ResultadoRecomendacion> resultados =
+                recomendadorDestinos.puntuarCiudadesValidas(validacion, preferencias);
         SeleccionDestinos seleccion = selectorDestinos.seleccionarMejoresDestinos(resultados);
         guardarPlanificacionSiHaceFalta(sesion, usuario, atributosCuestionario, presupuestoUsd, seleccion);
 
