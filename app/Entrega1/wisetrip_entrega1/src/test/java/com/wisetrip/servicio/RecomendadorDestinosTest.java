@@ -10,6 +10,8 @@ import java.util.List;
 import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class RecomendadorDestinosTest {
     private final RecomendadorDestinos recomendador = new RecomendadorDestinos(false);
@@ -129,6 +131,53 @@ class RecomendadorDestinosTest {
         assertEquals(2.0 / 3, coincidencias.get("Cultura"), 1e-9);
         assertEquals(Map.of(), recomendador.calcularCoincidenciasPorCategoria(
                 oferta, Map.of("playa", Importancia.si, "museos", Importancia.no)));
+    }
+
+    @Test
+    void promedioDaIgualImportanciaACategoriasConDistintaCantidadDePreguntas() {
+        var gustos = Map.of("playa", Importancia.gustar, "montana", Importancia.gustar,
+                "naturaleza", Importancia.gustar, "museos", Importancia.prefiero);
+        Ciudad paisaje = ciudad(1000);
+        paisaje.setAtributos(Map.of("playa", true, "montana", true,
+                "naturaleza", false, "museos", false));
+        Ciudad cultura = ciudad(500);
+        cultura.setAtributos(Map.of("playa", false, "montana", false,
+                "naturaleza", false, "museos", true));
+        var resultados = recomendador.recomendarDestinos(List.of(paisaje, cultura),
+                new PreferenciasUsuario(1000, gustos, 1));
+        assertEquals(List.of(cultura, paisaje), resultados.stream()
+                .map(ResultadoRecomendacion::getCiudad).toList());
+        assertEquals(0.5, resultados.get(0).getPuntajeTotal(), 1e-9);
+        assertEquals(1.0 / 3, resultados.get(1).getPuntajeTotal(), 1e-9);
+        assertFalse(resultados.get(0).isCoincidenciaProvisional());
+    }
+
+    @Test
+    void empateDeCoincidenciaConservaCercaniaAlPresupuesto() {
+        Ciudad economica = ciudad(500);
+        Ciudad cercana = ciudad(900);
+        economica.setAtributos(Map.of("playa", true));
+        cercana.setAtributos(Map.of("playa", true));
+        var resultados = recomendador.recomendarDestinos(List.of(economica, cercana),
+                new PreferenciasUsuario(1000, Map.of("playa", Importancia.gustar), 1));
+        assertEquals(List.of(cercana, economica), resultados.stream()
+                .map(ResultadoRecomendacion::getCiudad).toList());
+    }
+
+    @Test
+    void desconocidosHacenProvisionalLaCoincidenciaSoloSiSonPuntuables() {
+        Ciudad ciudad = ciudad(100);
+        ciudad.setAtributos(Map.of("playa", true));
+        var resultado = recomendador.calcularPuntajeTotal(ciudad, new PreferenciasUsuario(1000,
+                Map.of("playa", Importancia.gustar, "montana", Importancia.prefiero), 1));
+        assertEquals(1.0 / 3, resultado.getPuntajeTotal(), 1e-9);
+        assertTrue(resultado.isCoincidenciaProvisional());
+        assertTrue(resultado.isPreferenciasPuntuables());
+        var sinIntereses = recomendador.calcularPuntajeTotal(ciudad, new PreferenciasUsuario(1000,
+                Map.of("playa", Importancia.si, "montana", Importancia.no), 1));
+        assertEquals(0.0, sinIntereses.getPuntajeTotal());
+        assertFalse(sinIntereses.isPreferenciasPuntuables());
+        assertFalse(sinIntereses.isCoincidenciaProvisional());
     }
 
     private Ciudad ciudad(double costoDiario) {

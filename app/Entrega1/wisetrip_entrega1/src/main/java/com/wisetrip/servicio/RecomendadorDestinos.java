@@ -22,8 +22,8 @@ import com.wisetrip.modelo.ResultadoRecomendacion;
 @Service
 public class RecomendadorDestinos {
 
-    private static final double PESO_PRESUPUESTO = 0.4;
-    private static final double PESO_PREFERENCIAS = 0.6;
+
+
     private final boolean presupuestoObligatorio;
 
     public RecomendadorDestinos(
@@ -53,25 +53,8 @@ public class RecomendadorDestinos {
      */
     public double calcularPuntajePreferencias(Map<String, Boolean> oferta,
                                               Map<String, Importancia> gustos) {
-        int pesoTotal = 0;
-        int pesoLogrado = 0;
-
-        for (Map.Entry<String, Importancia> respuesta : gustos.entrySet()) {
-            Importancia importancia = respuesta.getValue();
-            if (importancia == null || importancia.peso <= 0) {
-                continue;
-            }
-            pesoTotal += importancia.peso;
-            if (Boolean.TRUE.equals(oferta.get(respuesta.getKey()))) {
-                pesoLogrado += importancia.peso;
-            }
-        }
-
-        if (pesoTotal == 0) {
-            return 1.0;   // sin gustar/prefiero no se penaliza a nadie
-        }
-
-        return (double) pesoLogrado / pesoTotal;
+        return calcularCoincidenciasPorCategoria(oferta, gustos).values().stream()
+                .mapToDouble(Double::doubleValue).average().orElse(0.0);
     }
 
     /**
@@ -110,10 +93,12 @@ public class RecomendadorDestinos {
         double pCosto = calcularPuntajePresupuesto(costo, presupuesto);
         double pGustos = calcularPuntajePreferencias(
                 ciudad.getAtributos(), preferencias.getAtributos());
-        double total = PESO_PRESUPUESTO * pCosto
-                            + PESO_PREFERENCIAS * pGustos;
+        boolean provisional = preferencias.getAtributos().entrySet().stream()
+                .anyMatch(e -> e.getValue() != null && e.getValue().peso > 0
+                        && ciudad.estadoAtributo(e.getKey()) == EstadoAtributo.noSabemos);
 
-        return new ResultadoRecomendacion(ciudad, total, pCosto, pGustos);
+        return new ResultadoRecomendacion(ciudad, pGustos, pCosto, pGustos,
+                preferencias.tienePreferenciasPuntuables(), provisional);
     }
 
     /**
