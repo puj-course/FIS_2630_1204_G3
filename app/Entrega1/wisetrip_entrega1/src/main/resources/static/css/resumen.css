@@ -367,6 +367,22 @@
     margin: 4px 0 5px;
 }
 
+/* HU-84: bandera junto al monto del presupuesto */
+
+.rs-monto-linea {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.rs-bandera {
+    width: 22px;
+    height: 16px;
+    object-fit: cover;
+    border-radius: 2px;
+    border: 1.5px solid var(--tinta);
+    flex-shrink: 0;
+}
+
 .rs-talon {
     width: 96px;
     flex-shrink: 0;
