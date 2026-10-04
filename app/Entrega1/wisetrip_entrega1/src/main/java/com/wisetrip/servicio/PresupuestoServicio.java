@@ -102,6 +102,7 @@ public class PresupuestoServicio {
     }
 
     /** Equivalente aproximado en dolares, para que el algoritmo pueda comparar. */
+    
     public double convertirAUsd(Presupuesto presupuesto) {
         double valor = presupuesto.getMontoNumerico();
         if (valor < 0) return 0;
