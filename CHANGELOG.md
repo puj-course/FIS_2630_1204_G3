@@ -3583,15 +3583,19 @@ como ya vamos a empezar semana de parciales he estudiando mucho y a veces no pue
 
 1. **¿Qué hice ayer?**
 
-
+Ayer se realizaron actualizaciones en los datos de la base de datos como el diccionario de datos
    
 2. **¿Qué voy a hacer hoy?**
 
-  
+Se realizo el diagrama de clases, analisis, componentes y Diagrama EBC - de secuencia  
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
-   
+Si, no hemos implementado solid al proyecto por lo que me comunique con el monitor a ver como se podria solucionar este tema ya que llevamos muy avanzado el proyecto con respecto a lo que debemos corregir a lo que el me recomendo esta paginas
+
+https://batuhankok.medium.com/interfaces-in-spring-boot-clean-architecture-88d378b1432c
+https://www.appleute.de/es/biblioteca-para-desarrolladores-de-aplicaciones/interfaz-de-programacion/
+https://docs.spring.io/spring-data/jpa/reference/repositories/definition.html   
    
 ---
 
@@ -3625,9 +3629,7 @@ hoy estuvimos realizando el taller asi que no pude realizar mucho del proyecto, 
 
 no
  
-
 ---
-
 
 ### Maria Alejandra Rodriguez
 
