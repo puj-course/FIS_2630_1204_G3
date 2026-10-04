@@ -502,3 +502,14 @@
     .pl-pct { width: 80px; }
     .pl-volver { margin-left: 0; }
 }
+/* Colores fijos de los segmentos de las barras de reparto */
+.pl-medidor-barra .pl-hospedaje,
+.pl-sobre-barra .pl-hospedaje    { background: #FFC627; }
+.pl-medidor-barra .pl-alimentacion,
+.pl-sobre-barra .pl-alimentacion { background: #2FBFAF; }
+.pl-medidor-barra .pl-transporte,
+.pl-sobre-barra .pl-transporte   { background: #F3A6C0; }
+.pl-medidor-barra .pl-actividades,
+.pl-sobre-barra .pl-actividades  { background: #7BC97F; }
+.pl-medidor-barra .pl-imprevistos,
+.pl-sobre-barra .pl-imprevistos  { background: #6BB8E8; }

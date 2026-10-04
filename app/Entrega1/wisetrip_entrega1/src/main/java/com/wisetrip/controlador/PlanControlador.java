@@ -55,6 +55,41 @@ public class PlanControlador {
         return "plan";
     }
 
+    @GetMapping("/viaje")
+    public String mostrarViaje(HttpSession sesion, Model model) {
+
+        Usuario usuario = (Usuario) sesion.getAttribute("usuarioActivo");
+        if (usuario == null) return "redirect:/login";
+
+        ResultadoRecomendacion destino =
+                (ResultadoRecomendacion) sesion.getAttribute("destinoElegido");
+        if (destino == null) return "redirect:/recomendaciones";
+
+        Ubicacion ubicacion = (Ubicacion) sesion.getAttribute("ubicacionOrigen");
+        if (ubicacion == null) return "redirect:/origen";
+
+        FechasViaje fechas = (FechasViaje) sesion.getAttribute("fechasViaje");
+        if (fechas == null) return "redirect:/fechas";
+
+        Presupuesto presupuesto = (Presupuesto) sesion.getAttribute("presupuestoViaje");
+        if (presupuesto == null) return "redirect:/presupuesto";
+
+        RepartoPresupuesto reparto =
+                (RepartoPresupuesto) sesion.getAttribute("repartoPresupuesto");
+        if (reparto == null) return "redirect:/plan";
+
+        model.addAttribute("usuario", usuario);
+        model.addAttribute("inicialesUsuario", calcularIniciales(usuario));
+        model.addAttribute("ubicacionCiudad", ubicacion.getCiudad());
+        model.addAttribute("destino", destino);
+        model.addAttribute("fechas", fechas);
+        model.addAttribute("presupuesto", presupuesto);
+        model.addAttribute("reparto", reparto);
+        model.addAttribute("dias", fechas.getDuracionDias());
+
+        return "viaje";
+    }
+
     @PostMapping("/plan")
     public String guardarPlan(@ModelAttribute("reparto") RepartoPresupuesto reparto,
                               HttpSession sesion,
@@ -79,9 +114,7 @@ public class PlanControlador {
         }
 
         sesion.setAttribute("repartoPresupuesto", reparto);
-        model.addAttribute("guardado", true);
-        cargarDatos(model, sesion, usuario, destino, presupuesto, reparto);
-        return "plan";
+        return "redirect:/viaje";
     }
 
     /** Reúne todo lo que la vista necesita, para no repetirlo en cada método. */
