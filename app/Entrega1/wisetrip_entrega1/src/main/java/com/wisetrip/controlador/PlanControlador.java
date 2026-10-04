@@ -12,6 +12,7 @@ import com.wisetrip.modelo.FechasViaje;
 import com.wisetrip.modelo.Presupuesto;
 import com.wisetrip.modelo.RepartoPresupuesto;
 import com.wisetrip.modelo.ResultadoRecomendacion;
+import com.wisetrip.modelo.Ubicacion;
 import com.wisetrip.modelo.Usuario;
 import com.wisetrip.servicio.PresupuestoServicio;
 import com.wisetrip.servicio.RepartoServicio;
@@ -89,11 +90,13 @@ public class PlanControlador {
                              RepartoPresupuesto reparto) {
 
         FechasViaje fechas = (FechasViaje) sesion.getAttribute("fechasViaje");
+        Ubicacion ubicacion = (Ubicacion) sesion.getAttribute("ubicacionOrigen");
         double total = presupuesto.getMontoNumerico();
         long dias = fechas != null ? fechas.getDuracionDias() : 0;
 
         model.addAttribute("usuario", usuario);
         model.addAttribute("inicialesUsuario", calcularIniciales(usuario));
+        model.addAttribute("ubicacionCiudad", ubicacion != null ? ubicacion.getCiudad() : "Origen");
         model.addAttribute("destino", destino);
         model.addAttribute("presupuesto", presupuesto);
         model.addAttribute("fechas", fechas);

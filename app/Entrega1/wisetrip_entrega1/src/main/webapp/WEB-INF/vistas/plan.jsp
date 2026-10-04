@@ -112,11 +112,11 @@
                         </div>
                     </div>
                     <div class="pl-medidor-barra">
-                        <span class="pl-hospedaje"    data-seg="hospedaje"    style="background:var(--c)"></span>
-                        <span class="pl-alimentacion" data-seg="alimentacion" style="background:var(--c)"></span>
-                        <span class="pl-transporte"   data-seg="transporte"   style="background:var(--c)"></span>
-                        <span class="pl-actividades"  data-seg="actividades"  style="background:var(--c)"></span>
-                        <span class="pl-imprevistos"  data-seg="imprevistos"  style="background:var(--c)"></span>
+                        <span class="pl-hospedaje"    data-seg="hospedaje"></span>
+                        <span class="pl-alimentacion" data-seg="alimentacion"></span>
+                        <span class="pl-transporte"   data-seg="transporte"></span>
+                        <span class="pl-actividades"  data-seg="actividades"></span>
+                        <span class="pl-imprevistos"  data-seg="imprevistos"></span>
                     </div>
                     <p class="pl-exceso" id="plExceso" hidden></p>
                 </div>
@@ -211,16 +211,11 @@
                     </div>
                 </div>
 
-                <div class="pl-acciones">
-                    <button type="submit" class="pl-btn" id="btnGuardar">Usar este reparto</button>
-                    <button type="button" class="pl-btn-claro" id="btnRestaurar" hidden>Volver al sugerido</button>
-                    <a class="pl-volver" href="<c:url value='/recomendaciones'/>">&larr; Cambiar destino</a>
-                </div>
             </div>
         </form>
     </section>
 
-    <aside>
+    <aside class="pl-lateral">
         <div class="pl-sobre">
             <div class="pl-sobre-top">
                 <span>WiseTrip · Plan de gastos</span>
@@ -232,6 +227,14 @@
                     <span class="pl-sobre-rotulo">Tu destino</span>
                     <span class="pl-sobre-ciudad">${destino.ciudad.nombre}</span>
                     <span class="pl-sobre-pais">${destino.ciudad.pais}</span>
+                </div>
+
+                <div class="pl-sobre-barra">
+                    <span class="pl-hospedaje"    data-seg="hospedaje"></span>
+                    <span class="pl-alimentacion" data-seg="alimentacion"></span>
+                    <span class="pl-transporte"   data-seg="transporte"></span>
+                    <span class="pl-actividades"  data-seg="actividades"></span>
+                    <span class="pl-imprevistos"  data-seg="imprevistos"></span>
                 </div>
 
                 <div class="pl-sobre-perforado"></div>
@@ -266,6 +269,14 @@
             <div class="pl-sobre-abajo">
                 <span>Por día</span>
                 <span id="plSobreDia">${porDiaTotal} ${presupuesto.moneda}</span>
+            </div>
+        </div>
+
+        <div class="pl-acciones">
+            <button type="submit" form="formPlan" class="pl-btn" id="btnGuardar" hidden>Usar este reparto</button>
+            <div class="pl-acciones-fila">
+                <button type="button" class="pl-btn-claro" id="btnRestaurar" hidden>Volver al sugerido</button>
+                <a class="pl-volver" href="<c:url value='/recomendaciones'/>">&larr; Cambiar destino</a>
             </div>
         </div>
     </aside>

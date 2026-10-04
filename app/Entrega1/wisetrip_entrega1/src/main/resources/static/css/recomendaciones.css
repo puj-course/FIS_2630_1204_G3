@@ -117,28 +117,22 @@
 /* ===== Portada con collage ===== */
 
 .rc-portada {
-    display: grid;
-    grid-template-columns: minmax(340px, 0.85fr) 1.6fr;
+    position: relative;
+    height: 440px;
     border: 3px solid var(--tinta);
     border-radius: 20px;
     overflow: hidden;
-    min-height: 400px;
     margin-bottom: 38px;
-    background: var(--crema);
-}
-
-.rc-cabeza {
-    padding: 36px 34px 32px;
-    border-right: 3px solid var(--tinta);
-    background-color: var(--crema);
-    background-image: radial-gradient(circle at 1px 1px, rgba(22,22,29,.13) 1.3px, transparent 0);
-    background-size: 20px 20px;
+    background: var(--tinta);
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    align-items: center;
 }
 
+/* Fotos de fondo */
 .rc-collage {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: 1fr 1fr;
@@ -150,19 +144,37 @@
     position: relative;
     margin: 0;
     overflow: hidden;
+    min-height: 0;
     background: var(--azul);
 }
 .rc-foto img {
+    position: absolute;
+    inset: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
 }
 
+/* Sombra suave solo del lado del texto */
+.rc-portada::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(90deg,
+        rgba(22,22,29,.55) 0%,
+        rgba(22,22,29,.38) 30%,
+        rgba(22,22,29,.12) 48%,
+        rgba(22,22,29,0) 62%);
+    pointer-events: none;
+}
+
 .rc-foto-sello {
     position: absolute;
     right: 12px;
     bottom: 12px;
+    z-index: 2;
     border: 2.5px solid var(--tinta);
     border-radius: 20px;
     padding: 4px 12px;
@@ -182,12 +194,23 @@
 .rc-foto:nth-child(5) .rc-foto-sello { background: var(--azul); transform: rotate(-3deg); }
 .rc-foto:nth-child(6) .rc-foto-sello { background: var(--amarillo); transform: rotate(2deg); }
 
-/* Tipos que no tienen tus destinos: la foto se ve igual, solo el sello va en gris */
+/* Tipos que no tienen tus destinos: la foto se ve igual, solo el sello va en blanco */
 .rc-foto.rc-foto-apagada .rc-foto-sello { background: #fff; color: var(--gris-claro); }
+
+/* Los sellos de la primera columna quedan debajo del texto: se ocultan */
+.rc-foto:nth-child(1) .rc-foto-sello,
+.rc-foto:nth-child(4) .rc-foto-sello { right: auto; left: 12px; }
+
+/* Texto encima de las fotos */
+.rc-cabeza {
+    position: relative;
+    z-index: 3;
+    max-width: 500px;
+    padding: 36px 40px;
+}
 
 .rc-sello {
     display: inline-block;
-    align-self: flex-start;
     background: var(--amarillo);
     border: 2.5px solid var(--tinta);
     border-radius: 30px;
@@ -204,14 +227,24 @@
 
 .rc-titulo {
     font-family: var(--display);
-    font-size: clamp(40px, 4.4vw, 58px);
+    font-size: clamp(42px, 4.8vw, 64px);
     line-height: .94;
     letter-spacing: -2.4px;
     text-transform: uppercase;
-    margin: 0 0 12px;
+    color: #fff;
+    text-shadow: 4px 4px 0 var(--tinta);
+    margin: 0 0 14px;
 }
 
-.rc-bajada { font-size: 16.5px; line-height: 1.55; color: #2E2E36; margin: 0 0 22px; max-width: 34ch; }
+.rc-bajada {
+    font-size: 17px;
+    line-height: 1.55;
+    font-weight: 600;
+    color: #fff;
+    text-shadow: 0 1px 3px rgba(0,0,0,.55);
+    margin: 0 0 22px;
+    max-width: 34ch;
+}
 
 .rc-ficha {
     background: #fff;
@@ -228,6 +261,7 @@
     align-items: flex-start;
     gap: 8px;
     box-shadow: 4px 4px 0 var(--tinta);
+    max-width: 420px;
 }
 .rc-ficha-editar {
     font-family: var(--texto);
@@ -245,7 +279,9 @@
 .rc-portada-nota {
     margin: 16px 0 0;
     font-size: 13.5px;
-    color: var(--gris);
+    font-weight: 600;
+    color: #fff;
+    text-shadow: 0 1px 3px rgba(0,0,0,.6);
 }
 
 /* ===== Tarjetas de destino ===== */
@@ -430,9 +466,14 @@
     .rc-pasos { order: 3; width: 100%; justify-content: flex-start; }
     .rc-pantalla { padding: 24px 20px 48px; }
 
-    .rc-portada { grid-template-columns: 1fr; }
-    .rc-collage { order: -1; height: 280px; }
-    .rc-cabeza { border-right: none; border-top: 3px solid var(--tinta); padding: 26px 22px; }
+    .rc-portada { height: auto; min-height: 480px; align-items: flex-end; }
+    .rc-portada::before {
+        background: linear-gradient(180deg,
+            rgba(22,22,29,0) 0%,
+            rgba(22,22,29,.25) 40%,
+            rgba(22,22,29,.6) 100%);
+    }
+    .rc-cabeza { max-width: none; padding: 26px 22px; }
 
     .rc-destino { flex-direction: column; }
     .rc-posicion { width: 100%; height: 56px; border-right: none; border-bottom: 3px solid var(--tinta); }
@@ -449,5 +490,6 @@
 }
 
 @media (max-width: 560px) {
-    .rc-collage { grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(3, 1fr); height: 360px; }
+    .rc-collage { grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(3, 1fr); }
+    .rc-portada { min-height: 540px; }
 }
