@@ -1,7 +1,7 @@
 <%-- Preferencias de viaje.
      Vista con las preguntas organizadas por categoría (HU-71, #239).
      Los niveles de importancia son visuales por ahora: las tres opciones positivas
-     siguen enviando "si" hasta implementar NivelImportancia en el servidor. --%>
+     siguen enviando "si" hasta implementar Importancia en el servidor. --%>
 
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
