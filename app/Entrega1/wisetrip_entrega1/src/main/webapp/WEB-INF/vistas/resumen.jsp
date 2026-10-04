@@ -7,6 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Resumen de tu viaje | WiseTrip</title>
+    <link rel="stylesheet" href="<c:url value='/css/estilos.css'/>">
     <link rel="stylesheet" href="<c:url value='/css/resumen.css'/>">
 </head>
 <body class="rs">
@@ -182,9 +183,18 @@
                         </div>
 
                         <div class="rs-dinero">
-                            <div class="rs-monto">
+                                                        <div class="rs-monto">
                                 <span class="rs-pase-rotulo">Presupuesto</span>
-                                <strong>${montoFormateado} ${presupuesto.moneda}</strong>
+                                <strong class="rs-monto-linea">
+                                    ${montoFormateado} ${presupuesto.moneda}
+                                    <%-- HU-84: bandera del país de la moneda elegida --%>
+                                    <c:if test="${not empty presupuesto.moneda}">
+                                        <img class="rs-bandera"
+                                            src="<c:url value='/img/banderas/${presupuesto.moneda}.png'/>"
+                                            alt="Bandera de ${presupuesto.moneda}"
+                                            onerror="this.style.display='none'">
+                                    </c:if>
+                                </strong>
                                 <span class="rs-pase-detalle">
                                     ${nombreMoneda}
                                     <c:if test="${not empty usdFormateado}"> · ≈ USD ${usdFormateado}</c:if>

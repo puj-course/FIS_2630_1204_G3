@@ -71,16 +71,16 @@
 
         <div class="lg-tira">
             <figure class="lg-foto">
-                <img src="/img/portada/Cartegena.jpg" alt="">
-                <figcaption>Cartagena · COL</figcaption>
+                <img src="/img/portada/flores.jpg" alt="Isla de Flores, Guatemala">
+                <figcaption>Flores · GUA</figcaption>
             </figure>
             <figure class="lg-foto">
-                <img src="/img/portada/Peru.jpg" alt="">
-                <figcaption>Cusco · PER</figcaption>
+                <img src="/img/portada/puntadeleste.jpg" alt="Escultura Los Dedos en Punta del Este, Uruguay">
+                <figcaption>Punta del Este · URU</figcaption>
             </figure>
             <figure class="lg-foto">
-                <img src="/img/portada/desierto.jpg" alt="">
-                <figcaption>Atacama · CHI</figcaption>
+                <img src="/img/portada/lapaz.jpg" alt="Teleférico sobre La Paz, Bolivia">
+                <figcaption>La Paz · BOL</figcaption>
             </figure>
         </div>
 
