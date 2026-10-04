@@ -25,16 +25,16 @@
         <span class="rg-curva-2"></span>
 
         <figure class="rg-polaroid rg-pol-1">
-            <img src="/img/portada/Cartegena.jpg" alt="">
-            <figcaption>Cartagena · COL</figcaption>
+            <img src="/img/portada/medellin.jpg" alt="Vista de Medellín, Colombia">
+            <figcaption>Medellín · COL</figcaption>
         </figure>
         <figure class="rg-polaroid rg-pol-2">
-            <img src="/img/portada/Rio.jpg" alt="">
-            <figcaption>Río de Janeiro · BRA</figcaption>
+            <img src="/img/portada/santiago.jpg" alt="Santiago de Chile con los Andes al fondo">
+            <figcaption>Santiago · CHI</figcaption>
         </figure>
         <figure class="rg-polaroid rg-pol-3">
-            <img src="/img/portada/Amazonas.jpg" alt="">
-            <figcaption>Amazonas · COL</figcaption>
+            <img src="/img/portada/bocas.jpg" alt="Playa de Bocas del Toro, Panamá">
+            <figcaption>Bocas del Toro · PAN</figcaption>
         </figure>
 
         <span class="rg-sello-flotante">Gratis</span>

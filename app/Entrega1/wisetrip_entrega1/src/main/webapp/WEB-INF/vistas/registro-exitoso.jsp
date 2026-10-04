@@ -25,23 +25,28 @@
 
         <div class="polaroids">
             <figure class="polaroid pol-1">
-                <img src="/img/portada/Cartegena.jpg" alt="">
-                <figcaption>Cartagena · COL</figcaption>
+                <img src="/img/portada/guadalajara.jpg" alt="Catedral de Guadalajara, México">
+                <figcaption>Guadalajara · MEX</figcaption>
             </figure>
             <figure class="polaroid pol-2">
-                <img src="/img/portada/Argentina.jpg" alt="">
-                <figcaption>Buenos Aires · ARG</figcaption>
+                <img src="/img/portada/panama.jpg" alt="Rascacielos de Ciudad de Panamá">
+                <figcaption>Ciudad de Panamá · PAN</figcaption>
             </figure>
             <figure class="polaroid pol-3">
-                <img src="/img/portada/Peru.jpg" alt="">
-                <figcaption>Cusco · PER</figcaption>
+                <img src="/img/portada/chillan.jpg" alt="Nevados de Chillán, Chile">
+                <figcaption>Chillán · CHI</figcaption>
             </figure>
         </div>
     </aside>
 
     <main class="bienvenida-panel">
 
-        <span class="check-grande">✓</span>
+        <span class="check-grande">
+            <svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" aria-hidden="true">
+                <path d="M5 12.5l4.5 4.5L19 7.5" stroke="currentColor" stroke-width="3"
+                      stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </span>
 
         <span class="rotulo-paso">Cuenta creada con éxito</span>
 
@@ -60,7 +65,12 @@
                 <strong>${nombre}</strong>
                 <span>${correo}</span>
             </div>
-            <span class="tarjeta-cuenta-check">✓</span>
+            <span class="tarjeta-cuenta-check">
+                <svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" aria-hidden="true">
+                    <path d="M5 12.5l4.5 4.5L19 7.5" stroke="currentColor" stroke-width="3"
+                          stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </span>
         </div>
 
         <a class="boton" href="<c:url value='/login'/>">Empezar a planear mi viaje &rarr;</a>

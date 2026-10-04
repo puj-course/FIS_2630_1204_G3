@@ -3,10 +3,14 @@
 .og {
     --tinta: #16161D;
     --morado: #5B3FA8;
+    --morado-hondo: #45308A;
+    --noche: #231C4A;
     --turquesa: #2FBFAF;
     --turquesa-suave: #D6F2EE;
     --turquesa-hondo: #1E9487;
     --amarillo: #FFC627;
+    --rosa: #F3A6C0;
+    --verde: #7BC97F;
     --crema: #EFE9DC;
     --arena-honda: #C9BFA9;
     --gris: #5B5B66;
@@ -28,6 +32,7 @@
 }
 
 .og * { box-sizing: border-box; }
+.og [hidden] { display: none !important; }
 
 /* ===== Encabezado ===== */
 
@@ -199,12 +204,15 @@
 }
 
 .og-confirmado {
-    display: block;
+    display: flex;
+    align-items: center;
+    gap: 7px;
     font-size: 13.5px;
     font-weight: 600;
     color: var(--turquesa-hondo);
-    margin: -13px 0 18px;
+    margin: -11px 0 18px;
 }
+.og-confirmado svg { width: 18px; height: 18px; flex-shrink: 0; }
 
 .og-chips { display: flex; gap: 10px; flex-wrap: wrap; margin: 4px 0 8px; }
 .og-chip {
@@ -246,125 +254,192 @@
 .og-continuar:hover { transform: translate(-1px,-1px); box-shadow: 7px 7px 0 var(--tinta); }
 .og-continuar:active { transform: translate(2px,2px); box-shadow: 2px 2px 0 var(--tinta); }
 
-/* ===== Panel del pase ===== */
+/* ===== Cabina: respaldo del asiento con la pantalla ===== */
 
-.og-panel {
+.og-cabina {
     position: relative;
-    background: linear-gradient(160deg, var(--azul) 0%, #4E93BE 100%);
+    background-color: var(--morado);
+    background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,.2) 1.5px, transparent 0);
+    background-size: 22px 22px;
     border: 3px solid var(--tinta);
-    border-radius: 22px;
-    padding: 56px 40px;
-    min-height: 560px;
+    border-radius: 34px 34px 22px 22px;
+    padding: 46px 26px 30px;
+}
+
+/* Seguro de la bandeja, arriba al centro */
+.og-cabina::before {
+    content: "";
+    position: absolute;
+    top: 14px; left: 50%;
+    width: 64px; height: 14px;
+    margin-left: -32px;
+    background: var(--crema);
+    border: 2.5px solid var(--tinta);
+    border-radius: 8px;
+}
+
+.og-monitor {
+    background: var(--noche);
+    border: 9px solid var(--tinta);
+    border-radius: 20px;
+    overflow: hidden;
+    color: var(--crema);
+}
+
+.og-monitor-barra {
     display: flex;
     align-items: center;
-    justify-content: center;
-    overflow: hidden;
-}
-
-.og-sol {
-    position: absolute;
-    top: 32px; right: 36px;
-    width: 78px; height: 78px;
-    background: var(--amarillo);
-    border: 3px solid var(--tinta);
-    border-radius: 50%;
-}
-.og-onda {
-    position: absolute;
-    bottom: 38px; left: 32px;
-    width: 78px; height: 20px;
-    border-bottom: 3px solid #fff;
-    border-radius: 0 0 50% 50%;
-    opacity: .85;
-}
-
-.og-pase {
-    position: relative;
-    z-index: 3;
-    width: 100%;
-    max-width: 430px;
-    background: #fff;
-    border: 3px solid var(--tinta);
-    border-radius: 16px;
-    box-shadow: 9px 9px 0 var(--tinta);
-    overflow: hidden;
-    transform: rotate(-2deg);
-}
-
-.og-pase-top {
-    background: var(--morado);
-    color: #fff;
-    padding: 13px 22px;
-    display: flex;
     justify-content: space-between;
+    gap: 12px;
+    padding: 12px 16px;
+    border-bottom: 2px solid rgba(239,233,220,.14);
     font-family: var(--dato);
     font-size: 11px;
-    letter-spacing: .1em;
+    font-weight: 600;
+    letter-spacing: .12em;
     text-transform: uppercase;
 }
 
-.og-pase-cuerpo { padding: 24px 22px 18px; }
+.og-estado {
+    background: rgba(239,233,220,.12);
+    border: 1.5px solid rgba(239,233,220,.35);
+    border-radius: 20px;
+    padding: 4px 11px;
+    color: var(--crema);
+}
+.og-estado-listo { background: var(--verde); border-color: var(--tinta); color: var(--tinta); }
 
-.og-ruta { display: flex; align-items: flex-start; justify-content: space-between; gap: 14px; }
-.og-ruta-destino { text-align: right; }
+/* ===== Mapa ===== */
 
-.og-pase-rotulo {
+.og-mapa {
+    position: relative;
+    background-image: radial-gradient(circle at 1px 1px, rgba(239,233,220,.10) 1px, transparent 0);
+    background-size: 14px 14px;
+}
+.og-mapa svg { display: block; width: 100%; height: auto; }
+
+.og-reticula line {
+    stroke: rgba(239,233,220,.10);
+    stroke-width: 1;
+    stroke-dasharray: 3 5;
+}
+
+.og-tierra {
+    fill: #3A3466;
+    stroke: var(--tinta);
+    stroke-width: 1.6;
+    stroke-linejoin: round;
+}
+.og-tierra-ruta { fill: var(--turquesa); transition: fill .3s ease; }
+.og-tierra-elegida { fill: var(--verde); }
+
+.og-punto { fill: var(--tinta); opacity: .55; }
+.og-punto-pais { fill: var(--crema); opacity: 1; stroke: var(--tinta); stroke-width: 1.2; }
+
+.og-arco {
+    fill: none;
+    stroke: var(--rosa);
+    stroke-width: 2.6;
+    stroke-dasharray: 6 6;
+    stroke-linecap: round;
+    opacity: 0;
+    transition: opacity .3s ease;
+}
+
+.og-pin circle { stroke: var(--tinta); stroke-width: 2.5; }
+.og-pin-origen circle { fill: var(--amarillo); }
+.og-pin-origen .og-pin-aro { fill: none; stroke: var(--amarillo); stroke-width: 2; opacity: .55; }
+.og-pin-destino circle { fill: var(--rosa); }
+.og-pin-destino { opacity: 0; transition: opacity .25s ease; }
+
+.og-avion path { fill: var(--crema); stroke: var(--tinta); stroke-width: 1.4; stroke-linejoin: round; }
+.og-avion { opacity: 0; }
+
+.og-visible { opacity: 1; }
+
+/* Etiquetas de ciudad sobre el mapa */
+.og-etiqueta {
+    position: absolute;
+    transform: translate(-50%, calc(-100% - 16px));
+    white-space: nowrap;
+    border: 2px solid var(--tinta);
+    border-radius: 20px;
+    padding: 4px 10px;
+    font-family: var(--dato);
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--tinta);
+    pointer-events: none;
+}
+.og-etiqueta-origen { background: var(--amarillo); }
+.og-etiqueta-abajo { transform: translate(-50%, 16px); }
+.og-etiqueta-destino {
+    background: var(--rosa);
+    opacity: 0;
+    transition: opacity .25s ease;
+}
+.og-etiqueta-destino.og-visible { opacity: 1; }
+
+/* ===== Franja de datos ===== */
+
+.og-monitor-datos {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-top: 2px solid rgba(239,233,220,.14);
+}
+.og-monitor-datos > div {
+    padding: 14px 16px 16px;
+    border-right: 2px solid rgba(239,233,220,.14);
+    min-width: 0;
+}
+.og-monitor-datos > div:last-child { border-right: none; }
+
+.og-dato-rotulo {
     display: block;
     font-family: var(--dato);
     font-size: 10px;
-    letter-spacing: .12em;
-    text-transform: uppercase;
-    color: var(--gris);
-    margin-bottom: 5px;
-}
-.og-pase-codigo {
-    display: block;
-    font-family: var(--display);
-    font-size: 30px;
-    line-height: 1;
-    letter-spacing: -1.4px;
-    text-transform: uppercase;
-}
-.og-pase-interrogante {
-    display: block;
-    font-family: var(--display);
-    font-size: 34px;
-    line-height: 1;
-    color: var(--morado);
-}
-.og-pase-detalle { display: block; font-size: 13px; color: var(--gris); margin-top: 6px; }
-.og-flecha { font-family: var(--dato); font-size: 14px; padding-top: 26px; }
-
-.og-perforado { border-top: 2.5px dashed var(--tinta); margin: 20px 0 16px; }
-
-.og-pase-datos { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 20px; }
-.og-pase-datos strong { font-size: 14px; }
-
-.og-pase-abajo {
-    background: var(--amarillo);
-    border-top: 3px solid var(--tinta);
-    padding: 12px 22px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-family: var(--dato);
-    font-size: 10.5px;
     letter-spacing: .1em;
     text-transform: uppercase;
+    color: var(--amarillo);
+    margin-bottom: 6px;
 }
-.og-barras {
+.og-monitor-datos > div:nth-child(2) .og-dato-rotulo { color: var(--rosa); }
+.og-monitor-datos > div:nth-child(3) .og-dato-rotulo { color: var(--turquesa); }
+
+.og-monitor-datos strong {
     display: block;
-    width: 120px; height: 26px;
-    background: repeating-linear-gradient(90deg,
-        var(--tinta) 0 2px, transparent 2px 5px,
-        var(--tinta) 5px 8px, transparent 8px 11px,
-        var(--tinta) 11px 12px, transparent 12px 16px);
+    font-family: var(--display);
+    font-size: 17px;
+    letter-spacing: -.4px;
+    line-height: 1.1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
+.og-dato-extra {
+    display: block;
+    margin-top: 5px;
+    font-family: var(--dato);
+    font-size: 10.5px;
+    color: rgba(239,233,220,.65);
+    white-space: pre;
+}
+
+/* ===== Pantallas pequeñas ===== */
 
 @media (max-width: 980px) {
     .og-pantalla { grid-template-columns: 1fr; gap: 34px; padding: 28px 20px 44px; }
     .og-cabecera { flex-wrap: wrap; gap: 14px; padding: 14px 20px; }
     .og-pasos { order: 3; width: 100%; justify-content: flex-start; }
     .og-fila { flex-direction: column; gap: 0; }
-    .og-pase { transform: none; }
+}
+
+@media (max-width: 560px) {
+    .og-cabina { padding: 40px 12px 14px; }
+    .og-monitor { border-width: 6px; }
+    .og-monitor-datos { grid-template-columns: 1fr; }
+    .og-monitor-datos > div { border-right: none; border-bottom: 2px solid rgba(239,233,220,.14); }
+    .og-monitor-datos > div:last-child { border-bottom: none; }
 }
