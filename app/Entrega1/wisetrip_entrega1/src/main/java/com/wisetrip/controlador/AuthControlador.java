@@ -9,11 +9,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import com.wisetrip.servicio.TelegramNotificationService;
 
 import com.wisetrip.modelo.Usuario;
-// para notificaciones por correo
 import com.wisetrip.servicio.EmailNotificationService;
+import com.wisetrip.servicio.TelegramNotificationService;
 import com.wisetrip.servicio.UsuarioServicio;
 
 import jakarta.servlet.http.HttpSession;
@@ -60,6 +59,8 @@ public class AuthControlador {
         usuario.setCorreo(usuario.getCorreo().trim());
         usuario.setNumeroDocumento(usuario.getNumeroDocumento().trim());
         usuarioServicio.registrar(usuario);
+
+        // Correo de confirmacion; si falla, el registro no se rompe
         try {
             emailService.enviarNotificacion(
                 usuario.getCorreo(),
@@ -70,13 +71,21 @@ public class AuthControlador {
                 + "¡Buen viaje!\n"
                 + "El equipo de WiseTrip"
             );
-        }catch (Exception e) {
+        } catch (Exception e) {
             System.err.println("No se pudo enviar el correo de confirmación: " + e.getMessage());
         }
+
         sesion.setAttribute("usuarioActivo", usuario);
+
+        String[] partes = usuario.getNombreCompleto().trim().split("\\s+");
+        String iniciales = partes.length > 1
+                ? ("" + partes[0].charAt(0) + partes[1].charAt(0)).toUpperCase()
+                : partes[0].substring(0, 1).toUpperCase();
 
         flash.addFlashAttribute("nombre", usuario.getNombreCompleto());
         flash.addFlashAttribute("correo", usuario.getCorreo());
+        flash.addFlashAttribute("primerNombre", partes[0]);
+        flash.addFlashAttribute("inicialesUsuario", iniciales);
         return "redirect:/registro-exitoso";
     }
 
