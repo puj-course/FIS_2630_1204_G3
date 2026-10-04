@@ -57,7 +57,9 @@
             document.querySelector('[data-relleno="' + cat + '"]').style.width = v + '%';
             document.querySelector('[data-monto="' + cat + '"]').textContent = formatear(dinero);
             document.querySelector('[data-sobre="' + cat + '"]').textContent = formatear(dinero);
-            document.querySelector('[data-seg="' + cat + '"]').style.width = v + '%';
+            document.querySelectorAll('[data-seg="' + cat + '"]').forEach(function (s) {
+                s.style.width = v + '%';
+            });
         });
 
         var disponible = 100 - suma;
@@ -88,6 +90,8 @@
 
     function elegirModo(modo) {
         panel.hidden = false;
+        boton.hidden = false;
+
         var personalizado = modo === 'personalizado';
         panel.classList.toggle('pl-modo-auto', !personalizado);
 
