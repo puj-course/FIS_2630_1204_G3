@@ -70,6 +70,25 @@
 
     <section class="rc-portada">
 
+        <div class="rc-cabeza">
+            <span class="rc-sello">Resultado de tu búsqueda</span>
+            <h1 class="rc-titulo">Tus destinos</h1>
+            <p class="rc-bajada">${seleccion.mensaje}</p>
+
+            <div class="rc-ficha">
+                <div>
+                    ${ubicacion.ciudad} &rarr; Tus destinos<br>
+                    <c:if test="${not empty fechas}">${fechas.fechaInicio} — ${fechas.fechaFin}</c:if>
+                    <c:if test="${not empty presupuesto}"> · ${presupuesto.moneda} ${presupuesto.monto}</c:if>
+                </div>
+                <a class="rc-ficha-editar" href="<c:url value='/resumen'/>">Editar búsqueda</a>
+            </div>
+
+            <p class="rc-portada-nota" id="rcNotaCollage">
+                Los sellos a color son lo que tienen en común tus destinos.
+            </p>
+        </div>
+
         <div class="rc-collage" aria-hidden="true">
             <figure class="rc-foto" data-tipo="playa">
                 <img src="/img/recomendaciones/playa.jpg" alt="">
@@ -95,27 +114,6 @@
                 <img src="/img/recomendaciones/fiesta.jpg" alt="">
                 <span class="rc-foto-sello">Fiesta</span>
             </figure>
-        </div>
-
-        <div class="rc-portada-velo"></div>
-
-        <div class="rc-cabeza">
-            <span class="rc-sello">Resultado de tu búsqueda</span>
-            <h1 class="rc-titulo">Tus destinos</h1>
-            <p class="rc-bajada">${seleccion.mensaje}</p>
-
-            <div class="rc-ficha">
-                <div>
-                    ${ubicacion.ciudad} &rarr; Tus destinos<br>
-                    <c:if test="${not empty fechas}">${fechas.fechaInicio} — ${fechas.fechaFin}</c:if>
-                    <c:if test="${not empty presupuesto}"> · ${presupuesto.moneda} ${presupuesto.monto}</c:if>
-                </div>
-                <a class="rc-ficha-editar" href="<c:url value='/resumen'/>">Editar búsqueda</a>
-            </div>
-
-            <p class="rc-portada-nota" id="rcNotaCollage">
-                A color, lo que tienen en común tus destinos.
-            </p>
         </div>
 
     </section>
@@ -211,9 +209,9 @@
 </script>
 
 <script>
-    /* Solo visual: enciende en el collage los tipos de viaje que tienen
-       los destinos recomendados. Los tipos salen de los atributos de
-       cada ciudad en el catálogo. No cambia nada de la recomendación. */
+    /* Solo visual: enciende en el collage los sellos de los tipos de viaje
+       que tienen los destinos recomendados. Los tipos salen de los atributos
+       de cada ciudad en el catálogo. No cambia nada de la recomendación. */
     (function () {
         const TIPOS = {
             'Ciudad de México': ['sabores', 'fiesta'],
