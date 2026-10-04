@@ -1,8 +1,7 @@
 /**
  * Preferencias de viaje.
- * Modelo que agrupa el presupuesto (en USD) y los atributos de preferencia (sí/no)
- * del usuario, usados para comparar o filtrar opciones de viaje.
- *Preferencias y presupuesto ingresados por el usuario
+ * Modelo que agrupa el presupuesto (en USD) y los atributos de preferencia, esto cambio
+ * ya que ahora, usamos mas que si o no, se afina un poco mas la recomendacion.
  */
 
 package com.wisetrip.modelo;
@@ -14,7 +13,7 @@ public class PreferenciasUsuario {
 
     private final long duracionDias;
     private final double presupuesto;   // en USD, para poder comparar
-    private final Map<String, Boolean> atributos;
+    private final Map<String, Importancia> atributos;
 
     public PreferenciasUsuario(double presupuesto, Map<String, Boolean> atributos, long duracionDias) {
         if (duracionDias < 1) throw new IllegalArgumentException("La duracion debe ser positiva.");
