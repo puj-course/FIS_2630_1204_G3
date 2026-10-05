@@ -3746,9 +3746,6 @@ No
 1. **¿Qué logramos?**
 
 
-
-### Sprint Retrospective
-
 2. **¿Cómo trabajamos?**
 
 
@@ -3765,9 +3762,6 @@ No
 
 1. **¿Qué logramos?**
 
-
-
-### Sprint Retrospective
 
 2. **¿Cómo trabajamos?**
 
@@ -3786,9 +3780,6 @@ No
 1. **¿Qué logramos?**
 
 
-
-### Sprint Retrospective
-
 2. **¿Cómo trabajamos?**
 
 
@@ -3801,21 +3792,17 @@ No
 
 ## Isabella Posada
 
-### Sprint Review
-
 1. **¿Qué logramos?**
 
-
-
-### Sprint Retrospective
+Logramos identificar los aspectos necesarios y evaluables para la entrega que viene, además de mejorar la lógica de recomendaciones.
 
 2. **¿Cómo trabajamos?**
 
-
+Trabajamos revisando el código, viendo problemas y haciendo ajustes puntuales en equipo, y en equipo trabajamos bien
 
 3. **¿Qué podríamos mejorar?**
 
-
+Podríamos organizar mejor los cambios, documentar más las decisiones y validar antes de integrar al repositorio, especialmente para arreglar factores del codigo que no cumplen con SOLID y los diagramas.
 
 ---
 
