@@ -23,7 +23,6 @@ public class SeleccionControlador {
      * Guarda en sesión el destino que el viajero eligió entre los tres
      * recomendados y avanza al reparto del presupuesto.
      */
-    @SuppressWarnings("unchecked")
     @GetMapping("/destino/{id}")
     public String elegirDestino(@PathVariable("id") int id, HttpSession sesion) {
 
@@ -39,6 +38,11 @@ public class SeleccionControlador {
 
         SeleccionDestinos seleccion = (SeleccionDestinos) sesion.getAttribute("seleccionRecomendada");
         if (seleccion == null) return "redirect:/recomendaciones";
+        SeleccionDestinos seleccion =
+            (SeleccionDestinos) sesion.getAttribute("seleccionDestinos");
+        if (seleccion == null || seleccion.isVacio()) {
+            return "redirect:/recomendaciones";
+        }
 
         ResultadoRecomendacion elegido = seleccion.getDestinos().stream()
                 .filter(r -> r.getCiudad().getId() == id)

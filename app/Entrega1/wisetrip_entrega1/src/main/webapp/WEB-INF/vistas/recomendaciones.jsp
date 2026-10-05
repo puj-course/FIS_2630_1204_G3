@@ -18,13 +18,41 @@
     </a>
 
     <nav class="rc-pasos">
-        <span class="rc-paso rc-paso-hecho"><span class="rc-paso-check">✓</span> Origen</span>
+        <span class="rc-paso rc-paso-hecho">
+            <span class="rc-paso-check">
+                <svg viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                    <path d="M2.5 6.3l2.3 2.3L9.5 3.6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </span>
+            Origen
+        </span>
         <span class="rc-linea"></span>
-        <span class="rc-paso rc-paso-hecho"><span class="rc-paso-check">✓</span> Preferencias</span>
+        <span class="rc-paso rc-paso-hecho">
+            <span class="rc-paso-check">
+                <svg viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                    <path d="M2.5 6.3l2.3 2.3L9.5 3.6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </span>
+            Preferencias
+        </span>
         <span class="rc-linea"></span>
-        <span class="rc-paso rc-paso-hecho"><span class="rc-paso-check">✓</span> Fechas</span>
+        <span class="rc-paso rc-paso-hecho">
+            <span class="rc-paso-check">
+                <svg viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                    <path d="M2.5 6.3l2.3 2.3L9.5 3.6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </span>
+            Fechas
+        </span>
         <span class="rc-linea"></span>
-        <span class="rc-paso rc-paso-hecho"><span class="rc-paso-check">✓</span> Presupuesto</span>
+        <span class="rc-paso rc-paso-hecho">
+            <span class="rc-paso-check">
+                <svg viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                    <path d="M2.5 6.3l2.3 2.3L9.5 3.6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </span>
+            Presupuesto
+        </span>
         <span class="rc-linea"></span>
         <span class="rc-paso rc-paso-activo"><span class="rc-paso-num">5</span> Destinos</span>
     </nav>
@@ -40,22 +68,55 @@
 
 <main class="rc-pantalla">
 
-    <div class="rc-cabeza">
-        <div>
+    <section class="rc-portada">
+
+        <div class="rc-cabeza">
             <span class="rc-sello">Resultado de tu búsqueda</span>
             <h1 class="rc-titulo">Tus destinos</h1>
             <p class="rc-bajada">${seleccion.mensaje}</p>
+
+            <div class="rc-ficha">
+                <div>
+                    ${ubicacion.ciudad} &rarr; Tus destinos<br>
+                    <c:if test="${not empty fechas}">${fechas.fechaInicio} — ${fechas.fechaFin}</c:if>
+                    <c:if test="${not empty presupuesto}"> · ${presupuesto.moneda} ${presupuesto.monto}</c:if>
+                </div>
+                <a class="rc-ficha-editar" href="<c:url value='/resumen'/>">Editar búsqueda</a>
+            </div>
+
+            <p class="rc-portada-nota" id="rcNotaCollage">
+                Los sellos a color son lo que tienen en común tus destinos.
+            </p>
         </div>
 
-        <div class="rc-ficha">
-            <div>
-                ${ubicacion.ciudad} &rarr; ???<br>
-                <c:if test="${not empty fechas}">${fechas.fechaInicio} — ${fechas.fechaFin}</c:if>
-                <c:if test="${not empty presupuesto}"> · ${presupuesto.moneda} ${presupuesto.monto}</c:if>
-            </div>
-            <a class="rc-ficha-editar" href="<c:url value='/resumen'/>">Editar búsqueda</a>
+        <div class="rc-collage" aria-hidden="true">
+            <figure class="rc-foto" data-tipo="playa">
+                <img src="/img/recomendaciones/playa.jpg" alt="">
+                <span class="rc-foto-sello">Playa</span>
+            </figure>
+            <figure class="rc-foto" data-tipo="montana">
+                <img src="/img/recomendaciones/montana.jpg" alt="">
+                <span class="rc-foto-sello">Montaña</span>
+            </figure>
+            <figure class="rc-foto" data-tipo="aventura">
+                <img src="/img/recomendaciones/aventura.jpg" alt="">
+                <span class="rc-foto-sello">Aventura</span>
+            </figure>
+            <figure class="rc-foto" data-tipo="sabores">
+                <img src="/img/recomendaciones/sabores.jpg" alt="">
+                <span class="rc-foto-sello">Sabores</span>
+            </figure>
+            <figure class="rc-foto" data-tipo="descanso">
+                <img src="/img/recomendaciones/descanso.jpg" alt="">
+                <span class="rc-foto-sello">Descanso</span>
+            </figure>
+            <figure class="rc-foto" data-tipo="fiesta">
+                <img src="/img/recomendaciones/fiesta.jpg" alt="">
+                <span class="rc-foto-sello">Fiesta</span>
+            </figure>
         </div>
-    </div>
+
+    </section>
 
     <c:if test="${not empty ciudadesPendientes}">
         <div class="rc-vacio">
@@ -87,7 +148,7 @@
             <div class="rc-destinos">
                 <c:forEach var="r" items="${seleccion.destinos}" varStatus="pos">
 
-                    <article class="rc-destino">
+                    <article class="rc-destino" data-ciudad="${r.ciudad.nombre}">
 
                         <div class="rc-posicion">${pos.index + 1}</div>
 
@@ -167,6 +228,74 @@
     document.querySelectorAll('.rc-barra span[data-ancho]').forEach(b => {
         b.style.width = b.dataset.ancho + '%';
     });
+</script>
+
+<script>
+    /* Solo visual: enciende en el collage los sellos de los tipos de viaje
+       que tienen los destinos recomendados. Los tipos salen de los atributos
+       de cada ciudad en el catálogo. No cambia nada de la recomendación. */
+    (function () {
+        const TIPOS = {
+            'Ciudad de México': ['sabores', 'fiesta'],
+            'Cancún': ['playa', 'descanso'],
+            'Guadalajara': ['sabores', 'descanso', 'fiesta'],
+            'Ciudad de Guatemala': ['fiesta'],
+            'Flores': ['aventura', 'descanso'],
+            'Tegucigalpa': ['fiesta'],
+            'Roatán': ['playa', 'descanso'],
+            'San Salvador': ['sabores', 'fiesta'],
+            'Santa Ana': ['descanso'],
+            'Managua': ['fiesta'],
+            'Granada': ['descanso'],
+            'San José': ['descanso', 'fiesta'],
+            'La Fortuna': ['aventura', 'descanso'],
+            'Ciudad de Panamá': ['fiesta'],
+            'Bocas del Toro': ['playa', 'aventura', 'descanso'],
+            'Belize City': ['aventura'],
+            'Bogotá': ['sabores', 'fiesta'],
+            'Medellín': ['sabores', 'fiesta'],
+            'Cartagena de Indias': ['playa', 'sabores'],
+            'Caracas': ['fiesta'],
+            'Porlamar / Isla de Margarita': ['playa', 'descanso'],
+            'La Habana': ['fiesta'],
+            'Santiago de Cuba': ['descanso', 'fiesta'],
+            'Santo Domingo': ['fiesta'],
+            'Punta Cana': ['playa', 'descanso'],
+            'Quito': ['montana'],
+            'Guayaquil': ['sabores', 'fiesta'],
+            'Lima': ['sabores', 'fiesta'],
+            'Cusco': ['montana', 'aventura'],
+            'La Paz': ['montana', 'aventura'],
+            'Santa Cruz de la Sierra': ['sabores', 'descanso', 'fiesta'],
+            'Río de Janeiro': ['fiesta'],
+            'São Paulo': ['sabores', 'fiesta'],
+            'Brasilia': ['descanso', 'fiesta'],
+            'Santiago de Chile': ['montana', 'sabores', 'fiesta'],
+            'San Pedro de Atacama': ['aventura', 'descanso'],
+            'Chillán / Nevados de Chillán': ['montana', 'descanso'],
+            'Buenos Aires': ['sabores', 'fiesta'],
+            'Mendoza': ['montana', 'sabores', 'descanso'],
+            'San Carlos de Bariloche': ['montana', 'descanso'],
+            'Montevideo': ['sabores', 'descanso', 'fiesta'],
+            'Punta del Este': ['descanso'],
+            'Asunción': ['descanso', 'fiesta'],
+            'Ciudad del Este': ['fiesta']
+        };
+
+        const activos = new Set();
+        document.querySelectorAll('.rc-destino[data-ciudad]').forEach(d => {
+            (TIPOS[d.dataset.ciudad.trim()] || []).forEach(t => activos.add(t));
+        });
+
+        if (activos.size === 0) {
+            document.getElementById('rcNotaCollage').hidden = true;
+            return;
+        }
+
+        document.querySelectorAll('.rc-foto').forEach(f => {
+            f.classList.toggle('rc-foto-apagada', !activos.has(f.dataset.tipo));
+        });
+    })();
 </script>
 
 </body>

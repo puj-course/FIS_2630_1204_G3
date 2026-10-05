@@ -22,9 +22,6 @@ public class PresupuestoServicio {
     /** Codigo de moneda -> nombre para mostrar. */
     private static final Map<String, String> MONEDAS = new LinkedHashMap<>();
 
-    /** Pais destino -> codigo de su moneda local. */
-    private static final Map<String, String> MONEDA_POR_PAIS = new LinkedHashMap<>();
-
     /** Cuantas unidades de cada moneda equivalen a 1 USD (valores aproximados). */
     private static final Map<String, Double> UNIDADES_POR_USD = new LinkedHashMap<>();
 
@@ -49,27 +46,6 @@ public class PresupuestoServicio {
         MONEDAS.put("UYU", "Peso uruguayo (UYU)");
         MONEDAS.put("PYG", "Guaraní paraguayo (PYG)");
 
-        MONEDA_POR_PAIS.put("México", "MXN");
-        MONEDA_POR_PAIS.put("Guatemala", "GTQ");
-        MONEDA_POR_PAIS.put("Honduras", "HNL");
-        MONEDA_POR_PAIS.put("El Salvador", "USD");
-        MONEDA_POR_PAIS.put("Nicaragua", "NIO");
-        MONEDA_POR_PAIS.put("Costa Rica", "CRC");
-        MONEDA_POR_PAIS.put("Panamá", "PAB");
-        MONEDA_POR_PAIS.put("Belize", "BZD");
-        MONEDA_POR_PAIS.put("Colombia", "COP");
-        MONEDA_POR_PAIS.put("Venezuela", "VES");
-        MONEDA_POR_PAIS.put("Cuba", "CUP");
-        MONEDA_POR_PAIS.put("República Dominicana", "DOP");
-        MONEDA_POR_PAIS.put("Ecuador", "USD");
-        MONEDA_POR_PAIS.put("Perú", "PEN");
-        MONEDA_POR_PAIS.put("Bolivia", "BOB");
-        MONEDA_POR_PAIS.put("Brasil", "BRL");
-        MONEDA_POR_PAIS.put("Chile", "CLP");
-        MONEDA_POR_PAIS.put("Argentina", "ARS");
-        MONEDA_POR_PAIS.put("Uruguay", "UYU");
-        MONEDA_POR_PAIS.put("Paraguay", "PYG");
-
         // Tasas aproximadas y fijas. NO son en tiempo real.
         UNIDADES_POR_USD.put("USD", 1.0);
         UNIDADES_POR_USD.put("MXN", 17.0);
@@ -92,22 +68,8 @@ public class PresupuestoServicio {
         UNIDADES_POR_USD.put("PYG", 7300.0);
     }
 
-   /**
- * HU-38: Selector de moneda dinámico según país.
- * Si ya se conoce el país destino, reduce las opciones a su moneda local
- * y USD como referencia (sin duplicar si el país ya usa USD). Si no hay
- * destino aún, muestra las 19 monedas disponibles de la región.
- */
+    /** Devuelve todas las monedas disponibles para el presupuesto del viaje. */
     public Map<String, String> monedasDisponibles(String paisDestino) {
-        if (paisDestino != null && MONEDA_POR_PAIS.containsKey(paisDestino)) {
-            Map<String, String> reducidas = new LinkedHashMap<>();
-            String local = MONEDA_POR_PAIS.get(paisDestino);
-            reducidas.put(local, MONEDAS.get(local));
-            if (!local.equals("USD")) {
-                reducidas.put("USD", MONEDAS.get("USD") + " — referencia");
-            }
-            return reducidas;
-        }
         return MONEDAS;
     }
 
@@ -140,6 +102,7 @@ public class PresupuestoServicio {
     }
 
     /** Equivalente aproximado en dolares, para que el algoritmo pueda comparar. */
+    
     public double convertirAUsd(Presupuesto presupuesto) {
         double valor = presupuesto.getMontoNumerico();
         if (valor < 0) return 0;

@@ -3583,15 +3583,19 @@ como ya vamos a empezar semana de parciales he estudiando mucho y a veces no pue
 
 1. **¿Qué hice ayer?**
 
-
+Ayer se realizaron actualizaciones en los datos de la base de datos como el diccionario de datos
    
 2. **¿Qué voy a hacer hoy?**
 
-  
+Se realizo el diagrama de clases, analisis, componentes y Diagrama EBC - de secuencia  
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
-   
+Si, no hemos implementado solid al proyecto por lo que me comunique con el monitor a ver como se podria solucionar este tema ya que llevamos muy avanzado el proyecto con respecto a lo que debemos corregir a lo que el me recomendo esta paginas
+
+https://batuhankok.medium.com/interfaces-in-spring-boot-clean-architecture-88d378b1432c
+https://www.appleute.de/es/biblioteca-para-desarrolladores-de-aplicaciones/interfaz-de-programacion/
+https://docs.spring.io/spring-data/jpa/reference/repositories/definition.html   
    
 ---
 
@@ -3625,9 +3629,7 @@ hoy estuvimos realizando el taller asi que no pude realizar mucho del proyecto, 
 
 no
  
-
 ---
-
 
 ### Maria Alejandra Rodriguez
 
@@ -3654,15 +3656,15 @@ Pues hasta hoy se soluciono por completo lo de los commits además estamos en el
 
 1. **¿Qué hice ayer?**
 
-  
+  ayer investigue un poco mas de como hacer los atributos manuales mas concretos
 
 2. **¿Qué voy a hacer hoy?**
 
-
+hoy ya voy a empezar la implementacion en codigo teniendo en cuenta todo lo que el profe nos ha dicho de clases abstracas, interfaces,y los principios SOLID y GRASP
    
 4. **¿Tengo algún impedimento o bloqueo?**
 
-
+no ya no, ya pude arreglar mi rama local
 
 ---
 
@@ -3686,14 +3688,15 @@ Pues hasta hoy se soluciono por completo lo de los commits además estamos en el
 
 1. **¿Qué hice ayer?**
 
-
+ayer hicimos el taller de diseño
 
 2. **¿Qué voy a hacer hoy?**
 
-
+hoy termine mi primera hu que se referia a la bandera al lado del presupuesto en el resumen del viaje e investigue y trate de comprender
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
+no
 
 ---
 
@@ -3701,15 +3704,15 @@ Pues hasta hoy se soluciono por completo lo de los commits además estamos en el
 
 1. **¿Qué hice ayer?**
 
-  
+ayer estuvimos realizando el taller, lo unico que hice es subir las imagenes con el ID correcto
 
 2. **¿Qué voy a hacer hoy?**
 
-
+hoy corregi unas imagenes e investigue como solucionar mi segundo HU
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
- 
+no
 
 ---
 
@@ -3718,16 +3721,123 @@ Pues hasta hoy se soluciono por completo lo de los commits además estamos en el
 
 1. **¿Qué hice ayer?** 
 
+Empecé a hacer mis HU de esta semana
 
 2. **¿Qué voy a hacer hoy?** 
 
+Tratar de adelantar la segunda HU asignada
 
 3. **¿Tengo algún impedimento o bloqueo?** 
+
+No
+
+---
+
+<img width="1412" height="591" alt="image" src="https://github.com/user-attachments/assets/6b0926f8-5bb5-457b-8998-35d4e1bee357" />
+
+---
+
+# Sprint Review y Sprint Retrospective - 04/10/2026
+
+## Maria Alejandra Rodriguez
+
+### Sprint Review
+
+1. **¿Qué logramos?**
+
+
+
+### Sprint Retrospective
+
+2. **¿Cómo trabajamos?**
+
+
+
+3. **¿Qué podríamos mejorar?**
+
 
 
 ---
 
+## Gabriela Melo Gualteros
 
+### Sprint Review
+
+1. **¿Qué logramos?**
+
+
+
+### Sprint Retrospective
+
+2. **¿Cómo trabajamos?**
+
+
+
+3. **¿Qué podríamos mejorar?**
+
+
+
+---
+
+## Valeria Cortes Rendon
+
+### Sprint Review
+
+1. **¿Qué logramos?**
+
+
+
+### Sprint Retrospective
+
+2. **¿Cómo trabajamos?**
+
+
+
+3. **¿Qué podríamos mejorar?**
+
+
+
+---
+
+## Isabella Posada
+
+### Sprint Review
+
+1. **¿Qué logramos?**
+
+
+
+### Sprint Retrospective
+
+2. **¿Cómo trabajamos?**
+
+
+
+3. **¿Qué podríamos mejorar?**
+
+
+
+---
+
+## Santiago Clavijo
+
+### Sprint Review
+
+1. **¿Qué logramos?**
+
+
+
+### Sprint Retrospective
+
+2. **¿Cómo trabajamos?**
+
+
+
+3. **¿Qué podríamos mejorar?**
+
+
+
+---
 
 
 

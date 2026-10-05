@@ -86,6 +86,7 @@ public class RecomendacionControlador {
         List<ResultadoRecomendacion> resultados =
                 recomendadorDestinos.puntuarCiudadesValidas(validacion, preferencias);
         SeleccionDestinos seleccion = selectorDestinos.seleccionarMejoresDestinos(resultados);
+        sesion.setAttribute("seleccionDestinos", seleccion);
         guardarPlanificacionSiHaceFalta(sesion, usuario, atributosCuestionario, presupuestoUsd, seleccion);
 
         // Iniciales para el avatar del encabezado
