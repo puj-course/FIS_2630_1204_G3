@@ -3826,6 +3826,7 @@ Estamos viendo lo que tenemos que hacer para la segunda entrega del proyecto y y
 
 ---
 
+<img width="1600" height="700" alt="image" src="https://github.com/user-attachments/assets/1bc3adf7-cda9-4a8e-8930-63ac61e78ad8" />
 
 
 
