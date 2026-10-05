@@ -20,32 +20,31 @@ public class CatalogoCiudades {
     private static final Map<String, String> EQUIVALENCIAS = new LinkedHashMap<>();
 
     static {
-        EQUIVALENCIAS.put("destino_playa",        "playa");
-        EQUIVALENCIAS.put("destino_montana",      "montana");
-        EQUIVALENCIAS.put("destino_naturaleza",   "naturaleza");
-        EQUIVALENCIAS.put("clima_calido",         "clima_calido");
-        EQUIVALENCIAS.put("clima_frio",           "clima_frio");
-        EQUIVALENCIAS.put("clima_nieve",          "nieve");
-        EQUIVALENCIAS.put("aventura_actividades", "aventura");
-        EQUIVALENCIAS.put("aventura_extremos",    "deportes_extremos");
-        EQUIVALENCIAS.put("gastro_tipica",        "comida_tipica");
-        EQUIVALENCIAS.put("gastro_gourmet",       "gourmet");
-        EQUIVALENCIAS.put("ritmo_nocturna",       "vida_nocturna");
-        EQUIVALENCIAS.put("ritmo_urbano",         "urbano");
-        EQUIVALENCIAS.put("ritmo_tranquilo",      "tranquilo");
-        EQUIVALENCIAS.put("ritmo_compras",        "compras");
-        EQUIVALENCIAS.put("cultura_local",        "cultura_historia");
-        EQUIVALENCIAS.put("cultura_museos",       "museos");
-        EQUIVALENCIAS.put("cultura_religioso",    "sitios_religiosos");
-        EQUIVALENCIAS.put("estilo_lujo",          "lujo");
-        EQUIVALENCIAS.put("estilo_mochilero",     "mochilero");
+        EQUIVALENCIAS.put("playa",                  "playa");
+        EQUIVALENCIAS.put("montana",                "montana");
+        EQUIVALENCIAS.put("naturaleza",             "naturaleza");
+        EQUIVALENCIAS.put("nieve",                  "nieve");
+        EQUIVALENCIAS.put("aventura",               "aventura");
+        EQUIVALENCIAS.put("deportes_extremos",      "deportes_extremos");
+        EQUIVALENCIAS.put("gastronomico_destacado", "gastronomico_destacado");
+        EQUIVALENCIAS.put("gourmet",                "gourmet");
+        EQUIVALENCIAS.put("vida_nocturna",          "vida_nocturna");
+        EQUIVALENCIAS.put("urbano",                 "urbano");
+        EQUIVALENCIAS.put("tranquilo",              "tranquilo");
+        EQUIVALENCIAS.put("compras",                "compras");
+        EQUIVALENCIAS.put("cultura_historia",       "cultura_historia");
+        EQUIVALENCIAS.put("museos",                 "museos");
+        EQUIVALENCIAS.put("religioso",              "religioso");
+        EQUIVALENCIAS.put("lujo",                   "lujo");
+        EQUIVALENCIAS.put("mochilero",              "mochilero");
+        EQUIVALENCIAS.put("familiar_kids",          "familiar_kids");
+        EQUIVALENCIAS.put("pet_friendly",           "pet_friendly");
     }
 
     /**
      * Convierte las respuestas del cuestionario en atributos que el
      * algoritmo puede comparar contra las ciudades.
-     * Las claves sin equivalencia (ritmo_descanso, ritmo_improvisar,
-     * ritmo_actividades, gastro_restricciones) se ignoran porque describen
+     * Las claves sin equivalencia se ignoran porque describen
      * al viajero, no al destino.
      */
     public Map<String, Boolean> traducir(Map<String, Boolean> respuestasCuestionario) {
@@ -60,5 +59,4 @@ public class CatalogoCiudades {
         }
         return traducidos;
     }
-
 }
