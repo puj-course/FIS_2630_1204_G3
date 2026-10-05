@@ -15,7 +15,7 @@
 <section class="lp-hero">
 
     <div class="lp-hero-fondos">
-        <div class="lp-hero-foto" style="background-image:url('/img/portada/Cartegena.jpg')"></div>
+        <div class="lp-hero-foto" style="background-image:url('/img/portada/cartagena .jpg')"></div>
         <div class="lp-hero-foto" style="background-image:url('/img/portada/habana.jpg')"></div>
         <div class="lp-hero-foto" style="background-image:url('/img/portada/cusco.jpg')"></div>
     </div>

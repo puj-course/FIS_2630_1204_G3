@@ -3745,16 +3745,15 @@ No
 
 1. **¿Qué logramos?**
 
-
-
-### Sprint Retrospective
+Logramos avanzar en diferentes funcionalidades de la pagina para que cada vez tenga mas sentido, la estetica y diseño de la pagina le esta dando una identidad unica a esta, ademas de eso logramos identificar algunos patrones que hacen faalta lo cuales arreglaremos para la otra semana
 
 2. **¿Cómo trabajamos?**
 
-
+Muy bien como equipo cada vez nos delegamos trabajos que no causen conflictos y que cada uno tenga una funcionalidad importante y con las habilidades de cada uno mejorar
 
 3. **¿Qué podríamos mejorar?**
 
+Arreglar los patrones de diseño que existen y podrian existir en el proyecto para que todo funcione como se estipula en el diseño
 
 
 ---
@@ -3765,9 +3764,6 @@ No
 
 1. **¿Qué logramos?**
 
-
-
-### Sprint Retrospective
 
 2. **¿Cómo trabajamos?**
 
@@ -3785,37 +3781,31 @@ No
 
 1. **¿Qué logramos?**
 
-
-
-### Sprint Retrospective
+Se logro un buen trabajo en equipo , se realizaron buenas funcionalidades hasta el momento y se quiere que se siga realizando las actividades de la forma en la que llevamos
 
 2. **¿Cómo trabajamos?**
 
-
+Creo que se trabajo bien en la semana, entre todos hemos mejorado mucho los aportes en el repositorio y se busca que cada incremento - sprint tengamos buenos aportes
 
 3. **¿Qué podríamos mejorar?**
 
-
+Tenemos cosas q arreglar por ejemplo lo de los diagramas interfaces, tenemos que mejorar lo de las pruebas unitarias, patrones gof que aun no hemos realizado y lo mas importante lo de SOLID
 
 ---
 
 ## Isabella Posada
 
-### Sprint Review
-
 1. **¿Qué logramos?**
 
-
-
-### Sprint Retrospective
+Logramos identificar los aspectos necesarios y evaluables para la entrega que viene, además de mejorar la lógica de recomendaciones.
 
 2. **¿Cómo trabajamos?**
 
-
+Trabajamos revisando el código, viendo problemas y haciendo ajustes puntuales en equipo, y en equipo trabajamos bien
 
 3. **¿Qué podríamos mejorar?**
 
-
+Podríamos organizar mejor los cambios, documentar más las decisiones y validar antes de integrar al repositorio, especialmente para arreglar factores del codigo que no cumplen con SOLID y los diagramas.
 
 ---
 
@@ -3825,20 +3815,21 @@ No
 
 1. **¿Qué logramos?**
 
-
+Esta semana logramos en su mayoria acabar las hu, en mi caso estimamos mal el sprint y pensaba que no iba a tener tanto trabajo para esta semana, y solo pude acabar una hu.
 
 ### Sprint Retrospective
 
 2. **¿Cómo trabajamos?**
 
-
+Como equipo trabajamos bien, buena comunicacion, hemos aportado al codigo para hacerlo mas lindo y hacerle nuevas funcionalidades
 
 3. **¿Qué podríamos mejorar?**
 
-
+Estamos viendo lo que tenemos que hacer para la segunda entrega del proyecto y ya estamos hablando que cosas de diseño necesitamos para la entrega
 
 ---
 
+<img width="1600" height="700" alt="image" src="https://github.com/user-attachments/assets/1bc3adf7-cda9-4a8e-8930-63ac61e78ad8" />
 
 
 

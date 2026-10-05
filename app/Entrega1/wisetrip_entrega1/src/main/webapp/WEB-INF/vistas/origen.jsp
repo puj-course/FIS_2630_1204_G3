@@ -4,28 +4,29 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Ubicacion de origen | WiseTrip</title>
-    <link rel="stylesheet" href="<c:url value='/css/estilos.css'/>">
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>¿De dónde sales? | WiseTrip</title>
+    <link rel="stylesheet" href="<c:url value='/css/origen.css'/>">
+
     <!-- Estilo para el boton flotante de Telegram -->
     <style>
         .boton-flotante-telegram {
-        position: fixed;
-        left: 24px;
-        bottom: 24px;
-        width: 56px;
-        height: 56px;
-        background-color: #229ED9;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.25);
-        z-index: 1000;
-        text-decoration: none;
+            position: fixed;
+            left: 24px;
+            bottom: 24px;
+            width: 56px;
+            height: 56px;
+            background-color: #229ED9;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+            z-index: 1000;
+            text-decoration: none;
         }
         .boton-flotante-telegram:hover {
-        background-color: #1b87bd;
+            background-color: #1b87bd;
         }
     </style>
 </head>
@@ -281,7 +282,8 @@
     })();
 </script>
 <script src="/js/origen-mapa.js"></script>
-<!--Boton flotante de Telegram -->
+
+<!-- Boton flotante de Telegram -->
 <a href="<c:url value='/perfil/telegram'/>" class="boton-flotante-telegram" title="Conecta tu Telegram">
     <svg width="26" height="26" viewBox="0 0 24 24" fill="white">
         <path d="M21.5 4.5L2.7 11.9c-1.2.5-1.2 1.2-.2 1.5l4.8 1.5 1.8 5.6c.2.6.4.8.8.8.5 0 .7-.2 1-.5l2.4-2.3 4.9 3.6c.9.5 1.5.2 1.8-.8l3.2-15.1c.4-1.3-.3-1.9-1.7-1.3zM8.5 13.9l9.5-6c.5-.3.9-.1.5.2l-7.8 7.1-.3 3.3-1.4-4.6z"/>
