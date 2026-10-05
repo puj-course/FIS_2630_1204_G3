@@ -3825,17 +3825,17 @@ No
 
 1. **¿Qué logramos?**
 
-
+Esta semana logramos en su mayoria acabar las hu, en mi caso estimamos mal el sprint y pensaba que no iba a tener tanto trabajo para esta semana, y solo pude acabar una hu.
 
 ### Sprint Retrospective
 
 2. **¿Cómo trabajamos?**
 
-
+Como equipo trabajamos bien, buena comunicacion, hemos aportado al codigo para hacerlo mas lindo y hacerle nuevas funcionalidades
 
 3. **¿Qué podríamos mejorar?**
 
-
+Estamos viendo lo que tenemos que hacer para la segunda entrega del proyecto y ya estamos hablando que cosas de diseño necesitamos para la entrega
 
 ---
 
