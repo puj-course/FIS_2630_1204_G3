@@ -118,6 +118,18 @@
 
     </section>
 
+    <c:if test="${not empty ciudadesPendientes}">
+        <div class="rc-vacio">
+            <h2>Destinos pendientes de verificar</h2>
+            <p>Faltan datos de costo o de algún requisito indispensable. Estos destinos no se incluyen en las recomendaciones:</p>
+            <ul>
+                <c:forEach var="ciudadPendiente" items="${ciudadesPendientes}">
+                    <li><c:out value="${ciudadPendiente.descripcion}"/></li>
+                </c:forEach>
+            </ul>
+        </div>
+    </c:if>
+
     <c:choose>
 
         <c:when test="${seleccion.vacio}">
@@ -125,8 +137,8 @@
                 <span class="rc-vacio-rotulo">Sin destinos disponibles</span>
                 <h2>No encontramos coincidencias</h2>
                 <p>
-                    Ninguna ciudad se ajusta a tu presupuesto y tus preferencias.
-                    Prueba ampliando el presupuesto o cambiando algunas respuestas.
+                    Ningún destino tiene verificados todos tus requisitos obligatorios
+                    y los datos necesarios para recomendarlo. Revisa tus requisitos y presupuesto.
                 </p>
                 <a class="rc-elegir" href="<c:url value='/presupuesto'/>">Ajustar presupuesto</a>
             </div>
@@ -158,9 +170,12 @@
                                 </div>
                                 <div>
                                     <div class="rc-barra-cabeza">
-                                        <span>Gustos</span>
+                                        <span>Preferencias</span>
                                         <span class="rc-barra-valor">
-                                            <fmt:formatNumber value="${r.puntajePreferencias * 100}" maxFractionDigits="0"/>%
+                                            <c:choose>
+                                                <c:when test="${r.preferenciasPuntuables}"><fmt:formatNumber value="${r.puntajePreferencias * 100}" maxFractionDigits="0"/>%</c:when>
+                                                <c:otherwise>Sin preferencias para evaluar</c:otherwise>
+                                            </c:choose>
                                         </span>
                                     </div>
                                     <div class="rc-barra rc-barra-gustos">
@@ -175,10 +190,16 @@
                         </div>
 
                         <div class="rc-talon">
-                            <span class="rc-talon-rotulo">Coincidencia</span>
+                            <span class="rc-talon-rotulo">Coincidencia con tus preferencias</span>
                             <span class="rc-talon-puntaje">
-                                <fmt:formatNumber value="${r.puntajeTotal * 100}" maxFractionDigits="0"/>%
+                                <c:choose>
+                                    <c:when test="${r.preferenciasPuntuables}"><fmt:formatNumber value="${r.puntajeTotal * 100}" maxFractionDigits="0"/>%</c:when>
+                                    <c:otherwise>Sin preferencias para evaluar</c:otherwise>
+                                </c:choose>
                             </span>
+                            <c:if test="${r.coincidenciaProvisional}">
+                                <span class="rc-talon-nota">Coincidencia provisional: faltan datos</span>
+                            </c:if>
                             <c:if test="${pos.index == 0}">
                                 <span class="rc-talon-nota">Mejor opción</span>
                             </c:if>
@@ -194,8 +215,9 @@
 
     <div class="rc-pie">
         <p class="rc-nota">
-            La coincidencia combina qué tanto se ajusta el costo del destino a tu
-            presupuesto (40%) y cuántas de tus preferencias cumple (60%).
+            La coincidencia promedia las categorías en las que expresaste interés.
+            Los datos desconocidos no suman puntos y mantienen la coincidencia provisional.
+            En caso de empate, se prioriza el costo total más cercano a tu presupuesto.
         </p>
         <a class="rc-volver" href="<c:url value='/resumen'/>">&larr; Volver al resumen</a>
     </div>

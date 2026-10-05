@@ -15,9 +15,11 @@ public class LlenarLasCiudades {
         this.ciudadDAO = ciudadDAO;
     }
 
-    public void llenar() {
+    public void llenar(java.util.Map<String, Double> costosDiariosPorCiudadYPais) {
         for (CiudadSemilla semilla : DatosCiudades.ciudades()) {
-            Ciudad ciudad = semilla.aCiudad();
+            Double costo = costosDiariosPorCiudadYPais.get(semilla.nombre() + "|" + semilla.pais());
+            if (costo == null || !Double.isFinite(costo) || costo <= 0) continue;
+            Ciudad ciudad = semilla.aCiudad(costo);
             boolean insertada = ciudadDAO.insertar(ciudad);
             if (!insertada) {
                 System.err.println("No se pudo insertar: " + ciudad.getNombre());

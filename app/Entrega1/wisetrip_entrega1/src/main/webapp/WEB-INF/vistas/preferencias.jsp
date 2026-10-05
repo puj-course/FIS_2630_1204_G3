@@ -1,5 +1,6 @@
 <%-- Preferencias de viaje.
-     Vista con las preguntas organizadas por categoría (HU-71, #239), mostradas como sí/no. --%>
+     Vista con las preguntas organizadas por categoría (HU-71, #239).
+     Cada opción envía el nivel correspondiente de Importancia. --%>
 
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
@@ -63,25 +64,38 @@
                         </div>
                         <span class="pregunta-texto">${p.texto}</span>
 
-                        <div class="opciones opciones-grande">
-                            <input type="radio" id="${p.clave}_si"
-                                   name="respuestas[${p.clave}]" value="si"
-                                   ${preferencias.respuestas[p.clave] == 'si' ? 'checked' : ''}>
-                            <label for="${p.clave}_si" class="op-si">Sí</label>
-
+                        <div class="opciones opciones-grande opciones-importancia" role="radiogroup" aria-label="${p.texto}">
                             <input type="radio" id="${p.clave}_no"
                                    name="respuestas[${p.clave}]" value="no"
                                    ${preferencias.respuestas[p.clave] == 'no' ? 'checked' : ''}>
 <%-- HU-39: Marca la respuesta ya guardada en sesión, si el viajero
      retrocede a esta pantalla. --%>
                             <label for="${p.clave}_no" class="op-no">No</label>
+<%--
+HU #82 - Como viajero, quiero que los destinos recomendados cumplan los requisitos obligatorios y tengan un nivel mínimo de compatibilidad con mis preferencias, para recibir opciones que realmente sean adecuadas para mi viaje.
+
+#277 --%>
+
+                            <input type="radio" id="${p.clave}_gusto"
+                                   name="respuestas[${p.clave}]" value="gustar"
+                                   ${preferencias.respuestas[p.clave] == 'gustar' ? 'checked' : ''}>
+                            <label for="${p.clave}_gusto" class="op-si">Me gustaría</label>
+
+                            <input type="radio" id="${p.clave}_prefiero"
+                                   name="respuestas[${p.clave}]" value="prefiero"
+                                   ${preferencias.respuestas[p.clave] == 'prefiero' ? 'checked' : ''}>
+                            <label for="${p.clave}_prefiero" class="op-si">Lo prefiero</label>
+
+                            <input type="radio" id="${p.clave}_indispensable"
+                                   name="respuestas[${p.clave}]" value="si"
+                                   ${preferencias.respuestas[p.clave] == 'si' ? 'checked' : ''}>
+                            <label for="${p.clave}_indispensable" class="op-si">Es indispensable</label>
                         </div>
                     </div>
                 </c:forEach>
             </section>
         </c:forEach>
 
-        <div class="pie-fijo" data-total="${totalPreguntas}">
         <div class="pie-fijo" data-total="${totalPreguntas}">
             <div class="progreso">
                 <div class="progreso-barra"><span id="progresoRelleno"></span></div>

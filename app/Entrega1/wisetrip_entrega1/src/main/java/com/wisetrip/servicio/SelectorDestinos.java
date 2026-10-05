@@ -4,7 +4,6 @@
 package com.wisetrip.servicio;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -17,24 +16,40 @@ public class SelectorDestinos {
 
     private static final int CANTIDAD_DESTINOS = 3;
 
-    public SeleccionDestinos seleccionarMejoresDestinos(List<ResultadoRecomendacion> resultados) {
+    public SeleccionDestinos seleccionarMejoresDestinos(
+            List<ResultadoRecomendacion> resultados,
+            boolean soloIndispensables) {
 
         if (resultados == null || resultados.isEmpty()) {
-            return new SeleccionDestinos(new ArrayList<>(),
-                    "No encontramos destinos dentro de tu presupuesto.");
+            return new SeleccionDestinos(
+                    new ArrayList<>(),
+                    "No encontramos destinos con todos tus requisitos obligatorios verificados."
+            );
         }
 
+        // Conserva el orden de RecomendadorDestinos
+        // (puntaje + desempate por presupuesto).
         List<ResultadoRecomendacion> ordenados = new ArrayList<>(resultados);
-        ordenados.sort(Comparator.comparingDouble(ResultadoRecomendacion::getPuntajeTotal).reversed());
 
         int limite = Math.min(CANTIDAD_DESTINOS, ordenados.size());
-        List<ResultadoRecomendacion> seleccionados = new ArrayList<>(ordenados.subList(0, limite));
+
+        List<ResultadoRecomendacion> seleccionados =
+                new ArrayList<>(ordenados.subList(0, limite));
 
         String mensaje;
-        if (seleccionados.size() < CANTIDAD_DESTINOS) {
+
+        // Si solo seleccionó requisitos indispensables
+        if (soloIndispensables) {
+
+            mensaje = "Destinos que cumplen tus requisitos, ordenados por cercanía a tu presupuesto.";
+
+        } else if (seleccionados.size() < CANTIDAD_DESTINOS) {
+
             mensaje = "Encontramos " + seleccionados.size()
                     + " destino(s) que se ajustan a lo que buscas.";
+
         } else {
+
             mensaje = "Estos son los 3 destinos que mejor coinciden contigo.";
         }
 

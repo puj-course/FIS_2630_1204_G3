@@ -117,7 +117,7 @@
 | `pais`           | varchar      |    100 | —     | —                   | País en el que se encuentra la ciudad.          |
 | `latitud`        | numeric      |    9,6 | —     | —                   | Coordenada geográfica de latitud de la ciudad.  |
 | `longitud`       | numeric      |    9,6 | —     | —                   | Coordenada geográfica de longitud de la ciudad. |
-| `costo_promedio` | numeric      |   12,2 | —     | —                   | Costo promedio asociado a la ciudad.            |
+| `costo_promedio` | numeric      |   12,2 | —     | —                   | Costo diario estimado en USD por persona (alojamiento, comida y transporte local).            |
 
 ---
 
@@ -138,15 +138,6 @@
 | `id_atributo` | integer      |      — | PK, FK | Referencia a `atributo(id_atributo)` | Identifica el atributo relacionado con la ciudad. |
 
 > La combinación `id_ciudad` + `id_atributo` conforma la clave primaria de esta entidad y permite relacionar ciudades con sus atributos.
-
----
-
-## Entidad: Nivel_Costo
-
-| Campo      | Tipo de dato | Tamaño | Clave | Restricciones       | Descripción                             |
-| ---------- | ------------ | -----: | ----- | ------------------- | --------------------------------------- |
-| `id_nivel` | integer      |      — | PK    | Identificador único | Identificador único del nivel de costo. |
-| `nombre`   | varchar      |     20 | —     | —                   | Nombre del nivel de costo asociado.     |
 
 ---
 
@@ -182,7 +173,6 @@
 | `ciudad`               | Almacena información de las ciudades disponibles como destinos.                 |
 | `atributo`             | Almacena los atributos que pueden asociarse a las ciudades.                     |
 | `ciudad_atributo`      | Relaciona las ciudades con sus atributos.                                       |
-| `nivel_costo`          | Almacena los niveles de costo disponibles.                                      |
 
 ---
 

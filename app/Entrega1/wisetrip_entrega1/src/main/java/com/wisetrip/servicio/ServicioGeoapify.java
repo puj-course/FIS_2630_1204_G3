@@ -57,10 +57,10 @@ public class ServicioGeoapify {
         }
     }
 
-    public int contarLugares(double lat, double lon, String categorias, int radioMetros, int limite) {
+    public Integer contarLugares(double lat, double lon, String categorias, int radioMetros, int limite) {
         if (apiKey == null || apiKey.isBlank()) {
             LOGGER.warning("Geoapify sin API key configurada; se omite la consulta de lugares.");
-            return 0;
+            return null;
         }
 
         String cacheKey = lat + "|" + lon + "|" + categorias + "|" + radioMetros + "|" + limite;
@@ -90,18 +90,20 @@ public class ServicioGeoapify {
                     + " duracionMs=" + duracionMs
                     + " categorias=" + categorias);
 
-            if (response.statusCode() >= 400) {
-                return 0;
+            if (response.statusCode() < 200 || response.statusCode() >= 300) {
+                return null;
             }
 
             Gson gson = new Gson();
             RespuestaGeocoding resultado = gson.fromJson(response.body(), RespuestaGeocoding.class);
-            int cantidad = resultado.features == null ? 0 : resultado.features.size();
+            if (resultado == null || resultado.features == null) return null;
+            int cantidad = resultado.features.size();
             conteoLugaresCache.put(cacheKey, cantidad);
             return cantidad;
         } catch (Exception e) {
             LOGGER.log(Level.WARNING, "Error contando lugares (" + categorias + "): " + e.getMessage(), e);
-            return 0;
+            if (e instanceof InterruptedException) Thread.currentThread().interrupt();
+            return null;
         }
     }
 

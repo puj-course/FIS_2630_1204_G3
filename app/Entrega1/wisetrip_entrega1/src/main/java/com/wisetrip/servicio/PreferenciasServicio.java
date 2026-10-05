@@ -2,6 +2,7 @@ package com.wisetrip.servicio;
 
 import com.wisetrip.modelo.CategoriaPreferencia;
 import com.wisetrip.modelo.Preferencias;
+import com.wisetrip.modelo.Importancia;
 import com.wisetrip.modelo.Pregunta;
 import com.wisetrip.negocio.CatalogoPreguntas;
 import com.wisetrip.negocio.DefPregunta;
@@ -100,12 +101,28 @@ public class PreferenciasServicio {
                 String valor = respuestas.get(pregunta.getClave());
                 if (valor == null || valor.isBlank()) {
                     errores.put(pregunta.getClave(), "Falta responder esta pregunta.");
-                } else if (!valor.equals("si") && !valor.equals("no")) {
+                } else if (java.util.Arrays.stream(Importancia.values())
+                        .noneMatch(nivel -> nivel.name().equals(valor))) {
                     errores.put(pregunta.getClave(), "Respuesta no válida.");
                 }
             }
         }
         return errores;
+    }
+
+    public Map<String, Importancia> obtenerImportancias(Preferencias preferencias) {
+        Map<String, Importancia> niveles = new LinkedHashMap<>();
+        for (CategoriaPreferencia categoria : CATEGORIAS) {
+            for (Pregunta pregunta : categoria.getPreguntas()) {
+                niveles.put(pregunta.getClave(),
+                        Importancia.valueOf(preferencias.getRespuestas().get(pregunta.getClave())));
+            }
+        }
+        return niveles;
+    }
+
+    private static boolean esSeleccionada(String valor) {
+        return "gustar".equals(valor) || "prefiero".equals(valor) || "si".equals(valor);
     }
 
     public Map<String, Boolean> obtenerAtributosSeleccionados(Preferencias preferencias) {
@@ -114,7 +131,7 @@ public class PreferenciasServicio {
         for (CategoriaPreferencia categoria : CATEGORIAS) {
             for (Pregunta pregunta : categoria.getPreguntas()) {
                 String valor = preferencias.getRespuestas().get(pregunta.getClave());
-                atributos.put(pregunta.getClave(), "si".equals(valor));
+                atributos.put(pregunta.getClave(), esSeleccionada(valor));
             }
         }
         return atributos;
@@ -122,7 +139,7 @@ public class PreferenciasServicio {
 
     public List<String> clavesAfirmativas(Preferencias preferencias) {
         return preferencias.getRespuestas().entrySet().stream()
-                .filter(e -> "si".equals(e.getValue()))
+                .filter(e -> esSeleccionada(e.getValue()))
                 .map(Map.Entry::getKey)
                 .toList();
     }
@@ -132,7 +149,7 @@ public class PreferenciasServicio {
 
         for (CategoriaPreferencia categoria : CATEGORIAS) {
             List<String> elegidas = categoria.getPreguntas().stream()
-                    .filter(p -> "si".equals(preferencias.getRespuestas().get(p.getClave())))
+                    .filter(p -> esSeleccionada(preferencias.getRespuestas().get(p.getClave())))
                     .map(p -> ETIQUETAS.getOrDefault(p.getClave(), p.getTexto()))
                     .toList();
             resumen.put(categoria.getNombre(), elegidas);
@@ -142,7 +159,7 @@ public class PreferenciasServicio {
 
     public long contarAfirmativas(Preferencias preferencias) {
         return preferencias.getRespuestas().values().stream()
-                .filter("si"::equals)
+                .filter(PreferenciasServicio::esSeleccionada)
                 .count();
     }
 

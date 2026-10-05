@@ -10,6 +10,7 @@ public class Ciudad {
     private int id;
     private String nombre;
     private String pais;
+    // USD por persona y por dia: alojamiento, comida y transporte local.
     private double costoPromedio;
     private double latitud;
     private double longitud;
@@ -33,6 +34,11 @@ public class Ciudad {
     public void setLongitud(double longitud) { this.longitud = longitud; }
 
     public Map<String, Boolean> getAtributos() { return atributos; }
+    public EstadoAtributo estadoAtributo(String atributo) {
+        Boolean valor = atributos.get(atributo);
+        if (valor == null) return EstadoAtributo.noSabemos;
+        return valor ? EstadoAtributo.cumple : EstadoAtributo.noCumple;
+    }
     public void setAtributos(Map<String, Boolean> atributos) {
         this.atributos = atributos != null ? atributos : new HashMap<>();
     }

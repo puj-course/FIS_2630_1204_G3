@@ -2,6 +2,7 @@ package com.wisetrip.servicio;
 
 import com.wisetrip.datos.CiudadSemilla;
 import com.wisetrip.modelo.Ciudad;
+import com.wisetrip.modelo.EstadoAtributo;
 import com.wisetrip.negocio.CatalogoPreguntas;
 import com.wisetrip.negocio.DefPregunta;
 
@@ -37,9 +38,15 @@ public class LlenarAtributosCiudad {
             if (atributosUsuario != null && !atributosActivos.contains(pregunta.id)) {
                 continue;
             }
-            int cantidad = geo.contarLugares(ciudad.getLatitud(), ciudad.getLongitud(),
+            Integer cantidad = geo.contarLugares(ciudad.getLatitud(), ciudad.getLongitud(),
                     pregunta.categorias, 50_000, 500);
-            atributos.put(pregunta.id, cantidad >= pregunta.umbral);
+            EstadoAtributo estado = EstadoAtributo.desdeConteo(cantidad, pregunta.umbral);
+            // Ausente significa desconocido; false queda reservado a incumplimiento.
+            if (estado == EstadoAtributo.noSabemos) {
+                atributos.remove(pregunta.id);
+            } else {
+                atributos.put(pregunta.id, estado == EstadoAtributo.cumple);
+            }
         }
         ciudad.setAtributos(atributos);
     }

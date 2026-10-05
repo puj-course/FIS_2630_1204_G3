@@ -13,6 +13,7 @@ import com.wisetrip.datos.DatosCiudades;
 import com.wisetrip.datos.PreferenciaDAO;
 import com.wisetrip.datos.ViajeDAO;
 import com.wisetrip.modelo.Ciudad;
+import com.wisetrip.modelo.Importancia;
 import com.wisetrip.modelo.FechasViaje;
 import com.wisetrip.modelo.PreferenciasUsuario;
 import com.wisetrip.modelo.ResultadoRecomendacion;
@@ -58,11 +59,19 @@ public class RecomendacionControlador {
         Map<String, Boolean> atributosCuestionario =
                 (Map<String, Boolean>) sesion.getAttribute("atributosSeleccionados");
         if (atributosCuestionario == null) return "redirect:/preferencias";
+        Map<String, Importancia> importancias =
+                (Map<String, Importancia>) sesion.getAttribute("importanciasSeleccionadas");
+        if (importancias == null) return "redirect:/preferencias";
 
         Double presupuestoUsd = (Double) sesion.getAttribute("presupuestoEnUsd");
         if (presupuestoUsd == null) return "redirect:/presupuesto";
 
-        PreferenciasUsuario preferencias = new PreferenciasUsuario(presupuestoUsd, atributosCuestionario);
+        FechasViaje fechas = (FechasViaje) sesion.getAttribute("fechasViaje");
+        if (fechas == null || fechas.getDuracionDias() < 1) return "redirect:/fechas";
+        PreferenciasUsuario preferencias = new PreferenciasUsuario(
+                presupuestoUsd,
+                importancias,
+                fechas.getDuracionDias());
         List<Ciudad> ciudades = ciudadDAO.obtenerTodas();
 
         for (Ciudad ciudad : ciudades) {
@@ -72,8 +81,10 @@ public class RecomendacionControlador {
             }
         }
 
-         List<ResultadoRecomendacion> resultados =
-                recomendadorDestinos.recomendarDestinos(ciudades, preferencias);
+        var validacion = recomendadorDestinos.validarCiudades(ciudades, preferencias);
+        model.addAttribute("ciudadesPendientes", validacion.pendientes());
+        List<ResultadoRecomendacion> resultados =
+                recomendadorDestinos.puntuarCiudadesValidas(validacion, preferencias);
         SeleccionDestinos seleccion = selectorDestinos.seleccionarMejoresDestinos(resultados);
         sesion.setAttribute("seleccionDestinos", seleccion);
         guardarPlanificacionSiHaceFalta(sesion, usuario, atributosCuestionario, presupuestoUsd, seleccion);
@@ -86,6 +97,7 @@ public class RecomendacionControlador {
 
         model.addAttribute("usuario", usuario);
         model.addAttribute("seleccion", seleccion);
+        sesion.setAttribute("seleccionRecomendada", seleccion);
         model.addAttribute("fechas", sesion.getAttribute("fechasViaje"));
         model.addAttribute("presupuestoUsd", presupuestoUsd);
 

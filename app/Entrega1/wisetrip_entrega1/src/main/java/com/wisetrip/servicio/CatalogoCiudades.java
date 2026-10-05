@@ -1,13 +1,10 @@
 package com.wisetrip.servicio;
 
-import java.util.ArrayList;
 import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
-import com.wisetrip.modelo.Ciudad;
 
 @Service
 public class CatalogoCiudades {
@@ -64,51 +61,4 @@ public class CatalogoCiudades {
         return traducidos;
     }
 
-    /**
-     * Ciudades disponibles.
-     * Cuando se conecte la base de datos, este metodo se reemplaza por:
-     *     return ciudadDAO.obtenerTodas();
-     * Costos en USD para todo el viaje, aproximados.
-     */
-    public List<Ciudad> listarCiudades() {
-        List<Ciudad> ciudades = new ArrayList<>();
-
-        ciudades.add(crear(1, "Cartagena", "Colombia", 700,
-                "playa", "cultura", "vida_nocturna", "comida_tipica", "clima_calido", "museos"));
-        ciudades.add(crear(2, "San Andrés", "Colombia", 850,
-                "playa", "clima_calido", "comida_tipica", "pet_friendly"));
-        ciudades.add(crear(3, "Medellín", "Colombia", 550,
-                "urbano", "vida_nocturna", "cultura", "museos", "clima_calido", "compras", "apto_ninos"));
-        ciudades.add(crear(4, "Bogotá", "Colombia", 500,
-                "urbano", "cultura", "museos", "clima_frio", "compras", "alta_cocina", "sitios_religiosos"));
-        ciudades.add(crear(5, "Cusco", "Perú", 900,
-                "montana", "cultura", "naturaleza", "aventura", "clima_frio", "sitios_religiosos"));
-        ciudades.add(crear(6, "Ciudad de México", "México", 800,
-                "urbano", "cultura", "museos", "comida_tipica", "alta_cocina", "vida_nocturna", "compras"));
-        ciudades.add(crear(7, "San José", "Costa Rica", 1100,
-                "naturaleza", "aventura", "deportes_extremos", "playa", "clima_calido"));
-        ciudades.add(crear(8, "Bariloche", "Argentina", 1300,
-                "montana", "nieve", "clima_frio", "naturaleza", "deportes_extremos", "lujo"));
-        ciudades.add(crear(9, "Río de Janeiro", "Brasil", 1000,
-                "playa", "vida_nocturna", "urbano", "clima_calido", "cultura"));
-        ciudades.add(crear(10, "Montañita", "Ecuador", 400,
-                "playa", "economico", "vida_nocturna", "clima_calido", "deportes_extremos"));
-
-        return ciudades;
-    }
-
-    /** Crea una ciudad marcando como true los atributos que cumple. */
-    private Ciudad crear(int id, String nombre, String pais, double costo, String... atributos) {
-        Map<String, Boolean> mapa = new LinkedHashMap<>();
-        for (String atributo : atributos) {
-            mapa.put(atributo, true);
-        }
-        Ciudad ciudad = new Ciudad();
-        ciudad.setId(id);
-        ciudad.setNombre(nombre);
-        ciudad.setPais(pais);
-        ciudad.setCostoPromedio(costo);
-        ciudad.setAtributos(mapa);
-        return ciudad;
-    }
 }

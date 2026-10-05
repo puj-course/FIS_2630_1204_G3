@@ -1,5 +1,7 @@
 package com.wisetrip.controlador;
 
+import java.util.Map;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,6 +29,15 @@ public class SeleccionControlador {
         Usuario usuario = (Usuario) sesion.getAttribute("usuarioActivo");
         if (usuario == null) return "redirect:/login";
 
+        Map<String, Boolean> atributosCuestionario =
+                (Map<String, Boolean>) sesion.getAttribute("atributosSeleccionados");
+        if (atributosCuestionario == null) return "redirect:/preferencias";
+
+        Double presupuestoUsd = (Double) sesion.getAttribute("presupuestoEnUsd");
+        if (presupuestoUsd == null) return "redirect:/presupuesto";
+
+        SeleccionDestinos seleccion = (SeleccionDestinos) sesion.getAttribute("seleccionRecomendada");
+        if (seleccion == null) return "redirect:/recomendaciones";
         SeleccionDestinos seleccion =
             (SeleccionDestinos) sesion.getAttribute("seleccionDestinos");
         if (seleccion == null || seleccion.isVacio()) {
