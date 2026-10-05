@@ -3764,13 +3764,15 @@ Arreglar los patrones de diseño que existen y podrian existir en el proyecto pa
 
 1. **¿Qué logramos?**
 
+logramos completar varias pantallas ya con el diseño y la funcionalidad que se penso desde un comienzo, se mejoro el backend de los paises recomendados.
 
 2. **¿Cómo trabajamos?**
 
-
+Bien con respecto al equipo vamos mejorando en la comunicacion aunque cometi el error de duplicar de nuevo los commits por no escuchar a mi compañera pero se pudo arreglar al final. Pero sobre todo bien y ya todos nos pusimos al dia con los commits asi qeu todos vamos a la par.
 
 3. **¿Qué podríamos mejorar?**
 
+Ya estamos revisando y empezando a mirar que nos falta de la segunda entrega y ciertas dudas que tenemos con respecto a los patrones a los diagramas que vamos a solucionar con el profesor en una reunion mañana
 
 
 ---
