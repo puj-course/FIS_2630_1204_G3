@@ -38,13 +38,14 @@ public class SeleccionControlador {
 
         SeleccionDestinos seleccion = (SeleccionDestinos) sesion.getAttribute("seleccionRecomendada");
         if (seleccion == null) return "redirect:/recomendaciones";
-        SeleccionDestinos seleccion =
+
+        SeleccionDestinos seleccionDestinos =
             (SeleccionDestinos) sesion.getAttribute("seleccionDestinos");
-        if (seleccion == null || seleccion.isVacio()) {
+        if (seleccionDestinos == null || seleccionDestinos.isVacio()) {
             return "redirect:/recomendaciones";
         }
 
-        ResultadoRecomendacion elegido = seleccion.getDestinos().stream()
+        ResultadoRecomendacion elegido = seleccionDestinos.getDestinos().stream()
                 .filter(r -> r.getCiudad().getId() == id)
                 .findFirst()
                 .orElse(null);

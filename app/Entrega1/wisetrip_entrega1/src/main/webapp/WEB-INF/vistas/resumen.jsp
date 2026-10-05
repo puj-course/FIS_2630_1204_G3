@@ -57,10 +57,10 @@
         <%-- Fotos de fondo detrás del texto y del pase.
              Por ahora se usan las fotos de static/img/portada/. --%>
         <div class="rs-escena-fotos" aria-hidden="true">
-            <img src="/img/portada/Rio.jpg" alt="">
-            <img src="/img/portada/Argentina.jpg" alt="">
-            <img src="/img/portada/desierto.jpg" alt="">
-            <img src="/img/portada/Amazonas.jpg" alt="">
+            <img src="/img/resumen/Rio.jpg" alt="">
+            <img src="/img/resumen/Argentina.jpg" alt="">
+            <img src="/img/resumen/desierto.jpg" alt="">
+            <img src="/img/resumen/Amazonas.jpg" alt="">
         </div>
 
         <section class="rs-texto">
