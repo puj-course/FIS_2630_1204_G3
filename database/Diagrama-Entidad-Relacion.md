@@ -2,84 +2,109 @@
 
 ```mermaid
 erDiagram
-    USUARIO ||--o{ VIAJES : planifica
-    USUARIO ||--o{ CANALES_NOTIFICACION : posee
-    VIAJES ||--o{ PREFERENCIAS : tiene
-    VIAJES ||--o{ ITINERARIO : incluye
-    VIAJES ||--o{ GASTOS : registra
-    VIAJES ||--o{ RESERVAS : contiene
-    VIAJES ||--o{ ALERTAS : genera
-    CANALES_NOTIFICACION ||--o{ ALERTAS : envia
+    usuario ||--o{ viajes : "crea"
+    usuario ||--o{ canales_notificacion : "configura"
+    viajes ||--o{ alertas : "genera"
+    canales_notificacion ||--o{ alertas : "envia_por"
+    viajes ||--o{ gastos : "registra"
+    viajes ||--o{ itinerario : "contiene"
+    viajes ||--o{ preferencias : "define"
+    viajes ||--o{ reservas : "incluye"
+    ciudad ||--o{ ciudad_atributo : "posee"
+    atributo ||--o{ ciudad_atributo : "clasifica"
 
-    USUARIO {
-        int id_usuario PK
+    usuario {
+        integer id_usuario PK
         varchar_100 nombre
-        varchar_150 correo UK
-        varchar_255 contraseña
+        USER_DEFINED correo
+        varchar_255 contrasena
         varchar_20 rol
-        timestamp fecha_registro
+        timestamp_without_time_zone fecha_registro
         boolean estado
+        varchar_30 tipo_documento
+        varchar_30 numero_documento
+        date fecha_nacimiento
+        varchar_50 chat_id
     }
 
-    VIAJES {
-        int id_viaje PK
-        int id_usuario FK
+    viajes {
+        integer id_viaje PK
+        integer id_usuario FK
         varchar_150 destino
         date fecha_inicio
         date fecha_fin
-        decimal presupuesto
-        timestamp fecha_creacion
+        numeric_12_2 presupuesto
+        timestamp_without_time_zone fecha_creacion
     }
 
-    CANALES_NOTIFICACION {
-        int id_canal PK
-        int id_usuario FK
+    canales_notificacion {
+        integer id_canal PK
+        integer id_usuario FK
         varchar_20 tipo_canal
         varchar_150 identificador
         boolean activo
     }
 
-    PREFERENCIAS {
-        int id_preferencia PK
-        int id_viaje FK
-        varchar_50 tipo_preferencia
+    alertas {
+        integer id_alerta PK
+        integer id_viaje FK
+        integer id_canal FK
+        varchar_30 tipo_alerta
+        varchar_500 mensaje
+        timestamp_without_time_zone fecha_envio
+        varchar_20 estado
     }
 
-    ITINERARIO {
-        int id_itinerario PK
-        int id_viaje FK
-        varchar_150 nombre
-        date fecha_actividad
-        varchar_5 hora_actividad
-        varchar_50 tipo
-        decimal costo_estimado
-    }
-
-    GASTOS {
-        int id_gasto PK
-        int id_viaje FK
+    gastos {
+        integer id_gasto PK
+        integer id_viaje FK
         varchar_200 descripcion
-        decimal monto
+        numeric_12_2 monto
         date fecha_gasto
         varchar_50 categoria
     }
 
-    RESERVAS {
-        int id_reserva PK
-        int id_viaje FK
+    itinerario {
+        integer id_itinerario PK
+        integer id_viaje FK
+        varchar_150 nombre
+        date fecha_actividad
+        time_without_time_zone hora_actividad
+        varchar_50 tipo
+        numeric_12_2 costo_estimado
+    }
+
+    preferencias {
+        integer id_preferencia PK
+        integer id_viaje FK
+        varchar_50 tipo_preferencia
+    }
+
+    reservas {
+        integer id_reserva PK
+        integer id_viaje FK
         varchar_30 tipo
         varchar_250 descripcion
         date fecha_reserva
         varchar_20 estado
     }
 
-    ALERTAS {
-        int id_alerta PK
-        int id_viaje FK
-        int id_canal FK
-        varchar_30 tipo_alerta
-        varchar_500 mensaje
-        timestamp fecha_envio
-        varchar_20 estado
+    ciudad {
+        integer id_ciudad PK
+        varchar_100 nombre
+        varchar_100 pais
+        numeric_9_6 latitud
+        numeric_9_6 longitud
+        numeric_12_2 costo_promedio
+    }
+
+    atributo {
+        integer id_atributo PK
+        varchar_50 nombre
+    }
+
+    ciudad_atributo {
+        integer id_ciudad PK_FK
+        integer id_atributo PK_FK
     }
 ```
