@@ -3779,14 +3779,15 @@ No
 
 1. **¿Qué logramos?**
 
+Se logro un buen trabajo en equipo , se realizaron buenas funcionalidades hasta el momento y se quiere que se siga realizando las actividades de la forma en la que llevamos
 
 2. **¿Cómo trabajamos?**
 
-
+Creo que se trabajo bien en la semana, entre todos hemos mejorado mucho los aportes en el repositorio y se busca que cada incremento - sprint tengamos buenos aportes
 
 3. **¿Qué podríamos mejorar?**
 
-
+Tenemos cosas q arreglar por ejemplo lo de los diagramas interfaces, tenemos que mejorar lo de las pruebas unitarias, patrones gof que aun no hemos realizado y lo mas importante lo de SOLID
 
 ---
 
