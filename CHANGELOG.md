@@ -3745,13 +3745,15 @@ No
 
 1. **¿Qué logramos?**
 
+Logramos avanzar en diferentes funcionalidades de la pagina para que cada vez tenga mas sentido, la estetica y diseño de la pagina le esta dando una identidad unica a esta, ademas de eso logramos identificar algunos patrones que hacen faalta lo cuales arreglaremos para la otra semana
 
 2. **¿Cómo trabajamos?**
 
-
+Muy bien como equipo cada vez nos delegamos trabajos que no causen conflictos y que cada uno tenga una funcionalidad importante y con las habilidades de cada uno mejorar
 
 3. **¿Qué podríamos mejorar?**
 
+Arreglar los patrones de diseño que existen y podrian existir en el proyecto para que todo funcione como se estipula en el diseño
 
 
 ---
