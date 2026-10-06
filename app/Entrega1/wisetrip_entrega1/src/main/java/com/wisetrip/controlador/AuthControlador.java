@@ -11,26 +11,22 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.wisetrip.modelo.Usuario;
-import com.wisetrip.servicio.EmailNotificationService;
-import com.wisetrip.servicio.TelegramNotificationService;
-import com.wisetrip.servicio.UsuarioServicio;
+import com.wisetrip.negocio.IAutenticacionUsuario;
+import com.wisetrip.negocio.IRegistroUsuario;
 
 import jakarta.servlet.http.HttpSession;
 
+/** Puerto de entrada web: recibe la peticion y llama a los contratos de negocio. */
 @Controller
 public class AuthControlador {
 
-    private final UsuarioServicio usuarioServicio;
-    private final EmailNotificationService emailService;
-    private final TelegramNotificationService telegramService;
+    private final IRegistroUsuario registro;
+    private final IAutenticacionUsuario autenticacion;
 
-    // Spring inyecta los servicios automaticamente al crear el controlador
-    public AuthControlador(UsuarioServicio usuarioServicio,
-                           EmailNotificationService emailService,
-                           TelegramNotificationService telegramService) {
-        this.usuarioServicio = usuarioServicio;
-        this.emailService = emailService;
-        this.telegramService = telegramService;
+    // Spring inyecta las implementaciones (UsuarioServicio) al crear el controlador
+    public AuthControlador(IRegistroUsuario registro, IAutenticacionUsuario autenticacion) {
+        this.registro = registro;
+        this.autenticacion = autenticacion;
     }
 
     // Muestra el formulario vacio
@@ -48,44 +44,20 @@ public class AuthControlador {
                                    Model model,
                                    RedirectAttributes flash) {
 
-        Map<String, String> errores = usuarioServicio.validarRegistro(usuario, confirmarPassword);
+        Map<String, String> errores = registro.validarRegistro(usuario, confirmarPassword);
 
         if (!errores.isEmpty()) {
             model.addAttribute("errores", errores);
             return "registro";   // vuelve al formulario mostrando los errores
         }
 
-        usuario.setNombreCompleto(usuario.getNombreCompleto().trim());
-        usuario.setCorreo(usuario.getCorreo().trim());
-        usuario.setNumeroDocumento(usuario.getNumeroDocumento().trim());
-        usuarioServicio.registrar(usuario);
-
-        // Correo de confirmacion; si falla, el registro no se rompe
-        try {
-            emailService.enviarNotificacion(
-                usuario.getCorreo(),
-                "¡Bienvenido a WiseTrip!",
-                "Hola " + usuario.getNombreCompleto() + ",\n\n"
-                + "Tu cuenta en WiseTrip fue creada con éxito. "
-                + "Ya puedes iniciar sesión y empezar a planificar tus viajes.\n\n"
-                + "¡Buen viaje!\n"
-                + "El equipo de WiseTrip"
-            );
-        } catch (Exception e) {
-            System.err.println("No se pudo enviar el correo de confirmación: " + e.getMessage());
-        }
-
+        registro.registrar(usuario);
         sesion.setAttribute("usuarioActivo", usuario);
-
-        String[] partes = usuario.getNombreCompleto().trim().split("\\s+");
-        String iniciales = partes.length > 1
-                ? ("" + partes[0].charAt(0) + partes[1].charAt(0)).toUpperCase()
-                : partes[0].substring(0, 1).toUpperCase();
 
         flash.addFlashAttribute("nombre", usuario.getNombreCompleto());
         flash.addFlashAttribute("correo", usuario.getCorreo());
-        flash.addFlashAttribute("primerNombre", partes[0]);
-        flash.addFlashAttribute("inicialesUsuario", iniciales);
+        flash.addFlashAttribute("primerNombre", usuario.primerNombre());
+        flash.addFlashAttribute("inicialesUsuario", usuario.iniciales());
         return "redirect:/registro-exitoso";
     }
 
@@ -93,13 +65,14 @@ public class AuthControlador {
     public String registroExitoso() {
         return "registro-exitoso";
     }
-     // Muestra el formulario de login
+
+    // Muestra el formulario de login
     @GetMapping("/login")
     public String mostrarLogin() {
         return "login";
     }
 
-    // Procesa el inicio de sesion 
+    // Procesa el inicio de sesion
     @PostMapping("/login")
     public String procesarLogin(@RequestParam("correo") String correo,
                                 @RequestParam("password") String password,
@@ -112,7 +85,7 @@ public class AuthControlador {
             return "login";
         }
 
-        Usuario usuario = usuarioServicio.autenticar(correo, password);
+        Usuario usuario = autenticacion.iniciarSesion(correo, password);
 
         if (usuario == null) {
             model.addAttribute("error", "Correo o contrasena incorrectos.");
@@ -120,19 +93,8 @@ public class AuthControlador {
             return "login";
         }
 
-        // Guarda al usuario en la sesion: es el equivalente al useState del usuario logueado
+        // Guarda al usuario en la sesion
         sesion.setAttribute("usuarioActivo", usuario);
-
-        // Notificacion de confirmacion de inicio de sesion por Telegram
-        try {
-            telegramService.enviarMensaje(
-                usuario.getChatId(),
-                "Hola " + usuario.getNombreCompleto() + ", iniciaste sesión en WiseTrip correctamente. Si no fuiste tú, cambia tu contraseña."
-            );
-        } catch (Exception e) {
-            System.err.println("No se pudo enviar la notificacion de Telegram: " + e.getMessage());
-        }
-
         return "redirect:/origen";
     }
 

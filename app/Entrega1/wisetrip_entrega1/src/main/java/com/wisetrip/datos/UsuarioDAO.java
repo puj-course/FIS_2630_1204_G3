@@ -10,11 +10,13 @@ import java.time.LocalDate;
 import org.springframework.stereotype.Repository;
 
 import com.wisetrip.modelo.Usuario;
+import com.wisetrip.negocio.IUsuarioRepositorio;
 
 
 @Repository
-public class UsuarioDAO {
+public class UsuarioDAO implements IUsuarioRepositorio {
 
+    @Override 
     public Usuario registrar(Usuario usuario) {
         String sql = """
             INSERT INTO usuario
@@ -52,15 +54,17 @@ public class UsuarioDAO {
         }
     }
 
+    @Override
     public boolean existeCorreo(String correo) {
         return existe("SELECT 1 FROM usuario WHERE correo = ?", correo);
     }
 
+    @Override
     public boolean existeDocumento(String numeroDocumento) {
         return existe("SELECT 1 FROM usuario WHERE numero_documento = ?", numeroDocumento);
     }
 
-
+    @Override
     public Usuario buscarPorCorreo(String correo) {
          String sql = """
             SELECT id_usuario, nombre, correo, contraseña, rol,
@@ -121,6 +125,7 @@ public class UsuarioDAO {
         return Date.valueOf(LocalDate.parse(fecha));
     }
 
+    @Override
     public void vincularTelegram(int idUsuario, String chatId) {
     String sql = "UPDATE usuario SET chat_id = ? WHERE id_usuario = ?";
 

@@ -1,34 +1,42 @@
 package com.wisetrip.controlador;
 
-import com.wisetrip.servicio.EmailNotificationService;
-import com.wisetrip.servicio.TelegramNotificationService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
+import com.wisetrip.modelo.Notificacion;
+import com.wisetrip.negocio.INotificador;
+
+//END POINTS PARA HACER PRUEBAS DE NOTIFICACIONES
 @RestController
 @RequestMapping("/api/notificaciones")
 public class NotificacionController {
 
-    @Autowired
-    private EmailNotificationService emailService;
+    private final INotificador notificadorCorreo;
+    private final INotificador notificadorTelegram;
 
-    @Autowired
-    private TelegramNotificationService telegramService;
+    public NotificacionController(@Qualifier("notificadorCorreo") INotificador notificadorCorreo,
+                                  @Qualifier("notificadorTelegram") INotificador notificadorTelegram) {
+        this.notificadorCorreo = notificadorCorreo;
+        this.notificadorTelegram = notificadorTelegram;
+    }
 
     @PostMapping("/email-test")
     public String enviarCorreoPrueba(
-        @RequestParam String destinatario,
-        @RequestParam String asunto,
-        @RequestParam String cuerpo) {
-    emailService.enviarNotificacion(destinatario, asunto, cuerpo);
-    return "Correo enviado a " + destinatario;
+            @RequestParam String destinatario,
+            @RequestParam String asunto,
+            @RequestParam String cuerpo) {
+        notificadorCorreo.enviar(destinatario, new Notificacion(asunto, cuerpo));
+        return "Correo enviado a " + destinatario;
     }
 
     @PostMapping("/telegram-test")
     public String enviarTelegramPrueba(
-        @RequestParam String chatId,
-        @RequestParam String mensaje) {
-    telegramService.enviarMensaje(chatId, mensaje);
-    return "Mensaje enviado al chat_id " + chatId;
+            @RequestParam String chatId,
+            @RequestParam String mensaje) {
+        notificadorTelegram.enviar(chatId, new Notificacion("WiseTrip", mensaje));
+        return "Mensaje enviado al chat_id " + chatId;
     }
 }
