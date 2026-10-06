@@ -3851,7 +3851,7 @@ Estamos viendo lo que tenemos que hacer para la segunda entrega del proyecto y y
 | #87 | | Historia de Usuario |  | Valeria |
 | #88 | | Historia de Usuario |  | Maleja |
 | #89 | | Historia de Usuario |  | Maleja |
-| #90 | | Como viajero quiero que el sistema rechace fechas o presupuestos inválidos sin importar desde dónde los ingrese, para que mi viaje quede registrado con datos coherentes y no a medio llenar.|  | Gaby |
+| #90 | | Como usuario quiero que el sistema rechace fechas o presupuestos inválidos sin importar desde dónde los ingrese, para que mi viaje quede registrado con datos coherentes y no a medio llenar.|  | Gaby |
 | #91 | | Como usuario quiero que mi viaje (fechas, presupuesto, destino) siga guardandose y validandose correctamente aunque se realicen actualizaciones de la pagina, para no encontrarme con fallas o un mal registro de mi viaje.|  | Gaby |
 | #92 | | Historia de Usuario |  | Isa |
 | #93 | | Historia de Usuario |  | Isa |
