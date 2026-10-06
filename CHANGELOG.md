@@ -3847,16 +3847,16 @@ Estamos viendo lo que tenemos que hacer para la segunda entrega del proyecto y y
 
 | ID | Título | Tipo | Estimación | Responsable |
 |----|--------|------|------------|-------------|
-| # | | Historia de Usuario |  | Valeria |
-| # | | Historia de Usuario |  | Valeria |
-| # | | Historia de Usuario |  | Maleja |
-| # | | Historia de Usuario |  | Maleja |
-| # | | Historia de Usuario |  | Gaby |
-| # | | Historia de Usuario |  | Gaby |
-| # | | Historia de Usuario |  | Isa |
-| # | | Historia de Usuario |  | Isa |
-| # | | Historia de Usuario |  | Clavijo |
-| # | | Historia de Usuario |  | Clavijo |
+| #86 | | Historia de Usuario |  | Valeria |
+| #87 | | Historia de Usuario |  | Valeria |
+| #88 | | Historia de Usuario |  | Maleja |
+| #89 | | Historia de Usuario |  | Maleja |
+| #90 | | Historia de Usuario |  | Gaby |
+| #91 | | Historia de Usuario |  | Gaby |
+| #92 | | Historia de Usuario |  | Isa |
+| #93 | | Historia de Usuario |  | Isa |
+| #94 | Quiero recibir destinos filtrados según mi presupuesto y ordenados por afinidad con mis preferencias, para ver solo lo que realmente se adapta a mi| Historia de Usuario |  | Clavijo |
+| #95 | Como viajero, quiero ingresar mi presupuesto y responder preguntas sobre mis intereses para que el sistema conozca las características y posibilidades económicas que busco en un destino | Historia de Usuario |  | Clavijo |
 
 ## Riesgos / Bloqueos identificados
 
