@@ -3833,5 +3833,36 @@ Estamos viendo lo que tenemos que hacer para la segunda entrega del proyecto y y
 
 <img width="1600" height="700" alt="image" src="https://github.com/user-attachments/assets/1bc3adf7-cda9-4a8e-8930-63ac61e78ad8" />
 
+---
+# Sprint 9 - Sprint Planning - [05/10/2026]
+
+## Sprint Goal
+
+## Capacidad del equipo
+
+* Desarrolladores disponibles: 5
+* Puntos/horas disponibles: 42 (por ajustar según refinamiento)
+
+## Issues seleccionados para el Sprint
+
+| ID | Título | Tipo | Estimación | Responsable |
+|----|--------|------|------------|-------------|
+| # | | Historia de Usuario |  | Valeria |
+| # | | Historia de Usuario |  | Valeria |
+| # | | Historia de Usuario |  | Maleja |
+| # | | Historia de Usuario |  | Maleja |
+| # | | Historia de Usuario |  | Gaby |
+| # | | Historia de Usuario |  | Gaby |
+| # | | Historia de Usuario |  | Isa |
+| # | | Historia de Usuario |  | Isa |
+| # | | Historia de Usuario |  | Clavijo |
+| # | | Historia de Usuario |  | Clavijo |
+
+## Riesgos / Bloqueos identificados
+
+-
+-
+
+## Notas adicionales
 
 
