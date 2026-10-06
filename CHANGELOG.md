@@ -3849,8 +3849,8 @@ Estamos viendo lo que tenemos que hacer para la segunda entrega del proyecto y y
 |----|--------|------|------------|-------------|
 | #86 | | Historia de Usuario |  | Valeria |
 | #87 | | Historia de Usuario |  | Valeria |
-| #88 | | Historia de Usuario |  | Maleja |
-| #89 | | Historia de Usuario |  | Maleja |
+| #88 | | Como usuario de WiseTrip quiero que la gestión de mi presupuesto y gastos funcione de manera consistente para tener un mejor control financiero de mi viaje.|  | Maleja |
+| #89 | | Como usuario de WiseTrip quiero que las funcionalidades de presupuesto y gastos estén correctamente integradas para gestionar la información financiera de mi viaje de forma confiable.|  | Maleja |
 | #90 | | Como usuario quiero que el sistema rechace fechas o presupuestos inválidos sin importar desde dónde los ingrese, para que mi viaje quede registrado con datos coherentes y no a medio llenar.|  | Gaby |
 | #91 | | Como usuario quiero que mi viaje (fechas, presupuesto, destino) siga guardandose y validandose correctamente aunque se realicen actualizaciones de la pagina, para no encontrarme con fallas o un mal registro de mi viaje.|  | Gaby |
 | #92 | | Historia de Usuario |  | Isa |
