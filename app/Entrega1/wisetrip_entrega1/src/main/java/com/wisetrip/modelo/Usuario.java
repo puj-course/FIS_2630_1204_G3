@@ -226,5 +226,14 @@ public class Usuario {
         return nombreCompleto.trim().split("\\s+")[0];
     }
 
+        /** Iniciales para el avatar: dos letras si hay nombre y apellido, una si solo hay nombre. */
+    public String iniciales() {
+        String[] partes = nombreCompleto.trim().split("\\s+");
+        String iniciales = partes.length > 1
+                ? "" + partes[0].charAt(0) + partes[1].charAt(0)
+                : partes[0].substring(0, 1);
+        return iniciales.toUpperCase();
+    }
+
 
 }
