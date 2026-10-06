@@ -3837,6 +3837,7 @@ Estamos viendo lo que tenemos que hacer para la segunda entrega del proyecto y y
 # Sprint 9 - Sprint Planning - [05/10/2026]
 
 ## Sprint Goal
+Este sprint nos enfocamos en que la información de viaje del usuario —presupuesto, fechas, destino y preferencias— sea coherente y confiable en todo WiseTrip. Para lograrlo, las clases de dominio van a validar sus propias reglas de negocio en vez de dejarlo todo a los servicios, y el sistema va a apoyarse en interfaces y contratos claros —no solo en clases concretas— para que esas reglas no se rompan cada vez que se cambie algo por dentro. Junto con eso, el presupuesto y las preferencias que el usuario ingresa deben reflejarse de verdad en las recomendaciones de destino que recibe. Al final del sprint, un viajero puede confiar en que su viaje queda bien registrado y en que lo que le recomendamos realmente corresponde a lo que puede pagar y a lo que le interesa.
 
 ## Capacidad del equipo
 
