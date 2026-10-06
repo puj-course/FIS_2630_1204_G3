@@ -166,7 +166,7 @@ public class Usuario {
                 if (nacimiento.isAfter(LocalDate.now())) {
                     errores.put("fechaNacimiento", "La fecha de nacimiento no puede ser futura.");
                 } else if (edad < EDAD_MINIMA) {
-                    errores.put("fechaNacimiento", "Debes ser mayor de 18 anios para crear una cuenta en WiseTrip.");
+                    errores.put("fechaNacimiento", "Debes ser mayor de 18 años para crear una cuenta en WiseTrip.");
                 } else if (edad > EDAD_MAXIMA) {
                     errores.put("fechaNacimiento", "Ingresa una fecha de nacimiento valida.");
                 }

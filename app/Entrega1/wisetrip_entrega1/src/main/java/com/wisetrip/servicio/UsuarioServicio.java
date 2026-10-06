@@ -1,132 +1,92 @@
 package com.wisetrip.servicio;
 
-import java.time.LocalDate;
-import java.time.Period;
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
+
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-import com.wisetrip.datos.UsuarioDAO;
+import com.wisetrip.modelo.Notificacion;
 import com.wisetrip.modelo.Usuario;
+import com.wisetrip.negocio.IAutenticacionUsuario;
+import com.wisetrip.negocio.INotificador;
+import com.wisetrip.negocio.IPerfilUsuario;
+import com.wisetrip.negocio.IRegistroUsuario;
+import com.wisetrip.negocio.IUsuarioRepositorio;
+
+
+// gestiona el modulo de usuario : no tiene reglas propias solo llama a 
+// los dominios usuario y notificacion y los contratos repositorio y notificador
 
 @Service
-public class UsuarioServicio {
+public class UsuarioServicio implements IRegistroUsuario, IPerfilUsuario, IAutenticacionUsuario {
 
-    private final UsuarioDAO usuarioDAO;
+    private static final String MSG_DOCUMENTO_EXISTE = "Ya existe una cuenta con este documento.";
+    private static final String MSG_CORREO_EXISTE = "Ya existe una cuenta con este correo.";
 
-    public UsuarioServicio(UsuarioDAO usuarioDAO) {
-        this.usuarioDAO = usuarioDAO;
+     private final IUsuarioRepositorio repositorio;
+    private final INotificador notificadorCorreo;
+    private final INotificador notificadorTelegram;
+
+    // contructor con inyeccion de dependencias, se le dice a spring 
+    //que vamos a necesitar para funcionar y spring nos lo va a dar
+
+    public UsuarioServicio(IUsuarioRepositorio repositorio, @Qualifier("notificadorCorreo") INotificador notificadorCorreo, @Qualifier("notificadorTelegram") INotificador notificadorTelegram) {
+        this.repositorio = repositorio;
+        this.notificadorCorreo = notificadorCorreo;
+        this.notificadorTelegram = notificadorTelegram;
     }
 
-    public List<Usuario> listarUsuarios() {
-        return new ArrayList<>();
-    }
+    @Override
+    public Map<String, String> validarRegistro(Usuario usuario, String confirmarPassword) {
+        Map<String, String> errores = usuario.validarDatos(confirmarPassword);
 
-    public void registrar(Usuario usuario) {
-        usuarioDAO.registrar(usuario);
-    }
-
-    public boolean existeCorreo(String correo) {
-        return usuarioDAO.existeCorreo(correo);
-    }
-
-    public boolean existeDocumento(String numeroDocumento) {
-        return usuarioDAO.existeDocumento(numeroDocumento);
-    }
-
-    public int calcularEdad(LocalDate fechaNacimiento) {
-        return Period.between(fechaNacimiento, LocalDate.now()).getYears();
-    }
-
-    /**
-     * Valida los datos del registro.
-     * Devuelve un mapa vacio si todo esta bien, o con los mensajes de error.
-     */
-    public Map<String, String> validarRegistro(Usuario u, String confirmarPassword) {
-        Map<String, String> errores = new LinkedHashMap<>();
-
-        // Nombre completo
-        if (u.getNombreCompleto() == null || u.getNombreCompleto().isBlank()) {
-            errores.put("nombreCompleto", "Ingresa tu nombre completo.");
-        } else if (u.getNombreCompleto().trim().length() < 3) {
-            errores.put("nombreCompleto", "El nombre es demasiado corto.");
+        if (!errores.containsKey("numeroDocumento")
+                && repositorio.existeDocumento(usuario.getNumeroDocumento())) {
+            errores.put("numeroDocumento", MSG_DOCUMENTO_EXISTE);
         }
-
-        // Tipo de documento
-        if (u.getTipoDocumento() == null || u.getTipoDocumento().isBlank()) {
-            errores.put("tipoDocumento", "Selecciona un tipo de documento.");
+        if (!errores.containsKey("correo")
+                && repositorio.existeCorreo(usuario.getCorreo())) {
+            errores.put("correo", MSG_CORREO_EXISTE);
         }
-
-        // Numero de documento
-        if (u.getNumeroDocumento() == null || u.getNumeroDocumento().isBlank()) {
-            errores.put("numeroDocumento", "Ingresa tu numero de documento.");
-        } else if (!u.getNumeroDocumento().trim().matches("\\d{5,15}")) {
-            errores.put("numeroDocumento", "El documento debe tener entre 5 y 15 digitos.");
-        } else if (existeDocumento(u.getNumeroDocumento())) {
-            errores.put("numeroDocumento", "Ya existe una cuenta con este documento.");
-        }
-
-        // Fecha de nacimiento
-        if (u.getFechaNacimiento() == null || u.getFechaNacimiento().isBlank()) {
-            errores.put("fechaNacimiento", "Ingresa tu fecha de nacimiento.");
-        } else {
-            try {
-                LocalDate nacimiento = LocalDate.parse(u.getFechaNacimiento());
-                int edad = calcularEdad(nacimiento);
-                if (nacimiento.isAfter(LocalDate.now())) {
-                    errores.put("fechaNacimiento", "La fecha de nacimiento no puede ser futura.");
-                } else if (edad < 18) {
-                    errores.put("fechaNacimiento", "Debes ser mayor de 18 anios para crear una cuenta en WiseTrip.");
-                } else if (edad > 120) {
-                    errores.put("fechaNacimiento", "Ingresa una fecha de nacimiento valida.");
-                }
-            } catch (Exception e) {
-                errores.put("fechaNacimiento", "Ingresa una fecha valida.");
-            }
-        }
-
-        // Correo
-        if (u.getCorreo() == null || u.getCorreo().isBlank()) {
-            errores.put("correo", "Ingresa tu correo electronico.");
-        } else if (!u.getCorreo().trim().matches("^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$")) {
-            errores.put("correo", "El formato del correo no es valido.");
-        } else if (existeCorreo(u.getCorreo())) {
-            errores.put("correo", "Ya existe una cuenta con este correo.");
-        }
-
-        // Contrasena
-        if (u.getPassword() == null || u.getPassword().isEmpty()) {
-            errores.put("password", "Ingresa una contrasena.");
-        } else if (u.getPassword().length() < 6) {
-            errores.put("password", "La contrasena debe tener al menos 6 caracteres.");
-        }
-
-        // Confirmacion
-        if (confirmarPassword == null || confirmarPassword.isEmpty()) {
-            errores.put("confirmarPassword", "Confirma tu contrasena.");
-        } else if (u.getPassword() != null && !u.getPassword().equals(confirmarPassword)) {
-            errores.put("confirmarPassword", "Las contrasenas no coinciden.");
-        }
-
         return errores;
     }
-        /**
-     * Busca un usuario con ese correo y contrasena.
-     * Devuelve null si no existe o si la contrasena no coincide.
-     */
-    public Usuario autenticar(String correo, String password) {
-        if (correo == null || password == null) return null;
-        Usuario usuario = usuarioDAO.buscarPorCorreo(correo.trim());
-        if (usuario == null || !usuario.getPassword().equals(password)) {
+
+    @Override
+    public void registrar(Usuario usuario) {
+        usuario.normalizar();
+        repositorio.registrar(usuario);
+        // Si el correo falla, el registro no se rompe
+        notificar(notificadorCorreo, usuario.getCorreo(), Notificacion.bienvenida(usuario));
+    }
+
+    @Override
+    public Usuario iniciarSesion(String correo, String password) {
+        if (correo == null || password == null) {
             return null;
+        }
+        Usuario usuario = repositorio.buscarPorCorreo(correo.trim());
+        if (usuario == null || !usuario.verificarPassword(password)) {
+            return null;
+        }
+        if (usuario.tieneTelegramVinculado()) {
+            notificar(notificadorTelegram, usuario.getChatId(), Notificacion.inicioSesion(usuario));
         }
         return usuario;
     }
 
-    public void vincularTelegram(int idUsuario, String chatId) {
-        usuarioDAO.vincularTelegram(idUsuario, chatId);
+    @Override
+    public void vincularTelegram(Usuario usuario, String chatId) {
+        usuario.vincularTelegram(chatId);
+        repositorio.vincularTelegram(usuario.getIdUsuario(), usuario.getChatId());
     }
-}
+
+    // Una notificacion fallida nunca debe tumbar el registro ni el login
+    private void notificar(INotificador notificador, String destino, Notificacion notificacion) {
+        try {
+            notificador.enviar(destino, notificacion);
+        } catch (Exception e) {
+            System.err.println("No se pudo enviar la notificacion: " + e.getMessage());
+        }
+    }
+}    
