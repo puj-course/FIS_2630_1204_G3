@@ -17,7 +17,8 @@ import com.wisetrip.modelo.Importancia;
 import com.wisetrip.modelo.EstadoAtributo;
 import com.wisetrip.modelo.ValidacionCiudades;
 import com.wisetrip.modelo.PreferenciasUsuario;
-import com.wisetrip.modelo.ResultadoReco;
+import com.wisetrip.modelo.ResultadoRecomendacion;
+import com.wisetrip.negocio.Recomendador;
 
 @Service
 public class RecomendadorDestinos implements Recomendador {
@@ -142,7 +143,7 @@ public class RecomendadorDestinos implements Recomendador {
     }
 
     @Override
-    public ResultadoReco calcularPuntajeTotal(
+    public ResultadoRecomendacion calcularPuntajeTotal(
             Ciudad ciudad,
             PreferenciasUsuario preferencias) {
         long dias = preferencias.getDuracionDias();
@@ -157,7 +158,7 @@ public class RecomendadorDestinos implements Recomendador {
                 .anyMatch(e -> e.getValue() != null && e.getValue().peso > 0
                         && ciudad.estadoAtributo(e.getKey()) == EstadoAtributo.noSabemos);
 
-        return new ResultadoReco(ciudad, pGustos, pCosto, pGustos,
+        return new ResultadoRecomendacion(ciudad, pGustos, pCosto, pGustos,
                 preferencias.tienePreferenciasPuntuables(), provisional);
     }
 
@@ -170,11 +171,13 @@ public class RecomendadorDestinos implements Recomendador {
         return Math.abs(costoViaje - preferencias.getPresupuesto());
     }
 
-    public List<ResultadoReco> recomendarDestinos(List<Ciudad> ciudades,
+    @Override
+    public List<ResultadoRecomendacion> recomendarDestinos(List<Ciudad> ciudades,
                                                            PreferenciasUsuario preferencias) {
         return puntuarCiudadesValidas(validarCiudades(ciudades, preferencias), preferencias);
     }
 
+    @Override
     public ValidacionCiudades validarCiudades(List<Ciudad> ciudades, PreferenciasUsuario preferencias) {
         List<Ciudad> validas = new ArrayList<>();
         List<Ciudad> descartadas = new ArrayList<>();
@@ -198,9 +201,10 @@ public class RecomendadorDestinos implements Recomendador {
         return new ValidacionCiudades(validas, descartadas, pendientes);
     }
 
-    public List<ResultadoReco> puntuarCiudadesValidas(ValidacionCiudades validacion,
+    @Override
+    public List<ResultadoRecomendacion> puntuarCiudadesValidas(ValidacionCiudades validacion,
                                                               PreferenciasUsuario preferencias) {
-        List<ResultadoReco> resultados = new ArrayList<>();
+        List<ResultadoRecomendacion> resultados = new ArrayList<>();
         for (Ciudad ciudad : validacion.validas()) {
             resultados.add(calcularPuntajeTotal(ciudad, preferencias));
         }
@@ -215,19 +219,19 @@ public class RecomendadorDestinos implements Recomendador {
                     r -> diferenciaPresupuesto(r.getCiudad(), preferencias)));
         } else {
             resultados.sort(Comparator
-                    .comparingDouble(ResultadoReco::getPuntajeTotal).reversed()
+                    .comparingDouble(ResultadoRecomendacion::getPuntajeTotal).reversed()
                     .thenComparingDouble(r -> diferenciaPresupuesto(r.getCiudad(), preferencias)));
         }
 
         return resultados;
     }
 
-    private static boolean todosMismoPuntaje(List<ResultadoReco> resultados) {
+    private static boolean todosMismoPuntaje(List<ResultadoRecomendacion> resultados) {
         if (resultados.size() <= 1) {
             return true;
         }
         double primero = resultados.get(0).getPuntajeTotal();
-        for (ResultadoReco resultado : resultados) {
+        for (ResultadoRecomendacion resultado : resultados) {
             if (Double.compare(resultado.getPuntajeTotal(), primero) != 0) {
                 return false;
             }
