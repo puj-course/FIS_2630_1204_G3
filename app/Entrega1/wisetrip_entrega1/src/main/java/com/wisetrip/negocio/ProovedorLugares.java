@@ -1,6 +1,6 @@
 package com.wisetrip.negocio;
 
-public interface ProoveedorLugares {
+public interface ProovedorLugares {
 
     double[] coordenadas(String ciudad, String pais);
 
