@@ -19,18 +19,25 @@ import com.wisetrip.modelo.ValidacionCiudades;
 import com.wisetrip.modelo.PreferenciasUsuario;
 import com.wisetrip.modelo.ResultadoRecomendacion;
 
+
+import com.wisetrip.modelo.CategoriaPreferencia;
+import com.wisetrip.negocio.GestorPreferencias;
+
 @Service
 public class RecomendadorDestinos {
 
 
 
     private final boolean presupuestoObligatorio;
+    private final GestorPreferencias gestorPreferencias;
 
     public RecomendadorDestinos(
-            @Value("${wisetrip.presupuesto.obligatorio:true}") boolean presupuestoObligatorio) {
-        this.presupuestoObligatorio = presupuestoObligatorio;
-    }
+        @Value("${wisetrip.presupuesto.obligatorio:true}") boolean presupuestoObligatorio,
+        GestorPreferencias gestorPreferencias) {
 
+    this.presupuestoObligatorio = presupuestoObligatorio;
+    this.gestorPreferencias = gestorPreferencias;
+}
     /**
      * Puntaje (0 a 1) de viabilidad presupuestal. Dentro del limite todos
      * reciben 1: no se premia gastar mas ni ahorrar. El exceso se penaliza.

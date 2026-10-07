@@ -6,6 +6,7 @@ import com.wisetrip.modelo.Importancia;
 import com.wisetrip.modelo.Pregunta;
 import com.wisetrip.negocio.CatalogoPreguntas;
 import com.wisetrip.negocio.DefPregunta;
+import com.wisetrip.negocio.GestorPreferencias;
 
 import org.springframework.stereotype.Service;
 
@@ -14,7 +15,7 @@ import java.util.List;
 import java.util.Map;
 
 @Service
-public class PreferenciasServicio {
+public class PreferenciasServicio implements GestorPreferencias {
 
     public static final List<CategoriaPreferencia> CATEGORIAS = List.of(
         // desierto y nieve se agruparon aqui (paisaje/clima) y no en "caracteristicas
