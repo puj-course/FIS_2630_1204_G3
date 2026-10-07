@@ -3871,15 +3871,17 @@ Este sprint nos enfocamos en que la información de viaje del usuario —presupu
 
 1. **¿Qué hice ayer?**
 
-  
+  ayer hicimos el sprint planning donde definimos las hus de esta semana, son mas de organizar el codigo pero realemnte necesario, ademas fuimos a hablar con el profesor para resolver dudas sobre el proyecto
+
 
 2. **¿Qué voy a hacer hoy?**
 
+hoy voy a hacer la implementacion de las interfaces de negocio, poniendo overrides y extends, para seguir con la logica del proyecto, especialmente en el modulo 2 de recomendaciones, que es la que me toca
+En total añadi hoy 4 interfaces nuevas que coinciden con lo que hemos trabajado a nivel de codigo solo que ya mas enfocado a la entrega 2.
 
+3. **¿Tengo algún impedimento o bloqueo?**
 
-4. **¿Tengo algún impedimento o bloqueo?**
-
-
+no, solo dudas con conceptos básicos pero yo me pongo al día
 
 ---
 
