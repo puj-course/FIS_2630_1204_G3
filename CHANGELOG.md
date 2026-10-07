@@ -3921,15 +3921,15 @@ no, solo dudas con conceptos básicos pero yo me pongo al día
 
 1. **¿Qué hice ayer?**
 
-
+Ayer estuvimos haciendo Sprint Planning, donde decidimos enfocarnos en las corecciones que nos dio el profe y en si en ir mirando que es lo que nos falta para la entrega 2
 
 2. **¿Qué voy a hacer hoy?**
 
-
+Hoy temrine de corregir la manera en la que el sistema estaba evaluando la recomendacion de las ciudades y revisando cuales son las clases en las que deberia empezar a trabajar esta semana.
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
-
+un poco perdida con lo que hay que hacer porque el area en la que voy a trabajar esta semana no he contribuido mucho, pero me ayduara a entender mas el proeycto y codigo como tal
 
 ---
 
