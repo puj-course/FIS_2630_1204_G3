@@ -3938,15 +3938,16 @@ no, solo dudas con conceptos básicos pero yo me pongo al día
 
 1. **¿Qué hice ayer?** 
 
+Realizamos el sprint planning y mis compañeros me explicaron los cambios que hay que realizarle a nuestro programa, nos distribuimos por milestones sin embargo estoy por pensar que nos van a sobrar muchas clases entonces toca mirar cuales nos quedan
 
 
 2. **¿Qué voy a hacer hoy?** 
 
-
+Hoy voy a identificar las clases y ver que puedo empezar a hacer
 
 3. **¿Tengo algún impedimento o bloqueo?** 
 
-
+no
 
 ---
 
