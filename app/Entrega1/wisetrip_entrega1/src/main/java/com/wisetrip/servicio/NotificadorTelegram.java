@@ -1,33 +1,38 @@
 package com.wisetrip.servicio;
 
 import java.net.URI;
+import java.net.URLEncoder;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
-import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-@Service
-public class TelegramNotificationService {
+import com.wisetrip.modelo.Notificacion;
+import com.wisetrip.negocio.INotificador;
+
+/** Canal de Telegram (Bot API). Reemplaza a TelegramNotificationService. */
+@Service("notificadorTelegram")
+public class NotificadorTelegram implements INotificador {
 
     @Value("${telegram.bot.token}")
     private String botToken;
 
     private final HttpClient httpClient = HttpClient.newHttpClient();
 
-    public void enviarMensaje(String chatId, String texto) {
-        if (chatId == null || chatId.isBlank()) {
+    @Override
+    public void enviar(String destino, Notificacion notificacion) {
+        if (destino == null || destino.isBlank()) {
             System.err.println("No se envio mensaje de Telegram: el usuario no tiene chat_id.");
             return;
         }
 
         try {
-            String textoCodificado = URLEncoder.encode(texto, StandardCharsets.UTF_8);
+            String textoCodificado = URLEncoder.encode(notificacion.getCuerpo(), StandardCharsets.UTF_8);
             String url = "https://api.telegram.org/bot" + botToken + "/sendMessage"
-                    + "?chat_id=" + chatId
+                    + "?chat_id=" + destino
                     + "&text=" + textoCodificado;
 
             HttpRequest request = HttpRequest.newBuilder()

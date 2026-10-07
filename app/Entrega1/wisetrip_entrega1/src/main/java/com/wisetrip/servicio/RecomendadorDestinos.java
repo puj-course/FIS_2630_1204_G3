@@ -48,23 +48,79 @@ public class RecomendadorDestinos {
     }
 
     /**
-     * Coincidencia ponderada de ME_GUSTARIA / LO_PREFIERO.
-     * Los indispensables ({@link Importancia#si}) no suman puntos.
+     * Factor minimo del castigo por "Lo prefiero": una ciudad que no cumple ninguno
+     * conserva la mitad de su coincidencia; si cumple todos, no se castiga.
+     */
+    static final double FACTOR_MINIMO_PREFIERO = 0.5;
+
+    /**
+     * Coincidencia (0 a 1) de las preferencias del usuario con la oferta de la ciudad.
+     * Es la coincidencia ponderada de "Me gustaría" (peso 1) y "Lo prefiero" (peso 3),
+     * multiplicada por el castigo por los "Lo prefiero" que la ciudad no cumple.
+     * Los indispensables ({@link Importancia#si}) no suman puntos: se validan antes.
      */
     public double calcularPuntajePreferencias(Map<String, Boolean> oferta,
                                               Map<String, Importancia> gustos) {
-        return calcularCoincidenciasPorCategoria(oferta, gustos).values().stream()
-                .mapToDouble(Double::doubleValue).average().orElse(0.0);
+        return calcularCoincidenciaPonderada(oferta, gustos)
+                * calcularFactorPrefiero(oferta, gustos);
     }
 
     /**
-     * Coincidencia de 0 a 1 por categoria del cuestionario.
+     * Peso logrado / peso total de todas las preguntas puntuables (gustar y prefiero),
+     * sin agrupar por categoria. Los datos desconocidos cuentan como no cumplidos.
+     */
+    public double calcularCoincidenciaPonderada(Map<String, Boolean> oferta,
+                                                   Map<String, Importancia> gustos) {
+        int pesoTotal = 0;
+        int pesoLogrado = 0;
+        for (var categoria : PreferenciasServicio.CATEGORIAS) {
+            for (var pregunta : categoria.getPreguntas()) {
+                Importancia importancia = gustos.get(pregunta.getClave());
+                if (importancia != null && importancia.peso > 0) {
+                    pesoTotal += importancia.peso;
+                    if (Boolean.TRUE.equals(oferta.get(pregunta.getClave()))) {
+                        pesoLogrado += importancia.peso;
+                    }
+                }
+            }
+        }
+        return pesoTotal == 0 ? 0.0 : (double) pesoLogrado / pesoTotal;
+    }
+
+    /**
+     * Factor de 0.5 a 1 segun el porcentaje de respuestas "Lo prefiero" que cumple la ciudad.
+     * Sin ningun "Lo prefiero" el factor es 1 (no hay castigo).
+     */
+    public double calcularFactorPrefiero(Map<String, Boolean> oferta,
+                                             Map<String, Importancia> gustos) {
+        int total = 0;
+        int cumplidos = 0;
+        for (var categoria : PreferenciasServicio.CATEGORIAS) {
+            for (var pregunta : categoria.getPreguntas()) {
+                if (gustos.get(pregunta.getClave()) == Importancia.prefiero) {
+                    total++;
+                    if (Boolean.TRUE.equals(oferta.get(pregunta.getClave()))) {
+                        cumplidos++;
+                    }
+                }
+            }
+        }
+        if (total == 0) {
+            return 1.0;
+        }
+        return FACTOR_MINIMO_PREFIERO
+                + (1 - FACTOR_MINIMO_PREFIERO) * cumplidos / total;
+    }
+
+    /**
+     * Coincidencia de 0 a 1 por categoria del cuestionario (desglose informativo;
+     * no interviene en el puntaje total).
      * Solo participan respuestas con peso positivo en Importancia.
      * Los datos desconocidos conservan su peso en el denominador.
      * Se omiten categorias sin preferencias puntuables.
      */
     public Map<String, Double> calcularCoincidenciasPorCategoria(Map<String, Boolean> oferta,
-                                                                Map<String, Importancia> gustos) {
+                                                                 Map<String, Importancia> gustos) {
         Map<String, Double> coincidencias = new LinkedHashMap<>();
         for (var categoria : PreferenciasServicio.CATEGORIAS) {
             int pesoTotal = 0;

@@ -8,17 +8,17 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.wisetrip.modelo.Usuario;
-import com.wisetrip.servicio.UsuarioServicio;
+import com.wisetrip.negocio.IPerfilUsuario;
 
 import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class TelegramControlador {
 
-    private final UsuarioServicio usuarioServicio;
+    private final IPerfilUsuario perfil;
 
-    public TelegramControlador(UsuarioServicio usuarioServicio) {
-        this.usuarioServicio = usuarioServicio;
+    public TelegramControlador(IPerfilUsuario perfil) {
+        this.perfil = perfil;
     }
 
     // Muestra el formulario para vincular Telegram
@@ -42,8 +42,7 @@ public class TelegramControlador {
             return "redirect:/login";
         }
 
-        usuarioServicio.vincularTelegram(usuarioActivo.getIdUsuario(), chatId.trim());
-        usuarioActivo.setChatId(chatId.trim());
+        perfil.vincularTelegram(usuarioActivo, chatId);
         sesion.setAttribute("usuarioActivo", usuarioActivo);
 
         flash.addFlashAttribute("mensaje", "¡Telegram vinculado con éxito!");

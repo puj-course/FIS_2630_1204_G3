@@ -215,7 +215,7 @@
 
     <div class="rc-pie">
         <p class="rc-nota">
-            La coincidencia promedia las categorías en las que expresaste interés.
+            La coincidencia da más peso a lo que prefieres que a lo que solo te gustaría, y baja si la ciudad no cumple algo que preferías.
             Los datos desconocidos no suman puntos y mantienen la coincidencia provisional.
             En caso de empate, se prioriza el costo total más cercano a tu presupuesto.
         </p>

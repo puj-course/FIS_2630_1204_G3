@@ -3833,5 +3833,37 @@ Estamos viendo lo que tenemos que hacer para la segunda entrega del proyecto y y
 
 <img width="1600" height="700" alt="image" src="https://github.com/user-attachments/assets/1bc3adf7-cda9-4a8e-8930-63ac61e78ad8" />
 
+---
+# Sprint 9 - Sprint Planning - [05/10/2026]
+
+## Sprint Goal
+Este sprint nos enfocamos en que la información de viaje del usuario —presupuesto, fechas, destino y preferencias— sea coherente y confiable en todo WiseTrip. Para lograrlo, las clases de dominio van a validar sus propias reglas de negocio en vez de dejarlo todo a los servicios, y el sistema va a apoyarse en interfaces y contratos claros —no solo en clases concretas— para que esas reglas no se rompan cada vez que se cambie algo por dentro. Junto con eso, el presupuesto y las preferencias que el usuario ingresa deben reflejarse de verdad en las recomendaciones de destino que recibe. Al final del sprint, un viajero puede confiar en que su viaje queda bien registrado y en que lo que le recomendamos realmente corresponde a lo que puede pagar y a lo que le interesa.
+
+## Capacidad del equipo
+
+* Desarrolladores disponibles: 5
+* Puntos/horas disponibles: 42 (por ajustar según refinamiento)
+
+## Issues seleccionados para el Sprint
+
+| ID | Título | Tipo | Estimación | Responsable |
+|----|--------|------|------------|-------------|
+| #86 | | Historia de Usuario |  | Valeria |
+| #87 | | Historia de Usuario |  | Valeria |
+| #88 | | Como usuario de WiseTrip quiero que la gestión de mi presupuesto y gastos funcione de manera consistente para tener un mejor control financiero de mi viaje.|  | Maleja |
+| #89 | | Como usuario de WiseTrip quiero que las funcionalidades de presupuesto y gastos estén correctamente integradas para gestionar la información financiera de mi viaje de forma confiable.|  | Maleja |
+| #90 | | Como usuario quiero que el sistema rechace fechas o presupuestos inválidos sin importar desde dónde los ingrese, para que mi viaje quede registrado con datos coherentes y no a medio llenar.|  | Gaby |
+| #91 | | Como usuario quiero que mi viaje (fechas, presupuesto, destino) siga guardandose y validandose correctamente aunque se realicen actualizaciones de la pagina, para no encontrarme con fallas o un mal registro de mi viaje.|  | Gaby |
+| #92 | | Historia de Usuario |  | Isa |
+| #93 | | Historia de Usuario |  | Isa |
+| #94 | Quiero recibir destinos filtrados según mi presupuesto y ordenados por afinidad con mis preferencias, para ver solo lo que realmente se adapta a mi| Historia de Usuario |  | Clavijo |
+| #95 | Como viajero, quiero ingresar mi presupuesto y responder preguntas sobre mis intereses para que el sistema conozca las características y posibilidades económicas que busco en un destino | Historia de Usuario |  | Clavijo |
+
+## Riesgos / Bloqueos identificados
+
+-
+-
+
+## Notas adicionales
 
 

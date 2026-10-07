@@ -4,7 +4,7 @@ package com.wisetrip.modelo;
 public enum Importancia {
     no(0),       // No se tiene en cuenta.
     gustar(1),   // Me gustaria.
-    prefiero(2), // Lo prefiero: aporta el doble que gustar.
+    prefiero(3), // Lo prefiero: aporta el triple que gustar y castiga si la ciudad no lo cumple.
     si(0);       // Es indispensable: se evalua como requisito, no suma puntos.
 
     public final int peso;
