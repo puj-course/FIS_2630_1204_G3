@@ -18,13 +18,14 @@ import com.wisetrip.modelo.EstadoAtributo;
 import com.wisetrip.modelo.ValidacionCiudades;
 import com.wisetrip.modelo.PreferenciasUsuario;
 import com.wisetrip.modelo.ResultadoRecomendacion;
+import com.wisetrip.negocio.Recomendador;
 
 
 import com.wisetrip.modelo.CategoriaPreferencia;
 import com.wisetrip.negocio.GestorPreferencias;
 
 @Service
-public class RecomendadorDestinos {
+public class RecomendadorDestinos implements Recomendador {
 
 
 
@@ -66,6 +67,7 @@ public class RecomendadorDestinos {
      * multiplicada por el castigo por los "Lo prefiero" que la ciudad no cumple.
      * Los indispensables ({@link Importancia#si}) no suman puntos: se validan antes.
      */
+
     public double calcularPuntajePreferencias(Map<String, Boolean> oferta,
                                               Map<String, Importancia> gustos) {
         return calcularCoincidenciaPonderada(oferta, gustos)
@@ -147,7 +149,10 @@ public class RecomendadorDestinos {
         return coincidencias;
     }
 
-    public ResultadoRecomendacion calcularPuntajeTotal(Ciudad ciudad, PreferenciasUsuario preferencias) {
+    @Override
+    public ResultadoRecomendacion calcularPuntajeTotal(
+            Ciudad ciudad,
+            PreferenciasUsuario preferencias) {
         long dias = preferencias.getDuracionDias();
         double diario = ciudad.getCostoPromedio();
         double costo = diario * dias; // Costo de la estancia por persona.
@@ -173,11 +178,13 @@ public class RecomendadorDestinos {
         return Math.abs(costoViaje - preferencias.getPresupuesto());
     }
 
+    @Override
     public List<ResultadoRecomendacion> recomendarDestinos(List<Ciudad> ciudades,
                                                            PreferenciasUsuario preferencias) {
         return puntuarCiudadesValidas(validarCiudades(ciudades, preferencias), preferencias);
     }
 
+    @Override
     public ValidacionCiudades validarCiudades(List<Ciudad> ciudades, PreferenciasUsuario preferencias) {
         List<Ciudad> validas = new ArrayList<>();
         List<Ciudad> descartadas = new ArrayList<>();
@@ -201,6 +208,7 @@ public class RecomendadorDestinos {
         return new ValidacionCiudades(validas, descartadas, pendientes);
     }
 
+    @Override
     public List<ResultadoRecomendacion> puntuarCiudadesValidas(ValidacionCiudades validacion,
                                                               PreferenciasUsuario preferencias) {
         List<ResultadoRecomendacion> resultados = new ArrayList<>();
