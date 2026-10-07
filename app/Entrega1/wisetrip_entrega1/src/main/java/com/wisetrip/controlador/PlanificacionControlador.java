@@ -19,6 +19,8 @@ import com.wisetrip.modelo.Preferencias;
 import com.wisetrip.modelo.Presupuesto;
 import com.wisetrip.modelo.Ubicacion;
 import com.wisetrip.modelo.Usuario;
+import com.wisetrip.negocio.GestorPreferencias;
+import com.wisetrip.negocio.GestorPresupuesto;
 import com.wisetrip.servicio.FechasServicio;
 import com.wisetrip.servicio.PreferenciasServicio;
 import com.wisetrip.servicio.PresupuestoServicio;
@@ -28,16 +30,14 @@ import jakarta.servlet.http.HttpSession;
 @Controller
 public class PlanificacionControlador {
 
-    private final PreferenciasServicio preferenciasServicio;
-    private final FechasServicio fechasServicio;
-    private final PresupuestoServicio presupuestoServicio;
 
-    public PlanificacionControlador(PreferenciasServicio preferenciasServicio,
-                                    FechasServicio fechasServicio,
-                                    PresupuestoServicio presupuestoServicio) {
-        this.preferenciasServicio = preferenciasServicio;
-        this.fechasServicio = fechasServicio;
-        this.presupuestoServicio = presupuestoServicio;
+    private final GestorPreferencias gestorPreferencias;
+    private final GestorPresupuesto gestorPresupuesto;
+
+    public PlanificacionControlador(GestorPreferencias gestorPreferencias,
+                                    GestorPresupuesto gestorPresupuesto) {
+        this.gestorPreferencias = gestorPreferencias;
+        this.gestorPresupuesto = gestorPresupuesto;
     }
 
     // ---------- HU#25 Preferencias ----------
