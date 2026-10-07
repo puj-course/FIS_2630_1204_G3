@@ -17,7 +17,7 @@ import com.wisetrip.modelo.Importancia;
 import com.wisetrip.modelo.EstadoAtributo;
 import com.wisetrip.modelo.ValidacionCiudades;
 import com.wisetrip.modelo.PreferenciasUsuario;
-import com.wisetrip.modelo.ResultadoRecomendacion;
+import com.wisetrip.modelo.ResultadoReco;
 
 @Service
 public class RecomendadorDestinos implements Recomendador {
@@ -141,7 +141,10 @@ public class RecomendadorDestinos implements Recomendador {
         return coincidencias;
     }
 
-    public ResultadoRecomendacion calcularPuntajeTotal(Ciudad ciudad, PreferenciasUsuario preferencias) {
+    @Override
+    public ResultadoReco calcularPuntajeTotal(
+            Ciudad ciudad,
+            PreferenciasUsuario preferencias) {
         long dias = preferencias.getDuracionDias();
         double diario = ciudad.getCostoPromedio();
         double costo = diario * dias; // Costo de la estancia por persona.
@@ -154,7 +157,7 @@ public class RecomendadorDestinos implements Recomendador {
                 .anyMatch(e -> e.getValue() != null && e.getValue().peso > 0
                         && ciudad.estadoAtributo(e.getKey()) == EstadoAtributo.noSabemos);
 
-        return new ResultadoRecomendacion(ciudad, pGustos, pCosto, pGustos,
+        return new ResultadoReco(ciudad, pGustos, pCosto, pGustos,
                 preferencias.tienePreferenciasPuntuables(), provisional);
     }
 
@@ -167,7 +170,7 @@ public class RecomendadorDestinos implements Recomendador {
         return Math.abs(costoViaje - preferencias.getPresupuesto());
     }
 
-    public List<ResultadoRecomendacion> recomendarDestinos(List<Ciudad> ciudades,
+    public List<ResultadoReco> recomendarDestinos(List<Ciudad> ciudades,
                                                            PreferenciasUsuario preferencias) {
         return puntuarCiudadesValidas(validarCiudades(ciudades, preferencias), preferencias);
     }
@@ -195,9 +198,9 @@ public class RecomendadorDestinos implements Recomendador {
         return new ValidacionCiudades(validas, descartadas, pendientes);
     }
 
-    public List<ResultadoRecomendacion> puntuarCiudadesValidas(ValidacionCiudades validacion,
+    public List<ResultadoReco> puntuarCiudadesValidas(ValidacionCiudades validacion,
                                                               PreferenciasUsuario preferencias) {
-        List<ResultadoRecomendacion> resultados = new ArrayList<>();
+        List<ResultadoReco> resultados = new ArrayList<>();
         for (Ciudad ciudad : validacion.validas()) {
             resultados.add(calcularPuntajeTotal(ciudad, preferencias));
         }
@@ -212,19 +215,19 @@ public class RecomendadorDestinos implements Recomendador {
                     r -> diferenciaPresupuesto(r.getCiudad(), preferencias)));
         } else {
             resultados.sort(Comparator
-                    .comparingDouble(ResultadoRecomendacion::getPuntajeTotal).reversed()
+                    .comparingDouble(ResultadoReco::getPuntajeTotal).reversed()
                     .thenComparingDouble(r -> diferenciaPresupuesto(r.getCiudad(), preferencias)));
         }
 
         return resultados;
     }
 
-    private static boolean todosMismoPuntaje(List<ResultadoRecomendacion> resultados) {
+    private static boolean todosMismoPuntaje(List<ResultadoReco> resultados) {
         if (resultados.size() <= 1) {
             return true;
         }
         double primero = resultados.get(0).getPuntajeTotal();
-        for (ResultadoRecomendacion resultado : resultados) {
+        for (ResultadoReco resultado : resultados) {
             if (Double.compare(resultado.getPuntajeTotal(), primero) != 0) {
                 return false;
             }
