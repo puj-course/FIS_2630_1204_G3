@@ -47,6 +47,6 @@ public class PreferenciasUsuario {
     /** Hay al menos un ME_GUSTARIA o LO_PREFIERO (peso &gt; 0) para puntuar. */
     public boolean tienePreferenciasPuntuables() {
         return atributos.values().stream()
-                .anyMatch(importancia -> importancia != null && importancia.peso > 0);
+                .anyMatch(importancia -> importancia != null && importancia.getPeso() > 0);
     }
 }

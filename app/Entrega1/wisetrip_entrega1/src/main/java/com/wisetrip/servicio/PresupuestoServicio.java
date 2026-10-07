@@ -15,9 +15,10 @@ import java.util.Map;
 import org.springframework.stereotype.Service;
 
 import com.wisetrip.modelo.Presupuesto;
+import com.wisetrip.negocio.GestorPresupuesto;
 
 @Service
-public class PresupuestoServicio {
+public class PresupuestoServicio implements GestorPresupuesto {
 
     /** Codigo de moneda -> nombre para mostrar. */
     private static final Map<String, String> MONEDAS = new LinkedHashMap<>();
