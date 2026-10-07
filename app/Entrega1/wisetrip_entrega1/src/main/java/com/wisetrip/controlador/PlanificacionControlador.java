@@ -19,25 +19,26 @@ import com.wisetrip.modelo.Preferencias;
 import com.wisetrip.modelo.Presupuesto;
 import com.wisetrip.modelo.Ubicacion;
 import com.wisetrip.modelo.Usuario;
+import com.wisetrip.negocio.GestorPreferencias;
+import com.wisetrip.negocio.GestorPresupuesto;
 import com.wisetrip.servicio.FechasServicio;
-import com.wisetrip.servicio.PreferenciasServicio;
-import com.wisetrip.servicio.PresupuestoServicio;
 
 import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class PlanificacionControlador {
 
-    private final PreferenciasServicio preferenciasServicio;
-    private final FechasServicio fechasServicio;
-    private final PresupuestoServicio presupuestoServicio;
 
-    public PlanificacionControlador(PreferenciasServicio preferenciasServicio,
-                                    FechasServicio fechasServicio,
-                                    PresupuestoServicio presupuestoServicio) {
-        this.preferenciasServicio = preferenciasServicio;
+    private final GestorPreferencias gestorPreferencias;
+    private final GestorPresupuesto gestorPresupuesto;
+    private final FechasServicio fechasServicio;
+
+    public PlanificacionControlador(GestorPreferencias gestorPreferencias,
+                                    GestorPresupuesto gestorPresupuesto,
+                                    FechasServicio fechasServicio) {
+        this.gestorPreferencias = gestorPreferencias;
+        this.gestorPresupuesto = gestorPresupuesto;
         this.fechasServicio = fechasServicio;
-        this.presupuestoServicio = presupuestoServicio;
     }
 
     // ---------- HU#25 Preferencias ----------
@@ -60,8 +61,8 @@ public class PlanificacionControlador {
         model.addAttribute("usuario", usuario);
         model.addAttribute("inicialesUsuario", calcularIniciales(usuario));
         model.addAttribute("preferencias", guardadas != null ? guardadas : new Preferencias());
-        model.addAttribute("categorias", preferenciasServicio.listarCategorias());
-        model.addAttribute("totalPreguntas", preferenciasServicio.totalPreguntas());
+        model.addAttribute("categorias", gestorPreferencias.listarCategorias());
+        model.addAttribute("totalPreguntas", gestorPreferencias.totalPreguntas());
         return "preferencias";
     }
 
@@ -73,15 +74,15 @@ public class PlanificacionControlador {
         Usuario usuario = (Usuario) sesion.getAttribute("usuarioActivo");
         if (usuario == null) return "redirect:/login";
 
-        Map<String, String> errores = preferenciasServicio.validarPreferencias(preferencias);
+        Map<String, String> errores = gestorPreferencias.validarPreferencias(preferencias);
 
         if (!errores.isEmpty()) {
             model.addAttribute("errores", errores);
             model.addAttribute("faltantes", errores.size());
             model.addAttribute("usuario", usuario);
             model.addAttribute("inicialesUsuario", calcularIniciales(usuario));
-            model.addAttribute("categorias", preferenciasServicio.listarCategorias());
-            model.addAttribute("totalPreguntas", preferenciasServicio.totalPreguntas());
+            model.addAttribute("categorias", gestorPreferencias.listarCategorias());
+            model.addAttribute("totalPreguntas", gestorPreferencias.totalPreguntas());
             return "preferencias";
         }
 
@@ -90,9 +91,9 @@ public class PlanificacionControlador {
         // mientras dure la sesión de planificación del viajero.
         sesion.setAttribute("preferenciasViaje", preferencias);
         sesion.setAttribute("importanciasSeleccionadas",
-                preferenciasServicio.obtenerImportancias(preferencias));
+                gestorPreferencias.obtenerImportancias(preferencias));
         sesion.setAttribute("atributosSeleccionados",
-                preferenciasServicio.obtenerAtributosSeleccionados(preferencias));
+                gestorPreferencias.obtenerAtributosSeleccionados(preferencias));
         sesion.removeAttribute("idViajeGuardado");
         sesion.removeAttribute("seleccionRecomendada");
         sesion.removeAttribute("destinoElegido");
@@ -179,7 +180,7 @@ public class PlanificacionControlador {
         model.addAttribute("usuario", usuario);
         model.addAttribute("inicialesUsuario", calcularIniciales(usuario));
         model.addAttribute("presupuesto", guardado != null ? guardado : new Presupuesto());
-        model.addAttribute("monedas", presupuestoServicio.monedasDisponibles(paisDestino));
+        model.addAttribute("monedas", gestorPresupuesto.monedasDisponibles(paisDestino));
         model.addAttribute("paisDestino", paisDestino);
         model.addAttribute("fechas", sesion.getAttribute("fechasViaje"));
         return "presupuesto";
@@ -194,19 +195,19 @@ public class PlanificacionControlador {
         if (usuario == null) return "redirect:/login";
 
         String paisDestino = (String) sesion.getAttribute("paisDestino");
-        Map<String, String> errores = presupuestoServicio.validarPresupuesto(presupuesto, paisDestino);
+        Map<String, String> errores = gestorPresupuesto.validarPresupuesto(presupuesto, paisDestino);
 
         if (!errores.isEmpty()) {
             model.addAttribute("errores", errores);
             model.addAttribute("usuario", usuario);
             model.addAttribute("inicialesUsuario", calcularIniciales(usuario));
-            model.addAttribute("monedas", presupuestoServicio.monedasDisponibles(paisDestino));
+            model.addAttribute("monedas", gestorPresupuesto.monedasDisponibles(paisDestino));
             model.addAttribute("paisDestino", paisDestino);
             model.addAttribute("fechas", sesion.getAttribute("fechasViaje"));
             return "presupuesto";
         }
 
-        double enUsd = presupuestoServicio.convertirAUsd(presupuesto);
+        double enUsd = gestorPresupuesto.convertirAUsd(presupuesto);
 
         // HU-39: Persistencia de datos en sesión.
         // Guarda el presupuesto y su equivalente en USD mientras dure
@@ -246,21 +247,21 @@ public class PlanificacionControlador {
         model.addAttribute("presupuesto", presupuesto);
 
         if (preferencias != null) {
-            model.addAttribute("categorias", preferenciasServicio.listarCategorias());
+            model.addAttribute("categorias", gestorPreferencias.listarCategorias());
             model.addAttribute("resumenPreferencias",
-                    preferenciasServicio.resumenPorCategoria(preferencias));
+                    gestorPreferencias.resumenPorCategoria(preferencias));
             model.addAttribute("afirmativas",
-                    preferenciasServicio.contarAfirmativas(preferencias));
-            model.addAttribute("totalPreguntas", preferenciasServicio.totalPreguntas());
+                    gestorPreferencias.contarAfirmativas(preferencias));
+            model.addAttribute("totalPreguntas", gestorPreferencias.totalPreguntas());
         }
         if (presupuesto != null) {
             model.addAttribute("montoFormateado",
-                    presupuestoServicio.formatear(presupuesto.getMontoNumerico()));
+                    gestorPresupuesto.formatear(presupuesto.getMontoNumerico()));
             model.addAttribute("nombreMoneda",
-                    presupuestoServicio.nombreMoneda(presupuesto.getMoneda()));
+                    gestorPresupuesto.nombreMoneda(presupuesto.getMoneda()));
         }
         if (enUsd != null) {
-            model.addAttribute("usdFormateado", presupuestoServicio.formatear(enUsd));
+            model.addAttribute("usdFormateado", gestorPresupuesto.formatear(enUsd));
         }
              model.addAttribute("destinoElegido", sesion.getAttribute("destinoElegido"));
         return "resumen";

@@ -5,6 +5,7 @@
 
 package com.wisetrip.servicio;
 
+import com.wisetrip.negocio.ProovedorLugares;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -24,8 +25,7 @@ import java.util.logging.Logger;
 import com.google.gson.Gson;
 
 @Service
-public class ServicioGeoapify {
-
+public class ServicioGeoapify implements ProovedorLugares {
     private static final Logger LOGGER = Logger.getLogger(ServicioGeoapify.class.getName());
     private static final Duration TIMEOUT = Duration.ofSeconds(8);
 
@@ -36,7 +36,8 @@ public class ServicioGeoapify {
     private final Map<String, Integer> conteoLugaresCache = new ConcurrentHashMap<>();
     private final AtomicLong llamadasGeoapify = new AtomicLong();
 
-    public double[] obtenerCoordenadas(String ciudad, String pais) {
+    @Override
+    public double[] coordenadas(String ciudad, String pais) {
         try {
             String texto = URLEncoder.encode(ciudad + ", " + pais, StandardCharsets.UTF_8);
             String url = "https://api.geoapify.com/v1/geocode/search?text=" + texto + "&apiKey=" + apiKey;
@@ -57,6 +58,7 @@ public class ServicioGeoapify {
         }
     }
 
+    @Override
     public Integer contarLugares(double lat, double lon, String categorias, int radioMetros, int limite) {
         if (apiKey == null || apiKey.isBlank()) {
             LOGGER.warning("Geoapify sin API key configurada; se omite la consulta de lugares.");

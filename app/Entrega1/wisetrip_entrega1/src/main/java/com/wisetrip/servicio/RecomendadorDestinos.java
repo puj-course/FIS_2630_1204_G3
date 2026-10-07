@@ -18,19 +18,27 @@ import com.wisetrip.modelo.EstadoAtributo;
 import com.wisetrip.modelo.ValidacionCiudades;
 import com.wisetrip.modelo.PreferenciasUsuario;
 import com.wisetrip.modelo.ResultadoRecomendacion;
+import com.wisetrip.negocio.Recomendador;
+
+
+
+import com.wisetrip.negocio.GestorPreferencias;
 
 @Service
-public class RecomendadorDestinos {
+public class RecomendadorDestinos implements Recomendador {
 
 
 
     private final boolean presupuestoObligatorio;
+    private final GestorPreferencias gestorPreferencias;
 
     public RecomendadorDestinos(
-            @Value("${wisetrip.presupuesto.obligatorio:true}") boolean presupuestoObligatorio) {
-        this.presupuestoObligatorio = presupuestoObligatorio;
-    }
+        @Value("${wisetrip.presupuesto.obligatorio:true}") boolean presupuestoObligatorio,
+        GestorPreferencias gestorPreferencias) {
 
+    this.presupuestoObligatorio = presupuestoObligatorio;
+    this.gestorPreferencias = gestorPreferencias;
+}
     /**
      * Puntaje (0 a 1) de viabilidad presupuestal. Dentro del limite todos
      * reciben 1: no se premia gastar mas ni ahorrar. El exceso se penaliza.
@@ -59,6 +67,7 @@ public class RecomendadorDestinos {
      * multiplicada por el castigo por los "Lo prefiero" que la ciudad no cumple.
      * Los indispensables ({@link Importancia#si}) no suman puntos: se validan antes.
      */
+
     public double calcularPuntajePreferencias(Map<String, Boolean> oferta,
                                               Map<String, Importancia> gustos) {
         return calcularCoincidenciaPonderada(oferta, gustos)
@@ -73,13 +82,13 @@ public class RecomendadorDestinos {
                                                    Map<String, Importancia> gustos) {
         int pesoTotal = 0;
         int pesoLogrado = 0;
-        for (var categoria : PreferenciasServicio.CATEGORIAS) {
+        for (var categoria : gestorPreferencias.listarCategorias()) {
             for (var pregunta : categoria.getPreguntas()) {
                 Importancia importancia = gustos.get(pregunta.getClave());
-                if (importancia != null && importancia.peso > 0) {
-                    pesoTotal += importancia.peso;
+                if (importancia != null && importancia.getPeso() > 0) {
+                    pesoTotal += importancia.getPeso();
                     if (Boolean.TRUE.equals(oferta.get(pregunta.getClave()))) {
-                        pesoLogrado += importancia.peso;
+                        pesoLogrado += importancia.getPeso();
                     }
                 }
             }
@@ -95,7 +104,7 @@ public class RecomendadorDestinos {
                                              Map<String, Importancia> gustos) {
         int total = 0;
         int cumplidos = 0;
-        for (var categoria : PreferenciasServicio.CATEGORIAS) {
+        for (var categoria : gestorPreferencias.listarCategorias()) {
             for (var pregunta : categoria.getPreguntas()) {
                 if (gustos.get(pregunta.getClave()) == Importancia.prefiero) {
                     total++;
@@ -122,15 +131,15 @@ public class RecomendadorDestinos {
     public Map<String, Double> calcularCoincidenciasPorCategoria(Map<String, Boolean> oferta,
                                                                  Map<String, Importancia> gustos) {
         Map<String, Double> coincidencias = new LinkedHashMap<>();
-        for (var categoria : PreferenciasServicio.CATEGORIAS) {
+        for (var categoria : gestorPreferencias.listarCategorias()) {
             int pesoTotal = 0;
             int pesoLogrado = 0;
             for (var pregunta : categoria.getPreguntas()) {
                 Importancia importancia = gustos.get(pregunta.getClave());
-                if (importancia == null || importancia.peso <= 0) continue;
-                pesoTotal += importancia.peso;
+                if (importancia == null || importancia.getPeso() <= 0) continue;
+                pesoTotal += importancia.getPeso();
                 if (Boolean.TRUE.equals(oferta.get(pregunta.getClave()))) {
-                    pesoLogrado += importancia.peso;
+                    pesoLogrado += importancia.getPeso();
                 }
             }
             if (pesoTotal > 0) {
@@ -140,7 +149,10 @@ public class RecomendadorDestinos {
         return coincidencias;
     }
 
-    public ResultadoRecomendacion calcularPuntajeTotal(Ciudad ciudad, PreferenciasUsuario preferencias) {
+    @Override
+    public ResultadoRecomendacion calcularPuntajeTotal(
+            Ciudad ciudad,
+            PreferenciasUsuario preferencias) {
         long dias = preferencias.getDuracionDias();
         double diario = ciudad.getCostoPromedio();
         double costo = diario * dias; // Costo de la estancia por persona.
@@ -150,7 +162,7 @@ public class RecomendadorDestinos {
         double pGustos = calcularPuntajePreferencias(
                 ciudad.getAtributos(), preferencias.getAtributos());
         boolean provisional = preferencias.getAtributos().entrySet().stream()
-                .anyMatch(e -> e.getValue() != null && e.getValue().peso > 0
+                .anyMatch(e -> e.getValue() != null && e.getValue().getPeso() > 0
                         && ciudad.estadoAtributo(e.getKey()) == EstadoAtributo.noSabemos);
 
         return new ResultadoRecomendacion(ciudad, pGustos, pCosto, pGustos,
@@ -166,11 +178,13 @@ public class RecomendadorDestinos {
         return Math.abs(costoViaje - preferencias.getPresupuesto());
     }
 
+    @Override
     public List<ResultadoRecomendacion> recomendarDestinos(List<Ciudad> ciudades,
                                                            PreferenciasUsuario preferencias) {
         return puntuarCiudadesValidas(validarCiudades(ciudades, preferencias), preferencias);
     }
 
+    @Override
     public ValidacionCiudades validarCiudades(List<Ciudad> ciudades, PreferenciasUsuario preferencias) {
         List<Ciudad> validas = new ArrayList<>();
         List<Ciudad> descartadas = new ArrayList<>();
@@ -194,6 +208,7 @@ public class RecomendadorDestinos {
         return new ValidacionCiudades(validas, descartadas, pendientes);
     }
 
+    @Override
     public List<ResultadoRecomendacion> puntuarCiudadesValidas(ValidacionCiudades validacion,
                                                               PreferenciasUsuario preferencias) {
         List<ResultadoRecomendacion> resultados = new ArrayList<>();
