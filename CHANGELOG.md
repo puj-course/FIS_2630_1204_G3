@@ -3850,10 +3850,10 @@ Este sprint nos enfocamos en que la información de viaje del usuario —presupu
 |----|--------|------|------------|-------------|
 | #86 | | Historia de Usuario |  | Valeria |
 | #87 | | Historia de Usuario |  | Valeria |
-| #88 | | Como usuario de WiseTrip quiero que la gestión de mi presupuesto y gastos funcione de manera consistente para tener un mejor control financiero de mi viaje.|  | Maleja |
-| #89 | | Como usuario de WiseTrip quiero que las funcionalidades de presupuesto y gastos estén correctamente integradas para gestionar la información financiera de mi viaje de forma confiable.|  | Maleja |
-| #90 | | Como usuario quiero que el sistema rechace fechas o presupuestos inválidos sin importar desde dónde los ingrese, para que mi viaje quede registrado con datos coherentes y no a medio llenar.|  | Gaby |
-| #91 | | Como usuario quiero que mi viaje (fechas, presupuesto, destino) siga guardandose y validandose correctamente aunque se realicen actualizaciones de la pagina, para no encontrarme con fallas o un mal registro de mi viaje.|  | Gaby |
+| #88 | Como usuario de WiseTrip quiero que la gestión de mi presupuesto y gastos funcione de manera consistente para tener un mejor control financiero de mi viaje. | Historia de Usuario |  | Maleja |
+| #89 | Como usuario de WiseTrip quiero que las funcionalidades de presupuesto y gastos estén correctamente integradas para gestionar la información financiera de mi viaje de forma confiable. | Historia de Usuario |  | Maleja |
+| #90 | Como usuario quiero que el sistema rechace fechas o presupuestos inválidos sin importar desde dónde los ingrese, para que mi viaje quede registrado con datos coherentes y no a medio llenar | Historia de Usuario |  | Gaby |
+| #91 | Como usuario quiero que mi viaje (fechas, presupuesto, destino) siga guardandose y validandose correctamente aunque se realicen actualizaciones de la pagina, para no encontrarme con fallas o un mal registro de mi viaje. | Historia de Usuario |  | Gaby |
 | #92 | Como viajero, quiero que WiseTrip seleccione los destinos que mejor se adapten a mis preferencias, a pesar de los cambios técnicos y actualizaciones en el funcionamiento de la página | Historia de Usuario |  | Isa |
 | #93 | Como viajero, quiero seguir respondiendo preguntas sobre mis intereses de viaje, a pesar de que se hagan cambios técnicos en la arquitectura de la página | Historia de Usuario |  | Isa |
 | #94 | Quiero recibir destinos filtrados según mi presupuesto y ordenados por afinidad con mis preferencias, para ver solo lo que realmente se adapta a mi| Historia de Usuario |  | Clavijo |
