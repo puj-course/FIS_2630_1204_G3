@@ -8,7 +8,7 @@ public enum Importancia {
     si(0);       // Es indispensable: se evalua como requisito, no suma puntos.
 
     public final int peso;
-
+    
     Importancia(int peso) {
         this.peso = peso;
     }
