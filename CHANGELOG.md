@@ -3854,8 +3854,8 @@ Este sprint nos enfocamos en que la información de viaje del usuario —presupu
 | #89 | | Como usuario de WiseTrip quiero que las funcionalidades de presupuesto y gastos estén correctamente integradas para gestionar la información financiera de mi viaje de forma confiable.|  | Maleja |
 | #90 | | Como usuario quiero que el sistema rechace fechas o presupuestos inválidos sin importar desde dónde los ingrese, para que mi viaje quede registrado con datos coherentes y no a medio llenar.|  | Gaby |
 | #91 | | Como usuario quiero que mi viaje (fechas, presupuesto, destino) siga guardandose y validandose correctamente aunque se realicen actualizaciones de la pagina, para no encontrarme con fallas o un mal registro de mi viaje.|  | Gaby |
-| #92 | | Historia de Usuario |  | Isa |
-| #93 | | Historia de Usuario |  | Isa |
+| #92 | Como viajero, quiero que WiseTrip seleccione los destinos que mejor se adapten a mis preferencias, a pesar de los cambios técnicos y actualizaciones en el funcionamiento de la página | Historia de Usuario |  | Isa |
+| #93 | Como viajero, quiero seguir respondiendo preguntas sobre mis intereses de viaje, a pesar de que se hagan cambios técnicos en la arquitectura de la página | Historia de Usuario |  | Isa |
 | #94 | Quiero recibir destinos filtrados según mi presupuesto y ordenados por afinidad con mis preferencias, para ver solo lo que realmente se adapta a mi| Historia de Usuario |  | Clavijo |
 | #95 | Como viajero, quiero ingresar mi presupuesto y responder preguntas sobre mis intereses para que el sistema conozca las características y posibilidades económicas que busco en un destino | Historia de Usuario |  | Clavijo |
 
