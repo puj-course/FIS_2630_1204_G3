@@ -3861,8 +3861,10 @@ Este sprint nos enfocamos en que la información de viaje del usuario —presupu
 
 ## Riesgos / Bloqueos identificados
 
--
--
+- Falta de conceptos
+- Codigo spaguetti a corregir
+- Falta de tiempo
+- 
 ---
 ---
 ## Daily Sprint - 06/10/2026
@@ -3905,7 +3907,7 @@ no, solo dudas con conceptos básicos pero yo me pongo al día
 
 1. **¿Qué hice ayer?**
 
-ayer hicimos el planning y vimos uestro codigo y que tenemos que cambiar para la segunda entrega
+ayer hicimos el planning y vimos uestro codigo y que tenemos que cambiar para la segunda entrega, asi como hablar con el profe acerca de dudas correspondientes al diseño del codigo, lo diagrramas y lo que no entendemos
 
 2. **¿Qué voy a hacer hoy?**
 
