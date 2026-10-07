@@ -3905,15 +3905,15 @@ no, solo dudas con conceptos básicos pero yo me pongo al día
 
 1. **¿Qué hice ayer?**
 
-
+ayer hicimos el planning y vimos uestro codigo y que tenemos que cambiar para la segunda entrega
 
 2. **¿Qué voy a hacer hoy?**
 
-
+hoy junto con mi compañera hicimos todo lo que se trata del modulo 2 de recomendaciones
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
-
+falta de conceptos
 
 ---
 
@@ -3950,7 +3950,7 @@ Hoy voy a identificar las clases y ver que puedo empezar a hacer
 no
 
 ---
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/5d4152fc-6b6e-45b6-b85d-e844f70343d8" />
 
-## Notas adicionales
-
+---
 
