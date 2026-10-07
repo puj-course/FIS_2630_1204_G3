@@ -20,7 +20,7 @@ import com.wisetrip.modelo.PreferenciasUsuario;
 import com.wisetrip.modelo.ResultadoRecomendacion;
 
 @Service
-public class RecomendadorDestinos {
+public class RecomendadorDestinos implements Recomendador {
 
 
 
@@ -59,6 +59,7 @@ public class RecomendadorDestinos {
      * multiplicada por el castigo por los "Lo prefiero" que la ciudad no cumple.
      * Los indispensables ({@link Importancia#si}) no suman puntos: se validan antes.
      */
+
     public double calcularPuntajePreferencias(Map<String, Boolean> oferta,
                                               Map<String, Importancia> gustos) {
         return calcularCoincidenciaPonderada(oferta, gustos)
