@@ -3672,15 +3672,15 @@ no ya no, ya pude arreglar mi rama local
 
 1. **¿Qué hice ayer?**
 
-
+Se realizo el diagrama de clases, analisis, componentes y Diagrama EBC - de secuencia
    
 2. **¿Qué voy a hacer hoy?**
 
-  
+Hoy se realizaron algunos cambios en los documentos de base de datos y empece a revisar como hacer el boton donde ira lo del telegram
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
-   
+no   
    
 ---
 
