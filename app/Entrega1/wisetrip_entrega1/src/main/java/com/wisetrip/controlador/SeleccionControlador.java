@@ -18,7 +18,7 @@ import jakarta.servlet.http.HttpSession;
  * HU#68: permite al viajero elegir uno de los tres destinos recomendados
  * y continuar la planificación con ese destino.
  *
- *  recibe la petición web y delega la elección.
+ * GRASP Controlador: recibe la petición web y delega la elección.
  * SOLID Inversión de dependencias: depende de la interfaz de negocio
  * ISeleccionDestino, no de una clase concreta.
  */
@@ -46,11 +46,7 @@ public class SeleccionControlador {
                 (Map<String, Boolean>) sesion.getAttribute("atributosSeleccionados");
         if (atributosCuestionario == null) return "redirect:/preferencias";
 
-        Double presupuestoUsd = (Double) sesion.getAttribute("presupuestoEnUsd");
-        if (presupuestoUsd == null) return "redirect:/presupuesto";
-
-        SeleccionDestinos seleccion = (SeleccionDestinos) sesion.getAttribute("seleccionRecomendada");
-        if (seleccion == null) return "redirect:/recomendaciones";
+        if (sesion.getAttribute("presupuestoEnUsd") == null) return "redirect:/presupuesto";
 
         SeleccionDestinos seleccionDestinos =
                 (SeleccionDestinos) sesion.getAttribute("seleccionDestinos");
