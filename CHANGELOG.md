@@ -3961,15 +3961,15 @@ no
 
 1. **¿Qué hice ayer?**
 
-
+Ayer junto a mi compañero hice la implementación de las interfaces con sus overrides del módulo de recomendaciones, especialmente la parte de selección de destino.
 
 2. **¿Qué voy a hacer hoy?**
 
-
+Hoy revisé cómo empezar el diagrama
    
 3. **¿Tengo algún impedimento o bloqueo?**
 
-
+No
 
 ---
 
@@ -3993,15 +3993,15 @@ El hackeo del bot
 
 1. **¿Qué hice ayer?**
 
-
+ayer junto con mi compañera hicimos todo lo relacionado con el milestone 3 de preferencias y recomendaciones personalizadas, creamos interfaces de negocio y las implementamos en las demas clases
 
 2. **¿Qué voy a hacer hoy?**
 
-
+hoy empece a estudiar el codigo y empezar a hacer los diagramas necesarios
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
-
+no
 
 ---
 
@@ -4009,15 +4009,15 @@ El hackeo del bot
 
 1. **¿Qué hice ayer?**
 
- 
+temrine de corregir la manera en la que el sistema estaba evaluando la recomendacion de las ciudades
 
 2. **¿Qué voy a hacer hoy?**
 
-
+hoy estoy en la correccion de las clases para que tengan las interfaces de las que habla el profe especificamente de las clases involucradas en el milestone 3
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
-
+no
 
 ---
 
@@ -4026,15 +4026,15 @@ El hackeo del bot
 
 1. **¿Qué hice ayer?** 
 
-
+Ayer estaba viendo que codigos podia tocar y cambiar, tambien como para no crear conflicto y repasando como se implementaban interfaces en java
 
 2. **¿Qué voy a hacer hoy?** 
 
-
+Terminando los codigos que hace falta por arreglar
 
 3. **¿Tengo algún impedimento o bloqueo?** 
 
-
+no
 
 ---
 
