@@ -18,7 +18,7 @@ import jakarta.servlet.http.HttpSession;
  * HU#68: permite al viajero elegir uno de los tres destinos recomendados
  * y continuar la planificación con ese destino.
  *
- * GRASP Controlador: recibe la petición web y delega la elección.
+ *  recibe la petición web y delega la elección.
  * SOLID Inversión de dependencias: depende de la interfaz de negocio
  * ISeleccionDestino, no de una clase concreta.
  */
