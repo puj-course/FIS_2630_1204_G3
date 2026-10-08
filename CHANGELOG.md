@@ -3891,15 +3891,15 @@ no, solo dudas con conceptos básicos pero yo me pongo al día
 
 1. **¿Qué hice ayer?**
 
-
+Hicimos revision de nuestro codigo, hicimos tambien una reunion con el profesor en donde nos explico e hizo entender que tenemos que realizar cambios en nuestro codigo ya que no teniamos implementadas interfaces de negocio, pudimos aclarar de mejor forma nuestra arquitectura y nos propusimos mejorar todo lo que tenga que ver con la arquitectura en si. Hicimos el planning
    
 2. **¿Qué voy a hacer hoy?**
 
-  
+El dia de hoy se hicieron los cambio e implementaciones de las interfaces para el modulo de registro, se estudio para la clase y se trato de implementar solid dentro del proyecto.  
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
-   
+Algunos vacios de clase de ADS   
    
 ---
 
