@@ -4038,6 +4038,8 @@ no
 
 ---
 
+<img width="999" height="485" alt="Captura de pantalla 2026-10-07 193455" src="https://github.com/user-attachments/assets/d531e72f-9f8e-41e7-a68a-b97a7caa5e29" />
+
 
 ---
 
