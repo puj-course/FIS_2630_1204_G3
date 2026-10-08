@@ -5,13 +5,8 @@ import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
-<<<<<<< HEAD
-import com.wisetrip.modelo.RepartoPresupuesto;
-import com.wisetrip.negocio.IRepartoServicio;
-=======
 import com.wisetrip.negocio.IDistribuible;
 import com.wisetrip.negocio.IGestionReparto;
->>>>>>> origin/develop
 
 /**
  * HU#69 y HU#79: valida el reparto del presupuesto y calcula cuánto
@@ -23,11 +18,7 @@ import com.wisetrip.negocio.IGestionReparto;
  * GRASP Bajo acoplamiento: solo conoce la abstracción IDistribuible.
  */
 @Service
-<<<<<<< HEAD
-public class RepartoServicio implements IRepartoServicio {
-=======
 public class RepartoServicio implements IGestionReparto {
->>>>>>> origin/develop
 
     /** Nombre visible de cada categoría, en el orden en que se muestran. */
     private static final Map<String, String> CATEGORIAS = new LinkedHashMap<>();
@@ -45,17 +36,8 @@ public class RepartoServicio implements IGestionReparto {
         return CATEGORIAS;
     }
 
-<<<<<<< HEAD
-    /**
-     * Valida que ningún porcentaje sea negativo y que la suma dé 100.
-     * Devuelve un mapa vacío si todo está correcto.
-     */
-    @Override
-    public Map<String, String> validarReparto(RepartoPresupuesto reparto) {
-=======
     @Override
     public Map<String, String> validarReparto(IDistribuible reparto) {
->>>>>>> origin/develop
         Map<String, String> errores = new LinkedHashMap<>();
 
         if (reparto.tienePorcentajesNegativos()) {
@@ -78,27 +60,14 @@ public class RepartoServicio implements IGestionReparto {
         return errores;
     }
 
-<<<<<<< HEAD
-    /**
-     * Convierte los porcentajes en montos, según el presupuesto total.
-     * Devuelve un mapa con el nombre visible de la categoría y su monto.
-     */
-    @Override
-    public Map<String, Double> calcularMontos(RepartoPresupuesto reparto, double presupuestoTotal) {
-=======
     @Override
     public Map<String, Double> calcularMontos(IDistribuible reparto, double presupuestoTotal) {
->>>>>>> origin/develop
         Map<String, Double> montos = new LinkedHashMap<>();
         reparto.distribuir(presupuestoTotal)
                .forEach((clave, monto) -> montos.put(CATEGORIAS.get(clave), monto));
         return montos;
     }
 
-<<<<<<< HEAD
-    /** Cuánto queda por día en cada categoría. */
-=======
->>>>>>> origin/develop
     @Override
     public double porDia(double monto, long dias) {
         if (dias <= 0) return 0;
