@@ -14,6 +14,7 @@
 
 package com.wisetrip.modelo;
 
+import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
@@ -31,14 +32,23 @@ public class FechasViaje {
     public String getFechaFin() { return fechaFin; }
     public void setFechaFin(String fechaFin) { this.fechaFin = fechaFin; }
 
-    /** Cantidad de dias del viaje. Devuelve 0 si las fechas no son validas. */
-    public long getDuracionDias() {
-        try {
-            LocalDate inicio = LocalDate.parse(fechaInicio);
-            LocalDate fin = LocalDate.parse(fechaFin);
-            return ChronoUnit.DAYS.between(inicio, fin) + 1;
-        } catch (Exception e) {
-            return 0;
+    public boolean tieneRangoValido() {
+    try {
+        LocalDate inicio = LocalDate.parse(fechaInicio);
+        LocalDate fin = LocalDate.parse(fechaFin);
+        return fin.isAfter(inicio);
+    } catch (DateTimeException | NullPointerException e) {
+        return false;
         }
+    }
+
+    public long getDuracionDias() {
+    if (!tieneRangoValido()) {
+        return 0;
+    }
+
+    LocalDate inicio = LocalDate.parse(fechaInicio);
+    LocalDate fin = LocalDate.parse(fechaFin);
+    return ChronoUnit.DAYS.between(inicio, fin) + 1;
     }
 }

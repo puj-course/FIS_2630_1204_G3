@@ -49,7 +49,8 @@ public class Presupuesto {
                     .replace(",", ".")
                     .replace(" ", "");
 
-            return Double.parseDouble(limpio);
+            double valor = Double.parseDouble(limpio);        
+            return Double.isFinite(valor) ? valor : -1;
 
         } catch (NumberFormatException e) {
             return -1;

@@ -1,11 +1,10 @@
 package com.wisetrip.modelo;
 
 public enum Importancia {
-
     no(0),
     gustar(1),
-    prefiero(2),
-    si(3);
+    prefiero(3),
+    si(0);
 
     private final int peso;
 
@@ -18,7 +17,7 @@ public enum Importancia {
     }
 
     public boolean esPuntuable() {
-        return peso > 0;
+        return this == gustar || this == prefiero;
     }
 
     public boolean estaSeleccionada() {

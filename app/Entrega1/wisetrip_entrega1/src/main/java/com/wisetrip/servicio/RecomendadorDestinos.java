@@ -85,7 +85,7 @@ public class RecomendadorDestinos implements Recomendador {
         for (var categoria : gestorPreferencias.listarCategorias()) {
             for (var pregunta : categoria.getPreguntas()) {
                 Importancia importancia = gustos.get(pregunta.getClave());
-                if (importancia != null && importancia.getPeso() > 0) {
+                if (importancia != null && importancia.esPuntuable()) {
                     pesoTotal += importancia.getPeso();
                     if (Boolean.TRUE.equals(oferta.get(pregunta.getClave()))) {
                         pesoLogrado += importancia.getPeso();
@@ -136,7 +136,7 @@ public class RecomendadorDestinos implements Recomendador {
             int pesoLogrado = 0;
             for (var pregunta : categoria.getPreguntas()) {
                 Importancia importancia = gustos.get(pregunta.getClave());
-                if (importancia == null || importancia.getPeso() <= 0) continue;
+                if (importancia == null || !importancia.esPuntuable()) continue;
                 pesoTotal += importancia.getPeso();
                 if (Boolean.TRUE.equals(oferta.get(pregunta.getClave()))) {
                     pesoLogrado += importancia.getPeso();
@@ -162,7 +162,7 @@ public class RecomendadorDestinos implements Recomendador {
         double pGustos = calcularPuntajePreferencias(
                 ciudad.getAtributos(), preferencias.getAtributos());
         boolean provisional = preferencias.getAtributos().entrySet().stream()
-                .anyMatch(e -> e.getValue() != null && e.getValue().getPeso() > 0
+                .anyMatch(e -> e.getValue() != null && e.getValue().esPuntuable()
                         && ciudad.estadoAtributo(e.getKey()) == EstadoAtributo.noSabemos);
 
         return new ResultadoRecomendacion(ciudad, pGustos, pCosto, pGustos,
@@ -195,7 +195,7 @@ public class RecomendadorDestinos implements Recomendador {
             boolean incumple = !faltaInformacion && presupuestoObligatorio
                     && costo > preferencias.getPresupuesto();
             for (var requisito : preferencias.getAtributos().entrySet()) {
-                if (requisito.getValue() != Importancia.si) continue;
+                if (requisito.getValue() == null || !requisito.getValue().esIndispensable()) continue;
                 EstadoAtributo estado = ciudad.estadoAtributo(requisito.getKey());
                 incumple |= estado == EstadoAtributo.noCumple;
                 faltaInformacion |= estado == EstadoAtributo.noSabemos;

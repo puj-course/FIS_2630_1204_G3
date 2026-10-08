@@ -20,8 +20,8 @@ import com.wisetrip.negocio.CiudadNegocio;
 import com.wisetrip.negocio.IRepositorioPreferencias;
 import com.wisetrip.negocio.IRepositorioViajes;
 import com.wisetrip.servicio.LlenarAtributosCiudad;
-import com.wisetrip.servicio.RecomendadorDestinos;
-import com.wisetrip.servicio.SelectorDestinos;
+import com.wisetrip.negocio.Recomendador;
+import com.wisetrip.negocio.SeleRecomendaciones;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -40,15 +40,15 @@ public class RecomendacionControlador {
     private final IRepositorioViajes viajeDAO;
     private final IRepositorioPreferencias preferenciaDAO;
     private final LlenarAtributosCiudad llenarAtributosCiudad;
-    private final RecomendadorDestinos recomendadorDestinos;
-    private final SelectorDestinos selectorDestinos;
+    private final Recomendador recomendadorDestinos;
+    private final SeleRecomendaciones selectorDestinos;
 
     public RecomendacionControlador(CiudadNegocio ciudadDAO,
                                     IRepositorioViajes viajeDAO,
                                     IRepositorioPreferencias preferenciaDAO,
                                     LlenarAtributosCiudad llenarAtributosCiudad,
-                                    RecomendadorDestinos recomendadorDestinos,
-                                    SelectorDestinos selectorDestinos) {
+                                    Recomendador recomendadorDestinos,
+                                    SeleRecomendaciones selectorDestinos) {
         this.ciudadDAO = ciudadDAO;
         this.viajeDAO = viajeDAO;
         this.preferenciaDAO = preferenciaDAO;
