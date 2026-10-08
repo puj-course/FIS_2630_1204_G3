@@ -3848,8 +3848,8 @@ Este sprint nos enfocamos en que la información de viaje del usuario —presupu
 
 | ID | Título | Tipo | Estimación | Responsable |
 |----|--------|------|------------|-------------|
-| #86 | | Historia de Usuario |  | Valeria |
-| #87 | | Historia de Usuario |  | Valeria |
+| #86 | | Como usuario, quiero que mis datos de viaje sean gestionados correctamente por WiseTrip, para recibir recomendaciones y servicios coherentes con mis preferencias. |  | Valeria |
+| #87 | | Como administrador, quiero gestionar correctamente la información de usuarios, viajes y destinos, para garantizar el funcionamiento adecuado de WiseTrip. |  | Valeria |
 | #88 | Como usuario de WiseTrip quiero que la gestión de mi presupuesto y gastos funcione de manera consistente para tener un mejor control financiero de mi viaje. | Historia de Usuario |  | Maleja |
 | #89 | Como usuario de WiseTrip quiero que las funcionalidades de presupuesto y gastos estén correctamente integradas para gestionar la información financiera de mi viaje de forma confiable. | Historia de Usuario |  | Maleja |
 | #90 | Como usuario quiero que el sistema rechace fechas o presupuestos inválidos sin importar desde dónde los ingrese, para que mi viaje quede registrado con datos coherentes y no a medio llenar | Historia de Usuario |  | Gaby |
@@ -3891,15 +3891,15 @@ no, solo dudas con conceptos básicos pero yo me pongo al día
 
 1. **¿Qué hice ayer?**
 
-
+Hicimos revision de nuestro codigo, hicimos tambien una reunion con el profesor en donde nos explico e hizo entender que tenemos que realizar cambios en nuestro codigo ya que no teniamos implementadas interfaces de negocio, pudimos aclarar de mejor forma nuestra arquitectura y nos propusimos mejorar todo lo que tenga que ver con la arquitectura en si. Hicimos el planning
    
 2. **¿Qué voy a hacer hoy?**
 
-  
+El dia de hoy se hicieron los cambio e implementaciones de las interfaces para el modulo de registro, se estudio para la clase y se trato de implementar solid dentro del proyecto.  
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
-   
+Algunos vacios de clase de ADS   
    
 ---
 
@@ -3953,6 +3953,93 @@ no
 
 ---
 <img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/5d4152fc-6b6e-45b6-b85d-e844f70343d8" />
+
+---
+## Daily Sprint - 07/10/2026
+
+### Isabella Posada
+
+1. **¿Qué hice ayer?**
+
+
+
+2. **¿Qué voy a hacer hoy?**
+
+
+   
+3. **¿Tengo algún impedimento o bloqueo?**
+
+
+
+---
+
+### Valeria Cortes Rendon
+
+1. **¿Qué hice ayer?**
+
+Se hizo la implementacion de las interfaces de negocio para el modulo de registro e inicio de sesion. Ademas se hicieron cambios en la implementacion y se aplicaron solid al proyecto
+   
+2. **¿Qué voy a hacer hoy?**
+
+Investigacion para arreglar lo del telegram ya que al parecer nos hackean el bot y llegan mensajes en ruso desde nuestro bot como si nosotros los estuvieramos enviando. Tenemos que buscar algun profe de seguridad que nos pueda explicar de mejor forma lo que sucede con nuestro bot
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+El hackeo del bot
+   
+---
+
+### Santiago Clavijo
+
+1. **¿Qué hice ayer?**
+
+
+
+2. **¿Qué voy a hacer hoy?**
+
+
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+
+
+---
+
+### Gabriela Melo Gualteros
+
+1. **¿Qué hice ayer?**
+
+ 
+
+2. **¿Qué voy a hacer hoy?**
+
+
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+
+
+---
+
+
+### Maria Alejandra Rodriguez
+
+1. **¿Qué hice ayer?** 
+
+
+
+2. **¿Qué voy a hacer hoy?** 
+
+
+
+3. **¿Tengo algún impedimento o bloqueo?** 
+
+
+
+---
+
+<img width="999" height="485" alt="Captura de pantalla 2026-10-07 193455" src="https://github.com/user-attachments/assets/d531e72f-9f8e-41e7-a68a-b97a7caa5e29" />
+
 
 ---
 

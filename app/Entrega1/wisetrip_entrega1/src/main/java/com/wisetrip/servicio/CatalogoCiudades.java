@@ -1,13 +1,26 @@
 package com.wisetrip.servicio;
 
+import java.util.Collections;
 import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.Map;
+import java.util.Set;
 
 import org.springframework.stereotype.Service;
 
+import com.wisetrip.negocio.ITraductorPreferencias;
 
+/**
+ * Traduce las respuestas del cuestionario (HU#25) a los atributos con
+ * los que se comparan las ciudades.
+ *
+ * Implementa la interfaz de negocio ITraductorPreferencias.
+ * GRASP Indirección y Fabricación pura: une el cuestionario con la base
+ * de datos sin que ninguno de los dos conozca al otro.
+ * SOLID Responsabilidad única: solo traduce claves.
+ */
 @Service
-public class CatalogoCiudades {
+public class CatalogoCiudades implements ITraductorPreferencias {
 
     /**
      * Traduce las claves del cuestionario (HU#25) a los nombres de atributo
@@ -47,16 +60,33 @@ public class CatalogoCiudades {
      * Las claves sin equivalencia se ignoran porque describen
      * al viajero, no al destino.
      */
+    @Override
     public Map<String, Boolean> traducir(Map<String, Boolean> respuestasCuestionario) {
         Map<String, Boolean> traducidos = new LinkedHashMap<>();
         if (respuestasCuestionario == null) return traducidos;
 
         for (Map.Entry<String, Boolean> entrada : respuestasCuestionario.entrySet()) {
-            String claveBD = EQUIVALENCIAS.get(entrada.getKey());
+            String claveBD = equivalenteDe(entrada.getKey());
             if (claveBD != null) {
                 traducidos.put(claveBD, entrada.getValue());
             }
         }
         return traducidos;
+    }
+
+    @Override
+    public boolean reconoce(String claveCuestionario) {
+        return claveCuestionario != null && EQUIVALENCIAS.containsKey(claveCuestionario);
+    }
+
+    @Override
+    public String equivalenteDe(String claveCuestionario) {
+        if (claveCuestionario == null) return null;
+        return EQUIVALENCIAS.get(claveCuestionario);
+    }
+
+    @Override
+    public Set<String> atributosDisponibles() {
+        return Collections.unmodifiableSet(new LinkedHashSet<>(EQUIVALENCIAS.values()));
     }
 }
