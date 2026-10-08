@@ -3977,15 +3977,15 @@ no
 
 1. **¿Qué hice ayer?**
 
-
+Se hizo la implementacion de las interfaces de negocio para el modulo de registro e inicio de sesion. Ademas se hicieron cambios en la implementacion y se aplicaron solid al proyecto
    
 2. **¿Qué voy a hacer hoy?**
 
-
+Investigacion para arreglar lo del telegram ya que al parecer nos hackean el bot y llegan mensajes en ruso desde nuestro bot como si nosotros los estuvieramos enviando. Tenemos que buscar algun profe de seguridad que nos pueda explicar de mejor forma lo que sucede con nuestro bot
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
-  
+El hackeo del bot
    
 ---
 
