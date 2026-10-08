@@ -3848,8 +3848,8 @@ Este sprint nos enfocamos en que la información de viaje del usuario —presupu
 
 | ID | Título | Tipo | Estimación | Responsable |
 |----|--------|------|------------|-------------|
-| #86 | | Historia de Usuario |  | Valeria |
-| #87 | | Historia de Usuario |  | Valeria |
+| #86 | | Como usuario, quiero que mis datos de viaje sean gestionados correctamente por WiseTrip, para recibir recomendaciones y servicios coherentes con mis preferencias. |  | Valeria |
+| #87 | | Como administrador, quiero gestionar correctamente la información de usuarios, viajes y destinos, para garantizar el funcionamiento adecuado de WiseTrip. |  | Valeria |
 | #88 | Como usuario de WiseTrip quiero que la gestión de mi presupuesto y gastos funcione de manera consistente para tener un mejor control financiero de mi viaje. | Historia de Usuario |  | Maleja |
 | #89 | Como usuario de WiseTrip quiero que las funcionalidades de presupuesto y gastos estén correctamente integradas para gestionar la información financiera de mi viaje de forma confiable. | Historia de Usuario |  | Maleja |
 | #90 | Como usuario quiero que el sistema rechace fechas o presupuestos inválidos sin importar desde dónde los ingrese, para que mi viaje quede registrado con datos coherentes y no a medio llenar | Historia de Usuario |  | Gaby |
@@ -3861,8 +3861,10 @@ Este sprint nos enfocamos en que la información de viaje del usuario —presupu
 
 ## Riesgos / Bloqueos identificados
 
--
--
+- Falta de conceptos
+- Codigo spaguetti a corregir
+- Falta de tiempo
+- 
 ---
 ---
 ## Daily Sprint - 06/10/2026
@@ -3871,13 +3873,101 @@ Este sprint nos enfocamos en que la información de viaje del usuario —presupu
 
 1. **¿Qué hice ayer?**
 
-  
+  ayer hicimos el sprint planning donde definimos las hus de esta semana, son mas de organizar el codigo pero realemnte necesario, ademas fuimos a hablar con el profesor para resolver dudas sobre el proyecto
+
+
+2. **¿Qué voy a hacer hoy?**
+
+hoy voy a hacer la implementacion de las interfaces de negocio, poniendo overrides y extends, para seguir con la logica del proyecto, especialmente en el modulo 2 de recomendaciones, que es la que me toca
+En total añadi hoy 4 interfaces nuevas que coinciden con lo que hemos trabajado a nivel de codigo solo que ya mas enfocado a la entrega 2.
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+no, solo dudas con conceptos básicos pero yo me pongo al día
+
+---
+
+### Valeria Cortes Rendon
+
+1. **¿Qué hice ayer?**
+
+Hicimos revision de nuestro codigo, hicimos tambien una reunion con el profesor en donde nos explico e hizo entender que tenemos que realizar cambios en nuestro codigo ya que no teniamos implementadas interfaces de negocio, pudimos aclarar de mejor forma nuestra arquitectura y nos propusimos mejorar todo lo que tenga que ver con la arquitectura en si. Hicimos el planning
+   
+2. **¿Qué voy a hacer hoy?**
+
+El dia de hoy se hicieron los cambio e implementaciones de las interfaces para el modulo de registro, se estudio para la clase y se trato de implementar solid dentro del proyecto.  
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+Algunos vacios de clase de ADS   
+   
+---
+
+### Santiago Clavijo
+
+1. **¿Qué hice ayer?**
+
+ayer hicimos el planning y vimos uestro codigo y que tenemos que cambiar para la segunda entrega, asi como hablar con el profe acerca de dudas correspondientes al diseño del codigo, lo diagrramas y lo que no entendemos
+
+2. **¿Qué voy a hacer hoy?**
+
+hoy junto con mi compañera hicimos todo lo que se trata del modulo 2 de recomendaciones
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+falta de conceptos
+
+---
+
+### Gabriela Melo Gualteros
+
+1. **¿Qué hice ayer?**
+
+Ayer estuvimos haciendo Sprint Planning, donde decidimos enfocarnos en las corecciones que nos dio el profe y en si en ir mirando que es lo que nos falta para la entrega 2
+
+2. **¿Qué voy a hacer hoy?**
+
+Hoy temrine de corregir la manera en la que el sistema estaba evaluando la recomendacion de las ciudades y revisando cuales son las clases en las que deberia empezar a trabajar esta semana.
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+un poco perdida con lo que hay que hacer porque el area en la que voy a trabajar esta semana no he contribuido mucho, pero me ayduara a entender mas el proeycto y codigo como tal
+
+---
+
+
+### Maria Alejandra Rodriguez
+
+1. **¿Qué hice ayer?** 
+
+Realizamos el sprint planning y mis compañeros me explicaron los cambios que hay que realizarle a nuestro programa, nos distribuimos por milestones sin embargo estoy por pensar que nos van a sobrar muchas clases entonces toca mirar cuales nos quedan
+
+
+2. **¿Qué voy a hacer hoy?** 
+
+Hoy voy a identificar las clases y ver que puedo empezar a hacer
+
+3. **¿Tengo algún impedimento o bloqueo?** 
+
+no
+
+---
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/5d4152fc-6b6e-45b6-b85d-e844f70343d8" />
+
+---
+## Daily Sprint - 07/10/2026
+
+### Isabella Posada
+
+1. **¿Qué hice ayer?**
+
+
 
 2. **¿Qué voy a hacer hoy?**
 
 
-
-4. **¿Tengo algún impedimento o bloqueo?**
+   
+3. **¿Tengo algún impedimento o bloqueo?**
 
 
 
@@ -3887,15 +3977,15 @@ Este sprint nos enfocamos en que la información de viaje del usuario —presupu
 
 1. **¿Qué hice ayer?**
 
-
+Se hizo la implementacion de las interfaces de negocio para el modulo de registro e inicio de sesion. Ademas se hicieron cambios en la implementacion y se aplicaron solid al proyecto
    
 2. **¿Qué voy a hacer hoy?**
 
-  
+Investigacion para arreglar lo del telegram ya que al parecer nos hackean el bot y llegan mensajes en ruso desde nuestro bot como si nosotros los estuvieramos enviando. Tenemos que buscar algun profe de seguridad que nos pueda explicar de mejor forma lo que sucede con nuestro bot
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
-   
+El hackeo del bot
    
 ---
 
@@ -3919,7 +4009,7 @@ Este sprint nos enfocamos en que la información de viaje del usuario —presupu
 
 1. **¿Qué hice ayer?**
 
-
+ 
 
 2. **¿Qué voy a hacer hoy?**
 
@@ -3948,6 +4038,8 @@ Este sprint nos enfocamos en que la información de viaje del usuario —presupu
 
 ---
 
-## Notas adicionales
+<img width="999" height="485" alt="Captura de pantalla 2026-10-07 193455" src="https://github.com/user-attachments/assets/d531e72f-9f8e-41e7-a68a-b97a7caa5e29" />
 
+
+---
 

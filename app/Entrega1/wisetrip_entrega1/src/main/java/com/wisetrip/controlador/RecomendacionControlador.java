@@ -7,37 +7,45 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import com.wisetrip.datos.CiudadDAO;
 import com.wisetrip.datos.CiudadSemilla;
 import com.wisetrip.datos.DatosCiudades;
-import com.wisetrip.datos.PreferenciaDAO;
-import com.wisetrip.datos.ViajeDAO;
 import com.wisetrip.modelo.Ciudad;
-import com.wisetrip.modelo.Importancia;
 import com.wisetrip.modelo.FechasViaje;
+import com.wisetrip.modelo.Importancia;
 import com.wisetrip.modelo.PreferenciasUsuario;
 import com.wisetrip.modelo.ResultadoRecomendacion;
 import com.wisetrip.modelo.SeleccionDestinos;
 import com.wisetrip.modelo.Usuario;
+import com.wisetrip.negocio.CiudadNegocio;
+import com.wisetrip.negocio.IRepositorioPreferencias;
+import com.wisetrip.negocio.IRepositorioViajes;
 import com.wisetrip.servicio.LlenarAtributosCiudad;
 import com.wisetrip.servicio.RecomendadorDestinos;
 import com.wisetrip.servicio.SelectorDestinos;
 
 import jakarta.servlet.http.HttpSession;
 
+/**
+ * Calcula y muestra los tres destinos recomendados.
+ *
+ * GRASP Controlador: recibe la petición web y delega el cálculo.
+ * SOLID Inversión de dependencias: el acceso a datos se recibe por sus
+ * interfaces de negocio (CiudadNegocio, IRepositorioViajes,
+ * IRepositorioPreferencias), no por las clases DAO.
+ */
 @Controller
 public class RecomendacionControlador {
 
-    private final CiudadDAO ciudadDAO;
-    private final ViajeDAO viajeDAO;
-    private final PreferenciaDAO preferenciaDAO;
+    private final CiudadNegocio ciudadDAO;
+    private final IRepositorioViajes viajeDAO;
+    private final IRepositorioPreferencias preferenciaDAO;
     private final LlenarAtributosCiudad llenarAtributosCiudad;
     private final RecomendadorDestinos recomendadorDestinos;
     private final SelectorDestinos selectorDestinos;
 
-    public RecomendacionControlador(CiudadDAO ciudadDAO,
-                                    ViajeDAO viajeDAO,
-                                    PreferenciaDAO preferenciaDAO,
+    public RecomendacionControlador(CiudadNegocio ciudadDAO,
+                                    IRepositorioViajes viajeDAO,
+                                    IRepositorioPreferencias preferenciaDAO,
                                     LlenarAtributosCiudad llenarAtributosCiudad,
                                     RecomendadorDestinos recomendadorDestinos,
                                     SelectorDestinos selectorDestinos) {
