@@ -14,8 +14,8 @@ import com.wisetrip.modelo.RepartoPresupuesto;
 import com.wisetrip.modelo.ResultadoRecomendacion;
 import com.wisetrip.modelo.Ubicacion;
 import com.wisetrip.modelo.Usuario;
-import com.wisetrip.servicio.PresupuestoServicio;
-import com.wisetrip.servicio.RepartoServicio;
+import com.wisetrip.negocio.GestorPresupuesto;
+import com.wisetrip.negocio.IRepartoServicio;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -26,11 +26,11 @@ import jakarta.servlet.http.HttpSession;
 @Controller
 public class PlanControlador {
 
-    private final RepartoServicio repartoServicio;
-    private final PresupuestoServicio presupuestoServicio;
+    private final IRepartoServicio repartoServicio;
+    private final GestorPresupuesto presupuestoServicio;
 
-    public PlanControlador(RepartoServicio repartoServicio,
-                           PresupuestoServicio presupuestoServicio) {
+    public PlanControlador(IRepartoServicio repartoServicio,
+                           GestorPresupuesto presupuestoServicio) {
         this.repartoServicio = repartoServicio;
         this.presupuestoServicio = presupuestoServicio;
     }
