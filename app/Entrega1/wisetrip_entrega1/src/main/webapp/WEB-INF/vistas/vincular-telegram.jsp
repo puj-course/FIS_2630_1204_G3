@@ -15,7 +15,7 @@
     </p>
 
     <ol style="text-align: left;">
-        <li>Busca en Telegram a <strong>@wisetrip_notiff_bot</strong> y pulsa "Start".</li>
+        <li>Busca en Telegram a <strong>@wisetrip_g3_notif_bot</strong> y pulsa "Start".</li>
         <li>Busca a <strong>@userinfobot</strong>, pulsa "Start" y copia el número "Id" que te muestra.</li>
         <li>Pega ese número abajo y guarda.</li>
     </ol>
