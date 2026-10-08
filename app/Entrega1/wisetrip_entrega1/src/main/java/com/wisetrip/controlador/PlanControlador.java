@@ -14,24 +14,28 @@ import com.wisetrip.modelo.RepartoPresupuesto;
 import com.wisetrip.modelo.ResultadoRecomendacion;
 import com.wisetrip.modelo.Ubicacion;
 import com.wisetrip.modelo.Usuario;
+import com.wisetrip.negocio.IGestionReparto;
 import com.wisetrip.servicio.PresupuestoServicio;
-import com.wisetrip.servicio.RepartoServicio;
 
 import jakarta.servlet.http.HttpSession;
 
 /**
- * HU#69: permite al viajero repartir su presupuesto entre las categorías
- * de gasto del viaje.
+ * HU#69 y HU#79: permite al viajero repartir su presupuesto entre las
+ * categorías de gasto del viaje y ver la página principal del viaje.
+ *
+ * GRASP Controlador: recibe las peticiones web y delega el trabajo.
+ * SOLID Inversión de dependencias: depende de la interfaz de negocio
+ * IGestionReparto, no de la clase RepartoServicio.
  */
 @Controller
 public class PlanControlador {
 
-    private final RepartoServicio repartoServicio;
+    private final IGestionReparto gestionReparto;
     private final PresupuestoServicio presupuestoServicio;
 
-    public PlanControlador(RepartoServicio repartoServicio,
+    public PlanControlador(IGestionReparto gestionReparto,
                            PresupuestoServicio presupuestoServicio) {
-        this.repartoServicio = repartoServicio;
+        this.gestionReparto = gestionReparto;
         this.presupuestoServicio = presupuestoServicio;
     }
 
@@ -105,7 +109,7 @@ public class PlanControlador {
         Presupuesto presupuesto = (Presupuesto) sesion.getAttribute("presupuestoViaje");
         if (presupuesto == null) return "redirect:/presupuesto";
 
-        Map<String, String> errores = repartoServicio.validarReparto(reparto);
+        Map<String, String> errores = gestionReparto.validarReparto(reparto);
 
         if (!errores.isEmpty()) {
             model.addAttribute("errores", errores);
@@ -136,7 +140,7 @@ public class PlanControlador {
         model.addAttribute("reparto", reparto);
         model.addAttribute("dias", dias);
 
-        model.addAttribute("montos", repartoServicio.calcularMontos(reparto, total));
+        model.addAttribute("montos", gestionReparto.calcularMontos(reparto, total));
         model.addAttribute("montoTotalFormateado", presupuestoServicio.formatear(total));
         model.addAttribute("porDiaTotal", dias > 0
                 ? presupuestoServicio.formatear(total / dias) : "—");
