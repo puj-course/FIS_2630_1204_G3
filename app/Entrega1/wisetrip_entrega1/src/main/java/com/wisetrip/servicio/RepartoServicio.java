@@ -6,13 +6,14 @@ import java.util.Map;
 import org.springframework.stereotype.Service;
 
 import com.wisetrip.modelo.RepartoPresupuesto;
+import com.wisetrip.negocio.IRepartoServicio;
 
 /**
  * HU#69: valida el reparto del presupuesto y calcula cuánto dinero
  * corresponde a cada categoría.
  */
 @Service
-public class RepartoServicio {
+public class RepartoServicio implements IRepartoServicio {
 
     /** Nombre visible de cada categoría, en el orden en que se muestran. */
     private static final Map<String, String> CATEGORIAS = new LinkedHashMap<>();
@@ -25,6 +26,7 @@ public class RepartoServicio {
         CATEGORIAS.put("imprevistos", "Imprevistos");
     }
 
+    @Override
     public Map<String, String> listarCategorias() {
         return CATEGORIAS;
     }
@@ -33,6 +35,7 @@ public class RepartoServicio {
      * Valida que ningún porcentaje sea negativo y que la suma dé 100.
      * Devuelve un mapa vacío si todo está correcto.
      */
+    @Override
     public Map<String, String> validarReparto(RepartoPresupuesto reparto) {
         Map<String, String> errores = new LinkedHashMap<>();
 
@@ -62,6 +65,7 @@ public class RepartoServicio {
      * Convierte los porcentajes en montos, según el presupuesto total.
      * Devuelve un mapa con el nombre visible de la categoría y su monto.
      */
+    @Override
     public Map<String, Double> calcularMontos(RepartoPresupuesto reparto, double presupuestoTotal) {
         Map<String, Double> montos = new LinkedHashMap<>();
 
@@ -75,6 +79,7 @@ public class RepartoServicio {
     }
 
     /** Cuánto queda por día en cada categoría. */
+    @Override
     public double porDia(double monto, long dias) {
         if (dias <= 0) return 0;
         return monto / dias;
