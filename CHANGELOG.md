@@ -4080,15 +4080,15 @@ no
 
 1. **¿Qué hice ayer?**
 
-
+Ayer Trate de entender el codigo para hacer los nuevos diagramas con las interfaces ya en el codigo
 
 2. **¿Qué voy a hacer hoy?**
 
-
+Ivestigue los patrones GoF mas a fondo aparte de la clase, ya que como es un tema muy extenso, tengo miedo de no entenderlo y saberlo implementar en el codigo
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
-
+No
 
 ---
 
@@ -4113,15 +4113,15 @@ no
 
 1. **¿Qué hice ayer?** 
 
-
+Ayer arreglé todo implemente varias interfaces para que todo cumpliera con grasp y solid y quedaron algunos códigos pendientes igualmente se podría platear una revisión
 
 2. **¿Qué voy a hacer hoy?** 
 
-
+Revisar los patrones gof para poderlos poner en el proyecto y tenerlos listos para la entrega
 
 3. **¿Tengo algún impedimento o bloqueo?** 
 
-
+No
 
 ---
 
