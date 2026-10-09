@@ -4096,15 +4096,15 @@ No
 
 1. **¿Qué hice ayer?**
 
-
+ayer termine de implementar las interfaces que hacian falta en las clases involucradas en la milestone 3
 
 2. **¿Qué voy a hacer hoy?**
 
-
+hoy adelante el diagrama de interfaces que hacia falta
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
-
+no
 
 ---
 
