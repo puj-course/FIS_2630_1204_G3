@@ -4064,14 +4064,15 @@ no
 
 1. **¿Qué hice ayer?**
 
-
+investigacion para arreglar lo del telegram ya que al parecer nos hackean el bot y llegan mensajes en ruso desde nuestro bot como si nosotros los estuvieramos enviando. Tenemos que buscar algun profe de seguridad que nos pueda explicar de mejor forma lo que sucede con nuestro bot
    
 2. **¿Qué voy a hacer hoy?**
 
-
+El dia de hoy fui a hablar con el profesor de ciberseguridad para que me explicara que debia hacer y arreglar el tema del bot ya que estaban enviando mensajes bastantes raros y que no tenian nada que ver con lo que nosotros ofrecemos en nuestra aplicacion.
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
+implementacion de los patrones GOF
 
    
 ---
