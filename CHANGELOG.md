@@ -4041,7 +4041,6 @@ no
 <img width="999" height="485" alt="Captura de pantalla 2026-10-07 193455" src="https://github.com/user-attachments/assets/d531e72f-9f8e-41e7-a68a-b97a7caa5e29" />
 
 ---
----
 ## Daily Sprint - 08/10/2026
 
 ### Isabella Posada
@@ -4127,5 +4126,92 @@ No
 ---
 
 <img width="1600" height="1200" alt="image" src="https://github.com/user-attachments/assets/84a75ba9-a725-4fef-82b8-8e34177e9cd9" />
+
+---
+---
+## Daily Sprint - 09/10/2026
+
+### Isabella Posada
+
+1. **¿Qué hice ayer?**
+
+
+
+2. **¿Qué voy a hacer hoy?**
+
+
+   
+3. **¿Tengo algún impedimento o bloqueo?**
+
+
+
+---
+
+### Valeria Cortes Rendon
+
+1. **¿Qué hice ayer?**
+
+
+
+2. **¿Qué voy a hacer hoy?**
+
+
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+
+   
+---
+
+### Santiago Clavijo
+
+1. **¿Qué hice ayer?**
+
+
+
+2. **¿Qué voy a hacer hoy?**
+
+
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+
+
+---
+
+### Gabriela Melo Gualteros
+
+1. **¿Qué hice ayer?**
+
+
+
+2. **¿Qué voy a hacer hoy?**
+
+
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+
+
+---
+
+
+### Maria Alejandra Rodriguez
+
+1. **¿Qué hice ayer?** 
+
+
+
+2. **¿Qué voy a hacer hoy?** 
+
+
+
+3. **¿Tengo algún impedimento o bloqueo?** 
+
+
+
+---
+
+
 
 ---
