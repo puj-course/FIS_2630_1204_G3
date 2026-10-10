@@ -90,4 +90,13 @@ En el formulario de **Iniciar sesión**, se ingresa un correo no registrado o un
 <img width="959" height="470" alt="image" src="https://github.com/user-attachments/assets/e04f2ebd-556a-4241-9dff-2ecc30c8519e" />
 <img width="959" height="466" alt="image" src="https://github.com/user-attachments/assets/59791150-f3f2-4380-8cc6-2956a14d8ab1" />
 
+## Caso de prueba: Vinculación de cuenta con Telegram
+
+Una vez iniciada la sesión o completado el registro, el sistema presenta la opción para conectar la cuenta con Telegram. Al seleccionar el botón o enlace hacia el bot oficial (`wisetrip_g3_notif_bot`) e iniciar la interacción mediante el comando correspondiente (o código de enlace), el sistema asocia de forma exitosa el identificador del chat de Telegram (`chat_id`) al usuario en la base de datos, desplegando un mensaje de confirmación que indica que las notificaciones instantáneas han quedado activadas.
+
+<img width="941" height="467" alt="image" src="https://github.com/user-attachments/assets/33a53ced-e27a-4467-8b71-7c281e64d912" />
+<img width="959" height="465" alt="image" src="https://github.com/user-attachments/assets/3aae9885-5d42-41be-8f4f-1b793400c349" />
+<img width="956" height="299" alt="image" src="https://github.com/user-attachments/assets/d8670657-6324-4eb4-af63-66af49306195" />
+
+
 
