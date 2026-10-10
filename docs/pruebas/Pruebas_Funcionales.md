@@ -76,6 +76,18 @@ Una vez completado satisfactoriamente el registro de una cuenta nueva, el servic
 <img width="959" height="305" alt="image" src="https://github.com/user-attachments/assets/629bc4ea-9c6f-40cf-9aaf-cb0a3318da3d" />
 
 
+## Caso de prueba: Inicio de sesión exitoso
 
+En la barra de navegación superior se encuentra la opción **Iniciar sesión**. Al hacer clic en este botón, el sistema despliega el formulario de autenticación. Tras ingresar el correo electrónico y la contraseña correspondientes a una cuenta registrada y pulsar en **Iniciar sesión**, el sistema valida las credenciales contra la base de datos, autentica al usuario en la sesión y lo redirige a la vista principal de la aplicación, habilitando las funcionalidades de usuario autenticado y disparando la notificación correspondiente por Telegram (si la cuenta se encuentra vinculada).
+
+<img width="959" height="468" alt="image" src="https://github.com/user-attachments/assets/6281e7f1-40d9-4cc6-b801-9369dc58d8d8" />
+
+
+## Caso de prueba: Intento de inicio de sesión con credenciales inválidas
+
+En el formulario de **Iniciar sesión**, se ingresa un correo no registrado o una contraseña incorrecta y se hace clic en **Iniciar sesión**. El sistema rechaza la autenticación, mantiene al usuario en la vista de acceso y muestra una alerta de error indicando que las credenciales son inválidas, sin conceder acceso a la sesión ni enviar notificaciones.
+
+<img width="959" height="470" alt="image" src="https://github.com/user-attachments/assets/e04f2ebd-556a-4241-9dff-2ecc30c8519e" />
+<img width="959" height="466" alt="image" src="https://github.com/user-attachments/assets/59791150-f3f2-4380-8cc6-2956a14d8ab1" />
 
 
