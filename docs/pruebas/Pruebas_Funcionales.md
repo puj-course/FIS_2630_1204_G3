@@ -99,4 +99,9 @@ Una vez iniciada la sesión o completado el registro, el sistema presenta la opc
 <img width="956" height="299" alt="image" src="https://github.com/user-attachments/assets/d8670657-6324-4eb4-af63-66af49306195" />
 
 
+## Caso de prueba: Inicio de sesión y notificación vía Telegram Bot
+
+Con una cuenta previamente vinculada al bot oficial de Telegram (`wisetrip_notiff_bot`), se ingresan las credenciales correctas en el formulario de **Iniciar sesión** y se pulsa el botón correspondiente. Tras validar la autenticación y otorgar acceso a la aplicación, el servicio despacha automáticamente una alerta de seguridad por la API de Telegram. Al verificar la conversación con el bot, se corrobora la recepción en tiempo real de un mensaje informando que se ha registrado un nuevo inicio de sesión en la cuenta (incluyendo detalles como fecha y hora del evento).
+
+<img width="344" height="442" alt="image" src="https://github.com/user-attachments/assets/5e7c1196-25d6-4823-a4d8-da12e6326019" />
 
