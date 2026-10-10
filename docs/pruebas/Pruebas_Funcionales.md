@@ -60,7 +60,7 @@ Se puede observar como quedo registrado el usuario dentro de la base de datos
 
 En la vista de registro (**Crear cuenta**), se ingresan datos de un usuario utilizando una dirección de correo electrónico previamente registrada en la base de datos. Al presionar el botón **Registrarse**, el sistema detecta la duplicidad del identificador, bloquea la creación del registro y muestra un mensaje de validación indicando que el correo ya se encuentra en uso, evitando registros duplicados y sin emitir correos adicionales.
 
-
+<img width="943" height="466" alt="image" src="https://github.com/user-attachments/assets/205fa90f-c328-4e30-8a2b-e1dfa2f93d19" />
 
 ## Caso de prueba: Intento de registro con campos incompletos
 
@@ -76,8 +76,6 @@ Una vez completado satisfactoriamente el registro de una cuenta nueva, el servic
 <img width="959" height="305" alt="image" src="https://github.com/user-attachments/assets/629bc4ea-9c6f-40cf-9aaf-cb0a3318da3d" />
 
 
-
-## Casos de prueba: registro con correo
 
 
 
