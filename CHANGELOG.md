@@ -4167,15 +4167,15 @@ No
 
 1. **¿Qué hice ayer?**
 
-
+ayer por primera vez escuche que son los patrones gof y que lo tenemos que implementar en el codigo del proyecto, seguimos con los diagramas de las interfaces y clases
 
 2. **¿Qué voy a hacer hoy?**
 
-
+hoy sigo viendo como hago los diagramas necesarios para la sustentacion del proyecto
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
-
+falta de tiempo
 
 ---
 
