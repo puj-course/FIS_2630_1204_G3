@@ -48,6 +48,33 @@ En la barra de navegación superior se encuentra la opción **Crear cuenta**. Al
 
 <img width="957" height="469" alt="image" src="https://github.com/user-attachments/assets/f1f28b69-8e3f-4140-82d7-53736ca3e27c" />
 
+<img width="959" height="469" alt="image" src="https://github.com/user-attachments/assets/b96bde63-4eaa-4c3d-b299-0de9cc3c2bdf" />
+
+<img width="959" height="468" alt="image" src="https://github.com/user-attachments/assets/8e3044ae-6fe6-414b-ba57-94437e12bb2e" />
+
+Se puede observar como quedo registrado el usuario dentro de la base de datos 
+
+<img width="959" height="452" alt="image" src="https://github.com/user-attachments/assets/7f8643c8-6707-4f3c-b253-759c907e861f" />
+
+## Caso de prueba: Intento de registro con correo ya existente
+
+En la vista de registro (**Crear cuenta**), se ingresan datos de un usuario utilizando una dirección de correo electrónico previamente registrada en la base de datos. Al presionar el botón **Registrarse**, el sistema detecta la duplicidad del identificador, bloquea la creación del registro y muestra un mensaje de validación indicando que el correo ya se encuentra en uso, evitando registros duplicados y sin emitir correos adicionales.
+
+
+
+## Caso de prueba: Intento de registro con campos incompletos
+
+En la vista de registro (**Crear cuenta**), se intenta enviar el formulario omitiendo uno o más campos obligatorios (nombre, correo electrónico o contraseña). Al presionar el botón **Registrarse**, el sistema interrumpe el flujo, no crea ningún registro en la base de datos ni despacha correos, y resalta los campos vacíos con mensajes de validación que solicitan completar la información requerida.
+
+<img width="945" height="471" alt="image" src="https://github.com/user-attachments/assets/e8fd9e92-7105-4e93-b82a-d62608b97a81" />
+
+## Caso de prueba: Recepción de correo de bienvenida tras el registro
+
+Una vez completado satisfactoriamente el registro de una cuenta nueva, el servicio SMTP de la aplicación despacha una notificación por correo electrónico a la dirección registrada. Al consultar la bandeja de entrada del usuario, se valida la recepción oportuna del mensaje de bienvenida de WiseTrip, verificando que contenga el remitente configurado, asunto adecuado y la información inicial de bienvenida al servicio.
+
+<img width="959" height="468" alt="image" src="https://github.com/user-attachments/assets/8e3044ae-6fe6-414b-ba57-94437e12bb2e" />
+<img width="959" height="305" alt="image" src="https://github.com/user-attachments/assets/629bc4ea-9c6f-40cf-9aaf-cb0a3318da3d" />
+
 
 
 ## Casos de prueba: registro con correo
