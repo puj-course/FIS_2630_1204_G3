@@ -4151,15 +4151,15 @@ No
 
 1. **¿Qué hice ayer?**
 
-
+Entendi como funciona ahora el modelo que planteamos, me falta implementar los patrones gof al proyecto a mi parte y realizar los diagramas de mi modulo y poder explicarlos de mejor forma, ademas de hacer las pruebas funcionales que pide el profesor.
 
 2. **¿Qué voy a hacer hoy?**
 
-
+Volvi a revisar lo del bot que ya quedo solucionado, y empezar a hacer lor patrones gof que le faltan al proyecto.
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
-
+No
    
 ---
 
@@ -4183,15 +4183,15 @@ No
 
 1. **¿Qué hice ayer?**
 
-
+ayer averigue como hacer el diagrama de interfaces del milestone que me correspondio y que debia componer
 
 2. **¿Qué voy a hacer hoy?**
 
-
+hoy realice el diagrama y empece a ver como vamos a implementar los protocolos GoF
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
-
+no
 
 ---
 
@@ -4200,15 +4200,15 @@ No
 
 1. **¿Qué hice ayer?** 
 
-
+Ayer terminé de investigar los patrones gof y me adueñé del tema
 
 2. **¿Qué voy a hacer hoy?** 
 
-
+Volví a mirar como hacía los diagramas de lo que hice esta semana para que me queden bien
 
 3. **¿Tengo algún impedimento o bloqueo?** 
 
-
+No
 
 ---
 
