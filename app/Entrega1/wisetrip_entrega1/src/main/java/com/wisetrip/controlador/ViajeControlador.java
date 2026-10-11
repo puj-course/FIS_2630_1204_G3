@@ -40,7 +40,7 @@ public class ViajeControlador {
         }
 
         // Busca si el usuario ya había guardado una ubicación anteriormente
-        Ubicacion guardada = (Ubicacion) sesion.getAttribute("ubicacionOrigen");
+       Ubicacion guardada = SesionViaje.de(sesion, usuario).getOrigen(); 
 
         // Envía el usuario a la vista
         model.addAttribute("usuario", usuario);
@@ -101,8 +101,8 @@ public class ViajeControlador {
         }
 
         // Guarda la ubicación seleccionada en la sesión del usuario
-        sesion.setAttribute("ubicacionOrigen", ubicacion);
-
+        SesionViaje.de(sesion, usuario).setOrigen(ubicacion);
+        
         // Continúa con el siguiente paso del flujo
         return "redirect:/preferencias";
     }

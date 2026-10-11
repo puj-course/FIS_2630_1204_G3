@@ -110,7 +110,7 @@ public class RecomendacionControlador {
         model.addAttribute("presupuestoUsd", presupuestoUsd);
 
         // Datos de la ficha de búsqueda
-        model.addAttribute("ubicacion", sesion.getAttribute("ubicacionOrigen"));
+        model.addAttribute("ubicacion", SesionViaje.de(sesion, usuario).getOrigen());
         model.addAttribute("presupuesto", sesion.getAttribute("presupuestoViaje"));
 
         return "recomendaciones";

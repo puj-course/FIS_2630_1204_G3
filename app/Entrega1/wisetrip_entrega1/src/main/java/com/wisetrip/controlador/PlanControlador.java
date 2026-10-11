@@ -69,7 +69,7 @@ public class PlanControlador {
                 (ResultadoRecomendacion) sesion.getAttribute("destinoElegido");
         if (destino == null) return "redirect:/recomendaciones";
 
-        Ubicacion ubicacion = (Ubicacion) sesion.getAttribute("ubicacionOrigen");
+        Ubicacion ubicacion = SesionViaje.de(sesion, usuario).getOrigen();
         if (ubicacion == null) return "redirect:/origen";
 
         FechasViaje fechas = (FechasViaje) sesion.getAttribute("fechasViaje");
@@ -128,7 +128,7 @@ public class PlanControlador {
                              RepartoPresupuesto reparto) {
 
         FechasViaje fechas = (FechasViaje) sesion.getAttribute("fechasViaje");
-        Ubicacion ubicacion = (Ubicacion) sesion.getAttribute("ubicacionOrigen");
+        Ubicacion ubicacion = SesionViaje.de(sesion, usuario).getOrigen();
         double total = presupuesto.getMontoNumerico();
         long dias = fechas != null ? fechas.getDuracionDias() : 0;
 
