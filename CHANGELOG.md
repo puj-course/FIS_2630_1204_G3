@@ -3961,15 +3961,15 @@ no
 
 1. **¿Qué hice ayer?**
 
-
+Ayer junto a mi compañero hice la implementación de las interfaces con sus overrides del módulo de recomendaciones, especialmente la parte de selección de destino.
 
 2. **¿Qué voy a hacer hoy?**
 
-
+Hoy revisé cómo empezar el diagrama
    
 3. **¿Tengo algún impedimento o bloqueo?**
 
-
+No
 
 ---
 
@@ -3993,15 +3993,15 @@ El hackeo del bot
 
 1. **¿Qué hice ayer?**
 
-
+ayer junto con mi compañera hicimos todo lo relacionado con el milestone 3 de preferencias y recomendaciones personalizadas, creamos interfaces de negocio y las implementamos en las demas clases
 
 2. **¿Qué voy a hacer hoy?**
 
-
+hoy empece a estudiar el codigo y empezar a hacer los diagramas necesarios
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
-
+no
 
 ---
 
@@ -4009,15 +4009,15 @@ El hackeo del bot
 
 1. **¿Qué hice ayer?**
 
- 
+temrine de corregir la manera en la que el sistema estaba evaluando la recomendacion de las ciudades
 
 2. **¿Qué voy a hacer hoy?**
 
-
+hoy estoy en la correccion de las clases para que tengan las interfaces de las que habla el profe especificamente de las clases involucradas en el milestone 3
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
-
+no
 
 ---
 
@@ -4026,20 +4026,192 @@ El hackeo del bot
 
 1. **¿Qué hice ayer?** 
 
-
+Ayer estaba viendo que codigos podia tocar y cambiar, tambien como para no crear conflicto y repasando como se implementaban interfaces en java
 
 2. **¿Qué voy a hacer hoy?** 
 
-
+Terminando los codigos que hace falta por arreglar
 
 3. **¿Tengo algún impedimento o bloqueo?** 
 
-
+no
 
 ---
 
 <img width="999" height="485" alt="Captura de pantalla 2026-10-07 193455" src="https://github.com/user-attachments/assets/d531e72f-9f8e-41e7-a68a-b97a7caa5e29" />
 
+---
+## Daily Sprint - 08/10/2026
+
+### Isabella Posada
+
+1. **¿Qué hice ayer?**
+
+
+
+2. **¿Qué voy a hacer hoy?**
+
+
+   
+3. **¿Tengo algún impedimento o bloqueo?**
+
+
 
 ---
 
+### Valeria Cortes Rendon
+
+1. **¿Qué hice ayer?**
+
+investigacion para arreglar lo del telegram ya que al parecer nos hackean el bot y llegan mensajes en ruso desde nuestro bot como si nosotros los estuvieramos enviando. Tenemos que buscar algun profe de seguridad que nos pueda explicar de mejor forma lo que sucede con nuestro bot
+   
+2. **¿Qué voy a hacer hoy?**
+
+El dia de hoy fui a hablar con el profesor de ciberseguridad para que me explicara que debia hacer y arreglar el tema del bot ya que estaban enviando mensajes bastantes raros y que no tenian nada que ver con lo que nosotros ofrecemos en nuestra aplicacion.
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+implementacion de los patrones GOF
+
+   
+---
+
+### Santiago Clavijo
+
+1. **¿Qué hice ayer?**
+
+Ayer Trate de entender el codigo para hacer los nuevos diagramas con las interfaces ya en el codigo
+
+2. **¿Qué voy a hacer hoy?**
+
+Ivestigue los patrones GoF mas a fondo aparte de la clase, ya que como es un tema muy extenso, tengo miedo de no entenderlo y saberlo implementar en el codigo
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+No
+
+---
+
+### Gabriela Melo Gualteros
+
+1. **¿Qué hice ayer?**
+
+ayer termine de implementar las interfaces que hacian falta en las clases involucradas en la milestone 3
+
+2. **¿Qué voy a hacer hoy?**
+
+hoy adelante el diagrama de interfaces que hacia falta
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+no
+
+---
+
+
+### Maria Alejandra Rodriguez
+
+1. **¿Qué hice ayer?** 
+
+Ayer arreglé todo implemente varias interfaces para que todo cumpliera con grasp y solid y quedaron algunos códigos pendientes igualmente se podría platear una revisión
+
+2. **¿Qué voy a hacer hoy?** 
+
+Revisar los patrones gof para poderlos poner en el proyecto y tenerlos listos para la entrega
+
+3. **¿Tengo algún impedimento o bloqueo?** 
+
+No
+
+---
+
+<img width="1600" height="1200" alt="image" src="https://github.com/user-attachments/assets/84a75ba9-a725-4fef-82b8-8e34177e9cd9" />
+
+---
+---
+## Daily Sprint - 09/10/2026
+
+### Isabella Posada
+
+1. **¿Qué hice ayer?**
+
+
+
+2. **¿Qué voy a hacer hoy?**
+
+
+   
+3. **¿Tengo algún impedimento o bloqueo?**
+
+
+
+---
+
+### Valeria Cortes Rendon
+
+1. **¿Qué hice ayer?**
+
+Entendi como funciona ahora el modelo que planteamos, me falta implementar los patrones gof al proyecto a mi parte y realizar los diagramas de mi modulo y poder explicarlos de mejor forma, ademas de hacer las pruebas funcionales que pide el profesor.
+
+2. **¿Qué voy a hacer hoy?**
+
+Volvi a revisar lo del bot que ya quedo solucionado, y empezar a hacer lor patrones gof que le faltan al proyecto.
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+No
+   
+---
+
+### Santiago Clavijo
+
+1. **¿Qué hice ayer?**
+
+ayer por primera vez escuche que son los patrones gof y que lo tenemos que implementar en el codigo del proyecto, seguimos con los diagramas de las interfaces y clases
+
+2. **¿Qué voy a hacer hoy?**
+
+hoy sigo viendo como hago los diagramas necesarios para la sustentacion del proyecto
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+falta de tiempo
+
+---
+
+### Gabriela Melo Gualteros
+
+1. **¿Qué hice ayer?**
+
+ayer averigue como hacer el diagrama de interfaces del milestone que me correspondio y que debia componer
+
+2. **¿Qué voy a hacer hoy?**
+
+hoy realice el diagrama y empece a ver como vamos a implementar los protocolos GoF
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+no
+
+---
+
+
+### Maria Alejandra Rodriguez
+
+1. **¿Qué hice ayer?** 
+
+Ayer terminé de investigar los patrones gof y me adueñé del tema
+
+2. **¿Qué voy a hacer hoy?** 
+
+Volví a mirar como hacía los diagramas de lo que hice esta semana para que me queden bien
+
+3. **¿Tengo algún impedimento o bloqueo?** 
+
+No
+
+---
+
+
+
+---

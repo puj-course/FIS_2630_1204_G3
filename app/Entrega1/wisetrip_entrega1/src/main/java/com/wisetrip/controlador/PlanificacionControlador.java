@@ -50,7 +50,7 @@ public class PlanificacionControlador {
         // HU-37: Flujo continuo y ordenado.
         // Bloquea el acceso directo a esta pantalla si el viajero no ha pasado
         // por el paso anterior (origen), forzando el mismo orden para todos.
-        if (sesion.getAttribute("ubicacionOrigen") == null) return "redirect:/origen";
+        if (!SesionViaje.de(sesion, usuario).tieneOrigen()) return "redirect:/origen";
 
         // HU-39: Persistencia de datos en sesión.
         // Recupera las preferencias ya guardadas, si existen, para no perderlas
@@ -231,7 +231,7 @@ public class PlanificacionControlador {
         Usuario usuario = (Usuario) sesion.getAttribute("usuarioActivo");
         if (usuario == null) return "redirect:/login";
 
-        Ubicacion ubicacion = (Ubicacion) sesion.getAttribute("ubicacionOrigen");
+        Ubicacion ubicacion = SesionViaje.de(sesion, usuario).getOrigen();
         if (ubicacion == null) return "redirect:/origen";
 
         Preferencias preferencias = (Preferencias) sesion.getAttribute("preferenciasViaje");
