@@ -4297,16 +4297,16 @@ No
 
 1. **¿Qué logramos?**
 
-
+esta semana como equipo logramos mejorar la organizacion del codigo, ya es mas entendible con todas las mejores de arquitectura (interfaces, implementaciones, etc)
 
 ### Sprint Retrospective
 
 2. **¿Cómo trabajamos?**
 
-
+como equipo seguimos muy sincronizados, la comunicacion mejoro y en general el repositorio esta muy bien
 
 3. **¿Qué podríamos mejorar?**
 
-
+todo lo veo bien , sin embargo estas semanas son criticas para todos los miembors del equipo ya que se vienen parciales y entregas.
 
 ---
