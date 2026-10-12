@@ -4257,17 +4257,17 @@ No
 
 1. **¿Qué logramos?**
 
-  
+   Se logro mejorar la arquitectura e implementar patrones GOF dentro de nuestro proyecto, tenemos ahora los diagramas por mi lado del primer modulo y como lo hemos realizado  
 
 ### Sprint Retrospective
 
 2. **¿Cómo trabajamos?**
 
-
+   Creo que hemos mejorado bastante el trabajo en equipo, nos entendemos muy bien y nos parece que tenemos que mejorar cosas dentro del proyecto pero por ahora me parece que lo hemos hecho muy bien.
 
 3. **¿Qué podríamos mejorar?**
 
-  
+  Por ahora hacer el taller que coloco el profesor de los patrones GOF pero de resto esta muy bien !
 
 ---
 
