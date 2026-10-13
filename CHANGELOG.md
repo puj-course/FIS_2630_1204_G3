@@ -4047,15 +4047,18 @@ no
 
 1. **¿Qué hice ayer?**
 
+ayer estuve revisando el código para saber si habían cosas que mejorar, estuve arreglando ciertas firmas entre otras cosas.
 
 
 2. **¿Qué voy a hacer hoy?**
 
 
+Revisar e integrar los patrones Gof en el código para ir dejando el proyecto listo para la presentación.
+
    
 3. **¿Tengo algún impedimento o bloqueo?**
 
-
+No
 
 ---
 
