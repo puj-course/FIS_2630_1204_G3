@@ -4135,15 +4135,14 @@ No
 
 1. **¿Qué hice ayer?**
 
+ayer estuvimos en clase viendo mas a fondo los patrones gof en clase para poderlos implementar en el proyecto. 
 
 
 2. **¿Qué voy a hacer hoy?**
-
-
-   
+hoy estuvimos haciendo los diagramas nos falta acabarlos 
 3. **¿Tengo algún impedimento o bloqueo?**
 
-
+la verdad no he tenido tiempo ya que el día de mañana tengo un parcial y me he estado preparando. 
 
 ---
 
