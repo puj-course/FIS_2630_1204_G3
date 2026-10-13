@@ -4220,16 +4220,19 @@ No
 
 1. **¿Qué logramos?**
 
- 
+Mejoramos la arquitectura con SOLID y GRASP tambien realizamos los diagramas y en general organizamos mas el codigo
 
+ 
 ### Sprint Retrospective
 
 2. **¿Cómo trabajamos?**
 
- 
+Como equipo mucho mejor, en general nos hemos enfocado mucho en arreglar los codigos y nos ha ido muy bien, siempre colaborandonos
+
 
 3. **¿Qué podríamos mejorar?**
 
+Tenemos que implementar ahora los patrones gof de resto siento que estamos muy bien
   
 ---
 
