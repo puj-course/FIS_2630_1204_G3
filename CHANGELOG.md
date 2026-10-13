@@ -4280,17 +4280,19 @@ Tenemos que implementar ahora los patrones gof de resto siento que estamos muy b
 
 1. **¿Qué logramos?**
 
-
+Arreglamos y entendimos mucho como estaba el código y gracias a lo que aprendimos en clase como SOLID y GOF pudimos mejorar la arquitectura del proyecto en los modulos establecidos
 
 ### Sprint Retrospective
 
 2. **¿Cómo trabajamos?**
 
+bastante bien, nuestro objetivo principal es tener un buen resultado en el proyecto y juntos nos hemos puesto en la tarea de
+
 
 
 3. **¿Qué podríamos mejorar?**
 
-
+en entender los conceptos mejor para poderlos desarrollar bien en el codigo, ya que los patrones los vimos hace poco.
 
 ---
 
