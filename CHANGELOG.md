@@ -4242,15 +4242,17 @@ Tenemos que implementar ahora los patrones gof de resto siento que estamos muy b
 
 1. **¿Qué logramos?**
 
-   
+ Pudimos terminar los diagramas de interfaces, implementar los patrones SOLID y GRASP      
 
 ### Sprint Retrospective
 
 2. **¿Cómo trabajamos?**
 
+Como equipo vamos bien, comunicandonos bien. Nos dividimos el trabajo en modulos para poder abarcar todo el codigo e implementar y organizarlo mejor
   
 3. **¿Qué podríamos mejorar?**
 
+Aun nos hace falta implementar los patrones GoF y creo que depurar un poco mas el codiog para que solo quede lo esencial
   
 ---
 
