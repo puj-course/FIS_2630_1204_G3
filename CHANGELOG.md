@@ -4212,6 +4212,101 @@ No
 
 ---
 
+# Sprint Review y Sprint Retrospective - 15/08/2026
 
+## Maria Alejandra Rodriguez
+
+### Sprint Review
+
+1. **¿Qué logramos?**
+
+ 
+
+### Sprint Retrospective
+
+2. **¿Cómo trabajamos?**
+
+ 
+
+3. **¿Qué podríamos mejorar?**
+
+  
+---
+
+## Gabriela Melo Gualteros
+
+### Sprint Review
+
+1. **¿Qué logramos?**
+
+   
+
+### Sprint Retrospective
+
+2. **¿Cómo trabajamos?**
+
+  
+3. **¿Qué podríamos mejorar?**
+
+  
+---
+
+## Valeria Cortes Rendon
+
+### Sprint Review
+
+1. **¿Qué logramos?**
+
+   Se logro mejorar la arquitectura e implementar patrones GOF dentro de nuestro proyecto, tenemos ahora los diagramas por mi lado del primer modulo y como lo hemos realizado  
+
+### Sprint Retrospective
+
+2. **¿Cómo trabajamos?**
+
+   Creo que hemos mejorado bastante el trabajo en equipo, nos entendemos muy bien y nos parece que tenemos que mejorar cosas dentro del proyecto pero por ahora me parece que lo hemos hecho muy bien.
+
+3. **¿Qué podríamos mejorar?**
+
+  Por ahora hacer el taller que coloco el profesor de los patrones GOF pero de resto esta muy bien !
+
+---
+
+## Isabella Posada
+
+### Sprint Review
+
+1. **¿Qué logramos?**
+
+
+
+### Sprint Retrospective
+
+2. **¿Cómo trabajamos?**
+
+
+
+3. **¿Qué podríamos mejorar?**
+
+
+
+---
+
+## Santiago Clavijo
+
+### Sprint Review
+
+1. **¿Qué logramos?**
+
+esta semana como equipo logramos mejorar la organizacion del codigo, ya es mas entendible con todas las mejores de arquitectura (interfaces, implementaciones, etc)
+
+### Sprint Retrospective
+
+2. **¿Cómo trabajamos?**
+
+como equipo seguimos muy sincronizados, la comunicacion mejoro y en general el repositorio esta muy bien
+
+3. **¿Qué podríamos mejorar?**
+
+todo lo veo bien , sin embargo estas semanas son criticas para todos los miembors del equipo ya que se vienen parciales y entregas.
 
 ---
