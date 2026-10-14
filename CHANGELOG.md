@@ -4350,7 +4350,7 @@ todo lo veo bien , sin embargo estas semanas son criticas para todos los miembor
 | #102 | | Historia de Usuario | | Isa |
 | #103 | | Historia de Usuario | | Isa |
 | #104 | Como administrador, quiero perfeccionar el boilerplate para que sea acorde al repositorio y permita ver con claridad cómo está organizado. | Historia de Usuario | | Clavijo |
-| #105 | | Historia de Usuario | | Clavijo |
+| #105 | Como administrador, quiero implementar el patrón de diseño GoF Decorator en el Módulo 2, para agregar comportamientos adicionales al proceso de recomendación de destinos sin modificar las clases existentes.| Historia de Usuario | | Clavijo |
 
 ## Riesgos / Bloqueos identificados
 
