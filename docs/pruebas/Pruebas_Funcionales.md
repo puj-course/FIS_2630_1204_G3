@@ -120,6 +120,8 @@ En la sección de **Preferencias**, el usuario responde las preguntas relacionad
 
 <img width="462" height="547" alt="Captura de pantalla 2026-10-14 001224" src="https://github.com/user-attachments/assets/afa33ed1-5b11-4b30-a14c-559845f782f3" />
 
+<img width="468" height="598" alt="Captura de pantalla 2026-10-14 001209" src="https://github.com/user-attachments/assets/3e9c2239-f2fd-4e02-ba4a-441d6481f00f" />
+
 <img width="462" height="547" alt="Captura de pantalla 2026-10-14 001224" src="https://github.com/user-attachments/assets/df1cb4e5-b106-4a92-bba5-87a3b3616966" />
 
 <img width="474" height="554" alt="Captura de pantalla 2026-10-14 001241" src="https://github.com/user-attachments/assets/8b69589d-0a39-4478-93f2-0845622883ae" />
@@ -183,7 +185,8 @@ Cada alternativa presenta información sobre su correspondencia con el presupues
 
 ### Evidencia
 
-<img width="1133" height="633" alt="Captura de pantalla 2026-10-14 001619" src="https://github.com/user-attachments/assets/7f304eca-10e5-4627-9848-0fe126184a23" />
+
+<img width="769" height="661" alt="Captura de pantalla 2026-10-14 001816" src="https://github.com/user-attachments/assets/18e890a9-ff93-4a5f-b2cd-493871992634" />
 
 ---
 
