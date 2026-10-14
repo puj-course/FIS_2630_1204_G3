@@ -1,7 +1,6 @@
-//hicimos que en la terminal mostrara el numero de request que se le hacia a la api 
-//para saber cuantas API calls se hacian en tiempo real 
-//muy util para controlar los 3000 requests gratis y ver cuanto se demora 
-
+//hicimos que en la terminal mostrara el numero de request que se le hacia a la api
+//para saber cuantas API calls se hacian en tiempo real
+//controlar los 3000 requests gratis y ver cuanto se demora
 
 package com.wisetrip.servicio;
 
@@ -21,82 +20,129 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import com.google.gson.Gson;
 
+//coordenadas: dada una ciudad, devuelve su latitud y longitud.
+//contarLugares: cuenta cuántos lugares de ciertas categorías hay cerca de un punto.
+
 @Service
 public class ServicioGeoapify implements ProovedorLugares {
-    private static final Logger LOGGER = Logger.getLogger(ServicioGeoapify.class.getName());
-    private static final Duration TIMEOUT = Duration.ofSeconds(8);
 
+    // Escribe mensajes en la consola (así vemos cuántas llamadas se hacen)
+    private static final Logger REGISTRO = Logger.getLogger(ServicioGeoapify.class.getName());
+
+    // Tiempo max 8 creo que esta bien
+    private static final Duration TIEMPO_MAXIMO_ESPERA = Duration.ofSeconds(8);
+
+    // application properties
     @Value("${geoapify.api-key:}")
-    private String apiKey;
+    private String claveApi;
 
-    private final HttpClient httpClient = HttpClient.newHttpClient();
-    private final AtomicLong llamadasGeoapify = new AtomicLong();
+    // Envia las peticiones por internet. Se crea una vez y se reutiliza.
+    private final HttpClient clienteHttp = HttpClient.newHttpClient();
+    //con long no funciono
+    private final AtomicLong contadorLlamadas = new AtomicLong();
 
     @Override
     public double[] coordenadas(String ciudad, String pais) {
         try {
-            String texto = URLEncoder.encode(ciudad + ", " + pais, StandardCharsets.UTF_8);
-            String url = "https://api.geoapify.com/v1/geocode/search?text=" + texto + "&apiKey=" + apiKey;
-            HttpRequest request = HttpRequest.newBuilder()
-                    .uri(URI.create(url))
-                    .timeout(TIMEOUT)
+            //texto a buscar en formato válido para la URL
+            String textoBuscado = URLEncoder.encode(ciudad + ", " + pais, StandardCharsets.UTF_8);
+            String direccionUrl = "https://api.geoapify.com/v1/geocode/search?text=" + textoBuscado + "&apiKey=" + claveApi;
+
+            // 2. Preparamos y enviamos la peticion
+            HttpRequest peticion = HttpRequest.newBuilder()
+                    //a donde va
+                    .uri(URI.create(direccionUrl))
+                    .timeout(TIEMPO_MAXIMO_ESPERA)
                     .GET()
                     .build();
-            HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
-            Gson gson = new Gson();
-            RespuestaGeocoding resultado = gson.fromJson(response.body(), RespuestaGeocoding.class);
-            if (resultado.features == null || resultado.features.isEmpty()) return null;
-            List<Double> coords = resultado.features.get(0).geometry.coordinates;
-            return new double[]{coords.get(1), coords.get(0)};
+            HttpResponse<String> respuesta = clienteHttp.send(peticion, HttpResponse.BodyHandlers.ofString());
+
+            //convertimos el texto JSON de la respuesta en objetos Java
+            Gson convertidorJson = new Gson();
+            RespuestaGeoapify datos = convertidorJson.fromJson(respuesta.body(), RespuestaGeoapify.class);
+
+            if (datos.features == null || datos.features.isEmpty())
+                return null;
+
+            //Geoapify entrega longitud, latitud
+            List<Double> longitudYLatitud = datos.features.get(0).geometry.coordinates;
+
+            return new double[]{longitudYLatitud.get(1), longitudYLatitud.get(0)};
         } catch (Exception e) {
             System.err.println("Error consultando Geoapify para " + ciudad + ": " + e.getMessage());
             return null;
         }
     }
 
+    /**
+     * Cuenta cuantos lugares de las categoriaas dadas hay dentro de un circulo.
+     * Devuelve null si algo fallo o no sabemos
+     * maximoResultados: tope de lugares que le pedimos a Geoapify. Mientras mas bajo,
+     * menos créditos gasta
+     * SUPER IMPORTANTE!!!! (-1 credito por cada 20 lugares)
+     */
+
     @Override
-    public Integer contarLugares(double lat, double lon, String categorias, int radioMetros, int limite) {
-        if (apiKey == null || apiKey.isBlank()) {
-            LOGGER.warning("Geoapify sin API key configurada; se omite la consulta de lugares.");
+    public Integer contarLugares(double latitud, double longitud, String categorias, int radioMetros, int maximoResultados) {
+        // Sin clave no podemos consultar
+        if (claveApi == null || claveApi.isBlank()) {
+            REGISTRO.warning("Geoapify sin API key no consulto bien");
             return null;
         }
 
-        long numeroLlamada = llamadasGeoapify.incrementAndGet();
-        long inicio = System.nanoTime();
+        long numeroDeLlamada = contadorLlamadas.incrementAndGet();
+        long momentoInicio = System.nanoTime();
         try {
-            String url = "https://api.geoapify.com/v2/places"
+            // Armamos la URL: categorias + circulo + tope de resultados
+            String direccionUrl = "https://api.geoapify.com/v2/places"
                     + "?categories=" + categorias
-                    + "&filter=circle:" + lon + "," + lat + "," + radioMetros
-                    + "&limit=" + limite
-                    + "&apiKey=" + apiKey;
-            HttpRequest request = HttpRequest.newBuilder()
-                    .uri(URI.create(url))
-                    .timeout(TIMEOUT)
+                    + "&filter=circle:" + longitud + "," + latitud + "," + radioMetros
+                    + "&limit=" + maximoResultados
+                    + "&apiKey=" + claveApi;
+            HttpRequest peticion = HttpRequest.newBuilder()
+                    .uri(URI.create(direccionUrl))
+                    .timeout(TIEMPO_MAXIMO_ESPERA)
                     .GET()
                     .build();
-            HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
-            long duracionMs = Duration.ofNanos(System.nanoTime() - inicio).toMillis();
-            LOGGER.info("Geoapify llamada #" + numeroLlamada
-                    + " status=" + response.statusCode()
-                    + " duracionMs=" + duracionMs
+            HttpResponse<String> respuesta = clienteHttp.send(peticion, HttpResponse.BodyHandlers.ofString());
+
+            // Mostramos en consola el numero de llamada, cómo salió y cuánto tardó
+            long milisegundosQueTardo = Duration.ofNanos(System.nanoTime() - momentoInicio).toMillis();
+            REGISTRO.info("Geoapify llamada #" + numeroDeLlamada
+                    + " status=" + respuesta.statusCode()
+                    + " duracionMs=" + milisegundosQueTardo
                     + " categorias=" + categorias);
 
-            if (response.statusCode() < 200 || response.statusCode() >= 300) {
+            if (respuesta.statusCode() < 200 || respuesta.statusCode() >= 300) {
                 return null;
             }
 
-            Gson gson = new Gson();
-            RespuestaGeocoding resultado = gson.fromJson(response.body(), RespuestaGeocoding.class);
-            if (resultado == null || resultado.features == null) return null;
-            return resultado.features.size();
+            // Convertimos el JSON y contamos cuántos lugares llegaron
+            Gson convertidorJson = new Gson();
+            RespuestaGeoapify datos = convertidorJson.fromJson(respuesta.body(), RespuestaGeoapify.class);
+            if (datos == null || datos.features == null) return null;
+            return datos.features.size();
         } catch (Exception e) {
-            LOGGER.log(Level.WARNING, "Error contando lugares (" + categorias + "): " + e.getMessage(), e);
-            if (e instanceof InterruptedException) Thread.currentThread().interrupt();
+            REGISTRO.log(Level.WARNING, "Error contando lugares (" + categorias + "): " + e.getMessage(), e);
+            // Conserva la señal de interrupcion.
+            if (e instanceof InterruptedException) {
+                Thread.currentThread().interrupt();
+            }
             return null;
         }
     }
 
-    private static class RespuestaGeocoding { List<Feature> features; }
-    private static class Feature { Geometry geometry; }
-    private static class Geometry { List<Double> coordinates; }
+    // ---- Moldes para leer la respuesta JSON de Geoapify ----
+    // toco usar los nombres de los campos features, geometry, coordinates
+    // porque deben ser identicos a los del JSON de Geoapify
+    // porque gson los une por nombre.
+    private static class RespuestaGeoapify {
+        List<Elemento> features;
+    }  // lista de resultados
+    private static class Elemento {
+        Geometria geometry;
+    }  // cada resultado tiene una ubicación
+    private static class Geometria {
+        List<Double> coordinates;
+    }  //longitud, latitud
 }
