@@ -4347,8 +4347,8 @@ todo lo veo bien , sin embargo estas semanas son criticas para todos los miembor
 | #99 | Como usuario de WiseTrip quiero registrar y gestionar mis gastos de forma organizada para mantener actualizado el control financiero de mi viaje | Historia de Usuario | 8 | Maleja |
 | #100 |  | Historia de Usuario | | Gaby |
 | #101 | | Historia de Usuario | | Gaby |
-| #102 | | Historia de Usuario | | Isa |
-| #103 | | Historia de Usuario | | Isa |
+| #102 | Como usuario, quiero recibir mis recomendaciones de destinos de forma ágil y sin esperas, para obtener resultados personalizados sin que las consultas externas afecten mi experiencia | Historia de Usuario | | Isa |
+| #103 |  Como usuario, quiero que la información de mis preferencias y destino se consulte y procese correctamente, para recibir recomendaciones confiables sin errores por fallas internas del sistema.| Historia de Usuario | | Isa |
 | #104 | Como administrador, quiero perfeccionar el boilerplate para que sea acorde al repositorio y permita ver con claridad cómo está organizado. | Historia de Usuario | | Clavijo |
 | #105 | Como administrador, quiero implementar el patrón de diseño GoF Decorator en el Módulo 2, para agregar comportamientos adicionales al proceso de recomendación de destinos sin modificar las clases existentes.| Historia de Usuario | | Clavijo |
 
