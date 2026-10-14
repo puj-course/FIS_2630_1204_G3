@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.wisetrip.modelo.Ubicacion;
 import com.wisetrip.modelo.Usuario;
-import com.wisetrip.servicio.ViajeServicio;
+import com.wisetrip.negocio.IViajeServicio;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -20,10 +20,10 @@ import jakarta.servlet.http.HttpSession;
 public class ViajeControlador {
 
     // Servicio que contiene la lógica relacionada con la configuración del viaje
-    private final ViajeServicio viajeServicio;
+    private final IViajeServicio viajeServicio;
 
     // Spring inyecta automáticamente ViajeServicio mediante el constructor
-    public ViajeControlador(ViajeServicio viajeServicio) {
+    public ViajeControlador(IViajeServicio viajeServicio) {
         this.viajeServicio = viajeServicio;
     }
 
