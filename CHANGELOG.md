@@ -4334,16 +4334,16 @@ todo lo veo bien , sin embargo estas semanas son criticas para todos los miembor
 
 | ID | Título | Tipo | Estimación | Responsable |
 |----|--------|------|------------|-------------|
-| #96 | Como usuario, quiero que el inicio de sesión sea simple y estable, para no tener problemas en el ingreso.  | Historia de Usuario | | Valeria |
-| #97 | Como usuario, quiero representar los modulos graficamente, para hacer correcciones manteniendo el orden del programa.  | Historia de Usuario | | Valeria |
-| # | | Historia de Usuario | | Maleja |
-| # | | Historia de Usuario | | Maleja |
-| # | | Historia de Usuario | | Gaby |
-| # | | Historia de Usuario | | Gaby |
-| # | | Historia de Usuario | | Isa |
-| # | | Historia de Usuario | | Isa |
-| # | | Historia de Usuario | | Clavijo |
-| # | | Historia de Usuario | | Clavijo |
+| #96 | Como usuario, quiero que el inicio de sesión sea simple y estable, para no tener problemas en el ingreso.  | Historia de Usuario | 5 | Valeria |
+| #97 | Como usuario, quiero representar los modulos graficamente, para hacer correcciones manteniendo el orden del programa.  | Historia de Usuario | 8 | Valeria |
+| #98 | Como usuario de WiseTrip quiero que la gestión de mi presupuesto se adapte a las diferentes operaciones financieras para tener mayor control sobre los recursos disponibles durante mi viaje | Historia de Usuario | 8 | Maleja |
+| #99 | Como usuario de WiseTrip quiero registrar y gestionar mis gastos de forma organizada para mantener actualizado el control financiero de mi viaje | Historia de Usuario | 8 | Maleja |
+| #100 | | Historia de Usuario | | Gaby |
+| #101 | | Historia de Usuario | | Gaby |
+| #102 | | Historia de Usuario | | Isa |
+| #103 | | Historia de Usuario | | Isa |
+| #104 | | Historia de Usuario | | Clavijo |
+| #105 | | Historia de Usuario | | Clavijo |
 
 ## Riesgos / Bloqueos identificados
 
