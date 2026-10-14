@@ -2,6 +2,15 @@
 
 ## 1. Strategy — "diferentes formas de avisarle a alguien"
 
+**Problema de diseño :**  Al registrarse o iniciar sesion, nuestra aplicación debe avisarle al usuario de estos por diferentes canales si es la primera vez en ingresar - registrarse le llegara un mensaje a su correo mientras que si ya se encontraba registrado anteriormente solo le llegara un mensaje al Telegram. Mas adelante deberian entrar otros canales como SMS. 
+Sin un patron la clase UsuarioServicio tendria que conocer la informacion de cada canal teniendo de esta forma: 
+- Alto Acoplamiento : el servicio de los usuarios dependeria de JavaMailSender y de la API de telegram. 
+- Codigo rigido: cada canal obligatoria a modificar la clase UsuarioServicio
+- Baja cohesion: la clase de Usuario tendria que armar las URLs de telegram y los mensajes SMTP 
+- Dificultad en pruebas: No se puede probar el registro sin correo ni Telegram reales.
+
+**Solucion directa:** if/else para para cada canal
+
 El Patrón Strategy consiste en programar contra una interfaz (INotificador) en lugar de contra clases concretas, permitiendo intercambiar algoritmos o implementaciones (como enviar por correo o por Telegram) en tiempo de ejecución sin alterar la lógica principal de la clase que los utiliza (UsuarioServicio).
 
 ### 1: el molde que deben cumplir todas las formas de avisar
@@ -98,7 +107,11 @@ Spring lee el `@Qualifier("notificadorCorreo")` y busca qué clase tiene `@Servi
 **Momento 2 — cuando pasa algo (tú decides cuál variable usar):**
 Tú, al escribir el método `registrar`, decidiste a mano usar `notificadorCorreo`. Al escribir `iniciarSesion`, decidiste usar `notificadorTelegram`. No hay inteligencia artificial decidiendo esto — es una elección fija que programaste.
 
-Lo imporatnte aqui es que `UsuarioServicio` nunca tiene que saber los detalles técnicos de SMTP ni de la API de Telegram — esa complejidad queda escondida dentro de cada `Notificador`.
+Lo importante aqui es que `UsuarioServicio` nunca tiene que saber los detalles técnicos de SMTP ni de la API de Telegram — esa complejidad queda escondida dentro de cada `Notificador`.
+
+## Diseño - Diagrama UML 
+
+<img width="1143" height="529" alt="Untitled (2)" src="https://github.com/user-attachments/assets/dd388ee8-1732-4199-870d-d970b7db7a3c" />
 
 ---
 
