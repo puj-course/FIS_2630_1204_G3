@@ -22,4 +22,4 @@ public interface IRepositorioRepartoPresupuesto {
      *         tiene un reparto guardado
      */
     IDistribuible buscarReparto(int idViaje);
-}
+}

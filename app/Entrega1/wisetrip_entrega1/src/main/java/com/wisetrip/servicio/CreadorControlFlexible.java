@@ -22,4 +22,4 @@ public class CreadorControlFlexible extends ControlCategoriaCreador {
     protected IControlCategoriaGasto crearControl() {
         return new ControlCategoriaFlexible();
     }
-}
+}
