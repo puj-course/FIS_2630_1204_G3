@@ -93,7 +93,7 @@ public class RecomendacionControlador {
         model.addAttribute("ciudadesPendientes", validacion.pendientes());
         List<ResultadoRecomendacion> resultados =
                 recomendadorDestinos.puntuarCiudadesValidas(validacion, preferencias);
-        SeleccionDestinos seleccion = selectorDestinos.seleccionarMejoresDestinos(resultados, true);
+        SeleccionDestinos seleccion = selectorDestinos.seleccionarMejoresDestinos(resultados);
         sesion.setAttribute("seleccionDestinos", seleccion);
         guardarPlanificacionSiHaceFalta(sesion, usuario, atributosCuestionario, presupuestoUsd, seleccion);
 
