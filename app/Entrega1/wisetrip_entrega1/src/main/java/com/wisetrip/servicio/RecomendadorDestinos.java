@@ -156,7 +156,7 @@ public class RecomendadorDestinos implements Recomendador {
         long dias = preferencias.getDuracionDias();
         double diario = ciudad.getCostoPromedio();
         double costo = diario * dias; // Costo de la estancia por persona.
-        double presupuesto = preferencias.getPresupuesto();
+        double presupuesto = preferencias.getPresupuestoUsd();
 
         double pCosto = calcularPuntajePresupuesto(costo, presupuesto);
         double pGustos = calcularPuntajePreferencias(
@@ -175,7 +175,7 @@ public class RecomendadorDestinos implements Recomendador {
      */
     public double diferenciaPresupuesto(Ciudad ciudad, PreferenciasUsuario preferencias) {
         double costoViaje = ciudad.getCostoPromedio() * preferencias.getDuracionDias();
-        return Math.abs(costoViaje - preferencias.getPresupuesto());
+        return Math.abs(costoViaje - preferencias.getPresupuestoUsd());
     }
 
     @Override
@@ -193,7 +193,7 @@ public class RecomendadorDestinos implements Recomendador {
             double costo = ciudad.getCostoPromedio() * preferencias.getDuracionDias();
             boolean faltaInformacion = !Double.isFinite(costo) || costo <= 0;
             boolean incumple = !faltaInformacion && presupuestoObligatorio
-                    && costo > preferencias.getPresupuesto();
+                    && costo > preferencias.getPresupuestoUsd();
             for (var requisito : preferencias.getAtributos().entrySet()) {
                 if (requisito.getValue() == null || !requisito.getValue().esIndispensable()) continue;
                 EstadoAtributo estado = ciudad.estadoAtributo(requisito.getKey());
