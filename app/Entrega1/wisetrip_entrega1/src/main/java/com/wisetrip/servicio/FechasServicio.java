@@ -15,13 +15,15 @@ import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
+import com.wisetrip.negocio.IFechasServicio;
 import com.wisetrip.modelo.FechasViaje;
 
 @Service
-public class FechasServicio {
+public class FechasServicio implements IFechasServicio {
 
     private static final int MAX_DIAS = 60;
 
+    @Override
     public Map<String, String> validarFechas(FechasViaje fechas) {
         Map<String, String> errores = new LinkedHashMap<>();
 
@@ -66,11 +68,13 @@ public class FechasServicio {
         return errores;
     }
 
+    @Override
     public long calcularDuracion(FechasViaje fechas) {
         return fechas.getDuracionDias();
     }
 
     /** Fecha de hoy en formato yyyy-MM-dd, para el atributo min del input date. */
+    @Override
     public String hoy() {
         return LocalDate.now().toString();
     }

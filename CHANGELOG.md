@@ -3961,15 +3961,15 @@ no
 
 1. **¿Qué hice ayer?**
 
-
+Ayer junto a mi compañero hice la implementación de las interfaces con sus overrides del módulo de recomendaciones, especialmente la parte de selección de destino.
 
 2. **¿Qué voy a hacer hoy?**
 
-
+Hoy revisé cómo empezar el diagrama
    
 3. **¿Tengo algún impedimento o bloqueo?**
 
-
+No
 
 ---
 
@@ -3993,15 +3993,15 @@ El hackeo del bot
 
 1. **¿Qué hice ayer?**
 
-
+ayer junto con mi compañera hicimos todo lo relacionado con el milestone 3 de preferencias y recomendaciones personalizadas, creamos interfaces de negocio y las implementamos en las demas clases
 
 2. **¿Qué voy a hacer hoy?**
 
-
+hoy empece a estudiar el codigo y empezar a hacer los diagramas necesarios
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
-
+no
 
 ---
 
@@ -4009,15 +4009,15 @@ El hackeo del bot
 
 1. **¿Qué hice ayer?**
 
- 
+temrine de corregir la manera en la que el sistema estaba evaluando la recomendacion de las ciudades
 
 2. **¿Qué voy a hacer hoy?**
 
-
+hoy estoy en la correccion de las clases para que tengan las interfaces de las que habla el profe especificamente de las clases involucradas en el milestone 3
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
-
+no
 
 ---
 
@@ -4026,20 +4026,341 @@ El hackeo del bot
 
 1. **¿Qué hice ayer?** 
 
-
+Ayer estaba viendo que codigos podia tocar y cambiar, tambien como para no crear conflicto y repasando como se implementaban interfaces en java
 
 2. **¿Qué voy a hacer hoy?** 
 
-
+Terminando los codigos que hace falta por arreglar
 
 3. **¿Tengo algún impedimento o bloqueo?** 
 
-
+no
 
 ---
 
 <img width="999" height="485" alt="Captura de pantalla 2026-10-07 193455" src="https://github.com/user-attachments/assets/d531e72f-9f8e-41e7-a68a-b97a7caa5e29" />
 
+---
+## Daily Sprint - 08/10/2026
+
+### Isabella Posada
+
+1. **¿Qué hice ayer?**
+
+ayer estuve revisando el código para saber si habían cosas que mejorar, estuve arreglando ciertas firmas entre otras cosas.
+
+
+2. **¿Qué voy a hacer hoy?**
+
+
+Revisar e integrar los patrones Gof en el código para ir dejando el proyecto listo para la presentación.
+
+   
+3. **¿Tengo algún impedimento o bloqueo?**
+
+No
+
+---
+
+### Valeria Cortes Rendon
+
+1. **¿Qué hice ayer?**
+
+investigacion para arreglar lo del telegram ya que al parecer nos hackean el bot y llegan mensajes en ruso desde nuestro bot como si nosotros los estuvieramos enviando. Tenemos que buscar algun profe de seguridad que nos pueda explicar de mejor forma lo que sucede con nuestro bot
+   
+2. **¿Qué voy a hacer hoy?**
+
+El dia de hoy fui a hablar con el profesor de ciberseguridad para que me explicara que debia hacer y arreglar el tema del bot ya que estaban enviando mensajes bastantes raros y que no tenian nada que ver con lo que nosotros ofrecemos en nuestra aplicacion.
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+implementacion de los patrones GOF
+
+   
+---
+
+### Santiago Clavijo
+
+1. **¿Qué hice ayer?**
+
+Ayer Trate de entender el codigo para hacer los nuevos diagramas con las interfaces ya en el codigo
+
+2. **¿Qué voy a hacer hoy?**
+
+Ivestigue los patrones GoF mas a fondo aparte de la clase, ya que como es un tema muy extenso, tengo miedo de no entenderlo y saberlo implementar en el codigo
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+No
+
+---
+
+### Gabriela Melo Gualteros
+
+1. **¿Qué hice ayer?**
+
+ayer termine de implementar las interfaces que hacian falta en las clases involucradas en la milestone 3
+
+2. **¿Qué voy a hacer hoy?**
+
+hoy adelante el diagrama de interfaces que hacia falta
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+no
+
+---
+
+
+### Maria Alejandra Rodriguez
+
+1. **¿Qué hice ayer?** 
+
+Ayer arreglé todo implemente varias interfaces para que todo cumpliera con grasp y solid y quedaron algunos códigos pendientes igualmente se podría platear una revisión
+
+2. **¿Qué voy a hacer hoy?** 
+
+Revisar los patrones gof para poderlos poner en el proyecto y tenerlos listos para la entrega
+
+3. **¿Tengo algún impedimento o bloqueo?** 
+
+No
+
+---
+
+<img width="1600" height="1200" alt="image" src="https://github.com/user-attachments/assets/84a75ba9-a725-4fef-82b8-8e34177e9cd9" />
+
+---
+---
+## Daily Sprint - 09/10/2026
+
+### Isabella Posada
+
+1. **¿Qué hice ayer?**
+
+ayer estuvimos en clase viendo mas a fondo los patrones gof en clase para poderlos implementar en el proyecto. 
+
+
+2. **¿Qué voy a hacer hoy?**
+hoy estuvimos haciendo los diagramas nos falta acabarlos 
+3. **¿Tengo algún impedimento o bloqueo?**
+
+la verdad no he tenido tiempo ya que el día de mañana tengo un parcial y me he estado preparando. 
+
+---
+
+### Valeria Cortes Rendon
+
+1. **¿Qué hice ayer?**
+
+Entendi como funciona ahora el modelo que planteamos, me falta implementar los patrones gof al proyecto a mi parte y realizar los diagramas de mi modulo y poder explicarlos de mejor forma, ademas de hacer las pruebas funcionales que pide el profesor.
+
+2. **¿Qué voy a hacer hoy?**
+
+Volvi a revisar lo del bot que ya quedo solucionado, y empezar a hacer lor patrones gof que le faltan al proyecto.
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+No
+   
+---
+
+### Santiago Clavijo
+
+1. **¿Qué hice ayer?**
+
+ayer por primera vez escuche que son los patrones gof y que lo tenemos que implementar en el codigo del proyecto, seguimos con los diagramas de las interfaces y clases
+
+2. **¿Qué voy a hacer hoy?**
+
+hoy sigo viendo como hago los diagramas necesarios para la sustentacion del proyecto
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+falta de tiempo
+
+---
+
+### Gabriela Melo Gualteros
+
+1. **¿Qué hice ayer?**
+
+ayer averigue como hacer el diagrama de interfaces del milestone que me correspondio y que debia componer
+
+2. **¿Qué voy a hacer hoy?**
+
+hoy realice el diagrama y empece a ver como vamos a implementar los protocolos GoF
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+no
+
+---
+
+
+### Maria Alejandra Rodriguez
+
+1. **¿Qué hice ayer?** 
+
+Ayer terminé de investigar los patrones gof y me adueñé del tema
+
+2. **¿Qué voy a hacer hoy?** 
+
+Volví a mirar como hacía los diagramas de lo que hice esta semana para que me queden bien
+
+3. **¿Tengo algún impedimento o bloqueo?** 
+
+No
+
+---
+
+<img width="959" height="470" alt="image" src="https://github.com/user-attachments/assets/def82ffb-228a-4358-9af5-81a1ba010fde" />
+
+---
+
+
+# Sprint Review y Sprint Retrospective - 11/10/2026
+
+## Maria Alejandra Rodriguez
+
+### Sprint Review
+
+1. **¿Qué logramos?**
+
+Mejoramos la arquitectura con SOLID y GRASP tambien realizamos los diagramas y en general organizamos mas el codigo
+
+ 
+### Sprint Retrospective
+
+2. **¿Cómo trabajamos?**
+
+Como equipo mucho mejor, en general nos hemos enfocado mucho en arreglar los codigos y nos ha ido muy bien, siempre colaborandonos
+
+
+3. **¿Qué podríamos mejorar?**
+
+Tenemos que implementar ahora los patrones gof de resto siento que estamos muy bien
+  
+---
+
+## Gabriela Melo Gualteros
+
+### Sprint Review
+
+1. **¿Qué logramos?**
+
+ Pudimos terminar los diagramas de interfaces, implementar los patrones SOLID y GRASP      
+
+### Sprint Retrospective
+
+2. **¿Cómo trabajamos?**
+
+Como equipo vamos bien, comunicandonos bien. Nos dividimos el trabajo en modulos para poder abarcar todo el codigo e implementar y organizarlo mejor
+  
+3. **¿Qué podríamos mejorar?**
+
+Aun nos hace falta implementar los patrones GoF y creo que depurar un poco mas el codiog para que solo quede lo esencial
+  
+---
+
+## Valeria Cortes Rendon
+
+### Sprint Review
+
+1. **¿Qué logramos?**
+
+   Se logro mejorar la arquitectura e implementar patrones GOF dentro de nuestro proyecto, tenemos ahora los diagramas por mi lado del primer modulo y como lo hemos realizado  
+
+### Sprint Retrospective
+
+2. **¿Cómo trabajamos?**
+
+   Creo que hemos mejorado bastante el trabajo en equipo, nos entendemos muy bien y nos parece que tenemos que mejorar cosas dentro del proyecto pero por ahora me parece que lo hemos hecho muy bien.
+
+3. **¿Qué podríamos mejorar?**
+
+  Por ahora hacer el taller que coloco el profesor de los patrones GOF pero de resto esta muy bien !
+
+---
+
+## Isabella Posada
+
+### Sprint Review
+
+1. **¿Qué logramos?**
+
+Arreglamos y entendimos mucho como estaba el código y gracias a lo que aprendimos en clase como SOLID y GOF pudimos mejorar la arquitectura del proyecto en los modulos establecidos
+
+### Sprint Retrospective
+
+2. **¿Cómo trabajamos?**
+
+bastante bien, nuestro objetivo principal es tener un buen resultado en el proyecto y juntos nos hemos puesto en la tarea de
+
+
+
+3. **¿Qué podríamos mejorar?**
+
+en entender los conceptos mejor para poderlos desarrollar bien en el codigo, ya que los patrones los vimos hace poco.
+
+---
+
+## Santiago Clavijo
+
+### Sprint Review
+
+1. **¿Qué logramos?**
+
+esta semana como equipo logramos mejorar la organizacion del codigo, ya es mas entendible con todas las mejores de arquitectura (interfaces, implementaciones, etc)
+
+### Sprint Retrospective
+
+2. **¿Cómo trabajamos?**
+
+como equipo seguimos muy sincronizados, la comunicacion mejoro y en general el repositorio esta muy bien
+
+3. **¿Qué podríamos mejorar?**
+
+todo lo veo bien , sin embargo estas semanas son criticas para todos los miembors del equipo ya que se vienen parciales y entregas.
+
+---
+
+<img width="959" height="469" alt="image" src="https://github.com/user-attachments/assets/f3ddccf6-395b-4478-a625-764fe9c11b6e" />
+
+# Sprint 9 - Sprint Planning - [13/10/2026]
+
+## Sprint Goal
+
+
+## Capacidad del equipo
+
+* Desarrolladores disponibles: 5
+* Puntos/horas disponibles: 42 (por ajustar según refinamiento)
+
+## Issues seleccionados para el Sprint
+
+| ID | Título | Tipo | Estimación | Responsable |
+|----|--------|------|------------|-------------|
+| #96 | Como usuario, quiero que el inicio de sesión sea simple y estable, para no tener problemas en el ingreso.  | Historia de Usuario | 5 | Valeria |
+| #97 | Como usuario, quiero representar los modulos graficamente, para hacer correcciones manteniendo el orden del programa.  | Historia de Usuario | 8 | Valeria |
+| #98 | Como usuario de WiseTrip quiero que la gestión de mi presupuesto se adapte a las diferentes operaciones financieras para tener mayor control sobre los recursos disponibles durante mi viaje | Historia de Usuario | 8 | Maleja |
+| #99 | Como usuario de WiseTrip quiero registrar y gestionar mis gastos de forma organizada para mantener actualizado el control financiero de mi viaje | Historia de Usuario | 8 | Maleja |
+| #100 |  | Historia de Usuario | | Gaby |
+| #101 | | Historia de Usuario | | Gaby |
+| #102 | Como usuario, quiero recibir mis recomendaciones de destinos de forma ágil y sin esperas, para obtener resultados personalizados sin que las consultas externas afecten mi experiencia | Historia de Usuario | | Isa |
+| #103 |  Como usuario, quiero que la información de mis preferencias y destino se consulte y procese correctamente, para recibir recomendaciones confiables sin errores por fallas internas del sistema.| Historia de Usuario | | Isa |
+| #104 | Como administrador, quiero perfeccionar el boilerplate para que sea acorde al repositorio y permita ver con claridad cómo está organizado. | Historia de Usuario | | Clavijo |
+| #105 | Como administrador, quiero implementar el patrón de diseño GoF Decorator en el Módulo 2, para agregar comportamientos adicionales al proceso de recomendación de destinos sin modificar las clases existentes.| Historia de Usuario | | Clavijo |
+
+## Riesgos / Bloqueos identificados
+
+- Completar diagramas generales de los modulos 
+- Entender los cambios realizados por los demas integrantes del equipo 
+
+---
+<img width="959" height="470" alt="image" src="https://github.com/user-attachments/assets/61f08946-71be-485e-9707-88fb8a6a77ee" />
+
+---
 
 ---
 

@@ -10,9 +10,10 @@ import org.springframework.stereotype.Service;
 import com.wisetrip.datos.CiudadSemilla;
 import com.wisetrip.datos.DatosCiudades;
 import com.wisetrip.modelo.Ubicacion;
+import com.wisetrip.negocio.IViajeServicio;
 
 @Service
-public class ViajeServicio {
+public class ViajeServicio implements IViajeServicio {
 
     private static final Map<String, List<String>> CIUDADES_POR_PAIS = construirCiudadesPorPais();
 
@@ -67,10 +68,12 @@ public class ViajeServicio {
         }
     }
 
+    @Override
     public List<String> listarPaises() {
         return new ArrayList<>(CIUDADES_POR_PAIS.keySet());
     }
 
+    @Override
     public List<String> listarCiudades(String pais) {
         if (pais == null || !CIUDADES_POR_PAIS.containsKey(pais)) {
             return new ArrayList<>();
@@ -83,6 +86,7 @@ public class ViajeServicio {
      * Devuelve un mapa vacio si todo esta bien.
      */
 
+    @Override
     public Map<String, String> validarUbicacion(Ubicacion ubicacion) {
         Map<String, String> errores = new LinkedHashMap<>();
 

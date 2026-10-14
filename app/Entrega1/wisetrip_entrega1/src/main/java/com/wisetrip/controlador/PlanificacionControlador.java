@@ -21,7 +21,7 @@ import com.wisetrip.modelo.Ubicacion;
 import com.wisetrip.modelo.Usuario;
 import com.wisetrip.negocio.GestorPreferencias;
 import com.wisetrip.negocio.GestorPresupuesto;
-import com.wisetrip.servicio.FechasServicio;
+import com.wisetrip.negocio.IFechasServicio;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -31,11 +31,11 @@ public class PlanificacionControlador {
 
     private final GestorPreferencias gestorPreferencias;
     private final GestorPresupuesto gestorPresupuesto;
-    private final FechasServicio fechasServicio;
+    private final IFechasServicio fechasServicio;
 
     public PlanificacionControlador(GestorPreferencias gestorPreferencias,
                                     GestorPresupuesto gestorPresupuesto,
-                                    FechasServicio fechasServicio) {
+                                    IFechasServicio fechasServicio) {
         this.gestorPreferencias = gestorPreferencias;
         this.gestorPresupuesto = gestorPresupuesto;
         this.fechasServicio = fechasServicio;

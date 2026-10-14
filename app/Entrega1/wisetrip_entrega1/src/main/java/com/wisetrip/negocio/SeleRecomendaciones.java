@@ -1,14 +1,12 @@
 package com.wisetrip.negocio;
 
+import java.util.List;
+
 import com.wisetrip.modelo.ResultadoRecomendacion;
 import com.wisetrip.modelo.SeleccionDestinos;
 
-import java.util.List;
-
 public interface SeleRecomendaciones {
     SeleccionDestinos seleccionarMejoresDestinos(
-            List<ResultadoRecomendacion> resultados
-    );
+            List<ResultadoRecomendacion> resultados,
+            boolean soloIndispensables);
 }
-
-

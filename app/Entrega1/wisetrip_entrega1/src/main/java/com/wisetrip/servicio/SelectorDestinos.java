@@ -10,12 +10,14 @@ import org.springframework.stereotype.Service;
 
 import com.wisetrip.modelo.ResultadoRecomendacion;
 import com.wisetrip.modelo.SeleccionDestinos;
+import com.wisetrip.negocio.SeleRecomendaciones;
 
 @Service
-public class SelectorDestinos {
+public class SelectorDestinos implements SeleRecomendaciones  {
 
     private static final int CANTIDAD_DESTINOS = 3;
 
+    @Override
     public SeleccionDestinos seleccionarMejoresDestinos(
             List<ResultadoRecomendacion> resultados,
             boolean soloIndispensables) {

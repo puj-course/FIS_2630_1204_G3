@@ -9,8 +9,12 @@ import com.wisetrip.modelo.SeleccionDestinos;
 import com.wisetrip.negocio.ISeleccionDestino;
 
 /**
- * HU#68: elige, entre los destinos recomendados, el que el viajero
- * seleccionó.
+ * HU#68: resuelve cuál de los destinos recomendados eligió el viajero.
+ *
+ * Implementa la interfaz de negocio ISeleccionDestino.
+ *  saca del controlador la regla de buscar
+ * el destino elegido; el controlador solo atiende la petición.
+ *  toda la lógica de elegir destino vive aquí.
  */
 @Service
 public class SeleccionServicio implements ISeleccionDestino {
@@ -22,11 +26,11 @@ public class SeleccionServicio implements ISeleccionDestino {
 
     @Override
     public Optional<ResultadoRecomendacion> elegir(SeleccionDestinos seleccion, int idCiudad) {
-        if (seleccion == null) {
+        if (!hayDestinos(seleccion)) {
             return Optional.empty();
         }
         return seleccion.getDestinos().stream()
-                .filter(destino -> destino.getCiudad().getId() == idCiudad)
+                .filter(r -> r.getCiudad() != null && r.getCiudad().getId() == idCiudad)
                 .findFirst();
     }
 }
