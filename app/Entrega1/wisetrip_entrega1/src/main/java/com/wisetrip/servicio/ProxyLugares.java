@@ -11,6 +11,7 @@ import java.util.logging.Logger;
 /** Proxy que reutiliza los conteos de lugares durante la vida de la aplicacion. */
 @Service
 @Primary
+
 public class ProxyLugares implements ProovedorLugares {
     private static final Logger LOGGER = Logger.getLogger(ProxyLugares.class.getName());
 
@@ -31,7 +32,7 @@ public class ProxyLugares implements ProovedorLugares {
         String cacheKey = lat + "|" + lon + "|" + categorias + "|" + radioMetros + "|" + limite;
         Integer cacheado = conteoLugaresCache.get(cacheKey);
         if (cacheado != null) {
-            LOGGER.info("Geoapify cache hit categorias=" + categorias + " cantidad=" + cacheado);
+            LOGGER.info("Geoapify cache categorias=" + categorias + " cantidad=" + cacheado);
             return cacheado;
         }
 

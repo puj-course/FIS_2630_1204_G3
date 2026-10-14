@@ -84,7 +84,7 @@ public class LlenarAtributosCiudad {
                             pregunta.umbral
                     );
             // Si hubo un problema y no sabemos el resultado
-            // no ponemos false porque false significaría que no cumple.
+            // no ponemos false porque false significaria que no cumple.
             if (estado == EstadoAtributo.noSabemos) {
                 atributos.remove(pregunta.id);
             } else {
