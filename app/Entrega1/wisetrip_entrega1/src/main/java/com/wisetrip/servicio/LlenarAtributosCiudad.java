@@ -61,7 +61,8 @@ public class LlenarAtributosCiudad {
                     pregunta.categorias,
                     //coordenadas o bueno los kilometros a la redonda
                     50_000,
-                    500
+                    // Basta con alcanzar el umbral.
+                    pregunta.umbral
             );
 
             EstadoAtributo estado =
