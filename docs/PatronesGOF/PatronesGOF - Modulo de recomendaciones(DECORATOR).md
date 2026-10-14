@@ -72,7 +72,9 @@ public class PreferenciasConAuditoriaDecorador implements GestorPreferencias {
 ```
 
 ---
--
+
+<img width="1428" height="445" alt="image" src="https://github.com/user-attachments/assets/06443e0f-70a0-48b7-beca-a15445c288e5" />
+
 
 ## Diseño - Diagrama UML 
 
