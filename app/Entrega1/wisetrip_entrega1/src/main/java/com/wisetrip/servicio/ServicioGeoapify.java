@@ -17,8 +17,6 @@ import java.net.http.HttpResponse;
 import java.nio.charset.StandardCharsets;
 import java.time.Duration;
 import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -33,7 +31,6 @@ public class ServicioGeoapify implements ProovedorLugares {
     private String apiKey;
 
     private final HttpClient httpClient = HttpClient.newHttpClient();
-    private final Map<String, Integer> conteoLugaresCache = new ConcurrentHashMap<>();
     private final AtomicLong llamadasGeoapify = new AtomicLong();
 
     @Override
@@ -65,13 +62,6 @@ public class ServicioGeoapify implements ProovedorLugares {
             return null;
         }
 
-        String cacheKey = lat + "|" + lon + "|" + categorias + "|" + radioMetros + "|" + limite;
-        Integer cacheado = conteoLugaresCache.get(cacheKey);
-        if (cacheado != null) {
-            LOGGER.info("Geoapify cache hit categorias=" + categorias + " cantidad=" + cacheado);
-            return cacheado;
-        }
-
         long numeroLlamada = llamadasGeoapify.incrementAndGet();
         long inicio = System.nanoTime();
         try {
@@ -99,9 +89,7 @@ public class ServicioGeoapify implements ProovedorLugares {
             Gson gson = new Gson();
             RespuestaGeocoding resultado = gson.fromJson(response.body(), RespuestaGeocoding.class);
             if (resultado == null || resultado.features == null) return null;
-            int cantidad = resultado.features.size();
-            conteoLugaresCache.put(cacheKey, cantidad);
-            return cantidad;
+            return resultado.features.size();
         } catch (Exception e) {
             LOGGER.log(Level.WARNING, "Error contando lugares (" + categorias + "): " + e.getMessage(), e);
             if (e instanceof InterruptedException) Thread.currentThread().interrupt();

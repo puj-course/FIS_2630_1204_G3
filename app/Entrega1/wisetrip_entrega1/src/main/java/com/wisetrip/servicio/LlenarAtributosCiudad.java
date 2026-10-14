@@ -5,6 +5,7 @@ import com.wisetrip.modelo.Ciudad;
 import com.wisetrip.modelo.EstadoAtributo;
 import com.wisetrip.negocio.CatalogoPreguntas;
 import com.wisetrip.negocio.DefPregunta;
+import com.wisetrip.negocio.ProovedorLugares;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -16,9 +17,9 @@ import org.springframework.stereotype.Service;
 @Service
 public class LlenarAtributosCiudad {
 
-    private final ServicioGeoapify geo;
+    private final ProovedorLugares geo;
 
-    public LlenarAtributosCiudad(ServicioGeoapify geo) {
+    public LlenarAtributosCiudad(ProovedorLugares geo) {
         this.geo = geo;
     }
 
