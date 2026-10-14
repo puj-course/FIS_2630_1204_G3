@@ -4214,7 +4214,12 @@ No
 
 ---
 
-# Sprint Review y Sprint Retrospective - 15/08/2026
+<img width="959" height="470" alt="image" src="https://github.com/user-attachments/assets/def82ffb-228a-4358-9af5-81a1ba010fde" />
+
+---
+
+
+# Sprint Review y Sprint Retrospective - 11/10/2026
 
 ## Maria Alejandra Rodriguez
 
@@ -4319,3 +4324,43 @@ como equipo seguimos muy sincronizados, la comunicacion mejoro y en general el r
 todo lo veo bien , sin embargo estas semanas son criticas para todos los miembors del equipo ya que se vienen parciales y entregas.
 
 ---
+
+<img width="959" height="469" alt="image" src="https://github.com/user-attachments/assets/f3ddccf6-395b-4478-a625-764fe9c11b6e" />
+
+# Sprint 9 - Sprint Planning - [13/10/2026]
+
+## Sprint Goal
+
+
+## Capacidad del equipo
+
+* Desarrolladores disponibles: 5
+* Puntos/horas disponibles: 42 (por ajustar según refinamiento)
+
+## Issues seleccionados para el Sprint
+
+| ID | Título | Tipo | Estimación | Responsable |
+|----|--------|------|------------|-------------|
+| #96 | Como usuario, quiero que el inicio de sesión sea simple y estable, para no tener problemas en el ingreso.  | Historia de Usuario | 5 | Valeria |
+| #97 | Como usuario, quiero representar los modulos graficamente, para hacer correcciones manteniendo el orden del programa.  | Historia de Usuario | 8 | Valeria |
+| #98 | Como usuario de WiseTrip quiero que la gestión de mi presupuesto se adapte a las diferentes operaciones financieras para tener mayor control sobre los recursos disponibles durante mi viaje | Historia de Usuario | 8 | Maleja |
+| #99 | Como usuario de WiseTrip quiero registrar y gestionar mis gastos de forma organizada para mantener actualizado el control financiero de mi viaje | Historia de Usuario | 8 | Maleja |
+| #100 |  | Historia de Usuario | | Gaby |
+| #101 | | Historia de Usuario | | Gaby |
+| #102 | Como usuario, quiero recibir mis recomendaciones de destinos de forma ágil y sin esperas, para obtener resultados personalizados sin que las consultas externas afecten mi experiencia | Historia de Usuario | | Isa |
+| #103 |  Como usuario, quiero que la información de mis preferencias y destino se consulte y procese correctamente, para recibir recomendaciones confiables sin errores por fallas internas del sistema.| Historia de Usuario | | Isa |
+| #104 | Como administrador, quiero perfeccionar el boilerplate para que sea acorde al repositorio y permita ver con claridad cómo está organizado. | Historia de Usuario | | Clavijo |
+| #105 | Como administrador, quiero implementar el patrón de diseño GoF Decorator en el Módulo 2, para agregar comportamientos adicionales al proceso de recomendación de destinos sin modificar las clases existentes.| Historia de Usuario | | Clavijo |
+
+## Riesgos / Bloqueos identificados
+
+- Completar diagramas generales de los modulos 
+- Entender los cambios realizados por los demas integrantes del equipo 
+
+---
+<img width="959" height="470" alt="image" src="https://github.com/user-attachments/assets/61f08946-71be-485e-9707-88fb8a6a77ee" />
+
+---
+
+---
+

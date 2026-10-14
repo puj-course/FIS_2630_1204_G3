@@ -23,6 +23,7 @@ import com.wisetrip.servicio.LlenarAtributosCiudad;
 import com.wisetrip.negocio.Recomendador;
 import com.wisetrip.negocio.SeleRecomendaciones;
 
+
 import jakarta.servlet.http.HttpSession;
 
 /**
@@ -76,10 +77,7 @@ public class RecomendacionControlador {
 
         FechasViaje fechas = (FechasViaje) sesion.getAttribute("fechasViaje");
         if (fechas == null || fechas.getDuracionDias() < 1) return "redirect:/fechas";
-        PreferenciasUsuario preferencias = new PreferenciasUsuario(
-                presupuestoUsd,
-                importancias,
-                fechas.getDuracionDias());
+        PreferenciasUsuario preferencias = new PreferenciasUsuario( presupuestoUsd, importancias, fechas.getDuracionDias());
         List<Ciudad> ciudades = ciudadDAO.obtenerTodas();
 
         for (Ciudad ciudad : ciudades) {
