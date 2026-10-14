@@ -185,6 +185,14 @@ public class RecomendadorDestinos implements Recomendador {
     }
 
     @Override
+    public boolean excedePresupuesto(Ciudad ciudad, PreferenciasUsuario preferencias) {
+        double costo = ciudad.getCostoPromedio() * preferencias.getDuracionDias();
+        // Un costo desconocido no confirma un exceso.
+        return presupuestoObligatorio && Double.isFinite(costo) && costo > 0
+                && costo > preferencias.getPresupuestoUsd();
+    }
+
+    @Override
     public ValidacionCiudades validarCiudades(List<Ciudad> ciudades, PreferenciasUsuario preferencias) {
         List<Ciudad> validas = new ArrayList<>();
         List<Ciudad> descartadas = new ArrayList<>();
@@ -192,8 +200,7 @@ public class RecomendadorDestinos implements Recomendador {
         for (Ciudad ciudad : ciudades) {
             double costo = ciudad.getCostoPromedio() * preferencias.getDuracionDias();
             boolean faltaInformacion = !Double.isFinite(costo) || costo <= 0;
-            boolean incumple = !faltaInformacion && presupuestoObligatorio
-                    && costo > preferencias.getPresupuestoUsd();
+            boolean incumple = excedePresupuesto(ciudad, preferencias);
             for (var requisito : preferencias.getAtributos().entrySet()) {
                 if (requisito.getValue() == null || !requisito.getValue().esIndispensable()) continue;
                 EstadoAtributo estado = ciudad.estadoAtributo(requisito.getKey());

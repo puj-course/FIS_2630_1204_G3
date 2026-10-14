@@ -81,6 +81,8 @@ public class RecomendacionControlador {
         List<Ciudad> ciudades = ciudadDAO.obtenerTodas();
 
         for (Ciudad ciudad : ciudades) {
+            // Evita consultas para destinos fuera del presupuesto.
+            if (recomendadorDestinos.excedePresupuesto(ciudad, preferencias)) continue;
             CiudadSemilla semilla = DatosCiudades.porNombreYPais(ciudad.getNombre(), ciudad.getPais());
             if (semilla != null) {
                 llenarAtributosCiudad.enriquecer(ciudad, semilla, atributosCuestionario);
