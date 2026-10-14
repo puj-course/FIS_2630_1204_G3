@@ -4345,11 +4345,11 @@ todo lo veo bien , sin embargo estas semanas son criticas para todos los miembor
 | #97 | Como usuario, quiero representar los modulos graficamente, para hacer correcciones manteniendo el orden del programa.  | Historia de Usuario | 8 | Valeria |
 | #98 | Como usuario de WiseTrip quiero que la gestión de mi presupuesto se adapte a las diferentes operaciones financieras para tener mayor control sobre los recursos disponibles durante mi viaje | Historia de Usuario | 8 | Maleja |
 | #99 | Como usuario de WiseTrip quiero registrar y gestionar mis gastos de forma organizada para mantener actualizado el control financiero de mi viaje | Historia de Usuario | 8 | Maleja |
-| #100 | | Historia de Usuario | | Gaby |
+| #100 |  | Historia de Usuario | | Gaby |
 | #101 | | Historia de Usuario | | Gaby |
 | #102 | | Historia de Usuario | | Isa |
 | #103 | | Historia de Usuario | | Isa |
-| #104 | | Historia de Usuario | | Clavijo |
+| #104 | Como administrador, quiero perfeccionar el boilerplate para que sea acorde al repositorio y permita ver con claridad cómo está organizado. | Historia de Usuario | | Clavijo |
 | #105 | | Historia de Usuario | | Clavijo |
 
 ## Riesgos / Bloqueos identificados
