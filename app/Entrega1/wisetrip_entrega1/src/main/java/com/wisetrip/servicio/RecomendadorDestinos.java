@@ -55,29 +55,13 @@ public class RecomendadorDestinos implements Recomendador {
         }
     }
 
-    /**
-     * Factor minimo del castigo por "Lo prefiero": una ciudad que no cumple ninguno
-     * conserva la mitad de su coincidencia; si cumple todos, no se castiga.
-     */
-    static final double FACTOR_MINIMO_PREFIERO = 0.5;
-
-    /**
-     * Coincidencia (0 a 1) de las preferencias del usuario con la oferta de la ciudad.
-     * Es la coincidencia ponderada de "Me gustaría" (peso 1) y "Lo prefiero" (peso 3),
-     * multiplicada por el castigo por los "Lo prefiero" que la ciudad no cumple.
-     * Los indispensables ({@link Importancia#si}) no suman puntos: se validan antes.
-     */
-
+    // Afinidad normalizada; los indispensables solo filtran.
     public double calcularPuntajePreferencias(Map<String, Boolean> oferta,
                                               Map<String, Importancia> gustos) {
-        return calcularCoincidenciaPonderada(oferta, gustos)
-                * calcularFactorPrefiero(oferta, gustos);
+        return calcularCoincidenciaPonderada(oferta, gustos);
     }
 
-    /**
-     * Peso logrado / peso total de todas las preguntas puntuables (gustar y prefiero),
-     * sin agrupar por categoria. Los datos desconocidos cuentan como no cumplidos.
-     */
+    // Gustar suma 1; prefiero suma 3 o resta 1 si incumple.
     public double calcularCoincidenciaPonderada(Map<String, Boolean> oferta,
                                                    Map<String, Importancia> gustos) {
         int pesoTotal = 0;
@@ -87,38 +71,17 @@ public class RecomendadorDestinos implements Recomendador {
                 Importancia importancia = gustos.get(pregunta.getClave());
                 if (importancia != null && importancia.esPuntuable()) {
                     pesoTotal += importancia.getPeso();
-                    if (Boolean.TRUE.equals(oferta.get(pregunta.getClave()))) {
+                    Boolean cumple = oferta.get(pregunta.getClave());
+                    if (Boolean.TRUE.equals(cumple)) {
                         pesoLogrado += importancia.getPeso();
+                    } else if (importancia == Importancia.prefiero && Boolean.FALSE.equals(cumple)) {
+                        pesoLogrado--;
                     }
                 }
             }
         }
-        return pesoTotal == 0 ? 0.0 : (double) pesoLogrado / pesoTotal;
-    }
-
-    /**
-     * Factor de 0.5 a 1 segun el porcentaje de respuestas "Lo prefiero" que cumple la ciudad.
-     * Sin ningun "Lo prefiero" el factor es 1 (no hay castigo).
-     */
-    public double calcularFactorPrefiero(Map<String, Boolean> oferta,
-                                             Map<String, Importancia> gustos) {
-        int total = 0;
-        int cumplidos = 0;
-        for (var categoria : gestorPreferencias.listarCategorias()) {
-            for (var pregunta : categoria.getPreguntas()) {
-                if (gustos.get(pregunta.getClave()) == Importancia.prefiero) {
-                    total++;
-                    if (Boolean.TRUE.equals(oferta.get(pregunta.getClave()))) {
-                        cumplidos++;
-                    }
-                }
-            }
-        }
-        if (total == 0) {
-            return 1.0;
-        }
-        return FACTOR_MINIMO_PREFIERO
-                + (1 - FACTOR_MINIMO_PREFIERO) * cumplidos / total;
+        // Desconocidos conservan su peso, sin restar; minimo cero.
+        return pesoTotal == 0 ? 0.0 : Math.max(0.0, (double) pesoLogrado / pesoTotal);
     }
 
     /**
