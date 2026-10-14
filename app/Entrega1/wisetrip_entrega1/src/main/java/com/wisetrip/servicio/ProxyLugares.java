@@ -35,11 +35,9 @@ public class ProxyLugares implements ProovedorLugares {
             return cacheado;
         }
 
-        Integer cantidad = servicioReal.contarLugares(lat, lon, categorias, radioMetros, limite);
-        // Cero es un conteo valido; null indica que no se pudo obtener informacion.
-        if (cantidad != null) {
-            conteoLugaresCache.put(cacheKey, cantidad);
-        }
-        return cantidad;
+        // ConcurrentHashMap coordina la carga por clave para reutilizar el resultado.
+        // Cero se guarda; null no se almacena y permite reintentar la consulta.
+        return conteoLugaresCache.computeIfAbsent(cacheKey,
+                clave -> servicioReal.contarLugares(lat, lon, categorias, radioMetros, limite));
     }
 }

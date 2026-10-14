@@ -8,7 +8,6 @@ package com.wisetrip.servicio;
 import com.wisetrip.negocio.ProovedorLugares;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-
 import java.net.URI;
 import java.net.URLEncoder;
 import java.net.http.HttpClient;
