@@ -3,6 +3,8 @@ package com.wisetrip.servicio;
 import com.wisetrip.datos.CiudadSemilla;
 import com.wisetrip.modelo.Ciudad;
 import com.wisetrip.modelo.EstadoAtributo;
+import com.wisetrip.modelo.Importancia;
+import com.wisetrip.modelo.TipoAtributo;
 import com.wisetrip.negocio.CatalogoPreguntas;
 import com.wisetrip.negocio.DefPregunta;
 import com.wisetrip.negocio.ProovedorLugares;
@@ -32,10 +34,21 @@ public class LlenarAtributosCiudad {
             Ciudad ciudad,
             CiudadSemilla semilla,
             Map<String, Boolean> atributosUsuario) {
+        enriquecer(ciudad, semilla, atributosUsuario, Map.of());
+    }
+
+    public void enriquecer(Ciudad ciudad, CiudadSemilla semilla,
+                          Map<String, Boolean> atributosUsuario,
+                          Map<String, Importancia> importancias) {
 
         //atributos manuales
         Map<String, Boolean> atributos =
                 new HashMap<>(semilla.atributosManuales());
+        // Conserva el incumplimiento para la validacion final.
+        if (incumpleIndispensableManual(atributos, importancias)) {
+            ciudad.setAtributos(atributos);
+            return;
+        }
         // Si no mandaron preferencias, queda vacío.
         Set<String> atributosActivos =
                 atributosUsuario == null
@@ -86,5 +99,19 @@ public class LlenarAtributosCiudad {
         // Al final guardamos todos los atributos calculados
         // dentro de la ciudad.
         ciudad.setAtributos(atributos);
+    }
+
+    private boolean incumpleIndispensableManual(Map<String, Boolean> atributos,
+                                                Map<String, Importancia> importancias) {
+        for (DefPregunta pregunta : CatalogoPreguntas.todas()) {
+            Importancia importancia = importancias.get(pregunta.id);
+            // Desconocido no significa incumplido.
+            if (pregunta.tipo == TipoAtributo.MANUAL
+                    && importancia != null && importancia.esIndispensable()
+                    && Boolean.FALSE.equals(atributos.get(pregunta.id))) {
+                return true;
+            }
+        }
+        return false;
     }
 }

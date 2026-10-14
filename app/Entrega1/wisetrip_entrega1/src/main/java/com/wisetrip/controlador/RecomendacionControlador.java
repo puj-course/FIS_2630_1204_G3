@@ -85,7 +85,7 @@ public class RecomendacionControlador {
             if (recomendadorDestinos.excedePresupuesto(ciudad, preferencias)) continue;
             CiudadSemilla semilla = DatosCiudades.porNombreYPais(ciudad.getNombre(), ciudad.getPais());
             if (semilla != null) {
-                llenarAtributosCiudad.enriquecer(ciudad, semilla, atributosCuestionario);
+                llenarAtributosCiudad.enriquecer(ciudad, semilla, atributosCuestionario, importancias);
             }
         }
 
