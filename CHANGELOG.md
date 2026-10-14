@@ -4354,8 +4354,8 @@ todo lo veo bien , sin embargo estas semanas son criticas para todos los miembor
 
 ## Riesgos / Bloqueos identificados
 
-- 
-- 
+- Completar diagramas generales de los modulos 
+- Entender los cambios realizados por los demas integrantes del equipo 
 
 ---
 <img width="959" height="470" alt="image" src="https://github.com/user-attachments/assets/61f08946-71be-485e-9707-88fb8a6a77ee" />
