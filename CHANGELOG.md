@@ -4319,3 +4319,38 @@ como equipo seguimos muy sincronizados, la comunicacion mejoro y en general el r
 todo lo veo bien , sin embargo estas semanas son criticas para todos los miembors del equipo ya que se vienen parciales y entregas.
 
 ---
+
+# Sprint 9 - Sprint Planning - [13/10/2026]
+
+## Sprint Goal
+
+
+## Capacidad del equipo
+
+* Desarrolladores disponibles: 5
+* Puntos/horas disponibles: 42 (por ajustar según refinamiento)
+
+## Issues seleccionados para el Sprint
+
+| ID | Título | Tipo | Estimación | Responsable |
+|----|--------|------|------------|-------------|
+| #96 | Como usuario, quiero que el inicio de sesión sea simple y estable, para no tener problemas en el ingreso.  | Historia de Usuario | | Valeria |
+| #97 | Como usuario, quiero representar los modulos graficamente, para hacer correcciones manteniendo el orden del programa.  | Historia de Usuario | | Valeria |
+| # | | Historia de Usuario | | Maleja |
+| # | | Historia de Usuario | | Maleja |
+| # | | Historia de Usuario | | Gaby |
+| # | | Historia de Usuario | | Gaby |
+| # | | Historia de Usuario | | Isa |
+| # | | Historia de Usuario | | Isa |
+| # | | Historia de Usuario | | Clavijo |
+| # | | Historia de Usuario | | Clavijo |
+
+## Riesgos / Bloqueos identificados
+
+- 
+- 
+
+---
+
+---
+
