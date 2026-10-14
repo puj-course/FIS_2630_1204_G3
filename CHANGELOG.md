@@ -4345,8 +4345,8 @@ todo lo veo bien , sin embargo estas semanas son criticas para todos los miembor
 | #97 | Como usuario, quiero representar los modulos graficamente, para hacer correcciones manteniendo el orden del programa.  | Historia de Usuario | 8 | Valeria |
 | #98 | Como usuario de WiseTrip quiero que la gestión de mi presupuesto se adapte a las diferentes operaciones financieras para tener mayor control sobre los recursos disponibles durante mi viaje | Historia de Usuario | 8 | Maleja |
 | #99 | Como usuario de WiseTrip quiero registrar y gestionar mis gastos de forma organizada para mantener actualizado el control financiero de mi viaje | Historia de Usuario | 8 | Maleja |
-| #100 |  | Historia de Usuario | | Gaby |
-| #101 | | Historia de Usuario | | Gaby |
+| #100 | Como usuario, quiero que la información de mi viaje (fechas, presupuesto, destino) esté organizada de forma clara dentro del sistema, para que no se mezcle ni se pierda mientras uso la aplicación. | Historia de Usuario | | Gaby |
+| #101 | Como usuario, quiero que las validaciones y el manejo de mi sesión sigan funcionando correctamente aunque el equipo mejore el código por dentro, para no encontrarme con errores o fallas inesperadas. | Historia de Usuario | | Gaby |
 | #102 | Como usuario, quiero recibir mis recomendaciones de destinos de forma ágil y sin esperas, para obtener resultados personalizados sin que las consultas externas afecten mi experiencia | Historia de Usuario | | Isa |
 | #103 |  Como usuario, quiero que la información de mis preferencias y destino se consulte y procese correctamente, para recibir recomendaciones confiables sin errores por fallas internas del sistema.| Historia de Usuario | | Isa |
 | #104 | Como administrador, quiero perfeccionar el boilerplate para que sea acorde al repositorio y permita ver con claridad cómo está organizado. | Historia de Usuario | | Clavijo |
