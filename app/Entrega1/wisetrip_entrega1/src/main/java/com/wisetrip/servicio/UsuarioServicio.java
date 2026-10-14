@@ -6,7 +6,9 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-import com.wisetrip.modelo.Notificacion;
+import com.wisetrip.modelo.CreadorNotificacion;
+import com.wisetrip.modelo.CreadorNotificacionBienvenida;
+import com.wisetrip.modelo.CreadorNotificacionInicioSesion;
 import com.wisetrip.modelo.Usuario;
 import com.wisetrip.negocio.IAutenticacionUsuario;
 import com.wisetrip.negocio.INotificador;
@@ -57,7 +59,7 @@ public class UsuarioServicio implements IRegistroUsuario, IPerfilUsuario, IAuten
         usuario.normalizar();
         repositorio.registrar(usuario);
         // Si el correo falla, el registro no se rompe
-        notificar(notificadorCorreo, usuario.getCorreo(), Notificacion.bienvenida(usuario));
+        notificar(new CreadorNotificacionBienvenida(), usuario, usuario.getCorreo(), notificadorCorreo);
     }
 
     @Override
@@ -70,7 +72,7 @@ public class UsuarioServicio implements IRegistroUsuario, IPerfilUsuario, IAuten
             return null;
         }
         if (usuario.tieneTelegramVinculado()) {
-            notificar(notificadorTelegram, usuario.getChatId(), Notificacion.inicioSesion(usuario));
+            notificar(new CreadorNotificacionInicioSesion(), usuario, usuario.getChatId(), notificadorTelegram);
         }
         return usuario;
     }
@@ -81,12 +83,15 @@ public class UsuarioServicio implements IRegistroUsuario, IPerfilUsuario, IAuten
         repositorio.vincularTelegram(usuario.getIdUsuario(), usuario.getChatId());
     }
 
-    // Una notificacion fallida nunca debe tumbar el registro ni el login
-    private void notificar(INotificador notificador, String destino, Notificacion notificacion) {
+    // Una notificacion fallida nunca debe tumbar el registro ni el login.
+    // "creador" es el Factory Method (GoF): decide que Notificacion armar
+    // segun su tipo concreto (Bienvenida o InicioSesion), sin que este
+    // metodo necesite saber como se arma el texto.
+    private void notificar(CreadorNotificacion creador, Usuario usuario, String destino, INotificador notificador) {
         try {
-            notificador.enviar(destino, notificacion);
+            creador.notificar(usuario, destino, notificador);
         } catch (Exception e) {
             System.err.println("No se pudo enviar la notificacion: " + e.getMessage());
         }
     }
-}    
+}

@@ -14,24 +14,6 @@ public class Notificacion {
         this.cuerpo = cuerpo;
     }
 
-    /** Mensaje de bienvenida al crear la cuenta. */
-    public static Notificacion bienvenida(Usuario usuario) {
-        return new Notificacion(
-                "¡Bienvenido a WiseTrip!",
-                "Hola " + usuario.getNombreCompleto() + ",\n\n"
-                + "Tu cuenta en WiseTrip fue creada con éxito. "
-                + "Ya puedes iniciar sesión y empezar a planificar tus viajes.\n\n"
-                + "¡Buen viaje!\n"
-                + "El equipo de WiseTrip");
-    }
-
-    /** Aviso de seguridad cuando el usuario inicia sesion. */
-    public static Notificacion inicioSesion(Usuario usuario) {
-        return new Notificacion(
-                "Inicio de sesión en WiseTrip",
-                "Hola " + usuario.getNombreCompleto()
-                + ", iniciaste sesión en WiseTrip correctamente. Si no fuiste tú, cambia tu contraseña.");
-    }
 
     public String getAsunto() { return asunto; }
     public String getCuerpo() { return cuerpo; }
