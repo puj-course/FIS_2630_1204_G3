@@ -16,6 +16,7 @@ import com.wisetrip.modelo.Ubicacion;
 import com.wisetrip.modelo.Usuario;
 import com.wisetrip.negocio.IGestionReparto;
 import com.wisetrip.servicio.PresupuestoServicio;
+import com.wisetrip.servicio.UsuarioSesionFacade;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -32,17 +33,20 @@ public class PlanControlador {
 
     private final IGestionReparto gestionReparto;
     private final PresupuestoServicio presupuestoServicio;
+    private final UsuarioSesionFacade usuarioSesionFacade;
 
     public PlanControlador(IGestionReparto gestionReparto,
-                           PresupuestoServicio presupuestoServicio) {
+                           PresupuestoServicio presupuestoServicio,
+                           UsuarioSesionFacade usuarioSesionFacade) {
         this.gestionReparto = gestionReparto;
         this.presupuestoServicio = presupuestoServicio;
+        this.usuarioSesionFacade = usuarioSesionFacade;
     }
 
     @GetMapping("/plan")
     public String mostrarPlan(HttpSession sesion, Model model) {
 
-        Usuario usuario = (Usuario) sesion.getAttribute("usuarioActivo");
+        Usuario usuario = usuarioSesionFacade.prepararEncabezado(sesion, model);
         if (usuario == null) return "redirect:/login";
 
         ResultadoRecomendacion destino =
@@ -55,14 +59,14 @@ public class PlanControlador {
         RepartoPresupuesto guardado = (RepartoPresupuesto) sesion.getAttribute("repartoPresupuesto");
         RepartoPresupuesto reparto = guardado != null ? guardado : new RepartoPresupuesto();
 
-        cargarDatos(model, sesion, usuario, destino, presupuesto, reparto);
+        cargarDatos(model, sesion, destino, presupuesto, reparto);
         return "plan";
     }
 
     @GetMapping("/viaje")
     public String mostrarViaje(HttpSession sesion, Model model) {
 
-        Usuario usuario = (Usuario) sesion.getAttribute("usuarioActivo");
+        Usuario usuario = usuarioSesionFacade.prepararEncabezado(sesion, model);
         if (usuario == null) return "redirect:/login";
 
         ResultadoRecomendacion destino =
@@ -82,8 +86,6 @@ public class PlanControlador {
                 (RepartoPresupuesto) sesion.getAttribute("repartoPresupuesto");
         if (reparto == null) return "redirect:/plan";
 
-        model.addAttribute("usuario", usuario);
-        model.addAttribute("inicialesUsuario", calcularIniciales(usuario));
         model.addAttribute("ubicacionCiudad", ubicacion.getCiudad());
         model.addAttribute("destino", destino);
         model.addAttribute("fechas", fechas);
@@ -99,7 +101,7 @@ public class PlanControlador {
                               HttpSession sesion,
                               Model model) {
 
-        Usuario usuario = (Usuario) sesion.getAttribute("usuarioActivo");
+        Usuario usuario = usuarioSesionFacade.prepararEncabezado(sesion, model);
         if (usuario == null) return "redirect:/login";
 
         ResultadoRecomendacion destino =
@@ -114,7 +116,7 @@ public class PlanControlador {
 
         if (!errores.isEmpty()) {
             model.addAttribute("errores", errores);
-            cargarDatos(model, sesion, usuario, destino, presupuesto, reparto);
+            cargarDatos(model, sesion, destino, presupuesto, reparto);
             return "plan";
         }
 
@@ -123,7 +125,7 @@ public class PlanControlador {
     }
 
     /** Reúne todo lo que la vista necesita, para no repetirlo en cada método. */
-    private void cargarDatos(Model model, HttpSession sesion, Usuario usuario,
+    private void cargarDatos(Model model, HttpSession sesion,
                              ResultadoRecomendacion destino, Presupuesto presupuesto,
                              RepartoPresupuesto reparto) {
 
@@ -132,8 +134,6 @@ public class PlanControlador {
         double total = presupuesto.getMontoNumerico();
         long dias = fechas != null ? fechas.getDuracionDias() : 0;
 
-        model.addAttribute("usuario", usuario);
-        model.addAttribute("inicialesUsuario", calcularIniciales(usuario));
         model.addAttribute("ubicacionCiudad", ubicacion != null ? ubicacion.getCiudad() : "Origen");
         model.addAttribute("destino", destino);
         model.addAttribute("presupuesto", presupuesto);
@@ -145,16 +145,5 @@ public class PlanControlador {
         model.addAttribute("montoTotalFormateado", presupuestoServicio.formatear(total));
         model.addAttribute("porDiaTotal", dias > 0
                 ? presupuestoServicio.formatear(total / dias) : "—");
-    }
-
-    private String calcularIniciales(Usuario usuario) {
-        if (usuario.getNombreCompleto() == null || usuario.getNombreCompleto().isBlank()) {
-            return "?";
-        }
-        String[] partes = usuario.getNombreCompleto().trim().split("\\s+");
-        if (partes.length > 1) {
-            return ("" + partes[0].charAt(0) + partes[1].charAt(0)).toUpperCase();
-        }
-        return partes[0].substring(0, 1).toUpperCase();
     }
 }
