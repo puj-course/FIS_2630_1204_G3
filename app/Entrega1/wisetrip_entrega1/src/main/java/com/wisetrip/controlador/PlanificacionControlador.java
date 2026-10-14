@@ -22,35 +22,44 @@ import com.wisetrip.modelo.Usuario;
 import com.wisetrip.negocio.GestorPreferencias;
 import com.wisetrip.negocio.GestorPresupuesto;
 import com.wisetrip.negocio.IFechasServicio;
+import com.wisetrip.servicio.UsuarioSesionFacade;
 
 import jakarta.servlet.http.HttpSession;
 
+/**
+ * GRASP Controlador: recibe las peticiones web de preferencias, fechas
+ * y presupuesto, y delega el trabajo en los servicios correspondientes.
+ * SOLID Inversión de dependencias: depende de GestorPreferencias,
+ * GestorPresupuesto e IFechasServicio, no de las clases concretas.
+ */
 @Controller
 public class PlanificacionControlador {
-
 
     private final GestorPreferencias gestorPreferencias;
     private final GestorPresupuesto gestorPresupuesto;
     private final IFechasServicio fechasServicio;
+    private final UsuarioSesionFacade usuarioSesionFacade;
 
     public PlanificacionControlador(GestorPreferencias gestorPreferencias,
                                     GestorPresupuesto gestorPresupuesto,
-                                    IFechasServicio fechasServicio) {
+                                    IFechasServicio fechasServicio,
+                                    UsuarioSesionFacade usuarioSesionFacade) {
         this.gestorPreferencias = gestorPreferencias;
         this.gestorPresupuesto = gestorPresupuesto;
         this.fechasServicio = fechasServicio;
+        this.usuarioSesionFacade = usuarioSesionFacade;
     }
 
     // ---------- HU#25 Preferencias ----------
     @GetMapping("/preferencias")
     public String mostrarPreferencias(HttpSession sesion, Model model) {
 
-        Usuario usuario = (Usuario) sesion.getAttribute("usuarioActivo");
+        Usuario usuario = usuarioSesionFacade.prepararEncabezado(sesion, model);
         if (usuario == null) return "redirect:/login";
         // HU-37: Flujo continuo y ordenado.
         // Bloquea el acceso directo a esta pantalla si el viajero no ha pasado
         // por el paso anterior (origen), forzando el mismo orden para todos.
-        if (sesion.getAttribute("ubicacionOrigen") == null) return "redirect:/origen";
+        if (!SesionViaje.de(sesion, usuario).tieneOrigen()) return "redirect:/origen";
 
         // HU-39: Persistencia de datos en sesión.
         // Recupera las preferencias ya guardadas, si existen, para no perderlas
@@ -58,8 +67,6 @@ public class PlanificacionControlador {
 
         Preferencias guardadas = (Preferencias) sesion.getAttribute("preferenciasViaje");
 
-        model.addAttribute("usuario", usuario);
-        model.addAttribute("inicialesUsuario", calcularIniciales(usuario));
         model.addAttribute("preferencias", guardadas != null ? guardadas : new Preferencias());
         model.addAttribute("categorias", gestorPreferencias.listarCategorias());
         model.addAttribute("totalPreguntas", gestorPreferencias.totalPreguntas());
@@ -71,7 +78,7 @@ public class PlanificacionControlador {
                                       HttpSession sesion,
                                       Model model) {
 
-        Usuario usuario = (Usuario) sesion.getAttribute("usuarioActivo");
+        Usuario usuario = usuarioSesionFacade.prepararEncabezado(sesion, model);
         if (usuario == null) return "redirect:/login";
 
         Map<String, String> errores = gestorPreferencias.validarPreferencias(preferencias);
@@ -79,8 +86,6 @@ public class PlanificacionControlador {
         if (!errores.isEmpty()) {
             model.addAttribute("errores", errores);
             model.addAttribute("faltantes", errores.size());
-            model.addAttribute("usuario", usuario);
-            model.addAttribute("inicialesUsuario", calcularIniciales(usuario));
             model.addAttribute("categorias", gestorPreferencias.listarCategorias());
             model.addAttribute("totalPreguntas", gestorPreferencias.totalPreguntas());
             return "preferencias";
@@ -108,7 +113,7 @@ public class PlanificacionControlador {
     @GetMapping("/fechas")
     public String mostrarFechas(HttpSession sesion, Model model) {
 
-        Usuario usuario = (Usuario) sesion.getAttribute("usuarioActivo");
+        Usuario usuario = usuarioSesionFacade.prepararEncabezado(sesion, model);
         if (usuario == null) return "redirect:/login";
         // HU-37: Flujo continuo y ordenado.
         // Si el viajero no ha completado preferencias, lo redirige de vuelta
@@ -120,8 +125,6 @@ public class PlanificacionControlador {
         // si el viajero retrocede a esta pantalla.
         FechasViaje guardadas = (FechasViaje) sesion.getAttribute("fechasViaje");
 
-        model.addAttribute("usuario", usuario);
-        model.addAttribute("inicialesUsuario", calcularIniciales(usuario));
         model.addAttribute("fechas", guardadas != null ? guardadas : new FechasViaje());
         model.addAttribute("hoy", fechasServicio.hoy());
         return "fechas";
@@ -132,15 +135,13 @@ public class PlanificacionControlador {
                                 HttpSession sesion,
                                 Model model) {
 
-        Usuario usuario = (Usuario) sesion.getAttribute("usuarioActivo");
+        Usuario usuario = usuarioSesionFacade.prepararEncabezado(sesion, model);
         if (usuario == null) return "redirect:/login";
 
         Map<String, String> errores = fechasServicio.validarFechas(fechas);
 
         if (!errores.isEmpty()) {
             model.addAttribute("errores", errores);
-            model.addAttribute("usuario", usuario);
-            model.addAttribute("inicialesUsuario", calcularIniciales(usuario));
             model.addAttribute("hoy", fechasServicio.hoy());
             return "fechas";
         }
@@ -163,7 +164,7 @@ public class PlanificacionControlador {
     @GetMapping("/presupuesto")
     public String mostrarPresupuesto(HttpSession sesion, Model model) {
 
-        Usuario usuario = (Usuario) sesion.getAttribute("usuarioActivo");
+        Usuario usuario = usuarioSesionFacade.prepararEncabezado(sesion, model);
         if (usuario == null) return "redirect:/login";
         // HU-37: Flujo continuo y ordenado.
         // Exige que ya existan fechas guardadas en sesión antes de mostrar
@@ -177,8 +178,6 @@ public class PlanificacionControlador {
         // si el viajero retrocede a esta pantalla.
         Presupuesto guardado = (Presupuesto) sesion.getAttribute("presupuestoViaje");
 
-        model.addAttribute("usuario", usuario);
-        model.addAttribute("inicialesUsuario", calcularIniciales(usuario));
         model.addAttribute("presupuesto", guardado != null ? guardado : new Presupuesto());
         model.addAttribute("monedas", gestorPresupuesto.monedasDisponibles(paisDestino));
         model.addAttribute("paisDestino", paisDestino);
@@ -191,7 +190,7 @@ public class PlanificacionControlador {
                                      HttpSession sesion,
                                      Model model) {
 
-        Usuario usuario = (Usuario) sesion.getAttribute("usuarioActivo");
+        Usuario usuario = usuarioSesionFacade.prepararEncabezado(sesion, model);
         if (usuario == null) return "redirect:/login";
 
         String paisDestino = (String) sesion.getAttribute("paisDestino");
@@ -199,8 +198,6 @@ public class PlanificacionControlador {
 
         if (!errores.isEmpty()) {
             model.addAttribute("errores", errores);
-            model.addAttribute("usuario", usuario);
-            model.addAttribute("inicialesUsuario", calcularIniciales(usuario));
             model.addAttribute("monedas", gestorPresupuesto.monedasDisponibles(paisDestino));
             model.addAttribute("paisDestino", paisDestino);
             model.addAttribute("fechas", sesion.getAttribute("fechasViaje"));
@@ -228,10 +225,10 @@ public class PlanificacionControlador {
     @GetMapping("/resumen")
     public String mostrarResumen(HttpSession sesion, Model model) {
 
-        Usuario usuario = (Usuario) sesion.getAttribute("usuarioActivo");
+        Usuario usuario = usuarioSesionFacade.prepararEncabezado(sesion, model);
         if (usuario == null) return "redirect:/login";
 
-        Ubicacion ubicacion = (Ubicacion) sesion.getAttribute("ubicacionOrigen");
+        Ubicacion ubicacion = SesionViaje.de(sesion, usuario).getOrigen();
         if (ubicacion == null) return "redirect:/origen";
 
         Preferencias preferencias = (Preferencias) sesion.getAttribute("preferenciasViaje");
@@ -239,8 +236,6 @@ public class PlanificacionControlador {
         Presupuesto presupuesto = (Presupuesto) sesion.getAttribute("presupuestoViaje");
         Double enUsd = (Double) sesion.getAttribute("presupuestoEnUsd");
 
-        model.addAttribute("usuario", usuario);
-        model.addAttribute("inicialesUsuario", calcularIniciales(usuario));
         model.addAttribute("ubicacion", ubicacion);
         model.addAttribute("preferencias", preferencias);
         model.addAttribute("fechas", fechas);
@@ -263,27 +258,7 @@ public class PlanificacionControlador {
         if (enUsd != null) {
             model.addAttribute("usdFormateado", gestorPresupuesto.formatear(enUsd));
         }
-             model.addAttribute("destinoElegido", sesion.getAttribute("destinoElegido"));
+        model.addAttribute("destinoElegido", sesion.getAttribute("destinoElegido"));
         return "resumen";
-    }
-
-    /**
-     * Devuelve las iniciales del usuario para mostrarlas en el avatar
-     * del encabezado. Con dos o más palabras toma la primera letra de
-     * las dos primeras; con una sola palabra, solo la primera letra.
-     */
-    private String calcularIniciales(Usuario usuario) {
-
-        if (usuario.getNombreCompleto() == null || usuario.getNombreCompleto().isBlank()) {
-            return "?";
-        }
-
-        String[] partes = usuario.getNombreCompleto().trim().split("\\s+");
-
-        if (partes.length > 1) {
-            return ("" + partes[0].charAt(0) + partes[1].charAt(0)).toUpperCase();
-        }
-
-        return partes[0].substring(0, 1).toUpperCase();
     }
 }
