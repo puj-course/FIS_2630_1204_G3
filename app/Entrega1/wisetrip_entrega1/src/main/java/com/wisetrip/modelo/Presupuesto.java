@@ -4,6 +4,8 @@
  * para validar formato, y código de moneda ISO). Incluye utilidad para convertir
  * el monto a numero, devolviendo -1 si no es valido
  */
+
+
 package com.wisetrip.modelo;
 
 public class Presupuesto {
