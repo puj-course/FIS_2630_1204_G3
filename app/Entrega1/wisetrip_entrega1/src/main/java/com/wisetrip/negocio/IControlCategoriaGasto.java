@@ -41,4 +41,4 @@ public interface IControlCategoriaGasto {
      */
     ResultadoControlCategoria evaluar(
             Gasto gasto, BigDecimal cupoCategoria, BigDecimal totalGastadoCategoria);
-}
+}

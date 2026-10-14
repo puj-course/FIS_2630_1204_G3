@@ -23,4 +23,4 @@ public class CreadorControlEstricto extends ControlCategoriaCreador {
     protected IControlCategoriaGasto crearControl() {
         return new ControlCategoriaEstricto();
     }
-}
+}
