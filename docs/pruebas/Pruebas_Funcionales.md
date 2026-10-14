@@ -105,3 +105,125 @@ Con una cuenta previamente vinculada al bot oficial de Telegram (`wisetrip_notif
 
 <img width="344" height="442" alt="image" src="https://github.com/user-attachments/assets/5e7c1196-25d6-4823-a4d8-da12e6326019" />
 
+
+# Pruebas de funcionamiento
+
+## Caso de prueba: Registro de preferencias del viajero
+
+En la sección de **Preferencias**, el usuario responde las preguntas relacionadas con paisaje y clima, tipo de destino, ritmo de viaje, estilo de viaje, compañía, gastronomía, actividades, cultura y características específicas. El sistema permite seleccionar el nivel de importancia de cada preferencia entre las opciones disponibles y conserva las respuestas para utilizarlas posteriormente en el cálculo de los destinos recomendados.
+
+### Evidencia
+
+<img width="440" height="587" alt="Captura de pantalla 2026-10-14 001123" src="https://github.com/user-attachments/assets/c1cff170-cce4-4058-8617-46175ccd3f17" />
+
+<img width="470" height="545" alt="Captura de pantalla 2026-10-14 001151" src="https://github.com/user-attachments/assets/6d98e159-75fa-4925-82f8-0e1451bc9f2a" />
+
+<img width="462" height="547" alt="Captura de pantalla 2026-10-14 001224" src="https://github.com/user-attachments/assets/afa33ed1-5b11-4b30-a14c-559845f782f3" />
+
+<img width="462" height="547" alt="Captura de pantalla 2026-10-14 001224" src="https://github.com/user-attachments/assets/df1cb4e5-b106-4a92-bba5-87a3b3616966" />
+
+<img width="474" height="554" alt="Captura de pantalla 2026-10-14 001241" src="https://github.com/user-attachments/assets/8b69589d-0a39-4478-93f2-0845622883ae" />
+
+<img width="451" height="539" alt="Captura de pantalla 2026-10-14 001304" src="https://github.com/user-attachments/assets/a8e8f1d8-5c93-4b54-8b11-fdb6f845462d" />
+
+<img width="431" height="533" alt="Captura de pantalla 2026-10-14 001320" src="https://github.com/user-attachments/assets/b7a7a3af-536e-4786-b0a2-66d7556f6bc7" />
+
+<img width="433" height="534" alt="Captura de pantalla 2026-10-14 001337" src="https://github.com/user-attachments/assets/23593586-2ca2-4247-8c81-00d88dfc3489" />
+
+<img width="433" height="305" alt="Captura de pantalla 2026-10-14 001435" src="https://github.com/user-attachments/assets/736741d7-1308-48db-9f0c-ce743494b8d5" />
+
+---
+
+## Caso de prueba: Selección de fechas del viaje
+
+En la sección de **Fechas**, el usuario selecciona una fecha de inicio y una fecha de regreso mediante el calendario. El sistema procesa el intervalo seleccionado y calcula la duración del viaje antes de permitir continuar al ingreso del presupuesto.
+
+**Resultado esperado:** Las fechas de inicio y regreso quedan registradas correctamente y el sistema calcula la duración correspondiente del viaje.
+
+### Evidencia
+
+<img width="947" height="628" alt="Captura de pantalla 2026-10-14 001544" src="https://github.com/user-attachments/assets/d9da4199-f497-432b-a9fd-697878b72a98" />
+
+---
+
+## Caso de prueba: Ingreso de presupuesto y selección de moneda
+
+En la sección de **Presupuesto**, el usuario selecciona la moneda e ingresa el presupuesto total disponible para el viaje. El sistema relaciona este valor con la duración previamente establecida y calcula el presupuesto disponible por día.
+
+**Resultado esperado:** El presupuesto y la moneda quedan registrados correctamente y el sistema muestra el valor total, la duración del viaje y el presupuesto calculado por día.
+
+### Evidencia
+
+<img width="1088" height="674" alt="Captura de pantalla 2026-10-14 083026" src="https://github.com/user-attachments/assets/d25c0091-b239-4f82-bb36-5ed8e6651b2d" />
+
+<img width="917" height="651" alt="Captura de pantalla 2026-10-14 001603" src="https://github.com/user-attachments/assets/d6dff728-d120-4fc9-82ec-d3ae467040a8" />
+
+
+---
+
+## Caso de prueba: Visualización del resumen del viaje
+
+Después de completar las preferencias, fechas y presupuesto, el sistema presenta un resumen con la información registrada antes de realizar el cálculo de los destinos.
+
+El resumen incluye la ciudad de origen, las fechas de inicio y regreso, la duración del viaje, el presupuesto total, la moneda seleccionada y el presupuesto disponible por día.
+
+
+### Evidencia
+
+<img width="1133" height="633" alt="Captura de pantalla 2026-10-14 001619" src="https://github.com/user-attachments/assets/970bef5f-1abd-4df1-affd-3d5613175d8e" />
+
+---
+
+## Caso de prueba: Generación de destinos según preferencias y presupuesto
+
+Al seleccionar **Calcular mis destinos**, el sistema procesa la información registrada durante la configuración del viaje y presenta los destinos recomendados de acuerdo con el presupuesto y las preferencias del usuario.
+
+Cada alternativa presenta información sobre su correspondencia con el presupuesto y las preferencias, permitiendo seleccionar uno de los destinos disponibles.
+
+
+### Evidencia
+
+<img width="1133" height="633" alt="Captura de pantalla 2026-10-14 001619" src="https://github.com/user-attachments/assets/7f304eca-10e5-4627-9848-0fe126184a23" />
+
+---
+
+## Caso de prueba: Distribución sugerida del presupuesto
+
+Después de seleccionar un destino, el sistema presenta la distribución sugerida del presupuesto entre las categorías de **hospedaje, alimentación, transporte, actividades e imprevistos**.
+
+Para cada categoría se presenta el porcentaje asignado y su correspondiente valor monetario. Además, se muestra el porcentaje utilizado y disponible del presupuesto.
+
+
+### Evidencia
+
+<img width="773" height="638" alt="Captura de pantalla 2026-10-14 001909" src="https://github.com/user-attachments/assets/ad6600dc-c5cd-4b5e-8138-68555c48a462" />
+
+
+---
+
+## Caso de prueba: Personalización de la distribución del presupuesto
+
+En la opción **Lo personalizo yo**, el usuario puede modificar los porcentajes destinados a hospedaje, alimentación, transporte, actividades e imprevistos.
+
+Al modificar la distribución, el sistema actualiza los valores monetarios correspondientes a cada categoría y presenta el resultado en el resumen del plan de gastos.
+
+
+
+### Evidencia
+
+<img width="722" height="662" alt="Captura de pantalla 2026-10-14 001942" src="https://github.com/user-attachments/assets/eda7c8f2-aae6-426a-8a36-f53f803f0eb2" />
+
+
+---
+
+## Caso de prueba: Visualización del plan de gastos del viaje
+
+Después de confirmar la distribución, el sistema presenta la sección **Arma tu viaje**, en la cual se visualiza el destino seleccionado, las fechas, la duración, el presupuesto total y el presupuesto disponible por día.
+
+También se presenta la distribución definida para **hospedaje, transporte, restaurantes, actividades e imprevistos**, manteniendo los valores establecidos anteriormente.
+
+### Evidencia
+
+<img width="558" height="661" alt="Captura de pantalla 2026-10-14 002024" src="https://github.com/user-attachments/assets/e9809ef9-29d4-42fc-9004-13729e361ed3" />
+
+
