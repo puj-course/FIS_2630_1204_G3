@@ -4214,7 +4214,12 @@ No
 
 ---
 
-# Sprint Review y Sprint Retrospective - 15/08/2026
+<img width="959" height="470" alt="image" src="https://github.com/user-attachments/assets/def82ffb-228a-4358-9af5-81a1ba010fde" />
+
+---
+
+
+# Sprint Review y Sprint Retrospective - 11/10/2026
 
 ## Maria Alejandra Rodriguez
 
@@ -4320,6 +4325,8 @@ todo lo veo bien , sin embargo estas semanas son criticas para todos los miembor
 
 ---
 
+<img width="959" height="469" alt="image" src="https://github.com/user-attachments/assets/f3ddccf6-395b-4478-a625-764fe9c11b6e" />
+
 # Sprint 9 - Sprint Planning - [13/10/2026]
 
 ## Sprint Goal
@@ -4349,6 +4356,9 @@ todo lo veo bien , sin embargo estas semanas son criticas para todos los miembor
 
 - 
 - 
+
+---
+<img width="959" height="470" alt="image" src="https://github.com/user-attachments/assets/61f08946-71be-485e-9707-88fb8a6a77ee" />
 
 ---
 
