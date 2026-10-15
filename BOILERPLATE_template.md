@@ -147,27 +147,6 @@ FIS_2630_1204_G3/
 │   │       │   │   │   │   └── insert_ciudades.sql
 │   │       │   │   │   ├── static/
 │   │       │   │   │   │   ├── css/
-│   │       │   │   │   │   │   ├── img/
-│   │       │   │   │   │   │   │   └── banderas/
-│   │       │   │   │   │   │   │       ├── ARS.png
-│   │       │   │   │   │   │   │       ├── BOB.png
-│   │       │   │   │   │   │   │       ├── BRL.png
-│   │       │   │   │   │   │   │       ├── BZD.png
-│   │       │   │   │   │   │   │       ├── CLP.png
-│   │       │   │   │   │   │   │       ├── COP.png
-│   │       │   │   │   │   │   │       ├── CRC.png
-│   │       │   │   │   │   │   │       ├── CUP.png
-│   │       │   │   │   │   │   │       ├── DOP.png
-│   │       │   │   │   │   │   │       ├── GTQ.png
-│   │       │   │   │   │   │   │       ├── HNL.png
-│   │       │   │   │   │   │   │       ├── MXN.png
-│   │       │   │   │   │   │   │       ├── NIO.png
-│   │       │   │   │   │   │   │       ├── PAB.png
-│   │       │   │   │   │   │   │       ├── PEN.png
-│   │       │   │   │   │   │   │       ├── PYG.png
-│   │       │   │   │   │   │   │       ├── USD.png
-│   │       │   │   │   │   │   │       ├── UYU.png
-│   │       │   │   │   │   │   │       └── VES.png
 │   │       │   │   │   │   │   ├── estilos.css
 │   │       │   │   │   │   │   ├── fechas.css
 │   │       │   │   │   │   │   ├── landing.css
@@ -212,25 +191,41 @@ FIS_2630_1204_G3/
 │   │       │   │   │   │       │   ├── comida_internacional.png
 │   │       │   │   │   │       │   ├── compras.png
 │   │       │   │   │   │       │   ├── desierto.png
+│   │       │   │   │   │       │   ├── familiar_kids.png
 │   │       │   │   │   │       │   ├── festivo.png
 │   │       │   │   │   │       │   ├── gourmet.png
+│   │       │   │   │   │       │   ├── hispanohablante.png
 │   │       │   │   │   │       │   ├── lujo.png
 │   │       │   │   │   │       │   ├── mochilero.png
 │   │       │   │   │   │       │   ├── montana.png
 │   │       │   │   │   │       │   ├── muchas_actividades.png
+│   │       │   │   │   │       │   ├── museos.png
 │   │       │   │   │   │       │   ├── naturaleza.png
+│   │       │   │   │   │       │   ├── navegacion_islas.png
 │   │       │   │   │   │       │   ├── nieve.png
 │   │       │   │   │   │       │   ├── off_the_beaten_path.png
+│   │       │   │   │   │       │   ├── parque_diversiones.png
+│   │       │   │   │   │       │   ├── pet_friendly.png
 │   │       │   │   │   │       │   ├── playa.png
+│   │       │   │   │   │       │   ├── religioso.png
 │   │       │   │   │   │       │   ├── restricciones_alimentarias.png
 │   │       │   │   │   │       │   ├── romantico.png
+│   │       │   │   │   │       │   ├── ruinas_arqueologicas.png
 │   │       │   │   │   │       │   ├── tiempo_libre.png
 │   │       │   │   │   │       │   ├── tranquilo.png
 │   │       │   │   │   │       │   ├── urbano.png
 │   │       │   │   │   │       │   └── vida_nocturna.png
+│   │       │   │   │   │       └──Registro-exitoso
+│   │       │   │   │   │       │   ├── chillan.jpg
+│   │       │   │   │   │       │   ├── guadalajara.jpg
+│   │       │   │   │   │       |   └── panama.jpg
 │   │       │   │   │   │       └── resumen/
+│   │       │   │   │   │           ├── Amazonas.jpg
+│   │       │   │   │   │           ├── Argentina.jpg
+│   │       │   │   │   │           ├── desierto.jpg
 │   │       │   │   │   │           ├── monteverde.jpg
 │   │       │   │   │   │           ├── pines.jpg
+│   │       │   │   │   │           ├── Rio.jpg
 │   │       │   │   │   │           ├── salar.jpg
 │   │       │   │   │   │           └── tulum.jpg
 │   │       │   │   │   └── application.properties
