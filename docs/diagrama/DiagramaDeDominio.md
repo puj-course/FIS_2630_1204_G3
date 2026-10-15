@@ -262,6 +262,7 @@ Ciudad ..> EstadoAtributo : evalúa
 
 ## Diagrama Visual 
 
+<img width="2444" height="2630" alt="Untitled (3)" src="https://github.com/user-attachments/assets/17cb97df-0e84-407b-b343-4414a9a48ef8" />
 
 
 
