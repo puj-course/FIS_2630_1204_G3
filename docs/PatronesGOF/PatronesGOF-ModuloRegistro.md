@@ -205,19 +205,6 @@ new CreadorNotificacionInicioSesion().notificar(usuario, usuario.getChatId(), no
 
 --- 
 
-## 3. Facade — UsuarioServicio como fachada
-
-Si usaramos AuthControlador como quien registra, valida, guarda en base de datos, coordina los DAO, notifica y realiza la logica de validacion tendria mucho acoplamiento por eso aplicamos el patrón Facade a través de una clase de servicio intermediaria que encapsula y unifica toda esa complejidad en un solo lugar, permitiendo que el controlador solo tenga que hacer una llamada limpia sin enterarse de los detalles internos.
-
-// dentro de iniciarSesion(...)
-new CreadorNotificacionInicioSesion().notificar(usuario, usuario.getChatId(), notificadorTelegram);
-```
-
-`UsuarioServicio` nunca escribe `new Notificacion(...)` directamente — crea el "fabricante" que corresponde (`CreadorNotificacionBienvenida` o `CreadorNotificacionInicioSesion`) y le pide a él que arme y envíe el mensaje. Si un día el texto del correo de bienvenida cambia, se edita un solo lugar (`CreadorNotificacionBienvenida.crearNotificacion`), y se actualiza en toda la app.
-
-**La diferencia clave con la versión anterior:** antes, `Notificacion.bienvenida(usuario)` era una función estática — no había herencia, ni una clase que "decidiera" nada por polimorfismo. Ahora, el que decide es `CreadorNotificacionBienvenida` **al heredar** de `CreadorNotificacion` y **sobreescribir** `crearNotificacion(...)`. Esa herencia + sobreescritura es justo lo que GoF exige para llamarlo Factory Method de verdad.
-
-<img width="1532" height="664" alt="Untitled (2)" src="https://github.com/user-attachments/assets/827c75f6-5c02-48b2-aedf-45b990f526df" />
 
 --- 
 
