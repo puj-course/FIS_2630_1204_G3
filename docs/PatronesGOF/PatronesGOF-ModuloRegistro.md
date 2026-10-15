@@ -209,33 +209,15 @@ new CreadorNotificacionInicioSesion().notificar(usuario, usuario.getChatId(), no
 
 Si usaramos AuthControlador como quien registra, valida, guarda en base de datos, coordina los DAO, notifica y realiza la logica de validacion tendria mucho acoplamiento por eso aplicamos el patrón Facade a través de una clase de servicio intermediaria que encapsula y unifica toda esa complejidad en un solo lugar, permitiendo que el controlador solo tenga que hacer una llamada limpia sin enterarse de los detalles internos.
 
-`controlador/AuthControlador.java`
-
-```java
-private final IRegistroUsuario registro;   // <- la fachada
-
-public String procesarRegistro(...) {
-    Map<String, String> errores = registro.validarRegistro(usuario, confirmarPassword);
-    if (!errores.isEmpty()) { ... }
-    registro.registrar(usuario);   // <- una sola orden
-    ...
-}
+// dentro de iniciarSesion(...)
+new CreadorNotificacionInicioSesion().notificar(usuario, usuario.getChatId(), notificadorTelegram);
 ```
 
-Detrás de esa única llamada `registro.registrar(usuario)`:
+`UsuarioServicio` nunca escribe `new Notificacion(...)` directamente — crea el "fabricante" que corresponde (`CreadorNotificacionBienvenida` o `CreadorNotificacionInicioSesion`) y le pide a él que arme y envíe el mensaje. Si un día el texto del correo de bienvenida cambia, se edita un solo lugar (`CreadorNotificacionBienvenida.crearNotificacion`), y se actualiza en toda la app.
 
-`servicio/UsuarioServicio.java`
+**La diferencia clave con la versión anterior:** antes, `Notificacion.bienvenida(usuario)` era una función estática — no había herencia, ni una clase que "decidiera" nada por polimorfismo. Ahora, el que decide es `CreadorNotificacionBienvenida` **al heredar** de `CreadorNotificacion` y **sobreescribir** `crearNotificacion(...)`. Esa herencia + sobreescritura es justo lo que GoF exige para llamarlo Factory Method de verdad.
 
-```java
-@Override
-public void registrar(Usuario usuario) {
-    usuario.normalizar();                                       // 1. limpia datos
-    repositorio.registrar(usuario);                             // 2. guarda en PostgreSQL
-    notificar(notificadorCorreo, usuario.getCorreo(),            // 3. arma y envía
-              Notificacion.bienvenida(usuario));                 //    el correo
-}
-```
+<img width="1532" height="664" alt="Untitled (2)" src="https://github.com/user-attachments/assets/827c75f6-5c02-48b2-aedf-45b990f526df" />
 
-El controlador (`AuthControlador`) solo dice "registrar", sin enterarse de que por dentro pasan tres cosas distintas: normalizar, guardar y notificar.
+--- 
 
----

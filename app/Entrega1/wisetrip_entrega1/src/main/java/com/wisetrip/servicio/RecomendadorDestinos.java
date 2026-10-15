@@ -164,6 +164,8 @@ public class RecomendadorDestinos implements Recomendador {
             double costo = ciudad.getCostoPromedio() * preferencias.getDuracionDias();
             boolean faltaInformacion = !Double.isFinite(costo) || costo <= 0;
             boolean incumple = excedePresupuesto(ciudad, preferencias);
+            boolean incumple = !faltaInformacion && presupuestoObligatorio
+                    && costo > preferencias.getPresupuestoUsd();
             for (var requisito : preferencias.getAtributos().entrySet()) {
                 if (requisito.getValue() == null || !requisito.getValue().esIndispensable()) continue;
                 EstadoAtributo estado = ciudad.estadoAtributo(requisito.getKey());

@@ -41,7 +41,6 @@
 
             <div class="lg-fila-etiqueta">
                 <label for="clave">Contraseña</label>
-                <a class="lg-enlace-fino" href="<c:url value='/registro'/>">¿Olvidaste tu contraseña?</a>
             </div>
             <div class="lg-campo lg-campo-clave">
                 <svg viewBox="0 0 20 20" fill="none">
