@@ -39,6 +39,7 @@ FIS_2630_1204_G3/
 │   │       │   │   │   │   ├── PlanificacionControlador.java
 │   │       │   │   │   │   ├── RecomendacionControlador.java
 │   │       │   │   │   │   ├── SeleccionControlador.java
+│   │       │   │   │   │   ├── SesionViaje.java
 │   │       │   │   │   │   ├── TelegramControlador.java
 │   │       │   │   │   │   └── ViajeControlador.java
 │   │       │   │   │   ├── datos/
@@ -50,23 +51,31 @@ FIS_2630_1204_G3/
 │   │       │   │   │   │   ├── UsuarioDAO.java
 │   │       │   │   │   │   └── ViajeDAO.java
 │   │       │   │   │   ├── modelo/
-│   │       │   │   │   │   ├──CategoriaPreferencia.java
-│   │       │   │   │   │   ├──Ciudad.java
-│   │       │   │   │   │   ├──EstadoAtributo.java
-│   │       │   │   │   │   ├──FechasViaje.java
-│   │       │   │   │   │   ├──Importancia.java
-│   │       │   │   │   │   ├──Notificacion.java
-│   │       │   │   │   │   ├──Preferencias.java
-│   │       │   │   │   │   ├──PreferenciasUsuario.java
-│   │       │   │   │   │   ├──Pregunta.java
-│   │       │   │   │   │   ├──Presupuesto.java
-│   │       │   │   │   │   ├──RepartoPresupuesto.java
-│   │       │   │   │   │   ├──ResultadoRecomendacion.java
-│   │       │   │   │   │   ├──SeleccionDestinos.java
-│   │       │   │   │   │   ├──TipoAtributo.java
-│   │       │   │   │   │   ├──Ubicacion.java
-│   │       │   │   │   │   ├──Usuario.java
-│   │       │   │   │   │   └──ValidacionCiudades.java
+│   │   │           │   ├── CategoriaPreferencia.java
+│   │   │           │   ├── Ciudad.java
+│   │   │           │   ├── CreadorNotificacion.java
+│   │   │           │   ├── CreadorNotificacionBienvenida.java
+│   │   │           │   ├── CreadorNotificacionInicioSesion.java
+│   │   │           │   ├── EstadoAtributo.java
+│   │   │           │   ├── FechasViaje.java
+│   │   │           │   ├── Gasto.java
+│   │   │           │   ├── Importancia.java
+│   │   │           │   ├── Notificacion.java
+│   │   │           │   ├── Preferencias.java
+│   │   │           │   ├── PreferenciasUsuario.java
+│   │   │           │   ├── Pregunta.java
+│   │   │           │   ├── Presupuesto.java
+│   │   │           │   ├── PresupuestoViaje.java
+│   │   │           │   ├── RepartoPresupuesto.java
+│   │   │           │   ├── ResultadoControlCategoria.java
+│   │   │           │   ├── ResultadoRecomendacion.java
+│   │   │           │   ├── ResumenPresupuesto.java
+│   │   │           │   ├── SeleccionDestinos.java
+│   │   │           │   ├── TipoAtributo.java
+│   │   │           │   ├── Ubicacion.java
+│   │   │           │   ├── Usuario.java
+│   │   │           │   ├── ValidacionCiudades.java
+│   │   │           │   └── Viaje.java
 │   │       │   │   │   ├── negocio/
 │   │   │           │   ├── CatalogoPreguntas.java
 │   │   │           │   ├── CiudadNegocio.java
@@ -101,20 +110,35 @@ FIS_2630_1204_G3/
 │   │   │           │   ├── Recomendador.java
 │   │   │           │   └── SeleRecomendaciones.java
 │   │       │   │   │   ├── servicio/
-│   │       │   │   │   │   ├── CatalogoCiudades.java
-│   │       │   │   │   │   ├── EmailNotificationService.java
-│   │       │   │   │   │   ├── FechasServicio.java
-│   │       │   │   │   │   ├── LlenarAtributosCiudad.java
-│   │       │   │   │   │   ├── LlenarLasCiudades.java
-│   │       │   │   │   │   ├── PreferenciasServicio.java
-│   │       │   │   │   │   ├── PresupuestoServicio.java
-│   │       │   │   │   │   ├── RecomendadorDestinos.java
-│   │       │   │   │   │   ├── RepartoServicio.java
-│   │       │   │   │   │   ├── SelectorDestinos.java
-│   │       │   │   │   │   ├── ServicioGeoapify.java
-│   │       │   │   │   │   ├── TelegramNotificationService.java
-│   │       │   │   │   │   ├── UsuarioServicio.java
-│   │       │   │   │   │   └── ViajeServicio.java
+│   │   │           │   ├── CatalogoCiudades.java
+│   │   │           │   ├── ContextoValidacionFechas.java
+│   │   │           │   ├── ControlCategoriaEstricto.java
+│   │   │           │   ├── ControlCategoriaFlexible.java
+│   │   │           │   ├── CreadorControlEstricto.java
+│   │   │           │   ├── CreadorControlFlexible.java
+│   │   │           │   ├── FechasServicio.java
+│   │   │           │   ├── GastosServicio.java
+│   │   │           │   ├── LlenarAtributosCiudad.java
+│   │   │           │   ├── LlenarLasCiudades.java
+│   │   │           │   ├── NotificadorCorreo.java
+│   │   │           │   ├── NotificadorTelegram.java
+│   │   │           │   ├── PreferenciasConAuditoriaDecorador.java
+│   │   │           │   ├── PreferenciasServicio.java
+│   │   │           │   ├── PresupuestoConMargenDecorador.java
+│   │   │           │   ├── PresupuestoServicio.java
+│   │   │           │   ├── ProxyLugares.java
+│   │   │           │   ├── RecomendadorDestinos.java
+│   │   │           │   ├── ReglaFechaFin.java
+│   │   │           │   ├── ReglaFechaInicio.java
+│   │   │           │   ├── ReglaRelacionFechas.java
+│   │   │           │   ├── ReglaValidacionFechas.java
+│   │   │           │   ├── RepartoServicio.java
+│   │   │           │   ├── SeleccionServicio.java
+│   │   │           │   ├── SelectorDestinos.java
+│   │   │           │   ├── ServicioGeoapify.java
+│   │   │           │   ├── UsuarioServicio.java
+│   │   │           │   ├── UsuarioSesionFacade.java
+│   │   │           │   └── ViajeServicio.java
 │   │       │   │   │   ├── ServletInitializer.java
 │   │       │   │   │   └── WisetripApplication.java
 │   │       │   │   ├── resources/
