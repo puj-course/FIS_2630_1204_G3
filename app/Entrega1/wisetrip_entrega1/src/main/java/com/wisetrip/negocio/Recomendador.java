@@ -8,6 +8,9 @@ import com.wisetrip.modelo.ResultadoRecomendacion;
 import com.wisetrip.modelo.ValidacionCiudades;
 
 public interface Recomendador {
+    // Detecta un exceso de presupuesto confirmado.
+    boolean excedePresupuesto(Ciudad ciudad, PreferenciasUsuario preferencias);
+
     List<ResultadoRecomendacion> recomendarDestinos(
             List<Ciudad> ciudades,
             PreferenciasUsuario preferencias

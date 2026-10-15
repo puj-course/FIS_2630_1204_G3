@@ -19,8 +19,7 @@ public class SelectorDestinos implements SeleRecomendaciones  {
 
     @Override
     public SeleccionDestinos seleccionarMejoresDestinos(
-            List<ResultadoRecomendacion> resultados,
-            boolean soloIndispensables) {
+            List<ResultadoRecomendacion> resultados) {
 
         if (resultados == null || resultados.isEmpty()) {
             return new SeleccionDestinos(
@@ -38,22 +37,29 @@ public class SelectorDestinos implements SeleRecomendaciones  {
         List<ResultadoRecomendacion> seleccionados =
                 new ArrayList<>(ordenados.subList(0, limite));
 
-        String mensaje;
-
-        // Si solo seleccionó requisitos indispensables
-        if (soloIndispensables) {
-
-            mensaje = "Destinos que cumplen tus requisitos, ordenados por cercanía a tu presupuesto.";
-
-        } else if (seleccionados.size() < CANTIDAD_DESTINOS) {
-
-            mensaje = "Encontramos " + seleccionados.size()
-                    + " destino(s) que se ajustan a lo que buscas.";
-
-        } else {
-
-            mensaje = "Estos son los 3 destinos que mejor coinciden contigo.";
+        if (resultados.size() == 1) {
+            return new SeleccionDestinos(seleccionados,
+                    "Encontramos un único destino con tus requisitos obligatorios verificados.");
         }
+
+        // El criterio principal se deduce del ranking completo.
+        long puntajesDistintos = resultados.stream()
+                .map(ResultadoRecomendacion::getPuntajeTotal).distinct().count();
+        long puntajesSeleccionados = seleccionados.stream()
+                .map(ResultadoRecomendacion::getPuntajeTotal).distinct().count();
+
+        String detalle;
+        if (puntajesDistintos == 1) {
+            detalle = "Todos los destinos evaluados tienen el mismo puntaje; "
+                    + "ordenamos por cercanía a tu presupuesto.";
+        } else if (puntajesSeleccionados < seleccionados.size()) {
+            // Solo informa empates entre los destinos mostrados.
+            detalle = "Ordenamos por coincidencia con tus preferencias; entre los destinos mostrados "
+                    + "hay empates de puntaje y usamos la cercanía a tu presupuesto como criterio de desempate.";
+        } else {
+            detalle = "Ordenamos por coincidencia con tus preferencias, sin empates de puntaje entre los destinos mostrados.";
+        }
+        String mensaje = "Te mostramos " + seleccionados.size() + " destinos. " + detalle;
 
         return new SeleccionDestinos(seleccionados, mensaje);
     }
