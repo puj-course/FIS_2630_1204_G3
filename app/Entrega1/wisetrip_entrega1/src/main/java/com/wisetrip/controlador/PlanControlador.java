@@ -59,7 +59,7 @@ public class PlanControlador {
         RepartoPresupuesto guardado = (RepartoPresupuesto) sesion.getAttribute("repartoPresupuesto");
         RepartoPresupuesto reparto = guardado != null ? guardado : new RepartoPresupuesto();
 
-        cargarDatos(model, sesion, destino, presupuesto, reparto);
+        cargarDatos(model, sesion, destino, presupuesto, reparto, usuario);
         return "plan";
     }
 
@@ -98,8 +98,8 @@ public class PlanControlador {
 
     @PostMapping("/plan")
     public String guardarPlan(@ModelAttribute("reparto") RepartoPresupuesto reparto,
-                              HttpSession sesion,
-                              Model model) {
+                            HttpSession sesion,
+                            Model model) {
 
         Usuario usuario = usuarioSesionFacade.prepararEncabezado(sesion, model);
         if (usuario == null) return "redirect:/login";
@@ -116,7 +116,7 @@ public class PlanControlador {
 
         if (!errores.isEmpty()) {
             model.addAttribute("errores", errores);
-            cargarDatos(model, sesion, destino, presupuesto, reparto);
+            cargarDatos(model, sesion, destino, presupuesto, reparto, usuario);
             return "plan";
         }
 
@@ -127,7 +127,7 @@ public class PlanControlador {
     /** Reúne todo lo que la vista necesita, para no repetirlo en cada método. */
     private void cargarDatos(Model model, HttpSession sesion,
                              ResultadoRecomendacion destino, Presupuesto presupuesto,
-                             RepartoPresupuesto reparto) {
+                             RepartoPresupuesto reparto, Usuario usuario) {
 
         FechasViaje fechas = (FechasViaje) sesion.getAttribute("fechasViaje");
         Ubicacion ubicacion = SesionViaje.de(sesion, usuario).getOrigen();

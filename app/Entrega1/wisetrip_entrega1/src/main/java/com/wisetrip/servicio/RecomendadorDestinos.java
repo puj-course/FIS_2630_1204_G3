@@ -1,6 +1,3 @@
-//toca entenderlo mucho mas
-//algoritmo de recomendacion por presupuesto y preferencias
-
 package com.wisetrip.servicio;
 
 import java.util.ArrayList;
@@ -19,15 +16,10 @@ import com.wisetrip.modelo.ValidacionCiudades;
 import com.wisetrip.modelo.PreferenciasUsuario;
 import com.wisetrip.modelo.ResultadoRecomendacion;
 import com.wisetrip.negocio.Recomendador;
-
-
-
 import com.wisetrip.negocio.GestorPreferencias;
 
 @Service
 public class RecomendadorDestinos implements Recomendador {
-
-
 
     private final boolean presupuestoObligatorio;
     private final GestorPreferencias gestorPreferencias;
@@ -35,10 +27,10 @@ public class RecomendadorDestinos implements Recomendador {
     public RecomendadorDestinos(
         @Value("${wisetrip.presupuesto.obligatorio:true}") boolean presupuestoObligatorio,
         GestorPreferencias gestorPreferencias) {
+        this.presupuestoObligatorio = presupuestoObligatorio;
+        this.gestorPreferencias = gestorPreferencias;
+    }
 
-    this.presupuestoObligatorio = presupuestoObligatorio;
-    this.gestorPreferencias = gestorPreferencias;
-}
     /**
      * Puntaje (0 a 1) de viabilidad presupuestal. Dentro del limite todos
      * reciben 1: no se premia gastar mas ni ahorrar. El exceso se penaliza.
@@ -63,7 +55,7 @@ public class RecomendadorDestinos implements Recomendador {
 
     // Gustar suma 1; prefiero suma 3 o resta 1 si incumple.
     public double calcularCoincidenciaPonderada(Map<String, Boolean> oferta,
-                                                   Map<String, Importancia> gustos) {
+                                                Map<String, Importancia> gustos) {
         int pesoTotal = 0;
         int pesoLogrado = 0;
         for (var categoria : gestorPreferencias.listarCategorias()) {
@@ -92,7 +84,7 @@ public class RecomendadorDestinos implements Recomendador {
      * Se omiten categorias sin preferencias puntuables.
      */
     public Map<String, Double> calcularCoincidenciasPorCategoria(Map<String, Boolean> oferta,
-                                                                 Map<String, Importancia> gustos) {
+                                                               Map<String, Importancia> gustos) {
         Map<String, Double> coincidencias = new LinkedHashMap<>();
         for (var categoria : gestorPreferencias.listarCategorias()) {
             int pesoTotal = 0;
@@ -163,9 +155,10 @@ public class RecomendadorDestinos implements Recomendador {
         for (Ciudad ciudad : ciudades) {
             double costo = ciudad.getCostoPromedio() * preferencias.getDuracionDias();
             boolean faltaInformacion = !Double.isFinite(costo) || costo <= 0;
+            
+            // Validación única y limpia de presupuesto excedido
             boolean incumple = excedePresupuesto(ciudad, preferencias);
-            boolean incumple = !faltaInformacion && presupuestoObligatorio
-                    && costo > preferencias.getPresupuestoUsd();
+
             for (var requisito : preferencias.getAtributos().entrySet()) {
                 if (requisito.getValue() == null || !requisito.getValue().esIndispensable()) continue;
                 EstadoAtributo estado = ciudad.estadoAtributo(requisito.getKey());
@@ -182,7 +175,7 @@ public class RecomendadorDestinos implements Recomendador {
 
     @Override
     public List<ResultadoRecomendacion> puntuarCiudadesValidas(ValidacionCiudades validacion,
-                                                              PreferenciasUsuario preferencias) {
+                                                               PreferenciasUsuario preferencias) {
         List<ResultadoRecomendacion> resultados = new ArrayList<>();
         for (Ciudad ciudad : validacion.validas()) {
             resultados.add(calcularPuntajeTotal(ciudad, preferencias));
