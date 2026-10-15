@@ -179,13 +179,25 @@ FIS_2630_1204_G3/
 │   │       │   │   │   │       │   ├── UYU.png
 │   │       │   │   │   │       │   └── VES.png
 │   │       │   │   │   │       ├── portada/
-│   │       │   │   │   │       │   ├── Amazonas.jpg
-│   │       │   │   │   │       │   ├── Argentina.jpg
-│   │       │   │   │   │       │   ├── Cartegena.jpg
-│   │       │   │   │   │       │   ├── desierto.jpg
-│   │       │   │   │   │       │   ├── logo.png
+│   │       │   │   │   │       │   ├── bariloche.jpg
+│   │       │   │   │   │       │   ├── bocas.jpg
+│   │       │   │   │   │       │   ├── cartagena.jpg
+│   │       │   │   │   │       │   ├── cdmx.jpg
+│   │       │   │   │   │       │   ├── cusco.jpg
+│   │       │   │   │   │       │   ├── flores.jpg
+│   │       │   │   │   │       │   ├── fortuna.jpg
+│   │       │   │   │   │       │   ├── granada.jpg
+│   │       │   │   │   │       │   ├── habana.jpg
+│   │       │   │   │   │       │   ├── lapaz.jpg
+│   │       │   │   │   │       │   ├── lima.jpg
+│   │       │   │   │   │       │   ├── logo.jpg
+│   │       │   │   │   │       │   ├── medellin.jpg
+│   │       │   │   │   │       │   ├── mendoza.jpg
 │   │       │   │   │   │       │   ├── Peru.jpg
-│   │       │   │   │   │       │   └── Rio.jpg
+│   │       │   │   │   │       │   ├── puntadeleste.jpg
+│   │       │   │   │   │       │   ├── quito.jpg
+│   │       │   │   │   │       │   ├── roatan.jpg
+│   │       │   │   │   │       │   └── santiago.jpg
 │   │       │   │   │   │       ├── preferencias/
 │   │       │   │   │   │       │   ├── aventura.png
 │   │       │   │   │   │       │   ├── comida_internacional.png
