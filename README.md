@@ -80,137 +80,431 @@ También: `scripts/test.sh` o `make test`.
 
 ## Estructura del Proyecto
 ```text
+
+# fis_boilerplate
+## Descripción de cada directorio y archivos
+```bash
 FIS_2630_1204_G3/
 ├── .github/
 │   ├── ISSUE_TEMPLATE/
 │   │   ├── bug_report.md
-│   │   │   └── Plantilla para el reporte estandarizado de errores y bugs.
 │   │   └── feature_request.md
-│   │       └── Plantilla para propuestas de nuevas características.
 │   └── PULL_REQUEST_TEMPLATE.md
-│       └── Plantilla base para revisión y apertura de Pull Requests.
-│
+├── .idea/
+│   ├── inspectionProfiles/
+│   │   └── Project_Default.xml
+│   ├── .gitignore
+│   ├── compiler.xml
+│   ├── encodings.xml
+│   ├── FIS_2630_1204_G3.iml
+│   ├── jarRepositories.xml
+│   ├── misc.xml
+│   ├── modules.xml
+│   ├── vcs.xml
+│   └── workspace.xml
+├── .vscode/
+│   └── launch.json
 ├── app/
+│   ├── Entrega1/
+│   │   └── wisetrip_entrega1/
+│   │       ├── .mvn/
+│   │       │   └── wrapper/
+│   │       │       └── maven-wrapper.properties
+│   │       ├── src/
+│   │       │   ├── main/
+│   │       │   │   ├── java/com/wisetrip/
+│   │       │   │   │   ├── controlador/
+│   │       │   │   │   │   ├── AuthControlador.java
+│   │       │   │   │   │   ├── InicioControlador.java
+│   │       │   │   │   │   ├── NotificacionController.java
+│   │       │   │   │   │   ├── PlanControlador.java
+│   │       │   │   │   │   ├── PlanificacionControlador.java
+│   │       │   │   │   │   ├── RecomendacionControlador.java
+│   │       │   │   │   │   ├── SeleccionControlador.java
+│   │       │   │   │   │   ├── SesionViaje.java
+│   │       │   │   │   │   ├── TelegramControlador.java
+│   │       │   │   │   │   └── ViajeControlador.java
+│   │       │   │   │   ├── datos/
+│   │       │   │   │   │   ├── CiudadDAO.java
+│   │       │   │   │   │   ├── CiudadSemilla.java
+│   │       │   │   │   │   ├── ConexionBD.java
+│   │       │   │   │   │   ├── DatosCiudades.java
+│   │       │   │   │   │   ├── PreferenciaDAO.java
+│   │       │   │   │   │   ├── UsuarioDAO.java
+│   │       │   │   │   │   └── ViajeDAO.java
+│   │       │   │   │   ├── modelo/
+│   │   │           │   ├── CategoriaPreferencia.java
+│   │   │           │   ├── Ciudad.java
+│   │   │           │   ├── CreadorNotificacion.java
+│   │   │           │   ├── CreadorNotificacionBienvenida.java
+│   │   │           │   ├── CreadorNotificacionInicioSesion.java
+│   │   │           │   ├── EstadoAtributo.java
+│   │   │           │   ├── FechasViaje.java
+│   │   │           │   ├── Gasto.java
+│   │   │           │   ├── Importancia.java
+│   │   │           │   ├── Notificacion.java
+│   │   │           │   ├── Preferencias.java
+│   │   │           │   ├── PreferenciasUsuario.java
+│   │   │           │   ├── Pregunta.java
+│   │   │           │   ├── Presupuesto.java
+│   │   │           │   ├── PresupuestoViaje.java
+│   │   │           │   ├── RepartoPresupuesto.java
+│   │   │           │   ├── ResultadoControlCategoria.java
+│   │   │           │   ├── ResultadoRecomendacion.java
+│   │   │           │   ├── ResumenPresupuesto.java
+│   │   │           │   ├── SeleccionDestinos.java
+│   │   │           │   ├── TipoAtributo.java
+│   │   │           │   ├── Ubicacion.java
+│   │   │           │   ├── Usuario.java
+│   │   │           │   ├── ValidacionCiudades.java
+│   │   │           │   └── Viaje.java
+│   │       │   │   │   ├── negocio/
+│   │   │           │   ├── CatalogoPreguntas.java
+│   │   │           │   ├── CiudadNegocio.java
+│   │   │           │   ├── ControlCategoriaCreador.java
+│   │   │           │   ├── DefPregunta.java
+│   │   │           │   ├── GestorPreferencias.java
+│   │   │           │   ├── GestorPresupuesto.java
+│   │   │           │   ├── IAutenticacionUsuario.java
+│   │   │           │   ├── ICalculadoraReparto.java
+│   │   │           │   ├── ICargadorCiudades.java
+│   │   │           │   ├── IControlCategoriaGasto.java
+│   │   │           │   ├── IDistribuible.java
+│   │   │           │   ├── IFechasServicio.java
+│   │   │           │   ├── IGestionReparto.java
+│   │   │           │   ├── IGestorGastos.java
+│   │   │           │   ├── INotificador.java
+│   │   │           │   ├── IPerfilUsuario.java
+│   │   │           │   ├── IRegistroUsuario.java
+│   │   │           │   ├── IRepositorioGastos.java
+│   │   │           │   ├── IRepositorioPreferencias.java
+│   │   │           │   ├── IRepositorioPresupuestoViaje.java
+│   │   │           │   ├── IRepositorioRepartoPresupuesto.java
+│   │   │           │   ├── IRepositorioViajes.java
+│   │   │           │   ├── ISeleccionDestino.java
+│   │   │           │   ├── ITraductorPreferencias.java
+│   │   │           │   ├── IUbicable.java
+│   │   │           │   ├── IUsuarioRepositorio.java
+│   │   │           │   ├── IValidable.java
+│   │   │           │   ├── IValidadorReparto.java
+│   │   │           │   ├── IViajeServicio.java
+│   │   │           │   ├── ProovedorLugares.java
+│   │   │           │   ├── Recomendador.java
+│   │   │           │   └── SeleRecomendaciones.java
+│   │       │   │   │   ├── servicio/
+│   │   │           │   ├── CatalogoCiudades.java
+│   │   │           │   ├── ContextoValidacionFechas.java
+│   │   │           │   ├── ControlCategoriaEstricto.java
+│   │   │           │   ├── ControlCategoriaFlexible.java
+│   │   │           │   ├── CreadorControlEstricto.java
+│   │   │           │   ├── CreadorControlFlexible.java
+│   │   │           │   ├── FechasServicio.java
+│   │   │           │   ├── GastosServicio.java
+│   │   │           │   ├── LlenarAtributosCiudad.java
+│   │   │           │   ├── LlenarLasCiudades.java
+│   │   │           │   ├── NotificadorCorreo.java
+│   │   │           │   ├── NotificadorTelegram.java
+│   │   │           │   ├── PreferenciasConAuditoriaDecorador.java
+│   │   │           │   ├── PreferenciasServicio.java
+│   │   │           │   ├── PresupuestoConMargenDecorador.java
+│   │   │           │   ├── PresupuestoServicio.java
+│   │   │           │   ├── ProxyLugares.java
+│   │   │           │   ├── RecomendadorDestinos.java
+│   │   │           │   ├── ReglaFechaFin.java
+│   │   │           │   ├── ReglaFechaInicio.java
+│   │   │           │   ├── ReglaRelacionFechas.java
+│   │   │           │   ├── ReglaValidacionFechas.java
+│   │   │           │   ├── RepartoServicio.java
+│   │   │           │   ├── SeleccionServicio.java
+│   │   │           │   ├── SelectorDestinos.java
+│   │   │           │   ├── ServicioGeoapify.java
+│   │   │           │   ├── UsuarioServicio.java
+│   │   │           │   ├── UsuarioSesionFacade.java
+│   │   │           │   └── ViajeServicio.java
+│   │       │   │   │   ├── ServletInitializer.java
+│   │       │   │   │   └── WisetripApplication.java
+│   │       │   │   ├── resources/
+│   │       │   │   │   ├── sql/
+│   │       │   │   │   │   ├── alter_usuario_registro.sql
+│   │       │   │   │   │   └── insert_ciudades.sql
+│   │       │   │   │   ├── static/
+│   │       │   │   │   │   ├── css/
+│   │       │   │   │   │   │   ├── estilos.css
+│   │       │   │   │   │   │   ├── fechas.css
+│   │       │   │   │   │   │   ├── landing.css
+│   │       │   │   │   │   │   ├── login.css
+│   │       │   │   │   │   │   ├── origen.css
+│   │       │   │   │   │   │   ├── plan.css
+│   │       │   │   │   │   │   ├── presupuesto.css
+│   │       │   │   │   │   │   ├── recomendaciones.css
+│   │       │   │   │   │   │   ├── registro.css
+│   │       │   │   │   │   │   └── resumen.css
+│   │       │   │   │   │   └── img/
+│   │       │   │   │   │       ├── banderas/
+│   │       │   │   │   │       │   ├── ARS.png
+│   │       │   │   │   │       │   ├── BOB.png
+│   │       │   │   │   │       │   ├── BRL.png
+│   │       │   │   │   │       │   ├── BZD.png
+│   │       │   │   │   │       │   ├── CLP.png
+│   │       │   │   │   │       │   ├── COP.png
+│   │       │   │   │   │       │   ├── CRC.png
+│   │       │   │   │   │       │   ├── CUP.png
+│   │       │   │   │   │       │   ├── DOP.png
+│   │       │   │   │   │       │   ├── GTQ.png
+│   │       │   │   │   │       │   ├── HNL.png
+│   │       │   │   │   │       │   ├── MXN.png
+│   │       │   │   │   │       │   ├── NIO.png
+│   │       │   │   │   │       │   ├── PAB.png
+│   │       │   │   │   │       │   ├── PEN.png
+│   │       │   │   │   │       │   ├── PYG.png
+│   │       │   │   │   │       │   ├── USD.png
+│   │       │   │   │   │       │   ├── UYU.png
+│   │       │   │   │   │       │   └── VES.png
+│   │       │   │   │   │       ├── portada/
+│   │       │   │   │   │       │   ├── bariloche.jpg
+│   │       │   │   │   │       │   ├── bocas.jpg
+│   │       │   │   │   │       │   ├── cartagena.jpg
+│   │       │   │   │   │       │   ├── cdmx.jpg
+│   │       │   │   │   │       │   ├── cusco.jpg
+│   │       │   │   │   │       │   ├── flores.jpg
+│   │       │   │   │   │       │   ├── fortuna.jpg
+│   │       │   │   │   │       │   ├── granada.jpg
+│   │       │   │   │   │       │   ├── habana.jpg
+│   │       │   │   │   │       │   ├── lapaz.jpg
+│   │       │   │   │   │       │   ├── lima.jpg
+│   │       │   │   │   │       │   ├── logo.jpg
+│   │       │   │   │   │       │   ├── medellin.jpg
+│   │       │   │   │   │       │   ├── mendoza.jpg
+│   │       │   │   │   │       │   ├── Peru.jpg
+│   │       │   │   │   │       │   ├── puntadeleste.jpg
+│   │       │   │   │   │       │   ├── quito.jpg
+│   │       │   │   │   │       │   ├── roatan.jpg
+│   │       │   │   │   │       │   └── santiago.jpg
+│   │       │   │   │   │       ├── preferencias/
+│   │       │   │   │   │       │   ├── aventura.png
+│   │       │   │   │   │       │   ├── comida_internacional.png
+│   │       │   │   │   │       │   ├── compras.png
+│   │       │   │   │   │       │   ├── desierto.png
+│   │       │   │   │   │       │   ├── familiar_kids.png
+│   │       │   │   │   │       │   ├── festivo.png
+│   │       │   │   │   │       │   ├── gourmet.png
+│   │       │   │   │   │       │   ├── hispanohablante.png
+│   │       │   │   │   │       │   ├── lujo.png
+│   │       │   │   │   │       │   ├── mochilero.png
+│   │       │   │   │   │       │   ├── montana.png
+│   │       │   │   │   │       │   ├── muchas_actividades.png
+│   │       │   │   │   │       │   ├── museos.png
+│   │       │   │   │   │       │   ├── naturaleza.png
+│   │       │   │   │   │       │   ├── navegacion_islas.png
+│   │       │   │   │   │       │   ├── nieve.png
+│   │       │   │   │   │       │   ├── off_the_beaten_path.png
+│   │       │   │   │   │       │   ├── parque_diversiones.png
+│   │       │   │   │   │       │   ├── pet_friendly.png
+│   │       │   │   │   │       │   ├── playa.png
+│   │       │   │   │   │       │   ├── religioso.png
+│   │       │   │   │   │       │   ├── restricciones_alimentarias.png
+│   │       │   │   │   │       │   ├── romantico.png
+│   │       │   │   │   │       │   ├── ruinas_arqueologicas.png
+│   │       │   │   │   │       │   ├── tiempo_libre.png
+│   │       │   │   │   │       │   ├── tranquilo.png
+│   │       │   │   │   │       │   ├── urbano.png
+│   │       │   │   │   │       │   └── vida_nocturna.png
+│   │       │   │   │   │       └──Registro-exitoso/
+│   │       │   │   │   │       │   ├── chillan.jpg
+│   │       │   │   │   │       │   ├── guadalajara.jpg
+│   │       │   │   │   │       |   └── panama.jpg
+│   │       │   │   │   │       └── resumen/
+│   │       │   │   │   │           ├── Amazonas.jpg
+│   │       │   │   │   │           ├── Argentina.jpg
+│   │       │   │   │   │           ├── desierto.jpg
+│   │       │   │   │   │           ├── monteverde.jpg
+│   │       │   │   │   │           ├── pines.jpg
+│   │       │   │   │   │           ├── Rio.jpg
+│   │       │   │   │   │           ├── salar.jpg
+│   │       │   │   │   │           └── tulum.jpg
+│   │       │   │   │   └── application.properties
+│   │       │   │   └── webapp/WEB-INF/vistas/
+│   │       │   │       ├── encabezado.jsp
+│   │       │   │       ├── fechas.jsp
+│   │       │   │       ├── landing.jsp
+│   │       │   │       ├── login.jsp
+│   │       │   │       ├── origen.jsp
+│   │       │   │       ├── plan.jsp
+│   │       │   │       ├── preferencias.jsp
+│   │       │   │       ├── presupuesto.jsp
+│   │       │   │       ├── recomendaciones.jsp
+│   │       │   │       ├── registro-exitoso.jsp
+│   │       │   │       ├── registro.jsp
+│   │       │   │       ├── resumen.jsp
+│   │       │   │       └── vincular-telegram.jsp
+│   │       │   ├── test/
+│   │       │   │   └── java/com/wisetrip/
+│   │       │   │       └── WisetripApplicationTests.java
+│   │       │   ├── .gitignore
+│   │       │   └── README.md
+│   │       ├── .gitattributes
+│   │       ├── .gitignore
+│   │       ├── mvnw
+│   │       ├── mvnw.cmd
+│   │       └── pom.xml
 │   ├── index.js
-│   │   └── Archivo JavaScript base del proyecto.
-│   ├── package.json
-│   │   └── Define scripts y dependencias del entorno Node auxiliar.
-│   └── Entrega1/
-│       └── wisetrip_entrega1/
-│           ├── pom.xml
-│           │   └── Configuración de dependencias y plugins Maven (Spring Boot).
-│           ├── mvnw / mvnw.cmd
-│           │   └── Wrappers para ejecutar Maven sin instalación global previa.
-│           ├── .mvn/
-│           │   └── wrapper/
-│           │       └── Configuración interna del Maven Wrapper.
-│           └── src/
-│               ├── main/
-│               │   ├── java/com/wisetrip/
-│               │   │   ├── WisetripApplication.java
-│               │   │   │   └── Clase principal y punto de entrada de la aplicación Spring Boot.
-│               │   │   ├── ServletInitializer.java
-│               │   │   │   └── Soporte para despliegue en contenedores servlet externos.
-│               │   │   ├── controlador/
-│               │   │   │   └── Controladores MVC (Auth, Plan, Recomendaciones, Telegram, etc.).
-│               │   │   ├── datos/
-│               │   │   │   └── Acceso a datos (DAOs, conexión JDBC y datos semilla de ciudades).
-│               │   │   ├── modelo/
-│               │   │   │   └── Clases de dominio (Usuario, Viaje, Presupuesto, Preferencias, Ciudad).
-│               │   │   ├── negocio/
-│               │   │   │   └── Lógica de negocio y catálogo de preguntas dinámicas.
-│               │   │   └── servicio/
-│               │   │       └── Servicios de recomendación, APIs externas, notificaciones y reglas de negocio.
-│               │   ├── resources/
-│               │   │   ├── application.properties
-│               │   │   │   └── Configuración de base de datos, puertos y credenciales de APIs.
-│               │   │   ├── sql/
-│               │   │   │   └── Scripts DDL y DML para inicialización y parches de base de datos.
-│               │   │   └── static/
-│               │   │       ├── css/
-│               │   │       │   └── Hojas de estilo organizadas por vista y componentes.
-│               │   │       └── img/
-│               │   │           └── Recursos gráficos (banderas SVG/PNG, fotos de portada, iconos de preferencias y resumen).
-│               │   └── webapp/WEB-INF/vistas/
-│               │       └── Vistas JSP (login, registro, orígenes, fechas, presupuesto, recomendaciones, resumen, Telegram).
-│               └── test/
-│                   └── java/com/wisetrip/
-│                       └── WisetripApplicationTests.java
-│                           └── Pruebas unitarias y de integración de la aplicación.
-│
+│   └── package.json
 ├── conf/
 │   ├── config.yaml
-│   │   └── Archivo general de configuración del entorno y servicios.
 │   └── settings.json
-│       └── Parámetros y ajustes específicos de ejecución.
-│
 ├── database/
+│   ├── .gitkeep
 │   ├── Base_de_datos_Compartida.pdf
-│   │   └── Documento de diseño y acuerdos de la base de datos compartida.
-│   ├── BasesNegocio.md / DiccionarioDatos.md
-│   │   └── Reglas del negocio de datos y descripción detallada de tablas/campos.
-│   ├── DDL.md / database.md
-│   │   └── Definición de esquemas de datos y documentación relacional.
-│   └── Diagrama entidad-relacion bdd 2.svg
-│       └── Esquema gráfico del modelo Entidad-Relación.
-│
+│   ├── BasesNegocio.md
+│   ├── database.md
+│   ├── DDL.md
+│   ├── Diagrama entidad-relacion bdd 2.svg
+│   └── DiccionarioDatos.md
 ├── docs/
-│   ├── 1raEntrega_FIS_G3.pdf
-│   │   └── Informe formal correspondiente a la primera entrega del proyecto.
-│   ├── DefinicionProyecto.md
-│   │   └── Alcance, objetivos y contexto general de WiseTrip.
-│   ├── RequerimientosFuncionales.md / RequerimientosNoFuncionales.md
-│   │   └── Especificación completa de requisitos del sistema.
-│   ├── WiseTrip.mp4
-│   │   └── Video demostrativo de funcionalidades del sistema.
 │   ├── api/
-│   │   └── Documentación técnica de APIs integradas (Geoapify, Clima, Pasarela de Pagos).
+│   │   ├── .gitkeep
+│   │   ├── API_Geoapify_WiseTrip.pdf
+│   │   ├── APIs de clima wisetrip (3).pdf
+│   │   └── F.I.S Implementación API Pasarela de Pagos.pdf
 │   ├── architecture/
-│   │   └── Diagramas de arquitectura (.svg), bocetos iniciales y documentación técnica del sitio.
-│   └── user_guide/
-│       └── README.md
-│           └── Manual de usuario e instrucciones de uso para el cliente final.
-│
+│   │   ├── .gitkeep
+│   │   ├── Arquitectura WiseTrip.svg
+│   │   ├── ArquitecturaInicial.md
+│   │   ├── CodigoInicialBoceto.jsx
+│   │   ├── DocumentacionTecnicaPaginaWeb.md
+│   │   └── mockupInicial.md
+│   ├── diagrama/
+│   ├── PatronesGOF/
+│   ├── pruebas/
+│   ├── user_guide/
+│   │   ├── .gitkeep
+│   │   └── README.md
+│   ├── 1raEntrega_FIS_G3.pdf
+│   ├── DefinicionProyecto.md
+│   ├── RequerimientosFuncionales.md
+│   ├── RequerimientosNoFuncionales.md
+│   └── WiseTrip.mp4
 ├── scripts/
 │   ├── deploy.sh
-│   │   └── Script de automatización de despliegue en servidor/ambiente objetivo.
 │   ├── setup.sh
-│   │   └── Script de inicialización de dependencias y entorno local.
 │   └── test.sh
-│       └── Script para ejecución centralizada del conjunto de pruebas.
-│
 ├── temp/
 │   ├── checklist/
-│   │   └── Prototipo Spring Boot de pruebas para el módulo de checklist.
-│   └── temp_data/
-│       └── Algoritmos experimentales preliminares de recomendación y selección.
-│
+│   │   ├── src/main/java/com/wisetrip/
+│   │   │   └── ChecklistMockupApplication.java
+│   │   ├── target/classes/com/wisetrip/
+│   │   │   ├── ChecklistMockupApplication$ChecklistControlador.class
+│   │   │   └── ChecklistMockupApplication.class
+│   │   └── pom.xml
+│   ├── temp_data/
+│   │   ├── Captura de pantalla 2026-08-31 221922.png
+│   │   ├── Ciudad.java
+│   │   ├── PreferenciasUsuario.java
+│   │   ├── RecomendadorDestinos.java
+│   │   ├── ResultadoRecomendacion.java
+│   │   ├── SeleccionDestinos.java
+│   │   ├── SelectorDestinos.java
+│   │   ├── temp1.tmp
+│   │   ├── temp2.tmp
+│   │   └── VistaDestinosFX.java
+│   ├── .gitkeep
+│   ├── Preguntas_de_Preferencia_FIS.pdf
+│   └── temp_file.txt
+├── .gitignore
 ├── BOILERPLATE_template.md
-│   └── Guía explicativa sobre la plantilla base y convenciones del repositorio.
-│
 ├── CHANGELOG.md
-│   └── Historial cronológico de cambios, mejoras y correcciones.
-│
 ├── CONTRIBUTING.md
-│   └── Guía de contribución, flujo de ramas y normas de código para colaboradores.
-│
 ├── docker-compose.yml
-│   └── Orquestación de contenedores Docker para levantar servicios locales.
-│
 ├── Dockerfile
-│   └── Instrucciones de construcción de la imagen de la aplicación.
-│
+├── estructura.txt
+├── FIS_2630_1204_G3
+├── FIS_2630_1204_G3-1
 ├── LICENSE
-│   └── Licencia legal de distribución del proyecto.
-│
 ├── Makefile
-│   └── Accesos directos para compilación, ejecución de scripts y tareas comunes.
-│
-├── README.md
-│   └── Documentación general de bienvenida, instalación y puesta en marcha del proyecto.
-│
-└── .gitignore
-    └── Reglas de exclusión para evitar subir binarios, entornos de IDEs y temporales.
+└── README.md
+```
+
+
+### .github/
+Contiene las configuraciones comunitarias y plantillas estándar para la gestión del repositorio en GitHub.
+
+- `ISSUE_TEMPLATE/`: Plantillas para estandarizar el reporte de errores (`bug_report.md`) y la propuesta de nuevas funcionalidades (`feature_request.md`).
+- `PULL_REQUEST_TEMPLATE.md`: Guía y lista de verificación requerida para abrir y revisar Pull Requests.
+
+### app/
+Contiene la aplicación principal del proyecto, incluyendo el entorno base y los entregables modulares.
+
+- `index.js` y `package.json`: Configuración y scripts del entorno Node base.
+- `Entrega1/wisetrip_entrega1/`: Núcleo de la aplicación web desarrollada con Spring Boot y Maven.
+  - `pom.xml`: Definición del proyecto, dependencias y plugins de Maven.
+  - `mvnw` / `mvnw.cmd` / `.mvn/`: Maven Wrapper para compilar y ejecutar el proyecto sin requerir instalación global de Maven.
+  - `src/main/java/com/wisetrip/`: Código fuente Java organizado bajo arquitectura MVC:
+    - `controlador/`: Controladores web (autenticación, viajes, notificaciones, Telegram, recomendaciones).
+    - `datos/`: Capa de acceso a datos (DAOs, conexión JDBC y semillas iniciales de ciudades).
+    - `modelo/`: Entidades de dominio (Usuario, Viaje, Presupuesto, Preferencias, Ubicaciones).
+    - `negocio/`: Lógica de reglas de negocio y catálogo de preguntas de perfilamiento.
+    - `servicio/`: Servicios de negocio, recomendador de destinos y clientes de APIs externas (Geoapify, Telegram, Correo).
+    - `WisetripApplication.java` y `ServletInitializer.java`: Puntos de entrada para ejecución standalone y despliegue en servidor web.
+  - `src/main/resources/`:
+    - `application.properties`: Configuración de puertos, base de datos y credenciales.
+    - `sql/`: Scripts DDL y DML para esquemas de tablas e inserción masiva de ciudades.
+    - `static/`: Recursos estáticos que incluyen hojas de estilo CSS (`css/`) y assets visuales como banderas, imágenes de portada y preferencias (`img/`).
+  - `src/main/webapp/WEB-INF/vistas/`: Plantillas JSP dinámicas de la interfaz de usuario (login, registro, cuestionario de preferencias, recomendaciones, resumen y vinculación de servicios).
+  - `src/test/java/com/wisetrip/`: Pruebas de integración y unitarias para validar el contexto de Spring Boot.
+
+### conf/
+Archivos de configuración globales y de parametrización del entorno.
+
+- `config.yaml`: Variables de configuración generales en formato YAML.
+- `settings.json`: Ajustes operativos y perfiles en formato JSON.
+
+### database/
+Diseño, especificación y modelado de la persistencia de datos del sistema.
+
+- `Diagrama entidad-relacion bdd 2.svg`: Diagrama conceptual y relacional de entidades y tablas.
+- `DiccionarioDatos.md`: Descripción detallada de campos, tipos de datos, llaves foráneas y restricciones.
+- `BasesNegocio.md` y `database.md`: Justificación, reglas de persistencia y descripción de flujos de datos.
+- `DDL.md`: Sentencias SQL para la creación de esquemas y tablas.
+- `Base_de_datos_Compartida.pdf`: Documento formal de acuerdos sobre la estructura compartida de la base de datos.
+
+### docs/
+Documentación técnica, funcional y de gestión del proyecto.
+
+- `1raEntrega_FIS_G3.pdf`: Documento formal consolidado de la primera entrega académica.
+- `DefinicionProyecto.md`: Contexto, problema, justificación y alcance general de WiseTrip.
+- `RequerimientosFuncionales.md` y `RequerimientosNoFuncionales.md`: Especificación detallada de requerimientos del sistema.
+- `WiseTrip.mp4`: Demostración visual y funcional del software.
+- `api/`: Documentación y especificaciones de servicios de terceros (Geoapify, APIs meteorológicas y pasarelas de pago).
+- `architecture/`: Arquitectura de software, diagramas de componentes (`.svg`), notas técnicas y bocetos de interfaz.
+- `user_guide/`: Manuales de usuario y guías de uso paso a paso de la aplicación.
+
+### scripts/
+Scripts ejecutables en bash para automatizar el ciclo de desarrollo y operaciones.
+
+- `setup.sh`: Script para preparar dependencias y configurar el entorno de trabajo.
+- `deploy.sh`: Script de automatización para empaquetado y despliegue del aplicativo.
+- `test.sh`: Script para la ejecución automática de la suite de pruebas.
+
+### temp/
+Directorio de trabajo auxiliar, pruebas de concepto y archivos temporales.
+
+- `checklist/`: Prototipo aislado de Spring Boot para pruebas del módulo de checklist de viaje.
+- `temp_data/`: Pruebas tempranas de lógica en Java (algoritmos iniciales de recomendación y selección) e imágenes temporales.
+- `Preguntas_de_Preferencia_FIS.pdf` y `temp_file.txt`: Insumos y notas preliminares del equipo.
+
+### Archivos en la raíz del proyecto
+
+- `.gitignore`: Reglas para excluir del control de versiones archivos compilados, temporales y configuraciones locales.
+- `BOILERPLATE_template.md`: Plantilla y guía de referencia sobre el diseño de la estructura del repositorio.
+- `CHANGELOG.md`: Registro cronológico de versiones, adiciones y correcciones del proyecto.
+- `CONTRIBUTING.md`: Lineamientos sobre estándares de código, flujo de ramas y convenciones para colaborar.
+- `Dockerfile`: Instrucciones de construcción de la imagen contenedora para WiseTrip.
+- `docker-compose.yml`: Orquestación multicontenedor para levantar los servicios del proyecto de forma reproducible.
+- `estructura.txt`: Snapshot o volcado en texto plano de la estructura del árbol de archivos.
+- `LICENSE`: Términos de la licencia de software bajo la cual se distribuye el código.
+- `Makefile`: Atajos de comandos de terminal para compilar, probar y ejecutar tareas repetitivas.
+- `README.md`: Documento principal de presentación con instrucciones de instalación, ejecución y visión general del proyecto.
+
 
 ```
 
