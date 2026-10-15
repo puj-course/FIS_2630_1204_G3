@@ -50,20 +50,23 @@ FIS_2630_1204_G3/
 │   │       │   │   │   │   ├── UsuarioDAO.java
 │   │       │   │   │   │   └── ViajeDAO.java
 │   │       │   │   │   ├── modelo/
-│   │       │   │   │   │   ├── CategoriaPreferencia.java
-│   │       │   │   │   │   ├── Ciudad.java
-│   │       │   │   │   │   ├── FechasViaje.java
-│   │       │   │   │   │   ├── Peso.java
-│   │       │   │   │   │   ├── Preferencias.java
-│   │       │   │   │   │   ├── PreferenciasUsuario.java
-│   │       │   │   │   │   ├── Pregunta.java
-│   │       │   │   │   │   ├── Presupuesto.java
-│   │       │   │   │   │   ├── RepartoPresupuesto.java
-│   │       │   │   │   │   ├── ResultadoRecomendacion.java
-│   │       │   │   │   │   ├── SeleccionDestinos.java
-│   │       │   │   │   │   ├── TipoAtributo.java
-│   │       │   │   │   │   ├── Ubicacion.java
-│   │       │   │   │   │   └── Usuario.java
+│   │       │   │   │   │   ├──CategoriaPreferencia.java
+│   │       │   │   │   │   ├──Ciudad.java
+│   │       │   │   │   │   ├──EstadoAtributo.java
+│   │       │   │   │   │   ├──FechasViaje.java
+│   │       │   │   │   │   ├──Importancia.java
+│   │       │   │   │   │   ├──Notificacion.java
+│   │       │   │   │   │   ├──Preferencias.java
+│   │       │   │   │   │   ├──PreferenciasUsuario.java
+│   │       │   │   │   │   ├──Pregunta.java
+│   │       │   │   │   │   ├──Presupuesto.java
+│   │       │   │   │   │   ├──RepartoPresupuesto.java
+│   │       │   │   │   │   ├──ResultadoRecomendacion.java
+│   │       │   │   │   │   ├──SeleccionDestinos.java
+│   │       │   │   │   │   ├──TipoAtributo.java
+│   │       │   │   │   │   ├──Ubicacion.java
+│   │       │   │   │   │   ├──Usuario.java
+│   │       │   │   │   │   └──ValidacionCiudades.java
 │   │       │   │   │   ├── negocio/
 │   │   │           │   ├── CatalogoPreguntas.java
 │   │   │           │   ├── CiudadNegocio.java
