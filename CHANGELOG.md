@@ -4415,14 +4415,16 @@ falta de tiempo
 
 1. **¿Qué hice ayer?**
 
-
+Ayer estuvimos en Sprint planning con el equipo y estuve trabajando en implementar los patrones GOF para el taller 5
 
 2. **¿Qué voy a hacer hoy?**
 
+hoy documente lo que hice de patrones GOF, ademas de hacerle unas mejoras y estuve estudiando los diagramas y el codigo para la presustentacion de mañana
 
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
+no 
 
 ---
 
