@@ -7,6 +7,5 @@ import com.wisetrip.modelo.SeleccionDestinos;
 
 public interface SeleRecomendaciones {
     SeleccionDestinos seleccionarMejoresDestinos(
-            List<ResultadoRecomendacion> resultados,
-            boolean soloIndispensables);
+            List<ResultadoRecomendacion> resultados);
 }
