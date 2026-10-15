@@ -37,7 +37,7 @@ public class ProxyLugares implements ProovedorLugares {
         }
 
         // ConcurrentHashMap coordina la carga por clave para reutilizar el resultado.
-        // Cero se guarda; null no se almacena y permite reintentar la consulta.
+        // Cero se guarda
         return conteoLugaresCache.computeIfAbsent(cacheKey,
                 clave -> servicioReal.contarLugares(lat, lon, categorias, radioMetros, limite));
     }
