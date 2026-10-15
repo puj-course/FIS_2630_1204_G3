@@ -4367,15 +4367,15 @@ todo lo veo bien , sin embargo estas semanas son criticas para todos los miembor
 
 1. **¿Qué hice ayer?**
 
-
+ayer estuvimos haciendo el planning especialmente pensado en la rubrica
    
 2. **¿Qué voy a hacer hoy?**
 
-
+hoy hice lo del patron proxy en el modulo de recomendaciones del proyecto
    
 3. **¿Tengo algún impedimento o bloqueo?**
 
-
+casi no he tenido tiempo por otras materias
 
 ---
 
