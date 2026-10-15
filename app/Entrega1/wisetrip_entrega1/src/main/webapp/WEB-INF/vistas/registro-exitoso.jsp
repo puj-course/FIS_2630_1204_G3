@@ -25,15 +25,15 @@
 
         <div class="polaroids">
             <figure class="polaroid pol-1">
-                <img src="/img/portada/guadalajara.jpg" alt="Catedral de Guadalajara, México">
+                <img src="/img/Registro-exitoso/guadalajara.jpg" alt="Catedral de Guadalajara, México">
                 <figcaption>Guadalajara · MEX</figcaption>
             </figure>
             <figure class="polaroid pol-2">
-                <img src="/img/portada/panama.jpg" alt="Rascacielos de Ciudad de Panamá">
+                <img src="/img/Registro-exitoso/panama.jpg" alt="Rascacielos de Ciudad de Panamá">
                 <figcaption>Ciudad de Panamá · PAN</figcaption>
             </figure>
             <figure class="polaroid pol-3">
-                <img src="/img/portada/chillan.jpg" alt="Nevados de Chillán, Chile">
+                <img src="/img/Registro-exitoso/chillan.jpg" alt="Nevados de Chillán, Chile">
                 <figcaption>Chillán · CHI</figcaption>
             </figure>
         </div>

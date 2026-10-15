@@ -1291,21 +1291,21 @@ Además, se busca garantizar que los datos ingresados sean validados correctamen
 
 | ID | Título | Tipo | Estimación | Responsable |
 |----|--------|------|------------|-------------|
-| #31 | Como usuario quiero ingresar con mi correo y contraseña en la pantalla de acceso, para autenticarme y gestionar mis viajes. | Historia de Usuario | TBD | Valeria |
-| #32 | Como viajero, quiero consultar los destinos disponibles con sus características principales, para comparar las ciudades y elegir la que mejor se adapte a mis preferencias. | Historia de Usuario | TBD | Valeria |
-| #33 | Como administrador del sistema quiero verificar que se rechacen datos inválidos, para asegurar coherencia en los datos. | Historia de Usuario | TBD | Valeria |
-| #34 | Como viajero, quiero revisar un resumen visual de la información ingresada para confirmar que todos los datos de mi viaje sean correctos antes de continuar. | Historia de Usuario | TBD | Isa |
-| #35 | Como usuario quiero que las ciudades sean accesibles en comparación a mi presupuesto y tiempo de viaje, para que las recomendaciones no se vean afectadas por mi dinero. | Historia de Usuario | TBD | Isa |
-| #36 | Como usuario, quiero recibir recomendaciones de destinos ubicados en Latinoamérica, para explorar opciones de viaje dentro de la región y conocer diferentes culturas. | Historia de Usuario | TBD | Isa |
-| #37 | Como viajero, quiero ingresar mis datos de viaje de forma continua y ordenada, para completar mi plan fácilmente sin tener que saltar entre páginas sueltas. | Historia de Usuario | TBD | Gaby |
-| #38 | Como viajero, quiero ver destinos preseleccionados según el presupuesto y fechas de mi viaje, para ahorrar tiempo en la búsqueda y encontrar rápidamente opciones a mi medida. | Historia de Usuario | TBD | Gaby |
-| #39 | Como viajero quiero que la información que ingreso en presupuesto, fechas y preferencias quede guardada mientras avanzo en el flujo del sistema, para no tener que ingresarla cada vez que retrocedo o continúo entre pantallas. | Historia de Usuario | TBD | Gaby |
-| #40 | Como viajero, quiero navegar de forma clara y continua entre las pantallas de WiseTrip, para completar fácilmente el proceso de planificación de mi viaje. | Historia de Usuario | TBD | Maleja |
-| #41 | Como viajero, quiero que la plataforma me indique con claridad qué datos faltan o son incorrectos, para completar el registro de mi viaje correctamente. | Historia de Usuario | TBD | Maleja |
-| #42 | Como viajero, quiero consultar el resumen de mi viaje con una estructura visual uniforme en cada pantalla, para ubicar rápidamente los datos importantes de mi itinerario y presupuesto. | Historia de Usuario | TBD | Maleja |
-| #43 | Como viajero quiero ver mientras completo las pantallas de presupuesto, fechas y preferencias, para saber en qué etapa de la planificación me encuentro y cuánto me falta. | Historia de Usuario | TBD | Clavijo |
-| #44 | Como viajero quiero poder regresar a una pantalla anterior sin perder los datos ya ingresados en las siguientes, para corregir o ajustar mi información sin repetir todo el proceso. | Historia de Usuario | TBD | Clavijo |
-| #45 | Como viajero quiero recibir una confirmación antes de salir del proceso de planificación sin haberlo terminado, para evitar perder accidentalmente los datos que ya ingresé. | Historia de Usuario | TBD | Clavijo |
+| #31 | Como usuario quiero ingresar con mi correo y contraseña en la pantalla de acceso, para autenticarme y gestionar mis viajes. | Historia de Usuario | 5 | Valeria |
+| #32 | Como viajero, quiero consultar los destinos disponibles con sus características principales, para comparar las ciudades y elegir la que mejor se adapte a mis preferencias. | Historia de Usuario | 5 | Valeria |
+| #33 | Como administrador del sistema quiero verificar que se rechacen datos inválidos, para asegurar coherencia en los datos. | Historia de Usuario | 5 | Valeria |
+| #34 | Como viajero, quiero revisar un resumen visual de la información ingresada para confirmar que todos los datos de mi viaje sean correctos antes de continuar. | Historia de Usuario | 5 | Isa |
+| #35 | Como usuario quiero que las ciudades sean accesibles en comparación a mi presupuesto y tiempo de viaje, para que las recomendaciones no se vean afectadas por mi dinero. | Historia de Usuario | 5 | Isa |
+| #36 | Como usuario, quiero recibir recomendaciones de destinos ubicados en Latinoamérica, para explorar opciones de viaje dentro de la región y conocer diferentes culturas. | Historia de Usuario | 3 | Isa |
+| #37 | Como viajero, quiero ingresar mis datos de viaje de forma continua y ordenada, para completar mi plan fácilmente sin tener que saltar entre páginas sueltas. | Historia de Usuario | 5 | Gaby |
+| #38 | Como viajero, quiero ver destinos preseleccionados según el presupuesto y fechas de mi viaje, para ahorrar tiempo en la búsqueda y encontrar rápidamente opciones a mi medida. | Historia de Usuario | 5 | Gaby |
+| #39 | Como viajero quiero que la información que ingreso en presupuesto, fechas y preferencias quede guardada mientras avanzo en el flujo del sistema, para no tener que ingresarla cada vez que retrocedo o continúo entre pantallas. | Historia de Usuario | 8 | Gaby |
+| #40 | Como viajero, quiero navegar de forma clara y continua entre las pantallas de WiseTrip, para completar fácilmente el proceso de planificación de mi viaje. | Historia de Usuario | 8 | Maleja |
+| #41 | Como viajero, quiero que la plataforma me indique con claridad qué datos faltan o son incorrectos, para completar el registro de mi viaje correctamente. | Historia de Usuario | 3 | Maleja |
+| #42 | Como viajero, quiero consultar el resumen de mi viaje con una estructura visual uniforme en cada pantalla, para ubicar rápidamente los datos importantes de mi itinerario y presupuesto. | Historia de Usuario | 5 | Maleja |
+| #43 | Como viajero quiero ver mientras completo las pantallas de presupuesto, fechas y preferencias, para saber en qué etapa de la planificación me encuentro y cuánto me falta. | Historia de Usuario | 3 | Clavijo |
+| #44 | Como viajero quiero poder regresar a una pantalla anterior sin perder los datos ya ingresados en las siguientes, para corregir o ajustar mi información sin repetir todo el proceso. | Historia de Usuario | 5 | Clavijo |
+| #45 | Como viajero quiero recibir una confirmación antes de salir del proceso de planificación sin haberlo terminado, para evitar perder accidentalmente los datos que ya ingresé. | Historia de Usuario | 8 | Clavijo |
 
 ## Riesgos / Bloqueos identificados
 
@@ -1888,16 +1888,16 @@ Además, se pretende vincular correctamente las ciudades y sus características 
 
 | ID | Título | Tipo | Estimación | Responsable |
 |----|--------|------|------------|-------------|
-| #46 | Como viajero, quiero ver el logo de WiseTrip para identificar la marca de la aplicación y regresar al inicio con solo un clic. | Historia de Usuario | TBD | Valeria |
-| #47 | Como administrador de WiseTrip, quiero vincular las ciudades y sus características con el sistema, para clasificar los destinos según las elecciones del viajero y mostrarlos ubicados en el mapa sin errores. | Historia de Usuario | TBD | Valeria |
-| #48 | Como usuario, quiero que el registro y el inicio de sesión tengan el mismo estilo visual de WiseTrip, para reconocer fácilmente dónde ingresar mis datos y acceder a mi cuenta. | Historia de Usuario | TBD | Maleja |
-| #49 | Como viajero, quiero ingresar de dónde salgo mediante un diseño que mantenga el estilo de WiseTrip, para continuar con la planificación de mi viaje de forma sencilla. | Historia de Usuario | TBD | Maleja |
-| #50 | Como viajero, quiero elegir mis preferencias de viaje de forma visual e interactiva, para terminar la encuesta rápidamente y conocer mis destinos sugeridos. | Historia de Usuario | TBD | Gaby |
-| #51 | Como viajero, quiero seleccionar mis fechas en un calendario visual, para elegir el rango de días sin escribirlos manualmente. | Historia de Usuario | TBD | Gaby |
-| #52 | Como viajero, quiero indicar desde qué ciudad salgo, para organizar mi itinerario teniendo en cuenta mi lugar de partida. | Historia de Usuario | TBD | Isa |
-| #53 | Como viajero, quiero indicar qué me gusta hacer en mis vacaciones, para que la plataforma filtre y me muestre solo opciones afines a mí. | Historia de Usuario | TBD | Isa |
-| #54 | Como viajero, quiero que la interfaz tenga una tipografía legible y una selección de colores adecuada para que la información sea fácil de leer y comprender. | Historia de Usuario | TBD | Clavijo |
-| #55 | Como viajero, quiero ver el icono de cada bandera dependiendo la moneda escogida en el selector del presupuesto, para identificar más rápido la moneda que estoy escogiendo. | Historia de Usuario | TBD | Clavijo |
+| #46 | Como viajero, quiero ver el logo de WiseTrip para identificar la marca de la aplicación y regresar al inicio con solo un clic. | Historia de Usuario | 3 | Valeria |
+| #47 | Como administrador de WiseTrip, quiero vincular las ciudades y sus características con el sistema, para clasificar los destinos según las elecciones del viajero y mostrarlos ubicados en el mapa sin errores. | Historia de Usuario | 8| Valeria |
+| #48 | Como usuario, quiero que el registro y el inicio de sesión tengan el mismo estilo visual de WiseTrip, para reconocer fácilmente dónde ingresar mis datos y acceder a mi cuenta. | Historia de Usuario | 5 | Maleja |
+| #49 | Como viajero, quiero ingresar de dónde salgo mediante un diseño que mantenga el estilo de WiseTrip, para continuar con la planificación de mi viaje de forma sencilla. | Historia de Usuario | 5 | Maleja |
+| #50 | Como viajero, quiero elegir mis preferencias de viaje de forma visual e interactiva, para terminar la encuesta rápidamente y conocer mis destinos sugeridos. | Historia de Usuario | 5 | Gaby |
+| #51 | Como viajero, quiero seleccionar mis fechas en un calendario visual, para elegir el rango de días sin escribirlos manualmente. | Historia de Usuario | 8 | Gaby |
+| #52 | Como viajero, quiero indicar desde qué ciudad salgo, para organizar mi itinerario teniendo en cuenta mi lugar de partida. | Historia de Usuario | 8 | Isa |
+| #53 | Como viajero, quiero indicar qué me gusta hacer en mis vacaciones, para que la plataforma filtre y me muestre solo opciones afines a mí. | Historia de Usuario | 5 | Isa |
+| #54 | Como viajero, quiero que la interfaz tenga una tipografía legible y una selección de colores adecuada para que la información sea fácil de leer y comprender. | Historia de Usuario | 5 | Clavijo |
+| #55 | Como viajero, quiero ver el icono de cada bandera dependiendo la moneda escogida en el selector del presupuesto, para identificar más rápido la moneda que estoy escogiendo. | Historia de Usuario | 5 | Clavijo |
 
 ## Riesgos / Bloqueos identificados
 
@@ -2384,16 +2384,16 @@ También se trabajará en la relación entre las preferencias seleccionadas y el
 
 | ID | Issue | Título | Tipo | Prioridad | Estimación | Responsable |
 |---|---|---|---|---|---|---|
-| HU-56 | #219 | Visualizar una bienvenida con el logo y nombre de WiseTrip al iniciar la aplicación | Historia de usuario | Media | TBD | Valeria |
-| HU-57 | #220 | Consultar una lista de chequeo de equipaje con elementos básicos para empacar | Historia de usuario | Media | TBD | Valeria |
-| HU-58 | #225 | Implementar una misma identidad visual durante todo el recorrido en WiseTrip | Historia de usuario | Media | TBD | Maleja |
-| HU-59 | #226 | Incorporar imágenes y elementos gráficos relacionados con los viajes | Historia de usuario | Media | TBD | Maleja |
-| HU-60 | #217 | Mostrar una imagen relacionada con el elemento principal de cada pregunta | Historia de usuario | Media | TBD | Gaby |
-| HU-61 | #218 | Mantener un texto claro y consistente entre las preguntas del cuestionario | Historia de usuario | Media | TBD | Gaby |
-| HU-62 | #223 | Permitir responder las preguntas de selección después de iniciar sesión | Historia de usuario | Media | TBD | Isa |
-| HU-63 | #224 | Relacionar la selección del viaje con las preferencias del usuario | Historia de usuario | Alta | TBD | Isa |
-| HU-64 | #222 | Mostrar la bandera de la moneda seleccionada en el resumen final del viaje | Historia de usuario | Media | TBD | Clavijo |
-| HU-65 | #221 | Mostrar correctamente el icono de la bandera junto al selector de moneda | Historia de usuario | Media | TBD | Clavijo |
+| HU-56 | #219 | Visualizar una bienvenida con el logo y nombre de WiseTrip al iniciar la aplicación | Historia de usuario | Media | 8 | Valeria |
+| HU-57 | #220 | Consultar una lista de chequeo de equipaje con elementos básicos para empacar | Historia de usuario | Media | 3 | Valeria |
+| HU-58 | #225 | Implementar una misma identidad visual durante todo el recorrido en WiseTrip | Historia de usuario | Media | 5 | Maleja |
+| HU-59 | #226 | Incorporar imágenes y elementos gráficos relacionados con los viajes | Historia de usuario | Media | 8 | Maleja |
+| HU-60 | #217 | Mostrar una imagen relacionada con el elemento principal de cada pregunta | Historia de usuario | Media | 8 | Gaby |
+| HU-61 | #218 | Mantener un texto claro y consistente entre las preguntas del cuestionario | Historia de usuario | Media | 3 | Gaby |
+| HU-62 | #223 | Permitir responder las preguntas de selección después de iniciar sesión | Historia de usuario | Media | 1 | Isa |
+| HU-63 | #224 | Relacionar la selección del viaje con las preferencias del usuario | Historia de usuario | Alta | 2 | Isa |
+| HU-64 | #222 | Mostrar la bandera de la moneda seleccionada en el resumen final del viaje | Historia de usuario | Media | 13 | Clavijo |
+| HU-65 | #221 | Mostrar correctamente el icono de la bandera junto al selector de moneda | Historia de usuario | Media | 8 | Clavijo |
 
 
 ---
@@ -3848,16 +3848,16 @@ Este sprint nos enfocamos en que la información de viaje del usuario —presupu
 
 | ID | Título | Tipo | Estimación | Responsable |
 |----|--------|------|------------|-------------|
-| #86 | | Como usuario, quiero que mis datos de viaje sean gestionados correctamente por WiseTrip, para recibir recomendaciones y servicios coherentes con mis preferencias. |  | Valeria |
-| #87 | | Como administrador, quiero gestionar correctamente la información de usuarios, viajes y destinos, para garantizar el funcionamiento adecuado de WiseTrip. |  | Valeria |
-| #88 | Como usuario de WiseTrip quiero que la gestión de mi presupuesto y gastos funcione de manera consistente para tener un mejor control financiero de mi viaje. | Historia de Usuario |  | Maleja |
-| #89 | Como usuario de WiseTrip quiero que las funcionalidades de presupuesto y gastos estén correctamente integradas para gestionar la información financiera de mi viaje de forma confiable. | Historia de Usuario |  | Maleja |
-| #90 | Como usuario quiero que el sistema rechace fechas o presupuestos inválidos sin importar desde dónde los ingrese, para que mi viaje quede registrado con datos coherentes y no a medio llenar | Historia de Usuario |  | Gaby |
-| #91 | Como usuario quiero que mi viaje (fechas, presupuesto, destino) siga guardandose y validandose correctamente aunque se realicen actualizaciones de la pagina, para no encontrarme con fallas o un mal registro de mi viaje. | Historia de Usuario |  | Gaby |
-| #92 | Como viajero, quiero que WiseTrip seleccione los destinos que mejor se adapten a mis preferencias, a pesar de los cambios técnicos y actualizaciones en el funcionamiento de la página | Historia de Usuario |  | Isa |
-| #93 | Como viajero, quiero seguir respondiendo preguntas sobre mis intereses de viaje, a pesar de que se hagan cambios técnicos en la arquitectura de la página | Historia de Usuario |  | Isa |
-| #94 | Quiero recibir destinos filtrados según mi presupuesto y ordenados por afinidad con mis preferencias, para ver solo lo que realmente se adapta a mi| Historia de Usuario |  | Clavijo |
-| #95 | Como viajero, quiero ingresar mi presupuesto y responder preguntas sobre mis intereses para que el sistema conozca las características y posibilidades económicas que busco en un destino | Historia de Usuario |  | Clavijo |
+| #86 | Como usuario, quiero que mis datos de viaje sean gestionados correctamente por WiseTrip, para recibir recomendaciones y servicios coherentes con mis preferencias. | Historia de Usuario | 5 | Valeria |
+| #87 | Como administrador, quiero gestionar correctamente la información de usuarios, viajes y destinos, para garantizar el funcionamiento adecuado de WiseTrip. |  Historia de Usuario | 5 | Valeria |
+| #88 | Como usuario de WiseTrip quiero que la gestión de mi presupuesto y gastos funcione de manera consistente para tener un mejor control financiero de mi viaje. | Historia de Usuario | 5  | Maleja |
+| #89 | Como usuario de WiseTrip quiero que las funcionalidades de presupuesto y gastos estén correctamente integradas para gestionar la información financiera de mi viaje de forma confiable. | Historia de Usuario | 8 | Maleja |
+| #90 | Como usuario quiero que el sistema rechace fechas o presupuestos inválidos sin importar desde dónde los ingrese, para que mi viaje quede registrado con datos coherentes y no a medio llenar | Historia de Usuario | 3 | Gaby |
+| #91 | Como usuario quiero que mi viaje (fechas, presupuesto, destino) siga guardandose y validandose correctamente aunque se realicen actualizaciones de la pagina, para no encontrarme con fallas o un mal registro de mi viaje. | Historia de Usuario | 8 | Gaby |
+| #92 | Como viajero, quiero que WiseTrip seleccione los destinos que mejor se adapten a mis preferencias, a pesar de los cambios técnicos y actualizaciones en el funcionamiento de la página | Historia de Usuario | 8 | Isa |
+| #93 | Como viajero, quiero seguir respondiendo preguntas sobre mis intereses de viaje, a pesar de que se hagan cambios técnicos en la arquitectura de la página | Historia de Usuario | 8  | Isa |
+| #94 | Quiero recibir destinos filtrados según mi presupuesto y ordenados por afinidad con mis preferencias, para ver solo lo que realmente se adapta a mi| Historia de Usuario | 13  | Clavijo |
+| #95 | Como viajero, quiero ingresar mi presupuesto y responder preguntas sobre mis intereses para que el sistema conozca las características y posibilidades económicas que busco en un destino | Historia de Usuario |  3 | Clavijo |
 
 ## Riesgos / Bloqueos identificados
 
@@ -4214,7 +4214,12 @@ No
 
 ---
 
-# Sprint Review y Sprint Retrospective - 15/08/2026
+<img width="959" height="470" alt="image" src="https://github.com/user-attachments/assets/def82ffb-228a-4358-9af5-81a1ba010fde" />
+
+---
+
+
+# Sprint Review y Sprint Retrospective - 11/10/2026
 
 ## Maria Alejandra Rodriguez
 
@@ -4320,6 +4325,8 @@ todo lo veo bien , sin embargo estas semanas son criticas para todos los miembor
 
 ---
 
+<img width="959" height="469" alt="image" src="https://github.com/user-attachments/assets/f3ddccf6-395b-4478-a625-764fe9c11b6e" />
+
 # Sprint 9 - Sprint Planning - [13/10/2026]
 
 ## Sprint Goal
@@ -4338,19 +4345,102 @@ todo lo veo bien , sin embargo estas semanas son criticas para todos los miembor
 | #97 | Como usuario, quiero representar los modulos graficamente, para hacer correcciones manteniendo el orden del programa.  | Historia de Usuario | 8 | Valeria |
 | #98 | Como usuario de WiseTrip quiero que la gestión de mi presupuesto se adapte a las diferentes operaciones financieras para tener mayor control sobre los recursos disponibles durante mi viaje | Historia de Usuario | 8 | Maleja |
 | #99 | Como usuario de WiseTrip quiero registrar y gestionar mis gastos de forma organizada para mantener actualizado el control financiero de mi viaje | Historia de Usuario | 8 | Maleja |
-| #100 | | Historia de Usuario | | Gaby |
-| #101 | | Historia de Usuario | | Gaby |
-| #102 | | Historia de Usuario | | Isa |
-| #103 | | Historia de Usuario | | Isa |
-| #104 | | Historia de Usuario | | Clavijo |
-| #105 | | Historia de Usuario | | Clavijo |
+| #100 | Como usuario, quiero que la información de mi viaje (fechas, presupuesto, destino) esté organizada de forma clara dentro del sistema, para que no se mezcle ni se pierda mientras uso la aplicación. | Historia de Usuario | 8 | Gaby |
+| #101 | Como usuario, quiero que las validaciones y el manejo de mi sesión sigan funcionando correctamente aunque el equipo mejore el código por dentro, para no encontrarme con errores o fallas inesperadas. | Historia de Usuario | 8 | Gaby |
+| #102 | Como usuario, quiero recibir mis recomendaciones de destinos de forma ágil y sin esperas, para obtener resultados personalizados sin que las consultas externas afecten mi experiencia | Historia de Usuario | 8 | Isa |
+| #103 |  Como usuario, quiero que la información de mis preferencias y destino se consulte y procese correctamente, para recibir recomendaciones confiables sin errores por fallas internas del sistema.| Historia de Usuario | 8 | Isa |
+| #104 | Como administrador, quiero perfeccionar el boilerplate para que sea acorde al repositorio y permita ver con claridad cómo está organizado. | Historia de Usuario | 3 | Clavijo |
+| #105 | Como administrador, quiero implementar el patrón de diseño GoF Decorator en el Módulo 2, para agregar comportamientos adicionales al proceso de recomendación de destinos sin modificar las clases existentes.| Historia de Usuario | 5 | Clavijo |
 
 ## Riesgos / Bloqueos identificados
 
-- 
-- 
+- Completar diagramas generales de los modulos 
+- Entender los cambios realizados por los demas integrantes del equipo 
+
+---
+<img width="959" height="470" alt="image" src="https://github.com/user-attachments/assets/61f08946-71be-485e-9707-88fb8a6a77ee" />
+
+---
+## Daily Sprint - 14/10/2026
+
+### Isabella Posada
+
+1. **¿Qué hice ayer?**
+
+ayer estuvimos haciendo el planning especialmente pensado en la rubrica
+   
+2. **¿Qué voy a hacer hoy?**
+
+hoy hice lo del patron proxy en el modulo de recomendaciones del proyecto
+   
+3. **¿Tengo algún impedimento o bloqueo?**
+
+casi no he tenido tiempo por otras materias
 
 ---
 
+### Valeria Cortes Rendon
+
+1. **¿Qué hice ayer?**
+
+ 
+
+2. **¿Qué voy a hacer hoy?**
+
+
+   
+3. **¿Tengo algún impedimento o bloqueo?**
+
+
+   
 ---
 
+### Santiago Clavijo
+
+1. **¿Qué hice ayer?**
+
+ayer con mi grupo hicimos el planning del esprint de esta semana asi como terminar el diagrama que falto del sprint pasado.
+
+2. **¿Qué voy a hacer hoy?**
+
+hoy implemente en el codigo el patron GoF Decorator y empece a actualizar el boilerplate para que este acorde al repositorio
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+falta de tiempo
+
+---
+
+### Gabriela Melo Gualteros
+
+1. **¿Qué hice ayer?**
+
+
+
+2. **¿Qué voy a hacer hoy?**
+
+
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+
+---
+
+
+### Maria Alejandra Rodriguez
+
+1. **¿Qué hice ayer?** 
+
+
+
+2. **¿Qué voy a hacer hoy?** 
+
+
+
+3. **¿Tengo algún impedimento o bloqueo?** 
+
+
+---
+<img width="1280" height="832" alt="image" src="https://github.com/user-attachments/assets/b4d51d4a-0e5b-4d78-a6c9-d98136cc07e7" />
+
+---

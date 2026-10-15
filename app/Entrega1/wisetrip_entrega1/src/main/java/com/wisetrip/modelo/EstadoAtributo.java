@@ -2,7 +2,7 @@ package com.wisetrip.modelo;
 
 /**
  * Determina el resultado de un atributo automatico segun el conteo de Geoapify:
- * si es igual o supera el umbral cumple, si es cero no cumple, y si falla o no alcanza el umbral no se sabe.
+ * Alcanza el umbral: cumple; por debajo: no cumple; fallo: desconocido.
  */
 
 public enum EstadoAtributo {
@@ -23,9 +23,7 @@ public enum EstadoAtributo {
         if (conteo >= umbral) {
             return cumple;
         }
-        if (conteo == 0) {
-            return noCumple;
-        }
-        return noSabemos;
+        // La consulta respondio, pero no alcanza el minimo.
+        return noCumple;
     }
 }

@@ -81,9 +81,11 @@ public class RecomendacionControlador {
         List<Ciudad> ciudades = ciudadDAO.obtenerTodas();
 
         for (Ciudad ciudad : ciudades) {
+            // Evita consultas para destinos fuera del presupuesto.
+            if (recomendadorDestinos.excedePresupuesto(ciudad, preferencias)) continue;
             CiudadSemilla semilla = DatosCiudades.porNombreYPais(ciudad.getNombre(), ciudad.getPais());
             if (semilla != null) {
-                llenarAtributosCiudad.enriquecer(ciudad, semilla, atributosCuestionario);
+                llenarAtributosCiudad.enriquecer(ciudad, semilla, atributosCuestionario, importancias);
             }
         }
 
@@ -91,7 +93,7 @@ public class RecomendacionControlador {
         model.addAttribute("ciudadesPendientes", validacion.pendientes());
         List<ResultadoRecomendacion> resultados =
                 recomendadorDestinos.puntuarCiudadesValidas(validacion, preferencias);
-        SeleccionDestinos seleccion = selectorDestinos.seleccionarMejoresDestinos(resultados, true);
+        SeleccionDestinos seleccion = selectorDestinos.seleccionarMejoresDestinos(resultados);
         sesion.setAttribute("seleccionDestinos", seleccion);
         guardarPlanificacionSiHaceFalta(sesion, usuario, atributosCuestionario, presupuestoUsd, seleccion);
 
@@ -108,7 +110,7 @@ public class RecomendacionControlador {
         model.addAttribute("presupuestoUsd", presupuestoUsd);
 
         // Datos de la ficha de búsqueda
-        model.addAttribute("ubicacion", sesion.getAttribute("ubicacionOrigen"));
+        model.addAttribute("ubicacion", SesionViaje.de(sesion, usuario).getOrigen());
         model.addAttribute("presupuesto", sesion.getAttribute("presupuestoViaje"));
 
         return "recomendaciones";
