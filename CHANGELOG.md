@@ -4399,15 +4399,15 @@ todo lo veo bien , sin embargo estas semanas son criticas para todos los miembor
 
 1. **¿Qué hice ayer?**
 
-
+ayer con mi grupo hicimos el planning del esprint de esta semana asi como terminar el diagrama que falto del sprint pasado.
 
 2. **¿Qué voy a hacer hoy?**
 
-
+hoy implemente en el codigo el patron GoF Decorator y empece a actualizar el boilerplate para que este acorde al repositorio
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
-
+falta de tiempo
 
 ---
 
