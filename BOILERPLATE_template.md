@@ -65,8 +65,38 @@ FIS_2630_1204_G3/
 │   │       │   │   │   │   ├── Ubicacion.java
 │   │       │   │   │   │   └── Usuario.java
 │   │       │   │   │   ├── negocio/
-│   │       │   │   │   │   ├── CatalogoPreguntas.java
-│   │       │   │   │   │   └── DefPregunta.java
+│   │   │           │   ├── CatalogoPreguntas.java
+│   │   │           │   ├── CiudadNegocio.java
+│   │   │           │   ├── ControlCategoriaCreador.java
+│   │   │           │   ├── DefPregunta.java
+│   │   │           │   ├── GestorPreferencias.java
+│   │   │           │   ├── GestorPresupuesto.java
+│   │   │           │   ├── IAutenticacionUsuario.java
+│   │   │           │   ├── ICalculadoraReparto.java
+│   │   │           │   ├── ICargadorCiudades.java
+│   │   │           │   ├── IControlCategoriaGasto.java
+│   │   │           │   ├── IDistribuible.java
+│   │   │           │   ├── IFechasServicio.java
+│   │   │           │   ├── IGestionReparto.java
+│   │   │           │   ├── IGestorGastos.java
+│   │   │           │   ├── INotificador.java
+│   │   │           │   ├── IPerfilUsuario.java
+│   │   │           │   ├── IRegistroUsuario.java
+│   │   │           │   ├── IRepositorioGastos.java
+│   │   │           │   ├── IRepositorioPreferencias.java
+│   │   │           │   ├── IRepositorioPresupuestoViaje.java
+│   │   │           │   ├── IRepositorioRepartoPresupuesto.java
+│   │   │           │   ├── IRepositorioViajes.java
+│   │   │           │   ├── ISeleccionDestino.java
+│   │   │           │   ├── ITraductorPreferencias.java
+│   │   │           │   ├── IUbicable.java
+│   │   │           │   ├── IUsuarioRepositorio.java
+│   │   │           │   ├── IValidable.java
+│   │   │           │   ├── IValidadorReparto.java
+│   │   │           │   ├── IViajeServicio.java
+│   │   │           │   ├── ProovedorLugares.java
+│   │   │           │   ├── Recomendador.java
+│   │   │           │   └── SeleRecomendaciones.java
 │   │       │   │   │   ├── servicio/
 │   │       │   │   │   │   ├── CatalogoCiudades.java
 │   │       │   │   │   │   ├── EmailNotificationService.java
