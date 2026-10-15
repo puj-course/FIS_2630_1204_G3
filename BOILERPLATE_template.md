@@ -125,25 +125,25 @@ FIS_2630_1204_G3/
 │   │       │   │   │   │   ├── css/
 │   │       │   │   │   │   │   ├── img/
 │   │       │   │   │   │   │   │   └── banderas/
-│   │       │   │   │   │   │   │       ├── ARS.svg
-│   │       │   │   │   │   │   │       ├── BOB.svg
-│   │       │   │   │   │   │   │       ├── BRL.svg
-│   │       │   │   │   │   │   │       ├── BZD.svg
-│   │       │   │   │   │   │   │       ├── CLP.svg
-│   │       │   │   │   │   │   │       ├── COP.svg
-│   │       │   │   │   │   │   │       ├── CRC.svg
-│   │       │   │   │   │   │   │       ├── CUP.svg
-│   │       │   │   │   │   │   │       ├── DOP.svg
-│   │       │   │   │   │   │   │       ├── GTQ.svg
-│   │       │   │   │   │   │   │       ├── HNL.svg
-│   │       │   │   │   │   │   │       ├── MXN.svg
-│   │       │   │   │   │   │   │       ├── NIO.svg
-│   │       │   │   │   │   │   │       ├── PAB.svg
-│   │       │   │   │   │   │   │       ├── PEN.svg
-│   │       │   │   │   │   │   │       ├── PYG.svg
-│   │       │   │   │   │   │   │       ├── USD.svg
-│   │       │   │   │   │   │   │       ├── UYU.svg
-│   │       │   │   │   │   │   │       └── VES.svg
+│   │       │   │   │   │   │   │       ├── ARS.png
+│   │       │   │   │   │   │   │       ├── BOB.png
+│   │       │   │   │   │   │   │       ├── BRL.png
+│   │       │   │   │   │   │   │       ├── BZD.png
+│   │       │   │   │   │   │   │       ├── CLP.png
+│   │       │   │   │   │   │   │       ├── COP.png
+│   │       │   │   │   │   │   │       ├── CRC.png
+│   │       │   │   │   │   │   │       ├── CUP.png
+│   │       │   │   │   │   │   │       ├── DOP.png
+│   │       │   │   │   │   │   │       ├── GTQ.png
+│   │       │   │   │   │   │   │       ├── HNL.png
+│   │       │   │   │   │   │   │       ├── MXN.png
+│   │       │   │   │   │   │   │       ├── NIO.png
+│   │       │   │   │   │   │   │       ├── PAB.png
+│   │       │   │   │   │   │   │       ├── PEN.png
+│   │       │   │   │   │   │   │       ├── PYG.png
+│   │       │   │   │   │   │   │       ├── USD.png
+│   │       │   │   │   │   │   │       ├── UYU.png
+│   │       │   │   │   │   │   │       └── VES.png
 │   │       │   │   │   │   │   ├── estilos.css
 │   │       │   │   │   │   │   ├── fechas.css
 │   │       │   │   │   │   │   ├── landing.css
