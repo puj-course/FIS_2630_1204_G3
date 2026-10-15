@@ -227,7 +227,7 @@ FIS_2630_1204_G3/
 │   │       │   │   │   │       │   ├── tranquilo.png
 │   │       │   │   │   │       │   ├── urbano.png
 │   │       │   │   │   │       │   └── vida_nocturna.png
-│   │       │   │   │   │       └──Registro-exitoso
+│   │       │   │   │   │       └──Registro-exitoso/
 │   │       │   │   │   │       │   ├── chillan.jpg
 │   │       │   │   │   │       │   ├── guadalajara.jpg
 │   │       │   │   │   │       |   └── panama.jpg
@@ -291,6 +291,9 @@ FIS_2630_1204_G3/
 │   │   ├── CodigoInicialBoceto.jsx
 │   │   ├── DocumentacionTecnicaPaginaWeb.md
 │   │   └── mockupInicial.md
+│   ├── diagrama/
+│   ├── PatronesGOF/
+│   ├── pruebas/
 │   ├── user_guide/
 │   │   ├── .gitkeep
 │   │   └── README.md
