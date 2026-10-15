@@ -4441,4 +4441,6 @@ todo lo veo bien , sin embargo estas semanas son criticas para todos los miembor
 
 
 ---
+<img width="1280" height="832" alt="image" src="https://github.com/user-attachments/assets/b4d51d4a-0e5b-4d78-a6c9-d98136cc07e7" />
 
+---
