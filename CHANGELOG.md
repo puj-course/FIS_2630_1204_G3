@@ -4453,15 +4453,15 @@ no
 
 1. **¿Qué hice ayer?**
 
-
+Ayer hice junto a mis compañeros Clavijo y Valeria el diagrama de clases de dominio, además de algunas pruebas con el módulo de recomendaciones con el patrón proxy junto a las llamadas de api y revisar el repositorio
    
 2. **¿Qué voy a hacer hoy?**
 
-
+Hoy tuvimos la retroalimentación de la segunda entrega d e proyecto el cual pudimos ver nuestras fortalezas y cosas por mejorar, para que el proyecto salga bien
    
 3. **¿Tengo algún impedimento o bloqueo?**
 
-
+Si, no tengo tanto tiempo ya que es semana de parciales
 
 ---
 
