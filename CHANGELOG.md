@@ -4485,13 +4485,15 @@ no
 
 1. **¿Qué hice ayer?**
 
+ayer hicimos el diagrama de dominio que faltaba y corregimos unos diagramas, corregimos el codigo, lo estudie asi como con el patron gof seleccionado
 
 2. **¿Qué voy a hacer hoy?**
 
+hoy tuvimos la retroalimentacion de la segunda entrega del proyecto y corregi unos duplicados en el codigo, sabemos que teneos que mejorar algunos aspectos de la metodologia y mejorar el entendimiento del codigo en si
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
-
+falta de tiempo
 
 ---
 
