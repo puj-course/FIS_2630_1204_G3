@@ -4446,6 +4446,7 @@ no
 <img width="1280" height="832" alt="image" src="https://github.com/user-attachments/assets/b4d51d4a-0e5b-4d78-a6c9-d98136cc07e7" />
 
 ---
+
 ## Daily Sprint - 15/10/2026
 
 ### Isabella Posada
@@ -4498,15 +4499,18 @@ no
 
 1. **¿Qué hice ayer?**
 
+ayer documente lo que hice de patrones GOF, ademas de hacerle unas mejoras y estuve estudiando los diagramas y el codigo para la presustentacion que tuvimos hoy
+
 
 2. **¿Qué voy a hacer hoy?**
 
-
-
+Hoy estuvimos en la pre-sustentación del proyecto, escuchamos las recomendaciones de mejora que nos dio el profesor y en nuestro daily analizamos como vamos a abordar esto.
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
-no 
+Por el momento falta de tiempo por parciales y sobre todo parcial de estructura de datos
+
+
 
 ---
 
