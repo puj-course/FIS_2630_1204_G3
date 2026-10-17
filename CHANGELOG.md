@@ -4619,4 +4619,7 @@ Hoy tenía parcial de estructuras entonces me dediqué a eso
 No
 
 ---
+<img width="736" height="1600" alt="image" src="https://github.com/user-attachments/assets/ae6f4401-2738-4025-8b34-caac6453040a" />
+
+---
 
