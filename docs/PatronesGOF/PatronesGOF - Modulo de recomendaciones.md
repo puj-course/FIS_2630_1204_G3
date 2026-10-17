@@ -1,86 +1,63 @@
 ## Decorator — Añadir comportamientos dinámicos sin modificar la base
 
 **Problema de diseño:** 
-En el módulo de recomendación de `WiseTrip`, los servicios encargados de gestionar el presupuesto (`PresupuestoServicio`) y las preferencias del viajero (`PreferenciasServicio`) cumplen con sus funciones base de cálculo y validación. Sin embargo, el sistema requería incorporar **responsabilidades transversales u opcionales** (como calcular automáticamente un margen de imprevistos del 5% sobre el presupuesto en USD, o registrar trazas de auditoría en consola cuando el usuario procesa sus preferencias). 
+El diagrama de clases se realizó para representar la implementación del patrón de diseño Decorator en el módulo de presupuesto de WiseTrip. Este patrón permite agregar una funcionalidad adicional a una clase sin tener que modificar directamente su implementación original.
 
-Sin un patrón de diseño adecuado, enfrentaríamos problemas como:
-* **Violación del principio Open/Closed (OCP):** Modificar directamente las clases de servicio base cada vez que se necesite añadir una regla adicional o un cálculo extra.
-* **Clases infladas:** Mezclar la lógica de negocio principal con responsabilidades secundarias (como lógica de márgenes económicos o logs de auditoría).
-* **Rigidez estructural:** Imposibilidad de combinar o intercambiar estos comportamientos de forma dinámica en tiempo de ejecución.
+Problema identificado
 
-**Solución directa:** En lugar de modificar el código existente o crear una jerarquía rígida de subclases, aplicamos el **Patrón Decorator (GoF)**. Este patrón consiste en crear clases decoradoras que implementan la misma interfaz que el servicio base y lo "envuelven", permitiendo interceptar las llamadas para agregar comportamiento adicional de forma transparente antes o después de delegar el trabajo al servicio original.
+Se necesitaba agregar el cálculo de un margen del 5 % del presupuesto destinado a cubrir posibles imprevistos durante el viaje. El problema era incorporar esta nueva funcionalidad sin alterar la lógica que ya existía para validar el presupuesto, convertir monedas y formatear los valores.
+
+Solución implementada
+
+Para resolver este problema, se implementó la clase PresupuestoConMargenDecorador, que utiliza la interfaz GestorPresupuesto y delega las operaciones existentes al servicio base PresupuestoServicio. Además, incorpora el método calcularMargenImprevistos(), encargado de calcular el 5 % del presupuesto convertido a dólares.
+
+La clase PlanificacionControlador utiliza el decorador para obtener el margen calculado y enviarlo a la vista resumen, donde se muestra al usuario como un valor adicional dentro de la información del presupuesto.
+
+Justificación del patrón
+
+Se eligió el patrón Decorator porque permite extender las funcionalidades del módulo sin modificar el servicio original. De esta manera, se mantiene la separación de responsabilidades, se facilita el mantenimiento del código y se permite agregar nuevas funcionalidades en el futuro sin afectar las operaciones existentes.
+
+Resultado obtenido
+
+Con esta implementación, WiseTrip puede mostrar al usuario un margen adicional para imprevistos equivalente al 5 % de su presupuesto convertido a dólares. Así, se mejora la información que recibe el viajero al planificar sus gastos, conservando el funcionamiento original del módulo de presupuesto.
 
 ### 1: El contrato común (La Interfaz)
 
 `negocio/GestorPreferencias.java`
 
 ```java
-public interface GestorPreferencias {
-    List<CategoriaPreferencia> listarCategorias();
-    int totalPreguntas();
-    Map<String, String> validarPreferencias(Preferencias preferencias);
-    Map<String, Importancia> obtenerImportancias(Preferencias preferencias);
-    Map<String, Boolean> obtenerAtributosSeleccionados(Preferencias preferencias);
-    List<String> clavesAfirmativas(Preferencias preferencias);
-    Map<String, List<String>> resumenPorCategoria(Preferencias preferencias);
-    long contarAfirmativas(Preferencias preferencias);
+public interface GestorPresupuesto {
+    double convertirAUsd(Presupuesto presupuesto);
+
+    Map<String, String> validarPresupuesto(
+        Presupuesto presupuesto, String paisDestino
+    );
+
+    String formatear(double valor);
 }
 ```
 Nota: "Cualquier cosa que quiera gestionar preferencias debe cumplir con este contrato". El decorador y el servicio base implementarán esta misma interfaz.
 
 ```java
-@Service
-public class PreferenciasServicio implements GestorPreferencias {
-    // Contiene la lógica pura y original de negocio
-    @Override
-    public long contarAfirmativas(Preferencias preferencias) {
-        // Cuenta las preferencias seleccionadas por el usuario de forma limpia
-        return ...; 
+public double calcularMargenImprevistos(Presupuesto presupuesto) {
+    double presupuestoUsd = gestorBase.convertirAUsd(presupuesto);
+
+    if (presupuestoUsd <= 0) {
+        return 0;
     }
-    // ... implementación de los demás métodos
+
+    return Math.round((presupuestoUsd * 0.05) * 100.0) / 100.0;
 }
 ```
 
 ```java
-@Service
-@Primary
-public class PreferenciasConAuditoriaDecorador implements GestorPreferencias {
-
-    private final GestorPreferencias gestorBase;
-
-    public PreferenciasConAuditoriaDecorador(PreferenciasServicio gestorBase) {
-        this.gestorBase = gestorBase;
-    }
-
-    @Override
-    public long contarAfirmativas(Preferencias preferencias) {
-        // 1. Añade el comportamiento transversal (Auditoría)
-        long total = gestorBase.contarAfirmativas(preferencias);
-        System.out.println("[AUDITORÍA] El usuario seleccionó " + total + " preferencias afirmativas.");
-        
-        // 2. Retorna el resultado original obtenido del servicio base
-        return total;
-    }
-
-    @Override
-    public List<CategoriaPreferencia> listarCategorias() {
-        return gestorBase.listarCategorias(); // Delega directamente sin alterar
-    }
-    
-    // ... delegación de los demás métodos de la interfaz
-}
+double margen = decoradorMargen.calcularMargenImprevistos(presupuesto);
+model.addAttribute("margenImprevistos", margen);
 ```
+<img width="1359" height="697" alt="image" src="https://github.com/user-attachments/assets/8b858db1-f6be-4d42-8e07-33f952dbe36f" />
 
 ---
 
-<img width="1428" height="445" alt="image" src="https://github.com/user-attachments/assets/06443e0f-70a0-48b7-beca-a15445c288e5" />
 
 
-## Diseño - Diagrama UML 
 
-El diagrama muestra la estructura del patrón Decorator aplicado a los dos servicios del módulo de recomendación:
-
-* **Interfaces comunes (`GestorPresupuesto` y `GestorPreferencias`):** Definen el contrato o "molde" que deben cumplir de forma obligatoria tanto las clases de servicios originales como los decoradores.
-* **Componentes concretos (`PresupuestoServicio` y `PreferenciasServicio`):** Contienen la lógica de negocio pura y original de la aplicación.
-* **Decoradores concretos (`PresupuestoConMargenDecorador` y `PreferenciasConAuditoriaDecorador`):** Implementan la misma interfaz y mantienen una relación de agregación (`tiene a`) con su respectiva interfaz base (`gestorBase`). Esto les permite interceptar las llamadas para inyectar el comportamiento adicional (el margen del 5% y las trazas de auditoría) antes o después de delegar la ejecución al servicio original de manera transparente.
----
