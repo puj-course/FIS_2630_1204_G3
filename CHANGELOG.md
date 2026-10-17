@@ -4573,15 +4573,15 @@ no
 
 1. **¿Qué hice ayer?**
 
-
+tuvimos la primera sustentacin de la segunda entrega y revise los patrones gof
 
 2. **¿Qué voy a hacer hoy?**
 
-
+hoy no le pude dedicar tiempo al proyecto debido a que me encontraba en parcial de estructuras
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
-
+no
 
 ---
 
@@ -4608,14 +4608,15 @@ no
 
 1. **¿Qué hice ayer?** 
 
-
+Revisé los patrones gof y empecé a organizar el nuevo creacional que me toca hacer para tenerlo listo para la sustentación
 
 2. **¿Qué voy a hacer hoy?** 
 
-
+Hoy tenía parcial de estructuras entonces me dediqué a eso
 
 3. **¿Tengo algún impedimento o bloqueo?** 
 
+No
 
 ---
 
