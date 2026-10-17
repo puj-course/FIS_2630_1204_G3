@@ -4521,14 +4521,15 @@ Por el momento falta de tiempo por parciales y sobre todo parcial de estructura 
 
 1. **¿Qué hice ayer?** 
 
-
+conocer por completo todas las modificaciones que se le hizo al proyecto, revisar diagramas
 
 2. **¿Qué voy a hacer hoy?** 
 
-
+tuvimos la sustentacion dividimos tareas de quien va a arreglar o realizar que porque hoy se nos dio retroalimentación
 
 3. **¿Tengo algún impedimento o bloqueo?** 
 
+no
 
 ---
 
