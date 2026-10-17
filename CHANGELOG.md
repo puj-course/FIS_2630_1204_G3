@@ -4557,15 +4557,15 @@ no
 
 1. **¿Qué hice ayer?**
 
- 
+Se realizo la sustentacion se reviso que cambios tenemos que hacerle al repo y con respecto a los diagramas como podemos mejorarlo  
 
 2. **¿Qué voy a hacer hoy?**
 
-
+Hoy empece a revisar el repo y mirar como vamos a cambiar el retrospective y como los diagramas los vamos a manejar mejor por modulo. 
    
 3. **¿Tengo algún impedimento o bloqueo?**
 
-
+no
    
 ---
 
