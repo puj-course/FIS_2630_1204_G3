@@ -1,7 +1,7 @@
 ## Decorator — Añadir comportamientos dinámicos sin modificar la base
 
 **Problema de diseño:** 
-El diagrama de clases se realizó para representar la implementación del patrón de diseño Decorator en el módulo de presupuesto de WiseTrip. Este patrón permite agregar una funcionalidad adicional a una clase sin tener que modificar directamente su implementación original.
+El diagrama de clases se realizó para representar la implementación del patrón de diseño Decorator en el módulo de presupuesto de WiseTrip. Este patrón permite agregar una funcionalidad adicional a una clase sin tener que modificar directamente su implementación original
 
 Problema identificado
 
