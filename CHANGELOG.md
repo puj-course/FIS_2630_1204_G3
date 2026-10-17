@@ -4469,15 +4469,15 @@ Si, no tengo tanto tiempo ya que es semana de parciales
 
 1. **¿Qué hice ayer?**
 
- 
+ Se implemento el patro GOF factory method dentro del documento con su explicacion, se arreglo el changelog y se reviso que todas las HU y Dailys estuvieran correctos, revisamos diagramas
 
 2. **¿Qué voy a hacer hoy?**
 
-
+El dia de hoy tuvimos la sustentacion tenemos que arreglar todo lo del review y retrospective, los diagramas y poder explicar los gof
    
 3. **¿Tengo algún impedimento o bloqueo?**
 
-
+no
    
 ---
 
