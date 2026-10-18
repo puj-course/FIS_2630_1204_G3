@@ -1,4 +1,4 @@
-# Diagrama de Clases de Crear Cuenta 
+# Diagrama de Clases de Registro
 
 ### Clases
 
