@@ -4624,3 +4624,137 @@ No
 
 ---
 
+## Sprint Retrospective [18/10/2026]
+
+## Información de la Sesión
+
+* **Fecha de la Review:** (agrega la fecha)
+* **Sprint Goal:** Fortalecer la estabilidad, la organización y la calidad interna de WiseTrip (inicio de sesión, gestión de presupuesto y gastos, información del viaje y recomendaciones de destinos), y documentar y estructurar el código con diagramas y patrones de diseño GoF.
+
+---
+
+## Incremento Entregado
+
+> *Descripción detallada de las funcionalidades, componentes e integraciones completadas durante el Sprint.*
+
+Durante el Sprint se trabajó en hacer WiseTrip más estable, ordenado y fácil de mantener. Se avanzó en la gestión financiera del viaje, en la agilidad y confiabilidad de las recomendaciones, y en la calidad interna del proyecto mediante refactorización, documentación y patrones de diseño. El incremento desarrollado comprende los siguientes componentes:
+
+* **HU-96 – Inicio de sesión:** El inicio de sesión quedó más simple y estable, para evitar problemas en el ingreso.
+
+* **HU-97 – Representación gráfica de módulos:** Se representaron los módulos con diagramas, para facilitar las correcciones manteniendo el orden del programa.
+
+* **HU-98 – Gestión del presupuesto:** La gestión del presupuesto se adapta a las diferentes operaciones financieras, dando mayor control sobre los recursos disponibles durante el viaje.
+
+* **HU-99 – Registro de gastos:** El viajero puede registrar y gestionar sus gastos de forma organizada para mantener actualizado el control financiero del viaje.
+
+* **HU-100 – Información del viaje:** Las fechas, el presupuesto y el destino están organizados de forma clara dentro del sistema, para que no se mezclen ni se pierdan.
+
+* **HU-101 – Validaciones y sesión:** Las validaciones y el manejo de la sesión siguen funcionando correctamente después de la refactorización del código.
+
+* **HU-102 – Recomendaciones ágiles:** Las recomendaciones de destinos se entregan de forma ágil y sin esperas, sin que las consultas externas afecten la experiencia.
+
+* **HU-103 – Procesamiento de preferencias y destino:** La información de preferencias y destino se consulta y procesa correctamente, evitando errores por fallas internas del sistema.
+
+* **HU-104 – Boilerplate:** Se perfeccionó el boilerplate para que sea acorde al repositorio y permita ver con claridad cómo está organizado.
+
+* **HU-105 – Patrón Decorator:** Se implementó el patrón de diseño GoF Decorator en el Módulo 2, para agregar comportamientos adicionales al proceso de recomendación de destinos sin modificar las clases existentes.
+
+Adicionalmente, se hizo una refactorización de la documentación, con cambios en el manejo del token de Telegram, la inclusión de los diagramas y la documentación correcta, y la implementación de patrones GoF.
+
+---
+
+## Demostración
+
+> *Resumen de los puntos presentados durante la demo del producto.*
+
+- [x] Inicio de sesión simple y estable.
+- [x] Diagramas de los módulos del sistema.
+- [x] Gestión del presupuesto con diferentes operaciones financieras.
+- [x] Registro y gestión de gastos del viaje.
+- [x] Información del viaje (fechas, presupuesto, destino) organizada.
+- [x] Validaciones y sesión funcionando después de la refactorización.
+- [x] Recomendaciones de destinos ágiles, sin esperas.
+- [x] Procesamiento correcto de preferencias y destino.
+- [x] Boilerplate y organización del repositorio.
+- [x] Patrón Decorator en el Módulo 2.
+- [x] Documentación refactorizada, token de Telegram y patrones GoF.
+
+---
+
+## Conclusión y Próximos Pasos
+
+> *Comentarios de los stakeholders, feedback recibido y ajustes sugeridos para el Product Backlog.*
+
+* El Sprint se enfocó en la estabilidad, la organización y la calidad interna de WiseTrip, además de fortalecer la gestión financiera del viaje y la confiabilidad de las recomendaciones.
+
+* Se debe verificar que cada historia de usuario cumpla sus criterios de aceptación y su Definition of Done.
+
+* Se recomienda realizar pruebas del flujo completo, desde el registro hasta la recomendación final del destino.
+
+* Se debe probar que la refactorización no haya afectado las validaciones, la sesión ni las recomendaciones.
+
+* Se debe revisar que la documentación y los diagramas estén actualizados con el código.
+
+* Se deben corregir los errores que se encuentren durante las pruebas.
+
+* Los comentarios adicionales recibidos durante la Review deberán convertirse en nuevos elementos del Product Backlog o en ajustes para el siguiente Sprint.
+
+**Feedback de los stakeholders:** Pendiente de registrar con base en los comentarios recibidos durante la revisión del producto.
+
+## Sprint Review - 18/10/2026
+
+## Maria Alejandra Rodriguez
+
+1. **¿Qué logramos?**
+
+2. **¿Cómo trabajamos?**
+
+3. **¿Qué podríamos mejorar?**
+
+  
+---
+
+## Gabriela Melo Gualteros
+
+
+1. **¿Qué logramos?**
+
+2. **¿Cómo trabajamos?**
+  
+3. **¿Qué podríamos mejorar?**
+
+  
+---
+
+## Valeria Cortes Rendon
+
+1. **¿Qué logramos?**
+
+2. **¿Cómo trabajamos?*
+
+3. **¿Qué podríamos mejorar?**
+
+
+---
+
+## Isabella Posada
+
+1. **¿Qué logramos?**
+
+2. **¿Cómo trabajamos?**
+
+3. **¿Qué podríamos mejorar?**
+
+---
+
+## Santiago Clavijo
+
+
+1. **¿Qué logramos?**
+
+2. **¿Cómo trabajamos?**
+
+3. **¿Qué podríamos mejorar?**
+
+---
+
