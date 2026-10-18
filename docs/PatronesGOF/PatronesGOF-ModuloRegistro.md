@@ -9,7 +9,7 @@ Sin un patron la clase UsuarioServicio tendria que conocer la informacion de cad
 - Baja cohesion: la clase de Usuario tendria que armar las URLs de telegram y los mensajes SMTP 
 - Dificultad en pruebas: No se puede probar el registro sin correo ni Telegram reales.
 
-**Solucion directa:** if/else para para cada canal
+**Solucion directa:** if/else para para cada canal - Comportamental
 
 El Patrón Strategy consiste en programar contra una interfaz (INotificador) en lugar de contra clases concretas, permitiendo intercambiar algoritmos o implementaciones (como enviar por correo o por Telegram) en tiempo de ejecución sin alterar la lógica principal de la clase que los utiliza (UsuarioServicio).
 
@@ -115,7 +115,7 @@ Lo importante aqui es que `UsuarioServicio` nunca tiene que saber los detalles t
 
 ---
 
-## 2. Factory Method — El sistema arma el mensaje (y decide qué tipo de mensaje armar)
+## 2. Factory Method — El sistema arma el mensaje (y decide qué tipo de mensaje armar) - Creacional 
 
 El patrón **Factory Method** consiste en declarar un método de creación en una clase base (el **Creator**), sin que esa clase sepa qué objeto concreto va a crear. Son las **subclases** (los **ConcreteCreator**) las que, al heredar de esa clase base y sobreescribir el método, deciden qué objeto específico se construye. Así, el código cliente nunca escribe `new Notificacion(...)` directamente — en vez de eso, crea el "fabricante" correcto y le delega la construcción.
 
