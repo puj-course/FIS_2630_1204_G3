@@ -4541,15 +4541,17 @@ no
 
 1. **¿Qué hice ayer?**
 
+ayer tuvimos la retroalimentacion del profesor, la cual nos sirvio mucho para guiarnos en los errores que teniamos con respecto a la entrega 2.
+
 
    
 2. **¿Qué voy a hacer hoy?**
 
-
+la verdad hoy no he podido adelantar mucho, ya que hoy es el examen de estructuras, unicamente revise el patron de proxy un poco.
    
 3. **¿Tengo algún impedimento o bloqueo?**
 
-
+si, falta de tiempo por entregas, examenes y actividades extracurriculares la misma semana adicionales a la materia.
 
 ---
 
