@@ -4589,17 +4589,16 @@ no
 
 1. **¿Qué hice ayer?**
 
-
+Se realizo la pre sustentación y estuvimos revisando las correcciones que nos dio el profesor
 
 
 2. **¿Qué voy a hacer hoy?**
 
-
+Hoy revise que de esos cambios puedo ir empezando y que corresponde al milestone que trabaje
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
-
-
+No
 
 ---
 
