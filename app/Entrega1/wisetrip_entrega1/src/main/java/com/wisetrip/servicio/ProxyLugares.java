@@ -2,6 +2,7 @@ package com.wisetrip.servicio;
 
 import com.wisetrip.negocio.ProovedorLugares;
 import com.wisetrip.negocio.CacheRepositorio;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
@@ -18,16 +19,11 @@ public class ProxyLugares implements ProovedorLugares {
     private final ProovedorLugares servicioReal;
     private final CacheRepositorio cache;
 
-    //recibe un objeto de tipo ServicioGeoapify
-    public ProxyLugares(ProovedorLugares servicioReal,
+    // Recibe el proveedor real y el repositorio de cache.
+    public ProxyLugares(@Qualifier("servicioGeoapify") ProovedorLugares servicioReal,
                         CacheRepositorio cache) {
         this.servicioReal = servicioReal;
         this.cache = cache;
-    }
-
-    @Override
-    public double[] coordenadas(String ciudad, String pais) {
-        return servicioReal.coordenadas(ciudad, pais);
     }
 
     @Override
