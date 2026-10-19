@@ -32,9 +32,6 @@
 
 Usuario → `origen.jsp` → `ViajeControlador` → `ViajeServicio` (valida la ubicación) → el origen queda en el `Viaje` de la sesión. Después, Usuario → `preferencias.jsp` → `PlanificacionControlador` → `PreferenciasServicio`, y Usuario → `fechas.jsp` → `PlanificacionControlador` → `FechasServicio` → cadena de reglas. En todas las pantallas, el controlador pide a `UsuarioSesionFacade` el usuario y sus iniciales. Este módulo no usa base de datos: todo queda en la sesión HTTP hasta que otros módulos lo usen.
 
-## Imagen del diagrama de componentes
-
-(aquí va la imagen)
 
 ## Codigo del diagrama
 
