@@ -4716,12 +4716,18 @@ Adicionalmente, se hizo una refactorización de la documentación, con cambios e
 
 ## Gabriela Melo Gualteros
 
-
 1. **¿Qué logramos?**
 
+Esta semana trabajamos en los patrones GoF y pudimos completar los diagramas que nos faltaban para cada modulo, en mi caso lo del modulo 3
+
 2. **¿Cómo trabajamos?**
+
+Como equipo creo que trabajamos bien, estuvimo en contacto y pendientes de todo lo que tocaba hacer para lograr todo lo que se pedia en esta entrega
   
 3. **¿Qué podríamos mejorar?**
+
+Estudiar bien la arquitectura
+
 
   
 ---
