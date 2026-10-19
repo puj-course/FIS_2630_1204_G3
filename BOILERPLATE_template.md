@@ -44,6 +44,7 @@ FIS_2630_1204_G3/
 │   │       │   │   │   │   └── ViajeControlador.java
 │   │       │   │   │   ├── datos/
 │   │       │   │   │   │   ├── CiudadDAO.java
+│   │       │   │   │   │   ├── CacheRepositorioJdbc.java
 │   │       │   │   │   │   ├── CiudadSemilla.java
 │   │       │   │   │   │   ├── ConexionBD.java
 │   │       │   │   │   │   ├── DatosCiudades.java
@@ -78,6 +79,7 @@ FIS_2630_1204_G3/
 │   │   │           │   └── Viaje.java
 │   │       │   │   │   ├── negocio/
 │   │   │           │   ├── CatalogoPreguntas.java
+│   │   │           │   ├── CacheRepositorio.java
 │   │   │           │   ├── CiudadNegocio.java
 │   │   │           │   ├── ControlCategoriaCreador.java
 │   │   │           │   ├── DefPregunta.java
@@ -358,7 +360,7 @@ Contiene la aplicación principal del proyecto, incluyendo el entorno base y los
   - `mvnw` / `mvnw.cmd` / `.mvn/`: Maven Wrapper para compilar y ejecutar el proyecto sin requerir instalación global de Maven.
   - `src/main/java/com/wisetrip/`: Código fuente Java organizado bajo arquitectura MVC:
     - `controlador/`: Controladores web (autenticación, viajes, notificaciones, Telegram, recomendaciones).
-    - `datos/`: Capa de acceso a datos (DAOs, conexión JDBC y semillas iniciales de ciudades).
+    - `datos/`: Capa de acceso a datos (DAOs, conexión JDBC, semillas iniciales de ciudades e implementación JDBC del caché de consultas a Geoapify).
     - `modelo/`: Entidades de dominio (Usuario, Viaje, Presupuesto, Preferencias, Ubicaciones).
     - `negocio/`: Lógica de reglas de negocio y catálogo de preguntas de perfilamiento.
     - `servicio/`: Servicios de negocio, recomendador de destinos y clientes de APIs externas (Geoapify, Telegram, Correo).
