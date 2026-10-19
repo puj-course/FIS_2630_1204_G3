@@ -18,7 +18,9 @@ public class ProxyLugares implements ProovedorLugares {
     private final ProovedorLugares servicioReal;
     private final CacheRepositorio cache;
 
-    public ProxyLugares(ServicioGeoapify servicioReal, CacheRepositorio cache) {
+    //recibe un objeto de tipo ServicioGeoapify
+    public ProxyLugares(ProovedorLugares servicioReal,
+                        CacheRepositorio cache) {
         this.servicioReal = servicioReal;
         this.cache = cache;
     }
