@@ -13,4 +13,7 @@ public interface GestorPresupuesto {
 
     String nombreMoneda(String codigo);
     String formatear(double valor);
+    
+
+    
 }

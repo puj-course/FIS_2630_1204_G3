@@ -3242,18 +3242,70 @@ si aun tenemos algunos problemas con la nube para que funcione como la pagina we
 
 
 ---
+## Sprint Review [27/09/2026]
 
-# Sprint Review y Sprint Retrospective - 27/09/2026
+## Información de la Sesión
+
+* **Fecha de la Review: [27/09/2026]
+* **Sprint Goal:** Mejorar la planificación de viajes en WiseTrip mediante notificaciones, recomendaciones personalizadas, distribución del presupuesto y correcciones en el cuestionario y la plataforma.
+
+---
+
+## Incremento Entregado
+
+> *Descripción detallada de las funcionalidades, componentes e integraciones completadas durante el Sprint.*
+
+Durante este Sprint se trabajó en mejorar el flujo de planificación de WiseTrip, permitiendo al viajero elegir su destino, organizar su presupuesto y recibir información relevante sobre su viaje. También se realizaron correcciones para mejorar la estabilidad y la experiencia de uso.
+
+* **HU-66 y HU-67–* **Notificaciones por correo y Telegram:** envío de alertas sobre eventos importantes del viaje mediante ambos canales. 
+
+* **HU-68 –* **Selección de destinos:** posibilidad de elegir uno de los tres destinos recomendados y continuar con la planificación.
+
+* **HU-69 –* **Distribución del presupuesto:** asignación del presupuesto entre hospedaje, alimentación, transporte, actividades y otros gastos.
+
+* **HU-70 y HU-71–* **Cuestionario de preferencias:** mejoras en la carga de imágenes y en la claridad de las preguntas.
+
+* **HU-72 y HU-73–* **Acceso y recomendaciones:** correcciones en el acceso a la plataforma y ajustes para recomendar destinos acordes con los intereses del viajero.
+
+* **HU-74 y HU-75–* **Banderas de monedas:** correcciones para mostrar la bandera correspondiente a la moneda seleccionada, tanto en el presupuesto como en el resumen final.
+ 
+
+---
+
+## Demostración
+
+> *Resumen de los puntos presentados durante la demo del producto.*
+ 
+- [x] Envío de notificaciones por correo electrónico y Telegram.
+- [x] Selección de uno de los tres destinos recomendados.
+- [x] Distribución del presupuesto entre las categorías del viaje.
+- [x] Carga de imágenes y visualización de las preguntas del cuestionario.
+- [x] Acceso a la plataforma y generación de recomendaciones según las preferencias.
+- [x] Visualización de las banderas en el selector de moneda y el resumen final.
+
+
+---
+
+## Conclusión y Próximos Pasos
+
+> *Comentarios de los stakeholders, feedback recibido y ajustes sugeridos para el Product Backlog.*
+
+* Verificar los criterios de aceptación y la Definition of Done de cada historia.
+* Probar el flujo completo de planificación, desde el acceso hasta la selección del destino.
+* Validar el envío de notificaciones y el manejo de errores.
+* Comprobar las recomendaciones con diferentes combinaciones de preferencias.
+* Revisar la carga de imágenes y banderas en distintos navegadores.
+* Actualizar el Product Backlog según los resultados de las pruebas.
+
+**Feedback de los stakeholders:** Pendiente de registrar con base en los comentarios recibidos durante la revisión del producto.
+
+# Sprint Retrospective - 27/09/2026
 
 ## Maria Alejandra Rodriguez
-
-### Sprint Review
 
 1. **¿Qué logramos?**
 
 Logramos completar algunas otras pantallas ya dejándolas listas, además se agregaron nuevas funciones a la página, realmente nos hace falta muy poco para acabarla sin embargo en el próximo sprint tenemos que empezar a mirar lo de la entrega Gof en el código
-
-### Sprint Retrospective
 
 2. **¿Cómo trabajamos?**
 
@@ -3263,23 +3315,17 @@ Siento que esta semana todos trabajamos muy bien, todos realizaron la tarea de f
 
 En lo personal tengo que mejorar mi atención, a veces hago commits en main que tenían que ir en mi rama, esta semana por ejemplo tuve un error metiendo un correo que no pertenecía al proyecto y hice commits ahí sin notarlo y luego tuve que cambiar los commits que había hecho a la otra cuenta que si estoy usando para el proyecto y eso causó muchos conflictos en mi rama y a la hora de hacer merge hacía develop y hacía main. La herramienta aún me confunde mucho, pero estoy trabajando en entenderla cada vez más.
 
-
 ---
 
 ## Gabriela Melo Gualteros
-
-### Sprint Review
 
 1. **¿Qué logramos?**
 
 Logramos tener la pagina como la queriamos tener, en terminos de diseño, se logro solucionar varios errores que estaban impidiendo que s emostraron las imagenes en las pantallas principalmente. En mi caso pude subir profin las imagenes a la pantalla de Preguntas de Preferencia aunque siguen faltando algunas, pero ya se corrigio la ruta para que aparezcan.
 
-### Sprint Retrospective
-
 2. **¿Cómo trabajamos?**
 
 Esta semana se vio el trabajo en grupo, se vio que el Sprint Retrospective anterior valio la pena hablar y cmunicarnos bien como equipo. Esto ayudo a que esta semana se viera de verdad el progreso en el proyecto.
-
 
 3. **¿Qué podríamos mejorar?**
 
@@ -3289,13 +3335,9 @@ En mi parte a veces me confundo y termino trabajando directamente en el develop 
 
 ## Valeria Cortes Rendon
 
-### Sprint Review
-
 1. **¿Qué logramos?**
 
 Se realizo la implementacion de los correos y telegram, seguimos mejorando tanto en backend y en frontend. En las proximas entregas esperamos empezar a integrar las apis restantes. Sin embargo nos toca verificar en el flujo y como las usaremos.
-
-### Sprint Retrospective
 
 2. **¿Cómo trabajamos?**
 
@@ -3309,13 +3351,9 @@ Podria mejorar en colocar una hora especifica para realizar las reuniones y que 
 
 ## Isabella Posada
 
-### Sprint Review
-
 1. **¿Qué logramos?**
 
 Logramos trabajar nuevamente como grupo, siento que cada vez va afinándose mas el diseño de la pagina que le da un toque verdaderamente único y creativo! sin embargo no hay que dejar atrás el como funciona, siento que será clave en las próximas semanas ya que nos falta trabajar un poco mas en el back
-
-### Sprint Retrospective
 
 2. **¿Cómo trabajamos?**
 
@@ -3329,13 +3367,9 @@ la verdad, mi única observación es aprovechar un poco mas los dailys, estamos 
 
 ## Santiago Clavijo
 
-### Sprint Review
-
 1. **¿Qué logramos?**
 
 en terminos de diseño seguimos mejorando, ya se ve mas como una pagina verdadera de viajes, acabamos nuestras issues, y resolver problemas de la pagina
-
-### Sprint Retrospective
 
 2. **¿Cómo trabajamos?**
 
@@ -4361,6 +4395,431 @@ todo lo veo bien , sin embargo estas semanas son criticas para todos los miembor
 <img width="959" height="470" alt="image" src="https://github.com/user-attachments/assets/61f08946-71be-485e-9707-88fb8a6a77ee" />
 
 ---
+## Daily Sprint - 14/10/2026
+
+### Isabella Posada
+
+1. **¿Qué hice ayer?**
+
+ayer estuvimos haciendo el planning especialmente pensado en la rubrica
+   
+2. **¿Qué voy a hacer hoy?**
+
+hoy hice lo del patron proxy en el modulo de recomendaciones del proyecto
+   
+3. **¿Tengo algún impedimento o bloqueo?**
+
+casi no he tenido tiempo por otras materias
+
+---
+
+### Valeria Cortes Rendon
+
+1. **¿Qué hice ayer?**
+
+ 
+
+2. **¿Qué voy a hacer hoy?**
+
+
+   
+3. **¿Tengo algún impedimento o bloqueo?**
+
+
+   
+---
+
+### Santiago Clavijo
+
+1. **¿Qué hice ayer?**
+
+ayer con mi grupo hicimos el planning del esprint de esta semana asi como terminar el diagrama que falto del sprint pasado.
+
+2. **¿Qué voy a hacer hoy?**
+
+hoy implemente en el codigo el patron GoF Decorator y empece a actualizar el boilerplate para que este acorde al repositorio
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+falta de tiempo
+
+---
+
+### Gabriela Melo Gualteros
+
+1. **¿Qué hice ayer?**
+
+Ayer estuvimos en Sprint planning con el equipo y estuve trabajando en implementar los patrones GOF para el taller 5
+
+2. **¿Qué voy a hacer hoy?**
+
+hoy documente lo que hice de patrones GOF, ademas de hacerle unas mejoras y estuve estudiando los diagramas y el codigo para la presustentacion de mañana
+
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+no 
+
+---
+
+
+### Maria Alejandra Rodriguez
+
+1. **¿Qué hice ayer?** 
+
+
+
+2. **¿Qué voy a hacer hoy?** 
+
+
+
+3. **¿Tengo algún impedimento o bloqueo?** 
+
+
+---
+<img width="1280" height="832" alt="image" src="https://github.com/user-attachments/assets/b4d51d4a-0e5b-4d78-a6c9-d98136cc07e7" />
+
+---
+
+## Daily Sprint - 15/10/2026
+
+### Isabella Posada
+
+1. **¿Qué hice ayer?**
+
+Ayer hice junto a mis compañeros Clavijo y Valeria el diagrama de clases de dominio, además de algunas pruebas con el módulo de recomendaciones con el patrón proxy junto a las llamadas de api y revisar el repositorio
+   
+2. **¿Qué voy a hacer hoy?**
+
+Hoy tuvimos la retroalimentación de la segunda entrega d e proyecto el cual pudimos ver nuestras fortalezas y cosas por mejorar, para que el proyecto salga bien
+   
+3. **¿Tengo algún impedimento o bloqueo?**
+
+Si, no tengo tanto tiempo ya que es semana de parciales
+
+---
+
+### Valeria Cortes Rendon
+
+1. **¿Qué hice ayer?**
+
+ Se implemento el patro GOF factory method dentro del documento con su explicacion, se arreglo el changelog y se reviso que todas las HU y Dailys estuvieran correctos, revisamos diagramas
+
+2. **¿Qué voy a hacer hoy?**
+
+El dia de hoy tuvimos la sustentacion tenemos que arreglar todo lo del review y retrospective, los diagramas y poder explicar los gof
+   
+3. **¿Tengo algún impedimento o bloqueo?**
+
+no
+   
+---
+
+### Santiago Clavijo
+
+1. **¿Qué hice ayer?**
+
+ayer hicimos el diagrama de dominio que faltaba y corregimos unos diagramas, corregimos el codigo, lo estudie asi como con el patron gof seleccionado
+
+2. **¿Qué voy a hacer hoy?**
+
+hoy tuvimos la retroalimentacion de la segunda entrega del proyecto y corregi unos duplicados en el codigo, sabemos que teneos que mejorar algunos aspectos de la metodologia y mejorar el entendimiento del codigo en si
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+falta de tiempo
+
+---
+
+### Gabriela Melo Gualteros
+
+1. **¿Qué hice ayer?**
+
+ayer documente lo que hice de patrones GOF, ademas de hacerle unas mejoras y estuve estudiando los diagramas y el codigo para la presustentacion que tuvimos hoy
+
+
+2. **¿Qué voy a hacer hoy?**
+
+Hoy estuvimos en la pre-sustentación del proyecto, escuchamos las recomendaciones de mejora que nos dio el profesor y en nuestro daily analizamos como vamos a abordar esto.
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+Por el momento falta de tiempo por parciales y sobre todo parcial de estructura de datos
+
+
+
+---
+
+
+### Maria Alejandra Rodriguez
+
+1. **¿Qué hice ayer?** 
+
+conocer por completo todas las modificaciones que se le hizo al proyecto, revisar diagramas
+
+2. **¿Qué voy a hacer hoy?** 
+
+tuvimos la sustentacion dividimos tareas de quien va a arreglar o realizar que porque hoy se nos dio retroalimentación
+
+3. **¿Tengo algún impedimento o bloqueo?** 
+
+no
+
+---
+
+
+---
+## Daily Sprint - 16/10/2026
+
+### Isabella Posada
+
+1. **¿Qué hice ayer?**
+
+ayer tuvimos la retroalimentacion del profesor, la cual nos sirvio mucho para guiarnos en los errores que teniamos con respecto a la entrega 2.
+
+
+   
+2. **¿Qué voy a hacer hoy?**
+
+la verdad hoy no he podido adelantar mucho, ya que hoy es el examen de estructuras, unicamente revise el patron de proxy un poco.
+   
+3. **¿Tengo algún impedimento o bloqueo?**
+
+si, falta de tiempo por entregas, examenes y actividades extracurriculares la misma semana adicionales a la materia.
+
+---
+
+### Valeria Cortes Rendon
+
+1. **¿Qué hice ayer?**
+
+Se realizo la sustentacion se reviso que cambios tenemos que hacerle al repo y con respecto a los diagramas como podemos mejorarlo  
+
+2. **¿Qué voy a hacer hoy?**
+
+Hoy empece a revisar el repo y mirar como vamos a cambiar el retrospective y como los diagramas los vamos a manejar mejor por modulo. 
+   
+3. **¿Tengo algún impedimento o bloqueo?**
+
+no
+   
+---
+
+### Santiago Clavijo
+
+1. **¿Qué hice ayer?**
+
+tuvimos la primera sustentacin de la segunda entrega y revise los patrones gof
+
+2. **¿Qué voy a hacer hoy?**
+
+hoy no le pude dedicar tiempo al proyecto debido a que me encontraba en parcial de estructuras
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+no
+
+---
+
+### Gabriela Melo Gualteros
+
+1. **¿Qué hice ayer?**
+
+Se realizo la pre sustentación y estuvimos revisando las correcciones que nos dio el profesor
+
+
+2. **¿Qué voy a hacer hoy?**
+
+Hoy revise que de esos cambios puedo ir empezando y que corresponde al milestone que trabaje
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+No
+
+---
+
+
+### Maria Alejandra Rodriguez
+
+1. **¿Qué hice ayer?** 
+
+Revisé los patrones gof y empecé a organizar el nuevo creacional que me toca hacer para tenerlo listo para la sustentación
+
+2. **¿Qué voy a hacer hoy?** 
+
+Hoy tenía parcial de estructuras entonces me dediqué a eso
+
+3. **¿Tengo algún impedimento o bloqueo?** 
+
+No
+
+---
+<img width="736" height="1600" alt="image" src="https://github.com/user-attachments/assets/ae6f4401-2738-4025-8b34-caac6453040a" />
+
+---
+
+## Sprint Review [18/10/2026]
+
+## Información de la Sesión
+
+* **Fecha de la Review:** (agrega la fecha)
+* **Sprint Goal:** Fortalecer la estabilidad, la organización y la calidad interna de WiseTrip (inicio de sesión, gestión de presupuesto y gastos, información del viaje y recomendaciones de destinos), y documentar y estructurar el código con diagramas y patrones de diseño GoF.
+
+---
+
+## Incremento Entregado
+
+> *Descripción detallada de las funcionalidades, componentes e integraciones completadas durante el Sprint.*
+
+Durante el Sprint se trabajó en hacer WiseTrip más estable, ordenado y fácil de mantener. Se avanzó en la gestión financiera del viaje, en la agilidad y confiabilidad de las recomendaciones, y en la calidad interna del proyecto mediante refactorización, documentación y patrones de diseño. El incremento desarrollado comprende los siguientes componentes:
+
+* **HU-96 – Inicio de sesión:** El inicio de sesión quedó más simple y estable, para evitar problemas en el ingreso.
+
+* **HU-97 – Representación gráfica de módulos:** Se representaron los módulos con diagramas, para facilitar las correcciones manteniendo el orden del programa.
+
+* **HU-98 – Gestión del presupuesto:** La gestión del presupuesto se adapta a las diferentes operaciones financieras, dando mayor control sobre los recursos disponibles durante el viaje.
+
+* **HU-99 – Registro de gastos:** El viajero puede registrar y gestionar sus gastos de forma organizada para mantener actualizado el control financiero del viaje.
+
+* **HU-100 – Información del viaje:** Las fechas, el presupuesto y el destino están organizados de forma clara dentro del sistema, para que no se mezclen ni se pierdan.
+
+* **HU-101 – Validaciones y sesión:** Las validaciones y el manejo de la sesión siguen funcionando correctamente después de la refactorización del código.
+
+* **HU-102 – Recomendaciones ágiles:** Las recomendaciones de destinos se entregan de forma ágil y sin esperas, sin que las consultas externas afecten la experiencia.
+
+* **HU-103 – Procesamiento de preferencias y destino:** La información de preferencias y destino se consulta y procesa correctamente, evitando errores por fallas internas del sistema.
+
+* **HU-104 – Boilerplate:** Se perfeccionó el boilerplate para que sea acorde al repositorio y permita ver con claridad cómo está organizado.
+
+* **HU-105 – Patrón Decorator:** Se implementó el patrón de diseño GoF Decorator en el Módulo 2, para agregar comportamientos adicionales al proceso de recomendación de destinos sin modificar las clases existentes.
+
+Adicionalmente, se hizo una refactorización de la documentación, con cambios en el manejo del token de Telegram, la inclusión de los diagramas y la documentación correcta, y la implementación de patrones GoF.
+
+---
+
+## Demostración
+
+> *Resumen de los puntos presentados durante la demo del producto.*
+ 
+- [x] Inicio de sesión simple y estable.
+- [x] Diagramas de los módulos del sistema.
+- [x] Gestión del presupuesto con diferentes operaciones financieras.
+- [x] Registro y gestión de gastos del viaje.
+- [x] Información del viaje (fechas, presupuesto, destino) organizada.
+- [x] Validaciones y sesión funcionando después de la refactorización.
+- [x] Recomendaciones de destinos ágiles, sin esperas.
+- [x] Procesamiento correcto de preferencias y destino.
+- [x] Boilerplate y organización del repositorio.
+- [x] Patrón Decorator en el Módulo 2.
+- [x] Documentación refactorizada, token de Telegram y patrones GoF.
+
+---
+
+## Conclusión y Próximos Pasos
+
+> *Comentarios de los stakeholders, feedback recibido y ajustes sugeridos para el Product Backlog.*
+
+* El Sprint se enfocó en la estabilidad, la organización y la calidad interna de WiseTrip, además de fortalecer la gestión financiera del viaje y la confiabilidad de las recomendaciones.
+
+* Se debe verificar que cada historia de usuario cumpla sus criterios de aceptación y su Definition of Done.
+
+* Se recomienda realizar pruebas del flujo completo, desde el registro hasta la recomendación final del destino.
+
+* Se debe probar que la refactorización no haya afectado las validaciones, la sesión ni las recomendaciones.
+
+* Se debe revisar que la documentación y los diagramas estén actualizados con el código.
+
+* Se deben corregir los errores que se encuentren durante las pruebas.
+
+* Los comentarios adicionales recibidos durante la Review deberán convertirse en nuevos elementos del Product Backlog o en ajustes para el siguiente Sprint.
+
+**Feedback de los stakeholders:** Pendiente de registrar con base en los comentarios recibidos durante la revisión del producto.
+
+## Sprint Retrospective - 18/10/2026
+
+## Maria Alejandra Rodriguez
+
+1. **¿Qué logramos?**
+
+Logramos implementar diferentes patrones GOF, conocimos muchisimo más sobre ellos para lograr implementarlos, además de la corrección de las diferentes funciones del la logica en general del funcionamiento de la pagina web, respecto a la sección de preferencias y recomendaciones que se busca la manera en la que podamos aconsejar de manera correcta al cliente dependiendo sus gustos y lo que busca para su viaje
+
+2. **¿Cómo trabajamos?**
+
+Hemos trabajado muy bien y muy duro para poder lograr un producto de la pagina web muy bien hecho, todos hemos puesto de nuestra parte y esfuerzo siento a las habilidades de mis compañeros.
+
+3. **¿Qué podríamos mejorar?**
+
+La comunicación frente a la toma de decisiones no es muy clara o simplemente como equipo cada uno tiene su opinión, pero la mayoria de veces solemos respetar las diferentes tareas y especialidades que tiene cada uno en el equipo. Necesitamos una mejor comprensión por separado de lo que estamos tratando de representar cada uno, para un mejor dominio de lo que viene siendo toda la aplicación de wisetrip
+  
+---
+
+## Gabriela Melo Gualteros
+
+1. **¿Qué logramos?**
+
+Esta semana trabajamos en los patrones GoF y pudimos completar los diagramas que nos faltaban para cada modulo, en mi caso lo del modulo 3
+
+2. **¿Cómo trabajamos?**
+
+Como equipo creo que trabajamos bien, estuvimo en contacto y pendientes de todo lo que tocaba hacer para lograr todo lo que se pedia en esta entrega
+  
+3. **¿Qué podríamos mejorar?**
+
+Estudiar bien la arquitectura
+
+
+  
+---
+
+## Valeria Cortes Rendon
+
+1. **¿Qué logramos?**
+
+Se logro poner los Patrones GOF correctamente en el codigo, ademas que diagramamos por modulos correctamente se busca una mejora en los review del sprint de ahora en adelante
+
+2. **¿Cómo trabajamos?*
+
+Trabajaos bien se ha mejorado mucho el trabajo en equipo, se han realizado correctamente las reuniones de la metodologia y se han cumplido los objetivos hasta ahora
+
+3. **¿Qué podríamos mejorar?**
+
+Aprender mejor el funcionamiento de las partes de nuestros compañeros
+
+
+---
+
+## Isabella Posada
+
+1. **¿Qué logramos?**
+
+Como equipo, logramos implementar todos los patrones de diseño GoF que nos propusimos para el Sprint. A nivel individual, implementé el patrón Proxy para gestionar los request realizadas a la API incluyendo su respectiva interfaz, clase de implementación y diagrama.
+
+2. **¿Cómo trabajamos?**
+
+Aunque tuvimos un tiempo limitado y cada integrante debía responder por diferentes entregas académicas, logramos organizar el trabajo y conseguir que las funcionalidades operaran correctamente. Pero, se presentaron algunos problemas de coordinación, ya que dos compañeras implementaron el mismo patrón y algunos diagramas resultaron muy extensos.
+
+3. **¿Qué podríamos mejorar?**
+
+Debemos fortalecer la comunicación y coordinación del equipo para evitar la duplicación de tareas y distribuir mejor las responsabilidades. También es importante trabajar de manera más colaborativa y realizar revisiones frecuentes del código y de la integración entre componentes.
+a nivel individual, debo hacer un seguimiento más estricto con el código, ya que no había identificado que una de las clases principales de la lógica de recomendaciones se encontraba desconectada y se quito su implementación.
+por falta de tiempo, también quedó pendiente modificar el patrón Proxy para que gestione los datos mediante una tabla en la base de datos, en lugar de utilizar memoria caché. Esta mejora será implementada durante la próxima semana para la entrega definitiva de la segunda versión del proyecto.
+
+---
+
+## Santiago Clavijo
+
+
+1. **¿Qué logramos?**
+
+esta semana logramos acabar todas nuestras HUs correspondientes, y prepararnos para la sustentacion del martes, por mi parte pude hacer mi patron gof, y organice el boilerplate del repositorio
+
+2. **¿Cómo trabajamos?**
+
+como equipo trabajamos bien, todos estamos compromentidos con el proyecto, y seguimos la metodologia bien, exceptuando los reviews que lo teniamos mal
+
+3. **¿Qué podríamos mejorar?**
+
+falta de tiempo
 
 ---
 

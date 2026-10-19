@@ -195,11 +195,21 @@
                                             onerror="this.style.display='none'">
                                     </c:if>
                                 </strong>
-                                <span class="rs-pase-detalle">
-                                    ${nombreMoneda}
-                                    <c:if test="${not empty usdFormateado}"> · ≈ USD ${usdFormateado}</c:if>
-                                </span>
-                            </div>
+                            <span class="rs-pase-detalle">
+                                ${nombreMoneda}
+                                <c:if test="${not empty usdFormateado}">
+                                    · ≈ USD ${usdFormateado}
+                                </c:if>
+                            </span>
+
+                            <span class="rs-pase-detalle">
+                                Margen para imprevistos (5 %):
+                                <fmt:formatNumber
+                                    value="${margenImprevistos}"
+                                    maxFractionDigits="2"
+                                    minFractionDigits="2"/>
+                                USD
+                            </span>
                             <div>
                                 <span class="rs-pase-rotulo">Por día</span>
                                 <strong class="rs-fecha">

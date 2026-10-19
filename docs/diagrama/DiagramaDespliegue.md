@@ -1,3 +1,6 @@
+## Diagrama despliegue 
+
+```plantuml
 @startuml WiseTrip_Despliegue_Completo
 left to right direction
 skinparam backgroundColor white
@@ -160,4 +163,109 @@ EmailSvc ..> SMTP : envío de correos
 TelegramSvc ..> BotAPI : envío de notificaciones
 
 @enduml
+```
+
 <img width="3232" height="3603" alt="Diagrama despliegue_" src="https://github.com/user-attachments/assets/eb0867c0-285d-43fb-8a29-fbe116497848" />
+
+
+## Despliegue simplificado 
+```plantuml
+
+@startuml despliegue_wisetrip
+title WiseTrip - Diagrama de despliegue
+
+skinparam shadowing false
+skinparam defaultFontSize 12
+skinparam nodesep 30
+skinparam ranksep 70
+
+actor "Usuario" as U
+
+node "Dispositivo del usuario\n<<PC o celular>>" as DISP {
+  node "Navegador web\n<<Chrome / Edge / Safari>>" as NAV {
+    artifact "Paginas HTML\n(generadas desde los JSP)" as HTML
+    artifact "Recursos estaticos\nestilos.css, login.css, registro.css\norigen-mapa.js, plan-reparto.js, viaje.js" as STAT
+  }
+  node "App Telegram" as TGAPP
+  node "Cliente de correo" as MAILAPP
+}
+
+node "Servidor de aplicacion\n<<maquina del equipo o servidor>>" as SRV {
+  node "JVM\n<<Java 25 segun pom.xml>>" as JVM {
+    node "Tomcat embebido\n<<Spring Boot 4.1.1 - puerto 8090>>" as TOMCAT {
+      artifact "wisetrip-0.0.1-SNAPSHOT.war\n<<empaquetado Maven>>" as WAR
+      artifact "application.properties\n(BD, SMTP, token, API key)" as PROPS
+      rectangle "Aplicacion Spring Boot (paquete com.wisetrip)" as APP {
+        component "Spring MVC\nDispatcherServlet" as MVC
+        component "Controladores\nAuthControlador, TelegramControlador,\nViajeControlador, PlanControlador..." as CTRL
+        component "Vistas JSP + JSTL\n/WEB-INF/vistas/*.jsp" as JSP
+        component "Servicios\nUsuarioServicio, ViajeServicio,\nGastosServicio, RecomendadorDestinos..." as SERV
+        component "Acceso a datos JDBC\nUsuarioDAO, CiudadDAO,\nViajeDAO, PreferenciaDAO" as DAO
+        component "NotificadorCorreo\nJavaMailSender" as NMAIL
+        component "NotificadorTelegram\njava.net.http" as NTG
+        component "ServicioGeoapify\njava.net.http + Gson" as NGEO
+      }
+    }
+  }
+}
+
+cloud "Neon\nPostgreSQL gestionado\nAWS us-east-2" as NEON
+database "neondb\ntablas usuario, ciudad, ..." as DB
+cloud "Gmail SMTP\nsmtp.gmail.com" as GMAIL
+cloud "Telegram Bot API\napi.telegram.org" as TG
+cloud "Geoapify\napi.geoapify.com" as GEO
+cloud "Google Fonts\nfonts.googleapis.com" as FONTS
+
+node "Contenedorizacion\n(prevista, sin implementar)" as DOCKER {
+  artifact "Dockerfile (vacio)" as DF
+  artifact "docker-compose.yml (vacio)" as DC
+  artifact "scripts/deploy.sh (vacio)" as DEP
+  artifact "conf/config.yaml (vacio)" as CONF
+}
+
+U -down-> NAV : usa
+NAV -down-> TOMCAT : HTTP 8090 GET y POST
+NAV -right-> FONTS : HTTPS 443 tipografias
+
+WAR ..> APP : contiene
+PROPS ..> APP : configuracion de\nBD, SMTP, bot y API key
+
+MVC --> CTRL : enruta
+CTRL --> SERV : llama
+CTRL --> JSP : devuelve vista
+SERV --> DAO : consulta y guarda
+SERV --> NMAIL : bienvenida
+SERV --> NTG : aviso de login
+SERV --> NGEO : ciudades y lugares
+
+DAO -down-> NEON : JDBC TLS 5432
+NEON --> DB : contiene
+NMAIL -down-> GMAIL : SMTP STARTTLS 587
+NTG -down-> TG : HTTPS 443 sendMessage
+NGEO -down-> GEO : HTTPS 443 geocode y places
+
+GMAIL ..> MAILAPP : correo de bienvenida
+TG ..> TGAPP : aviso de inicio de sesion
+
+DOCKER .right.> SRV : previsto
+
+note bottom of SRV
+  Hoy se ejecuta con ./mvnw spring-boot:run
+  y se abre en http://localhost:8090.
+  Tambien puede desplegarse como WAR en un
+  Tomcat externo gracias a ServletInitializer.
+end note
+
+note bottom of DOCKER
+  Los 4 archivos existen pero estan en blanco.
+end note
+
+note bottom of DB
+  Una sola BD en la nube,
+  compartida por todo el equipo.
+end note
+
+@enduml
+```
+
+<img width="2173" height="1804" alt="despliegue_wisetrip (1)" src="https://github.com/user-attachments/assets/06ccbd54-e3f3-4f2f-af73-fec65f05670f" />

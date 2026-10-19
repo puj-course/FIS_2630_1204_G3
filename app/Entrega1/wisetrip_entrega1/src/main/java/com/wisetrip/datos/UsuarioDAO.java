@@ -82,20 +82,20 @@ public class UsuarioDAO implements IUsuarioRepositorio {
                 return null;
             }
 
-                Usuario usuario = new Usuario();
-                usuario.setIdUsuario(rs.getInt("id_usuario"));
-                usuario.setNombreCompleto(rs.getString("nombre"));
-                usuario.setCorreo(rs.getString("correo"));
-                usuario.setPassword(rs.getString("contraseña"));
-                usuario.setRol(rs.getString("rol"));
-                usuario.setTipoDocumento(rs.getString("tipo_documento"));
-                usuario.setNumeroDocumento(rs.getString("numero_documento"));
                 Date fechaNacimiento = rs.getDate("fecha_nacimiento");
-                if (fechaNacimiento != null) {
-                    usuario.setFechaNacimiento(fechaNacimiento.toLocalDate().toString());
-                }
-                usuario.setChatId(rs.getString("chat_id"));
-                return usuario;
+
+                // Patron Builder: arma el Usuario con los datos de la consulta
+                return new Usuario.Builder()
+                        .idUsuario(rs.getInt("id_usuario"))
+                        .nombreCompleto(rs.getString("nombre"))
+                        .correo(rs.getString("correo"))
+                        .password(rs.getString("contraseña"))
+                        .rol(rs.getString("rol"))
+                        .tipoDocumento(rs.getString("tipo_documento"))
+                        .numeroDocumento(rs.getString("numero_documento"))
+                        .fechaNacimiento(fechaNacimiento != null ? fechaNacimiento.toLocalDate().toString() : null)
+                        .chatId(rs.getString("chat_id"))
+                        .build();
             }
         } catch (SQLException e) {
             throw new IllegalStateException("No se pudo consultar el usuario en la base de datos.", e);

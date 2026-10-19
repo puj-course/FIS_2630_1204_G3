@@ -112,6 +112,8 @@ public class PresupuestoServicio implements GestorPresupuesto {
         return Math.round((valor / tasa) * 100.0) / 100.0;
     }
 
+    
+
     public String nombreMoneda(String codigo) {
         return MONEDAS.getOrDefault(codigo, codigo);
     }

@@ -1,4 +1,4 @@
-# Diagrama de interfaces — Planificación de preferencias y fechas (M3)
+# Diagrama de interfaces — Planificación de preferencias y fechas (Modulo 3)
 
 Este diagrama muestra las interfaces de negocio creadas para el módulo de Planificación e Itinerario del Viaje (M3), en respuesta a la observación de que el proyecto no tenía interfaces reales de negocio (solo las anotaciones propias de Spring Boot).
 
@@ -10,7 +10,7 @@ El diagrama también incluye las clases de dominio relacionadas (`CategoriaPrefe
 
 ```plantuml
 @startuml
-title WiseTrip - M3: Planificación de preferencias y fechas
+title WiseTrip - M3: Planificación de preferencias, fechas y presupuesto
 left to right direction
 skinparam packageStyle rectangle
 skinparam classAttributeIconSize 0
@@ -26,17 +26,31 @@ package "Vistas" {
     + seleccionar fecha de inicio y fin
     + enviar fechas
   }
+
+  class "presupuesto.jsp" as VistaPresupuesto <<JSP>> {
+    + ingresar monto y moneda
+    + enviar presupuesto
+  }
+
+  class "resumen.jsp" as VistaResumen <<JSP>> {
+    + mostrar resumen del viaje
+  }
 }
 
 package "Controlador" {
   class PlanificacionControlador <<Controller>> {
     - gestorPreferencias: GestorPreferencias
+    - gestorPresupuesto: GestorPresupuesto
     - fechasServicio: IFechasServicio
+    - usuarioSesionFacade: UsuarioSesionFacade
     --
     + mostrarPreferencias()
     + guardarPreferencias()
     + mostrarFechas()
     + guardarFechas()
+    + mostrarPresupuesto()
+    + guardarPresupuesto()
+    + mostrarResumen()
   }
 }
 
@@ -56,6 +70,14 @@ package "Interfaces de negocio" {
     + calcularDuracion(fechas): long
     + hoy(): String
   }
+
+  interface GestorPresupuesto {
+    + monedasDisponibles(paisDestino): List
+    + validarPresupuesto(presupuesto, paisDestino): Map
+    + convertirAUsd(presupuesto): double
+    + formatear(monto): String
+    + nombreMoneda(moneda): String
+  }
 }
 
 package "Servicios" {
@@ -70,10 +92,25 @@ package "Servicios" {
   }
 
   class FechasServicio <<Service>> {
-    - MAX_DIAS: int
+    - cadenaValidacion: ReglaValidacionFechas
+    --
     + validarFechas(fechas): Map
     + calcularDuracion(fechas): long
     + hoy(): String
+  }
+
+  class PresupuestoServicio <<Service>> {
+    + monedasDisponibles(paisDestino): List
+    + validarPresupuesto(presupuesto, paisDestino): Map
+    + convertirAUsd(presupuesto): double
+    + formatear(monto): String
+    + nombreMoneda(moneda): String
+  }
+
+  class UsuarioSesionFacade <<Service>> {
+    + usuarioActivo(sesion): Usuario
+    + iniciales(usuario): String
+    + prepararEncabezado(sesion, model): Usuario
   }
 }
 
@@ -104,17 +141,30 @@ package "Modelos de planificación" {
     - clave: String
     - texto: String
   }
+
+  class Presupuesto {
+    - monto: String
+    - moneda: String
+    + getMontoNumerico(): double
+    + esValido(): boolean
+    + esSuficientePara(costo): boolean
+    + tieneMoneda(): boolean
+  }
 }
 
 ' Cada servicio implementa su interfaz de negocio.
 PreferenciasServicio ..|> GestorPreferencias
 FechasServicio ..|> IFechasServicio
+PresupuestoServicio ..|> GestorPresupuesto
 
-' El controlador usa los contratos y modelos del flujo.
+' El controlador usa los contratos, la fachada y los modelos del flujo.
 PlanificacionControlador ..> GestorPreferencias
 PlanificacionControlador ..> IFechasServicio
+PlanificacionControlador ..> GestorPresupuesto
+PlanificacionControlador ..> UsuarioSesionFacade
 PlanificacionControlador ..> Preferencias
 PlanificacionControlador ..> FechasViaje
+PlanificacionControlador ..> Presupuesto
 
 ' El servicio de preferencias organiza el cuestionario por categorías y preguntas.
 PreferenciasServicio ..> CategoriaPreferencia
@@ -123,11 +173,14 @@ CategoriaPreferencia "1" o-- "*" Pregunta
 ' Vistas atendidas por el controlador.
 VistaPreferencias ..> PlanificacionControlador
 VistaFechas ..> PlanificacionControlador
+VistaPresupuesto ..> PlanificacionControlador
+VistaResumen ..> PlanificacionControlador
 
 @enduml
 ```
 
 ## Imagen
-<img width="1354" height="1093" alt="DiagramaInterfaces_PlaneaciónM3" src="https://github.com/user-attachments/assets/a9ea11d4-8de5-406e-95b6-930c035e8f37" />
+<img width="1740" height="1576" alt="DiagramaInterfacePlanning" src="https://github.com/user-attachments/assets/21f7e884-3426-4a24-8f8a-22d7ecb6762b" />
+
 
 
