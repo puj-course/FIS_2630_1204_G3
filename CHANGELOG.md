@@ -4730,9 +4730,15 @@ Adicionalmente, se hizo una refactorización de la documentación, con cambios e
 
 1. **¿Qué logramos?**
 
+Se logro poner los Patrones GOF correctamente en el codigo, ademas que diagramamos por modulos correctamente se busca una mejora en los review del sprint de ahora en adelante
+
 2. **¿Cómo trabajamos?*
 
+Trabajaos bien se ha mejorado mucho el trabajo en equipo, se han realizado correctamente las reuniones de la metodologia y se han cumplido los objetivos hasta ahora
+
 3. **¿Qué podríamos mejorar?**
+
+Aprender mejor el funcionamiento de las partes de nuestros compañeros
 
 
 ---
