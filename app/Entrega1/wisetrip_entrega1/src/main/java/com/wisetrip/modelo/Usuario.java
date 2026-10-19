@@ -235,5 +235,82 @@ public class Usuario {
         return iniciales.toUpperCase();
     }
 
+    // PATRON BUILDER (creacional)
+    // Arma un Usuario paso a paso con metodos encadenados en lugar de
+    // llamar muchos setters seguidos. El constructor vacio y los setters
+    // se conservan porque Spring los usa para llenar el formulario.
+    public static class Builder {
+
+        private int idUsuario;
+        private String nombreCompleto;
+        private String tipoDocumento;
+        private String numeroDocumento;
+        private String fechaNacimiento;
+        private String correo;
+        private String password;
+        private String rol = "cliente";
+        private String chatId;
+
+        public Builder idUsuario(int idUsuario) {
+            this.idUsuario = idUsuario;
+            return this;
+        }
+
+        public Builder nombreCompleto(String nombreCompleto) {
+            this.nombreCompleto = nombreCompleto;
+            return this;
+        }
+
+        public Builder tipoDocumento(String tipoDocumento) {
+            this.tipoDocumento = tipoDocumento;
+            return this;
+        }
+
+        public Builder numeroDocumento(String numeroDocumento) {
+            this.numeroDocumento = numeroDocumento;
+            return this;
+        }
+
+        public Builder fechaNacimiento(String fechaNacimiento) {
+            this.fechaNacimiento = fechaNacimiento;
+            return this;
+        }
+
+        public Builder correo(String correo) {
+            this.correo = correo;
+            return this;
+        }
+
+        public Builder password(String password) {
+            this.password = password;
+            return this;
+        }
+
+        public Builder rol(String rol) {
+            this.rol = rol;
+            return this;
+        }
+
+        public Builder chatId(String chatId) {
+            this.chatId = chatId;
+            return this;
+        }
+
+        // Crea el Usuario usando los setters, asi se mantienen sus reglas
+        // (por ejemplo, setCorreo deja el correo en minusculas)
+        public Usuario build() {
+            Usuario usuario = new Usuario();
+            usuario.setIdUsuario(idUsuario);
+            usuario.setNombreCompleto(nombreCompleto);
+            usuario.setTipoDocumento(tipoDocumento);
+            usuario.setNumeroDocumento(numeroDocumento);
+            usuario.setFechaNacimiento(fechaNacimiento);
+            usuario.setCorreo(correo);
+            usuario.setPassword(password);
+            usuario.setRol(rol);
+            usuario.setChatId(chatId);
+            return usuario;
+        }
+    }
 
 }
