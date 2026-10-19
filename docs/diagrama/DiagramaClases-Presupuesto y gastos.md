@@ -251,3 +251,4 @@ end note
 
 ## Imagen
 
+<img width="3827" height="1511" alt="Untitled (4)" src="https://github.com/user-attachments/assets/bf5198ee-d251-4dd6-9b5c-f7a792373a2e" />
