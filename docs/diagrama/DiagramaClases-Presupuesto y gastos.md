@@ -1,254 +1,178 @@
 # Diagrama de clases — Control de presupuesto y gastos (M4)
 
-Este diagrama muestra la estructura interna del módulo de Control de Presupuesto y Gastos (M4). Cada clase aparece con sus atributos y sus métodos, y también se ven las relaciones entre ellas: herencia, implementación de interfaces, composición, agregación y dependencia, con sus multiplicidades.
+Este diagrama muestra las clases que forman el módulo de Control de Presupuesto y Gastos (M4), con sus atributos, sus métodos principales y cómo se relacionan. Los colores indican la capa de cada clase: morado para los controladores, verde para los servicios y amarillo para los modelos y las clases del patrón Factory Method. En cada flecha se escribe el nombre del atributo que guarda la relación y cuántos objetos participan (`1`, `5`).
 
-El módulo tiene tres partes. La de **presupuesto** está formada por `PresupuestoServicio`, `PresupuestoConMargenDecorador` y el modelo `Presupuesto`. Ahí se aplica el patrón Decorator: las dos clases implementan `GestorPresupuesto`, y el decorador guarda un `gestorBase` (agregación ◇, porque Spring se lo pasa por el constructor). El decorador delega todo en ese `gestorBase` y solo cambia `convertirAUsd()` para sumar un 5% de margen. La de **reparto** está formada por `RepartoServicio` y `RepartoPresupuesto`. `RepartoPresupuesto` implementa `IDistribuible` y guarda el porcentaje de cada categoría, con los valores sugeridos 35/25/20/15/5. `RepartoServicio` revisa que esos porcentajes sumen 100%.
+La parte de arriba es el flujo de presupuesto y reparto, que hoy funciona en la aplicación. `PlanificacionControlador` recibe el presupuesto del viajero (`Presupuesto`) y lo procesa con su atributo `gestorPresupuesto`. Spring le entrega ahí un `PresupuestoConMargenDecorador`, que aplica el patrón Decorator: guarda el servicio original en `gestorBase` (un `PresupuestoServicio`), le delega todo el trabajo y solo cambia `convertirAUsd()` para sumar un 5% de margen de imprevistos. `PlanControlador` recibe el reparto del presupuesto (`RepartoPresupuesto`, con los porcentajes sugeridos 35/25/20/15/5) y lo valida con `RepartoServicio` a través de su atributo `gestionReparto`. También usa `PresupuestoServicio` directamente para dar formato a los montos.
 
-La de **gastos** gira en torno a `GastosServicio`, que aplica el patrón Factory Method. Tiene un mapa `CREADORES_CONTROL` con 5 creadores, uno por categoría (composición ◆ de 1 a 5, porque él mismo los crea). `ControlCategoriaCreador` es el Creator abstracto y declara el factory method `crearControl()`. `CreadorControlEstricto` y `CreadorControlFlexible` son los ConcreteCreator y crean `ControlCategoriaEstricto` (bloquea el gasto si se pasa del cupo) y `ControlCategoriaFlexible` (solo advierte, se usa para imprevistos). Ambos implementan `IControlCategoriaGasto`. Los datos del gasto se representan con records que no cambian después de crearse: `Gasto`, `PresupuestoViaje`, `ResumenPresupuesto` y `ResultadoControlCategoria`.
+La parte de abajo es el registro de gastos, que aplica el patrón Factory Method. `GastosServicio` tiene un mapa `CREADORES_CONTROL` con 5 creadores, uno por categoría. `ControlCategoriaCreador` es la clase abstracta (Creator) que declara el método fábrica `crearControl()`. Sus subclases deciden qué control se crea: `CreadorControlEstricto` crea un `ControlCategoriaEstricto`, que bloquea el gasto si supera el cupo de su categoría (hospedaje, alimentación, transporte y actividades), y `CreadorControlFlexible` crea un `ControlCategoriaFlexible`, que solo advierte (imprevistos). Ambos controles implementan `IControlCategoriaGasto` y devuelven un `ResultadoControlCategoria`. Los datos del gasto (`Gasto`) y el resumen final (`ResumenPresupuesto`) son records que no cambian después de crearse.
 
-Los controladores dependen de interfaces y no de clases concretas, siguiendo el principio de inversión de dependencias. La única excepción es `PlanControlador`, que usa `PresupuestoServicio` directamente para `formatear()`. `GastosServicio` lleva el estereotipo «pendiente de conexión» porque no tiene `@Service`, ningún controlador lo usa y sus tres repositorios aún no tienen DAO.
+`GastosServicio` aparece como «pendiente de conexión» porque todavía no tiene `@Service`, ningún controlador lo usa y sus tres repositorios no tienen un DAO que los implemente; hoy solo se ejecuta en `GastosServicioTest`.
 
 ## Código PlantUML
 
 ```plantuml
-@startuml DiagramaClases_PresupuestoGastos
-hide circle
+@startuml
+title WiseTrip — Diagrama de clases: Control de presupuesto y gastos
 skinparam classAttributeIconSize 0
-skinparam shadowing false
-skinparam defaultFontName Arial
-skinparam nodesep 40
-skinparam ranksep 70
-skinparam ArrowColor #000000
-skinparam class {
-  BackgroundColor #82CFF0
-  BorderColor #000000
-  FontSize 12
-  StereotypeFontSize 10
-}
-skinparam note {
-  BackgroundColor #FFF9C4
-  BorderColor #FBC02D
-  FontSize 11
-}
-
-title WiseTrip - M4: Diagrama de clases - Presupuesto y gastos
+skinparam ArrowColor #888888
+skinparam nodesep 60
+skinparam ranksep 60
 
 ' ==================== CONTROLADORES ====================
-class PlanificacionControlador <<Controller>> {
-  - gestorPresupuesto : GestorPresupuesto
+class PlanificacionControlador <<@Controller>> #EEE8FA {
+  -gestorPresupuesto: GestorPresupuesto
   --
-  + mostrarPresupuesto(sesion : HttpSession, model : Model) : String
-  + guardarPresupuesto(presupuesto : Presupuesto, sesion : HttpSession, model : Model) : String
-  + mostrarResumen(sesion : HttpSession, model : Model) : String
+  +mostrarPresupuesto(sesion: HttpSession, model: Model): String
+  +guardarPresupuesto(presupuesto: Presupuesto, sesion: HttpSession, model: Model): String
+  +mostrarResumen(sesion: HttpSession, model: Model): String
 }
 
-class PlanControlador <<Controller>> {
-  - gestionReparto : IGestionReparto
-  - presupuestoServicio : PresupuestoServicio
+class PlanControlador <<@Controller>> #EEE8FA {
+  -gestionReparto: IGestionReparto
+  -presupuestoServicio: PresupuestoServicio
   --
-  + mostrarPlan(sesion : HttpSession, model : Model) : String
-  + guardarPlan(reparto : RepartoPresupuesto, sesion : HttpSession, model : Model) : String
-  + mostrarViaje(sesion : HttpSession, model : Model) : String
+  +mostrarPlan(sesion: HttpSession, model: Model): String
+  +guardarPlan(reparto: RepartoPresupuesto, sesion: HttpSession, model: Model): String
+  +mostrarViaje(sesion: HttpSession, model: Model): String
 }
 
-' ==================== PRESUPUESTO (DECORATOR) ====================
-interface GestorPresupuesto <<Interface>>
-
-class PresupuestoServicio <<Service>> {
-  - MONEDAS : Map<String, String>
-  - UNIDADES_POR_USD : Map<String, Double>
+' ==================== SERVICIOS ====================
+class PresupuestoConMargenDecorador <<@Service @Primary>> #E8F5E9 {
+  -gestorBase: GestorPresupuesto
+  -MARGEN_IMPREVISTOS: double = 1.05
   --
-  + validarPresupuesto(presupuesto : Presupuesto, paisDestino : String) : Map<String, String>
-  + convertirAUsd(presupuesto : Presupuesto) : double
-  + monedasDisponibles(paisDestino : String) : Map<String, String>
-  + nombreMoneda(codigo : String) : String
-  + formatear(valor : double) : String
+  +validarPresupuesto(presupuesto: Presupuesto, paisDestino: String): Map
+  +convertirAUsd(presupuesto: Presupuesto): double
+  +formatear(valor: double): String
 }
 
-class PresupuestoConMargenDecorador <<Service, Primary>> {
-  - gestorBase : GestorPresupuesto
-  - MARGEN_IMPREVISTOS : double = 1.05
+class PresupuestoServicio <<@Service>> #E8F5E9 {
+  -MONEDAS: Map<String, String>
+  -UNIDADES_POR_USD: Map<String, Double>
   --
-  + validarPresupuesto(presupuesto : Presupuesto, paisDestino : String) : Map<String, String>
-  + convertirAUsd(presupuesto : Presupuesto) : double
-  + monedasDisponibles(paisDestino : String) : Map<String, String>
-  + nombreMoneda(codigo : String) : String
-  + formatear(valor : double) : String
+  +validarPresupuesto(presupuesto: Presupuesto, paisDestino: String): Map
+  +convertirAUsd(presupuesto: Presupuesto): double
+  +monedasDisponibles(paisDestino: String): Map
+  +formatear(valor: double): String
 }
 
-class Presupuesto {
-  - monto : String
-  - moneda : String
+class RepartoServicio <<@Service>> #E8F5E9 {
+  -CATEGORIAS: Map<String, String>
   --
-  + getMontoNumerico() : double
-  + esValido() : boolean
-  + esSuficientePara(costo : double) : boolean
-  + tieneMoneda() : boolean
+  +listarCategorias(): Map
+  +validarReparto(reparto: IDistribuible): Map
+  +calcularMontos(reparto: IDistribuible, presupuestoTotal: double): Map
 }
 
-' ==================== REPARTO ====================
-interface IGestionReparto <<Interface>>
-interface IDistribuible <<Interface>>
-
-class RepartoServicio <<Service>> {
-  - CATEGORIAS : Map<String, String>
+class GastosServicio <<pendiente de conexión>> #E8F5E9 {
+  -CREADORES_CONTROL: Map<String, ControlCategoriaCreador>
+  -repositorioGastos: IRepositorioGastos
+  -repositorioPresupuesto: IRepositorioPresupuestoViaje
+  -repositorioReparto: IRepositorioRepartoPresupuesto
   --
-  + listarCategorias() : Map<String, String>
-  + validarReparto(reparto : IDistribuible) : Map<String, String>
-  + calcularMontos(reparto : IDistribuible, presupuestoTotal : double) : Map<String, Double>
-  + porDia(monto : double, dias : long) : double
+  +validarGasto(idViaje: int, gasto: Gasto): Map
+  +registrarGasto(idViaje: int, gasto: Gasto): Gasto
+  +consultarResumen(idViaje: int): ResumenPresupuesto
 }
 
-class RepartoPresupuesto {
-  - hospedaje : int = 35
-  - alimentacion : int = 25
-  - transporte : int = 20
-  - actividades : int = 15
-  - imprevistos : int = 5
+' ==================== FACTORY METHOD ====================
+abstract class ControlCategoriaCreador #FFF8E1 {
+  {abstract} #crearControl(): IControlCategoriaGasto
+  +evaluarGasto(gasto: Gasto, cupo: BigDecimal, gastado: BigDecimal): ResultadoControlCategoria
+}
+
+class CreadorControlEstricto #FFF8E1 {
+  #crearControl(): IControlCategoriaGasto
+}
+
+class CreadorControlFlexible #FFF8E1 {
+  #crearControl(): IControlCategoriaGasto
+}
+
+interface IControlCategoriaGasto #FFF8E1 {
+  +evaluar(gasto: Gasto, cupo: BigDecimal, gastado: BigDecimal): ResultadoControlCategoria
+}
+
+class ControlCategoriaEstricto #FFF8E1 {
+  +evaluar(gasto: Gasto, cupo: BigDecimal, gastado: BigDecimal): ResultadoControlCategoria
+}
+
+class ControlCategoriaFlexible #FFF8E1 {
+  +evaluar(gasto: Gasto, cupo: BigDecimal, gastado: BigDecimal): ResultadoControlCategoria
+}
+
+' ==================== MODELOS ====================
+class Presupuesto #FFFDE7 {
+  -monto: String
+  -moneda: String
   --
-  + porcentajeDe(categoria : String) : int
-  + asignar(categoria : String, porcentaje : int) : void
-  + getTotal() : int
-  + restaurarSugerido() : void
-  + esValido() : boolean
+  +getMontoNumerico(): double
+  +esValido(): boolean
 }
 
-' ==================== GASTOS (FACTORY METHOD) ====================
-interface IGestorGastos <<Interface>>
-interface IRepositorioGastos <<Interface>>
-interface IRepositorioPresupuestoViaje <<Interface>>
-interface IRepositorioRepartoPresupuesto <<Interface>>
-
-class GastosServicio <<pendiente de conexión>> {
-  - CREADORES_CONTROL : Map<String, ControlCategoriaCreador>
-  - repositorioGastos : IRepositorioGastos
-  - repositorioPresupuesto : IRepositorioPresupuestoViaje
-  - repositorioReparto : IRepositorioRepartoPresupuesto
+class RepartoPresupuesto #FFFDE7 {
+  -hospedaje: int = 35
+  -alimentacion: int = 25
+  -transporte: int = 20
+  -actividades: int = 15
+  -imprevistos: int = 5
   --
-  + validarGasto(idViaje : int, gasto : Gasto) : Map<String, String>
-  + advertenciasGasto(idViaje : int, gasto : Gasto) : Map<String, String>
-  + registrarGasto(idViaje : int, gasto : Gasto) : Gasto
-  + consultarGastos(idViaje : int) : List<Gasto>
-  + consultarResumen(idViaje : int) : ResumenPresupuesto
-  - evaluarCupoCategoria(idViaje : int, gasto : Gasto, presupuesto : PresupuestoViaje) : ResultadoControlCategoria
-  - obtenerPresupuesto(idViaje : int) : PresupuestoViaje
+  +getTotal(): int
+  +montoDe(categoria: String, total: double): double
 }
 
-abstract class ControlCategoriaCreador <<Creator>> {
-  # crearControl() : IControlCategoriaGasto
-  + evaluarGasto(gasto : Gasto, cupoCategoria : BigDecimal, totalGastadoCategoria : BigDecimal) : ResultadoControlCategoria
+class Gasto <<record>> #FFFDE7 {
+  -categoria: String
+  -descripcion: String
+  -monto: BigDecimal
+  -moneda: String
+  -fecha: LocalDate
 }
 
-class CreadorControlEstricto <<ConcreteCreator>> {
-  # crearControl() : IControlCategoriaGasto
+class ResumenPresupuesto <<record>> #FFFDE7 {
+  -presupuestoTotal: BigDecimal
+  -totalGastado: BigDecimal
+  -saldoDisponible: BigDecimal
 }
 
-class CreadorControlFlexible <<ConcreteCreator>> {
-  # crearControl() : IControlCategoriaGasto
+class ResultadoControlCategoria <<record>> #FFFDE7 {
+  -excedeCupo: boolean
+  -bloqueante: boolean
+  -mensaje: String
 }
 
-interface IControlCategoriaGasto <<Interface, Product>>
+' ==================== RELACIONES ====================
 
-class ControlCategoriaEstricto <<ConcreteProduct>> {
-  + evaluar(gasto : Gasto, cupoCategoria : BigDecimal, totalGastadoCategoria : BigDecimal) : ResultadoControlCategoria
-}
-
-class ControlCategoriaFlexible <<ConcreteProduct>> {
-  + evaluar(gasto : Gasto, cupoCategoria : BigDecimal, totalGastadoCategoria : BigDecimal) : ResultadoControlCategoria
-}
-
-' ==================== RECORDS ====================
-class Gasto <<record>> {
-  - idGasto : int
-  - categoria : String
-  - descripcion : String
-  - monto : BigDecimal
-  - moneda : String
-  - fecha : LocalDate
-}
-
-class PresupuestoViaje <<record>> {
-  - idViaje : int
-  - montoTotal : BigDecimal
-  - moneda : String
-}
-
-class ResumenPresupuesto <<record>> {
-  - presupuestoTotal : BigDecimal
-  - totalGastado : BigDecimal
-  - saldoDisponible : BigDecimal
-  - moneda : String
-}
-
-class ResultadoControlCategoria <<record>> {
-  - excedeCupo : boolean
-  - bloqueante : boolean
-  - mensaje : String
-  --
-  + sinProblemas() : ResultadoControlCategoria
-}
-
-' Los controladores usan contratos y guardan los modelos en la sesión.
-PlanificacionControlador "1" --> "1" GestorPresupuesto : gestorPresupuesto
-PlanificacionControlador "1" ..> "0..1" Presupuesto : guarda en sesión
-PlanControlador "1" --> "1" IGestionReparto : gestionReparto
+' Controladores -> servicios (el nombre es el atributo que los guarda)
+PlanificacionControlador "1" --> "1" PresupuestoConMargenDecorador : gestorPresupuesto
+PlanControlador "1" --> "1" RepartoServicio : gestionReparto
 PlanControlador "1" --> "1" PresupuestoServicio : presupuestoServicio
-PlanControlador "1" ..> "0..1" RepartoPresupuesto : guarda en sesión
 
-' Decorator: ambos implementan GestorPresupuesto y el decorador envuelve al base.
-GestorPresupuesto <|.. PresupuestoServicio
-GestorPresupuesto <|.. PresupuestoConMargenDecorador
-PresupuestoConMargenDecorador "1" o-- "1" GestorPresupuesto : gestorBase\n(envuelve)
-GestorPresupuesto ..> Presupuesto : usa
+' Decorator: envuelve al servicio original
+PresupuestoConMargenDecorador "1" --> "1" PresupuestoServicio : gestorBase
 
-' Reparto.
-IGestionReparto <|.. RepartoServicio
-IDistribuible <|.. RepartoPresupuesto
-RepartoServicio ..> IDistribuible : valida y calcula
+' Factory Method
+GastosServicio "1" --> "5" ControlCategoriaCreador : CREADORES_CONTROL
+CreadorControlEstricto --|> ControlCategoriaCreador
+CreadorControlFlexible --|> ControlCategoriaCreador
+CreadorControlEstricto ..> ControlCategoriaEstricto : create
+CreadorControlFlexible ..> ControlCategoriaFlexible : create
+ControlCategoriaEstricto ..|> IControlCategoriaGasto
+ControlCategoriaFlexible ..|> IControlCategoriaGasto
 
-' Gastos.
-IGestorGastos <|.. GastosServicio
-GastosServicio "1" o-- "1" IRepositorioGastos
-GastosServicio "1" o-- "1" IRepositorioPresupuestoViaje
-GastosServicio "1" o-- "1" IRepositorioRepartoPresupuesto
-GastosServicio "1" *-- "5" ControlCategoriaCreador : CREADORES_CONTROL
-GastosServicio "1" ..> "1" ResumenPresupuesto : <<create>>
-IRepositorioGastos "1" ..> "*" Gasto : guarda / lista
-IRepositorioPresupuestoViaje "1" ..> "1" PresupuestoViaje : busca
-IRepositorioRepartoPresupuesto "1" ..> "1" IDistribuible : busca
+' Uso de modelos
+PlanificacionControlador ..> Presupuesto
+PlanControlador ..> RepartoPresupuesto
+GastosServicio ..> Gasto
+GastosServicio ..> ResumenPresupuesto : create
+IControlCategoriaGasto ..> ResultadoControlCategoria : create
 
-' Factory Method.
-ControlCategoriaCreador <|-- CreadorControlEstricto
-ControlCategoriaCreador <|-- CreadorControlFlexible
-IControlCategoriaGasto <|.. ControlCategoriaEstricto
-IControlCategoriaGasto <|.. ControlCategoriaFlexible
-ControlCategoriaCreador ..> IControlCategoriaGasto : usa
-CreadorControlEstricto ..> ControlCategoriaEstricto : <<create>>
-CreadorControlFlexible ..> ControlCategoriaFlexible : <<create>>
-IControlCategoriaGasto ..> Gasto : evalúa
-IControlCategoriaGasto ..> ResultadoControlCategoria : devuelve
-
-note right of PresupuestoConMargenDecorador
-  **Decorator:** envuelve a PresupuestoServicio.
-  convertirAUsd() multiplica por 1.05;
-  los demás métodos solo delegan.
-end note
-
-note right of ControlCategoriaCreador
-  **Factory Method:** crearControl().
-  Estricto: hospedaje, alimentación,
-  transporte, actividades (bloquea).
-  Flexible: imprevistos (solo advierte).
-end note
-
-note bottom of GastosServicio
-  No tiene @Service ni controlador,
-  y los 3 repositorios no tienen DAO.
-end note
+' Ubica la parte de gastos debajo de la de presupuesto (no es una relación)
+PresupuestoServicio -[hidden]-> GastosServicio
+RepartoServicio -[hidden]-> GastosServicio
 
 @enduml
 ```
 
-## Imagen
-
-<img width="3827" height="1511" alt="Untitled (4)" src="https://github.com/user-attachments/assets/bf5198ee-d251-4dd6-9b5c-f7a792373a2e" />
+## Diagrama
+<img width="3432" height="1389" alt="Untitled (6)" src="https://github.com/user-attachments/assets/98135000-4162-43b3-8f84-7c2407d38f19" />
