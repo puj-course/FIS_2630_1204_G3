@@ -1,4 +1,4 @@
-# Diagrama de interfaces — Planificación de preferencias y fechas (M3)
+# Diagrama de interfaces — Planificación de preferencias y fechas (Modulo 3)
 
 Este diagrama muestra las interfaces de negocio creadas para el módulo de Planificación e Itinerario del Viaje (M3), en respuesta a la observación de que el proyecto no tenía interfaces reales de negocio (solo las anotaciones propias de Spring Boot).
 
