@@ -3242,18 +3242,70 @@ si aun tenemos algunos problemas con la nube para que funcione como la pagina we
 
 
 ---
+## Sprint Review [27/09/2026]
 
-# Sprint Review y Sprint Retrospective - 27/09/2026
+## Información de la Sesión
+
+* **Fecha de la Review: [27/09/2026]
+* **Sprint Goal:** Mejorar la planificación de viajes en WiseTrip mediante notificaciones, recomendaciones personalizadas, distribución del presupuesto y correcciones en el cuestionario y la plataforma.
+
+---
+
+## Incremento Entregado
+
+> *Descripción detallada de las funcionalidades, componentes e integraciones completadas durante el Sprint.*
+
+Durante este Sprint se trabajó en mejorar el flujo de planificación de WiseTrip, permitiendo al viajero elegir su destino, organizar su presupuesto y recibir información relevante sobre su viaje. También se realizaron correcciones para mejorar la estabilidad y la experiencia de uso.
+
+* **HU-66 y HU-67–* **Notificaciones por correo y Telegram:** envío de alertas sobre eventos importantes del viaje mediante ambos canales. 
+
+* **HU-68 –* **Selección de destinos:** posibilidad de elegir uno de los tres destinos recomendados y continuar con la planificación.
+
+* **HU-69 –* **Distribución del presupuesto:** asignación del presupuesto entre hospedaje, alimentación, transporte, actividades y otros gastos.
+
+* **HU-70 y HU-71–* **Cuestionario de preferencias:** mejoras en la carga de imágenes y en la claridad de las preguntas.
+
+* **HU-72 y HU-73–* **Acceso y recomendaciones:** correcciones en el acceso a la plataforma y ajustes para recomendar destinos acordes con los intereses del viajero.
+
+* **HU-74 y HU-75–* **Banderas de monedas:** correcciones para mostrar la bandera correspondiente a la moneda seleccionada, tanto en el presupuesto como en el resumen final.
+ 
+
+---
+
+## Demostración
+
+> *Resumen de los puntos presentados durante la demo del producto.*
+ 
+- [x] Envío de notificaciones por correo electrónico y Telegram.
+- [x] Selección de uno de los tres destinos recomendados.
+- [x] Distribución del presupuesto entre las categorías del viaje.
+- [x] Carga de imágenes y visualización de las preguntas del cuestionario.
+- [x] Acceso a la plataforma y generación de recomendaciones según las preferencias.
+- [x] Visualización de las banderas en el selector de moneda y el resumen final.
+
+
+---
+
+## Conclusión y Próximos Pasos
+
+> *Comentarios de los stakeholders, feedback recibido y ajustes sugeridos para el Product Backlog.*
+
+* Verificar los criterios de aceptación y la Definition of Done de cada historia.
+* Probar el flujo completo de planificación, desde el acceso hasta la selección del destino.
+* Validar el envío de notificaciones y el manejo de errores.
+* Comprobar las recomendaciones con diferentes combinaciones de preferencias.
+* Revisar la carga de imágenes y banderas en distintos navegadores.
+* Actualizar el Product Backlog según los resultados de las pruebas.
+
+**Feedback de los stakeholders:** Pendiente de registrar con base en los comentarios recibidos durante la revisión del producto.
+
+# Sprint Retrospective - 27/09/2026
 
 ## Maria Alejandra Rodriguez
-
-### Sprint Review
 
 1. **¿Qué logramos?**
 
 Logramos completar algunas otras pantallas ya dejándolas listas, además se agregaron nuevas funciones a la página, realmente nos hace falta muy poco para acabarla sin embargo en el próximo sprint tenemos que empezar a mirar lo de la entrega Gof en el código
-
-### Sprint Retrospective
 
 2. **¿Cómo trabajamos?**
 
@@ -3263,23 +3315,17 @@ Siento que esta semana todos trabajamos muy bien, todos realizaron la tarea de f
 
 En lo personal tengo que mejorar mi atención, a veces hago commits en main que tenían que ir en mi rama, esta semana por ejemplo tuve un error metiendo un correo que no pertenecía al proyecto y hice commits ahí sin notarlo y luego tuve que cambiar los commits que había hecho a la otra cuenta que si estoy usando para el proyecto y eso causó muchos conflictos en mi rama y a la hora de hacer merge hacía develop y hacía main. La herramienta aún me confunde mucho, pero estoy trabajando en entenderla cada vez más.
 
-
 ---
 
 ## Gabriela Melo Gualteros
-
-### Sprint Review
 
 1. **¿Qué logramos?**
 
 Logramos tener la pagina como la queriamos tener, en terminos de diseño, se logro solucionar varios errores que estaban impidiendo que s emostraron las imagenes en las pantallas principalmente. En mi caso pude subir profin las imagenes a la pantalla de Preguntas de Preferencia aunque siguen faltando algunas, pero ya se corrigio la ruta para que aparezcan.
 
-### Sprint Retrospective
-
 2. **¿Cómo trabajamos?**
 
 Esta semana se vio el trabajo en grupo, se vio que el Sprint Retrospective anterior valio la pena hablar y cmunicarnos bien como equipo. Esto ayudo a que esta semana se viera de verdad el progreso en el proyecto.
-
 
 3. **¿Qué podríamos mejorar?**
 
@@ -3289,13 +3335,9 @@ En mi parte a veces me confundo y termino trabajando directamente en el develop 
 
 ## Valeria Cortes Rendon
 
-### Sprint Review
-
 1. **¿Qué logramos?**
 
 Se realizo la implementacion de los correos y telegram, seguimos mejorando tanto en backend y en frontend. En las proximas entregas esperamos empezar a integrar las apis restantes. Sin embargo nos toca verificar en el flujo y como las usaremos.
-
-### Sprint Retrospective
 
 2. **¿Cómo trabajamos?**
 
@@ -3309,13 +3351,9 @@ Podria mejorar en colocar una hora especifica para realizar las reuniones y que 
 
 ## Isabella Posada
 
-### Sprint Review
-
 1. **¿Qué logramos?**
 
 Logramos trabajar nuevamente como grupo, siento que cada vez va afinándose mas el diseño de la pagina que le da un toque verdaderamente único y creativo! sin embargo no hay que dejar atrás el como funciona, siento que será clave en las próximas semanas ya que nos falta trabajar un poco mas en el back
-
-### Sprint Retrospective
 
 2. **¿Cómo trabajamos?**
 
@@ -3329,13 +3367,9 @@ la verdad, mi única observación es aprovechar un poco mas los dailys, estamos 
 
 ## Santiago Clavijo
 
-### Sprint Review
-
 1. **¿Qué logramos?**
 
 en terminos de diseño seguimos mejorando, ya se ve mas como una pagina verdadera de viajes, acabamos nuestras issues, y resolver problemas de la pagina
-
-### Sprint Retrospective
 
 2. **¿Cómo trabajamos?**
 
@@ -4624,7 +4658,7 @@ No
 
 ---
 
-## Sprint Retrospective [18/10/2026]
+## Sprint Review [18/10/2026]
 
 ## Información de la Sesión
 
@@ -4701,7 +4735,7 @@ Adicionalmente, se hizo una refactorización de la documentación, con cambios e
 
 **Feedback de los stakeholders:** Pendiente de registrar con base en los comentarios recibidos durante la revisión del producto.
 
-## Sprint Review - 18/10/2026
+## Sprint Retrospective - 18/10/2026
 
 ## Maria Alejandra Rodriguez
 
