@@ -4741,10 +4741,15 @@ Adicionalmente, se hizo una refactorización de la documentación, con cambios e
 
 1. **¿Qué logramos?**
 
+Logramos implementar diferentes patrones GOF, conocimos muchisimo más sobre ellos para lograr implementarlos, además de la corrección de las diferentes funciones del la logica en general del funcionamiento de la pagina web, respecto a la sección de preferencias y recomendaciones que se busca la manera en la que podamos aconsejar de manera correcta al cliente dependiendo sus gustos y lo que busca para su viaje
+
 2. **¿Cómo trabajamos?**
+
+Hemos trabajado muy bien y muy duro para poder lograr un producto de la pagina web muy bien hecho, todos hemos puesto de nuestra parte y esfuerzo siento a las habilidades de mis compañeros.
 
 3. **¿Qué podríamos mejorar?**
 
+La comunicación frente a la toma de decisiones no es muy clara o simplemente como equipo cada uno tiene su opinión, pero la mayoria de veces solemos respetar las diferentes tareas y especialidades que tiene cada uno en el equipo. Necesitamos una mejor comprensión por separado de lo que estamos tratando de representar cada uno, para un mejor dominio de lo que viene siendo toda la aplicación de wisetrip
   
 ---
 
