@@ -1,0 +1,86 @@
+## Decorator — Añadir comportamientos dinámicos sin modificar la base
+
+**Problema de diseño:** 
+En el módulo de recomendación de `WiseTrip`, los servicios encargados de gestionar el presupuesto (`PresupuestoServicio`) y las preferencias del viajero (`PreferenciasServicio`) cumplen con sus funciones base de cálculo y validación. Sin embargo, el sistema requería incorporar **responsabilidades transversales u opcionales** (como calcular automáticamente un margen de imprevistos del 5% sobre el presupuesto en USD, o registrar trazas de auditoría en consola cuando el usuario procesa sus preferencias). 
+
+Sin un patrón de diseño adecuado, enfrentaríamos problemas como:
+* **Violación del principio Open/Closed (OCP):** Modificar directamente las clases de servicio base cada vez que se necesite añadir una regla adicional o un cálculo extra.
+* **Clases infladas:** Mezclar la lógica de negocio principal con responsabilidades secundarias (como lógica de márgenes económicos o logs de auditoría).
+* **Rigidez estructural:** Imposibilidad de combinar o intercambiar estos comportamientos de forma dinámica en tiempo de ejecución.
+
+**Solución directa:** En lugar de modificar el código existente o crear una jerarquía rígida de subclases, aplicamos el **Patrón Decorator (GoF)**. Este patrón consiste en crear clases decoradoras que implementan la misma interfaz que el servicio base y lo "envuelven", permitiendo interceptar las llamadas para agregar comportamiento adicional de forma transparente antes o después de delegar el trabajo al servicio original.
+
+### 1: El contrato común (La Interfaz)
+
+`negocio/GestorPreferencias.java`
+
+```java
+public interface GestorPreferencias {
+    List<CategoriaPreferencia> listarCategorias();
+    int totalPreguntas();
+    Map<String, String> validarPreferencias(Preferencias preferencias);
+    Map<String, Importancia> obtenerImportancias(Preferencias preferencias);
+    Map<String, Boolean> obtenerAtributosSeleccionados(Preferencias preferencias);
+    List<String> clavesAfirmativas(Preferencias preferencias);
+    Map<String, List<String>> resumenPorCategoria(Preferencias preferencias);
+    long contarAfirmativas(Preferencias preferencias);
+}
+```
+Nota: "Cualquier cosa que quiera gestionar preferencias debe cumplir con este contrato". El decorador y el servicio base implementarán esta misma interfaz.
+
+```java
+@Service
+public class PreferenciasServicio implements GestorPreferencias {
+    // Contiene la lógica pura y original de negocio
+    @Override
+    public long contarAfirmativas(Preferencias preferencias) {
+        // Cuenta las preferencias seleccionadas por el usuario de forma limpia
+        return ...; 
+    }
+    // ... implementación de los demás métodos
+}
+```
+
+```java
+@Service
+@Primary
+public class PreferenciasConAuditoriaDecorador implements GestorPreferencias {
+
+    private final GestorPreferencias gestorBase;
+
+    public PreferenciasConAuditoriaDecorador(PreferenciasServicio gestorBase) {
+        this.gestorBase = gestorBase;
+    }
+
+    @Override
+    public long contarAfirmativas(Preferencias preferencias) {
+        // 1. Añade el comportamiento transversal (Auditoría)
+        long total = gestorBase.contarAfirmativas(preferencias);
+        System.out.println("[AUDITORÍA] El usuario seleccionó " + total + " preferencias afirmativas.");
+        
+        // 2. Retorna el resultado original obtenido del servicio base
+        return total;
+    }
+
+    @Override
+    public List<CategoriaPreferencia> listarCategorias() {
+        return gestorBase.listarCategorias(); // Delega directamente sin alterar
+    }
+    
+    // ... delegación de los demás métodos de la interfaz
+}
+```
+
+---
+
+<img width="1428" height="445" alt="image" src="https://github.com/user-attachments/assets/06443e0f-70a0-48b7-beca-a15445c288e5" />
+
+
+## Diseño - Diagrama UML 
+
+El diagrama muestra la estructura del patrón Decorator aplicado a los dos servicios del módulo de recomendación:
+
+* **Interfaces comunes (`GestorPresupuesto` y `GestorPreferencias`):** Definen el contrato o "molde" que deben cumplir de forma obligatoria tanto las clases de servicios originales como los decoradores.
+* **Componentes concretos (`PresupuestoServicio` y `PreferenciasServicio`):** Contienen la lógica de negocio pura y original de la aplicación.
+* **Decoradores concretos (`PresupuestoConMargenDecorador` y `PreferenciasConAuditoriaDecorador`):** Implementan la misma interfaz y mantienen una relación de agregación (`tiene a`) con su respectiva interfaz base (`gestorBase`). Esto les permite interceptar las llamadas para inyectar el comportamiento adicional (el margen del 5% y las trazas de auditoría) antes o después de delegar la ejecución al servicio original de manera transparente.
+---
