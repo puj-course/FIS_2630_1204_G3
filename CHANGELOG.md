@@ -4747,9 +4747,17 @@ Aprender mejor el funcionamiento de las partes de nuestros compañeros
 
 1. **¿Qué logramos?**
 
+Como equipo, logramos implementar todos los patrones de diseño GoF que nos propusimos para el Sprint. A nivel individual, implementé el patrón Proxy para gestionar los request realizadas a la API incluyendo su respectiva interfaz, clase de implementación y diagrama.
+
 2. **¿Cómo trabajamos?**
 
+Aunque tuvimos un tiempo limitado y cada integrante debía responder por diferentes entregas académicas, logramos organizar el trabajo y conseguir que las funcionalidades operaran correctamente. Pero, se presentaron algunos problemas de coordinación, ya que dos compañeras implementaron el mismo patrón y algunos diagramas resultaron muy extensos.
+
 3. **¿Qué podríamos mejorar?**
+
+Debemos fortalecer la comunicación y coordinación del equipo para evitar la duplicación de tareas y distribuir mejor las responsabilidades. También es importante trabajar de manera más colaborativa y realizar revisiones frecuentes del código y de la integración entre componentes.
+a nivel individual, debo hacer un seguimiento más estricto con el código, ya que no había identificado que una de las clases principales de la lógica de recomendaciones se encontraba desconectada y se quito su implementación.
+por falta de tiempo, también quedó pendiente modificar el patrón Proxy para que gestione los datos mediante una tabla en la base de datos, en lugar de utilizar memoria caché. Esta mejora será implementada durante la próxima semana para la entrega definitiva de la segunda versión del proyecto.
 
 ---
 
