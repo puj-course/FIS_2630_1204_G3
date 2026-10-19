@@ -51,7 +51,7 @@ public class PlanificacionControlador {
     public String mostrarPreferencias(HttpSession sesion, Model model) {
         Usuario usuario = (Usuario) sesion.getAttribute("usuarioActivo");
         if (usuario == null) return "redirect:/login";
-        if (sesion.getAttribute("ubicacionOrigen") == null) return "redirect:/origen";
+        if (!SesionViaje.de(sesion, usuario).tieneOrigen()) return "redirect:/origen";
 
         Preferencias guardadas = (Preferencias) sesion.getAttribute("preferenciasViaje");
 
@@ -191,7 +191,7 @@ public class PlanificacionControlador {
         Usuario usuario = (Usuario) sesion.getAttribute("usuarioActivo");
         if (usuario == null) return "redirect:/login";
 
-        Ubicacion ubicacion = (Ubicacion) sesion.getAttribute("ubicacionOrigen");
+        Ubicacion ubicacion = SesionViaje.de(sesion, usuario).getOrigen();
         if (ubicacion == null) return "redirect:/origen";
 
         Preferencias preferencias = (Preferencias) sesion.getAttribute("preferenciasViaje");
