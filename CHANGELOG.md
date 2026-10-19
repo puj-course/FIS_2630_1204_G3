@@ -4772,9 +4772,15 @@ por falta de tiempo, también quedó pendiente modificar el patrón Proxy para q
 
 1. **¿Qué logramos?**
 
+esta semana logramos acabar todas nuestras HUs correspondientes, y prepararnos para la sustentacion del martes, por mi parte pude hacer mi patron gof, y organice el boilerplate del repositorio
+
 2. **¿Cómo trabajamos?**
 
+como equipo trabajamos bien, todos estamos compromentidos con el proyecto, y seguimos la metodologia bien, exceptuando los reviews que lo teniamos mal
+
 3. **¿Qué podríamos mejorar?**
+
+falta de tiempo
 
 ---
 
