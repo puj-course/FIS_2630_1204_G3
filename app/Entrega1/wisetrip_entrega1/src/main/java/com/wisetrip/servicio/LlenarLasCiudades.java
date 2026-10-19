@@ -22,6 +22,7 @@ import com.wisetrip.negocio.ICargadorCiudades;
  * SOLID Responsabilidad única: cada paso (armar la clave, revisar el
  * costo, insertar) está en su propio método.
  */
+
 public class LlenarLasCiudades implements ICargadorCiudades {
 
     private final CiudadNegocio repositorioCiudades;

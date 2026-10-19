@@ -2,6 +2,7 @@ package com.wisetrip.modelo;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
+import com.wisetrip.negocio.CatalogoPreguntas;
 
 public class PreferenciasUsuario {
 
@@ -14,7 +15,7 @@ public class PreferenciasUsuario {
 
     public PreferenciasUsuario(Map<String, Importancia> atributos) {
         if (atributos != null) {
-            this.atributos = new LinkedHashMap<>(atributos);
+            setAtributos(atributos);
         }
     }
 
@@ -31,7 +32,16 @@ public class PreferenciasUsuario {
     }
 
     public void setAtributos(Map<String, Importancia> atributos) {
-        this.atributos = atributos;
+        this.atributos = new LinkedHashMap<>();
+        if (atributos == null) return;
+        atributos.forEach((clave, importancia) -> {
+            var pregunta = CatalogoPreguntas.porId(clave);
+            // Las respuestas de perfil se conservan en el cuestionario,
+            // pero no son requisitos ni gustos comparables con un destino.
+            if (pregunta != null && !pregunta.esDePerfil()) {
+                this.atributos.put(clave, importancia);
+            }
+        });
     }
 
     public Double getPresupuestoUsd() {
