@@ -4666,7 +4666,7 @@ Adicionalmente, se hizo una refactorización de la documentación, con cambios e
 ## Demostración
 
 > *Resumen de los puntos presentados durante la demo del producto.*
-
+ 
 - [x] Inicio de sesión simple y estable.
 - [x] Diagramas de los módulos del sistema.
 - [x] Gestión del presupuesto con diferentes operaciones financieras.
