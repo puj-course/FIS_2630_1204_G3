@@ -22,18 +22,13 @@ import com.wisetrip.modelo.Usuario;
 import com.wisetrip.negocio.GestorPreferencias;
 import com.wisetrip.negocio.GestorPresupuesto;
 import com.wisetrip.negocio.IFechasServicio;
-import com.wisetrip.servicio.UsuarioSesionFacade;
+import com.wisetrip.servicio.UsuarioSesionFacade; 
 
 import jakarta.servlet.http.HttpSession;
 
-/**
- * GRASP Controlador: recibe las peticiones web de preferencias, fechas
- * y presupuesto, y delega el trabajo en los servicios correspondientes.
- * SOLID Inversión de dependencias: depende de GestorPreferencias,
- * GestorPresupuesto e IFechasServicio, no de las clases concretas.
- */
 @Controller
 public class PlanificacionControlador {
+
 
     private final GestorPreferencias gestorPreferencias;
     private final GestorPresupuesto gestorPresupuesto;
@@ -67,6 +62,7 @@ public class PlanificacionControlador {
 
         Preferencias guardadas = (Preferencias) sesion.getAttribute("preferenciasViaje");
 
+        
         model.addAttribute("preferencias", guardadas != null ? guardadas : new Preferencias());
         model.addAttribute("categorias", gestorPreferencias.listarCategorias());
         model.addAttribute("totalPreguntas", gestorPreferencias.totalPreguntas());
@@ -178,6 +174,7 @@ public class PlanificacionControlador {
         // si el viajero retrocede a esta pantalla.
         Presupuesto guardado = (Presupuesto) sesion.getAttribute("presupuestoViaje");
 
+       
         model.addAttribute("presupuesto", guardado != null ? guardado : new Presupuesto());
         model.addAttribute("monedas", gestorPresupuesto.monedasDisponibles(paisDestino));
         model.addAttribute("paisDestino", paisDestino);
@@ -236,6 +233,7 @@ public class PlanificacionControlador {
         Presupuesto presupuesto = (Presupuesto) sesion.getAttribute("presupuestoViaje");
         Double enUsd = (Double) sesion.getAttribute("presupuestoEnUsd");
 
+    
         model.addAttribute("ubicacion", ubicacion);
         model.addAttribute("preferencias", preferencias);
         model.addAttribute("fechas", fechas);
@@ -258,7 +256,8 @@ public class PlanificacionControlador {
         if (enUsd != null) {
             model.addAttribute("usdFormateado", gestorPresupuesto.formatear(enUsd));
         }
-        model.addAttribute("destinoElegido", sesion.getAttribute("destinoElegido"));
+             model.addAttribute("destinoElegido", sesion.getAttribute("destinoElegido"));
         return "resumen";
     }
+
 }
