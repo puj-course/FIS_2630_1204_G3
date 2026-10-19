@@ -162,61 +162,7 @@ private ResultadoControlCategoria evaluarCupoCategoria(
 Lo importante aquí es que `GastosServicio` nunca tiene que saber los detalles de cada política — esa complejidad queda escondida dentro de cada `ControlCategoriaGasto` y su `ControlCategoriaCreador`. Si mañana se agrega una categoría nueva, o "actividades" también se vuelve flexible, el único cambio es una línea en `CREADORES_CONTROL` (o una pareja nueva de `ConcreteCreator`/`ConcreteProduct` si la regla es distinta a las dos que ya existen) — `GastosServicio` y sus pruebas no se tocan.
 
 ## Diseño - Diagrama UML
-
-```mermaid
-classDiagram
-    class IControlCategoriaGasto {
-        <<interface>>
-        +evaluar(gasto, cupoCategoria, totalGastadoCategoria) ResultadoControlCategoria
-    }
-    class ControlCategoriaEstricto {
-        +evaluar(...) ResultadoControlCategoria
-    }
-    class ControlCategoriaFlexible {
-        +evaluar(...) ResultadoControlCategoria
-    }
-    class ControlCategoriaCreador {
-        <<abstract>>
-        #crearControl() IControlCategoriaGasto
-        +evaluarGasto(gasto, cupoCategoria, totalGastadoCategoria) ResultadoControlCategoria
-    }
-    class CreadorControlEstricto {
-        #crearControl() IControlCategoriaGasto
-    }
-    class CreadorControlFlexible {
-        #crearControl() IControlCategoriaGasto
-    }
-    class GastosServicio {
-        -CREADORES_CONTROL Map~String, ControlCategoriaCreador~
-        +validarGasto(idViaje, gasto)
-        +advertenciasGasto(idViaje, gasto)
-        -evaluarCupoCategoria(idViaje, gasto, presupuesto)
-    }
-    class ResultadoControlCategoria {
-        +excedeCupo boolean
-        +bloqueante boolean
-        +mensaje String
-    }
-
-    IControlCategoriaGasto <|.. ControlCategoriaEstricto
-    IControlCategoriaGasto <|.. ControlCategoriaFlexible
-    ControlCategoriaCreador <|-- CreadorControlEstricto
-    ControlCategoriaCreador <|-- CreadorControlFlexible
-    CreadorControlEstricto ..> ControlCategoriaEstricto : crea
-    CreadorControlFlexible ..> ControlCategoriaFlexible : crea
-    ControlCategoriaCreador ..> IControlCategoriaGasto : usa
-    GastosServicio --> ControlCategoriaCreador : usa (cliente)
-    IControlCategoriaGasto ..> ResultadoControlCategoria : devuelve
-```
-
-**Roles del patrón, por si quedó alguna duda:**
-
-- **Product** (`IControlCategoriaGasto`): el molde de "una política de control".
-- **ConcreteProduct** (`ControlCategoriaEstricto`, `ControlCategoriaFlexible`): las dos formas reales de controlar una categoría.
-- **Creator** (`ControlCategoriaCreador`): declara el método de fábrica y el método que lo usa.
-- **ConcreteCreator** (`CreadorControlEstricto`, `CreadorControlFlexible`): cada uno sabe fabricar su propio `ConcreteProduct`.
-- **Cliente** (`GastosServicio`): pide la fábrica que le toca a una categoría y la usa, sin conocer las clases concretas.
-
+<img width="1308" height="646" alt="Untitled" src="https://github.com/user-attachments/assets/4ab4a64f-9322-4e2d-a48d-baefda4532e5" />
 ---
 
 ## Pruebas

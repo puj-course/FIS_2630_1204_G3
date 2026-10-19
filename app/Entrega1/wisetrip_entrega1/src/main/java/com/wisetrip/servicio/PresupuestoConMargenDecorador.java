@@ -1,3 +1,4 @@
+
 package com.wisetrip.servicio;
 
 import com.wisetrip.modelo.Presupuesto;
@@ -12,7 +13,6 @@ import java.util.Map;
 public class PresupuestoConMargenDecorador implements GestorPresupuesto {
 
     private final GestorPresupuesto gestorBase;
-    private static final double MARGEN_IMPREVISTOS = 1.05;
 
     public PresupuestoConMargenDecorador(PresupuestoServicio gestorBase) {
         this.gestorBase = gestorBase;
@@ -25,9 +25,17 @@ public class PresupuestoConMargenDecorador implements GestorPresupuesto {
 
     @Override
     public double convertirAUsd(Presupuesto presupuesto) {
-        double baseUsd = gestorBase.convertirAUsd(presupuesto);
-        if (baseUsd <= 0) return 0;
-        return Math.round((baseUsd * MARGEN_IMPREVISTOS) * 100.0) / 100.0;
+        return gestorBase.convertirAUsd(presupuesto);
+    }
+
+    public double calcularMargenImprevistos(Presupuesto presupuesto) {
+        double presupuestoUsd = gestorBase.convertirAUsd(presupuesto);
+
+        if (presupuestoUsd <= 0) {
+            return 0;
+        }
+
+        return Math.round((presupuestoUsd * 0.05) * 100.0) / 100.0;
     }
 
     @Override

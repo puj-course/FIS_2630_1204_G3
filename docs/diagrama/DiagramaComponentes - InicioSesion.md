@@ -1,22 +1,49 @@
 ## Diagrama de componentes - Inicio de Sesion 
 
+### Componentes
+
+| Componente | Qué hace |
+|---|---|
+| `login.jsp`, `origen.jsp` | Formulario de acceso y pantalla a la que se redirige tras iniciar sesión |
+| `AuthControlador` | Recibe la petición web, llama al contrato de autenticación y guarda o invalida la sesión HTTP |
+| `UsuarioServicio` | Coordina el login: busca al usuario, pide al `Usuario` verificar la contraseña y envía el aviso |
+| Dominio (modelo) | `Usuario` (verifica contraseña, sabe si tiene Telegram vinculado) y `CreadorNotificacionInicioSesion` + `Notificacion` (el mensaje) |
+| `UsuarioDAO` | Busca al usuario por correo y construye el `Usuario` |
+| `ConexionBD` | Abre la conexión JDBC a PostgreSQL |
+| `NotificadorTelegram` | Envía el aviso por la API de Telegram |
+
+### Interfaces
+
+| Interfaz | Entre | Operaciones |
+|---|---|---|
+| HTTP | Usuario → `AuthControlador` | `GET /login`, `POST /login`, `GET /logout` |
+| `IAutenticacionUsuario` | `AuthControlador` → `UsuarioServicio` | `iniciarSesion()` |
+| `IUsuarioRepositorio` | `UsuarioServicio` → `UsuarioDAO` | `buscarPorCorreo()` |
+| `INotificador` | `UsuarioServicio` → `NotificadorTelegram` | `enviar()` (solo si hay Telegram vinculado) |
+| HTTP `/sendMessage` | `NotificadorTelegram` → Telegram Bot API | Envío del mensaje |
+| `HttpSession` | `AuthControlador` → sesión HTTP | `setAttribute()`, `invalidate()` |
+
+### Flujo
+
+Usuario → `login.jsp` → `AuthControlador` → `UsuarioServicio` → `UsuarioDAO` → `ConexionBD` → PostgreSQL. Si la contraseña coincide y el usuario tiene Telegram vinculado, `UsuarioServicio` → `NotificadorTelegram` → Telegram Bot API. El controlador guarda la sesión y redirige a `origen.jsp`. Si el aviso falla, el login no se cancela.
+
+## Imagen del diagrama de componentes 
+
+<img width="2431" height="717" alt="Untitled (8)" src="https://github.com/user-attachments/assets/6fe1e99b-8634-4048-badc-ecc89b48a5f1" />
+
+## Codigo del diagrama 
+
 ```plantuml
-@startuml DiagramaComponentes_Login_WiseTrip
+@startuml Componentes_InicioSesion
+title WiseTrip — Diagrama de componentes: Inicio de sesión
+
 skinparam componentStyle uml2
 skinparam shadowing false
-skinparam nodesep 30
-skinparam ranksep 60
-
-' ==================== ESTILOS ====================
+skinparam nodesep 40
+skinparam ranksep 70
 skinparam component {
   BorderColor #333333
-  FontSize 13
-  BorderThickness 1.5
-}
-skinparam actor {
-  BackgroundColor #E8B4D8
-  BorderColor #7B2D5F
-  BorderThickness 2
+  BorderThickness 1.3
 }
 skinparam interface {
   BackgroundColor #FFE699
@@ -24,122 +51,84 @@ skinparam interface {
   FontSize 11
 }
 skinparam database {
-  BackgroundColor #C8E6C9
+  BackgroundColor #A5D6A7
   BorderColor #333333
-  FontSize 13
+}
+skinparam cloud {
+  BackgroundColor #E3F2FD
+  BorderColor #333333
 }
 skinparam arrow {
   Color #333333
-  Thickness 1.3
-}
-skinparam note {
-  BackgroundColor #FFF9C4
-  BorderColor #FBC02D
-  FontSize 11
 }
 left to right direction
 
-' ==================== ACTOR ====================
 actor "Usuario" as User
 
-' ==================== COMPONENTES ====================
-component "«component»\n**login.jsp**" as JSP #FFD9A0
-component "«component»\n**AuthControlador**" as Ctrl #FFD9A0
-component "«component»\n**UsuarioServicio**" as Srv #FFE699
-component "«component»\n**UsuarioDAO**" as DAO #C8E6C9
-component "«component»\n**Usuario**" as Usr #C8E6C9
-component "«component»\n**ConexionBD**" as Conn #C8E6C9
-component "«component»\n**origen.jsp**" as Next #FFD9A0
-database "**MySQL**\nTabla: usuario" as DB #A5D6A7
+component "login.jsp" as Login #FFD9A0
+component "AuthControlador" as Ctrl #FFD9A0
+component "origen.jsp" as Origen #FFD9A0
+component "Sesión HTTP\n(contenedor servlet)" as Sesion #F5F5F5
 
-' ==================== INTERFACES ====================
-() "formularioLogin" as IF1
-() "peticionHTTP" as IF2
-() "IUsuarioServicio" as IF3
-() "IUsuarioDAO" as IF4
-() "getConnection()" as IF5
-() "JDBC" as IF6
-() "entidadUsuario" as IF7
-() "vistaOrigen" as IF8
+component "UsuarioServicio" as Srv #FFE699
+component "Dominio (modelo)" as Dominio #FFFBE6 {
+  component "Usuario" as Usr #FFFBE6
+  component "CreadorNotificacionInicioSesion\n+ Notificacion" as Notif #FFFBE6
+}
 
-' ==================== BALL-AND-SOCKET ====================
-' Consumidor tiene socket "--(" ; Proveedor tiene bola "--()"
+component "NotificadorTelegram" as Tg #EAF7EA
 
-' IF1: User consume, JSP provee
-User --( IF1
-IF1 --() JSP
+component "UsuarioDAO" as DAO #C8E6C9
+component "ConexionBD" as Conn #C8E6C9
 
-' IF2: JSP consume, Ctrl provee
-JSP --( IF2
-IF2 --() Ctrl
+database "PostgreSQL\ntabla usuario" as DB
+cloud "Telegram Bot API" as TgApi
 
-' IF3: Ctrl consume, Srv provee
-Ctrl --( IF3
-IF3 --() Srv
+interface "GET /login\nPOST /login\nGET /logout" as iWeb
+interface "HttpSession\nsetAttribute()\ninvalidate()" as iSesion
+interface "IAutenticacionUsuario\niniciarSesion()" as iAut
+interface "IUsuarioRepositorio\nbuscarPorCorreo()" as iRepo
+interface "INotificador\nenviar()" as iNot
+interface "HTTP\n/sendMessage" as iHttp
+interface "obtenerConexion()" as iConn
+interface "JDBC" as iJdbc
 
-' IF4: Srv consume, DAO provee
-Srv --( IF4
-IF4 --() DAO
+User --( iWeb
+iWeb -- Ctrl
 
-' IF5: DAO consume, Conn provee
-DAO --( IF5
-IF5 --() Conn
+Ctrl ..> Login : devuelve vista
+Ctrl ..> Origen : redirect:/origen
 
-' IF6: Conn consume, DB provee
-Conn --( IF6
-IF6 --() DB
+Ctrl --( iSesion
+iSesion -- Sesion
 
-' IF7: DAO provee entidadUsuario (constructor)
-IF7 --() DAO
-Usr --( IF7
+Ctrl --( iAut
+iAut -- Srv
 
-' IF8: Ctrl consume, origen.jsp provee
-Ctrl --( IF8
-IF8 --() Next
+Srv ..> Usr : verificarPassword()\ntieneTelegramVinculado()
+Srv ..> Notif : crea el aviso
 
-' ==================== NOTAS ====================
-note bottom of Srv
-  Coordina la autenticación.
-  Valida credenciales contra
-  el DAO.
-end note
+Srv --( iRepo
+iRepo -- DAO
 
-note bottom of Usr
-  Entidad del dominio.
-  El DAO la construye tras
-  el SELECT en MySQL.
-end note
+Srv --( iNot : solo si hay\nTelegram vinculado
+iNot -- Tg
 
-note bottom of Next
-  Pantalla post-login.
-  Se muestra tras autenticación
-  exitosa (redirect:/origen).
-end note
+Tg --( iHttp
+iHttp -- TgApi
 
-note bottom of DB
-  SELECT * FROM usuario
-  WHERE usuario = ?
-end note
+DAO --( iConn
+iConn -- Conn
 
-' ==================== LEYENDA ====================
-legend bottom
-  **Flujo del Login**
-  ---
-  Usuario → login.jsp → AuthControlador
-          → UsuarioServicio → UsuarioDAO
-          → ConexionBD → MySQL
-          → Usuario (entidad)
-          → origen.jsp
-  ---
-  **—(**  socket → componente que requiere
-  **—()** bola   → componente que provee
-end legend
+Conn --( iJdbc
+iJdbc -- DB
+
+DAO ..> Usr : construye
 
 @enduml
 
-  ```
-  ## Imagen del diagrama de componentes 
 
-  <img width="2234" height="924" alt="DiagramaComponentes - InicioSesion (1)" src="https://github.com/user-attachments/assets/7334d74d-92c8-4d62-90c1-72ec8e9cdf99" />
+  ```
+ 
 
  

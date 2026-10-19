@@ -9,7 +9,7 @@ Sin un patron la clase UsuarioServicio tendria que conocer la informacion de cad
 - Baja cohesion: la clase de Usuario tendria que armar las URLs de telegram y los mensajes SMTP 
 - Dificultad en pruebas: No se puede probar el registro sin correo ni Telegram reales.
 
-**Solucion directa:** if/else para para cada canal
+**Solucion directa:** if/else para para cada canal - Comportamental
 
 El Patrón Strategy consiste en programar contra una interfaz (INotificador) en lugar de contra clases concretas, permitiendo intercambiar algoritmos o implementaciones (como enviar por correo o por Telegram) en tiempo de ejecución sin alterar la lógica principal de la clase que los utiliza (UsuarioServicio).
 
@@ -115,7 +115,7 @@ Lo importante aqui es que `UsuarioServicio` nunca tiene que saber los detalles t
 
 ---
 
-## 2. Factory Method — El sistema arma el mensaje (y decide qué tipo de mensaje armar)
+## 2. Factory Method — El sistema arma el mensaje (y decide qué tipo de mensaje armar) - Creacional 
 
 El patrón **Factory Method** consiste en declarar un método de creación en una clase base (el **Creator**), sin que esa clase sepa qué objeto concreto va a crear. Son las **subclases** (los **ConcreteCreator**) las que, al heredar de esa clase base y sobreescribir el método, deciden qué objeto específico se construye. Así, el código cliente nunca escribe `new Notificacion(...)` directamente — en vez de eso, crea el "fabricante" correcto y le delega la construcción.
 
@@ -205,19 +205,6 @@ new CreadorNotificacionInicioSesion().notificar(usuario, usuario.getChatId(), no
 
 --- 
 
-## 3. Facade — UsuarioServicio como fachada
-
-Si usaramos AuthControlador como quien registra, valida, guarda en base de datos, coordina los DAO, notifica y realiza la logica de validacion tendria mucho acoplamiento por eso aplicamos el patrón Facade a través de una clase de servicio intermediaria que encapsula y unifica toda esa complejidad en un solo lugar, permitiendo que el controlador solo tenga que hacer una llamada limpia sin enterarse de los detalles internos.
-
-// dentro de iniciarSesion(...)
-new CreadorNotificacionInicioSesion().notificar(usuario, usuario.getChatId(), notificadorTelegram);
-```
-
-`UsuarioServicio` nunca escribe `new Notificacion(...)` directamente — crea el "fabricante" que corresponde (`CreadorNotificacionBienvenida` o `CreadorNotificacionInicioSesion`) y le pide a él que arme y envíe el mensaje. Si un día el texto del correo de bienvenida cambia, se edita un solo lugar (`CreadorNotificacionBienvenida.crearNotificacion`), y se actualiza en toda la app.
-
-**La diferencia clave con la versión anterior:** antes, `Notificacion.bienvenida(usuario)` era una función estática — no había herencia, ni una clase que "decidiera" nada por polimorfismo. Ahora, el que decide es `CreadorNotificacionBienvenida` **al heredar** de `CreadorNotificacion` y **sobreescribir** `crearNotificacion(...)`. Esa herencia + sobreescritura es justo lo que GoF exige para llamarlo Factory Method de verdad.
-
-<img width="1532" height="664" alt="Untitled (2)" src="https://github.com/user-attachments/assets/827c75f6-5c02-48b2-aedf-45b990f526df" />
 
 --- 
 

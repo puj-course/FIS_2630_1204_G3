@@ -39,6 +39,7 @@ FIS_2630_1204_G3/
 │   │       │   │   │   │   ├── PlanificacionControlador.java
 │   │       │   │   │   │   ├── RecomendacionControlador.java
 │   │       │   │   │   │   ├── SeleccionControlador.java
+│   │       │   │   │   │   ├── SesionViaje.java
 │   │       │   │   │   │   ├── TelegramControlador.java
 │   │       │   │   │   │   └── ViajeControlador.java
 │   │       │   │   │   ├── datos/
@@ -50,38 +51,94 @@ FIS_2630_1204_G3/
 │   │       │   │   │   │   ├── UsuarioDAO.java
 │   │       │   │   │   │   └── ViajeDAO.java
 │   │       │   │   │   ├── modelo/
-│   │       │   │   │   │   ├── CategoriaPreferencia.java
-│   │       │   │   │   │   ├── Ciudad.java
-│   │       │   │   │   │   ├── FechasViaje.java
-│   │       │   │   │   │   ├── Peso.java
-│   │       │   │   │   │   ├── Preferencias.java
-│   │       │   │   │   │   ├── PreferenciasUsuario.java
-│   │       │   │   │   │   ├── Pregunta.java
-│   │       │   │   │   │   ├── Presupuesto.java
-│   │       │   │   │   │   ├── RepartoPresupuesto.java
-│   │       │   │   │   │   ├── ResultadoRecomendacion.java
-│   │       │   │   │   │   ├── SeleccionDestinos.java
-│   │       │   │   │   │   ├── TipoAtributo.java
-│   │       │   │   │   │   ├── Ubicacion.java
-│   │       │   │   │   │   └── Usuario.java
+│   │   │           │   ├── CategoriaPreferencia.java
+│   │   │           │   ├── Ciudad.java
+│   │   │           │   ├── CreadorNotificacion.java
+│   │   │           │   ├── CreadorNotificacionBienvenida.java
+│   │   │           │   ├── CreadorNotificacionInicioSesion.java
+│   │   │           │   ├── EstadoAtributo.java
+│   │   │           │   ├── FechasViaje.java
+│   │   │           │   ├── Gasto.java
+│   │   │           │   ├── Importancia.java
+│   │   │           │   ├── Notificacion.java
+│   │   │           │   ├── Preferencias.java
+│   │   │           │   ├── PreferenciasUsuario.java
+│   │   │           │   ├── Pregunta.java
+│   │   │           │   ├── Presupuesto.java
+│   │   │           │   ├── PresupuestoViaje.java
+│   │   │           │   ├── RepartoPresupuesto.java
+│   │   │           │   ├── ResultadoControlCategoria.java
+│   │   │           │   ├── ResultadoRecomendacion.java
+│   │   │           │   ├── ResumenPresupuesto.java
+│   │   │           │   ├── SeleccionDestinos.java
+│   │   │           │   ├── TipoAtributo.java
+│   │   │           │   ├── Ubicacion.java
+│   │   │           │   ├── Usuario.java
+│   │   │           │   ├── ValidacionCiudades.java
+│   │   │           │   └── Viaje.java
 │   │       │   │   │   ├── negocio/
-│   │       │   │   │   │   ├── CatalogoPreguntas.java
-│   │       │   │   │   │   └── DefPregunta.java
+│   │   │           │   ├── CatalogoPreguntas.java
+│   │   │           │   ├── CiudadNegocio.java
+│   │   │           │   ├── ControlCategoriaCreador.java
+│   │   │           │   ├── DefPregunta.java
+│   │   │           │   ├── GestorPreferencias.java
+│   │   │           │   ├── GestorPresupuesto.java
+│   │   │           │   ├── IAutenticacionUsuario.java
+│   │   │           │   ├── ICalculadoraReparto.java
+│   │   │           │   ├── ICargadorCiudades.java
+│   │   │           │   ├── IControlCategoriaGasto.java
+│   │   │           │   ├── IDistribuible.java
+│   │   │           │   ├── IFechasServicio.java
+│   │   │           │   ├── IGestionReparto.java
+│   │   │           │   ├── IGestorGastos.java
+│   │   │           │   ├── INotificador.java
+│   │   │           │   ├── IPerfilUsuario.java
+│   │   │           │   ├── IRegistroUsuario.java
+│   │   │           │   ├── IRepositorioGastos.java
+│   │   │           │   ├── IRepositorioPreferencias.java
+│   │   │           │   ├── IRepositorioPresupuestoViaje.java
+│   │   │           │   ├── IRepositorioRepartoPresupuesto.java
+│   │   │           │   ├── IRepositorioViajes.java
+│   │   │           │   ├── ISeleccionDestino.java
+│   │   │           │   ├── ITraductorPreferencias.java
+│   │   │           │   ├── IUbicable.java
+│   │   │           │   ├── IUsuarioRepositorio.java
+│   │   │           │   ├── IValidable.java
+│   │   │           │   ├── IValidadorReparto.java
+│   │   │           │   ├── IViajeServicio.java
+│   │   │           │   ├── ProovedorLugares.java
+│   │   │           │   ├── Recomendador.java
+│   │   │           │   └── SeleRecomendaciones.java
 │   │       │   │   │   ├── servicio/
-│   │       │   │   │   │   ├── CatalogoCiudades.java
-│   │       │   │   │   │   ├── EmailNotificationService.java
-│   │       │   │   │   │   ├── FechasServicio.java
-│   │       │   │   │   │   ├── LlenarAtributosCiudad.java
-│   │       │   │   │   │   ├── LlenarLasCiudades.java
-│   │       │   │   │   │   ├── PreferenciasServicio.java
-│   │       │   │   │   │   ├── PresupuestoServicio.java
-│   │       │   │   │   │   ├── RecomendadorDestinos.java
-│   │       │   │   │   │   ├── RepartoServicio.java
-│   │       │   │   │   │   ├── SelectorDestinos.java
-│   │       │   │   │   │   ├── ServicioGeoapify.java
-│   │       │   │   │   │   ├── TelegramNotificationService.java
-│   │       │   │   │   │   ├── UsuarioServicio.java
-│   │       │   │   │   │   └── ViajeServicio.java
+│   │   │           │   ├── CatalogoCiudades.java
+│   │   │           │   ├── ContextoValidacionFechas.java
+│   │   │           │   ├── ControlCategoriaEstricto.java
+│   │   │           │   ├── ControlCategoriaFlexible.java
+│   │   │           │   ├── CreadorControlEstricto.java
+│   │   │           │   ├── CreadorControlFlexible.java
+│   │   │           │   ├── FechasServicio.java
+│   │   │           │   ├── GastosServicio.java
+│   │   │           │   ├── LlenarAtributosCiudad.java
+│   │   │           │   ├── LlenarLasCiudades.java
+│   │   │           │   ├── NotificadorCorreo.java
+│   │   │           │   ├── NotificadorTelegram.java
+│   │   │           │   ├── PreferenciasConAuditoriaDecorador.java
+│   │   │           │   ├── PreferenciasServicio.java
+│   │   │           │   ├── PresupuestoConMargenDecorador.java
+│   │   │           │   ├── PresupuestoServicio.java
+│   │   │           │   ├── ProxyLugares.java
+│   │   │           │   ├── RecomendadorDestinos.java
+│   │   │           │   ├── ReglaFechaFin.java
+│   │   │           │   ├── ReglaFechaInicio.java
+│   │   │           │   ├── ReglaRelacionFechas.java
+│   │   │           │   ├── ReglaValidacionFechas.java
+│   │   │           │   ├── RepartoServicio.java
+│   │   │           │   ├── SeleccionServicio.java
+│   │   │           │   ├── SelectorDestinos.java
+│   │   │           │   ├── ServicioGeoapify.java
+│   │   │           │   ├── UsuarioServicio.java
+│   │   │           │   ├── UsuarioSesionFacade.java
+│   │   │           │   └── ViajeServicio.java
 │   │       │   │   │   ├── ServletInitializer.java
 │   │       │   │   │   └── WisetripApplication.java
 │   │       │   │   ├── resources/
@@ -90,27 +147,6 @@ FIS_2630_1204_G3/
 │   │       │   │   │   │   └── insert_ciudades.sql
 │   │       │   │   │   ├── static/
 │   │       │   │   │   │   ├── css/
-│   │       │   │   │   │   │   ├── img/
-│   │       │   │   │   │   │   │   └── banderas/
-│   │       │   │   │   │   │   │       ├── ARS.svg
-│   │       │   │   │   │   │   │       ├── BOB.svg
-│   │       │   │   │   │   │   │       ├── BRL.svg
-│   │       │   │   │   │   │   │       ├── BZD.svg
-│   │       │   │   │   │   │   │       ├── CLP.svg
-│   │       │   │   │   │   │   │       ├── COP.svg
-│   │       │   │   │   │   │   │       ├── CRC.svg
-│   │       │   │   │   │   │   │       ├── CUP.svg
-│   │       │   │   │   │   │   │       ├── DOP.svg
-│   │       │   │   │   │   │   │       ├── GTQ.svg
-│   │       │   │   │   │   │   │       ├── HNL.svg
-│   │       │   │   │   │   │   │       ├── MXN.svg
-│   │       │   │   │   │   │   │       ├── NIO.svg
-│   │       │   │   │   │   │   │       ├── PAB.svg
-│   │       │   │   │   │   │   │       ├── PEN.svg
-│   │       │   │   │   │   │   │       ├── PYG.svg
-│   │       │   │   │   │   │   │       ├── USD.svg
-│   │       │   │   │   │   │   │       ├── UYU.svg
-│   │       │   │   │   │   │   │       └── VES.svg
 │   │       │   │   │   │   │   ├── estilos.css
 │   │       │   │   │   │   │   ├── fechas.css
 │   │       │   │   │   │   │   ├── landing.css
@@ -143,37 +179,65 @@ FIS_2630_1204_G3/
 │   │       │   │   │   │       │   ├── UYU.png
 │   │       │   │   │   │       │   └── VES.png
 │   │       │   │   │   │       ├── portada/
-│   │       │   │   │   │       │   ├── Amazonas.jpg
-│   │       │   │   │   │       │   ├── Argentina.jpg
-│   │       │   │   │   │       │   ├── Cartegena.jpg
-│   │       │   │   │   │       │   ├── desierto.jpg
-│   │       │   │   │   │       │   ├── logo.png
+│   │       │   │   │   │       │   ├── bariloche.jpg
+│   │       │   │   │   │       │   ├── bocas.jpg
+│   │       │   │   │   │       │   ├── cartagena.jpg
+│   │       │   │   │   │       │   ├── cdmx.jpg
+│   │       │   │   │   │       │   ├── cusco.jpg
+│   │       │   │   │   │       │   ├── flores.jpg
+│   │       │   │   │   │       │   ├── fortuna.jpg
+│   │       │   │   │   │       │   ├── granada.jpg
+│   │       │   │   │   │       │   ├── habana.jpg
+│   │       │   │   │   │       │   ├── lapaz.jpg
+│   │       │   │   │   │       │   ├── lima.jpg
+│   │       │   │   │   │       │   ├── logo.jpg
+│   │       │   │   │   │       │   ├── medellin.jpg
+│   │       │   │   │   │       │   ├── mendoza.jpg
 │   │       │   │   │   │       │   ├── Peru.jpg
-│   │       │   │   │   │       │   └── Rio.jpg
+│   │       │   │   │   │       │   ├── puntadeleste.jpg
+│   │       │   │   │   │       │   ├── quito.jpg
+│   │       │   │   │   │       │   ├── roatan.jpg
+│   │       │   │   │   │       │   └── santiago.jpg
 │   │       │   │   │   │       ├── preferencias/
 │   │       │   │   │   │       │   ├── aventura.png
 │   │       │   │   │   │       │   ├── comida_internacional.png
 │   │       │   │   │   │       │   ├── compras.png
 │   │       │   │   │   │       │   ├── desierto.png
+│   │       │   │   │   │       │   ├── familiar_kids.png
 │   │       │   │   │   │       │   ├── festivo.png
 │   │       │   │   │   │       │   ├── gourmet.png
+│   │       │   │   │   │       │   ├── hispanohablante.png
 │   │       │   │   │   │       │   ├── lujo.png
 │   │       │   │   │   │       │   ├── mochilero.png
 │   │       │   │   │   │       │   ├── montana.png
 │   │       │   │   │   │       │   ├── muchas_actividades.png
+│   │       │   │   │   │       │   ├── museos.png
 │   │       │   │   │   │       │   ├── naturaleza.png
+│   │       │   │   │   │       │   ├── navegacion_islas.png
 │   │       │   │   │   │       │   ├── nieve.png
 │   │       │   │   │   │       │   ├── off_the_beaten_path.png
+│   │       │   │   │   │       │   ├── parque_diversiones.png
+│   │       │   │   │   │       │   ├── pet_friendly.png
 │   │       │   │   │   │       │   ├── playa.png
+│   │       │   │   │   │       │   ├── religioso.png
 │   │       │   │   │   │       │   ├── restricciones_alimentarias.png
 │   │       │   │   │   │       │   ├── romantico.png
+│   │       │   │   │   │       │   ├── ruinas_arqueologicas.png
 │   │       │   │   │   │       │   ├── tiempo_libre.png
 │   │       │   │   │   │       │   ├── tranquilo.png
 │   │       │   │   │   │       │   ├── urbano.png
 │   │       │   │   │   │       │   └── vida_nocturna.png
+│   │       │   │   │   │       └──Registro-exitoso/
+│   │       │   │   │   │       │   ├── chillan.jpg
+│   │       │   │   │   │       │   ├── guadalajara.jpg
+│   │       │   │   │   │       |   └── panama.jpg
 │   │       │   │   │   │       └── resumen/
+│   │       │   │   │   │           ├── Amazonas.jpg
+│   │       │   │   │   │           ├── Argentina.jpg
+│   │       │   │   │   │           ├── desierto.jpg
 │   │       │   │   │   │           ├── monteverde.jpg
 │   │       │   │   │   │           ├── pines.jpg
+│   │       │   │   │   │           ├── Rio.jpg
 │   │       │   │   │   │           ├── salar.jpg
 │   │       │   │   │   │           └── tulum.jpg
 │   │       │   │   │   └── application.properties
@@ -227,6 +291,9 @@ FIS_2630_1204_G3/
 │   │   ├── CodigoInicialBoceto.jsx
 │   │   ├── DocumentacionTecnicaPaginaWeb.md
 │   │   └── mockupInicial.md
+│   ├── diagrama/
+│   ├── PatronesGOF/
+│   ├── pruebas/
 │   ├── user_guide/
 │   │   ├── .gitkeep
 │   │   └── README.md
