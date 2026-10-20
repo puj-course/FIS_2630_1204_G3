@@ -1,7 +1,8 @@
 ### Diagrama de componentes del modulo 2 de wisetrip
 (Recomendacione y personalizacion del viaje)
+## Diagrama de Componentes - WiseTrip M2
 
-´´´Plantuml
+```text
 @startuml
 title Diagrama de Componentes - WiseTrip M2
 left to right direction
@@ -84,6 +85,7 @@ Cache ..> DataSource : getConnection()
 DataSource ..> BaseDatos : JDBC
 
 @enduml
+```
 
 ---
 <img width="1600" height="382" alt="image" src="https://github.com/user-attachments/assets/dfcf52e0-74a2-4c03-b94b-da1683e6fef1" />
