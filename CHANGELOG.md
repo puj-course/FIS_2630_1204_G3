@@ -5064,3 +5064,9 @@ falta de tiempo
 - Depender de un servicio externo para enviar los mensajes (puede fallar o tener límites de envío).
 - Posible costo por mensaje enviado o necesidad de crear una cuenta con créditos.
 - Que la app cambie mientras se escribe el manual y quede desactualizado.
+
+---
+<img width="1600" height="1200" alt="image" src="https://github.com/user-attachments/assets/6a4f3aaf-af62-4cea-8a62-ced9555b65b7" />
+
+
+---
