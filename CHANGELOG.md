@@ -5049,9 +5049,9 @@ falta de tiempo
 | ID | Título | Tipo | Estimación | Responsable |
 |----|--------|------|------------|-------------|
 | #106 | Como usuario, quiero recibir mensajes de texto en mi celular con los avisos importantes de mi viaje, para estar al tanto de avisos importantes. | Historia de Usuario |  | Valeria |
-| #107 | Como usuario, quiero contar con un manual que me explique cómo usar WiseTrip, para comprender la aplicación y conocer sus atajos y funcionalidades. | Historia de Usuario | TBD | Valeria |
-| #[N] | Como [rol], quiero [acción], para [beneficio]. | Historia de Usuario | TBD | [Nombre] |
-| #[N] | Como [rol], quiero [acción], para [beneficio]. | Historia de Usuario | TBD | [Nombre] |
+| #107 | Como usuario, quiero contar con un manual que me explique cómo usar WiseTrip, para omprender la aplicación y conocer sus atajos y funcionalidades. | Historia de Usuario | TBD | Valeria |
+| #108 | Como viajero, quiero comenzar a construir el itinerario de mi viaje a partir del destino seleccionado para organizar las opciones que formarán parte de mi viaje | Historia de Usuario | TBD | Maleja |
+| #109 | Como viajero, quiero que WiseTrip consulte las APIs necesarias para obtener opciones reales de mi destino y poder utilizarlas en la construcción de mi itinerario | Historia de Usuario | TBD | Maleja |
 | #[N] | Como [rol], quiero [acción], para [beneficio]. | Historia de Usuario | TBD | [Nombre] |
 | #[N] | Como [rol], quiero [acción], para [beneficio]. | Historia de Usuario | TBD | [Nombre] |
 | #[N] | Como [rol], quiero [acción], para [beneficio]. | Historia de Usuario | TBD | [Nombre] |
