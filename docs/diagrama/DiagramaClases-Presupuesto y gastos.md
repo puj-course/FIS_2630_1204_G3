@@ -175,4 +175,5 @@ RepartoServicio -[hidden]-> GastosServicio
 ```
 
 ## Diagrama
-<img width="3432" height="1389" alt="Untitled (6)" src="https://github.com/user-attachments/assets/98135000-4162-43b3-8f84-7c2407d38f19" />
+<img width="4608" height="1560" alt="Untitled (8)" src="https://github.com/user-attachments/assets/34241af9-a306-4109-8ac5-421b32180b58" />
+
