@@ -2,6 +2,7 @@
 
 codigo 
 
+```
 @startuml
 !include <C4/C4_Component>
 
@@ -43,6 +44,8 @@ Rel(servicioGeoapify, geoapify, "Consulta coordenadas y lugares", "HTTPS / JSON"
 Rel(persistencia, neon, "Lee y escribe", "JDBC / PostgreSQL")
 
 @enduml
+```
 
 ## Diagrama Visual 
+
 
