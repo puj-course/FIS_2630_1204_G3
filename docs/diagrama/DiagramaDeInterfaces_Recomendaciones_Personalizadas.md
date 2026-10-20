@@ -4,12 +4,49 @@ implementacion en VPasCode
 
 ```java
 @startuml
-title M2 - Interfaces de Negocio - Recomendación Personalizada de Destinos
 
-left to right direction
-skinparam classAttributeIconSize 0
+WiseTrip_M2_Interfaces
 
-package "Negocio" {
+title
+Interfaces de Negocio - 
+Recomendación Personalizada de Destinos del Modulo 2
+end title
+
+top to bottom direction
+
+skinparam shadowing false
+skinparam packageStyle circle
+skinparam linetype polyline
+skinparam nodesep 40
+skinparam ranksep 50
+skinparam packageFontName Times New Roman
+skinparam backgroundColor transparent
+hide empty members
+
+
+package "Controlador" #F1ECFA {
+
+    class RecomendacionControlador <<@Controller>>
+}
+
+
+package "Contratos de negocio" #E8F4FF {
+
+    interface CiudadNegocio {
+        +obtenerTodas(): List<Ciudad>
+        +insertar(ciudad: Ciudad): boolean
+    }
+
+    interface GestorPreferencias {
+        +listarCategorias(): List<CategoriaPreferencia>
+        +totalPreguntas(): int
+        +validarPreferencias(preferencias: Preferencias): Map<String, String>
+        +obtenerImportancias(preferencias: Preferencias): Map<String, Importancia>
+        +obtenerAtributosSeleccionados(preferencias: Preferencias): Map<String, Boolean>
+        +clavesAfirmativas(preferencias: Preferencias): List<String>
+        +resumenPorCategoria(preferencias: Preferencias): Map<String, List<String>>
+        +contarAfirmativas(preferencias: Preferencias): long
+    }
 
     interface GestorPresupuesto {
         +validarPresupuesto(presupuesto: Presupuesto, paisDestino: String): Map<String, String>
@@ -19,17 +56,8 @@ package "Negocio" {
         +formatear(valor: double): String
     }
 
-    interface GestorPreferencias {
-        +listarCategorias(): List<CategoriaPreferencia>
-        +totalPreguntas(): int
-        +validarPreferencias(preferencias: Preferencias): Map<String, String>
-        +obtenerImportancias(preferencias: Preferencias): Map<String, Importancia>
-        +obtenerAtributosSeleccionados(preferencias: Preferencias): Map<String, Boolean>
-        +resumenPorCategoria(preferencias: Preferencias): Map<String, List<String>>
-        +contarAfirmativas(preferencias: Preferencias): long
-    }
-
     interface Recomendador {
+        +excedePresupuesto(ciudad: Ciudad, preferencias: PreferenciasUsuario): boolean
         +recomendarDestinos(ciudades: List<Ciudad>, preferencias: PreferenciasUsuario): List<ResultadoRecomendacion>
         +validarCiudades(ciudades: List<Ciudad>, preferencias: PreferenciasUsuario): ValidacionCiudades
         +puntuarCiudadesValidas(validacion: ValidacionCiudades, preferencias: PreferenciasUsuario): List<ResultadoRecomendacion>
@@ -45,85 +73,97 @@ package "Negocio" {
         +contarLugares(lat: double, lon: double, categorias: String, radioMetros: int, limite: int): Integer
     }
 
-    interface CiudadNegocio {
-        +obtenerTodas(): List<Ciudad>
-        +insertar(ciudad: Ciudad): boolean
+    interface CacheRepositorio {
+        +buscar(latitud: double, longitud: double, categoria: String, radioMetros: int, limite: int): Optional<Integer>
+        +guardar(latitud: double, longitud: double, categoria: String, radioMetros: int, limite: int, respuesta: int): void
     }
+
+    ' ---- Cuadrícula de 2 columnas ----
+    ' Fila 1
+    CiudadNegocio -[hidden]right-> GestorPreferencias
+    ' Fila 2
+    GestorPresupuesto -[hidden]right-> Recomendador
+    ' Fila 3
+    SeleRecomendaciones -[hidden]right-> ProovedorLugares
+
+    ' Separación vertical entre filas (una por columna)
+    CiudadNegocio -[hidden]down-> GestorPresupuesto
+    GestorPreferencias -[hidden]down-> Recomendador
+    GestorPresupuesto -[hidden]down-> SeleRecomendaciones
+    Recomendador -[hidden]down-> ProovedorLugares
+    SeleRecomendaciones -[hidden]down-> CacheRepositorio
 }
 
 
-package "Servicios" {
+package "Servicios" #EAF7EA {
 
-    class PresupuestoServicio
+    class PreferenciasServicio <<@Service>>
+    class PresupuestoServicio <<@Service>>
+    class RecomendadorDestinos <<@Service>>
+    class SelectorDestinos <<@Service>>
+    class LlenarAtributosCiudad <<@Service>>
+    class ProxyLugares <<@Service>>
+    class ServicioGeoapify <<@Service>>
 
-    class PreferenciasServicio
+    ' ---- Cuadrícula de 2 columnas ----
+    PreferenciasServicio -[hidden]right-> PresupuestoServicio
+    RecomendadorDestinos -[hidden]right-> SelectorDestinos
+    LlenarAtributosCiudad -[hidden]right-> ProxyLugares
 
-    class RecomendadorDestinos
-
-    class SelectorDestinos
-
-    class ServicioGeoapify
+    PreferenciasServicio -[hidden]down-> RecomendadorDestinos
+    PresupuestoServicio -[hidden]down-> SelectorDestinos
+    RecomendadorDestinos -[hidden]down-> LlenarAtributosCiudad
+    SelectorDestinos -[hidden]down-> ProxyLugares
+    LlenarAtributosCiudad -[hidden]down-> ServicioGeoapify
 }
 
 
-package "Datos" {
+package "Acceso a datos" #FDECEC {
 
-    class CiudadDAO
+    class CiudadDAO <<@Repository>>
+    class Cache <<@Repository>>
+
+    CiudadDAO -[hidden]right-> Cache
 }
-
-
-package "Modelos" {
-
-    class Presupuesto
-
-    class Preferencias
-
-    class PreferenciasUsuario
-
-    class CategoriaPreferencia
-
-    class Importancia
-
-    class Ciudad
-
-    class ResultadoRecomendacion
-
-    class SeleccionDestinos
-
-    class ValidacionCiudades
-}
-
-PresupuestoServicio ..|> GestorPresupuesto
 
 PreferenciasServicio ..|> GestorPreferencias
-
+PresupuestoServicio ..|> GestorPresupuesto
 RecomendadorDestinos ..|> Recomendador
-
 SelectorDestinos ..|> SeleRecomendaciones
-
+ProxyLugares ..|> ProovedorLugares
 ServicioGeoapify ..|> ProovedorLugares
-
 CiudadDAO ..|> CiudadNegocio
+Cache ..|> CacheRepositorio
 
-GestorPresupuesto ..> Presupuesto
+RecomendacionControlador --> CiudadNegocio
+RecomendacionControlador --> Recomendador
+RecomendacionControlador --> SeleRecomendaciones
 
-GestorPreferencias ..> Preferencias
-GestorPreferencias ..> CategoriaPreferencia
-GestorPreferencias ..> Importancia
+RecomendadorDestinos --> GestorPreferencias
 
-Recomendador ..> Ciudad
-Recomendador ..> PreferenciasUsuario
-Recomendador ..> ResultadoRecomendacion
-Recomendador ..> ValidacionCiudades
+LlenarAtributosCiudad --> ProovedorLugares : usa
 
-SeleRecomendaciones ..> ResultadoRecomendacion
-SeleRecomendaciones ..> SeleccionDestinos
+ProxyLugares --> CacheRepositorio : consulta / guarda
 
-CiudadNegocio ..> Ciudad
+ProxyLugares --> ServicioGeoapify : delega si no hay cache
+
+RecomendacionControlador -[hidden]down-> CiudadNegocio
+CacheRepositorio -[hidden]down-> PreferenciasServicio
+ServicioGeoapify -[hidden]down-> CiudadDAO
+
+
+note right of ProxyLugares
+  El Proxy consulta primero
+  la cache.
+
+  Si no encuentra el resultado,
+  delega la consulta a
+  ServicioGeoapify.
+end note
 
 @enduml
-
 ```
 
 ## Diagrama Visual 
-<img width="1476" height="933" alt="m2-diagrama-de-interfaces-de-negocio" src="https://github.com/user-attachments/assets/8e465b9d-3986-497c-98ce-b7f46a0aa73d" />
+<img width="2716" height="999" alt="interfaces-de-negocio-modulo-2" src="https://github.com/user-attachments/assets/3422abcf-504a-424f-bc80-a8391c40b383" />
+
