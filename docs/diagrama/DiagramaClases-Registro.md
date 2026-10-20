@@ -29,7 +29,7 @@
 
 ## Imagen del diagrama 
 
-<img width="1274" height="1025" alt="Untitled (9)" src="https://github.com/user-attachments/assets/8d278a74-7b4a-4cb6-9ee2-1d9a06fbc7dc" />
+<img width="1703" height="1533" alt="Untitled (12)" src="https://github.com/user-attachments/assets/1cd81a1e-1ecb-4492-9f9c-bfd9928cec2e" />
 
 
 ## Codigo del diagrama 
