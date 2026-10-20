@@ -4575,7 +4575,8 @@ todo lo veo bien , sin embargo estas semanas son criticas para todos los miembor
 # Sprint 9 - Sprint Planning - [13/10/2026]
 
 ## Sprint Goal
-
+Reorganizar la arquitectura de WiseTrip con clases de dominio, interfaces de negocio y capas separadas, reforzando las validaciones de viaje, fechas y presupuesto, para que la captura de preferencias y presupuesto y la recomendación de destinos funcionen de forma consistente.
+Incremento Entregado
 
 ## Capacidad del equipo
 
@@ -5033,3 +5034,28 @@ falta de tiempo
 
 ---
 
+# Sprint Planning - [19/10/2026]
+
+## Sprint Goal
+
+
+## Capacidad del equipo 
+
+* Desarrolladores disponibles: 5
+* Puntos/horas disponibles: 42
+
+## Issues seleccionados para el Sprint
+
+| ID | Título | Tipo | Estimación | Responsable |
+|----|--------|------|------------|-------------|
+| #106 | Como usuario, quiero recibir mensajes de texto en mi celular con los avisos importantes de mi viaje, para estar al tanto de avisos importantes. | Historia de Usuario |  | Valeria |
+| #107 | Como usuario, quiero contar con un manual que me explique cómo usar WiseTrip, para comprender la aplicación y conocer sus atajos y funcionalidades. | Historia de Usuario | TBD | Valeria |
+| #[N] | Como [rol], quiero [acción], para [beneficio]. | Historia de Usuario | TBD | [Nombre] |
+| #[N] | Como [rol], quiero [acción], para [beneficio]. | Historia de Usuario | TBD | [Nombre] |
+| #[N] | Como [rol], quiero [acción], para [beneficio]. | Historia de Usuario | TBD | [Nombre] |
+
+## Riesgos / Bloqueos identificados
+
+- Depender de un servicio externo para enviar los mensajes (puede fallar o tener límites de envío).
+- Posible costo por mensaje enviado o necesidad de crear una cuenta con créditos.
+- Que la app cambie mientras se escribe el manual y quede desactualizado.
