@@ -137,5 +137,6 @@ end legend
 ```
 
 ## Diagrama
-<img width="1431" height="965" alt="Untitled (2)" src="https://github.com/user-attachments/assets/0bb223e1-94c9-4131-ad64-271e84c8c627" />
+<img width="1735" height="1118" alt="Untitled (7)" src="https://github.com/user-attachments/assets/2904ed34-7fbe-4f7f-82e0-84d5d9f1e9d3" />
+
 
