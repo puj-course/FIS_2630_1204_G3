@@ -5053,6 +5053,11 @@ falta de tiempo
 | #[N] | Como [rol], quiero [acción], para [beneficio]. | Historia de Usuario | TBD | [Nombre] |
 | #[N] | Como [rol], quiero [acción], para [beneficio]. | Historia de Usuario | TBD | [Nombre] |
 | #[N] | Como [rol], quiero [acción], para [beneficio]. | Historia de Usuario | TBD | [Nombre] |
+| #[N] | Como [rol], quiero [acción], para [beneficio]. | Historia de Usuario | TBD | [Nombre] |
+| #[N] | Como [rol], quiero [acción], para [beneficio]. | Historia de Usuario | TBD | [Nombre] |
+| #[N] | Como [rol], quiero [acción], para [beneficio]. | Historia de Usuario | TBD | [Nombre] |
+| #114 | Como usuario de WiseTrip, quiero ver una pantalla de carga entretenida mientras se calculan mis destinos, para que la espera se sienta corta | Historia de Usuario | TBD | Clavijo |
+| #115 | Como usuario de WiseTrip, quiero que la pantalla de preguntas de preferencias tenga un diseño atractivo y fácil de leer, para responder el cuestionario con gusto y sin cansarme | Historia de Usuario | TBD | Clavijo |
 
 ## Riesgos / Bloqueos identificados
 
