@@ -5191,14 +5191,16 @@ falta de tiempo
 
 1. **¿Qué hice ayer?**
 
+ayer empece a revisar todos los patrones que hicimos, los borramos y somos concientes de que los tenemos que hacer bien para la proxima entrega
 
 
 2. **¿Qué voy a hacer hoy?**
 
-
+hoy deje de lado los diagramas para concentrarme en las HUs de esta semana, ya vi que le puedo cambiar a la pagina de preguntas para que quede mas limpia, y mañana empezare a cambiarla
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
+falta de tiempo
 
 
 ---
