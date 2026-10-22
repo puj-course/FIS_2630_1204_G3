@@ -5141,12 +5141,18 @@ falta de tiempo
 
 1. **¿Qué hice ayer?** 
 
+Terminamos de perfeccionar los diagramas y organizamos la sustentación
 
 2. **¿Qué voy a hacer hoy?** 
 
+Hoy tuvimos la sustentación, tenemos muchas cosas por mejorar y cambiar, una de ellas es refactorizar el código, también pues dominar ciertos aspectos que tenemos confusos en el proyecto
 
-3. **¿Tengo algún impedimento o bloqueo?** 
+3. **¿Tengo algún impedimento o bloqueo?**
 
+no 
+
+
+<img width="1280" height="678" alt="image" src="https://github.com/user-attachments/assets/c1b8d753-20f1-4093-bd38-013d67f0658f" />
 
 
 ---
@@ -5226,12 +5232,17 @@ falta de tiempo
 
 1. **¿Qué hice ayer?** 
 
+Ayer eliminamos todos los diagramas para empezar a hacer uno por uno con mucho mas detalle y cuidado para entender que fue lo que hicimos
 
 2. **¿Qué voy a hacer hoy?** 
 
+Hoy voy a empezar a revisar el codigo y ver si de alguna manera se puede como disminuir la cantidad de interfaces y tener estrictamente lo necesario
 
 3. **¿Tengo algún impedimento o bloqueo?** 
 
+no 
+
+<img width="1297" height="691" alt="image" src="https://github.com/user-attachments/assets/5c6c8a22-2e91-4e4f-8b2f-5d68cd5307fe" />
 
 
 ---
