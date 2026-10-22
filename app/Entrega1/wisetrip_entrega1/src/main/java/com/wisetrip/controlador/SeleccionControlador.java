@@ -13,6 +13,7 @@ import com.wisetrip.modelo.SeleccionDestinos;
 import com.wisetrip.modelo.Usuario;
 import com.wisetrip.negocio.ISeleccionDestino;
 import com.wisetrip.negocio.IRepositorioViajes;
+import com.wisetrip.negocio.IRepositorioPreferencias;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -21,23 +22,26 @@ import jakarta.servlet.http.HttpSession;
  * y continuar la planificación con ese destino.
  *
  * GRASP Controlador: recibe la petición web y delega la elección.
- * SOLID Inversión de dependencias: depende de la interfaz de negocio
- * ISeleccionDestino e IRepositorioViajes, no de clases concretas.
+ * SOLID Inversión de dependencias: depende de las interfaces de negocio
+ * ISeleccionDestino, IRepositorioViajes e IRepositorioPreferencias.
  */
 @Controller
 public class SeleccionControlador {
 
     private final ISeleccionDestino seleccionDestino;
     private final IRepositorioViajes viajeDAO;
+    private final IRepositorioPreferencias preferenciaDAO;
 
-    public SeleccionControlador(ISeleccionDestino seleccionDestino, IRepositorioViajes viajeDAO) {
+    public SeleccionControlador(ISeleccionDestino seleccionDestino, IRepositorioViajes viajeDAO,
+                                IRepositorioPreferencias preferenciaDAO) {
         this.seleccionDestino = seleccionDestino;
         this.viajeDAO = viajeDAO;
+        this.preferenciaDAO = preferenciaDAO;
     }
 
     /**
      * Persiste el destino elegido, lo guarda en sesión y avanza al reparto
-     * del presupuesto solo cuando el viaje se ha guardado.
+     * del presupuesto solo cuando el viaje y sus preferencias se han guardado.
      */
     @GetMapping("/destino/{id}")
     @SuppressWarnings("unchecked")
@@ -79,6 +83,9 @@ public class SeleccionControlador {
         } else {
             viajeDAO.actualizarDestino(idViaje, usuario.getIdUsuario(), idCiudad);
         }
+
+        // El ID ya queda en sesion para reutilizar el viaje si las preferencias fallan.
+        preferenciaDAO.guardarActivas(idViaje, atributosCuestionario);
 
         sesion.setAttribute("destinoElegido", elegido.get());
         sesion.setAttribute("paisDestino", elegido.get().getCiudad().getPais());
