@@ -67,4 +67,33 @@ public class ViajeDAO implements IRepositorioViajes {
             throw new IllegalStateException("No se pudo guardar el viaje en PostgreSQL.", e);
         }
     }
+    @Override
+    public void actualizarDestino(int idViaje, int idUsuario, int idCiudad) {
+        if (idViaje <= 0 || idUsuario <= 0 || idCiudad <= 0) {
+            throw new IllegalArgumentException("Los IDs del viaje, usuario y ciudad deben ser positivos.");
+        }
+
+        String sql = """
+                UPDATE viajes
+                SET destino = ciudad.nombre
+                FROM ciudad
+                WHERE viajes.id_viaje = ?
+                  AND viajes.id_usuario = ?
+                  AND ciudad.id_ciudad = ?
+                """;
+
+        try (Connection conn = ConexionBD.obtenerConexion();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, idViaje);
+            stmt.setInt(2, idUsuario);
+            stmt.setInt(3, idCiudad);
+
+            if (stmt.executeUpdate() != 1) {
+                throw new IllegalStateException(
+                        "No se encontro el viaje del usuario o la ciudad seleccionada.");
+            }
+        } catch (SQLException e) {
+            throw new IllegalStateException("No se pudo actualizar el destino en PostgreSQL.", e);
+        }
+    }
 }
