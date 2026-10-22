@@ -5108,15 +5108,15 @@ falta de tiempo
 
 1. **¿Qué hice ayer?**
 
-
+ayer tuvimos la sustentacion de la segunda entrega del proyecto, entendimos que la arquitectura y los diagramas los teniamos mal pero ya entendimos porque
 
 2. **¿Qué voy a hacer hoy?**
 
-
+hoy revise mi patron gof, y demas diagramas para volver hacerlos
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
-
+falta de tiempo
 
 ---
 
