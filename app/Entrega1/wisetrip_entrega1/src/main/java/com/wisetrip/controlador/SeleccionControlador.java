@@ -7,10 +7,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import com.wisetrip.modelo.FechasViaje;
 import com.wisetrip.modelo.ResultadoRecomendacion;
 import com.wisetrip.modelo.SeleccionDestinos;
 import com.wisetrip.modelo.Usuario;
 import com.wisetrip.negocio.ISeleccionDestino;
+import com.wisetrip.negocio.IRepositorioViajes;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -20,20 +22,22 @@ import jakarta.servlet.http.HttpSession;
  *
  * GRASP Controlador: recibe la petición web y delega la elección.
  * SOLID Inversión de dependencias: depende de la interfaz de negocio
- * ISeleccionDestino, no de una clase concreta.
+ * ISeleccionDestino e IRepositorioViajes, no de clases concretas.
  */
 @Controller
 public class SeleccionControlador {
 
     private final ISeleccionDestino seleccionDestino;
+    private final IRepositorioViajes viajeDAO;
 
-    public SeleccionControlador(ISeleccionDestino seleccionDestino) {
+    public SeleccionControlador(ISeleccionDestino seleccionDestino, IRepositorioViajes viajeDAO) {
         this.seleccionDestino = seleccionDestino;
+        this.viajeDAO = viajeDAO;
     }
 
     /**
-     * Guarda en sesión el destino que el viajero eligió entre los tres
-     * recomendados y avanza al reparto del presupuesto.
+     * Persiste el destino elegido, lo guarda en sesión y avanza al reparto
+     * del presupuesto solo cuando el viaje se ha guardado.
      */
     @GetMapping("/destino/{id}")
     @SuppressWarnings("unchecked")
@@ -46,7 +50,13 @@ public class SeleccionControlador {
                 (Map<String, Boolean>) sesion.getAttribute("atributosSeleccionados");
         if (atributosCuestionario == null) return "redirect:/preferencias";
 
-        if (sesion.getAttribute("presupuestoEnUsd") == null) return "redirect:/presupuesto";
+        Double presupuestoUsd = (Double) sesion.getAttribute("presupuestoEnUsd");
+        if (presupuestoUsd == null || !Double.isFinite(presupuestoUsd) || presupuestoUsd <= 0) {
+            return "redirect:/presupuesto";
+        }
+
+        FechasViaje fechas = (FechasViaje) sesion.getAttribute("fechasViaje");
+        if (fechas == null || !fechas.tieneRangoValido()) return "redirect:/fechas";
 
         SeleccionDestinos seleccionDestinos =
                 (SeleccionDestinos) sesion.getAttribute("seleccionDestinos");
@@ -59,6 +69,15 @@ public class SeleccionControlador {
         // Si el id no corresponde a ninguno de los tres, regresa sin guardar.
         if (elegido.isEmpty()) {
             return "redirect:/recomendaciones";
+        }
+
+        Integer idViaje = (Integer) sesion.getAttribute("idViajeGuardado");
+        int idCiudad = elegido.get().getCiudad().getId();
+        if (idViaje == null) {
+            idViaje = viajeDAO.insertar(usuario.getIdUsuario(), idCiudad, fechas, presupuestoUsd);
+            sesion.setAttribute("idViajeGuardado", idViaje);
+        } else {
+            viajeDAO.actualizarDestino(idViaje, usuario.getIdUsuario(), idCiudad);
         }
 
         sesion.setAttribute("destinoElegido", elegido.get());
