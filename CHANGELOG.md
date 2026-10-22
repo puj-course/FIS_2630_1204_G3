@@ -5124,15 +5124,15 @@ falta de tiempo
 
 1. **¿Qué hice ayer?**
 
-
+Terminamos de revisar los diagramas y de estudiarlos para sustentarlos, se mejoraron algunos y estudiar mucho los patrones GoF
 
 2. **¿Qué voy a hacer hoy?**
 
-
+Tuvimos la sustentacion de la entrega 2 donde el profesor nos corrigio varias cosas de la arquitectura
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
-
+no
 
 ---
 
