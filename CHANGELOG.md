@@ -5215,15 +5215,15 @@ falta de tiempo
 
 1. **¿Qué hice ayer?**
 
-
+Ayer por las correcciones que nos hizo el profesor, eliminamos todos los diagramas y estuve revisando cuales de los diagramas que yo trabaje necesitan una mejora
 
 2. **¿Qué voy a hacer hoy?**
 
-
+Hoy ya revise las mejoras que se le pueden hacer a cada uno de los diagramas y entendi la dimension de cada uno, el de componentes, despliegue, dominio, que se supone que cada uno debe mostrar
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
-
+no
 
 ---
 
