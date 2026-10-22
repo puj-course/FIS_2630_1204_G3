@@ -20,7 +20,6 @@ import com.wisetrip.negocio.IRepositorioViajes;
 //mejoras
 //validar fecha_inicio >= fecha_actual (regla de negocio)
 //Validar fecha_fin >= fecha_inicio (regla de negocio)
-//Validar presupuesto > 0 (regla de negocio)
 //Manejo de SQLException (unique, foreign key, check)
 //Verificar que idUsuario e idCiudad existan en BD
 //Agregar validación de duplicados (evitar viajes idénticos)
@@ -31,6 +30,19 @@ public class ViajeDAO implements IRepositorioViajes {
 
     @Override
     public int insertar(int idUsuario, int idCiudad, FechasViaje fechas, double presupuestoUsd) {
+        if (idUsuario <= 0) {
+            throw new IllegalArgumentException("El viaje debe estar asociado a un usuario con ID positivo.");
+        }
+        if (idCiudad <= 0) {
+            throw new IllegalArgumentException("El destino debe tener un ID de ciudad positivo.");
+        }
+        if (fechas == null || !fechas.tieneRangoValido()) {
+            throw new IllegalArgumentException("El viaje debe tener fechas validas y la fecha final debe ser posterior a la inicial.");
+        }
+        if (!Double.isFinite(presupuestoUsd) || presupuestoUsd <= 0) {
+            throw new IllegalArgumentException("El presupuesto del viaje debe ser un numero finito mayor que cero.");
+        }
+
         String sql = """
                 INSERT INTO viajes (id_usuario, destino, fecha_inicio, fecha_fin, presupuesto)
                 SELECT ?, nombre, ?, ?, ? FROM ciudad WHERE id_ciudad = ?
