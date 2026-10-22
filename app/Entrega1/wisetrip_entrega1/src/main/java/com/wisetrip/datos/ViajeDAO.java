@@ -32,18 +32,18 @@ public class ViajeDAO implements IRepositorioViajes {
     @Override
     public int insertar(int idUsuario, int idCiudad, FechasViaje fechas, double presupuestoUsd) {
         String sql = """
-                INSERT INTO viajes (id_usuario, id_ciudad, fecha_inicio, fecha_fin, presupuesto)
-                VALUES (?, ?, ?, ?, ?)
+                INSERT INTO viajes (id_usuario, destino, fecha_inicio, fecha_fin, presupuesto)
+                SELECT ?, nombre, ?, ?, ? FROM ciudad WHERE id_ciudad = ?
                 RETURNING id_viaje
                 """;
 
         try (Connection conn = ConexionBD.obtenerConexion();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setInt(1, idUsuario);
-            stmt.setInt(2, idCiudad);
-            stmt.setDate(3, Date.valueOf(LocalDate.parse(fechas.getFechaInicio())));
-            stmt.setDate(4, Date.valueOf(LocalDate.parse(fechas.getFechaFin())));
-            stmt.setDouble(5, presupuestoUsd);
+            stmt.setDate(2, Date.valueOf(LocalDate.parse(fechas.getFechaInicio())));
+            stmt.setDate(3, Date.valueOf(LocalDate.parse(fechas.getFechaFin())));
+            stmt.setDouble(4, presupuestoUsd);
+            stmt.setInt(5, idCiudad);
 
             try (ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) {
