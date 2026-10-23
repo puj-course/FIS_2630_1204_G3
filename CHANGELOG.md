@@ -5285,16 +5285,16 @@ no
 
 1. **¿Qué hice ayer?**
 
-
+ayer empece a ver que le podia cambiar a la pagina de las preguntas de preferenncia hacia el usuario
 
 2. **¿Qué voy a hacer hoy?**
 
-
+hoy corregi unas tarjetas que estaban estilos pero no se implementaban en preferencias.jsp, intente quitar una linea verde que tiene pero no pude solucionar, lo tratare de hacer mañana
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
 
-
+no
 
 ---
 
