@@ -5269,15 +5269,15 @@ no
 
 1. **¿Qué hice ayer?**
 
-
+Hoy empece a revisar como puedo hacer el diagrama de componentes que es el mas sencillo de los diagramas e intentado mirar como el manual de usuario lo podemos desarrollar con los modulo que tenemos hasta ahora
 
 2. **¿Qué voy a hacer hoy?**
 
-
+Vimos sobre la retrospective de startfish, realizamos una de ellas en clase y decidimos que debemos empezar a implementarlo en cada uno de los modulos.
    
 3. **¿Tengo algún impedimento o bloqueo?**
 
-
+no
    
 ---
 
