@@ -7,7 +7,6 @@
 package com.wisetrip.negocio;
 
 import com.wisetrip.modelo.TipoAtributo;
-
 import java.util.Arrays;
 import java.util.List;
 
