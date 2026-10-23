@@ -5165,15 +5165,15 @@ no
 
 1. **¿Qué hice ayer?**
 
-
+Ayer revisé la conexión de ViajeDao 
    
 2. **¿Qué voy a hacer hoy?**
 
-
+Hoy la verdad no he hecho mucho, solo revise la base de datos
    
 3. **¿Tengo algún impedimento o bloqueo?**
 
-
+No
 
 ---
 
@@ -5181,14 +5181,15 @@ no
 
 1. **¿Qué hice ayer?**
 
-
+Eliminacion de todos los documentos de diagramas para empezar a hacerlos uno por uno de nuevo, menos el de gof, empece a buscar como hacer el manual de usuarios
 
 2. **¿Qué voy a hacer hoy?**
 
-
+Hoy empece a revisar como puedo hacer el diagrama de componentes que es el mas sencillo de los diagramas e intentado mirar como el manual de usuario lo podemos desarrollar con los modulo que tenemos hasta ahora
    
 3. **¿Tengo algún impedimento o bloqueo?**
 
+no
 
    
 ---
