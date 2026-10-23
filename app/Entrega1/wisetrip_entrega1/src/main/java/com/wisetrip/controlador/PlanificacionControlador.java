@@ -32,7 +32,7 @@ import jakarta.servlet.http.HttpSession;
 public class PlanificacionControlador {
 
 
-        private final GestorPreferencias gestorPreferencias;
+    private final GestorPreferencias gestorPreferencias;
     private final GestorPresupuesto gestorPresupuesto;
     private final PresupuestoConMargenDecorador decoradorMargen;
     private final IFechasServicio fechasServicio;

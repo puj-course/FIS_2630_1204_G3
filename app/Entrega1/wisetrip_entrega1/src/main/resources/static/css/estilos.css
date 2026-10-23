@@ -37,7 +37,7 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
-tarjeta {
+.tarjeta {
     background: #FFFFFF;
     border: 3px solid var(--tinta);
     border-radius: 18px;
