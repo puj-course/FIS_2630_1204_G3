@@ -1,6 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=IBM+Plex+Mono:wght@400;500;600&family=Instrument+Sans:wght@400;500;600;700&display=swap');
 
 :root {
+    --turquesa-hondo: #1E8F82;
+    --arena: #F7F3EA;
+    --arena-honda: #D9D1BE;
     --tinta: #16161D;
     --tinta-honda: #000006;
     --morado: #5B3FA8;
@@ -45,6 +48,7 @@ body {
     padding: 34px 32px;
     width: 100%;
     max-width: 520px;
+    
 }
 
 .tarjeta.ancha { max-width: 780px; box-shadow: 8px 8px 0 var(--turquesa); }
