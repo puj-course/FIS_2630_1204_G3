@@ -3,9 +3,12 @@ package com.wisetrip.controlador;
 import java.util.Map;
 import java.util.Optional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.wisetrip.modelo.FechasViaje;
 import com.wisetrip.modelo.ResultadoRecomendacion;
@@ -28,6 +31,8 @@ import jakarta.servlet.http.HttpSession;
 @Controller
 public class SeleccionControlador {
 
+    private static final Logger log = LoggerFactory.getLogger(SeleccionControlador.class);
+
     private final ISeleccionDestino seleccionDestino;
     private final IRepositorioViajes viajeDAO;
     private final IRepositorioPreferencias preferenciaDAO;
@@ -45,7 +50,8 @@ public class SeleccionControlador {
      */
     @GetMapping("/destino/{id}")
     @SuppressWarnings("unchecked")
-    public String elegirDestino(@PathVariable("id") int id, HttpSession sesion) {
+    public String elegirDestino(@PathVariable("id") int id, HttpSession sesion,
+                                RedirectAttributes redirect) {
 
         Usuario usuario = (Usuario) sesion.getAttribute("usuarioActivo");
         if (usuario == null) return "redirect:/login";
@@ -75,17 +81,24 @@ public class SeleccionControlador {
             return "redirect:/recomendaciones";
         }
 
-        Integer idViaje = (Integer) sesion.getAttribute("idViajeGuardado");
-        int idCiudad = elegido.get().getCiudad().getId();
-        if (idViaje == null) {
-            idViaje = viajeDAO.insertar(usuario.getIdUsuario(), idCiudad, fechas, presupuestoUsd);
-            sesion.setAttribute("idViajeGuardado", idViaje);
-        } else {
-            viajeDAO.actualizarDestino(idViaje, usuario.getIdUsuario(), idCiudad);
-        }
+        try {
+            Integer idViaje = (Integer) sesion.getAttribute("idViajeGuardado");
+            int idCiudad = elegido.get().getCiudad().getId();
+            if (idViaje == null) {
+                idViaje = viajeDAO.insertar(usuario.getIdUsuario(), idCiudad, fechas, presupuestoUsd);
+                sesion.setAttribute("idViajeGuardado", idViaje);
+            } else {
+                viajeDAO.actualizarDestino(idViaje, usuario.getIdUsuario(), idCiudad);
+            }
 
-        // El ID ya queda en sesion para reutilizar el viaje si las preferencias fallan.
-        preferenciaDAO.guardarActivas(idViaje, atributosCuestionario);
+            // El ID ya queda en sesion para reutilizar el viaje si las preferencias fallan.
+            preferenciaDAO.guardarActivas(idViaje, atributosCuestionario);
+        } catch (IllegalArgumentException | IllegalStateException e) {
+            log.error("No se pudo completar el guardado del viaje y sus preferencias", e);
+            redirect.addFlashAttribute("errorGuardado",
+                    "No pudimos completar el guardado de tu viaje. Elige el destino nuevamente para reintentar.");
+            return "redirect:/recomendaciones";
+        }
 
         sesion.setAttribute("destinoElegido", elegido.get());
         sesion.setAttribute("paisDestino", elegido.get().getCiudad().getPais());

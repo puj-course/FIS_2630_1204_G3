@@ -67,6 +67,9 @@
 </header>
 
 <main class="rc-pantalla">
+    <c:if test="${not empty errorGuardado}">
+        <p role="alert"><c:out value="${errorGuardado}"/></p>
+    </c:if>
 
     <section class="rc-portada">
 
