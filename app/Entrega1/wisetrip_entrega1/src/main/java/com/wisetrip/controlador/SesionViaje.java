@@ -29,8 +29,28 @@ final class SesionViaje {
         return viaje;
     }
 
-    /** Descarta el viaje en curso (para empezar una planificacion nueva). */
+    /** Descarta resultados calculados con preferencias, fechas o presupuesto anteriores. */
+    static void invalidarSeleccion(HttpSession sesion) {
+        synchronized (sesion) {
+            sesion.removeAttribute("seleccionDestinos");
+            sesion.removeAttribute("seleccionRecomendada");
+            sesion.removeAttribute("destinoElegido");
+            sesion.removeAttribute("paisDestino");
+            sesion.removeAttribute("repartoPresupuesto");
+        }
+    }
+
+    /** Limpia la planificacion en sesion sin borrar viajes guardados ni cerrar la cuenta. */
     static void reiniciar(HttpSession sesion) {
-        sesion.removeAttribute(ATRIBUTO);
+        synchronized (sesion) {
+            for (String atributo : new String[] {
+                    ATRIBUTO, "idViajeGuardado", "seleccionDestinos", "seleccionRecomendada",
+                    "destinoElegido", "paisDestino", "preferenciasViaje",
+                    "importanciasSeleccionadas", "atributosSeleccionados", "fechasViaje",
+                    "presupuestoViaje", "presupuestoEnUsd", "repartoPresupuesto"
+            }) {
+                sesion.removeAttribute(atributo);
+            }
+        }
     }
 }

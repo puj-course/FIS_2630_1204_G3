@@ -90,9 +90,7 @@ public class PlanificacionControlador {
                 gestorPreferencias.obtenerImportancias(preferencias));
         sesion.setAttribute("atributosSeleccionados",
                 gestorPreferencias.obtenerAtributosSeleccionados(preferencias));
-        sesion.removeAttribute("idViajeGuardado");
-        sesion.removeAttribute("seleccionRecomendada");
-        sesion.removeAttribute("destinoElegido");
+        SesionViaje.invalidarSeleccion(sesion);
 
         return "redirect:/fechas";
     }
@@ -131,9 +129,7 @@ public class PlanificacionControlador {
         }
 
         sesion.setAttribute("fechasViaje", fechas);
-        sesion.removeAttribute("idViajeGuardado");
-        sesion.removeAttribute("seleccionRecomendada");
-        sesion.removeAttribute("destinoElegido");
+        SesionViaje.invalidarSeleccion(sesion);
 
         return "redirect:/presupuesto";
     }
@@ -180,9 +176,7 @@ public class PlanificacionControlador {
 
         sesion.setAttribute("presupuestoViaje", presupuesto);
         sesion.setAttribute("presupuestoEnUsd", enUsd);
-        sesion.removeAttribute("idViajeGuardado");
-        sesion.removeAttribute("seleccionRecomendada");
-        sesion.removeAttribute("destinoElegido");
+        SesionViaje.invalidarSeleccion(sesion);
 
         return "redirect:/resumen";
     }

@@ -52,7 +52,7 @@ public class AuthControlador {
         }
 
         registro.registrar(usuario);
-        sesion.setAttribute("usuarioActivo", usuario);
+        establecerUsuarioActivo(sesion, usuario);
 
         flash.addFlashAttribute("nombre", usuario.getNombreCompleto());
         flash.addFlashAttribute("correo", usuario.getCorreo());
@@ -94,8 +94,18 @@ public class AuthControlador {
         }
 
         // Guarda al usuario en la sesion
-        sesion.setAttribute("usuarioActivo", usuario);
+        establecerUsuarioActivo(sesion, usuario);
         return "redirect:/origen";
+    }
+
+    private void establecerUsuarioActivo(HttpSession sesion, Usuario usuario) {
+        synchronized (sesion) {
+            Usuario anterior = (Usuario) sesion.getAttribute("usuarioActivo");
+            if (anterior == null || anterior.getIdUsuario() != usuario.getIdUsuario()) {
+                SesionViaje.reiniciar(sesion);
+            }
+            sesion.setAttribute("usuarioActivo", usuario);
+        }
     }
 
     // Cierra la sesion
