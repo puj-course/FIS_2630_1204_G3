@@ -5302,15 +5302,16 @@ no
 
 1. **¿Qué hice ayer?**
 
-
+Ayer estuvimos analizando todos los comentarios que el profesor nos dio para mejorar, tanto de la arquitectura como del codigo 
 
 2. **¿Qué voy a hacer hoy?**
 
+Hoy estuvimos viendo que una buena forma de realizar el retrospective es utilizando el metodo de starfish, lo implementamos para el Sprint 8 
 
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
-
+no
 
 ---
 
