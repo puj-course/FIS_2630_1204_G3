@@ -11,6 +11,6 @@ public interface IRepositorioViajes {
     /** Guarda el viaje y devuelve su id. */
     int insertar(int idUsuario, int idCiudad, FechasViaje fechas, double presupuestoUsd);
 
-    /** Cambia el destino de un viaje que pertenece al usuario indicado. */
-    void actualizarDestino(int idViaje, int idUsuario, int idCiudad);
+    /** Actualiza destino, fechas y presupuesto del viaje que pertenece al usuario indicado. */
+    void actualizar(int idViaje, int idUsuario, int idCiudad, FechasViaje fechas, double presupuestoUsd);
 }

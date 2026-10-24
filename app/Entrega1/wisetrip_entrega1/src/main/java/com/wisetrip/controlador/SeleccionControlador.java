@@ -91,7 +91,7 @@ public class SeleccionControlador {
                     idViaje = viajeDAO.insertar(usuario.getIdUsuario(), idCiudad, fechas, presupuestoUsd);
                     sesion.setAttribute("idViajeGuardado", idViaje);
                 } else {
-                    viajeDAO.actualizarDestino(idViaje, usuario.getIdUsuario(), idCiudad);
+                    viajeDAO.actualizar(idViaje, usuario.getIdUsuario(), idCiudad, fechas, presupuestoUsd);
                 }
 
                 // El ID ya queda en sesion para reutilizar el viaje si las preferencias fallan.

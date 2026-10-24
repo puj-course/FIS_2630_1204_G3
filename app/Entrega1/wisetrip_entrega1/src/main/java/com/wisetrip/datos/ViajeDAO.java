@@ -30,18 +30,7 @@ public class ViajeDAO implements IRepositorioViajes {
 
     @Override
     public int insertar(int idUsuario, int idCiudad, FechasViaje fechas, double presupuestoUsd) {
-        if (idUsuario <= 0) {
-            throw new IllegalArgumentException("El viaje debe estar asociado a un usuario con ID positivo.");
-        }
-        if (idCiudad <= 0) {
-            throw new IllegalArgumentException("El destino debe tener un ID de ciudad positivo.");
-        }
-        if (fechas == null || !fechas.tieneRangoValido()) {
-            throw new IllegalArgumentException("El viaje debe tener fechas validas y la fecha final debe ser posterior a la inicial.");
-        }
-        if (!Double.isFinite(presupuestoUsd) || presupuestoUsd <= 0) {
-            throw new IllegalArgumentException("El presupuesto del viaje debe ser un numero finito mayor que cero.");
-        }
+        validarDatos(idUsuario, idCiudad, fechas, presupuestoUsd);
 
         String sql = """
                 INSERT INTO viajes (id_usuario, destino, fecha_inicio, fecha_fin, presupuesto)
@@ -68,14 +57,16 @@ public class ViajeDAO implements IRepositorioViajes {
         }
     }
     @Override
-    public void actualizarDestino(int idViaje, int idUsuario, int idCiudad) {
-        if (idViaje <= 0 || idUsuario <= 0 || idCiudad <= 0) {
-            throw new IllegalArgumentException("Los IDs del viaje, usuario y ciudad deben ser positivos.");
+    public void actualizar(int idViaje, int idUsuario, int idCiudad,
+                           FechasViaje fechas, double presupuestoUsd) {
+        if (idViaje <= 0) {
+            throw new IllegalArgumentException("El ID del viaje debe ser positivo.");
         }
+        validarDatos(idUsuario, idCiudad, fechas, presupuestoUsd);
 
         String sql = """
                 UPDATE viajes
-                SET destino = ciudad.nombre
+                SET destino = ciudad.nombre, fecha_inicio = ?, fecha_fin = ?, presupuesto = ?
                 FROM ciudad
                 WHERE viajes.id_viaje = ?
                   AND viajes.id_usuario = ?
@@ -84,16 +75,34 @@ public class ViajeDAO implements IRepositorioViajes {
 
         try (Connection conn = ConexionBD.obtenerConexion();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setInt(1, idViaje);
-            stmt.setInt(2, idUsuario);
-            stmt.setInt(3, idCiudad);
+            stmt.setDate(1, Date.valueOf(LocalDate.parse(fechas.getFechaInicio())));
+            stmt.setDate(2, Date.valueOf(LocalDate.parse(fechas.getFechaFin())));
+            stmt.setDouble(3, presupuestoUsd);
+            stmt.setInt(4, idViaje);
+            stmt.setInt(5, idUsuario);
+            stmt.setInt(6, idCiudad);
 
             if (stmt.executeUpdate() != 1) {
                 throw new IllegalStateException(
                         "No se encontro el viaje del usuario o la ciudad seleccionada.");
             }
         } catch (SQLException e) {
-            throw new IllegalStateException("No se pudo actualizar el destino en PostgreSQL.", e);
+            throw new IllegalStateException("No se pudo actualizar el viaje en PostgreSQL.", e);
+        }
+    }
+
+    private void validarDatos(int idUsuario, int idCiudad, FechasViaje fechas, double presupuestoUsd) {
+        if (idUsuario <= 0) {
+            throw new IllegalArgumentException("El viaje debe estar asociado a un usuario con ID positivo.");
+        }
+        if (idCiudad <= 0) {
+            throw new IllegalArgumentException("El destino debe tener un ID de ciudad positivo.");
+        }
+        if (fechas == null || !fechas.tieneRangoValido()) {
+            throw new IllegalArgumentException("El viaje debe tener fechas validas y la fecha final debe ser posterior a la inicial.");
+        }
+        if (!Double.isFinite(presupuestoUsd) || presupuestoUsd <= 0) {
+            throw new IllegalArgumentException("El presupuesto del viaje debe ser un numero finito mayor que cero.");
         }
     }
 }
