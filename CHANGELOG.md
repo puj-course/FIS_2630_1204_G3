@@ -5253,15 +5253,15 @@ no
 
 1. **¿Qué hice ayer?**
 
-
+ayer revise el codigo y la base de datos
    
 2. **¿Qué voy a hacer hoy?**
 
-
+hoy corregi ViajeDao y tambien el controlador de recomendaciones para que la base de datos guardara correctamente, ademas de guardar preferencias asociadas y si ya hay un viaje guardado en la planificación, se actualizará el destino del usuario. Hay que pulir algunas cosas especialmente con que si cambia el destino del viaje actual, actualizar esa fila usando id_viaje e id_usuario. Si comienza otro viaje, mirar a ver si se pregunta si se quiere descartar el vijae o simplemente decir que no se puede hacer un overleap de fechas de los viajes.
    
 3. **¿Tengo algún impedimento o bloqueo?**
 
-
+no, me falta un poco de tiempo la verdad pero de resto bien
 
 ---
 
