@@ -278,6 +278,9 @@
                 <button type="button" class="pl-btn-claro" id="btnRestaurar" hidden>Volver al sugerido</button>
                 <a class="pl-volver" href="<c:url value='/recomendaciones'/>">&larr; Cambiar destino</a>
             </div>
+            <form method="post" action="<c:url value='/viajes/nuevo'/>">
+                <button type="submit" class="pl-btn-claro">Nuevo viaje</button>
+            </form>
         </div>
     </aside>
 

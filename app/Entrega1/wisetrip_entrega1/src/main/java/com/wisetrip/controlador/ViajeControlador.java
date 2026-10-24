@@ -35,6 +35,15 @@ public class ViajeControlador {
         this.usuarioSesionFacade = usuarioSesionFacade;
     }
 
+    @PostMapping("/viajes/nuevo")
+    public String iniciarNuevoViaje(HttpSession sesion) {
+        if (sesion.getAttribute("usuarioActivo") == null) {
+            return "redirect:/login";
+        }
+        SesionViaje.reiniciar(sesion);
+        return "redirect:/origen";
+    }
+
     // Atiende las solicitudes GET a /origen y muestra la pantalla de origen
     @GetMapping("/origen")
     public String mostrarOrigen(HttpSession sesion, Model model) {
