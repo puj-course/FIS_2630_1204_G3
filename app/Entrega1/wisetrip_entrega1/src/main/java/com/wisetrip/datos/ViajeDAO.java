@@ -6,11 +6,20 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Repository;
 
 import com.wisetrip.modelo.FechasViaje;
 import com.wisetrip.modelo.RepartoPresupuesto;
+import com.wisetrip.modelo.Ciudad;
+import com.wisetrip.modelo.Presupuesto;
+import com.wisetrip.modelo.ResultadoRecomendacion;
+import com.wisetrip.modelo.Ubicacion;
+import com.wisetrip.modelo.Usuario;
+import com.wisetrip.modelo.Viaje;
 import com.wisetrip.negocio.IRepositorioViajes;
 
 /**
@@ -28,6 +37,106 @@ import com.wisetrip.negocio.IRepositorioViajes;
 
 @Repository
 public class ViajeDAO implements IRepositorioViajes {
+
+    private static final String CONSULTA_VIAJES = """
+            SELECT v.id_viaje, v.destino, v.origen, v.fecha_inicio, v.fecha_fin, v.presupuesto,
+                   c.id_ciudad, c.pais, c.latitud, c.longitud,
+                   r.id_viaje AS id_reparto, r.hospedaje, r.alimentacion,
+                   r.transporte, r.actividades, r.imprevistos
+            FROM viajes v
+            LEFT JOIN reparto_presupuesto r ON r.id_viaje = v.id_viaje
+            LEFT JOIN ciudad c ON c.id_ciudad = (
+                SELECT MIN(c2.id_ciudad) FROM ciudad c2
+                WHERE c2.nombre = v.destino HAVING COUNT(*) = 1
+            )
+            WHERE v.id_usuario = ?
+            """;
+
+    @Override
+    public List<Viaje> listarVigentes(Usuario usuario, LocalDate hoy) {
+        validarUsuarioConsulta(usuario);
+        if (hoy == null) throw new IllegalArgumentException("La fecha de consulta es obligatoria.");
+        String sql = CONSULTA_VIAJES + " AND v.fecha_fin >= ? ORDER BY v.fecha_inicio, v.id_viaje";
+        try (Connection conn = ConexionBD.obtenerConexion();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, usuario.getIdUsuario());
+            stmt.setDate(2, Date.valueOf(hoy));
+            List<Viaje> viajes = new ArrayList<>();
+            try (ResultSet rs = stmt.executeQuery()) {
+                while (rs.next()) viajes.add(leerViaje(rs, usuario));
+            }
+            return viajes;
+        } catch (SQLException e) {
+            throw new IllegalStateException("No se pudieron consultar los viajes del usuario.", e);
+        }
+    }
+
+    @Override
+    public Optional<Viaje> buscarPorId(int idViaje, Usuario usuario) {
+        validarUsuarioConsulta(usuario);
+        if (idViaje <= 0) throw new IllegalArgumentException("El ID del viaje debe ser positivo.");
+        try (Connection conn = ConexionBD.obtenerConexion();
+             PreparedStatement stmt = conn.prepareStatement(CONSULTA_VIAJES + " AND v.id_viaje = ?")) {
+            stmt.setInt(1, usuario.getIdUsuario());
+            stmt.setInt(2, idViaje);
+            try (ResultSet rs = stmt.executeQuery()) {
+                return rs.next() ? Optional.of(leerViaje(rs, usuario)) : Optional.empty();
+            }
+        } catch (SQLException e) {
+            throw new IllegalStateException("No se pudo recuperar el viaje del usuario.", e);
+        }
+    }
+
+    private void validarUsuarioConsulta(Usuario usuario) {
+        if (usuario == null || usuario.getIdUsuario() <= 0) {
+            throw new IllegalArgumentException("Se necesita un usuario registrado para consultar viajes.");
+        }
+    }
+
+    private Viaje leerViaje(ResultSet rs, Usuario usuario) throws SQLException {
+        Viaje viaje = new Viaje(usuario);
+        FechasViaje fechas = new FechasViaje();
+        fechas.setFechaInicio(rs.getDate("fecha_inicio").toLocalDate().toString());
+        fechas.setFechaFin(rs.getDate("fecha_fin").toLocalDate().toString());
+        viaje.setFechas(fechas);
+
+        // La base guarda USD. Presupuesto espera coma como separador decimal.
+        var monto = rs.getBigDecimal("presupuesto");
+        viaje.definirPresupuesto(new Presupuesto(monto.toPlainString().replace('.', ','), "USD"),
+                monto.doubleValue());
+
+        String origen = rs.getString("origen");
+        if (origen != null && !origen.isBlank()) {
+            int separador = origen.lastIndexOf(", ");
+            viaje.setOrigen(separador > 0
+                    ? new Ubicacion(origen.substring(separador + 2), origen.substring(0, separador), null)
+                    : new Ubicacion(null, origen, null));
+        }
+
+        Ciudad ciudad = new Ciudad();
+        ciudad.setNombre(rs.getString("destino"));
+        // No atribuye un pais o ID arbitrarios si el nombre corresponde a varias ciudades.
+        if (rs.getObject("id_ciudad") != null) {
+            ciudad.setId(rs.getInt("id_ciudad"));
+            ciudad.setPais(rs.getString("pais"));
+            ciudad.setLatitud(rs.getDouble("latitud"));
+            ciudad.setLongitud(rs.getDouble("longitud"));
+        }
+        viaje.elegirDestino(new ResultadoRecomendacion(ciudad, 0, 0, 0, false, false));
+
+        if (rs.getObject("id_reparto") != null) {
+            RepartoPresupuesto reparto = new RepartoPresupuesto();
+            reparto.setHospedaje(rs.getInt("hospedaje"));
+            reparto.setAlimentacion(rs.getInt("alimentacion"));
+            reparto.setTransporte(rs.getInt("transporte"));
+            reparto.setActividades(rs.getInt("actividades"));
+            reparto.setImprevistos(rs.getInt("imprevistos"));
+            viaje.setReparto(reparto);
+        }
+        // definirPresupuesto reinicia el ID; restaurarlo al terminar la lectura.
+        viaje.setIdViaje(rs.getInt("id_viaje"));
+        return viaje;
+    }
 
     @Override
     public void guardarReparto(int idViaje, int idUsuario, RepartoPresupuesto reparto) {
