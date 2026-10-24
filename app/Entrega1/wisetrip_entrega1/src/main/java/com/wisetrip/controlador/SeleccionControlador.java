@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -48,7 +48,7 @@ public class SeleccionControlador {
      * Persiste el destino elegido, lo guarda en sesión y avanza al reparto
      * del presupuesto solo cuando el viaje y sus preferencias se han guardado.
      */
-    @GetMapping("/destino/{id}")
+    @PostMapping("/destino/{id}")
     @SuppressWarnings("unchecked")
     public String elegirDestino(@PathVariable("id") int id, HttpSession sesion,
                                 RedirectAttributes redirect) {

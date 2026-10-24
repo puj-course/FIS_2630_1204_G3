@@ -187,9 +187,11 @@
                                 </div>
                             </div>
 
-                            <a class="rc-elegir" href="<c:url value='/destino/${r.ciudad.id}'/>">
-                                Elegir este destino &rarr;
-                            </a>
+                            <form method="post" action="<c:url value='/destino/${r.ciudad.id}'/>">
+                                <button class="rc-elegir" type="submit">
+                                    Elegir este destino &rarr;
+                                </button>
+                            </form>
                         </div>
 
                         <div class="rc-talon">

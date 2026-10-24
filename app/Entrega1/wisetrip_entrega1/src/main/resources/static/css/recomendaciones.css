@@ -362,6 +362,8 @@
 .rc-barra-gustos span { background: var(--turquesa); }
 
 .rc-elegir {
+    font-family: inherit;
+    cursor: pointer;
     display: inline-block;
     padding: 13px 26px;
     background: var(--morado);
