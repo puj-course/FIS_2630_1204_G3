@@ -81,27 +81,31 @@ public class SeleccionControlador {
             return "redirect:/recomendaciones";
         }
 
-        try {
-            Integer idViaje = (Integer) sesion.getAttribute("idViajeGuardado");
-            int idCiudad = elegido.get().getCiudad().getId();
-            if (idViaje == null) {
-                idViaje = viajeDAO.insertar(usuario.getIdUsuario(), idCiudad, fechas, presupuestoUsd);
-                sesion.setAttribute("idViajeGuardado", idViaje);
-            } else {
-                viajeDAO.actualizarDestino(idViaje, usuario.getIdUsuario(), idCiudad);
+        // Serializa las elecciones de esta sesion dentro de la misma instancia del servidor.
+        // La segunda peticion debe leer el ID que haya guardado la primera.
+        synchronized (sesion) {
+            try {
+                Integer idViaje = (Integer) sesion.getAttribute("idViajeGuardado");
+                int idCiudad = elegido.get().getCiudad().getId();
+                if (idViaje == null) {
+                    idViaje = viajeDAO.insertar(usuario.getIdUsuario(), idCiudad, fechas, presupuestoUsd);
+                    sesion.setAttribute("idViajeGuardado", idViaje);
+                } else {
+                    viajeDAO.actualizarDestino(idViaje, usuario.getIdUsuario(), idCiudad);
+                }
+
+                // El ID ya queda en sesion para reutilizar el viaje si las preferencias fallan.
+                preferenciaDAO.guardarActivas(idViaje, atributosCuestionario);
+            } catch (IllegalArgumentException | IllegalStateException e) {
+                log.error("No se pudo completar el guardado del viaje y sus preferencias", e);
+                redirect.addFlashAttribute("errorGuardado",
+                        "No pudimos completar el guardado de tu viaje. Elige el destino nuevamente para reintentar.");
+                return "redirect:/recomendaciones";
             }
 
-            // El ID ya queda en sesion para reutilizar el viaje si las preferencias fallan.
-            preferenciaDAO.guardarActivas(idViaje, atributosCuestionario);
-        } catch (IllegalArgumentException | IllegalStateException e) {
-            log.error("No se pudo completar el guardado del viaje y sus preferencias", e);
-            redirect.addFlashAttribute("errorGuardado",
-                    "No pudimos completar el guardado de tu viaje. Elige el destino nuevamente para reintentar.");
-            return "redirect:/recomendaciones";
+            sesion.setAttribute("destinoElegido", elegido.get());
+            sesion.setAttribute("paisDestino", elegido.get().getCiudad().getPais());
         }
-
-        sesion.setAttribute("destinoElegido", elegido.get());
-        sesion.setAttribute("paisDestino", elegido.get().getCiudad().getPais());
 
         return "redirect:/plan";
     }
