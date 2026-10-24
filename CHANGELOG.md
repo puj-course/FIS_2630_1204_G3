@@ -5388,13 +5388,15 @@ no
 
 1. **¿Qué hice ayer?**
 
+Ayer aprendimos del metodo que se puede implementar en los Sprint Retrospective, Starfish, y lo implementamos para el sprint 8
 
 2. **¿Qué voy a hacer hoy?**
 
+Hoy corregi un poco el codigo del modulo que me correspondio, entendiendo que hace cada funcion y eliminando cosas autogeneradas que no entiendo
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
-
+no
 
 ---
 
