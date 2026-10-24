@@ -5340,14 +5340,15 @@ no
 
 1. **¿Qué hice ayer?**
 
-
+Ayer revise la base de datos, y el dao de los viajes
    
 2. **¿Qué voy a hacer hoy?**
 
-
+hoy segui con eso, no pude hacer la migracion de solo atributos de api, es mas largo de lo que pensé
+Incluso pensé que podría adelantar mañana pero no podre tener ningun acceso al computador de 6am a 11pm...
    
 3. **¿Tengo algún impedimento o bloqueo?**
-
+no
 
 
 ---
