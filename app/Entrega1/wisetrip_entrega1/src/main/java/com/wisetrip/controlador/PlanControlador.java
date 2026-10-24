@@ -80,7 +80,6 @@ public class PlanControlador {
         if (destino == null) return "redirect:/recomendaciones";
 
         Ubicacion ubicacion = SesionViaje.de(sesion, usuario).getOrigen();
-        if (ubicacion == null) return "redirect:/origen";
 
         FechasViaje fechas = (FechasViaje) sesion.getAttribute("fechasViaje");
         if (fechas == null) return "redirect:/fechas";
@@ -92,7 +91,7 @@ public class PlanControlador {
                 (RepartoPresupuesto) sesion.getAttribute("repartoPresupuesto");
         if (reparto == null) return "redirect:/plan";
 
-        model.addAttribute("ubicacionCiudad", ubicacion.getCiudad());
+        model.addAttribute("ubicacionCiudad", ubicacion != null ? ubicacion.getCiudad() : "Origen no registrado");
         model.addAttribute("destino", destino);
         model.addAttribute("fechas", fechas);
         model.addAttribute("presupuesto", presupuesto);

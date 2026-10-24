@@ -29,6 +29,26 @@ final class SesionViaje {
         return viaje;
     }
 
+    /** Recupera los datos persistidos sin mezclar otra planificacion de la sesion. */
+    static void restaurar(HttpSession sesion, Viaje viaje) {
+        synchronized (sesion) {
+            Usuario activo = (Usuario) sesion.getAttribute("usuarioActivo");
+            if (viaje == null || !viaje.estaGuardado() || activo == null
+                    || viaje.getUsuario().getIdUsuario() != activo.getIdUsuario()) {
+                throw new IllegalArgumentException("El viaje no pertenece al usuario activo.");
+            }
+            reiniciar(sesion);
+            sesion.setAttribute(ATRIBUTO, viaje);
+            sesion.setAttribute("idViajeGuardado", viaje.getIdViaje());
+            sesion.setAttribute("fechasViaje", viaje.getFechas());
+            sesion.setAttribute("presupuestoViaje", viaje.getPresupuesto());
+            sesion.setAttribute("presupuestoEnUsd", viaje.getPresupuestoEnUsd());
+            sesion.setAttribute("destinoElegido", viaje.getDestinoElegido());
+            sesion.setAttribute("paisDestino", viaje.paisDestino());
+            sesion.setAttribute("repartoPresupuesto", viaje.getReparto());
+        }
+    }
+
     /** Descarta resultados calculados con preferencias, fechas o presupuesto anteriores. */
     static void invalidarSeleccion(HttpSession sesion) {
         synchronized (sesion) {

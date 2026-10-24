@@ -17,13 +17,16 @@
 </header>
 <main class="rc-pantalla">
     <h1 class="rc-titulo">Tus viajes guardados</h1>
+    <c:if test="${not empty errorContinuar}">
+        <p role="alert"><c:out value="${errorContinuar}"/></p>
+    </c:if>
     <c:choose>
         <c:when test="${not empty errorConsulta}">
             <p role="alert"><c:out value="${errorConsulta}"/></p>
             <a class="rc-elegir" href="<c:url value='/viajes'/>">Reintentar</a>
         </c:when>
         <c:otherwise>
-            <p>Tienes viajes vinculados a esta cuenta. Puedes revisar sus datos o empezar uno nuevo.</p>
+            <p>Tienes viajes vinculados a esta cuenta. ¿Quieres continuar uno o crear un viaje nuevo?</p>
             <c:forEach var="viaje" items="${viajes}">
                 <article>
                     <h2><c:out value="${viaje.destinoElegido.ciudad.nombre}"/></h2>
@@ -36,7 +39,9 @@
                         </c:choose>
                     </p>
                     <p>Presupuesto: <fmt:formatNumber value="${viaje.presupuestoEnUsd}" minFractionDigits="2" maxFractionDigits="2"/> USD</p>
-                    <%-- La accion Continuar se conecta en el siguiente paso. --%>
+                    <form method="post" action="<c:url value='/viajes/${viaje.idViaje}/continuar'/>">
+                        <button class="rc-elegir" type="submit">Continuar este viaje</button>
+                    </form>
                 </article>
             </c:forEach>
             <form method="post" action="<c:url value='/viajes/nuevo'/>">

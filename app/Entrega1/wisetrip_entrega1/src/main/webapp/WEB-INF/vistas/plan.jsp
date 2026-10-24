@@ -33,6 +33,9 @@
 <main class="pl-pantalla">
 
     <section>
+        <c:if test="${not empty avisoReparto}">
+            <p class="pl-aviso" role="status"><c:out value="${avisoReparto}"/></p>
+        </c:if>
         <span class="pl-rotulo">Último paso</span>
         <h1 class="pl-titulo">¿Cómo repartimos<br>tu presupuesto?</h1>
         <p class="pl-bajada">

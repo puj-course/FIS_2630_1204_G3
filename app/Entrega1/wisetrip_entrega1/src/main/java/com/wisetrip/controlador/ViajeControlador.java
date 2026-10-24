@@ -9,6 +9,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.wisetrip.modelo.Ubicacion;
 import com.wisetrip.modelo.Usuario;
@@ -59,6 +61,39 @@ public class ViajeControlador {
             model.addAttribute("errorConsulta", "No pudimos cargar tus viajes. Intenta nuevamente.");
         }
         return "mis-viajes";
+    }
+
+    @PostMapping("/viajes/{id}/continuar")
+    public String continuarViaje(@PathVariable("id") int id, HttpSession sesion,
+                                  RedirectAttributes flash) {
+        synchronized (sesion) {
+            Usuario usuario = usuarioSesionFacade.usuarioActivo(sesion);
+            if (usuario == null) return "redirect:/login";
+            try {
+                var guardado = viajes.buscarPorId(id, usuario);
+                if (guardado.isEmpty()) {
+                    flash.addFlashAttribute("errorContinuar", "No encontramos ese viaje en tu cuenta.");
+                    return "redirect:/viajes";
+                }
+                Viaje viaje = guardado.get();
+                if (LocalDate.parse(viaje.getFechas().getFechaFin())
+                        .isBefore(LocalDate.parse(fechasServicio.hoy()))) {
+                    flash.addFlashAttribute("errorContinuar", "Este viaje ya termino.");
+                    return "redirect:/viajes";
+                }
+                SesionViaje.restaurar(sesion, viaje);
+                if (viaje.getReparto() == null) {
+                    flash.addFlashAttribute("avisoReparto",
+                            "Este viaje no tiene un reparto guardado. Confirma uno para continuar.");
+                    return "redirect:/plan";
+                }
+                return "redirect:/viaje";
+            } catch (IllegalArgumentException | IllegalStateException e) {
+                log.error("No se pudo recuperar el viaje seleccionado", e);
+                flash.addFlashAttribute("errorContinuar", "No pudimos abrir el viaje. Intenta nuevamente.");
+                return "redirect:/viajes";
+            }
+        }
     }
 
     @PostMapping("/viajes/nuevo")
