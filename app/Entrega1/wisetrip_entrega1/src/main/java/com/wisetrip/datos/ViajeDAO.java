@@ -38,6 +38,58 @@ import com.wisetrip.negocio.IRepositorioViajes;
 @Repository
 public class ViajeDAO implements IRepositorioViajes {
 
+    @Override
+    public boolean hayCruceFechas(int idUsuario, int idViajeActual, FechasViaje fechas) {
+        if (idUsuario <= 0 || idViajeActual < 0 || fechas == null || !fechas.tieneRangoValido()) {
+            throw new IllegalArgumentException("Los datos para consultar las fechas no son validos.");
+        }
+        try (Connection conn = ConexionBD.obtenerConexion()) {
+            return hayCruceFechas(conn, idUsuario, idViajeActual, fechas);
+        } catch (SQLException e) {
+            throw new IllegalStateException("No se pudieron comprobar las fechas de otros viajes.", e);
+        }
+    }
+
+    private boolean hayCruceFechas(Connection conn, int idUsuario, int idViajeActual,
+                                   FechasViaje fechas) throws SQLException {
+        String sql = """
+                SELECT 1 FROM viajes WHERE id_usuario = ? AND id_viaje <> ?
+                AND fecha_inicio <= ? AND fecha_fin >= ? LIMIT 1
+                """;
+        try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, idUsuario);
+            stmt.setInt(2, idViajeActual);
+            stmt.setDate(3, Date.valueOf(fechas.getFechaFin()));
+            stmt.setDate(4, Date.valueOf(fechas.getFechaInicio()));
+            try (ResultSet rs = stmt.executeQuery()) {
+                return rs.next();
+            }
+        }
+    }
+
+    private void bloquearUsuarioYValidarFechas(Connection conn, int idUsuario, int idViajeActual,
+                                               FechasViaje fechas) throws SQLException {
+        // Serializa los guardados de una cuenta incluso desde sesiones distintas.
+        try (PreparedStatement stmt = conn.prepareStatement(
+                "SELECT id_usuario FROM usuario WHERE id_usuario = ? FOR UPDATE")) {
+            stmt.setInt(1, idUsuario);
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (!rs.next()) throw new IllegalArgumentException("El usuario no existe.");
+            }
+        }
+        if (hayCruceFechas(conn, idUsuario, idViajeActual, fechas)) {
+            throw new IllegalArgumentException("Las fechas se cruzan con otro viaje de tu cuenta. Cambia las fechas antes de guardar.");
+        }
+    }
+
+    private void revertir(Connection conn, Exception causa) {
+        try {
+            conn.rollback();
+        } catch (SQLException e) {
+            causa.addSuppressed(e);
+        }
+    }
+
     private static final String CONSULTA_VIAJES = """
             SELECT v.id_viaje, v.destino, v.origen, v.fecha_inicio, v.fecha_fin, v.presupuesto,
                    c.id_ciudad, c.pais, c.latitud, c.longitud,
@@ -185,19 +237,26 @@ public class ViajeDAO implements IRepositorioViajes {
 
         try (Connection conn = ConexionBD.obtenerConexion();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setInt(1, idUsuario);
-            stmt.setDate(2, Date.valueOf(LocalDate.parse(fechas.getFechaInicio())));
-            stmt.setDate(3, Date.valueOf(LocalDate.parse(fechas.getFechaFin())));
-            stmt.setDouble(4, presupuestoUsd);
-            stmt.setString(5, origen.trim());
-            stmt.setInt(6, idCiudad);
-
-            try (ResultSet rs = stmt.executeQuery()) {
-                if (rs.next()) {
-                    return rs.getInt("id_viaje");
+            conn.setAutoCommit(false);
+            try {
+                bloquearUsuarioYValidarFechas(conn, idUsuario, 0, fechas);
+                stmt.setInt(1, idUsuario);
+                stmt.setDate(2, Date.valueOf(LocalDate.parse(fechas.getFechaInicio())));
+                stmt.setDate(3, Date.valueOf(LocalDate.parse(fechas.getFechaFin())));
+                stmt.setDouble(4, presupuestoUsd);
+                stmt.setString(5, origen.trim());
+                stmt.setInt(6, idCiudad);
+                int idViaje;
+                try (ResultSet rs = stmt.executeQuery()) {
+                    if (!rs.next()) throw new IllegalArgumentException("La ciudad seleccionada no existe.");
+                    idViaje = rs.getInt("id_viaje");
                 }
+                conn.commit();
+                return idViaje;
+            } catch (SQLException | RuntimeException e) {
+                revertir(conn, e);
+                throw e;
             }
-            throw new IllegalStateException("PostgreSQL no devolvió id_viaje.");
         } catch (SQLException e) {
             throw new IllegalStateException("No se pudo guardar el viaje en PostgreSQL.", e);
         }
@@ -222,17 +281,23 @@ public class ViajeDAO implements IRepositorioViajes {
 
         try (Connection conn = ConexionBD.obtenerConexion();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setDate(1, Date.valueOf(LocalDate.parse(fechas.getFechaInicio())));
-            stmt.setDate(2, Date.valueOf(LocalDate.parse(fechas.getFechaFin())));
-            stmt.setDouble(3, presupuestoUsd);
-            stmt.setString(4, origen.trim());
-            stmt.setInt(5, idViaje);
-            stmt.setInt(6, idUsuario);
-            stmt.setInt(7, idCiudad);
-
-            if (stmt.executeUpdate() != 1) {
-                throw new IllegalStateException(
-                        "No se encontro el viaje del usuario o la ciudad seleccionada.");
+            conn.setAutoCommit(false);
+            try {
+                bloquearUsuarioYValidarFechas(conn, idUsuario, idViaje, fechas);
+                stmt.setDate(1, Date.valueOf(LocalDate.parse(fechas.getFechaInicio())));
+                stmt.setDate(2, Date.valueOf(LocalDate.parse(fechas.getFechaFin())));
+                stmt.setDouble(3, presupuestoUsd);
+                stmt.setString(4, origen.trim());
+                stmt.setInt(5, idViaje);
+                stmt.setInt(6, idUsuario);
+                stmt.setInt(7, idCiudad);
+                if (stmt.executeUpdate() != 1) {
+                    throw new IllegalStateException("No se encontro el viaje del usuario o la ciudad seleccionada.");
+                }
+                conn.commit();
+            } catch (SQLException | RuntimeException e) {
+                revertir(conn, e);
+                throw e;
             }
         } catch (SQLException e) {
             throw new IllegalStateException("No se pudo actualizar el viaje en PostgreSQL.", e);

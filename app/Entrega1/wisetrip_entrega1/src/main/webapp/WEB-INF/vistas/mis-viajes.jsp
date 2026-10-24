@@ -15,7 +15,7 @@
     <span>Hola, <c:out value="${usuario.nombreCompleto}"/></span>
     <a href="<c:url value='/logout'/>">Cerrar sesión</a>
 </header>
-<main class="rc-pantalla">
+<main class="rc-pantalla mv-pantalla">
     <h1 class="rc-titulo">Tus viajes guardados</h1>
     <c:if test="${not empty errorContinuar}">
         <p role="alert"><c:out value="${errorContinuar}"/></p>
@@ -27,8 +27,9 @@
         </c:when>
         <c:otherwise>
             <p>Tienes viajes vinculados a esta cuenta. ¿Quieres continuar uno o crear un viaje nuevo?</p>
+            <div class="mv-lista">
             <c:forEach var="viaje" items="${viajes}">
-                <article>
+                <article class="mv-viaje">
                     <h2><c:out value="${viaje.destinoElegido.ciudad.nombre}"/></h2>
                     <p>Del <c:out value="${viaje.fechas.fechaInicio}"/>
                         al <c:out value="${viaje.fechas.fechaFin}"/></p>
@@ -39,12 +40,16 @@
                         </c:choose>
                     </p>
                     <p>Presupuesto: <fmt:formatNumber value="${viaje.presupuestoEnUsd}" minFractionDigits="2" maxFractionDigits="2"/> USD</p>
+                    <c:if test="${empty viaje.reparto}">
+                        <p>Falta confirmar el reparto del presupuesto.</p>
+                    </c:if>
                     <form method="post" action="<c:url value='/viajes/${viaje.idViaje}/continuar'/>">
                         <button class="rc-elegir" type="submit">Continuar este viaje</button>
                     </form>
                 </article>
             </c:forEach>
-            <form method="post" action="<c:url value='/viajes/nuevo'/>">
+            </div>
+            <form class="mv-nuevo" method="post" action="<c:url value='/viajes/nuevo'/>">
                 <button class="rc-elegir" type="submit">Crear un viaje nuevo</button>
             </form>
         </c:otherwise>

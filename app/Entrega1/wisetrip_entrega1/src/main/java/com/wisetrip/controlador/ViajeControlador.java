@@ -54,7 +54,10 @@ public class ViajeControlador {
         if (usuario == null) return "redirect:/login";
         try {
             List<Viaje> guardados = viajes.listarVigentes(usuario, LocalDate.parse(fechasServicio.hoy()));
-            if (guardados.isEmpty()) return "redirect:/origen";
+            if (guardados.isEmpty()) {
+                SesionViaje.reiniciar(sesion);
+                return "redirect:/origen";
+            }
             model.addAttribute("viajes", guardados);
         } catch (IllegalStateException e) {
             log.error("No se pudieron consultar los viajes guardados", e);

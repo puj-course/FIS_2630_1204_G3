@@ -13,6 +13,8 @@ import java.util.Optional;
  * quien guarda un viaje depende de este contrato, no de PostgreSQL. 
  */
 public interface IRepositorioViajes {
+    /** Incluye los dias de salida y regreso; excluye el propio viaje al editar. */
+    boolean hayCruceFechas(int idUsuario, int idViajeActual, FechasViaje fechas);
 
     /** Lista los viajes del usuario que aun no han terminado en la fecha indicada. */
     List<Viaje> listarVigentes(Usuario usuario, LocalDate hoy);

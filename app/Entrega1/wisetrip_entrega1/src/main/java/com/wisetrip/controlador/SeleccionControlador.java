@@ -18,6 +18,7 @@ import com.wisetrip.modelo.Ubicacion;
 import com.wisetrip.negocio.ISeleccionDestino;
 import com.wisetrip.negocio.IRepositorioViajes;
 import com.wisetrip.negocio.IRepositorioPreferencias;
+import com.wisetrip.negocio.IFechasServicio;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -37,12 +38,14 @@ public class SeleccionControlador {
     private final ISeleccionDestino seleccionDestino;
     private final IRepositorioViajes viajeDAO;
     private final IRepositorioPreferencias preferenciaDAO;
+    private final IFechasServicio fechasServicio;
 
     public SeleccionControlador(ISeleccionDestino seleccionDestino, IRepositorioViajes viajeDAO,
-                                IRepositorioPreferencias preferenciaDAO) {
+                                IRepositorioPreferencias preferenciaDAO, IFechasServicio fechasServicio) {
         this.seleccionDestino = seleccionDestino;
         this.viajeDAO = viajeDAO;
         this.preferenciaDAO = preferenciaDAO;
+        this.fechasServicio = fechasServicio;
     }
 
     /**
@@ -53,6 +56,13 @@ public class SeleccionControlador {
     @SuppressWarnings("unchecked")
     public String elegirDestino(@PathVariable("id") int id, HttpSession sesion,
                                 RedirectAttributes redirect) {
+        synchronized (sesion) {
+            return guardarEleccion(id, sesion, redirect);
+        }
+    }
+
+    @SuppressWarnings("unchecked")
+    private String guardarEleccion(int id, HttpSession sesion, RedirectAttributes redirect) {
 
         Usuario usuario = (Usuario) sesion.getAttribute("usuarioActivo");
         if (usuario == null) return "redirect:/login";
@@ -90,6 +100,12 @@ public class SeleccionControlador {
             String origenGuardado = origen.getCiudad().trim() + ", " + origen.getPais().trim();
             try {
                 Integer idViaje = (Integer) sesion.getAttribute("idViajeGuardado");
+                Map<String, String> erroresFechas = fechasServicio.validarFechas(
+                        fechas, usuario.getIdUsuario(), idViaje != null ? idViaje : 0);
+                if (!erroresFechas.isEmpty()) {
+                    redirect.addFlashAttribute("errores", erroresFechas);
+                    return "redirect:/fechas";
+                }
                 int idCiudad = elegido.get().getCiudad().getId();
                 if (idViaje == null) {
                     idViaje = viajeDAO.insertar(usuario.getIdUsuario(), idCiudad, fechas, presupuestoUsd, origenGuardado);
@@ -100,7 +116,10 @@ public class SeleccionControlador {
 
                 // El ID ya queda en sesion para reutilizar el viaje si las preferencias fallan.
                 preferenciaDAO.guardarActivas(idViaje, atributosCuestionario);
-            } catch (IllegalArgumentException | IllegalStateException e) {
+            } catch (IllegalArgumentException e) {
+                redirect.addFlashAttribute("errorGuardado", e.getMessage());
+                return "redirect:/recomendaciones";
+            } catch (IllegalStateException e) {
                 log.error("No se pudo completar el guardado del viaje y sus preferencias", e);
                 redirect.addFlashAttribute("errorGuardado",
                         "No pudimos completar el guardado de tu viaje. Elige el destino nuevamente para reintentar.");

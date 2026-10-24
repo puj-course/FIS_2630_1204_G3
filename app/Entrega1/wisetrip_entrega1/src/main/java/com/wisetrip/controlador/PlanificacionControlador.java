@@ -118,7 +118,15 @@ public class PlanificacionControlador {
         Usuario usuario = (Usuario) sesion.getAttribute("usuarioActivo");
         if (usuario == null) return "redirect:/login";
 
-        Map<String, String> errores = fechasServicio.validarFechas(fechas);
+        Integer idViaje = (Integer) sesion.getAttribute("idViajeGuardado");
+        Map<String, String> errores;
+        try {
+            errores = fechasServicio.validarFechas(fechas, usuario.getIdUsuario(), idViaje != null ? idViaje : 0);
+        } catch (IllegalStateException e) {
+            org.slf4j.LoggerFactory.getLogger(PlanificacionControlador.class)
+                    .error("No se pudo comprobar la disponibilidad de fechas", e);
+            errores = Map.of("fechaFin", "No pudimos comprobar tus otros viajes. Intenta nuevamente.");
+        }
 
         if (!errores.isEmpty()) {
             model.addAttribute("errores", errores);
