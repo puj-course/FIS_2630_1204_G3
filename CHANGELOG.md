@@ -5406,18 +5406,18 @@ no
 
 1. **¿Qué hice ayer?** 
 
-
+Revise la parte del itinerario y como esta funcionando lo de olvide contraseña
 
 2. **¿Qué voy a hacer hoy?** 
 
-
+hoy voy a seguir revisando esa parte del codigo que hay muchas cosas que no van
 
 3. **¿Tengo algún impedimento o bloqueo?** 
 
-
-<img width="1345" height="757" alt="image" src="https://github.com/user-attachments/assets/6dcbe3fc-a551-4e0b-84f9-8c296f24cfca" />
-
+no
 
 ---
+
+<img width="1345" height="757" alt="image" src="https://github.com/user-attachments/assets/6dcbe3fc-a551-4e0b-84f9-8c296f24cfca" />
 
 ---
