@@ -10,6 +10,7 @@ import java.time.LocalDate;
 import org.springframework.stereotype.Repository;
 
 import com.wisetrip.modelo.FechasViaje;
+import com.wisetrip.modelo.RepartoPresupuesto;
 import com.wisetrip.negocio.IRepositorioViajes;
 
 /**
@@ -27,6 +28,40 @@ import com.wisetrip.negocio.IRepositorioViajes;
 
 @Repository
 public class ViajeDAO implements IRepositorioViajes {
+
+    @Override
+    public void guardarReparto(int idViaje, int idUsuario, RepartoPresupuesto reparto) {
+        if (idViaje <= 0 || idUsuario <= 0 || reparto == null || !reparto.esValido()) {
+            throw new IllegalArgumentException("El viaje, el usuario y el reparto deben ser validos.");
+        }
+        String sql = """
+                INSERT INTO reparto_presupuesto
+                    (id_viaje, hospedaje, alimentacion, transporte, actividades, imprevistos)
+                SELECT id_viaje, ?, ?, ?, ?, ? FROM viajes
+                WHERE id_viaje = ? AND id_usuario = ?
+                ON CONFLICT (id_viaje) DO UPDATE SET
+                    hospedaje = EXCLUDED.hospedaje,
+                    alimentacion = EXCLUDED.alimentacion,
+                    transporte = EXCLUDED.transporte,
+                    actividades = EXCLUDED.actividades,
+                    imprevistos = EXCLUDED.imprevistos
+                """;
+        try (Connection conn = ConexionBD.obtenerConexion();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, reparto.getHospedaje());
+            stmt.setInt(2, reparto.getAlimentacion());
+            stmt.setInt(3, reparto.getTransporte());
+            stmt.setInt(4, reparto.getActividades());
+            stmt.setInt(5, reparto.getImprevistos());
+            stmt.setInt(6, idViaje);
+            stmt.setInt(7, idUsuario);
+            if (stmt.executeUpdate() != 1) {
+                throw new IllegalStateException("No se encontro el viaje del usuario para guardar el reparto.");
+            }
+        } catch (SQLException e) {
+            throw new IllegalStateException("No se pudo guardar el reparto en PostgreSQL.", e);
+        }
+    }
 
     @Override
     public int insertar(int idUsuario, int idCiudad, FechasViaje fechas, double presupuestoUsd, String origen) {

@@ -15,6 +15,7 @@ import com.wisetrip.modelo.ResultadoRecomendacion;
 import com.wisetrip.modelo.Ubicacion;
 import com.wisetrip.modelo.Usuario;
 import com.wisetrip.negocio.IGestionReparto;
+import com.wisetrip.negocio.IRepositorioViajes;
 import com.wisetrip.servicio.PresupuestoServicio;
 import com.wisetrip.servicio.UsuarioSesionFacade;
 
@@ -31,16 +32,21 @@ import jakarta.servlet.http.HttpSession;
 @Controller
 public class PlanControlador {
 
+    private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(PlanControlador.class);
+    private final IRepositorioViajes viajeDAO;
+
     private final IGestionReparto gestionReparto;
     private final PresupuestoServicio presupuestoServicio;
     private final UsuarioSesionFacade usuarioSesionFacade;
 
     public PlanControlador(IGestionReparto gestionReparto,
                            PresupuestoServicio presupuestoServicio,
-                           UsuarioSesionFacade usuarioSesionFacade) {
+                           UsuarioSesionFacade usuarioSesionFacade,
+                           IRepositorioViajes viajeDAO) {
         this.gestionReparto = gestionReparto;
         this.presupuestoServicio = presupuestoServicio;
         this.usuarioSesionFacade = usuarioSesionFacade;
+        this.viajeDAO = viajeDAO;
     }
 
     @GetMapping("/plan")
@@ -120,7 +126,20 @@ public class PlanControlador {
             return "plan";
         }
 
-        sesion.setAttribute("repartoPresupuesto", reparto);
+        synchronized (sesion) {
+            Integer idViaje = (Integer) sesion.getAttribute("idViajeGuardado");
+            if (idViaje == null) return "redirect:/recomendaciones";
+            try {
+                viajeDAO.guardarReparto(idViaje, usuario.getIdUsuario(), reparto);
+            } catch (IllegalArgumentException | IllegalStateException e) {
+                log.error("No se pudo guardar el reparto del viaje", e);
+                model.addAttribute("errores", Map.of("general",
+                        "No pudimos guardar el reparto. Intenta nuevamente."));
+                cargarDatos(model, sesion, destino, presupuesto, reparto, usuario);
+                return "plan";
+            }
+            sesion.setAttribute("repartoPresupuesto", reparto);
+        }
         return "redirect:/viaje";
     }
 
