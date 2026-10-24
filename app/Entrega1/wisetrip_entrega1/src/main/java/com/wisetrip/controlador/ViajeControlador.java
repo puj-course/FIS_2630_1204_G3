@@ -2,6 +2,7 @@ package com.wisetrip.controlador;
 
 import java.util.List;
 import java.util.Map;
+import java.time.LocalDate;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,6 +12,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.wisetrip.modelo.Ubicacion;
 import com.wisetrip.modelo.Usuario;
+import com.wisetrip.modelo.Viaje;
+import com.wisetrip.negocio.IRepositorioViajes;
+import com.wisetrip.servicio.FechasServicio;
 import com.wisetrip.negocio.IViajeServicio;
 import com.wisetrip.servicio.UsuarioSesionFacade;
 
@@ -25,14 +29,36 @@ import jakarta.servlet.http.HttpSession;
 @Controller
 public class ViajeControlador {
 
+    private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(ViajeControlador.class);
+    private final IRepositorioViajes viajes;
+    private final FechasServicio fechasServicio;
+
     // Servicio que contiene la lógica relacionada con la configuración del viaje
     private final IViajeServicio viajeServicio;
     private final UsuarioSesionFacade usuarioSesionFacade;
 
     // Spring inyecta automáticamente ViajeServicio mediante el constructor
-    public ViajeControlador(IViajeServicio viajeServicio, UsuarioSesionFacade usuarioSesionFacade) {
+    public ViajeControlador(IViajeServicio viajeServicio, UsuarioSesionFacade usuarioSesionFacade,
+                            IRepositorioViajes viajes, FechasServicio fechasServicio) {
         this.viajeServicio = viajeServicio;
         this.usuarioSesionFacade = usuarioSesionFacade;
+        this.viajes = viajes;
+        this.fechasServicio = fechasServicio;
+    }
+
+    @GetMapping("/viajes")
+    public String mostrarViajes(HttpSession sesion, Model model) {
+        Usuario usuario = usuarioSesionFacade.prepararEncabezado(sesion, model);
+        if (usuario == null) return "redirect:/login";
+        try {
+            List<Viaje> guardados = viajes.listarVigentes(usuario, LocalDate.parse(fechasServicio.hoy()));
+            if (guardados.isEmpty()) return "redirect:/origen";
+            model.addAttribute("viajes", guardados);
+        } catch (IllegalStateException e) {
+            log.error("No se pudieron consultar los viajes guardados", e);
+            model.addAttribute("errorConsulta", "No pudimos cargar tus viajes. Intenta nuevamente.");
+        }
+        return "mis-viajes";
     }
 
     @PostMapping("/viajes/nuevo")

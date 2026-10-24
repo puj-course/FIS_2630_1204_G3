@@ -95,7 +95,7 @@ public class AuthControlador {
 
         // Guarda al usuario en la sesion
         establecerUsuarioActivo(sesion, usuario);
-        return "redirect:/origen";
+        return "redirect:/viajes";
     }
 
     private void establecerUsuarioActivo(HttpSession sesion, Usuario usuario) {
