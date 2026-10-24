@@ -9,8 +9,8 @@ import com.wisetrip.modelo.FechasViaje;
 public interface IRepositorioViajes {
 
     /** Guarda el viaje y devuelve su id. */
-    int insertar(int idUsuario, int idCiudad, FechasViaje fechas, double presupuestoUsd);
+    int insertar(int idUsuario, int idCiudad, FechasViaje fechas, double presupuestoUsd, String origen);
 
     /** Actualiza destino, fechas y presupuesto del viaje que pertenece al usuario indicado. */
-    void actualizar(int idViaje, int idUsuario, int idCiudad, FechasViaje fechas, double presupuestoUsd);
+    void actualizar(int idViaje, int idUsuario, int idCiudad, FechasViaje fechas, double presupuestoUsd, String origen);
 }

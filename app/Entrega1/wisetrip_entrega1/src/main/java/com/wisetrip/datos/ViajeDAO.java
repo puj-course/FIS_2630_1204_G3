@@ -29,12 +29,13 @@ import com.wisetrip.negocio.IRepositorioViajes;
 public class ViajeDAO implements IRepositorioViajes {
 
     @Override
-    public int insertar(int idUsuario, int idCiudad, FechasViaje fechas, double presupuestoUsd) {
+    public int insertar(int idUsuario, int idCiudad, FechasViaje fechas, double presupuestoUsd, String origen) {
         validarDatos(idUsuario, idCiudad, fechas, presupuestoUsd);
+        validarOrigen(origen);
 
         String sql = """
-                INSERT INTO viajes (id_usuario, destino, fecha_inicio, fecha_fin, presupuesto)
-                SELECT ?, nombre, ?, ?, ? FROM ciudad WHERE id_ciudad = ?
+                INSERT INTO viajes (id_usuario, destino, fecha_inicio, fecha_fin, presupuesto, origen)
+                SELECT ?, nombre, ?, ?, ?, ? FROM ciudad WHERE id_ciudad = ?
                 RETURNING id_viaje
                 """;
 
@@ -44,7 +45,8 @@ public class ViajeDAO implements IRepositorioViajes {
             stmt.setDate(2, Date.valueOf(LocalDate.parse(fechas.getFechaInicio())));
             stmt.setDate(3, Date.valueOf(LocalDate.parse(fechas.getFechaFin())));
             stmt.setDouble(4, presupuestoUsd);
-            stmt.setInt(5, idCiudad);
+            stmt.setString(5, origen.trim());
+            stmt.setInt(6, idCiudad);
 
             try (ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) {
@@ -58,15 +60,16 @@ public class ViajeDAO implements IRepositorioViajes {
     }
     @Override
     public void actualizar(int idViaje, int idUsuario, int idCiudad,
-                           FechasViaje fechas, double presupuestoUsd) {
+                           FechasViaje fechas, double presupuestoUsd, String origen) {
         if (idViaje <= 0) {
             throw new IllegalArgumentException("El ID del viaje debe ser positivo.");
         }
         validarDatos(idUsuario, idCiudad, fechas, presupuestoUsd);
+        validarOrigen(origen);
 
         String sql = """
                 UPDATE viajes
-                SET destino = ciudad.nombre, fecha_inicio = ?, fecha_fin = ?, presupuesto = ?
+                SET destino = ciudad.nombre, fecha_inicio = ?, fecha_fin = ?, presupuesto = ?, origen = ?
                 FROM ciudad
                 WHERE viajes.id_viaje = ?
                   AND viajes.id_usuario = ?
@@ -78,9 +81,10 @@ public class ViajeDAO implements IRepositorioViajes {
             stmt.setDate(1, Date.valueOf(LocalDate.parse(fechas.getFechaInicio())));
             stmt.setDate(2, Date.valueOf(LocalDate.parse(fechas.getFechaFin())));
             stmt.setDouble(3, presupuestoUsd);
-            stmt.setInt(4, idViaje);
-            stmt.setInt(5, idUsuario);
-            stmt.setInt(6, idCiudad);
+            stmt.setString(4, origen.trim());
+            stmt.setInt(5, idViaje);
+            stmt.setInt(6, idUsuario);
+            stmt.setInt(7, idCiudad);
 
             if (stmt.executeUpdate() != 1) {
                 throw new IllegalStateException(
@@ -88,6 +92,12 @@ public class ViajeDAO implements IRepositorioViajes {
             }
         } catch (SQLException e) {
             throw new IllegalStateException("No se pudo actualizar el viaje en PostgreSQL.", e);
+        }
+    }
+
+    private void validarOrigen(String origen) {
+        if (origen == null || origen.isBlank() || origen.trim().length() > 200) {
+            throw new IllegalArgumentException("El origen es obligatorio y debe tener como maximo 200 caracteres.");
         }
     }
 

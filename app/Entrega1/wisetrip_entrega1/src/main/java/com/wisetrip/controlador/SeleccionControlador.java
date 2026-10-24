@@ -14,6 +14,7 @@ import com.wisetrip.modelo.FechasViaje;
 import com.wisetrip.modelo.ResultadoRecomendacion;
 import com.wisetrip.modelo.SeleccionDestinos;
 import com.wisetrip.modelo.Usuario;
+import com.wisetrip.modelo.Ubicacion;
 import com.wisetrip.negocio.ISeleccionDestino;
 import com.wisetrip.negocio.IRepositorioViajes;
 import com.wisetrip.negocio.IRepositorioPreferencias;
@@ -84,14 +85,17 @@ public class SeleccionControlador {
         // Serializa las elecciones de esta sesion dentro de la misma instancia del servidor.
         // La segunda peticion debe leer el ID que haya guardado la primera.
         synchronized (sesion) {
+            Ubicacion origen = SesionViaje.de(sesion, usuario).getOrigen();
+            if (origen == null || !origen.estaCompleta()) return "redirect:/origen";
+            String origenGuardado = origen.getCiudad().trim() + ", " + origen.getPais().trim();
             try {
                 Integer idViaje = (Integer) sesion.getAttribute("idViajeGuardado");
                 int idCiudad = elegido.get().getCiudad().getId();
                 if (idViaje == null) {
-                    idViaje = viajeDAO.insertar(usuario.getIdUsuario(), idCiudad, fechas, presupuestoUsd);
+                    idViaje = viajeDAO.insertar(usuario.getIdUsuario(), idCiudad, fechas, presupuestoUsd, origenGuardado);
                     sesion.setAttribute("idViajeGuardado", idViaje);
                 } else {
-                    viajeDAO.actualizar(idViaje, usuario.getIdUsuario(), idCiudad, fechas, presupuestoUsd);
+                    viajeDAO.actualizar(idViaje, usuario.getIdUsuario(), idCiudad, fechas, presupuestoUsd, origenGuardado);
                 }
 
                 // El ID ya queda en sesion para reutilizar el viaje si las preferencias fallan.
