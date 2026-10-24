@@ -5320,15 +5320,15 @@ no
 
 1. **¿Qué hice ayer?** 
 
-
+Revise el codigo y empece a refactorizar
 
 2. **¿Qué voy a hacer hoy?** 
 
-
+hoy revisamos algunas cosas sobre como deberiamos analizar mejor las entregas de los sprints
 
 3. **¿Tengo algún impedimento o bloqueo?** 
 
-
+no
 
 ---
 
