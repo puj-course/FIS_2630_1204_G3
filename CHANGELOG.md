@@ -5356,15 +5356,15 @@ no
 ### Valeria Cortes Rendon
 
 1. **¿Qué hice ayer?**
-
+Vimos sobre la retrospective de startfish, realizamos una de ellas en clase y decidimos que debemos empezar a implementarlo en cada uno de los modulos.
 
 
 2. **¿Qué voy a hacer hoy?**
-
+Hice la guia de usuario y empece a revisar como podemos refactorizar el codigo ya que sin eso no podemos realizar de nuevo los diagramas ya que tenemos mucho codigo que es inservible por lo tanto debemos volverlo a organizar para solo tener lo necesario y lo que estamos haciendo
 
    
 3. **¿Tengo algún impedimento o bloqueo?**
-
+No
 
    
 ---
