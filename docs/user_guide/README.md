@@ -30,3 +30,18 @@ Para quien instala el proyecto (requiere JDK 21 o superior; no hace falta instal
 - Windows: `mvnw.cmd spring-boot:run`
 - Linux / macOS: `./mvnw spring-boot:run`
 - Alternativa con el archivo empaquetado: `java -jar wisetrip-0.0.1-SNAPSHOT.war`
+
+## 3. Recorrido general
+ 
+El uso normal de WiseTrip sigue siempre este camino:
+ 
+1. **Portada** → Crear cuenta o Iniciar sesión.
+2. **Paso 1 – Origen:** de dónde sales.
+3. **Paso 2 – Preferencias:** qué tipo de viajero eres.
+4. **Paso 3 – Fechas:** cuándo viajas.
+5. **Paso 4 – Presupuesto:** cuánto puedes gastar.
+6. **Resumen** de tu viaje y cálculo de destinos.
+7. **Paso 5 – Destinos:** eliges uno de los tres recomendados.
+8. **Reparto del presupuesto** entre tus gastos.
+9. **Tu viaje:** pantalla principal con tu pase de abordar y el presupuesto repartido.
+En la parte superior de las pantallas verás una barra de progreso con los pasos *Origen, Preferencias, Fechas, Presupuesto y Destinos*, además de tus iniciales y nombre. No puedes saltarte pasos: si intentas abrir una pantalla sin haber completado la anterior, la aplicación te devuelve al paso que falta.
