@@ -64,3 +64,10 @@ Al pulsar **Crear mi cuenta →**:
  
 - Si hay errores, el formulario se vuelve a mostrar con el mensaje junto a cada campo (por ejemplo, *Ya existe una cuenta con este correo* o *Debes ser mayor de 18 años para crear una cuenta en WiseTrip*). Corrige y vuelve a enviar.
 - Si todo está bien, verás la pantalla **Cuenta creada con éxito**, ya con tu sesión iniciada, y recibirás un correo de bienvenida. Continúa para empezar con tu origen.
+
+
+## 5. Iniciar y cerrar sesión
+ 
+**Iniciar sesión:** en la portada pulsa *Iniciar sesión* (o *Ya tengo cuenta*), escribe tu correo y tu contraseña y envía el formulario. Si algún dato es incorrecto, la aplicación muestra *Correo o contraseña incorrectos* sin indicar cuál de los dos falló (es una medida de seguridad). Al entrar llegas directamente al paso **Origen**.
+ 
+**Cerrar sesión:** pulsa *Cerrar sesión* en el encabezado; volverás a la portada. Las pantallas de planificación están protegidas: si no tienes sesión activa, te redirigen al inicio de sesión.
