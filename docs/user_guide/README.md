@@ -71,3 +71,45 @@ Al pulsar **Crear mi cuenta →**:
 **Iniciar sesión:** en la portada pulsa *Iniciar sesión* (o *Ya tengo cuenta*), escribe tu correo y tu contraseña y envía el formulario. Si algún dato es incorrecto, la aplicación muestra *Correo o contraseña incorrectos* sin indicar cuál de los dos falló (es una medida de seguridad). Al entrar llegas directamente al paso **Origen**.
  
 **Cerrar sesión:** pulsa *Cerrar sesión* en el encabezado; volverás a la portada. Las pantallas de planificación están protegidas: si no tienes sesión activa, te redirigen al inicio de sesión.
+
+## 6. Planificar tu viaje, paso a paso
+ 
+### 6.1 Paso 1 de 4 – Origen: ¿De dónde sales?
+ 
+Con tu punto de partida WiseTrip calcula rutas, transporte y cuánto cuesta llegar a cada destino.
+ 
+1. Elige tu **país de origen** en la lista.
+2. Elige tu **ciudad de origen** (la lista se llena con las ciudades del país elegido; primero debes escoger el país).
+3. Opcionalmente, escribe un **punto de partida** o detalle (máximo 60 caracteres).
+4. Pulsa continuar.
+Países disponibles: México, Guatemala, Honduras, El Salvador, Nicaragua, Costa Rica, Panamá, Belice, Colombia, Venezuela, Cuba, República Dominicana, Ecuador, Perú, Bolivia, Brasil, Chile, Argentina, Uruguay y Paraguay.
+ 
+Errores posibles: *Selecciona tu país de origen*, *Selecciona tu ciudad de origen*, *Esa ciudad no pertenece al país seleccionado* o *El detalle no puede superar los 60 caracteres*.
+ 
+### 6.2 Paso 2 de 4 – Preferencias: ¿Qué tipo de viajero eres?
+ 
+Es un cuestionario de **41 preguntas** agrupado en categorías. Cada pregunta se ilustra con una imagen para que sea más fácil responder.
+ 
+Categorías del cuestionario:
+ 
+- Paisaje y clima
+- Tipo de destino
+- Ritmo de viaje
+- Estilo de viaje
+- Compañía
+- Gastronomía
+- Actividades
+- Cultura
+- Características específicas
+Para **cada pregunta** debes elegir una de estas cuatro respuestas:
+ 
+| Respuesta | Qué significa |
+|---|---|
+| **No** | No te interesa; no cuenta en la recomendación. |
+| **Me gustaría** | Te interesa, con importancia baja. |
+| **Lo prefiero** | Te interesa con importancia alta (pesa más que "Me gustaría"). |
+| **Es indispensable** | Requisito obligatorio: solo se recomiendan destinos que lo cumplan. |
+ 
+Una barra de progreso en la parte inferior muestra cuántas preguntas llevas respondidas. Debes contestar **todas** para continuar; si dejas alguna sin responder, la pregunta se marca como pendiente (*Falta responder esta pregunta*) y se indica cuántas faltan. Si regresas desde un paso posterior, tus respuestas anteriores aparecen marcadas.
+ 
+> **Consejo:** usa **Es indispensable** solo para lo que realmente no negocias (por ejemplo, viajar con mascota o con niños). Si marcas muchos requisitos obligatorios, es posible que ningún destino los cumpla todos.
