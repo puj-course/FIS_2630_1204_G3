@@ -113,3 +113,24 @@ Para **cada pregunta** debes elegir una de estas cuatro respuestas:
 Una barra de progreso en la parte inferior muestra cuántas preguntas llevas respondidas. Debes contestar **todas** para continuar; si dejas alguna sin responder, la pregunta se marca como pendiente (*Falta responder esta pregunta*) y se indica cuántas faltan. Si regresas desde un paso posterior, tus respuestas anteriores aparecen marcadas.
  
 > **Consejo:** usa **Es indispensable** solo para lo que realmente no negocias (por ejemplo, viajar con mascota o con niños). Si marcas muchos requisitos obligatorios, es posible que ningún destino los cumpla todos.
+
+### 6.3 Paso 3 de 4 – Fechas: ¿Cuándo viajas?
+ 
+Con las fechas, WiseTrip calcula cuántos días dura el viaje y cómo repartir tu presupuesto.
+ 
+1. En el calendario, elige la fecha de **Entrada** (ida) y luego la de **Salida** (regreso). Al pasar el cursor verás el rango y las noches antes de confirmar.
+2. Revisa la duración en el panel ilustrado tipo boleto (*Ida, Regreso, Días*).
+3. Pulsa **Continuar**.
+Reglas:
+ 
+- La fecha de inicio no puede ser anterior a hoy.
+- La fecha de regreso debe ser posterior a la de inicio.
+- La duración máxima es de **60 días**.
+### 6.4 Paso 4 de 4 – Presupuesto: ¿Cuánto puedes gastar?
+ 
+1. Selecciona la **moneda** de tu presupuesto; al lado verás la bandera del país correspondiente.
+2. Escribe el **presupuesto total por persona** para todos los días de estancia (alojamiento, comida y transporte local). **No incluye** el traslado hasta el destino. Escribe solo el número, sin símbolo de moneda ni letras (ej.: 2500000).
+3. Pulsa **Ver mi resumen**.
+El panel lateral muestra el total, la duración, el costo por día y la moneda. Errores posibles: monto vacío, no numérico, igual o menor que cero, o poco realista; y moneda sin seleccionar o inválida.
+ 
+WiseTrip convierte internamente tu presupuesto a dólares para poder compararlo con el costo de cada destino.
