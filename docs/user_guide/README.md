@@ -45,3 +45,22 @@ El uso normal de WiseTrip sigue siempre este camino:
 8. **Reparto del presupuesto** entre tus gastos.
 9. **Tu viaje:** pantalla principal con tu pase de abordar y el presupuesto repartido.
 En la parte superior de las pantallas verás una barra de progreso con los pasos *Origen, Preferencias, Fechas, Presupuesto y Destinos*, además de tus iniciales y nombre. No puedes saltarte pasos: si intentas abrir una pantalla sin haber completado la anterior, la aplicación te devuelve al paso que falta.
+
+## 4. Crear tu cuenta
+ 
+En la portada pulsa **Crear cuenta** (o **Empezar a planear**). Se abre el formulario *Crea tu cuenta*, que toma menos de un minuto.
+ 
+| Campo | Qué escribir | Reglas |
+|---|---|---|
+| Nombre completo | Ej.: Laura Gómez Peña | Obligatorio, mínimo 3 caracteres |
+| Tipo de documento | Cédula de ciudadanía, Cédula de extranjería, Tarjeta de identidad o Pasaporte | Obligatorio |
+| Número de documento | Solo dígitos | Entre 5 y 15 dígitos; no puede estar ya registrado |
+| Fecha de nacimiento | Selecciona la fecha | Obligatoria, no puede ser futura y debes ser mayor de 18 años |
+| Correo electrónico | tucorreo@ejemplo.com | Formato válido; no puede estar ya registrado |
+| Contraseña | Mínimo 6 caracteres | Obligatoria |
+| Confirmar contraseña | Repite la contraseña | Debe coincidir |
+ 
+Al pulsar **Crear mi cuenta →**:
+ 
+- Si hay errores, el formulario se vuelve a mostrar con el mensaje junto a cada campo (por ejemplo, *Ya existe una cuenta con este correo* o *Debes ser mayor de 18 años para crear una cuenta en WiseTrip*). Corrige y vuelve a enviar.
+- Si todo está bien, verás la pantalla **Cuenta creada con éxito**, ya con tu sesión iniciada, y recibirás un correo de bienvenida. Continúa para empezar con tu origen.
