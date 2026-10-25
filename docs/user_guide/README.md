@@ -187,3 +187,17 @@ Dólar estadounidense (USD), Peso mexicano (MXN), Quetzal (GTQ), Lempira (HNL), 
   1. Busca en Telegram el bot **@wisetrip_notiff_bot** y pulsa *Start*.
   2. Busca **@userinfobot**, pulsa *Start* y copia el número que aparece en "Id".
   3. Pega ese número en el campo *Tu chat_id de Telegram* y pulsa **Guardar**. Verás *¡Telegram vinculado con éxito!*.
+
+## 11. Preguntas frecuentes y solución de problemas
+ 
+| Situación | Qué hacer |
+|---|---|
+| La aplicación no abre en el navegador | Verifica que esté ejecutándose y entra a http://localhost:8090. Si el puerto 8090 está ocupado, cámbialo en `server.port` de `application.properties`. |
+| Me devuelve al inicio de sesión | Tu sesión expiró o no la has iniciado. Inicia sesión de nuevo. |
+| Me redirige a un paso anterior | Debes completar los pasos en orden: Origen → Preferencias → Fechas → Presupuesto. |
+| "Ya existe una cuenta con este correo / documento" | Ya estás registrado: usa *Iniciar sesión*. |
+| "Debes ser mayor de 18 años" | El registro está limitado a mayores de edad. |
+| No me salen destinos | Reduce las respuestas "Es indispensable" o aumenta el presupuesto. |
+| El reparto no se guarda | Revisa que sume exactamente 100 % y que dejes algo para hospedaje o alimentación. |
+| No me llega el aviso de Telegram | Confirma que pulsaste *Start* en el bot y que copiaste bien tu Id numérico. |
+| Volví atrás y cambié datos | Al cambiar preferencias, fechas o presupuesto se descarta el destino elegido y debes volver a calcular las recomendaciones. |
