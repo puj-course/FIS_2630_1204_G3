@@ -134,3 +134,44 @@ Reglas:
 El panel lateral muestra el total, la duración, el costo por día y la moneda. Errores posibles: monto vacío, no numérico, igual o menor que cero, o poco realista; y moneda sin seleccionar o inválida.
  
 WiseTrip convierte internamente tu presupuesto a dólares para poder compararlo con el costo de cada destino.
+
+## 7. Resumen de tu viaje y destinos recomendados
+ 
+### 7.1 Resumen
+ 
+Verás un **pase de abordar** con tu origen, fechas y duración, junto con los sellos de tus preferencias principales (si marcaste más de 6, se indica "+N más"). Revisa que todo esté bien y pulsa **Calcular mis destinos →**. Si algo está mal, usa el menú de pasos para volver y corregirlo.
+ 
+### 7.2 Tus destinos
+ 
+WiseTrip busca los tres destinos que mejor encajan contigo. Para cada uno muestra:
+ 
+- El país y la ciudad, con su posición (1, 2 o 3).
+- El porcentaje de **ajuste al presupuesto**.
+- El porcentaje de **coincidencia con tus preferencias**.
+- Sellos de colores (Playa, Montaña, Aventura, Sabores, Descanso, Fiesta) que indican lo que tienen en común tus destinos.
+También verás un encabezado con tu ruta, fechas y presupuesto, y un mensaje que indica cuántos destinos se encontraron.
+ 
+Si no hay resultados verás **Sin destinos disponibles / No encontramos coincidencias**: significa que ningún destino cumple todos tus requisitos obligatorios dentro de tu presupuesto. Revisa tus respuestas "Es indispensable" y tu presupuesto.
+ 
+A veces aparece la sección **Destinos pendientes de verificar**: son ciudades a las que les faltan datos de costo o de algún requisito indispensable, por lo que no se incluyen en las recomendaciones.
+ 
+Cuando decidas, pulsa **Elegir este destino →** en la tarjeta que prefieras.
+
+## 8. Repartir tu presupuesto y ver tu viaje
+ 
+### 8.1 Reparto del presupuesto
+ 
+Tras elegir destino, WiseTrip te pregunta cómo distribuir tu dinero en cinco categorías: **Hospedaje, Alimentación, Transporte, Actividades e Imprevistos**. Tienes dos opciones:
+ 
+- **"Háganlo ustedes":** se usa el reparto sugerido por WiseTrip para tu destino.
+- **"Lo personalizo yo":** tú decides el porcentaje de cada categoría.
+Un indicador muestra el porcentaje **Usado** y el **Disponible**. Reglas para guardar:
+ 
+- Ningún porcentaje puede ser negativo.
+- El total debe sumar exactamente **100 %** (la aplicación te avisa cuánto te pasas o cuánto te falta).
+- Debes dejar algo para **hospedaje o alimentación**.
+Cuando guardes verás el mensaje *Tu reparto quedó guardado* y pasarás a tu viaje.
+ 
+### 8.2 Tu viaje
+ 
+Es la pantalla principal: *Tu viaje está en marcha*. Muestra tu **pase de abordar** (desde, hacia, pasajero, duración, salida y regreso), el presupuesto total, el valor por día y el monto asignado a hospedaje, alimentación, transporte, actividades e imprevistos. Desde aquí empezarás a armar dónde dormir, cómo moverte, dónde comer y qué hacer.
