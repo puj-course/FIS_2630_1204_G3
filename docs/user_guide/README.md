@@ -175,3 +175,15 @@ Cuando guardes verás el mensaje *Tu reparto quedó guardado* y pasarás a tu vi
 ### 8.2 Tu viaje
  
 Es la pantalla principal: *Tu viaje está en marcha*. Muestra tu **pase de abordar** (desde, hacia, pasajero, duración, salida y regreso), el presupuesto total, el valor por día y el monto asignado a hospedaje, alimentación, transporte, actividades e imprevistos. Desde aquí empezarás a armar dónde dormir, cómo moverte, dónde comer y qué hacer.
+
+## 9. Monedas disponibles
+ 
+Dólar estadounidense (USD), Peso mexicano (MXN), Quetzal (GTQ), Lempira (HNL), Córdoba (NIO), Colón costarricense (CRC), Balboa (PAB), Dólar beliceño (BZD), Peso colombiano (COP), Bolívar (VES), Peso cubano (CUP), Peso dominicano (DOP), Sol peruano (PEN), Boliviano (BOB), Real brasileño (BRL), Peso chileno (CLP), Peso argentino (ARS), Peso uruguayo (UYU) y Guaraní paraguayo (PYG).
+ 
+## 10. Notificaciones por correo y Telegram
+ 
+- **Correo:** al crear tu cuenta recibes un mensaje de bienvenida; al iniciar sesión recibes un aviso de inicio de sesión (si no fuiste tú, cambia tu contraseña).
+- **Telegram (opcional):** desde el botón flotante azul de Telegram (esquina inferior izquierda de la pantalla de origen) o la ruta `/perfil/telegram` puedes vincular tu cuenta para recibir un aviso cada vez que inicies sesión:
+  1. Busca en Telegram el bot **@wisetrip_notiff_bot** y pulsa *Start*.
+  2. Busca **@userinfobot**, pulsa *Start* y copia el número que aparece en "Id".
+  3. Pega ese número en el campo *Tu chat_id de Telegram* y pulsa **Guardar**. Verás *¡Telegram vinculado con éxito!*.
