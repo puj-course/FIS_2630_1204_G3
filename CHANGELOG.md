@@ -5076,15 +5076,15 @@ falta de tiempo
 
 1. **¿Qué hice ayer?**
 
-
+Ayer presentamos como grupo la sustentación de la entrega dos del proyecto, retroalimentamos muchas cosas de arquitectura y de código, nos dejo un poco pensativos en cuanto a potencial, actitud y tiempo que hemos invertid, pero ante todo el aprendizaje
    
 2. **¿Qué voy a hacer hoy?**
 
-
+Hoy voy a revisar nuevamente el diagrama de componentes, y tambien revisé porque está fallando viajeDao
    
 3. **¿Tengo algún impedimento o bloqueo?**
 
-
+Por ahora tiempo, tengo 2 sustentaciónes mañana de otras dos materias diferentes.
 
 ---
 
