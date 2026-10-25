@@ -201,3 +201,5 @@ Dólar estadounidense (USD), Peso mexicano (MXN), Quetzal (GTQ), Lempira (HNL), 
 | El reparto no se guarda | Revisa que sume exactamente 100 % y que dejes algo para hospedaje o alimentación. |
 | No me llega el aviso de Telegram | Confirma que pulsaste *Start* en el bot y que copiaste bien tu Id numérico. |
 | Volví atrás y cambié datos | Al cambiar preferencias, fechas o presupuesto se descarta el destino elegido y debes volver a calcular las recomendaciones. |
+
+*Equipo del proyecto: María Alejandra Rodríguez, Gabriela Melo Gualteros, Valeria Cortés Rendón, Isabella Posada y Santiago Clavijo. Curso: Fundamentos de Ingeniería de Software, grupo FIS_2630_1204_G3.*
