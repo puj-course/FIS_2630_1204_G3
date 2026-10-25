@@ -5091,15 +5091,15 @@ falta de tiempo
 ### Valeria Cortes Rendon
 
 1. **¿Qué hice ayer?**
-
+Se realizo la sustentacion y definimos que debemos mejorar con respecto a los diagramas ya que en la sustentacion 2 del proyecto nos fue un poco mal con respecto a eso tambien definimos que debemos empezar a borrar algunas clases y refactorizar el codigo para dejarlo mucho mas limpio y simplificado
 
 
 2. **¿Qué voy a hacer hoy?**
-
+Eliminacion de todos los documentos de diagramas para empezar a hacerlos uno por uno de nuevo, menos el de gof, empece a buscar como hacer el manual de usuarios
 
    
 3. **¿Tengo algún impedimento o bloqueo?**
-
+No
 
    
 ---
