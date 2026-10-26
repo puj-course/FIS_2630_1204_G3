@@ -5373,15 +5373,15 @@ No
 
 1. **¿Qué hice ayer?**
 
-
+vi lo que le voy hacer a la pagina de las recomendaciones y hicimos un trabajo en clase acerca de las retrospectivas
 
 2. **¿Qué voy a hacer hoy?**
 
-
+empece a implementar los cambios en la vista
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
-
+no
 
 ---
 
