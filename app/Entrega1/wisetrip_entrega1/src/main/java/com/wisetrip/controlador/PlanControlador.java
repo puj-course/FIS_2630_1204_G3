@@ -15,6 +15,7 @@ import com.wisetrip.modelo.ResultadoRecomendacion;
 import com.wisetrip.modelo.Ubicacion;
 import com.wisetrip.modelo.Usuario;
 import com.wisetrip.negocio.IGestionReparto;
+import com.wisetrip.negocio.IRepositorioViajes;
 import com.wisetrip.servicio.PresupuestoServicio;
 import com.wisetrip.servicio.UsuarioSesionFacade;
 
@@ -31,16 +32,21 @@ import jakarta.servlet.http.HttpSession;
 @Controller
 public class PlanControlador {
 
+    private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(PlanControlador.class);
+    private final IRepositorioViajes viajeDAO;
+
     private final IGestionReparto gestionReparto;
     private final PresupuestoServicio presupuestoServicio;
     private final UsuarioSesionFacade usuarioSesionFacade;
 
     public PlanControlador(IGestionReparto gestionReparto,
                            PresupuestoServicio presupuestoServicio,
-                           UsuarioSesionFacade usuarioSesionFacade) {
+                           UsuarioSesionFacade usuarioSesionFacade,
+                           IRepositorioViajes viajeDAO) {
         this.gestionReparto = gestionReparto;
         this.presupuestoServicio = presupuestoServicio;
         this.usuarioSesionFacade = usuarioSesionFacade;
+        this.viajeDAO = viajeDAO;
     }
 
     @GetMapping("/plan")
@@ -74,7 +80,6 @@ public class PlanControlador {
         if (destino == null) return "redirect:/recomendaciones";
 
         Ubicacion ubicacion = SesionViaje.de(sesion, usuario).getOrigen();
-        if (ubicacion == null) return "redirect:/origen";
 
         FechasViaje fechas = (FechasViaje) sesion.getAttribute("fechasViaje");
         if (fechas == null) return "redirect:/fechas";
@@ -86,7 +91,7 @@ public class PlanControlador {
                 (RepartoPresupuesto) sesion.getAttribute("repartoPresupuesto");
         if (reparto == null) return "redirect:/plan";
 
-        model.addAttribute("ubicacionCiudad", ubicacion.getCiudad());
+        model.addAttribute("ubicacionCiudad", ubicacion != null ? ubicacion.getCiudad() : "Origen no registrado");
         model.addAttribute("destino", destino);
         model.addAttribute("fechas", fechas);
         model.addAttribute("presupuesto", presupuesto);
@@ -111,8 +116,7 @@ public class PlanControlador {
         Presupuesto presupuesto = (Presupuesto) sesion.getAttribute("presupuestoViaje");
         if (presupuesto == null) return "redirect:/presupuesto";
 
-        Map<String, String> errores = gestionReparto.validarReparto(
-                (com.wisetrip.negocio.IDistribuible) reparto);
+        Map<String, String> errores = gestionReparto.validarReparto(reparto);
 
         if (!errores.isEmpty()) {
             model.addAttribute("errores", errores);
@@ -120,7 +124,20 @@ public class PlanControlador {
             return "plan";
         }
 
-        sesion.setAttribute("repartoPresupuesto", reparto);
+        synchronized (sesion) {
+            Integer idViaje = (Integer) sesion.getAttribute("idViajeGuardado");
+            if (idViaje == null) return "redirect:/recomendaciones";
+            try {
+                viajeDAO.guardarReparto(idViaje, usuario.getIdUsuario(), reparto);
+            } catch (IllegalArgumentException | IllegalStateException e) {
+                log.error("No se pudo guardar el reparto del viaje", e);
+                model.addAttribute("errores", Map.of("general",
+                        "No pudimos guardar el reparto. Intenta nuevamente."));
+                cargarDatos(model, sesion, destino, presupuesto, reparto, usuario);
+                return "plan";
+            }
+            sesion.setAttribute("repartoPresupuesto", reparto);
+        }
         return "redirect:/viaje";
     }
 
@@ -141,7 +158,7 @@ public class PlanControlador {
         model.addAttribute("reparto", reparto);
         model.addAttribute("dias", dias);
 
-        model.addAttribute("montos", gestionReparto.calcularMontos((com.wisetrip.negocio.IDistribuible) reparto, total));
+       
         model.addAttribute("montoTotalFormateado", presupuestoServicio.formatear(total));
         model.addAttribute("porDiaTotal", dias > 0
                 ? presupuestoServicio.formatear(total / dias) : "—");

@@ -24,20 +24,10 @@ public class DefPregunta {
         this.umbral = umbral;
     }
 
-    public boolean esAutomatica() {
-        return tipo == TipoAtributo.AUTO;
-    }
     public boolean esManual() {
         return tipo == TipoAtributo.MANUAL;
     }
     public boolean esDePerfil() {
         return tipo == TipoAtributo.PERFIL;
-    }
-
-    public boolean tieneCategorias() {
-        return categorias != null && !categorias.isBlank();
-    }
-    public boolean tieneUmbral() {
-        return umbral > 0;
     }
 }

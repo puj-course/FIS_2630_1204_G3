@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 import java.util.logging.Logger;
 
-/** Proxy que reutiliza los conteos guardados en la base de datos. */
+// Proxy que reutiliza los conteos guardados en la base de datos
 @Service
 @Primary
 
