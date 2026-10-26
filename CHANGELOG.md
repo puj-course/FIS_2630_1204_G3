@@ -5494,14 +5494,15 @@ no
 
 1. **¿Qué logramos?**
 
-
+refactorizamos el codigo para hacerlo mas simple y facil de entender, nos queda pendiente la parte de los diagramas, ya que en la sustentacion nos dijeron que los tenemos mal y no estan adaptados al codigo
 
 2. **¿Cómo trabajamos?**
 
-
+por mi parte no pude completar todas mis hu, fue una semana dura en cuestion de trabajos, entregas, parciales etc, como equipo seguimos conectados y en la misma sintonia
 
 3. **¿Qué podríamos mejorar?**
 
+como equipo la distribucion del tiempo de otras materias ya que esta nos o me quita mucho tiempo
 
 ---
 
