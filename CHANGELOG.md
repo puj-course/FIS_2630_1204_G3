@@ -5421,3 +5421,87 @@ no
 <img width="1345" height="757" alt="image" src="https://github.com/user-attachments/assets/6dcbe3fc-a551-4e0b-84f9-8c296f24cfca" />
 
 ---
+
+## Sprint Retrospective - 25/10/2026
+
+## Maria Alejandra Rodriguez
+
+1. **¿Qué logramos?**
+
+
+
+2. **¿Cómo trabajamos?**
+
+
+
+3. **¿Qué podríamos mejorar?**
+
+
+
+---
+
+## Gabriela Melo Gualteros
+
+1. **¿Qué logramos?**
+
+
+
+2. **¿Cómo trabajamos?**
+
+
+  
+3. **¿Qué podríamos mejorar?**
+
+
+
+
+  
+---
+
+## Valeria Cortes Rendon
+
+1. **¿Qué logramos?**
+
+
+
+2. **¿Cómo trabajamos?*
+
+
+
+3. **¿Qué podríamos mejorar?**
+
+
+
+---
+
+## Isabella Posada
+
+1. **¿Qué logramos?**
+
+
+
+2. **¿Cómo trabajamos?**
+
+
+3. **¿Qué podríamos mejorar?**
+
+
+
+---
+
+## Santiago Clavijo
+
+
+1. **¿Qué logramos?**
+
+
+
+2. **¿Cómo trabajamos?**
+
+
+
+3. **¿Qué podríamos mejorar?**
+
+
+---
+
