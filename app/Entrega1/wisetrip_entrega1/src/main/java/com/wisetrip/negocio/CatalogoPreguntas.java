@@ -7,7 +7,6 @@
 package com.wisetrip.negocio;
 
 import com.wisetrip.modelo.TipoAtributo;
-import java.util.Arrays;
 import java.util.List;
 
 // HU-71 (#239): se depuraron 12 preguntas redundantes
@@ -66,12 +65,6 @@ public final class CatalogoPreguntas {
         return TODAS;
     }
 
-    public static List<String> categoriasDe(DefPregunta pregunta) {
-        if (pregunta.categorias == null || pregunta.categorias.isBlank()) {
-            return List.of();
-        }
-        return Arrays.asList(pregunta.categorias.split(","));
-    }
 
     public static DefPregunta porId(String id) {
         return TODAS.stream()

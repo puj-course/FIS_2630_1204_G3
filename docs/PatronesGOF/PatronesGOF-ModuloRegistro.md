@@ -1,6 +1,6 @@
 # Patrones GoF en WiseTrip - Módulo de registro e inicio de sesión
 
-## 1. Strategy — "diferentes formas de avisarle a alguien"
+## 1. Strategy — "diferentes formas de avisarle a alguien" - Comportamental 
 
 **Problema de diseño :**  Al registrarse o iniciar sesion, nuestra aplicación debe avisarle al usuario de estos por diferentes canales si es la primera vez en ingresar - registrarse le llegara un mensaje a su correo mientras que si ya se encontraba registrado anteriormente solo le llegara un mensaje al Telegram. Mas adelante deberian entrar otros canales como SMS. 
 Sin un patron la clase UsuarioServicio tendria que conocer la informacion de cada canal teniendo de esta forma: 

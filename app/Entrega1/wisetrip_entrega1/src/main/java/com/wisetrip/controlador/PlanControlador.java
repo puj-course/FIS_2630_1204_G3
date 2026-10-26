@@ -116,8 +116,7 @@ public class PlanControlador {
         Presupuesto presupuesto = (Presupuesto) sesion.getAttribute("presupuestoViaje");
         if (presupuesto == null) return "redirect:/presupuesto";
 
-        Map<String, String> errores = gestionReparto.validarReparto(
-                (com.wisetrip.negocio.IDistribuible) reparto);
+        Map<String, String> errores = gestionReparto.validarReparto(reparto);
 
         if (!errores.isEmpty()) {
             model.addAttribute("errores", errores);
@@ -159,7 +158,7 @@ public class PlanControlador {
         model.addAttribute("reparto", reparto);
         model.addAttribute("dias", dias);
 
-        model.addAttribute("montos", gestionReparto.calcularMontos((com.wisetrip.negocio.IDistribuible) reparto, total));
+       
         model.addAttribute("montoTotalFormateado", presupuestoServicio.formatear(total));
         model.addAttribute("porDiaTotal", dias > 0
                 ? presupuestoServicio.formatear(total / dias) : "—");
