@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
-import java.util.LinkedHashMap;
 
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Value;
@@ -47,12 +46,6 @@ public class RecomendadorDestinos implements Recomendador {
         }
     }
 
-    // Afinidad normalizada; los indispensables solo filtran.
-    public double calcularPuntajePreferencias(Map<String, Boolean> oferta,
-                                              Map<String, Importancia> gustos) {
-        return calcularCoincidenciaPonderada(oferta, gustos);
-    }
-
     // Gustar suma 1; prefiero suma 3 o resta 1 si incumple.
     public double calcularCoincidenciaPonderada(Map<String, Boolean> oferta,
                                                 Map<String, Importancia> gustos) {
@@ -76,33 +69,6 @@ public class RecomendadorDestinos implements Recomendador {
         return pesoTotal == 0 ? 0.0 : Math.max(0.0, (double) pesoLogrado / pesoTotal);
     }
 
-    /**
-     * Coincidencia de 0 a 1 por categoria del cuestionario (desglose informativo;
-     * no interviene en el puntaje total).
-     * Solo participan respuestas con peso positivo en Importancia.
-     * Los datos desconocidos conservan su peso en el denominador.
-     * Se omiten categorias sin preferencias puntuables.
-     */
-    public Map<String, Double> calcularCoincidenciasPorCategoria(Map<String, Boolean> oferta,
-                                                               Map<String, Importancia> gustos) {
-        Map<String, Double> coincidencias = new LinkedHashMap<>();
-        for (var categoria : gestorPreferencias.listarCategorias()) {
-            int pesoTotal = 0;
-            int pesoLogrado = 0;
-            for (var pregunta : categoria.getPreguntas()) {
-                Importancia importancia = gustos.get(pregunta.getClave());
-                if (importancia == null || !importancia.esPuntuable()) continue;
-                pesoTotal += importancia.getPeso();
-                if (Boolean.TRUE.equals(oferta.get(pregunta.getClave()))) {
-                    pesoLogrado += importancia.getPeso();
-                }
-            }
-            if (pesoTotal > 0) {
-                coincidencias.put(categoria.getNombre(), (double) pesoLogrado / pesoTotal);
-            }
-        }
-        return coincidencias;
-    }
 
     @Override
     public ResultadoRecomendacion calcularPuntajeTotal(
@@ -114,7 +80,7 @@ public class RecomendadorDestinos implements Recomendador {
         double presupuesto = preferencias.getPresupuestoUsd();
 
         double pCosto = calcularPuntajePresupuesto(costo, presupuesto);
-        double pGustos = calcularPuntajePreferencias(
+        double pGustos = calcularCoincidenciaPonderada(
                 ciudad.getAtributos(), preferencias.getAtributos());
         boolean provisional = preferencias.getAtributos().entrySet().stream()
                 .anyMatch(e -> e.getValue() != null && e.getValue().esPuntuable()
@@ -131,12 +97,6 @@ public class RecomendadorDestinos implements Recomendador {
     public double diferenciaPresupuesto(Ciudad ciudad, PreferenciasUsuario preferencias) {
         double costoViaje = ciudad.getCostoPromedio() * preferencias.getDuracionDias();
         return Math.abs(costoViaje - preferencias.getPresupuestoUsd());
-    }
-
-    @Override
-    public List<ResultadoRecomendacion> recomendarDestinos(List<Ciudad> ciudades,
-                                                           PreferenciasUsuario preferencias) {
-        return puntuarCiudadesValidas(validarCiudades(ciudades, preferencias), preferencias);
     }
 
     @Override

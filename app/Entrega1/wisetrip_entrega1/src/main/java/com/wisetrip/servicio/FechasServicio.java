@@ -13,8 +13,7 @@ import java.util.Map;
 import org.springframework.stereotype.Service;
 
 import com.wisetrip.negocio.IFechasServicio;
-import com.wisetrip.modelo.FechasViaje;
-import java.time.LocalDate;
+import com.wisetrip.modelo.FechasViaje; 
 
 @Service
 public class FechasServicio implements IFechasServicio {
@@ -39,14 +38,4 @@ public class FechasServicio implements IFechasServicio {
         return contexto.getErrores();
     }
 
-    @Override
-    public long calcularDuracion(FechasViaje fechas) {
-        return fechas.getDuracionDias();
-    }
-
-    /** Fecha de hoy en formato yyyy-MM-dd, para el atributo min del input date. */
-    @Override
-    public String hoy() {
-        return LocalDate.now().toString();
-    }
 }
