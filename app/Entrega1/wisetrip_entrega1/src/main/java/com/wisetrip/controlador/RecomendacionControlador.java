@@ -22,6 +22,7 @@ import com.wisetrip.negocio.IRepositorioViajes;
 import com.wisetrip.servicio.LlenarAtributosCiudad;
 import com.wisetrip.negocio.Recomendador;
 import com.wisetrip.negocio.SeleRecomendaciones;
+import com.wisetrip.servicio.UsuarioSesionFacade;
 
 
 import jakarta.servlet.http.HttpSession;
@@ -43,26 +44,29 @@ public class RecomendacionControlador {
     private final LlenarAtributosCiudad llenarAtributosCiudad;
     private final Recomendador recomendadorDestinos;
     private final SeleRecomendaciones selectorDestinos;
+    private final UsuarioSesionFacade usuarioSesionFacade;
 
     public RecomendacionControlador(CiudadNegocio ciudadDAO,
                                     IRepositorioViajes viajeDAO,
                                     IRepositorioPreferencias preferenciaDAO,
                                     LlenarAtributosCiudad llenarAtributosCiudad,
                                     Recomendador recomendadorDestinos,
-                                    SeleRecomendaciones selectorDestinos) {
+                                    SeleRecomendaciones selectorDestinos,
+                                    UsuarioSesionFacade usuarioSesionFacade) {
         this.ciudadDAO = ciudadDAO;
         this.viajeDAO = viajeDAO;
         this.preferenciaDAO = preferenciaDAO;
         this.llenarAtributosCiudad = llenarAtributosCiudad;
         this.recomendadorDestinos = recomendadorDestinos;
         this.selectorDestinos = selectorDestinos;
+        this.usuarioSesionFacade = usuarioSesionFacade;
     }
 
     @SuppressWarnings("unchecked")
     @GetMapping("/recomendaciones")
     public String mostrarRecomendaciones(HttpSession sesion, Model model) {
 
-        Usuario usuario = (Usuario) sesion.getAttribute("usuarioActivo");
+        Usuario usuario = usuarioSesionFacade.prepararEncabezado(sesion, model);
         if (usuario == null) return "redirect:/login";
 
         Map<String, Boolean> atributosCuestionario =
@@ -98,16 +102,8 @@ public class RecomendacionControlador {
         guardarPlanificacionSiHaceFalta(sesion, usuario, atributosCuestionario, presupuestoUsd, seleccion);
 
         // Iniciales para el avatar del encabezado
-        String[] partes = usuario.getNombreCompleto().trim().split("\\s+");
-        model.addAttribute("inicialesUsuario", partes.length > 1
-                ? ("" + partes[0].charAt(0) + partes[1].charAt(0)).toUpperCase()
-                : partes[0].substring(0, 1).toUpperCase());
-
-        model.addAttribute("usuario", usuario);
         model.addAttribute("seleccion", seleccion);
-        sesion.setAttribute("seleccionRecomendada", seleccion);
-        model.addAttribute("fechas", sesion.getAttribute("fechasViaje"));
-        model.addAttribute("presupuestoUsd", presupuestoUsd);
+        model.addAttribute("fechas", fechas);
 
         // Datos de la ficha de búsqueda
         model.addAttribute("ubicacion", SesionViaje.de(sesion, usuario).getOrigen());
