@@ -82,7 +82,7 @@ public class PlanificacionControlador {
                 gestorPreferencias.obtenerImportancias(preferencias));
         sesion.setAttribute("atributosSeleccionados",
                 gestorPreferencias.obtenerAtributosSeleccionados(preferencias));
-        descartarResultados(sesion);
+        SesionViaje.invalidarSeleccion(sesion);
         return "redirect:/fechas";
     }
 
@@ -106,14 +106,23 @@ public class PlanificacionControlador {
         Usuario usuario = usuarioSesionFacade.prepararEncabezado(sesion, model);
         if (usuario == null) return "redirect:/login";
 
-        Map<String, String> errores = fechasServicio.validarFechas(fechas);
+        Integer idViaje = (Integer) sesion.getAttribute("idViajeGuardado");
+        Map<String, String> errores;
+        try {
+            errores = fechasServicio.validarFechas(fechas, usuario.getIdUsuario(), idViaje != null ? idViaje : 0);
+        } catch (IllegalStateException e) {
+            org.slf4j.LoggerFactory.getLogger(PlanificacionControlador.class)
+                    .error("No se pudo comprobar la disponibilidad de fechas", e);
+            errores = Map.of("fechaFin", "No pudimos comprobar tus otros viajes. Intenta nuevamente.");
+        }
+
         if (!errores.isEmpty()) {
             model.addAttribute("errores", errores);
             return "fechas";
         }
 
         sesion.setAttribute("fechasViaje", fechas);
-        descartarResultados(sesion);
+        SesionViaje.invalidarSeleccion(sesion);
         return "redirect:/presupuesto";
     }
 
@@ -148,7 +157,7 @@ public class PlanificacionControlador {
 
         sesion.setAttribute("presupuestoViaje", presupuesto);
         sesion.setAttribute("presupuestoEnUsd", gestorPresupuesto.convertirAUsd(presupuesto));
-        descartarResultados(sesion);
+        SesionViaje.invalidarSeleccion(sesion);
         return "redirect:/resumen";
     }
 
@@ -200,11 +209,5 @@ public class PlanificacionControlador {
         model.addAttribute("monedas", gestorPresupuesto.monedasDisponibles(paisDestino));
         model.addAttribute("paisDestino", paisDestino);
         model.addAttribute("fechas", sesion.getAttribute("fechasViaje"));
-    }
-
-    /** Si cambian los datos del viaje, las recomendaciones y el destino elegido ya no valen. */
-    private void descartarResultados(HttpSession sesion) {
-        sesion.removeAttribute("idViajeGuardado");
-        sesion.removeAttribute("destinoElegido");
     }
 }

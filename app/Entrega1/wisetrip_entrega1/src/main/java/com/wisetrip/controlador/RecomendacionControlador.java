@@ -17,8 +17,6 @@ import com.wisetrip.modelo.ResultadoRecomendacion;
 import com.wisetrip.modelo.SeleccionDestinos;
 import com.wisetrip.modelo.Usuario;
 import com.wisetrip.negocio.CiudadNegocio;
-import com.wisetrip.negocio.IRepositorioPreferencias;
-import com.wisetrip.negocio.IRepositorioViajes;
 import com.wisetrip.servicio.LlenarAtributosCiudad;
 import com.wisetrip.negocio.Recomendador;
 import com.wisetrip.negocio.SeleRecomendaciones;
@@ -32,30 +30,24 @@ import jakarta.servlet.http.HttpSession;
  *
  * GRASP Controlador: recibe la petición web y delega el cálculo.
  * SOLID Inversión de dependencias: el acceso a datos se recibe por sus
- * interfaces de negocio (CiudadNegocio, IRepositorioViajes,
- * IRepositorioPreferencias), no por las clases DAO.
+ * interfaces de negocio (CiudadNegocio), no por las clases DAO.
+ * El viaje se debe guardar cuando el usuario elija un destino.
  */
 @Controller
 public class RecomendacionControlador {
 
     private final CiudadNegocio ciudadDAO;
-    private final IRepositorioViajes viajeDAO;
-    private final IRepositorioPreferencias preferenciaDAO;
     private final LlenarAtributosCiudad llenarAtributosCiudad;
     private final Recomendador recomendadorDestinos;
     private final SeleRecomendaciones selectorDestinos;
     private final UsuarioSesionFacade usuarioSesionFacade;
 
     public RecomendacionControlador(CiudadNegocio ciudadDAO,
-                                    IRepositorioViajes viajeDAO,
-                                    IRepositorioPreferencias preferenciaDAO,
                                     LlenarAtributosCiudad llenarAtributosCiudad,
                                     Recomendador recomendadorDestinos,
                                     SeleRecomendaciones selectorDestinos,
                                     UsuarioSesionFacade usuarioSesionFacade) {
         this.ciudadDAO = ciudadDAO;
-        this.viajeDAO = viajeDAO;
-        this.preferenciaDAO = preferenciaDAO;
         this.llenarAtributosCiudad = llenarAtributosCiudad;
         this.recomendadorDestinos = recomendadorDestinos;
         this.selectorDestinos = selectorDestinos;
@@ -99,7 +91,6 @@ public class RecomendacionControlador {
                 recomendadorDestinos.puntuarCiudadesValidas(validacion, preferencias);
         SeleccionDestinos seleccion = selectorDestinos.seleccionarMejoresDestinos(resultados);
         sesion.setAttribute("seleccionDestinos", seleccion);
-        guardarPlanificacionSiHaceFalta(sesion, usuario, atributosCuestionario, presupuestoUsd, seleccion);
 
         // Iniciales para el avatar del encabezado
         model.addAttribute("seleccion", seleccion);
@@ -112,27 +103,4 @@ public class RecomendacionControlador {
         return "recomendaciones";
     }
 
-    private void guardarPlanificacionSiHaceFalta(HttpSession sesion,
-                                                 Usuario usuario,
-                                                 Map<String, Boolean> atributosCuestionario,
-                                                 Double presupuestoUsd,
-                                                 SeleccionDestinos seleccion) {
-        if (sesion.getAttribute("idViajeGuardado") != null || seleccion.isVacio()) {
-            return;
-        }
-
-        FechasViaje fechas = (FechasViaje) sesion.getAttribute("fechasViaje");
-        if (fechas == null || usuario.getIdUsuario() <= 0) {
-            return;
-        }
-
-        try {
-            Ciudad destinoPrincipal = seleccion.getDestinos().get(0).getCiudad();
-            int idViaje = viajeDAO.insertar(usuario.getIdUsuario(), destinoPrincipal.getId(), fechas, presupuestoUsd);
-            preferenciaDAO.guardarActivas(idViaje, atributosCuestionario);
-            sesion.setAttribute("idViajeGuardado", idViaje);
-        } catch (RuntimeException e) {
-            System.err.println("No se pudo persistir la planificación: " + e.getMessage());
-        }
-    }
 }

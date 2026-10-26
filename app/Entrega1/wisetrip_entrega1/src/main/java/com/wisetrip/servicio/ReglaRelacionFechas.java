@@ -21,6 +21,8 @@ public class ReglaRelacionFechas extends ReglaValidacionFechas {
             contexto.agregarError("fechaFin", "La fecha de regreso debe ser posterior a la de inicio.");
         } else if (ChronoUnit.DAYS.between(inicio, fin) + 1 > MAX_DIAS) {
             contexto.agregarError("fechaFin", "Por ahora WiseTrip planea viajes de máximo " + MAX_DIAS + " días.");
+        } else if (contexto.tieneCruceConOtroViaje()) {
+            contexto.agregarError("fechaFin", "Estas fechas se cruzan con otro viaje de tu cuenta. Elige otro rango.");
         }
 
         return false;

@@ -18,6 +18,7 @@
 
     <nav class="vj-menu">
         <a class="vj-menu-activo" href="<c:url value='/viaje'/>">Mi viaje</a>
+        <a href="<c:url value='/viajes'/>">Mis viajes</a>
         <a href="<c:url value='/plan'/>">Presupuesto</a>
         <a href="<c:url value='/recomendaciones'/>">Destinos</a>
     </nav>
@@ -48,7 +49,7 @@
             <span class="vj-sello">Tu viaje está en marcha</span>
             <h1 class="vj-titulo">${destino.ciudad.nombre}</h1>
             <p class="vj-bajada">
-                ${destino.ciudad.pais} te espera. Aquí vas a armar todo tu viaje:
+                <c:if test="${not empty destino.ciudad.pais}"><c:out value="${destino.ciudad.pais}"/> te espera. </c:if>Aquí vas a armar todo tu viaje:
                 dónde dormir, cómo moverte, dónde comer y qué hacer, siempre
                 dentro de lo que separaste para cada gasto.
             </p>
