@@ -5443,15 +5443,15 @@ Podriamos mejorar la distribuicion de tareas teniendo en cuenta la refactorizaci
 
 1. **¿Qué logramos?**
 
-
+Logramos hacer la refactorizacion de todo el codigo, se eliminaron funciones, interfaces, codigo muerto, y cosas que teniamos que no se estaban utilizando, que tenian sobrecarga o que se podia mejorar y utilizar un codigo mas entendible
 
 2. **¿Cómo trabajamos?**
 
-
+Para este sprint se utilizo mi cuenta para hacer el refactor pero mis compañeros estuvieron al tanto de todo, esto se manejo asi para que solo se cambiara una rama y no hubieran mas conflictos si cada uno se ponia a editar en su rama
   
 3. **¿Qué podríamos mejorar?**
 
-
+Manejar bien la carga de trabajo dependiendo de la semana academica en la que nos encontremos porque simpre fallamos en poner las HUs mas complejas en las semanas donde tenemos mas trabajo de otras materias, como lo son semanas de parciales o entregas. Esto mismo paso en este sprint, pensamos que teniamos el tiempo y que podiamos sacar todo adelante pero seguiamos en semana de parciales y entregas y no nos dio. Ademas tenemos que tener en cuenta lo que nos propusimos lograr al principio del proyecto
 
 
   
@@ -5461,15 +5461,15 @@ Podriamos mejorar la distribuicion de tareas teniendo en cuenta la refactorizaci
 
 1. **¿Qué logramos?**
 
-
+Logramos refactorizar partes del codigo y por mi parte hacer el manual de usuario,. En el momento no pude iniciar con el envio de mensajes ya que no sabemos como el profesor quiere implementar esto dentro del proyecto si quiere como un autenticador o cual es la idea de conectar esto con el programa
 
 2. **¿Cómo trabajamos?*
 
-
+Por el momento hemos sabido distribuir el trabajo, sin embargo esta semana seguiamos en parciales por lo tanto teniamos muchos trabajos y entregas
 
 3. **¿Qué podríamos mejorar?**
 
-
+Entender el funcionamiento del proyecto mejor y poder seguir limpiando lo que no usamos actualmente y asi eliminar todo lo que no esta funcionando actualmente
 
 ---
 
