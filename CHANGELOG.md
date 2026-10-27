@@ -5519,14 +5519,14 @@ como equipo la distribucion del tiempo de otras materias ya que esta nos o me qu
 
 | ID | Título | Tipo | Estimación | Responsable |
 |----|--------|------|------------|-------------|
-| # |  | Historia de Usuario |  | Valeria |
+| # |  | Historia de Usuario | TDB| Valeria |
 | # |  | Historia de Usuario | TBD | Valeria |
 | # |  | Historia de Usuario | TBD | Maleja |
 | # |  | Historia de Usuario | TBD | Maleja |
-| # |  | TBD | [Nombre] |
-| # |  | Historia de Usuario | TBD | [Nombre] |
-| # |  | Historia de Usuario | TBD | [Nombre] |
-| # |  | TBD | [Nombre] |
+| # |  | Historia de Usuario | TDB | Gaby|
+| # |  | Historia de Usuario | TBD | Gaby |
+| # |  | Historia de Usuario | TBD | Isa |
+| # |  | Historia de Usuario | TBD | Isa |
 | # |  | Historia de Usuario | TBD | Clavijo |
 | # |  | Historia de Usuario | TBD | Clavijo |
 
@@ -5537,6 +5537,7 @@ como equipo la distribucion del tiempo de otras materias ya que esta nos o me qu
 -
 
 ---
+<img width="1600" height="1041" alt="image" src="https://github.com/user-attachments/assets/1ceef63c-b887-446f-aba0-b8e28fc3f525" />
 
 
 ---
