@@ -5477,14 +5477,17 @@ Podriamos mejorar la distribuicion de tareas teniendo en cuenta la refactorizaci
 
 1. **¿Qué logramos?**
 
-
+Logramos darnos cuenta de realmente que errores y confusiones teníamos con respecto a la metodología y arquitectura que estamos manejando como grupo, además de que ahora, sabemos (no con tanta exactitud) que es lo que debemos cambiar y lo que debemos seguir refactorizando.
 
 2. **¿Cómo trabajamos?**
 
 
+Trabajamos bien en equipo, cada vez nos entendemos mas y vamos incrementando el nivel y rigurosidad de trabajo
+
 3. **¿Qué podríamos mejorar?**
 
-
+A nivel individual, el manejo de tiempo con respecto a otras materias, ya que esta no es la única materia la cual requiere una gran cantidad de tiempo, y cuando se entrecruzan diferentes sustentaciones y exámenes, es complicado manejar todo al mismo tiempo.
+Como grupo siento que debemos mejorar más al no hacer las cosas por hacerlas; tomarnos el tiempo de pensar qué tenemos, qué nos falta y qué estamos haciendo. Aunque se correlaciona con lo mismo de el tiempo, seguramente si no estuviéramos con tantas cosas y hubiéramos organizado mejor el tiempo, nuestro rendimiento reflejado en la sustentación habría sido mejor.
 
 ---
 
