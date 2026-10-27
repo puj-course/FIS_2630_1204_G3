@@ -5428,15 +5428,15 @@ no
 
 1. **¿Qué logramos?**
 
-
+Logramos mejorar de alguna manera el codigo, falta hacer algunas revisiones para poder hacer la refactorizacion final y para arreglar los diagramas que tenemos
 
 2. **¿Cómo trabajamos?**
 
-
+Bien sin embargo siento que fue una semana un poco pesada para todos entonces se avanzo como se pudo
 
 3. **¿Qué podríamos mejorar?**
 
-
+Podriamos mejorar la distribuicion de tareas teniendo en cuenta la refactorizacion que se realizo y poner cierto tipo de limites o estandares para seguir haciendo codigo de manera controlada
 
 ---
 
