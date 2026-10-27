@@ -5068,7 +5068,6 @@ falta de tiempo
 ---
 <img width="1600" height="1200" alt="image" src="https://github.com/user-attachments/assets/6a4f3aaf-af62-4cea-8a62-ced9555b65b7" />
 
-
 ---
 ## Daily Sprint - 20/10/2026
 
@@ -5503,6 +5502,42 @@ por mi parte no pude completar todas mis hu, fue una semana dura en cuestion de 
 3. **¿Qué podríamos mejorar?**
 
 como equipo la distribucion del tiempo de otras materias ya que esta nos o me quita mucho tiempo
+
+---
+
+# Sprint Planning - [26/10/2026]
+
+## Sprint Goal
+
+
+## Capacidad del equipo 
+
+* Desarrolladores disponibles: 5
+* Puntos/horas disponibles: 42
+
+## Issues seleccionados para el Sprint
+
+| ID | Título | Tipo | Estimación | Responsable |
+|----|--------|------|------------|-------------|
+| # |  | Historia de Usuario |  | Valeria |
+| # |  | Historia de Usuario | TBD | Valeria |
+| # |  | Historia de Usuario | TBD | Maleja |
+| # |  | Historia de Usuario | TBD | Maleja |
+| # |  | TBD | [Nombre] |
+| # |  | Historia de Usuario | TBD | [Nombre] |
+| # |  | Historia de Usuario | TBD | [Nombre] |
+| # |  | TBD | [Nombre] |
+| # |  | Historia de Usuario | TBD | Clavijo |
+| # |  | Historia de Usuario | TBD | Clavijo |
+
+## Riesgos / Bloqueos identificados
+
+-
+-
+-
+
+---
+
 
 ---
 
