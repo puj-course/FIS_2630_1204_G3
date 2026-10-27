@@ -5420,6 +5420,64 @@ no
 <img width="1345" height="757" alt="image" src="https://github.com/user-attachments/assets/6dcbe3fc-a551-4e0b-84f9-8c296f24cfca" />
 
 ---
+# Sprint Review - 25/08/2026
+
+## Información de la Sesión
+
+- **Fecha de la Review:** 25/08/2026
+- **Sprint Goal:** Implementar el flujo principal de WiseTrip, conectando las pantallas de registro e inicio de sesión, origen del viaje, preferencias, fechas, presupuesto y recomendaciones de destinos con la base de datos.
+
+---
+
+## Incremento Entregado
+
+Durante este Sprint se trabajó en la construcción del flujo principal de WiseTrip. El objetivo fue avanzar en la integración de las funcionalidades de planificación de viajes, la gestión de información del usuario y la generación de recomendaciones de destinos.
+
+Los principales componentes contemplados fueron:
+
+- Desarrollo de las pantallas correspondientes al flujo inicial de la aplicación.
+- Implementación de la captura de preferencias, fechas y presupuesto del viaje.
+- Integración de las pantallas con la base de datos para gestionar la información del usuario y del viaje.
+- Desarrollo de la lógica de recomendación de destinos a partir de las preferencias y el presupuesto.
+- Organización y revisión de las historias de usuario para realizar seguimiento al avance del Sprint.
+- Elaboración de mockups para representar visualmente la interfaz y la navegación propuesta para WiseTrip.
+
+---
+
+## Demostración
+
+Resumen de los puntos presentados durante la demo del producto:
+
+- Registro e inicio de sesión del usuario.
+- Selección del lugar de origen y de las preferencias del viaje.
+- Selección de las fechas y definición del presupuesto.
+- Generación y visualización de destinos recomendados según los datos ingresados.
+- Persistencia y consulta de la información mediante la base de datos.
+- Navegación entre las pantallas que conforman el flujo principal de la aplicación.
+- Presentación de los mockups de las pantallas para mostrar la propuesta visual y la experiencia de navegación esperada.
+
+---
+
+## Conclusión y Próximos Pasos
+
+El Sprint se enfocó en avanzar hacia una primera versión funcional de WiseTrip, priorizando el flujo principal de planificación de viajes y la comunicación con la base de datos. Se establecieron las bases para que el usuario pueda ingresar sus datos, definir las características de su viaje y obtener recomendaciones de destinos.
+
+Sin embargo, es necesario verificar el funcionamiento integral de las funcionalidades desarrolladas y confirmar que cada historia de usuario cumpla con sus criterios de aceptación antes de considerarla finalizada.
+
+Como próximos pasos, se propone:
+
+- Verificar el cumplimiento de los criterios de aceptación y la Definition of Done de cada historia de usuario.
+- Completar las integraciones pendientes entre las pantallas, la lógica de negocio y la base de datos.
+- Realizar pruebas del flujo completo, desde el ingreso de la información hasta la visualización de las recomendaciones.
+- Corregir los errores identificados durante las pruebas de funcionalidad e integración.
+- Validar que las recomendaciones generadas correspondan a las preferencias y al presupuesto ingresados por el usuario.
+- Mejorar la interfaz y la navegación de acuerdo con los mockups y las necesidades identificadas.
+- Actualizar el Product Backlog y priorizar las historias de usuario que deban retomarse en el siguiente Sprint.
+
+**Feedback de los stakeholders:**
+
+El feedback de los stakeholders queda pendiente de documentar con base en los comentarios recibidos durante la revisión del producto. Se recomienda registrar las observaciones relacionadas con el flujo principal, la experiencia de usuario, la integración con la base de datos y la calidad de las recomendaciones para definir las mejoras que se implementarán en los siguientes Sprints.
+---
 
 ## Sprint Retrospective - 25/10/2026
 
