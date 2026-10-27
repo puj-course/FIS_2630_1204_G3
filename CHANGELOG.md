@@ -5037,7 +5037,7 @@ falta de tiempo
 # Sprint Planning - [19/10/2026]
 
 ## Sprint Goal
-
+Iniciar la construcción interactiva del itinerario a partir de opciones reales del destino, fortaleciendo la experiencia del usuario con la integración de notificaciones por mensaje de texto, soporte mediante el manual de uso y mejoras visuales en la espera de cálculo y el cuestionario de preferencias.
 
 ## Capacidad del equipo 
 
