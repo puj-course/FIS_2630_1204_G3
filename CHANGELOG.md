@@ -5521,8 +5521,8 @@ como equipo la distribucion del tiempo de otras materias ya que esta nos o me qu
 |----|--------|------|------------|-------------|
 | # |  | Historia de Usuario | TDB| Valeria |
 | # |  | Historia de Usuario | TBD | Valeria |
-| # |  | Historia de Usuario | TBD | Maleja |
-| # |  | Historia de Usuario | TBD | Maleja |
+| #118 |Como usuario de WiseTrip quiero que la estructura del sistema esté correctamente organizada y documentada para que las funcionalidades que utilizo se mantengan integradas y puedan evolucionar de forma confiable  | Historia de Usuario | TBD | Maleja |
+| #119 | Como usuario de WiseTrip quiero que las funcionalidades del sistema tengan una estructura interna coherente para utilizar una aplicación estable, mantenible y confiable | Historia de Usuario | TBD | Maleja |
 | # |  | Historia de Usuario | TDB | Gaby|
 | # |  | Historia de Usuario | TBD | Gaby |
 | # |  | Historia de Usuario | TBD | Isa |
