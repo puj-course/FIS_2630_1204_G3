@@ -5588,8 +5588,8 @@ como equipo la distribucion del tiempo de otras materias ya que esta nos o me qu
 | # |  | Historia de Usuario | TBD | Gaby |
 | # |  | Historia de Usuario | TBD | Isa |
 | # |  | Historia de Usuario | TBD | Isa |
-| # |  | Historia de Usuario | TBD | Clavijo |
-| # |  | Historia de Usuario | TBD | Clavijo |
+| #114 |  Como administrador de WiseTrip quiero rehacer el diagrama de clases del patrón GoF decorador, para que refleje con claridad el código refactorizado | Historia de Usuario | TBD | Clavijo |
+| #125 | Como administrador de WiseTrip, quiero organizar la estructura de paquetes y archivos para que el equipo entienda cómo se relacionan sus partes y pueda mantenerlas de forma ordenada.  | Historia de Usuario | TBD | Clavijo |
 
 ## Riesgos / Bloqueos identificados
 
