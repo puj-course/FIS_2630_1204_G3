@@ -5609,15 +5609,17 @@ como equipo la distribucion del tiempo de otras materias ya que esta nos o me qu
 
 1. **¿Qué hice ayer?**
 
-
+Ayer hicimos el Sprint Planning con mis compañeros acerca de como vamos a mejorar la representación de la arquitectura del proyecto; dividiendo nuestras tareas y responsabilidades por módulos. 
    
 2. **¿Qué voy a hacer hoy?**
 
 
+Hoy estuve en clase aprendiendo sobre las pruebas y también revise lo que nos dijo el profe. 
+
    
 3. **¿Tengo algún impedimento o bloqueo?**
 
-
+no
 
 ---
 
