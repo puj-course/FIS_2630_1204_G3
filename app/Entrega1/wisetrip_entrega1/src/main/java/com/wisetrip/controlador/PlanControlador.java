@@ -14,8 +14,8 @@ import com.wisetrip.modelo.RepartoPresupuesto;
 import com.wisetrip.modelo.ResultadoRecomendacion;
 import com.wisetrip.modelo.Ubicacion;
 import com.wisetrip.modelo.Usuario;
+import com.wisetrip.negocio.GestorPresupuesto;
 import com.wisetrip.negocio.IGestionReparto;
-import com.wisetrip.servicio.PresupuestoServicio;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -31,12 +31,12 @@ import jakarta.servlet.http.HttpSession;
 public class PlanControlador {
 
     private final IGestionReparto gestionReparto;
-    private final PresupuestoServicio presupuestoServicio;
+    private final GestorPresupuesto gestorPresupuesto;
 
     public PlanControlador(IGestionReparto gestionReparto,
-                           PresupuestoServicio presupuestoServicio) {
+                           GestorPresupuesto gestorPresupuesto) {
         this.gestionReparto = gestionReparto;
-        this.presupuestoServicio = presupuestoServicio;
+        this.gestorPresupuesto = gestorPresupuesto;
     }
 
     @GetMapping("/plan")
@@ -83,7 +83,7 @@ public class PlanControlador {
         if (reparto == null) return "redirect:/plan";
 
         model.addAttribute("usuario", usuario);
-        model.addAttribute("inicialesUsuario", calcularIniciales(usuario));
+        model.addAttribute("inicialesUsuario", usuario.iniciales());
         model.addAttribute("ubicacionCiudad", ubicacion.getCiudad());
         model.addAttribute("destino", destino);
         model.addAttribute("fechas", fechas);
@@ -109,8 +109,7 @@ public class PlanControlador {
         Presupuesto presupuesto = (Presupuesto) sesion.getAttribute("presupuestoViaje");
         if (presupuesto == null) return "redirect:/presupuesto";
 
-        Map<String, String> errores = gestionReparto.validarReparto(
-                (com.wisetrip.negocio.IDistribuible) reparto);
+        Map<String, String> errores = gestionReparto.validarReparto(reparto);
 
         if (!errores.isEmpty()) {
             model.addAttribute("errores", errores);
@@ -133,7 +132,7 @@ public class PlanControlador {
         long dias = fechas != null ? fechas.getDuracionDias() : 0;
 
         model.addAttribute("usuario", usuario);
-        model.addAttribute("inicialesUsuario", calcularIniciales(usuario));
+        model.addAttribute("inicialesUsuario", usuario.iniciales());
         model.addAttribute("ubicacionCiudad", ubicacion != null ? ubicacion.getCiudad() : "Origen");
         model.addAttribute("destino", destino);
         model.addAttribute("presupuesto", presupuesto);
@@ -141,20 +140,8 @@ public class PlanControlador {
         model.addAttribute("reparto", reparto);
         model.addAttribute("dias", dias);
 
-        model.addAttribute("montos", gestionReparto.calcularMontos((com.wisetrip.negocio.IDistribuible) reparto, total));
-        model.addAttribute("montoTotalFormateado", presupuestoServicio.formatear(total));
+        model.addAttribute("montoTotalFormateado", gestorPresupuesto.formatear(total));
         model.addAttribute("porDiaTotal", dias > 0
-                ? presupuestoServicio.formatear(total / dias) : "—");
-    }
-
-    private String calcularIniciales(Usuario usuario) {
-        if (usuario.getNombreCompleto() == null || usuario.getNombreCompleto().isBlank()) {
-            return "?";
-        }
-        String[] partes = usuario.getNombreCompleto().trim().split("\\s+");
-        if (partes.length > 1) {
-            return ("" + partes[0].charAt(0) + partes[1].charAt(0)).toUpperCase();
-        }
-        return partes[0].substring(0, 1).toUpperCase();
+                ? gestorPresupuesto.formatear(total / dias) : "—");
     }
 }

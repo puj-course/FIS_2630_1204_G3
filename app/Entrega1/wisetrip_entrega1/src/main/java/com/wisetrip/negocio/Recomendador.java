@@ -8,23 +8,16 @@ import com.wisetrip.modelo.ResultadoRecomendacion;
 import com.wisetrip.modelo.ValidacionCiudades;
 
 public interface Recomendador {
-    List<ResultadoRecomendacion> recomendarDestinos(
-            List<Ciudad> ciudades,
-            PreferenciasUsuario preferencias
-    );
 
+    /** Separa las ciudades en válidas, descartadas y pendientes de verificar. */
     ValidacionCiudades validarCiudades(
             List<Ciudad> ciudades,
             PreferenciasUsuario preferencias
     );
 
+    /** Puntúa y ordena las ciudades válidas de la mejor a la peor. */
     List<ResultadoRecomendacion> puntuarCiudadesValidas(
             ValidacionCiudades validacion,
-            PreferenciasUsuario preferencias
-    );
-
-    ResultadoRecomendacion calcularPuntajeTotal(
-            Ciudad ciudad,
             PreferenciasUsuario preferencias
     );
 }

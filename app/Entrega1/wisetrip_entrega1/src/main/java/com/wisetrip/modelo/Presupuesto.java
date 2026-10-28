@@ -14,11 +14,6 @@ public class Presupuesto {
     public Presupuesto() {
     }
 
-    public Presupuesto(String monto, String moneda) {
-        this.monto = monto;
-        this.moneda = moneda;
-    }
-
     public String getMonto() {
         return monto;
     }
@@ -55,26 +50,5 @@ public class Presupuesto {
         } catch (NumberFormatException e) {
             return -1;
         }
-    }
-
-    /**
-     * indica si el presupuesto tiene un monto valido
-     */
-    public boolean esValido() {
-        return getMontoNumerico() > 0;
-    }
-
-    /**
-     * indica si el presupuesto alcanza para cubrir un costo
-     */
-    public boolean esSuficientePara(double costo) {
-        return esValido() && getMontoNumerico() >= costo;
-    }
-
-    /**
-     * indica si se ha especificado una moneda
-     */
-    public boolean tieneMoneda() {
-        return moneda != null && !moneda.isBlank();
     }
 }

@@ -35,7 +35,6 @@ package "Negocio" {
 
     interface IDistribuible {
         +porcentajeDe(categoria: String): int
-        +asignar(categoria: String, porcentaje: int): void
         +getTotal(): int
         +porcentajeDisponible(): int
         +porcentajeExcedido(): int
@@ -44,27 +43,10 @@ package "Negocio" {
         +tienePorcentajesNegativos(): boolean
         +cubreLosBasicos(): boolean
         +montoDe(categoria: String, presupuestoTotal: double): double
-        +distribuir(presupuestoTotal: double): Map<String, Double>
-    }
-
-    interface IValidadorReparto {
-        +validarReparto(reparto: IDistribuible): Map<String, String>
-    }
-
-    interface ICalculadoraReparto {
-        +calcularMontos(reparto: IDistribuible, presupuestoTotal: double): Map<String, Double>
-        +porDia(monto: double, dias: long): double
     }
 
     interface IGestionReparto {
-        +listarCategorias(): Map<String, String>
-    }
-
-    interface IRepartoServicio <<legado/no conectado>> {
-        +listarCategorias(): Map<String, String>
-        +validarReparto(reparto: RepartoPresupuesto): Map<String, String>
-        +calcularMontos(reparto: RepartoPresupuesto, presupuestoTotal: double): Map<String, Double>
-        +porDia(monto: double, dias: long): double
+        +validarReparto(reparto: IDistribuible): Map<String, String>
     }
 }
 
@@ -95,14 +77,12 @@ package "Modelos" {
 PresupuestoServicio ..|> GestorPresupuesto
 GastosServicio ..|> IGestorGastos
 RepartoServicio ..|> IGestionReparto
-IGestionReparto --|> IValidadorReparto
-IGestionReparto --|> ICalculadoraReparto
 RepartoPresupuesto ..|> IDistribuible
 ViajeDAO ..|> IRepositorioViajes
 
 PlanificacionControlador ..> GestorPresupuesto
 PlanControlador ..> IGestionReparto
-PlanControlador ..> PresupuestoServicio
+PlanControlador ..> GestorPresupuesto
 GastosServicio ..> IRepositorioGastos
 GastosServicio ..> IRepositorioPresupuestoViaje
 

@@ -122,27 +122,15 @@ public class PreferenciasServicio implements GestorPreferencias {
         return niveles;
     }
 
-    private static boolean esSeleccionada(String valor) {
-        return "gustar".equals(valor) || "prefiero".equals(valor) || "si".equals(valor);
-    }
-
     public Map<String, Boolean> obtenerAtributosSeleccionados(Preferencias preferencias) {
         Map<String, Boolean> atributos = new LinkedHashMap<>();
 
         for (CategoriaPreferencia categoria : CATEGORIAS) {
             for (Pregunta pregunta : categoria.getPreguntas()) {
-                String valor = preferencias.getRespuestas().get(pregunta.getClave());
-                atributos.put(pregunta.getClave(), esSeleccionada(valor));
+                atributos.put(pregunta.getClave(), preferencias.tienePreferencia(pregunta.getClave()));
             }
         }
         return atributos;
-    }
-
-    public List<String> clavesAfirmativas(Preferencias preferencias) {
-        return preferencias.getRespuestas().entrySet().stream()
-                .filter(e -> esSeleccionada(e.getValue()))
-                .map(Map.Entry::getKey)
-                .toList();
     }
 
     public Map<String, List<String>> resumenPorCategoria(Preferencias preferencias) {
@@ -150,7 +138,7 @@ public class PreferenciasServicio implements GestorPreferencias {
 
         for (CategoriaPreferencia categoria : CATEGORIAS) {
             List<String> elegidas = categoria.getPreguntas().stream()
-                    .filter(p -> esSeleccionada(preferencias.getRespuestas().get(p.getClave())))
+                    .filter(p -> preferencias.tienePreferencia(p.getClave()))
                     .map(p -> ETIQUETAS.getOrDefault(p.getClave(), p.getTexto()))
                     .toList();
             resumen.put(categoria.getNombre(), elegidas);
@@ -159,13 +147,11 @@ public class PreferenciasServicio implements GestorPreferencias {
     }
 
     public long contarAfirmativas(Preferencias preferencias) {
-        return preferencias.getRespuestas().values().stream()
-                .filter(PreferenciasServicio::esSeleccionada)
-                .count();
+        return preferencias.contarAfirmativas();
     }
 
     private static CategoriaPreferencia categoria(String nombre, String descripcion, String... ids) {
-        return new CategoriaPreferencia(nombre, "", descripcion,
+        return new CategoriaPreferencia(nombre, descripcion,
                 java.util.Arrays.stream(ids)
                         .map(CatalogoPreguntas::porIdObligatorio)
                         .map(PreferenciasServicio::aPreguntaVista)

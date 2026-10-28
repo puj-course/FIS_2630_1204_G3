@@ -58,9 +58,4 @@ public class PreferenciasConAuditoriaDecorador implements GestorPreferencias {
         System.out.println("[AUDITORÍA] El usuario seleccionó " + total + " preferencias afirmativas.");
         return total;
     }
-
-    @Override
-    public List<String> clavesAfirmativas(Preferencias preferencias) {
-        return gestorBase.clavesAfirmativas(preferencias);
-    }
 }

@@ -68,11 +68,6 @@ public class FechasServicio implements IFechasServicio {
         return errores;
     }
 
-    @Override
-    public long calcularDuracion(FechasViaje fechas) {
-        return fechas.getDuracionDias();
-    }
-
     /** Fecha de hoy en formato yyyy-MM-dd, para el atributo min del input date. */
     @Override
     public String hoy() {

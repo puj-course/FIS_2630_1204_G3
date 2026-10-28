@@ -7,8 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import com.wisetrip.datos.CiudadSemilla;
-import com.wisetrip.datos.DatosCiudades;
 import com.wisetrip.modelo.Ciudad;
 import com.wisetrip.modelo.FechasViaje;
 import com.wisetrip.modelo.Importancia;
@@ -79,13 +77,7 @@ public class RecomendacionControlador {
         if (fechas == null || fechas.getDuracionDias() < 1) return "redirect:/fechas";
         PreferenciasUsuario preferencias = new PreferenciasUsuario( presupuestoUsd, importancias, fechas.getDuracionDias());
         List<Ciudad> ciudades = ciudadDAO.obtenerTodas();
-
-        for (Ciudad ciudad : ciudades) {
-            CiudadSemilla semilla = DatosCiudades.porNombreYPais(ciudad.getNombre(), ciudad.getPais());
-            if (semilla != null) {
-                llenarAtributosCiudad.enriquecer(ciudad, semilla, atributosCuestionario);
-            }
-        }
+        llenarAtributosCiudad.enriquecer(ciudades, atributosCuestionario);
 
         var validacion = recomendadorDestinos.validarCiudades(ciudades, preferencias);
         model.addAttribute("ciudadesPendientes", validacion.pendientes());
@@ -95,17 +87,10 @@ public class RecomendacionControlador {
         sesion.setAttribute("seleccionDestinos", seleccion);
         guardarPlanificacionSiHaceFalta(sesion, usuario, atributosCuestionario, presupuestoUsd, seleccion);
 
-        // Iniciales para el avatar del encabezado
-        String[] partes = usuario.getNombreCompleto().trim().split("\\s+");
-        model.addAttribute("inicialesUsuario", partes.length > 1
-                ? ("" + partes[0].charAt(0) + partes[1].charAt(0)).toUpperCase()
-                : partes[0].substring(0, 1).toUpperCase());
-
+        model.addAttribute("inicialesUsuario", usuario.iniciales());
         model.addAttribute("usuario", usuario);
         model.addAttribute("seleccion", seleccion);
-        sesion.setAttribute("seleccionRecomendada", seleccion);
         model.addAttribute("fechas", sesion.getAttribute("fechasViaje"));
-        model.addAttribute("presupuestoUsd", presupuestoUsd);
 
         // Datos de la ficha de búsqueda
         model.addAttribute("ubicacion", sesion.getAttribute("ubicacionOrigen"));

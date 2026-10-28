@@ -20,10 +20,6 @@ public enum Importancia {
         return this == gustar || this == prefiero;
     }
 
-    public boolean estaSeleccionada() {
-        return this != no;
-    }
-
     public boolean esIndispensable() {
         return this == si;
     }

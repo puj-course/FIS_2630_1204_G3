@@ -19,11 +19,7 @@ public interface GestorPreferencias {
 
     Map<String, Boolean> obtenerAtributosSeleccionados(Preferencias preferencias);
 
-    List<String> clavesAfirmativas(Preferencias preferencias);
-
     Map<String, List<String>> resumenPorCategoria(Preferencias preferencias);
 
     long contarAfirmativas(Preferencias preferencias);
-
-    
 }

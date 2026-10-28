@@ -18,14 +18,9 @@ public class Preferencias {
         this.respuestas = respuestas;
     }
 
-    public int getTotalRespondidas() {
-        return (int) respuestas.values().stream()
-                .filter(v -> v != null && !v.isBlank())
-                .count();
-    }
-
     /**
-     * el viajero manifiest interes por un atributo
+     * el viajero manifiesta interes por un atributo
+     * (respondio "gustar", "prefiero" o "si")
      */
     public boolean tienePreferencia(String atributo) {
         String respuesta = respuestas.get(atributo);
@@ -35,27 +30,10 @@ public class Preferencias {
                 || "si".equals(respuesta);
     }
 
-    /**
-     * el atributo es indispensable para el viajero?
-     */
-    public boolean esIndispensable(String atributo) {
-        return "si".equals(respuestas.get(atributo));
-    }
-
-    /**
-     * obtiene el nivel de importancia asociado a un atributo
-     */
-    public Importancia obtenerImportancia(String atributo) {
-        String respuesta = respuestas.get(atributo);
-
-        if (respuesta == null || respuesta.isBlank()) {
-            return null;
-        }
-
-        try {
-            return Importancia.valueOf(respuesta);
-        } catch (IllegalArgumentException e) {
-            return null;
-        }
+    /** Cuantas respuestas manifiestan interes por su atributo. */
+    public long contarAfirmativas() {
+        return respuestas.keySet().stream()
+                .filter(this::tienePreferencia)
+                .count();
     }
 }

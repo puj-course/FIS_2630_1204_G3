@@ -123,13 +123,8 @@ public class Usuario {
         if (numeroDocumento != null) {
             numeroDocumento = numeroDocumento.trim();
         }
-        normalizarCorreo();
-    }
-
-
-    public void normalizarCorreo() {
-        if (this.correo != null) {
-            this.correo = this.correo.trim().toLowerCase();
+        if (correo != null) {
+            correo = correo.trim().toLowerCase();
         }
     }
 
@@ -226,8 +221,14 @@ public class Usuario {
         return nombreCompleto.trim().split("\\s+")[0];
     }
 
-        /** Iniciales para el avatar: dos letras si hay nombre y apellido, una si solo hay nombre. */
+    /**
+     * Iniciales para el avatar: dos letras si hay nombre y apellido, una si
+     * solo hay nombre, y "?" si no hay nombre.
+     */
     public String iniciales() {
+        if (nombreCompleto == null || nombreCompleto.isBlank()) {
+            return "?";
+        }
         String[] partes = nombreCompleto.trim().split("\\s+");
         String iniciales = partes.length > 1
                 ? "" + partes[0].charAt(0) + partes[1].charAt(0)

@@ -43,17 +43,9 @@ public class Ciudad {
         this.atributos = atributos != null ? atributos : new HashMap<>();
     }
 
-    /** La ciudad cumple un atributo si esta marcado como verdadero. */
-    public boolean tiene(String atributo) {
-        return Boolean.TRUE.equals(atributos.get(atributo));
-    }
-
-    /** Tipo de destino, para elegir la ilustracion de la vista. */
-    public String getTipo() {
-        if (tiene("playa")) return "playa";
-        if (tiene("nieve") || tiene("montana")) return "montana";
-        if (tiene("naturaleza")) return "naturaleza";
-        return "ciudad";
+    /** Costo de la estancia por persona, en USD, para la cantidad de días dada. */
+    public double costoEstadia(long dias) {
+        return costoPromedio * dias;
     }
 
     /** Texto listo para mostrar: "Cartagena, Colombia". */

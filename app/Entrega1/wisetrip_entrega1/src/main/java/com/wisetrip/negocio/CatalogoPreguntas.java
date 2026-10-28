@@ -8,7 +8,6 @@ package com.wisetrip.negocio;
 
 import com.wisetrip.modelo.TipoAtributo;
 
-import java.util.Arrays;
 import java.util.List;
 
 // HU-71 (#239): se depuraron 12 preguntas redundantes
@@ -63,17 +62,6 @@ public final class CatalogoPreguntas {
             new DefPregunta("golf", "¿Te interesa jugar golf durante el viaje?", TipoAtributo.AUTO, "sport.golf", 1)
     );
 
-    public static List<DefPregunta> todas() {
-        return TODAS;
-    }
-
-    public static List<String> categoriasDe(DefPregunta pregunta) {
-        if (pregunta.categorias == null || pregunta.categorias.isBlank()) {
-            return List.of();
-        }
-        return Arrays.asList(pregunta.categorias.split(","));
-    }
-
     public static DefPregunta porId(String id) {
         return TODAS.stream()
                 .filter(pregunta -> pregunta.id.equals(id))
@@ -91,7 +79,7 @@ public final class CatalogoPreguntas {
 
     public static List<DefPregunta> atributosAuto() {
         return TODAS.stream()
-                .filter(pregunta -> pregunta.tipo == TipoAtributo.AUTO)
+                .filter(DefPregunta::esAutomatica)
                 .toList();
     }
 
