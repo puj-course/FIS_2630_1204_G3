@@ -5685,6 +5685,8 @@ falta de tiempo
 3. **¿Tengo algún impedimento o bloqueo?** 
 
 
+<img width="1600" height="1200" alt="image" src="https://github.com/user-attachments/assets/0b2702c5-3394-4304-a7da-31003b6aba20" />
+
 
 ---
 
