@@ -5641,15 +5641,15 @@ como equipo la distribucion del tiempo de otras materias ya que esta nos o me qu
 
 1. **¿Qué hice ayer?**
 
-
+Hicimos el sprint planning y entre todos decidimos que este sprint nos enfocaremos en arreglar el codigo, hacer y corregir los diagrams nuevo y faltantes con el nuevo codigo refactorizado
 
 2. **¿Qué voy a hacer hoy?**
 
-
+revise que todo el modulo 2 siga sirviendo sin errores, y descargue el visual paradigm para empezar a hacer el diagrama de mi patron gof
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
-
+falta de tiempo
 
 ---
 
