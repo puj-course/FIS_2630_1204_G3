@@ -453,14 +453,72 @@
 
     <div class="it-grilla it-grilla-antes">
         <section class="it-caja it-checklist-caja">
-            <h2 class="it-caja-titulo">Checklist</h2>
-            <ul class="it-checklist" id="itChecklist">
-                <li><label><input type="checkbox" value="reservas"><span>Reservas</span></label></li>
-                <li><label><input type="checkbox" value="ropa"><span>Ropa</span></label></li>
-                <li><label><input type="checkbox" value="pasaporte"><span>Pasaporte</span></label></li>
-                <li><label><input type="checkbox" value="billetera"><span>Billetera</span></label></li>
-                <li><label><input type="checkbox" value="cargador"><span>Cargador</span></label></li>
-            </ul>
+            <h2 class="it-caja-titulo">Checklist de equipaje</h2>
+            <p class="it-caja-nota">
+                Repasa los artículos básicos y marca lo que ya empacaste,
+                para que no se te olvide nada antes de salir.
+            </p>
+
+            <div class="it-progreso">
+                <div class="it-progreso-barra"><span id="itProgresoRelleno"></span></div>
+                <span class="it-progreso-texto"><b id="itEmpacados">0</b> de <b>22</b> empacados</span>
+            </div>
+
+            <%-- Basado en la propuesta de checklist de equipaje (temp/checklist) --%>
+            <div class="it-checklist" id="itChecklist">
+                <section class="it-check-categoria">
+                    <div class="it-check-cabeza">
+                        <span class="it-check-icono" aria-hidden="true">📄</span>
+                        <h3>Documentos</h3>
+                    </div>
+                    <label class="it-check-item"><input type="checkbox" value="pasaporte"><span class="it-check-marca" aria-hidden="true">&#10003;</span><span class="it-check-texto">Pasaporte o cédula</span></label>
+                    <label class="it-check-item"><input type="checkbox" value="tiquetes"><span class="it-check-marca" aria-hidden="true">&#10003;</span><span class="it-check-texto">Tiquetes o reserva de vuelo</span></label>
+                    <label class="it-check-item"><input type="checkbox" value="reservas"><span class="it-check-marca" aria-hidden="true">&#10003;</span><span class="it-check-texto">Reserva de alojamiento</span></label>
+                    <label class="it-check-item"><input type="checkbox" value="seguro"><span class="it-check-marca" aria-hidden="true">&#10003;</span><span class="it-check-texto">Seguro de viaje</span></label>
+                    <label class="it-check-item"><input type="checkbox" value="billetera"><span class="it-check-marca" aria-hidden="true">&#10003;</span><span class="it-check-texto">Efectivo y tarjetas</span></label>
+                </section>
+                <section class="it-check-categoria">
+                    <div class="it-check-cabeza">
+                        <span class="it-check-icono" aria-hidden="true">👕</span>
+                        <h3>Ropa</h3>
+                    </div>
+                    <label class="it-check-item"><input type="checkbox" value="ropa"><span class="it-check-marca" aria-hidden="true">&#10003;</span><span class="it-check-texto">Ropa para el clima del destino</span></label>
+                    <label class="it-check-item"><input type="checkbox" value="zapatos"><span class="it-check-marca" aria-hidden="true">&#10003;</span><span class="it-check-texto">Zapatos cómodos</span></label>
+                    <label class="it-check-item"><input type="checkbox" value="ropa-interior"><span class="it-check-marca" aria-hidden="true">&#10003;</span><span class="it-check-texto">Ropa interior y medias</span></label>
+                    <label class="it-check-item"><input type="checkbox" value="pijama"><span class="it-check-marca" aria-hidden="true">&#10003;</span><span class="it-check-texto">Pijama</span></label>
+                    <label class="it-check-item"><input type="checkbox" value="abrigo"><span class="it-check-marca" aria-hidden="true">&#10003;</span><span class="it-check-texto">Chaqueta o abrigo</span></label>
+                </section>
+                <section class="it-check-categoria">
+                    <div class="it-check-cabeza">
+                        <span class="it-check-icono" aria-hidden="true">🔌</span>
+                        <h3>Electrónica</h3>
+                    </div>
+                    <label class="it-check-item"><input type="checkbox" value="cargador"><span class="it-check-marca" aria-hidden="true">&#10003;</span><span class="it-check-texto">Cargador de celular</span></label>
+                    <label class="it-check-item"><input type="checkbox" value="power-bank"><span class="it-check-marca" aria-hidden="true">&#10003;</span><span class="it-check-texto">Cargador portátil (power bank)</span></label>
+                    <label class="it-check-item"><input type="checkbox" value="adaptador"><span class="it-check-marca" aria-hidden="true">&#10003;</span><span class="it-check-texto">Adaptador de corriente</span></label>
+                    <label class="it-check-item"><input type="checkbox" value="audifonos"><span class="it-check-marca" aria-hidden="true">&#10003;</span><span class="it-check-texto">Audífonos</span></label>
+                </section>
+                <section class="it-check-categoria">
+                    <div class="it-check-cabeza">
+                        <span class="it-check-icono" aria-hidden="true">🧴</span>
+                        <h3>Salud e higiene</h3>
+                    </div>
+                    <label class="it-check-item"><input type="checkbox" value="cepillo"><span class="it-check-marca" aria-hidden="true">&#10003;</span><span class="it-check-texto">Cepillo y crema dental</span></label>
+                    <label class="it-check-item"><input type="checkbox" value="medicamentos"><span class="it-check-marca" aria-hidden="true">&#10003;</span><span class="it-check-texto">Medicamentos personales</span></label>
+                    <label class="it-check-item"><input type="checkbox" value="protector"><span class="it-check-marca" aria-hidden="true">&#10003;</span><span class="it-check-texto">Protector solar</span></label>
+                    <label class="it-check-item"><input type="checkbox" value="aseo"><span class="it-check-marca" aria-hidden="true">&#10003;</span><span class="it-check-texto">Kit de aseo básico</span></label>
+                </section>
+                <section class="it-check-categoria">
+                    <div class="it-check-cabeza">
+                        <span class="it-check-icono" aria-hidden="true">🎒</span>
+                        <h3>Varios</h3>
+                    </div>
+                    <label class="it-check-item"><input type="checkbox" value="botella"><span class="it-check-marca" aria-hidden="true">&#10003;</span><span class="it-check-texto">Botella de agua reutilizable</span></label>
+                    <label class="it-check-item"><input type="checkbox" value="snacks"><span class="it-check-marca" aria-hidden="true">&#10003;</span><span class="it-check-texto">Snacks para el viaje</span></label>
+                    <label class="it-check-item"><input type="checkbox" value="copias-reservas"><span class="it-check-marca" aria-hidden="true">&#10003;</span><span class="it-check-texto">Documentos impresos o digitales de reservas</span></label>
+                    <label class="it-check-item"><input type="checkbox" value="candado"><span class="it-check-marca" aria-hidden="true">&#10003;</span><span class="it-check-texto">Candado para maleta</span></label>
+                </section>
+            </div>
         </section>
 
         <section class="it-caja it-consejos">

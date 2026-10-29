@@ -334,8 +334,21 @@
         });
     }
 
-    checklist.addEventListener('change', guardar);
+    // barra "X de Y empacados" del checklist de equipaje
+    function actualizarProgresoChecklist() {
+        var casillas = checklist.querySelectorAll('input');
+        var marcadas = checklist.querySelectorAll('input:checked').length;
+        document.getElementById('itEmpacados').textContent = marcadas;
+        document.getElementById('itProgresoRelleno').style.width =
+            (casillas.length ? marcadas / casillas.length * 100 : 0) + '%';
+    }
+
+    checklist.addEventListener('change', function () {
+        actualizarProgresoChecklist();
+        guardar();
+    });
 
     restaurar();
+    actualizarProgresoChecklist();
     refrescar();
 })();
