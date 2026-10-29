@@ -16,13 +16,6 @@
         <span>Wise<em>Trip</em></span>
     </a>
 
-    <nav class="vj-menu">
-        <a class="vj-menu-activo" href="<c:url value='/viaje'/>">Mi viaje</a>
-        <a href="<c:url value='/itinerario'/>">Itinerario</a>
-        <a href="<c:url value='/plan'/>">Presupuesto</a>
-        <a href="<c:url value='/recomendaciones'/>">Destinos</a>
-    </nav>
-
     <div class="vj-usuario">
         <span class="vj-avatar">${inicialesUsuario}</span>
         <div>
@@ -31,6 +24,19 @@
         </div>
     </div>
 </header>
+
+<div class="vj-distribucion">
+
+<!-- ===== Barra lateral: resumen de lo que el viajero puede ver ===== -->
+<aside class="vj-lateral">
+    <span class="vj-rotulo">Tu viaje a ${destino.ciudad.nombre}</span>
+    <nav class="vj-menu vj-menu-lateral">
+        <a class="vj-menu-activo" href="#resumen">Resumen general</a>
+        <a href="#presupuesto">Presupuesto</a>
+        <a href="<c:url value='/itinerario'/>">Itinerario</a>
+        <a href="<c:url value='/itinerario'/>">Antes de viajar</a>
+    </nav>
+</aside>
 
 <main class="vj-pantalla" id="vjViaje"
       data-total="${presupuesto.monto}"
@@ -44,7 +50,7 @@
       data-imprevistos="${reparto.imprevistos}">
 
     <!-- ===== Portada del viaje ===== -->
-    <section class="vj-portada">
+    <section class="vj-portada" id="resumen">
         <div class="vj-portada-texto">
             <span class="vj-sello">Tu viaje está en marcha</span>
             <h1 class="vj-titulo">${destino.ciudad.nombre}</h1>
@@ -113,7 +119,7 @@
     </section>
 
     <!-- ===== Presupuesto ===== -->
-    <section class="vj-presupuesto">
+    <section class="vj-presupuesto" id="presupuesto">
         <div class="vj-presupuesto-cifras">
             <div>
                 <span class="vj-rotulo">Presupuesto total</span>
@@ -275,6 +281,8 @@
     </footer>
 
 </main>
+
+</div>
 
 <script src="/js/viaje.js"></script>
 </body>

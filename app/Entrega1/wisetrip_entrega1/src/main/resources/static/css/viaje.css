@@ -530,3 +530,53 @@
     .vj-modulo-cifras { grid-template-columns: 1fr; }
     .vj-modulo-cifras div + div { border-left: none; border-top: 2.5px dashed var(--tinta); }
 }
+/* ===== Distribución con barra lateral ===== */
+
+.vj-cabecera { justify-content: space-between; }
+
+.vj-distribucion {
+    display: grid;
+    grid-template-columns: 230px minmax(0, 1fr);
+    max-width: 1480px;
+    margin: 0 auto;
+}
+
+.vj-distribucion .vj-pantalla { max-width: none; margin: 0; width: 100%; }
+
+.vj-lateral {
+    position: sticky;
+    top: 74px;
+    align-self: start;
+    padding: 40px 0 24px 28px;
+}
+
+.vj-menu-lateral {
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: 10px;
+    margin-top: 8px;
+}
+
+.vj-menu-lateral a { padding: 11px 18px; }
+
+/* Al saltar a una sección, que no quede tapada por el encabezado fijo */
+.vj-pantalla section[id] { scroll-margin-top: 96px; }
+
+@media (max-width: 980px) {
+    .vj-distribucion { grid-template-columns: 1fr; }
+
+    /* En pantallas angostas la barra queda arriba y se desplaza de lado */
+    .vj-lateral {
+        top: 73px;
+        z-index: 20;
+        padding: 12px 20px;
+        background: var(--crema);
+        border-bottom: 2.5px solid var(--tinta);
+        overflow-x: auto;
+    }
+
+    .vj-lateral .vj-rotulo { display: none; }
+    .vj-menu-lateral { flex-direction: row; margin: 0; width: max-content; }
+    .vj-menu-lateral a { white-space: nowrap; }
+}
