@@ -58,6 +58,15 @@
                             <strong>${dia.numero()} ${dia.mes()}</strong>
                         </div>
                     </c:forEach>
+
+                    <c:forEach var="hora" begin="8" end="20" step="2">
+                        <div class="it-cal-hora">${hora}:00</div>
+                        <c:forEach var="dia" items="${dias}">
+                            <div class="it-cal-celda"
+                                 data-fecha="${dia.fecha()}"
+                                 data-hora="${hora}"></div>
+                        </c:forEach>
+                    </c:forEach>
                 </div>
             </div>
         </section>

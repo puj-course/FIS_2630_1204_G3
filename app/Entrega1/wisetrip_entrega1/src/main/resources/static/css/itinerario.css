@@ -123,3 +123,19 @@
 }
 
 .it-cal-dia strong { font-size: 14px; white-space: nowrap; }
+
+.it-cal-hora {
+    font-family: var(--dato);
+    font-size: 12px;
+    color: var(--gris);
+    padding: 8px 6px;
+    text-align: center;
+    border-top: 1.5px dashed var(--arena-honda);
+}
+
+.it-cal-celda {
+    min-height: 62px;
+    padding: 5px;
+    border-left: 2px solid var(--tinta);
+    border-top: 1.5px dashed var(--arena-honda);
+}
