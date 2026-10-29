@@ -5732,13 +5732,15 @@ Tiempo
 
 1. **¿Qué hice ayer?**
 
-
+ayer intente descargar el visual paradigm, pero no pude ya que me pide pagar para empezar
 
 2. **¿Qué voy a hacer hoy?**
 
+hoy intente descargarlo en la maquina virtual de la universidad ya que asi se ha trabajado en materias anteriores.
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
+no
 
 ---
 
