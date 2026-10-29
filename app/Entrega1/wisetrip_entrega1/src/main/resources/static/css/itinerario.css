@@ -359,3 +359,39 @@
 
 /* En el calendario la foto ocuparía mucho: se oculta */
 .it-cal-celda .it-foto { display: none; }
+
+/* ===== Menú lateral ===== */
+
+.it-accesos {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 22px;
+    padding-bottom: 20px;
+    border-bottom: 2.5px dashed var(--arena-honda);
+}
+
+.it-acceso {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    border: 2.5px solid transparent;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--tinta);
+    text-decoration: none;
+}
+
+.it-acceso svg { width: 22px; height: 22px; flex-shrink: 0; color: var(--morado); }
+
+.it-acceso:hover { border-color: var(--tinta); }
+
+.it-acceso-activo {
+    background: var(--turquesa);
+    border-color: var(--tinta);
+    box-shadow: 3px 3px 0 var(--tinta);
+}
+
+.it-acceso-activo svg { color: var(--tinta); }

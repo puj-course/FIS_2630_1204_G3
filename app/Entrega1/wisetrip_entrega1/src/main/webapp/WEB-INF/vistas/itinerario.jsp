@@ -141,6 +141,30 @@
         </section>
 
         <aside class="it-caja it-lateral">
+            <nav class="it-accesos">
+                <a class="it-acceso it-acceso-activo" href="<c:url value='/itinerario'/>" aria-current="page">
+                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <rect x="3.5" y="5" width="17" height="15" rx="2.5" stroke="currentColor" stroke-width="2.2"/>
+                        <path d="M3.5 10h17M8 3v4M16 3v4" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+                    </svg>
+                    Itinerario
+                </a>
+                <a class="it-acceso" href="<c:url value='/recomendaciones'/>">
+                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.9l-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/>
+                    </svg>
+                    Recomendaciones
+                </a>
+                <a class="it-acceso" href="<c:url value='/plan'/>">
+                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="M4 7.5A2.5 2.5 0 0 1 6.5 5H18v3" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/>
+                        <rect x="4" y="8" width="16.5" height="11" rx="2.5" stroke="currentColor" stroke-width="2.2"/>
+                        <circle cx="16" cy="13.5" r="1.4" fill="currentColor"/>
+                    </svg>
+                    Presupuesto
+                </a>
+            </nav>
+
             <h2 class="it-caja-titulo">Checklist antes de viajar</h2>
         </aside>
 
