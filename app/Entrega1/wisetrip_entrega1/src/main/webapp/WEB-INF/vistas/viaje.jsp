@@ -35,7 +35,7 @@
         <a class="vj-menu-activo" href="#resumen">Resumen general</a>
         <a href="#presupuesto">Presupuesto</a>
         <a href="#itinerario">Itinerario</a>
-        <a href="<c:url value='/itinerario'/>">Antes de viajar</a>
+        <a href="#antes-de-viajar">Antes de viajar</a>
     </nav>
 </aside>
 
@@ -132,7 +132,7 @@
             <strong>${dias} días</strong>
             <span>Del ${fechas.fechaInicio} al ${fechas.fechaFin}</span>
         </a>
-        <a class="vj-resumen-tarjeta vj-transporte" href="<c:url value='/itinerario'/>">
+        <a class="vj-resumen-tarjeta vj-transporte" href="#antes-de-viajar">
             <span class="vj-rotulo">Antes de viajar</span>
             <strong>Checklist</strong>
             <span>Lo que no puede faltar y consejos</span>
@@ -424,6 +424,83 @@
             <p class="it-nueva-aviso" id="itNuevaAviso" role="status"></p>
         </section>
 
+    </div>
+    </section>
+
+    <!-- ===== Antes de viajar ===== -->
+    <section class="vj-seccion" id="antes-de-viajar">
+    <div class="vj-seccion-cabeza">
+        <h2 class="vj-seccion-titulo">Antes de viajar</h2>
+        <p class="vj-seccion-nota">
+            Lo que no puede faltar en tu maleta y algunos consejos
+            para ${destino.ciudad.nombre}.
+        </p>
+    </div>
+
+    <div class="it-grilla it-grilla-antes">
+        <section class="it-caja it-checklist-caja">
+            <h2 class="it-caja-titulo">Checklist</h2>
+            <ul class="it-checklist" id="itChecklist">
+                <li><label><input type="checkbox" value="reservas"><span>Reservas</span></label></li>
+                <li><label><input type="checkbox" value="ropa"><span>Ropa</span></label></li>
+                <li><label><input type="checkbox" value="pasaporte"><span>Pasaporte</span></label></li>
+                <li><label><input type="checkbox" value="billetera"><span>Billetera</span></label></li>
+                <li><label><input type="checkbox" value="cargador"><span>Cargador</span></label></li>
+            </ul>
+        </section>
+
+        <section class="it-caja it-consejos">
+            <h2 class="it-caja-titulo">
+                <svg class="it-titulo-icono it-icono-amarillo" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2V16h5v-.1c0-.8.4-1.5 1-2A6 6 0 0 0 12 3z" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/>
+                </svg>
+                Consejos para tu viaje
+            </h2>
+
+            <%-- Plantillas: cambiar los textos por consejos reales del destino --%>
+            <div class="it-consejos-lista">
+                <details class="it-consejo vj-alimentacion">
+                    <summary>
+                        <span class="it-gasto-icono">
+                            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <path d="M8 4 4 6.5l2 3.5 2-1V20h8V9l2 1 2-3.5L16 4a4 4 0 0 1-8 0z" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                        <strong>Clima</strong>
+                        <span class="it-consejo-texto">Lleva ropa ligera y un suéter para las noches.</span>
+                    </summary>
+                    <p>Revisa el pronóstico de ${destino.ciudad.nombre} unos días antes de salir y empaca por capas: así te adaptas al calor del día y al fresco de la noche.</p>
+                </details>
+
+                <details class="it-consejo vj-imprevistos">
+                    <summary>
+                        <span class="it-gasto-icono">
+                            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <rect x="3" y="5.5" width="18" height="13" rx="2.5" stroke="currentColor" stroke-width="2.2"/>
+                                <path d="M3 10h18M7 15h4" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+                            </svg>
+                        </span>
+                        <strong>Pagos</strong>
+                        <span class="it-consejo-texto">Muchos lugares aceptan tarjeta, pero lleva algo de efectivo.</span>
+                    </summary>
+                    <p>Avisa a tu banco que vas a viajar a ${destino.ciudad.pais} y ten a mano efectivo en moneda local para transporte, propinas y mercados.</p>
+                </details>
+
+                <details class="it-consejo vj-hospedaje">
+                    <summary>
+                        <span class="it-gasto-icono">
+                            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <path d="M12 3 4 6v6c0 4.5 3.4 8 8 9 4.6-1 8-4.5 8-9V6z" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/>
+                                <path d="M8.5 12l2.5 2.5L15.5 10" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                        <strong>Seguridad</strong>
+                        <span class="it-consejo-texto">Zona turística segura, mantén tus pertenencias a la vista.</span>
+                    </summary>
+                    <p>Guarda una copia digital de tu pasaporte y comparte tu itinerario con alguien de confianza antes de salir.</p>
+                </details>
+            </div>
+        </section>
     </div>
     </section>
 

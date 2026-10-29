@@ -760,3 +760,19 @@
             "calendario" "actividades" "control" "gastos" "proxima" "final";
     }
 }
+
+/* ===== Antes de viajar dentro de Mi viaje ===== */
+
+.it-grilla-antes {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+    grid-template-areas: "checklist consejos";
+}
+
+.it-checklist-caja { grid-area: checklist; }
+
+@media (max-width: 980px) {
+    .it-grilla-antes {
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-areas: "checklist" "consejos";
+    }
+}
