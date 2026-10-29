@@ -5584,8 +5584,8 @@ como equipo la distribucion del tiempo de otras materias ya que esta nos o me qu
 | #117 | Como administrador, quiero representar cada módulo en diagramas, para comprender cómo funciona el sistema y saber qué parte mejorar. | Historia de Usuario | TBD | Valeria |
 | #118 |Como usuario de WiseTrip quiero que la estructura del sistema esté correctamente organizada y documentada para que las funcionalidades que utilizo se mantengan integradas y puedan evolucionar de forma confiable  | Historia de Usuario | TBD | Maleja |
 | #119 | Como usuario de WiseTrip quiero que las funcionalidades del sistema tengan una estructura interna coherente para utilizar una aplicación estable, mantenible y confiable | Historia de Usuario | TBD | Maleja |
-| #120 |  | Historia de Usuario | TDB | Gaby|
-| #121 |  | Historia de Usuario | TBD | Gaby |
+| #120 | Como usuario, quiero que mis datos de preferencias, fechas y presupuesto estén bien organizados, para que no se pierdan ni se contradigan entre pantallas. | Historia de Usuario | TDB | Gaby|
+| #121 | Como usuario, quiero que las partes del sistema de mi planificación se comuniquen bien entre sí, para avanzar sin interrupciones entre pantallas. | Historia de Usuario | TBD | Gaby |
 | #122 |  | Historia de Usuario | TBD | Isa |
 | #123 |  | Historia de Usuario | TBD | Isa |
 | #114 |  Como administrador de WiseTrip quiero rehacer el diagrama de clases del patrón GoF decorador, para que refleje con claridad el código refactorizado | Historia de Usuario | TBD | Clavijo |
