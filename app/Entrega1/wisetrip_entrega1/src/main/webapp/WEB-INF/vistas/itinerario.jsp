@@ -176,8 +176,25 @@
             </ul>
         </aside>
 
-        <section class="it-caja it-presupuesto">
-            <h2 class="it-caja-titulo">Presupuesto total</h2>
+        <section class="it-caja it-presupuesto" id="itPresupuesto"
+                 data-total="${presupuesto.montoNumerico}"
+                 data-moneda="${presupuesto.moneda}">
+            <h2 class="it-caja-titulo">
+                <svg class="it-titulo-icono" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M5 20V12M10 20V6M15 20v-9M20 20V4" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/>
+                </svg>
+                Presupuesto total
+            </h2>
+
+            <div class="it-presupuesto-cifras">
+                <strong class="it-presupuesto-monto">
+                    ${montoFormateado} <small>${presupuesto.moneda}</small>
+                </strong>
+                <div class="it-presupuesto-usd">
+                    <span class="vj-rotulo">Equivale a</span>
+                    <strong>US$ ${usdFormateado}</strong>
+                </div>
+            </div>
         </section>
 
         <section class="it-caja it-consejos">
