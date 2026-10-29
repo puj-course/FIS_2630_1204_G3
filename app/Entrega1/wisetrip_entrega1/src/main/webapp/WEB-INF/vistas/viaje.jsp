@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Tu viaje a ${destino.ciudad.nombre} | WiseTrip</title>
     <link rel="stylesheet" href="<c:url value='/css/viaje.css'/>">
+    <link rel="stylesheet" href="<c:url value='/css/itinerario.css'/>">
 </head>
 <body class="vj">
 
@@ -33,7 +34,7 @@
     <nav class="vj-menu vj-menu-lateral">
         <a class="vj-menu-activo" href="#resumen">Resumen general</a>
         <a href="#presupuesto">Presupuesto</a>
-        <a href="<c:url value='/itinerario'/>">Itinerario</a>
+        <a href="#itinerario">Itinerario</a>
         <a href="<c:url value='/itinerario'/>">Antes de viajar</a>
     </nav>
 </aside>
@@ -61,7 +62,7 @@
                 y lo que necesitas antes de salir.
             </p>
             <div class="vj-portada-acciones">
-                <a class="vj-btn" href="<c:url value='/itinerario'/>">Organizar mi itinerario</a>
+                <a class="vj-btn" href="#itinerario">Organizar mi itinerario</a>
                 <a class="vj-enlace" href="<c:url value='/plan'/>">Cambiar reparto</a>
             </div>
         </div>
@@ -126,7 +127,7 @@
             <strong>${montoFormateado} ${presupuesto.moneda}</strong>
             <span>Repartido en 5 categorías</span>
         </a>
-        <a class="vj-resumen-tarjeta vj-actividades" href="<c:url value='/itinerario'/>">
+        <a class="vj-resumen-tarjeta vj-actividades" href="#itinerario">
             <span class="vj-rotulo">Itinerario</span>
             <strong>${dias} días</strong>
             <span>Del ${fechas.fechaInicio} al ${fechas.fechaFin}</span>
@@ -218,6 +219,214 @@
     </div>
     </section>
 
+    <!-- ===== Itinerario ===== -->
+    <section class="vj-seccion" id="itinerario">
+    <div class="vj-seccion-cabeza">
+        <h2 class="vj-seccion-titulo">Tu itinerario</h2>
+        <p class="vj-seccion-nota">
+            Arrastra tus actividades al calendario y organiza cada día
+            del ${fechas.fechaInicio} al ${fechas.fechaFin}.
+        </p>
+    </div>
+
+    <div class="it-grilla it-grilla-viaje" id="itItinerario"
+         data-clave="${usuario.idUsuario}|${destino.ciudad.nombre}|${fechas.fechaInicio}|${fechas.fechaFin}">
+
+        <section class="it-caja it-calendario">
+            <h2 class="it-caja-titulo">Calendario</h2>
+
+            <div class="it-cal-scroll">
+                <div class="it-cal" style="--dias: ${diasCalendario.size()}">
+                    <div class="it-cal-esquina">Horas</div>
+                    <c:forEach var="dia" items="${diasCalendario}">
+                        <div class="it-cal-dia" data-fecha="${dia.fecha()}">
+                            <span>${dia.nombreDia()}</span>
+                            <strong>${dia.numero()} ${dia.mes()}</strong>
+                        </div>
+                    </c:forEach>
+
+                    <%-- Clima: plantilla. Cuando haya API, cambiar la clase
+                         it-clima-pendiente por it-clima-sol o it-clima-nube --%>
+                    <div class="it-cal-hora">Clima</div>
+                    <c:forEach var="dia" items="${diasCalendario}">
+                        <div class="it-clima it-clima-pendiente"
+                             data-fecha="${dia.fecha()}"
+                             title="Pronóstico del clima: próximamente">
+                            <svg class="it-clima-sol" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <circle cx="12" cy="12" r="4.5" stroke="currentColor" stroke-width="2"/>
+                                <path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                            <svg class="it-clima-nube" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <path d="M7 18h10a4 4 0 0 0 .6-7.95A5.5 5.5 0 0 0 7.1 9.1 4.5 4.5 0 0 0 7 18z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                    </c:forEach>
+
+                    <c:forEach var="hora" begin="8" end="20" step="2">
+                        <div class="it-cal-hora">${hora}:00</div>
+                        <c:forEach var="dia" items="${diasCalendario}">
+                            <div class="it-cal-celda"
+                                 data-fecha="${dia.fecha()}"
+                                 data-hora="${hora}"></div>
+                        </c:forEach>
+                    </c:forEach>
+                </div>
+            </div>
+        </section>
+
+        <section class="it-caja it-actividades">
+            <h2 class="it-caja-titulo">Actividades</h2>
+            <p class="it-caja-nota">Arrastra tus actividades al calendario</p>
+
+            <%-- Plantillas: reemplazar por las actividades reales del destino --%>
+            <ul class="it-lista-actividades" id="itListaActividades">
+                <li class="it-actividad vj-actividades" draggable="true" data-categoria="actividades" data-id="act-1" data-costo="15">
+                    <strong>Recorrido por el centro</strong>
+                    <span>Actividad · 2 h · US$ 15</span>
+                </li>
+                <li class="it-actividad vj-actividades" draggable="true" data-categoria="actividades" data-id="act-2" data-costo="12">
+                    <strong>Visita a un museo</strong>
+                    <span>Actividad · 2 h · US$ 12</span>
+                </li>
+                <li class="it-actividad vj-alimentacion" draggable="true" data-categoria="alimentacion" data-id="act-3" data-costo="10">
+                    <strong>Almuerzo típico</strong>
+                    <span>Comida · 2 h · US$ 10</span>
+                </li>
+                <li class="it-actividad vj-transporte" draggable="true" data-categoria="transporte" data-id="act-4" data-costo="8">
+                    <strong>Traslado al hotel</strong>
+                    <span>Transporte · 2 h · US$ 8</span>
+                </li>
+            </ul>
+
+            <h3 class="it-subtitulo">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M12 21s-6.5-6-6.5-11a6.5 6.5 0 0 1 13 0c0 5-6.5 11-6.5 11z" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/>
+                    <circle cx="12" cy="10" r="2.3" stroke="currentColor" stroke-width="2.2"/>
+                </svg>
+                Recomendadas en ${destino.ciudad.nombre}
+            </h3>
+
+            <%-- Plantillas: poner las fotos en static/img/itinerario/ con estos
+                 nombres. Si la foto no existe, se ve el recuadro de plantilla. --%>
+            <ul class="it-lista-actividades" id="itListaRecomendadas">
+                <li class="it-actividad it-recomendada" draggable="true" data-categoria="actividades" data-id="rec-1" data-costo="5">
+                    <span class="it-foto">
+                        <img src="/img/itinerario/recomendada-1.jpg" alt="" onerror="this.remove()">
+                    </span>
+                    <strong>Mirador de la ciudad</strong>
+                    <span>Recomendada · 2 h · US$ 5</span>
+                </li>
+                <li class="it-actividad it-recomendada" draggable="true" data-categoria="actividades" data-id="rec-2" data-costo="6">
+                    <span class="it-foto">
+                        <img src="/img/itinerario/recomendada-2.jpg" alt="" onerror="this.remove()">
+                    </span>
+                    <strong>Mercado local</strong>
+                    <span>Recomendada · 2 h · US$ 6</span>
+                </li>
+            </ul>
+        </section>
+
+        <section class="it-caja it-control" id="itPresupuesto"
+                 data-total-usd="${totalUsd}">
+            <h2 class="it-caja-titulo">Control de gastos</h2>
+            <p class="it-gastado">
+                Actividades en el calendario: <strong id="itGastado">US$ 0</strong>
+            </p>
+
+            <div class="it-alerta it-alerta-roja" id="itAlertaRoja" role="status" hidden>
+                <span class="it-alerta-icono">!</span>
+                <p>
+                    ¿Estás a punto de gastar el máximo de tu presupuesto?
+                    <a href="<c:url value='/plan'/>">¿Te gustaría acomodarlo?</a>
+                </p>
+            </div>
+
+            <div class="it-alerta it-alerta-verde" id="itAlertaVerde" role="status">
+                <span class="it-alerta-icono">✓</span>
+                <p>Vas súper bien, aún tienes presupuesto hábil.</p>
+            </div>
+        </section>
+
+        <section class="it-caja it-gastos">
+            <h2 class="it-caja-titulo">Gastos estimados por categoría</h2>
+
+            <ul class="it-gastos-lista">
+                <li class="vj-alimentacion">
+                    <span class="it-gasto-icono">
+                        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                            <path d="M7 3v8M4.5 3v5a2.5 2.5 0 0 0 5 0V3M7 11v10M17 21V3c-2.2 0-3.5 2.5-3.5 6v4H17" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </span>
+                    Comida
+                    <strong data-gasto="alimentacion">US$ 0</strong>
+                </li>
+                <li class="vj-actividades">
+                    <span class="it-gasto-icono">
+                        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                            <path d="M3 20 9.5 8l4 7 2.5-4 5 9z" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/>
+                            <circle cx="17.5" cy="5.5" r="2.2" stroke="currentColor" stroke-width="2.2"/>
+                        </svg>
+                    </span>
+                    Actividades
+                    <strong data-gasto="actividades">US$ 0</strong>
+                </li>
+                <li class="vj-transporte">
+                    <span class="it-gasto-icono">
+                        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                            <rect x="4" y="5" width="16" height="11" rx="2.5" stroke="currentColor" stroke-width="2.2"/>
+                            <path d="M4 11h16M7.5 19.5v-3.5M16.5 19.5v-3.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+                        </svg>
+                    </span>
+                    Transporte
+                    <strong data-gasto="transporte">US$ 0</strong>
+                </li>
+            </ul>
+        </section>
+
+        <section class="it-caja it-proxima">
+            <h2 class="it-caja-titulo">
+                <svg class="it-titulo-icono" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="2.4"/>
+                    <path d="M12 7.5V12l3 2" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+                </svg>
+                Próxima actividad
+            </h2>
+
+            <div class="it-proxima-tarjeta" id="itProxima" hidden>
+                <span class="it-foto it-proxima-foto" id="itProximaFoto"></span>
+                <div>
+                    <strong id="itProximaNombre"></strong>
+                    <span id="itProximaCuando"></span>
+                </div>
+            </div>
+
+            <p class="it-proxima-vacia" id="itProximaVacia">
+                Aún no tienes actividades programadas. Arrastra una al calendario.
+            </p>
+        </section>
+
+        <section class="it-caja it-final">
+            <h2 class="it-caja-titulo">
+                <svg class="it-titulo-icono" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M6 21V4M6 4h11l-2.5 4L17 12H6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Al final de actividades
+            </h2>
+
+            <p class="it-final-pregunta">¿Te quedaste sin actividades por escoger? ¿Se te ocurre alguna?</p>
+
+            <form class="it-form-nueva" id="itFormNueva" autocomplete="off">
+                <label class="it-oculto" for="itNuevaNombre">Nombre de la actividad</label>
+                <input type="text" id="itNuevaNombre" name="nombre" maxlength="60"
+                       placeholder="Escribe una actividad...">
+                <button type="submit" aria-label="Agregar actividad">+</button>
+            </form>
+            <p class="it-nueva-aviso" id="itNuevaAviso" role="status"></p>
+        </section>
+
+    </div>
+    </section>
+
     <footer class="vj-pie">
         <span>WiseTrip · ${ubicacionCiudad} &rarr; ${destino.ciudad.nombre}</span>
         <a href="<c:url value='/recomendaciones'/>">&larr; Elegir otro destino</a>
@@ -228,5 +437,6 @@
 </div>
 
 <script src="/js/viaje.js"></script>
+<script src="/js/itinerario.js"></script>
 </body>
 </html>

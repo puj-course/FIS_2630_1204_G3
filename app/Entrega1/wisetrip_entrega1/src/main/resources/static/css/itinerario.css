@@ -740,3 +740,23 @@
     .it-presupuesto-cifras { flex-direction: column; align-items: flex-start; }
     .it-form-nueva button { width: 46px; height: 46px; }
 }
+
+/* ===== Itinerario dentro de Mi viaje ===== */
+
+.it-grilla-viaje {
+    grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+    grid-template-areas:
+        "calendario actividades"
+        "control    gastos"
+        "proxima    final";
+}
+
+.it-control { grid-area: control; }
+
+@media (max-width: 980px) {
+    .it-grilla-viaje {
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-areas:
+            "calendario" "actividades" "control" "gastos" "proxima" "final";
+    }
+}

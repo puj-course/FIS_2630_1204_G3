@@ -298,9 +298,14 @@
                 estado.ubicadas[t.dataset.id] = { fecha: t.dataset.fecha, hora: t.dataset.hora };
             }
         });
-        checklist.querySelectorAll('input:checked').forEach(function (c) {
-            estado.checklist.push(c.value);
-        });
+        if (checklist) {
+            checklist.querySelectorAll('input:checked').forEach(function (c) {
+                estado.checklist.push(c.value);
+            });
+        } else {
+            // esta página no muestra el checklist: se conserva el que ya estaba guardado
+            estado.checklist = (leerGuardado() || {}).checklist || [];
+        }
 
         try { localStorage.setItem(CLAVE, JSON.stringify(estado)); } catch (e) { /* sin almacenamiento: solo no se guarda */ }
     }
@@ -328,12 +333,14 @@
             }
         });
 
-        checklist.querySelectorAll('input').forEach(function (c) {
-            c.checked = (estado.checklist || []).indexOf(c.value) !== -1;
-        });
+        if (checklist) {
+            checklist.querySelectorAll('input').forEach(function (c) {
+                c.checked = (estado.checklist || []).indexOf(c.value) !== -1;
+            });
+        }
     }
 
-    checklist.addEventListener('change', guardar);
+    if (checklist) checklist.addEventListener('change', guardar);
 
     restaurar();
     refrescar();
