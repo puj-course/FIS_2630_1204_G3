@@ -707,3 +707,36 @@
 .it-form-nueva button:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--tinta); }
 
 .it-nueva-aviso { margin: 10px 0 0; font-size: 13px; color: var(--turquesa-hondo); min-height: 1em; }
+
+/* ===== Frase final ===== */
+
+.it-frase {
+    margin: 46px 0 0;
+    text-align: center;
+    font-family: var(--display);
+    font-size: clamp(26px, 4vw, 44px);
+    letter-spacing: -1px;
+    text-transform: uppercase;
+    color: var(--morado);
+    transform: rotate(-2deg);
+}
+
+.it-frase span {
+    display: inline-block;
+    background: var(--amarillo);
+    color: var(--tinta);
+    border: 3px solid var(--tinta);
+    border-radius: 14px;
+    box-shadow: 4px 4px 0 var(--tinta);
+    padding: 2px 14px;
+}
+
+/* ===== Celular ===== */
+
+@media (max-width: 560px) {
+    .it-grilla { gap: 16px; }
+    .it-caja { padding: 18px 16px 20px; box-shadow: 4px 4px 0 var(--tinta); }
+    .it-cal { grid-template-columns: 52px repeat(var(--dias), minmax(84px, 1fr)); }
+    .it-presupuesto-cifras { flex-direction: column; align-items: flex-start; }
+    .it-form-nueva button { width: 46px; height: 46px; }
+}

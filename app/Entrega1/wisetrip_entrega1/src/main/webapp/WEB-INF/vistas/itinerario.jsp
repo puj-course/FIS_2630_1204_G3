@@ -33,7 +33,8 @@
     </div>
 </header>
 
-<main class="vj-pantalla it-pantalla" id="itItinerario">
+<main class="vj-pantalla it-pantalla" id="itItinerario"
+      data-clave="${usuario.idUsuario}|${destino.ciudad.nombre}|${fechas.fechaInicio}|${fechas.fechaFin}">
 
     <section class="it-cabeza">
         <span class="vj-sello">${destino.ciudad.nombre} · ${destino.ciudad.pais}</span>
@@ -346,6 +347,8 @@
         </section>
 
     </div>
+
+    <p class="it-frase">Planea menos, <span>disfruta más</span></p>
 
 </main>
 

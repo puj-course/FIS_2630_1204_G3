@@ -160,6 +160,7 @@
         actualizarPresupuesto();
         actualizarGastosPorCategoria();
         actualizarProxima();
+        guardar();
     }
 
     /* ===== Tarjetas ===== */
@@ -191,12 +192,13 @@
     var contadorPropias = 0;
 
     // crea una tarjeta como las de plantilla y la pone en el panel de actividades
-    function crearActividad(nombre) {
+    // id solo se pasa al restaurar una actividad guardada
+    function crearActividad(nombre, id) {
         var tarjeta = document.createElement('li');
         tarjeta.className = 'it-actividad vj-actividades';
         tarjeta.draggable = true;
         tarjeta.dataset.categoria = 'actividades';
-        tarjeta.dataset.id = 'propia-' + Date.now() + '-' + (++contadorPropias);
+        tarjeta.dataset.id = id || 'propia-' + Date.now() + '-' + (++contadorPropias);
         tarjeta.dataset.costo = '0';
 
         var titulo = document.createElement('strong');
@@ -219,6 +221,7 @@
             return;
         }
         crearActividad(nombre);
+        guardar();
         campo.value = '';
         document.getElementById('itNuevaAviso').textContent =
             '"' + nombre + '" quedó en tu panel de actividades. Arrástrala al calendario.';
@@ -278,5 +281,60 @@
         });
     });
 
+    /* ===== Guardar en el navegador ===== */
+
+    // una clave por usuario + destino + fechas, para no mezclar viajes
+    var CLAVE = 'wisetrip-itinerario:' + raiz.dataset.clave;
+    var checklist = document.getElementById('itChecklist');
+
+    function guardar() {
+        var estado = { propias: [], ubicadas: {}, checklist: [] };
+
+        raiz.querySelectorAll('.it-actividad').forEach(function (t) {
+            if (t.dataset.id.indexOf('propia-') === 0) {
+                estado.propias.push({ id: t.dataset.id, nombre: t.querySelector('strong').textContent });
+            }
+            if (t.dataset.fecha) {
+                estado.ubicadas[t.dataset.id] = { fecha: t.dataset.fecha, hora: t.dataset.hora };
+            }
+        });
+        checklist.querySelectorAll('input:checked').forEach(function (c) {
+            estado.checklist.push(c.value);
+        });
+
+        try { localStorage.setItem(CLAVE, JSON.stringify(estado)); } catch (e) { /* sin almacenamiento: solo no se guarda */ }
+    }
+
+    function leerGuardado() {
+        try { return JSON.parse(localStorage.getItem(CLAVE)); } catch (e) { return null; }
+    }
+
+    // vuelve a poner las actividades propias, las del calendario y el checklist
+    function restaurar() {
+        var estado = leerGuardado();
+        if (!estado) return;
+
+        (estado.propias || []).forEach(function (p) { crearActividad(p.nombre, p.id); });
+
+        Object.keys(estado.ubicadas || {}).forEach(function (id) {
+            var u = estado.ubicadas[id];
+            var tarjeta = raiz.querySelector('.it-actividad[data-id="' + id + '"]');
+            var celda = raiz.querySelector('.it-cal-celda[data-fecha="' + u.fecha + '"][data-hora="' + u.hora + '"]');
+            // si cambiaron las fechas del viaje la celda ya no existe: la actividad queda en el panel
+            if (tarjeta && celda && !celda.querySelector('.it-actividad')) {
+                tarjeta.dataset.fecha = u.fecha;
+                tarjeta.dataset.hora = u.hora;
+                celda.appendChild(tarjeta);
+            }
+        });
+
+        checklist.querySelectorAll('input').forEach(function (c) {
+            c.checked = (estado.checklist || []).indexOf(c.value) !== -1;
+        });
+    }
+
+    checklist.addEventListener('change', guardar);
+
+    restaurar();
     refrescar();
 })();
