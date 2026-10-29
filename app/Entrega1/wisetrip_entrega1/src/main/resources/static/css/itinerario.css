@@ -301,3 +301,61 @@
     outline: 2.5px dashed var(--turquesa-hondo);
     outline-offset: 4px;
 }
+
+/* ===== Recomendadas en la ciudad ===== */
+
+.it-subtitulo {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 14px;
+    font-weight: 700;
+    margin: 24px 0 12px;
+    padding-top: 18px;
+    border-top: 2.5px dashed var(--arena-honda);
+}
+
+.it-subtitulo svg { width: 20px; height: 20px; color: var(--turquesa-hondo); flex-shrink: 0; }
+
+.it-recomendada { --c: #FFE9A8; }
+
+/* Espacio para la foto; sin foto se ve el recuadro de plantilla */
+.it-actividad .it-foto {
+    display: block;
+    position: relative;
+    height: 74px;
+    margin: -2px -4px 8px;
+    border: 2px dashed var(--tinta);
+    border-radius: 8px;
+    background: repeating-linear-gradient(-45deg, #fff6d6 0 8px, #ffefb8 8px 16px);
+    overflow: hidden;
+}
+
+.it-foto::after {
+    content: "Tu foto aquí";
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--dato);
+    font-size: 10.5px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--gris);
+}
+
+.it-foto img {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    pointer-events: none;
+}
+
+.it-foto:has(img) { border-style: solid; }
+
+/* En el calendario la foto ocuparía mucho: se oculta */
+.it-cal-celda .it-foto { display: none; }

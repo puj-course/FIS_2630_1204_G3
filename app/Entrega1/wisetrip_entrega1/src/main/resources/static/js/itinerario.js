@@ -7,14 +7,19 @@
     var raiz = document.getElementById('itItinerario');
     if (!raiz) return;
 
-    var lista = document.getElementById('itListaActividades');
+    var listas = raiz.querySelectorAll('.it-lista-actividades');
     var arrastrada = null;
 
-    // saca la actividad del calendario y la vuelve a poner en el panel
+    // cada tarjeta recuerda la lista de la que salió (propias o recomendadas)
+    raiz.querySelectorAll('.it-actividad').forEach(function (tarjeta) {
+        tarjeta.dataset.origen = tarjeta.parentElement.id;
+    });
+
+    // saca la actividad del calendario y la vuelve a poner en su lista
     function devolverAlPanel(tarjeta) {
         delete tarjeta.dataset.fecha;
         delete tarjeta.dataset.hora;
-        lista.appendChild(tarjeta);
+        document.getElementById(tarjeta.dataset.origen).appendChild(tarjeta);
         actualizarDiasVacios();
     }
 
@@ -93,21 +98,24 @@
 
     /* ===== Panel: también recibe actividades de vuelta ===== */
 
-    lista.addEventListener('dragover', function (e) {
-        if (!arrastrada || arrastrada.parentElement === lista) return;
-        e.preventDefault();
-        e.dataTransfer.dropEffect = 'move';
-        lista.classList.add('it-encima');
-    });
+    listas.forEach(function (lista) {
 
-    lista.addEventListener('dragleave', function (e) {
-        if (!lista.contains(e.relatedTarget)) lista.classList.remove('it-encima');
-    });
+        lista.addEventListener('dragover', function (e) {
+            if (!arrastrada || arrastrada.parentElement === lista) return;
+            e.preventDefault();
+            e.dataTransfer.dropEffect = 'move';
+            lista.classList.add('it-encima');
+        });
 
-    lista.addEventListener('drop', function (e) {
-        e.preventDefault();
-        lista.classList.remove('it-encima');
-        if (arrastrada) devolverAlPanel(arrastrada);
+        lista.addEventListener('dragleave', function (e) {
+            if (!lista.contains(e.relatedTarget)) lista.classList.remove('it-encima');
+        });
+
+        lista.addEventListener('drop', function (e) {
+            e.preventDefault();
+            lista.classList.remove('it-encima');
+            if (arrastrada) devolverAlPanel(arrastrada);
+        });
     });
 
     /* ===== Celdas del calendario ===== */

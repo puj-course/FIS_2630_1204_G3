@@ -111,6 +111,33 @@
                     <span>Transporte · 2 h</span>
                 </li>
             </ul>
+
+            <h3 class="it-subtitulo">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M12 21s-6.5-6-6.5-11a6.5 6.5 0 0 1 13 0c0 5-6.5 11-6.5 11z" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/>
+                    <circle cx="12" cy="10" r="2.3" stroke="currentColor" stroke-width="2.2"/>
+                </svg>
+                Recomendadas en ${destino.ciudad.nombre}
+            </h3>
+
+            <%-- Plantillas: poner las fotos en static/img/itinerario/ con estos
+                 nombres. Si la foto no existe, se ve el recuadro de plantilla. --%>
+            <ul class="it-lista-actividades" id="itListaRecomendadas">
+                <li class="it-actividad it-recomendada" draggable="true" data-id="rec-1">
+                    <span class="it-foto">
+                        <img src="/img/itinerario/recomendada-1.jpg" alt="" onerror="this.remove()">
+                    </span>
+                    <strong>Mirador de la ciudad</strong>
+                    <span>Recomendada · 2 h</span>
+                </li>
+                <li class="it-actividad it-recomendada" draggable="true" data-id="rec-2">
+                    <span class="it-foto">
+                        <img src="/img/itinerario/recomendada-2.jpg" alt="" onerror="this.remove()">
+                    </span>
+                    <strong>Mercado local</strong>
+                    <span>Recomendada · 2 h</span>
+                </li>
+            </ul>
         </section>
 
         <aside class="it-caja it-lateral">
