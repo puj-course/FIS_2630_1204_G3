@@ -1,0 +1,29 @@
+/*
+ * WiseTrip · Itinerario durante el viaje
+ * Usa los colores, fuentes y encabezado de viaje.css; aquí solo va lo propio
+ * de esta pantalla.
+ */
+
+/* ===== Cabeza de la pantalla ===== */
+
+.it-cabeza { margin-bottom: 30px; }
+
+.it-titulo {
+    font-family: var(--display);
+    font-size: clamp(34px, 4.6vw, 58px);
+    line-height: .95;
+    letter-spacing: -2px;
+    text-transform: uppercase;
+    color: var(--tinta);
+    margin: 0 0 14px;
+}
+
+.it-titulo span { color: var(--turquesa-hondo); }
+
+.it-bajada {
+    font-size: 16.5px;
+    line-height: 1.55;
+    color: var(--gris);
+    margin: 0;
+    max-width: 60ch;
+}

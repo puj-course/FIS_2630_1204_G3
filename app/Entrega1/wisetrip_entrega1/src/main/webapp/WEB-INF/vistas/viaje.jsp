@@ -18,6 +18,7 @@
 
     <nav class="vj-menu">
         <a class="vj-menu-activo" href="<c:url value='/viaje'/>">Mi viaje</a>
+        <a href="<c:url value='/itinerario'/>">Itinerario</a>
         <a href="<c:url value='/plan'/>">Presupuesto</a>
         <a href="<c:url value='/recomendaciones'/>">Destinos</a>
     </nav>
