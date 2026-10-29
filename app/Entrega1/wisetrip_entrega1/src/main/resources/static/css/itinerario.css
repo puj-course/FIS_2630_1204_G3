@@ -269,3 +269,35 @@
     font-style: italic;
     pointer-events: none;
 }
+
+/* ===== Quitar del calendario ===== */
+
+.it-actividad { position: relative; }
+
+.it-quitar {
+    display: none;
+    position: absolute;
+    top: -8px; right: -8px;
+    width: 20px; height: 20px;
+    padding: 0;
+    background: var(--crema);
+    border: 2px solid var(--tinta);
+    border-radius: 50%;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--tinta);
+    cursor: pointer;
+}
+
+.it-cal-celda .it-quitar { display: block; }
+.it-quitar:hover { background: var(--rosa); }
+
+/* El panel resaltado cuando se arrastra una actividad de vuelta */
+.it-lista-actividades { min-height: 60px; border-radius: 12px; }
+
+.it-lista-actividades.it-encima {
+    background: var(--turquesa-suave);
+    outline: 2.5px dashed var(--turquesa-hondo);
+    outline-offset: 4px;
+}

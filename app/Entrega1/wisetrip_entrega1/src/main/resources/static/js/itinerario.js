@@ -7,7 +7,16 @@
     var raiz = document.getElementById('itItinerario');
     if (!raiz) return;
 
+    var lista = document.getElementById('itListaActividades');
     var arrastrada = null;
+
+    // saca la actividad del calendario y la vuelve a poner en el panel
+    function devolverAlPanel(tarjeta) {
+        delete tarjeta.dataset.fecha;
+        delete tarjeta.dataset.hora;
+        lista.appendChild(tarjeta);
+        actualizarDiasVacios();
+    }
 
     // la celda tiene una actividad distinta a la que se está moviendo
     function estaOcupada(celda) {
@@ -65,6 +74,40 @@
         arrastrada = null;
         raiz.querySelectorAll('.it-encima, .it-ocupada')
             .forEach(function (c) { c.classList.remove('it-encima', 'it-ocupada'); });
+    });
+
+    // botón × de cada tarjeta; el CSS solo lo muestra dentro del calendario
+    raiz.querySelectorAll('.it-actividad').forEach(function (tarjeta) {
+        var quitar = document.createElement('button');
+        quitar.type = 'button';
+        quitar.className = 'it-quitar';
+        quitar.setAttribute('aria-label', 'Quitar del calendario');
+        quitar.textContent = '×';
+        tarjeta.appendChild(quitar);
+    });
+
+    raiz.addEventListener('click', function (e) {
+        var quitar = e.target.closest('.it-quitar');
+        if (quitar) devolverAlPanel(quitar.closest('.it-actividad'));
+    });
+
+    /* ===== Panel: también recibe actividades de vuelta ===== */
+
+    lista.addEventListener('dragover', function (e) {
+        if (!arrastrada || arrastrada.parentElement === lista) return;
+        e.preventDefault();
+        e.dataTransfer.dropEffect = 'move';
+        lista.classList.add('it-encima');
+    });
+
+    lista.addEventListener('dragleave', function (e) {
+        if (!lista.contains(e.relatedTarget)) lista.classList.remove('it-encima');
+    });
+
+    lista.addEventListener('drop', function (e) {
+        e.preventDefault();
+        lista.classList.remove('it-encima');
+        if (arrastrada) devolverAlPanel(arrastrada);
     });
 
     /* ===== Celdas del calendario ===== */
