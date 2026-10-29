@@ -9,6 +9,24 @@
 
     var arrastrada = null;
 
+    // la celda tiene una actividad distinta a la que se está moviendo
+    function estaOcupada(celda) {
+        var actual = celda.querySelector('.it-actividad');
+        return actual !== null && actual !== arrastrada;
+    }
+
+    // muestra un aviso dentro de la celda y lo quita a los pocos segundos
+    function avisar(celda, texto) {
+        var previo = celda.querySelector('.it-aviso');
+        if (previo) previo.remove();
+
+        var aviso = document.createElement('p');
+        aviso.className = 'it-aviso';
+        aviso.textContent = texto;
+        celda.appendChild(aviso);
+        setTimeout(function () { aviso.remove(); }, 2600);
+    }
+
     /* ===== Tarjetas ===== */
 
     raiz.addEventListener('dragstart', function (e) {
@@ -23,8 +41,8 @@
     raiz.addEventListener('dragend', function () {
         if (arrastrada) arrastrada.classList.remove('it-arrastrando');
         arrastrada = null;
-        raiz.querySelectorAll('.it-cal-celda.it-encima')
-            .forEach(function (c) { c.classList.remove('it-encima'); });
+        raiz.querySelectorAll('.it-encima, .it-ocupada')
+            .forEach(function (c) { c.classList.remove('it-encima', 'it-ocupada'); });
     });
 
     /* ===== Celdas del calendario ===== */
@@ -35,17 +53,22 @@
             if (!arrastrada) return;
             e.preventDefault();
             e.dataTransfer.dropEffect = 'move';
-            celda.classList.add('it-encima');
+            celda.classList.add(estaOcupada(celda) ? 'it-ocupada' : 'it-encima');
         });
 
         celda.addEventListener('dragleave', function () {
-            celda.classList.remove('it-encima');
+            celda.classList.remove('it-encima', 'it-ocupada');
         });
 
         celda.addEventListener('drop', function (e) {
             e.preventDefault();
-            celda.classList.remove('it-encima');
+            celda.classList.remove('it-encima', 'it-ocupada');
             if (!arrastrada) return;
+
+            if (estaOcupada(celda)) {
+                avisar(celda, 'Ya tienes una actividad programada a esa hora.');
+                return;
+            }
 
             arrastrada.dataset.fecha = celda.dataset.fecha;
             arrastrada.dataset.hora = celda.dataset.hora;

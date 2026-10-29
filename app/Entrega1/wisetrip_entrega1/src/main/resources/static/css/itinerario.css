@@ -224,3 +224,35 @@
 
 .it-cal-celda .it-actividad strong { font-size: 12px; }
 .it-cal-celda .it-actividad span { font-size: 10px; }
+
+/* ===== Hora ocupada ===== */
+
+.it-cal-celda { position: relative; }
+
+.it-cal-celda.it-ocupada {
+    background: #FDE3EC;
+    outline: 2.5px dashed #C2185B;
+    outline-offset: -5px;
+    cursor: not-allowed;
+}
+
+.it-aviso {
+    position: absolute;
+    left: 4px; right: 4px; top: 4px;
+    z-index: 5;
+    margin: 0;
+    padding: 6px 8px;
+    background: var(--rosa);
+    border: 2px solid var(--tinta);
+    border-radius: 9px;
+    box-shadow: 2px 2px 0 var(--tinta);
+    font-size: 11.5px;
+    font-weight: 600;
+    line-height: 1.3;
+    animation: it-aparecer .18s ease-out;
+}
+
+@keyframes it-aparecer {
+    from { opacity: 0; transform: translateY(-4px); }
+    to   { opacity: 1; transform: none; }
+}
