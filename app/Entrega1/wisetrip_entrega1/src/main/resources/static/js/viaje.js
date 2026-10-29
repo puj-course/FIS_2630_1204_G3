@@ -60,4 +60,30 @@
         else if (faltan === 0) cuenta.textContent = 'Sales hoy';
         else cuenta.textContent = 'Buen viaje';
     }
+
+    /* ===== Secciones por separado (menú lateral) ===== */
+
+    var secciones = raiz.querySelectorAll('.vj-seccion[id]');
+    var enlacesMenu = document.querySelectorAll('.vj-menu-lateral a[href^="#"]');
+
+    // muestra solo la sección pedida; si no existe, el resumen general
+    function mostrarSeccion(id) {
+        var existe = Array.prototype.some.call(secciones, function (s) { return s.id === id; });
+        if (!existe) id = 'resumen';
+
+        secciones.forEach(function (s) { s.hidden = s.id !== id; });
+        enlacesMenu.forEach(function (a) {
+            var activo = a.getAttribute('href') === '#' + id;
+            a.classList.toggle('vj-menu-activo', activo);
+            if (activo) a.setAttribute('aria-current', 'page');
+            else a.removeAttribute('aria-current');
+        });
+        window.scrollTo(0, 0);
+    }
+
+    // cualquier enlace a "#seccion" (menú, tarjetas del resumen, botones) cambia la URL
+    window.addEventListener('hashchange', function () {
+        mostrarSeccion(location.hash.slice(1));
+    });
+    mostrarSeccion(location.hash.slice(1));
 })();

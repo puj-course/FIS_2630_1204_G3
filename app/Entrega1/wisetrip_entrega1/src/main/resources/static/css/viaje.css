@@ -549,3 +549,6 @@
     .vj-reparto-tabla td:nth-child(4) { display: none; }
     .vj-presupuesto { padding: 20px 16px; }
 }
+
+/* Solo se ve la sección elegida en el menú lateral */
+.vj-seccion[hidden] { display: none; }
