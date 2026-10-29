@@ -538,3 +538,40 @@
 
 .it-alerta-verde { background: #E3F4E4; }
 .it-alerta-verde .it-alerta-icono { background: var(--verde); color: var(--tinta); }
+
+/* ===== Gastos por categoría ===== */
+
+.it-gastos-lista {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.it-gastos-lista li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 11px 0;
+    font-size: 15.5px;
+    font-weight: 600;
+}
+
+.it-gastos-lista li + li { border-top: 2px dashed var(--arena-honda); }
+
+/* --c sale del color de la categoría */
+.it-gasto-icono {
+    width: 34px; height: 34px;
+    flex-shrink: 0;
+    padding: 6px;
+    background: var(--c);
+    border: 2.5px solid var(--tinta);
+    border-radius: 10px;
+}
+
+.it-gasto-icono svg { width: 100%; height: 100%; display: block; }
+
+.it-gastos-lista strong {
+    margin-left: auto;
+    font-family: var(--dato);
+    font-size: 15px;
+}

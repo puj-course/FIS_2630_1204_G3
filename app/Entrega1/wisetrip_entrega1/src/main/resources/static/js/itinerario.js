@@ -70,29 +70,42 @@
     var cajaPresupuesto = document.getElementById('itPresupuesto');
     var totalUsd = parseFloat(cajaPresupuesto.dataset.totalUsd) || 0;
 
-    // suma el costo (USD) de las actividades que ya están en el calendario
-    function gastadoEnCalendario() {
+    // suma el costo (USD) de las actividades que ya están en el calendario;
+    // con categoría, solo las de esa categoría
+    function gastadoEnCalendario(categoria) {
         var suma = 0;
         raiz.querySelectorAll('.it-cal-celda .it-actividad').forEach(function (t) {
-            suma += parseFloat(t.dataset.costo) || 0;
+            if (!categoria || t.dataset.categoria === categoria) {
+                suma += parseFloat(t.dataset.costo) || 0;
+            }
         });
         return suma;
+    }
+
+    function enUsd(valor) {
+        return 'US$ ' + valor.toLocaleString('en-US');
     }
 
     function actualizarPresupuesto() {
         var gastado = gastadoEnCalendario();
         var cerca = totalUsd > 0 && gastado >= totalUsd * LIMITE_ALERTA;
 
-        document.getElementById('itGastado').textContent =
-            'US$ ' + gastado.toLocaleString('en-US');
+        document.getElementById('itGastado').textContent = enUsd(gastado);
         document.getElementById('itAlertaRoja').hidden = !cerca;
         document.getElementById('itAlertaVerde').hidden = cerca;
+    }
+
+    function actualizarGastosPorCategoria() {
+        raiz.querySelectorAll('[data-gasto]').forEach(function (celda) {
+            celda.textContent = enUsd(gastadoEnCalendario(celda.dataset.gasto));
+        });
     }
 
     // todo lo que depende de dónde están las actividades
     function refrescar() {
         actualizarDiasVacios();
         actualizarPresupuesto();
+        actualizarGastosPorCategoria();
     }
 
     /* ===== Tarjetas ===== */

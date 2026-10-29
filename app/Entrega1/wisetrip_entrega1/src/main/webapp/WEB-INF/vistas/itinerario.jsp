@@ -94,19 +94,19 @@
 
             <%-- Plantillas: reemplazar por las actividades reales del destino --%>
             <ul class="it-lista-actividades" id="itListaActividades">
-                <li class="it-actividad vj-actividades" draggable="true" data-id="act-1" data-costo="15">
+                <li class="it-actividad vj-actividades" draggable="true" data-categoria="actividades" data-id="act-1" data-costo="15">
                     <strong>Recorrido por el centro</strong>
                     <span>Actividad · 2 h · US$ 15</span>
                 </li>
-                <li class="it-actividad vj-actividades" draggable="true" data-id="act-2" data-costo="12">
+                <li class="it-actividad vj-actividades" draggable="true" data-categoria="actividades" data-id="act-2" data-costo="12">
                     <strong>Visita a un museo</strong>
                     <span>Actividad · 2 h · US$ 12</span>
                 </li>
-                <li class="it-actividad vj-alimentacion" draggable="true" data-id="act-3" data-costo="10">
+                <li class="it-actividad vj-alimentacion" draggable="true" data-categoria="alimentacion" data-id="act-3" data-costo="10">
                     <strong>Almuerzo típico</strong>
                     <span>Comida · 2 h · US$ 10</span>
                 </li>
-                <li class="it-actividad vj-transporte" draggable="true" data-id="act-4" data-costo="8">
+                <li class="it-actividad vj-transporte" draggable="true" data-categoria="transporte" data-id="act-4" data-costo="8">
                     <strong>Traslado al hotel</strong>
                     <span>Transporte · 2 h · US$ 8</span>
                 </li>
@@ -123,14 +123,14 @@
             <%-- Plantillas: poner las fotos en static/img/itinerario/ con estos
                  nombres. Si la foto no existe, se ve el recuadro de plantilla. --%>
             <ul class="it-lista-actividades" id="itListaRecomendadas">
-                <li class="it-actividad it-recomendada" draggable="true" data-id="rec-1" data-costo="5">
+                <li class="it-actividad it-recomendada" draggable="true" data-categoria="actividades" data-id="rec-1" data-costo="5">
                     <span class="it-foto">
                         <img src="/img/itinerario/recomendada-1.jpg" alt="" onerror="this.remove()">
                     </span>
                     <strong>Mirador de la ciudad</strong>
                     <span>Recomendada · 2 h · US$ 5</span>
                 </li>
-                <li class="it-actividad it-recomendada" draggable="true" data-id="rec-2" data-costo="6">
+                <li class="it-actividad it-recomendada" draggable="true" data-categoria="actividades" data-id="rec-2" data-costo="6">
                     <span class="it-foto">
                         <img src="/img/itinerario/recomendada-2.jpg" alt="" onerror="this.remove()">
                     </span>
@@ -221,6 +221,38 @@
 
         <section class="it-caja it-gastos">
             <h2 class="it-caja-titulo">Gastos estimados por categoría</h2>
+
+            <ul class="it-gastos-lista">
+                <li class="vj-alimentacion">
+                    <span class="it-gasto-icono">
+                        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                            <path d="M7 3v8M4.5 3v5a2.5 2.5 0 0 0 5 0V3M7 11v10M17 21V3c-2.2 0-3.5 2.5-3.5 6v4H17" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </span>
+                    Comida
+                    <strong data-gasto="alimentacion">US$ 0</strong>
+                </li>
+                <li class="vj-actividades">
+                    <span class="it-gasto-icono">
+                        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                            <path d="M3 20 9.5 8l4 7 2.5-4 5 9z" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/>
+                            <circle cx="17.5" cy="5.5" r="2.2" stroke="currentColor" stroke-width="2.2"/>
+                        </svg>
+                    </span>
+                    Actividades
+                    <strong data-gasto="actividades">US$ 0</strong>
+                </li>
+                <li class="vj-transporte">
+                    <span class="it-gasto-icono">
+                        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                            <rect x="4" y="5" width="16" height="11" rx="2.5" stroke="currentColor" stroke-width="2.2"/>
+                            <path d="M4 11h16M7.5 19.5v-3.5M16.5 19.5v-3.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+                        </svg>
+                    </span>
+                    Transporte
+                    <strong data-gasto="transporte">US$ 0</strong>
+                </li>
+            </ul>
         </section>
 
         <section class="it-caja it-proxima">
