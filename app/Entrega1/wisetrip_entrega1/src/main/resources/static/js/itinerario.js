@@ -1,7 +1,8 @@
 /*
  * WiseTrip · Itinerario durante el viaje
- * Permite arrastrar las actividades del panel a las celdas del calendario
- * (día + hora) y moverlas de una celda a otra. Solo visual.
+ * Sección "Itinerario" de Mi viaje: arrastrar actividades al calendario,
+ * control de gastos, próxima actividad, actividades propias y guardado
+ * en el navegador (incluido el checklist de "Antes de viajar").
  */
 (function () {
     var raiz = document.getElementById('itItinerario');
@@ -298,14 +299,9 @@
                 estado.ubicadas[t.dataset.id] = { fecha: t.dataset.fecha, hora: t.dataset.hora };
             }
         });
-        if (checklist) {
-            checklist.querySelectorAll('input:checked').forEach(function (c) {
-                estado.checklist.push(c.value);
-            });
-        } else {
-            // esta página no muestra el checklist: se conserva el que ya estaba guardado
-            estado.checklist = (leerGuardado() || {}).checklist || [];
-        }
+        checklist.querySelectorAll('input:checked').forEach(function (c) {
+            estado.checklist.push(c.value);
+        });
 
         try { localStorage.setItem(CLAVE, JSON.stringify(estado)); } catch (e) { /* sin almacenamiento: solo no se guarda */ }
     }
@@ -333,14 +329,12 @@
             }
         });
 
-        if (checklist) {
-            checklist.querySelectorAll('input').forEach(function (c) {
-                c.checked = (estado.checklist || []).indexOf(c.value) !== -1;
-            });
-        }
+        checklist.querySelectorAll('input').forEach(function (c) {
+            c.checked = (estado.checklist || []).indexOf(c.value) !== -1;
+        });
     }
 
-    if (checklist) checklist.addEventListener('change', guardar);
+    checklist.addEventListener('change', guardar);
 
     restaurar();
     refrescar();

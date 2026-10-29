@@ -167,6 +167,8 @@
             <span>Lo que no puede faltar y consejos</span>
         </a>
     </div>
+
+    <p class="it-frase">Planea menos, <span>disfruta más</span></p>
     </section>
 
     <!-- ===== Presupuesto ===== -->
@@ -271,23 +273,6 @@
                         <div class="it-cal-dia" data-fecha="${dia.fecha()}">
                             <span>${dia.nombreDia()}</span>
                             <strong>${dia.numero()} ${dia.mes()}</strong>
-                        </div>
-                    </c:forEach>
-
-                    <%-- Clima: plantilla. Cuando haya API, cambiar la clase
-                         it-clima-pendiente por it-clima-sol o it-clima-nube --%>
-                    <div class="it-cal-hora">Clima</div>
-                    <c:forEach var="dia" items="${diasCalendario}">
-                        <div class="it-clima it-clima-pendiente"
-                             data-fecha="${dia.fecha()}"
-                             title="Pronóstico del clima: próximamente">
-                            <svg class="it-clima-sol" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                                <circle cx="12" cy="12" r="4.5" stroke="currentColor" stroke-width="2"/>
-                                <path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                            </svg>
-                            <svg class="it-clima-nube" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                                <path d="M7 18h10a4 4 0 0 0 .6-7.95A5.5 5.5 0 0 0 7.1 9.1 4.5 4.5 0 0 0 7 18z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-                            </svg>
                         </div>
                     </c:forEach>
 

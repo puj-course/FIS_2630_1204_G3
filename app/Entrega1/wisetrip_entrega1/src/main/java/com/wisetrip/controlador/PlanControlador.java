@@ -97,30 +97,10 @@ public class PlanControlador {
         return "viaje";
     }
 
+    /** El itinerario ahora es una sección de Mi viaje; se conserva el enlace viejo. */
     @GetMapping("/itinerario")
-    public String mostrarItinerario(HttpSession sesion, Model model) {
-
-        Usuario usuario = (Usuario) sesion.getAttribute("usuarioActivo");
-        if (usuario == null) return "redirect:/login";
-
-        ResultadoRecomendacion destino =
-                (ResultadoRecomendacion) sesion.getAttribute("destinoElegido");
-        if (destino == null) return "redirect:/recomendaciones";
-
-        FechasViaje fechas = (FechasViaje) sesion.getAttribute("fechasViaje");
-        if (fechas == null) return "redirect:/fechas";
-
-        Presupuesto presupuesto = (Presupuesto) sesion.getAttribute("presupuestoViaje");
-        if (presupuesto == null) return "redirect:/presupuesto";
-
-        model.addAttribute("usuario", usuario);
-        model.addAttribute("inicialesUsuario", usuario.iniciales());
-        model.addAttribute("destino", destino);
-        model.addAttribute("fechas", fechas);
-        model.addAttribute("presupuesto", presupuesto);
-        cargarItinerario(model, fechas, presupuesto);
-
-        return "itinerario";
+    public String mostrarItinerario() {
+        return "redirect:/viaje#itinerario";
     }
 
     /** Datos del calendario y del presupuesto en USD que usa el itinerario. */
