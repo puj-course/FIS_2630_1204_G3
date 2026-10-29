@@ -27,6 +27,28 @@
         setTimeout(function () { aviso.remove(); }, 2600);
     }
 
+    // muestra "Aún no tienes actividades" en la primera celda de cada día vacío
+    function actualizarDiasVacios() {
+        raiz.querySelectorAll('.it-cal-dia').forEach(function (dia) {
+            var celdas = raiz.querySelectorAll('.it-cal-celda[data-fecha="' + dia.dataset.fecha + '"]');
+            if (celdas.length === 0) return;
+
+            var tieneActividades = Array.prototype.some.call(celdas, function (c) {
+                return c.querySelector('.it-actividad') !== null;
+            });
+            var mensaje = celdas[0].querySelector('.it-vacio');
+
+            if (tieneActividades && mensaje) {
+                mensaje.remove();
+            } else if (!tieneActividades && !mensaje) {
+                mensaje = document.createElement('p');
+                mensaje.className = 'it-vacio';
+                mensaje.textContent = 'Aún no tienes actividades para este día.';
+                celdas[0].appendChild(mensaje);
+            }
+        });
+    }
+
     /* ===== Tarjetas ===== */
 
     raiz.addEventListener('dragstart', function (e) {
@@ -73,6 +95,9 @@
             arrastrada.dataset.fecha = celda.dataset.fecha;
             arrastrada.dataset.hora = celda.dataset.hora;
             celda.appendChild(arrastrada);
+            actualizarDiasVacios();
         });
     });
+
+    actualizarDiasVacios();
 })();

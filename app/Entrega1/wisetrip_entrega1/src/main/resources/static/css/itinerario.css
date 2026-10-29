@@ -256,3 +256,16 @@
     from { opacity: 0; transform: translateY(-4px); }
     to   { opacity: 1; transform: none; }
 }
+
+/* ===== Día sin actividades ===== */
+
+/* No intercepta el arrastre: la celda sigue recibiendo la actividad */
+.it-vacio {
+    margin: 0;
+    padding: 4px 2px;
+    font-size: 11.5px;
+    line-height: 1.35;
+    color: var(--gris-claro);
+    font-style: italic;
+    pointer-events: none;
+}
