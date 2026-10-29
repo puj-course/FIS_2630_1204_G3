@@ -141,5 +141,6 @@
 
 </main>
 
+<script src="/js/itinerario.js"></script>
 </body>
 </html>

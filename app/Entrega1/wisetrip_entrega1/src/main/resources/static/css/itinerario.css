@@ -203,3 +203,24 @@
     letter-spacing: .04em;
     margin-top: 3px;
 }
+
+/* ===== Arrastrar y soltar ===== */
+
+.it-actividad.it-arrastrando { opacity: .45; }
+
+.it-cal-celda.it-encima {
+    background: var(--turquesa-suave);
+    outline: 2.5px dashed var(--turquesa-hondo);
+    outline-offset: -5px;
+}
+
+/* Tarjeta ya puesta en el calendario: más compacta */
+.it-cal-celda .it-actividad {
+    padding: 6px 8px;
+    border-width: 2px;
+    border-radius: 9px;
+    box-shadow: 2px 2px 0 var(--tinta);
+}
+
+.it-cal-celda .it-actividad strong { font-size: 12px; }
+.it-cal-celda .it-actividad span { font-size: 10px; }
