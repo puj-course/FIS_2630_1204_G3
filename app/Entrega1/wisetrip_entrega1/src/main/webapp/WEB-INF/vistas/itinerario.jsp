@@ -166,6 +166,14 @@
             </nav>
 
             <h2 class="it-caja-titulo">Checklist antes de viajar</h2>
+
+            <ul class="it-checklist" id="itChecklist">
+                <li><label><input type="checkbox" value="reservas"><span>Reservas</span></label></li>
+                <li><label><input type="checkbox" value="ropa"><span>Ropa</span></label></li>
+                <li><label><input type="checkbox" value="pasaporte"><span>Pasaporte</span></label></li>
+                <li><label><input type="checkbox" value="billetera"><span>Billetera</span></label></li>
+                <li><label><input type="checkbox" value="cargador"><span>Cargador</span></label></li>
+            </ul>
         </aside>
 
         <section class="it-caja it-presupuesto">
