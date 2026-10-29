@@ -5676,13 +5676,15 @@ falta de tiempo
 
 1. **¿Qué hice ayer?** 
 
-
+Ayer tuvimos planning y revisamos como quedaron los cambios de la semana pasada
 
 2. **¿Qué voy a hacer hoy?** 
 
-
+Realice otras refactorizaciones que encontre en el codigo que no estaban haciendo gran cosa
 
 3. **¿Tengo algún impedimento o bloqueo?** 
+
+no 
 
 
 <img width="1600" height="1200" alt="image" src="https://github.com/user-attachments/assets/0b2702c5-3394-4304-a7da-31003b6aba20" />
