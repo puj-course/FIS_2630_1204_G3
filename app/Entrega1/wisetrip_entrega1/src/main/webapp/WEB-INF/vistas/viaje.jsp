@@ -50,17 +50,18 @@
       data-imprevistos="${reparto.imprevistos}">
 
     <!-- ===== Portada del viaje ===== -->
-    <section class="vj-portada" id="resumen">
+    <section class="vj-seccion" id="resumen">
+    <div class="vj-portada">
         <div class="vj-portada-texto">
             <span class="vj-sello">Tu viaje está en marcha</span>
             <h1 class="vj-titulo">${destino.ciudad.nombre}</h1>
             <p class="vj-bajada">
-                ${destino.ciudad.pais} te espera. Aquí vas a armar todo tu viaje:
-                dónde dormir, cómo moverte, dónde comer y qué hacer, siempre
-                dentro de lo que separaste para cada gasto.
+                ${destino.ciudad.pais} te espera. Aquí tienes todo tu viaje en un
+                solo lugar: tu presupuesto organizado, tu itinerario día por día
+                y lo que necesitas antes de salir.
             </p>
             <div class="vj-portada-acciones">
-                <a class="vj-btn" href="#arma-tu-viaje">Empezar a armar</a>
+                <a class="vj-btn" href="<c:url value='/itinerario'/>">Organizar mi itinerario</a>
                 <a class="vj-enlace" href="<c:url value='/plan'/>">Cambiar reparto</a>
             </div>
         </div>
@@ -116,6 +117,26 @@
                 <span class="vj-cuenta" id="vjCuenta">${dias} días de viaje</span>
             </div>
         </div>
+    </div>
+
+    <!-- Una tarjeta por cada cosa que el viajero puede ver por separado -->
+    <div class="vj-resumen-tarjetas">
+        <a class="vj-resumen-tarjeta vj-hospedaje" href="#presupuesto">
+            <span class="vj-rotulo">Presupuesto</span>
+            <strong>${montoFormateado} ${presupuesto.moneda}</strong>
+            <span>Repartido en 5 categorías</span>
+        </a>
+        <a class="vj-resumen-tarjeta vj-actividades" href="<c:url value='/itinerario'/>">
+            <span class="vj-rotulo">Itinerario</span>
+            <strong>${dias} días</strong>
+            <span>Del ${fechas.fechaInicio} al ${fechas.fechaFin}</span>
+        </a>
+        <a class="vj-resumen-tarjeta vj-transporte" href="<c:url value='/itinerario'/>">
+            <span class="vj-rotulo">Antes de viajar</span>
+            <strong>Checklist</strong>
+            <span>Lo que no puede faltar y consejos</span>
+        </a>
+    </div>
     </section>
 
     <!-- ===== Presupuesto ===== -->

@@ -580,3 +580,44 @@
     .vj-menu-lateral { flex-direction: row; margin: 0; width: max-content; }
     .vj-menu-lateral a { white-space: nowrap; }
 }
+
+/* ===== Resumen general ===== */
+
+.vj-seccion { margin-bottom: 30px; }
+
+.vj-resumen-tarjetas {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+}
+
+/* --c sale del color de la categoría */
+.vj-resumen-tarjeta {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 18px 20px;
+    background: #fff;
+    border: 3px solid var(--tinta);
+    border-top: 12px solid var(--c);
+    border-radius: 16px;
+    box-shadow: 5px 5px 0 var(--tinta);
+    color: var(--tinta);
+    text-decoration: none;
+    transition: transform .12s ease, box-shadow .12s ease;
+}
+
+.vj-resumen-tarjeta:hover { transform: translate(-2px, -2px); box-shadow: 7px 7px 0 var(--tinta); }
+
+.vj-resumen-tarjeta strong {
+    font-family: var(--display);
+    font-size: 22px;
+    line-height: 1.1;
+    overflow-wrap: anywhere;
+}
+
+.vj-resumen-tarjeta span:last-child { font-size: 13.5px; color: var(--gris); }
+
+@media (max-width: 760px) {
+    .vj-resumen-tarjetas { grid-template-columns: 1fr; }
+}
