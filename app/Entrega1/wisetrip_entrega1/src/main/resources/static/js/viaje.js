@@ -1,7 +1,7 @@
 /*
  * WiseTrip · Mi viaje
  * Calcula, con el presupuesto y el reparto guardados, cuánto dinero hay
- * para cada gasto, cuánto alcanza por día o por noche y cuánto falta
+ * para cada gasto, cuánto alcanza por día y cuánto falta
  * para el viaje. Solo visual.
  */
 (function () {
@@ -13,7 +13,6 @@
     var total = leerMonto(raiz.dataset.total);
     var moneda = raiz.dataset.moneda || '';
     var dias = parseInt(raiz.dataset.dias, 10) || 1;
-    var noches = Math.max(dias - 1, 1);
 
     /* Mismo criterio que Presupuesto: punto = miles, coma = decimales */
     function leerMonto(texto) {
@@ -43,10 +42,6 @@
         document.querySelectorAll('[data-seg="' + cat + '"]').forEach(function (s) { s.style.width = p + '%'; });
         document.querySelectorAll('[data-pct="' + cat + '"]').forEach(function (s) { s.textContent = Math.round(p) + '%'; });
         document.querySelectorAll('[data-monto="' + cat + '"]').forEach(function (s) { s.textContent = formatear(dinero); });
-        document.querySelectorAll('[data-por="' + cat + '"]').forEach(function (s) {
-            var divisor = s.dataset.divisor === 'noches' ? noches : dias;
-            s.textContent = formatear(dinero / divisor);
-        });
     });
 
     /* Cuenta regresiva hasta la fecha de salida (formato AAAA-MM-DD) */
