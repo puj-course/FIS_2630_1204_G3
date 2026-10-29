@@ -327,7 +327,22 @@
         </section>
 
         <section class="it-caja it-final">
-            <h2 class="it-caja-titulo">Al final de actividades</h2>
+            <h2 class="it-caja-titulo">
+                <svg class="it-titulo-icono" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M6 21V4M6 4h11l-2.5 4L17 12H6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Al final de actividades
+            </h2>
+
+            <p class="it-final-pregunta">¿Te quedaste sin actividades por escoger? ¿Se te ocurre alguna?</p>
+
+            <form class="it-form-nueva" id="itFormNueva" autocomplete="off">
+                <label class="it-oculto" for="itNuevaNombre">Nombre de la actividad</label>
+                <input type="text" id="itNuevaNombre" name="nombre" maxlength="60"
+                       placeholder="Escribe una actividad...">
+                <button type="submit" aria-label="Agregar actividad">+</button>
+            </form>
+            <p class="it-nueva-aviso" id="itNuevaAviso" role="status"></p>
         </section>
 
     </div>

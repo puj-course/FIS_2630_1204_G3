@@ -11,9 +11,19 @@
     var arrastrada = null;
 
     // cada tarjeta recuerda la lista de la que salió (propias o recomendadas)
-    raiz.querySelectorAll('.it-actividad').forEach(function (tarjeta) {
+    // y recibe su botón ×, que el CSS solo muestra dentro del calendario
+    function prepararTarjeta(tarjeta) {
         tarjeta.dataset.origen = tarjeta.parentElement.id;
-    });
+
+        var quitar = document.createElement('button');
+        quitar.type = 'button';
+        quitar.className = 'it-quitar';
+        quitar.setAttribute('aria-label', 'Quitar del calendario');
+        quitar.textContent = '×';
+        tarjeta.appendChild(quitar);
+    }
+
+    raiz.querySelectorAll('.it-actividad').forEach(prepararTarjeta);
 
     // saca la actividad del calendario y la vuelve a poner en su lista
     function devolverAlPanel(tarjeta) {
@@ -170,19 +180,48 @@
             .forEach(function (c) { c.classList.remove('it-encima', 'it-ocupada'); });
     });
 
-    // botón × de cada tarjeta; el CSS solo lo muestra dentro del calendario
-    raiz.querySelectorAll('.it-actividad').forEach(function (tarjeta) {
-        var quitar = document.createElement('button');
-        quitar.type = 'button';
-        quitar.className = 'it-quitar';
-        quitar.setAttribute('aria-label', 'Quitar del calendario');
-        quitar.textContent = '×';
-        tarjeta.appendChild(quitar);
-    });
-
     raiz.addEventListener('click', function (e) {
         var quitar = e.target.closest('.it-quitar');
         if (quitar) devolverAlPanel(quitar.closest('.it-actividad'));
+    });
+
+    /* ===== Actividad propia ===== */
+
+    var formNueva = document.getElementById('itFormNueva');
+    var contadorPropias = 0;
+
+    // crea una tarjeta como las de plantilla y la pone en el panel de actividades
+    function crearActividad(nombre) {
+        var tarjeta = document.createElement('li');
+        tarjeta.className = 'it-actividad vj-actividades';
+        tarjeta.draggable = true;
+        tarjeta.dataset.categoria = 'actividades';
+        tarjeta.dataset.id = 'propia-' + Date.now() + '-' + (++contadorPropias);
+        tarjeta.dataset.costo = '0';
+
+        var titulo = document.createElement('strong');
+        titulo.textContent = nombre;
+        var detalle = document.createElement('span');
+        detalle.textContent = 'Propia · 2 h';
+        tarjeta.append(titulo, detalle);
+
+        document.getElementById('itListaActividades').appendChild(tarjeta);
+        prepararTarjeta(tarjeta);
+        return tarjeta;
+    }
+
+    formNueva.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var campo = formNueva.elements.nombre;
+        var nombre = campo.value.trim();
+        if (!nombre) {
+            campo.focus();
+            return;
+        }
+        crearActividad(nombre);
+        campo.value = '';
+        document.getElementById('itNuevaAviso').textContent =
+            '"' + nombre + '" quedó en tu panel de actividades. Arrástrala al calendario.';
     });
 
     /* ===== Panel: también recibe actividades de vuelta ===== */
