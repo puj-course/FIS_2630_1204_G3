@@ -140,7 +140,16 @@
     </section>
 
     <!-- ===== Presupuesto ===== -->
-    <section class="vj-presupuesto" id="presupuesto">
+    <section class="vj-seccion" id="presupuesto">
+    <div class="vj-seccion-cabeza">
+        <h2 class="vj-seccion-titulo">Tu presupuesto</h2>
+        <p class="vj-seccion-nota">
+            Lo que separaste para cada gasto. La idea es que todo tu viaje
+            quepa aquí, sin gastar de más.
+        </p>
+    </div>
+
+    <div class="vj-presupuesto">
         <div class="vj-presupuesto-cifras">
             <div>
                 <span class="vj-rotulo">Presupuesto total</span>
@@ -149,6 +158,10 @@
             <div>
                 <span class="vj-rotulo">Por día</span>
                 <strong class="vj-cifra vj-cifra-chica" id="vjPorDia"></strong>
+            </div>
+            <div>
+                <span class="vj-rotulo">Equivale a</span>
+                <strong class="vj-cifra vj-cifra-chica">US$ ${usdFormateado}</strong>
             </div>
         </div>
 
@@ -160,13 +173,34 @@
             <span class="vj-imprevistos"  data-seg="imprevistos"></span>
         </div>
 
-        <ul class="vj-leyenda">
-            <li class="vj-hospedaje"><span class="vj-punto"></span>Hospedaje <b data-pct="hospedaje"></b></li>
-            <li class="vj-alimentacion"><span class="vj-punto"></span>Alimentación <b data-pct="alimentacion"></b></li>
-            <li class="vj-transporte"><span class="vj-punto"></span>Transporte <b data-pct="transporte"></b></li>
-            <li class="vj-actividades"><span class="vj-punto"></span>Actividades <b data-pct="actividades"></b></li>
-            <li class="vj-imprevistos"><span class="vj-punto"></span>Imprevistos <b data-pct="imprevistos"></b></li>
-        </ul>
+        <table class="vj-reparto-tabla">
+            <thead>
+                <tr>
+                    <th scope="col">Categoría</th>
+                    <th scope="col">Porcentaje</th>
+                    <th scope="col">Monto</th>
+                    <th scope="col">Por día</th>
+                </tr>
+            </thead>
+            <tbody>
+                <c:forEach var="cat" items="hospedaje,alimentacion,transporte,actividades">
+                    <tr class="vj-${cat}">
+                        <th scope="row">
+                            <span class="vj-punto"></span>
+                            <c:choose>
+                                <c:when test="${cat == 'hospedaje'}">Hospedaje</c:when>
+                                <c:when test="${cat == 'alimentacion'}">Alimentación</c:when>
+                                <c:when test="${cat == 'transporte'}">Transporte</c:when>
+                                <c:otherwise>Actividades</c:otherwise>
+                            </c:choose>
+                        </th>
+                        <td data-pct="${cat}"></td>
+                        <td data-monto="${cat}"></td>
+                        <td data-por-dia="${cat}"></td>
+                    </tr>
+                </c:forEach>
+            </tbody>
+        </table>
 
         <div class="vj-colchon vj-imprevistos">
             <span class="vj-colchon-icono">
@@ -176,11 +210,12 @@
                 </svg>
             </span>
             <div>
-                <strong>Colchón para imprevistos</strong>
+                <strong>Colchón para imprevistos · <span data-pct="imprevistos"></span></strong>
                 <p>Este dinero no se toca a menos que surja algo fuera del plan.</p>
             </div>
             <span class="vj-colchon-cifra" data-monto="imprevistos"></span>
         </div>
+    </div>
     </section>
 
     <footer class="vj-pie">

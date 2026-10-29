@@ -286,7 +286,6 @@
     border: 3px solid var(--tinta);
     border-radius: 18px;
     padding: 24px 28px;
-    margin-bottom: 52px;
     box-shadow: 6px 6px 0 var(--tinta);
 }
 
@@ -298,7 +297,6 @@
     flex-wrap: wrap;
     margin-bottom: 16px;
 }
-.vj-presupuesto-cifras div:last-child { text-align: right; }
 
 .vj-cifra {
     display: block;
@@ -320,17 +318,29 @@
 .vj-reparto-barra span { display: block; height: 100%; flex-shrink: 0; background: var(--c); }
 .vj-reparto-barra span + span { border-left: 2px solid var(--tinta); }
 
-.vj-leyenda {
-    list-style: none;
-    padding: 0;
-    margin: 16px 0 0;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px 24px;
-    font-size: 14px;
+/* Tabla del reparto: una fila por categoría de gasto */
+.vj-reparto-tabla {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+    font-size: 15px;
 }
-.vj-leyenda li { display: flex; align-items: center; gap: 8px; }
-.vj-leyenda b { font-family: var(--dato); font-weight: 600; }
+.vj-reparto-tabla th,
+.vj-reparto-tabla td { padding: 11px 8px; text-align: right; }
+.vj-reparto-tabla th[scope="row"] { text-align: left; font-weight: 700; }
+.vj-reparto-tabla .vj-punto { display: inline-block; vertical-align: -2px; margin-right: 8px; }
+.vj-reparto-tabla thead th {
+    font-family: var(--dato);
+    font-size: 10.5px;
+    font-weight: 500;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--gris);
+    border-bottom: 2.5px solid var(--tinta);
+}
+.vj-reparto-tabla thead th:first-child { text-align: left; }
+.vj-reparto-tabla tbody tr + tr { border-top: 2px dashed var(--arena-honda); }
+.vj-reparto-tabla td { font-family: var(--dato); font-weight: 600; white-space: nowrap; }
 .vj-punto {
     width: 14px; height: 14px;
     border: 2px solid var(--tinta);
@@ -531,4 +541,11 @@
 
 @media (max-width: 760px) {
     .vj-resumen-tarjetas { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 560px) {
+    /* En celular se esconde el "por día" de la tabla para que quepa */
+    .vj-reparto-tabla th:nth-child(4),
+    .vj-reparto-tabla td:nth-child(4) { display: none; }
+    .vj-presupuesto { padding: 20px 16px; }
 }

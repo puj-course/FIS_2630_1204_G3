@@ -42,6 +42,7 @@
         document.querySelectorAll('[data-seg="' + cat + '"]').forEach(function (s) { s.style.width = p + '%'; });
         document.querySelectorAll('[data-pct="' + cat + '"]').forEach(function (s) { s.textContent = Math.round(p) + '%'; });
         document.querySelectorAll('[data-monto="' + cat + '"]').forEach(function (s) { s.textContent = formatear(dinero); });
+        document.querySelectorAll('[data-por-dia="' + cat + '"]').forEach(function (s) { s.textContent = formatear(dinero / dias); });
     });
 
     /* Cuenta regresiva hasta la fecha de salida (formato AAAA-MM-DD) */
