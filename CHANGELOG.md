@@ -5748,15 +5748,15 @@ no
 
 1. **¿Qué hice ayer?**
 
-
+Ayer revise si aun queda codigo del modulo en el que estoy trabajando que pueda eliminar sin afectar su funcionamiento y recordar las correcciones del profesor para los diagramas
 
 2. **¿Qué voy a hacer hoy?**
 
-
+Estamos esperando a que mis otras compañeras hagan otros refactor en el codigo y empezare despues a hacer de nuevo los diagramas con las correcciones del profesor, ademas de descargar Visual Paradigm
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
-
+Tiempo 
 
 ---
 
