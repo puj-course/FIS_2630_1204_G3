@@ -5580,14 +5580,14 @@ como equipo la distribucion del tiempo de otras materias ya que esta nos o me qu
 
 | ID | Título | Tipo | Estimación | Responsable |
 |----|--------|------|------------|-------------|
-| # |  | Historia de Usuario | TDB| Valeria |
-| # |  | Historia de Usuario | TBD | Valeria |
+| #116 | Como administrador, quiero refactorizar el código, para mantenerlo limpio y entender mejor cómo está armado. | Historia de Usuario | TDB| Valeria |
+| #117 | Como administrador, quiero representar cada módulo en diagramas, para comprender cómo funciona el sistema y saber qué parte mejorar. | Historia de Usuario | TBD | Valeria |
 | #118 |Como usuario de WiseTrip quiero que la estructura del sistema esté correctamente organizada y documentada para que las funcionalidades que utilizo se mantengan integradas y puedan evolucionar de forma confiable  | Historia de Usuario | TBD | Maleja |
 | #119 | Como usuario de WiseTrip quiero que las funcionalidades del sistema tengan una estructura interna coherente para utilizar una aplicación estable, mantenible y confiable | Historia de Usuario | TBD | Maleja |
-| # |  | Historia de Usuario | TDB | Gaby|
-| # |  | Historia de Usuario | TBD | Gaby |
-| # |  | Historia de Usuario | TBD | Isa |
-| # |  | Historia de Usuario | TBD | Isa |
+| #120 |  | Historia de Usuario | TDB | Gaby|
+| #121 |  | Historia de Usuario | TBD | Gaby |
+| #122 |  | Historia de Usuario | TBD | Isa |
+| #123 |  | Historia de Usuario | TBD | Isa |
 | #114 |  Como administrador de WiseTrip quiero rehacer el diagrama de clases del patrón GoF decorador, para que refleje con claridad el código refactorizado | Historia de Usuario | TBD | Clavijo |
 | #125 | Como administrador de WiseTrip, quiero organizar la estructura de paquetes y archivos para que el equipo entienda cómo se relacionan sus partes y pueda mantenerlas de forma ordenada.  | Historia de Usuario | TBD | Clavijo |
 
@@ -5627,13 +5627,15 @@ no
 
 1. **¿Qué hice ayer?**
 
-
+Realizamos el planning y nos dimos cuenta que debemos refatorizar mas partes del codigo antes de hacer los diagramas
 
 2. **¿Qué voy a hacer hoy?**
 
-
+Iniciar a hacer alguna refactorizacion del codigo y cuando ya hayamos terminado iniciar con los diagramas que es lo que mas nos importa en este momento
    
 3. **¿Tengo algún impedimento o bloqueo?**
+
+Tiempo
 
 
    
@@ -5692,6 +5694,84 @@ no
 
 ---
 
+## Daily Sprint - 28/10/2026
+
+### Isabella Posada
+
+1. **¿Qué hice ayer?**
+
+Ayer tuvimos la clase deprueba y revise las paginas que nos habia dicho el profe
+   
+2. **¿Qué voy a hacer hoy?**
+
+Hoy voy a descargar el visualparadigm porque no lo tengo y empezar a revisar el codigo refactorizado que se hizo en el sprint anterior, para ver que hace falta y poder empezar el diagrama de interfaces de recomendaciones.
+   
+3. **¿Tengo algún impedimento o bloqueo?**
+
+tengo un parcial y una entrega de otras materias entonces no voy a poner tener tanto tiempo hoy
+
+---
+
+### Valeria Cortes Rendon
+
+1. **¿Qué hice ayer?**
+
+iniciamos con la refactorizacion del codigo y tuvimos clase de pruebas empezamos a mirar que pruebas podriamos realizar
+
+2. **¿Qué voy a hacer hoy?**
+
+Descargar visual e iniciar los diagramas que se puedan hacer ya que si dejamos para lo ultimo puede que no alcancemos a terminarlos correctamente
+   
+3. **¿Tengo algún impedimento o bloqueo?**
+
+Tiempo
+   
+---
+
+### Santiago Clavijo
+
+1. **¿Qué hice ayer?**
+
+
+
+2. **¿Qué voy a hacer hoy?**
+
+
+3. **¿Tengo algún impedimento o bloqueo?**
 
 
 ---
+
+### Gabriela Melo Gualteros
+
+1. **¿Qué hice ayer?**
+
+
+
+2. **¿Qué voy a hacer hoy?**
+
+
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+
+
+---
+
+
+### Maria Alejandra Rodriguez
+
+1. **¿Qué hice ayer?** 
+
+Hice par de modificaciones del codigo respecto a algunas interfaces para poder empezar a hacer los diagramas
+
+2. **¿Qué voy a hacer hoy?** 
+
+Hoy voy a iniciar con el diseño de interfaces como fue planeado por el grupo
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+no
+
+
+
