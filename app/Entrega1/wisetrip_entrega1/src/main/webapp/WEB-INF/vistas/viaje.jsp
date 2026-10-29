@@ -37,7 +37,36 @@
         <a href="#itinerario">Itinerario</a>
         <a href="#antes-de-viajar">Antes de viajar</a>
     </nav>
+
+    <div class="vj-opciones">
+        <span class="vj-rotulo">Opciones</span>
+        <button type="button" class="vj-opcion" id="vjEditarPresupuesto">
+            <strong>Editar presupuesto</strong>
+            <span>Vuelve a escoger cuánto vas a gastar</span>
+        </button>
+        <a class="vj-opcion" href="<c:url value='/recomendaciones'/>">
+            <strong>¿Estás pensando en un mejor destino?</strong>
+            <span>Escoge nuevamente tu destino</span>
+        </a>
+    </div>
 </aside>
+
+<%-- Aviso antes de editar el presupuesto --%>
+<dialog class="vj-dialogo" id="vjDialogoPresupuesto" aria-labelledby="vjDialogoTitulo">
+    <h2 id="vjDialogoTitulo">Antes de editar tu presupuesto</h2>
+    <p>
+        La idea de WiseTrip es que tu viaje quepa en el presupuesto que
+        <strong>tú mismo definiste</strong>, sin gastar de más.
+    </p>
+    <p>
+        Si sigues las actividades como te las planteamos, tu presupuesto
+        te alcanza. ¿Seguro que quieres cambiarlo?
+    </p>
+    <form method="dialog" class="vj-dialogo-acciones">
+        <button type="submit" class="vj-btn" autofocus>Seguir con mi plan</button>
+        <a class="vj-enlace" href="<c:url value='/presupuesto'/>">Sí, editar presupuesto</a>
+    </form>
+</dialog>
 
 <main class="vj-pantalla" id="vjViaje"
       data-total="${presupuesto.monto}"

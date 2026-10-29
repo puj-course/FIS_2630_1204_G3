@@ -86,4 +86,16 @@
         mostrarSeccion(location.hash.slice(1));
     });
     mostrarSeccion(location.hash.slice(1));
+
+    /* ===== Editar presupuesto: primero el aviso ===== */
+
+    var dialogo = document.getElementById('vjDialogoPresupuesto');
+    document.getElementById('vjEditarPresupuesto').addEventListener('click', function () {
+        if (typeof dialogo.showModal === 'function') {
+            dialogo.showModal();
+        } else {
+            // navegador sin <dialog>: va directo a editar
+            location.href = dialogo.querySelector('a').href;
+        }
+    });
 })();
