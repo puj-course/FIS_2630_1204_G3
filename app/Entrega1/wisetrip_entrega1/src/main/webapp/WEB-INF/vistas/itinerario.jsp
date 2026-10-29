@@ -305,7 +305,25 @@
         </section>
 
         <section class="it-caja it-proxima">
-            <h2 class="it-caja-titulo">Próxima actividad</h2>
+            <h2 class="it-caja-titulo">
+                <svg class="it-titulo-icono" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="2.4"/>
+                    <path d="M12 7.5V12l3 2" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+                </svg>
+                Próxima actividad
+            </h2>
+
+            <div class="it-proxima-tarjeta" id="itProxima" hidden>
+                <span class="it-foto it-proxima-foto" id="itProximaFoto"></span>
+                <div>
+                    <strong id="itProximaNombre"></strong>
+                    <span id="itProximaCuando"></span>
+                </div>
+            </div>
+
+            <p class="it-proxima-vacia" id="itProximaVacia">
+                Aún no tienes actividades programadas. Arrastra una al calendario.
+            </p>
         </section>
 
         <section class="it-caja it-final">

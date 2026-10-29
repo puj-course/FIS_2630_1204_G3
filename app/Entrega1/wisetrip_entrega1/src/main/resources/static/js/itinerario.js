@@ -101,11 +101,55 @@
         });
     }
 
+    /* ===== Próxima actividad ===== */
+
+    // fecha "2026-11-21" + hora "14" -> Date local
+    function momentoDe(tarjeta) {
+        var p = tarjeta.dataset.fecha.split('-');
+        return new Date(+p[0], +p[1] - 1, +p[2], +tarjeta.dataset.hora);
+    }
+
+    // 14 -> "2:00 p. m."
+    function horaLegible(hora) {
+        var h = +hora;
+        return (h % 12 || 12) + ':00 ' + (h < 12 ? 'a. m.' : 'p. m.');
+    }
+
+    function actualizarProxima() {
+        var ahora = new Date();
+        var proxima = null;
+
+        raiz.querySelectorAll('.it-cal-celda .it-actividad').forEach(function (t) {
+            var momento = momentoDe(t);
+            if (momento >= ahora && (!proxima || momento < momentoDe(proxima))) {
+                proxima = t;
+            }
+        });
+
+        document.getElementById('itProxima').hidden = !proxima;
+        document.getElementById('itProximaVacia').hidden = !!proxima;
+        if (!proxima) return;
+
+        var dia = raiz.querySelector('.it-cal-dia[data-fecha="' + proxima.dataset.fecha + '"]');
+        document.getElementById('itProximaNombre').textContent =
+            proxima.querySelector('strong').textContent;
+        document.getElementById('itProximaCuando').textContent =
+            dia.querySelector('span').textContent + ' ' + dia.querySelector('strong').textContent +
+            ' · ' + horaLegible(proxima.dataset.hora);
+
+        // reutiliza la foto de la actividad si la tiene; si no, queda la plantilla
+        var foto = document.getElementById('itProximaFoto');
+        var img = proxima.querySelector('.it-foto img');
+        foto.innerHTML = '';
+        if (img) foto.appendChild(img.cloneNode());
+    }
+
     // todo lo que depende de dónde están las actividades
     function refrescar() {
         actualizarDiasVacios();
         actualizarPresupuesto();
         actualizarGastosPorCategoria();
+        actualizarProxima();
     }
 
     /* ===== Tarjetas ===== */

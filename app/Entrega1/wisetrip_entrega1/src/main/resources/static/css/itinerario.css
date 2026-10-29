@@ -320,7 +320,8 @@
 .it-recomendada { --c: #FFE9A8; }
 
 /* Espacio para la foto; sin foto se ve el recuadro de plantilla */
-.it-actividad .it-foto {
+.it-actividad .it-foto,
+.it-proxima-foto {
     display: block;
     position: relative;
     height: 74px;
@@ -626,3 +627,37 @@
     .it-consejo summary { grid-template-columns: auto 1fr auto; }
     .it-consejo-texto { grid-column: 1 / -1; order: 1; }
 }
+
+/* ===== Próxima actividad ===== */
+
+.it-proxima-tarjeta {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 12px;
+    background: var(--crema);
+    border: 2.5px solid var(--tinta);
+    border-radius: 14px;
+}
+
+.it-proxima-tarjeta[hidden],
+.it-proxima-vacia[hidden] { display: none; }
+
+/* Mismo recuadro de plantilla que las recomendadas, pero fijo y cuadrado */
+.it-proxima-tarjeta .it-proxima-foto {
+    width: 84px; height: 72px;
+    margin: 0;
+    flex-shrink: 0;
+}
+
+.it-proxima-tarjeta strong { display: block; font-size: 17px; line-height: 1.25; }
+
+.it-proxima-tarjeta span:not(.it-foto) {
+    display: block;
+    margin-top: 4px;
+    font-family: var(--dato);
+    font-size: 13px;
+    color: var(--gris);
+}
+
+.it-proxima-vacia { margin: 0; font-size: 14px; color: var(--gris); }
