@@ -51,9 +51,9 @@
             <h2 class="it-caja-titulo">Calendario</h2>
 
             <div class="it-cal-scroll">
-                <div class="it-cal" style="--dias: ${dias.size()}">
+                <div class="it-cal" style="--dias: ${diasCalendario.size()}">
                     <div class="it-cal-esquina">Horas</div>
-                    <c:forEach var="dia" items="${dias}">
+                    <c:forEach var="dia" items="${diasCalendario}">
                         <div class="it-cal-dia" data-fecha="${dia.fecha()}">
                             <span>${dia.nombreDia()}</span>
                             <strong>${dia.numero()} ${dia.mes()}</strong>
@@ -63,7 +63,7 @@
                     <%-- Clima: plantilla. Cuando haya API, cambiar la clase
                          it-clima-pendiente por it-clima-sol o it-clima-nube --%>
                     <div class="it-cal-hora">Clima</div>
-                    <c:forEach var="dia" items="${dias}">
+                    <c:forEach var="dia" items="${diasCalendario}">
                         <div class="it-clima it-clima-pendiente"
                              data-fecha="${dia.fecha()}"
                              title="Pronóstico del clima: próximamente">
@@ -79,7 +79,7 @@
 
                     <c:forEach var="hora" begin="8" end="20" step="2">
                         <div class="it-cal-hora">${hora}:00</div>
-                        <c:forEach var="dia" items="${dias}">
+                        <c:forEach var="dia" items="${diasCalendario}">
                             <div class="it-cal-celda"
                                  data-fecha="${dia.fecha()}"
                                  data-hora="${hora}"></div>

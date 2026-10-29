@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.wisetrip.modelo.DiaItinerario;
 import com.wisetrip.modelo.FechasViaje;
 import com.wisetrip.modelo.Presupuesto;
 import com.wisetrip.modelo.RepartoPresupuesto;
@@ -21,7 +22,8 @@ import jakarta.servlet.http.HttpSession;
 
 /**
  * HU#69 y HU#79: permite al viajero repartir su presupuesto entre las
- * categorías de gasto del viaje y ver la página principal del viaje.
+ * categorías de gasto del viaje y ver la página principal del viaje
+ * con su itinerario.
  *
  * GRASP Controlador: recibe las peticiones web y delega el trabajo.
  * SOLID Inversión de dependencias: depende de la interfaz de negocio
@@ -90,8 +92,48 @@ public class PlanControlador {
         model.addAttribute("presupuesto", presupuesto);
         model.addAttribute("reparto", reparto);
         model.addAttribute("dias", fechas.getDuracionDias());
+        cargarItinerario(model, fechas, presupuesto);
 
         return "viaje";
+    }
+
+    @GetMapping("/itinerario")
+    public String mostrarItinerario(HttpSession sesion, Model model) {
+
+        Usuario usuario = (Usuario) sesion.getAttribute("usuarioActivo");
+        if (usuario == null) return "redirect:/login";
+
+        ResultadoRecomendacion destino =
+                (ResultadoRecomendacion) sesion.getAttribute("destinoElegido");
+        if (destino == null) return "redirect:/recomendaciones";
+
+        FechasViaje fechas = (FechasViaje) sesion.getAttribute("fechasViaje");
+        if (fechas == null) return "redirect:/fechas";
+
+        Presupuesto presupuesto = (Presupuesto) sesion.getAttribute("presupuestoViaje");
+        if (presupuesto == null) return "redirect:/presupuesto";
+
+        model.addAttribute("usuario", usuario);
+        model.addAttribute("inicialesUsuario", usuario.iniciales());
+        model.addAttribute("destino", destino);
+        model.addAttribute("fechas", fechas);
+        model.addAttribute("presupuesto", presupuesto);
+        cargarItinerario(model, fechas, presupuesto);
+
+        return "itinerario";
+    }
+
+    /** Datos del calendario y del presupuesto en USD que usa el itinerario. */
+    private void cargarItinerario(Model model, FechasViaje fechas, Presupuesto presupuesto) {
+        double totalUsd = gestorPresupuesto.convertirAUsd(presupuesto);
+
+        model.addAttribute("diasCalendario", fechas.listarDias().stream()
+                .map(DiaItinerario::de)
+                .toList());
+        model.addAttribute("montoFormateado",
+                gestorPresupuesto.formatear(presupuesto.getMontoNumerico()));
+        model.addAttribute("totalUsd", totalUsd);
+        model.addAttribute("usdFormateado", gestorPresupuesto.formatear(totalUsd));
     }
 
     @PostMapping("/plan")
