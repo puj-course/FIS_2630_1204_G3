@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import com.wisetrip.modelo.DiaItinerario;
 import com.wisetrip.modelo.FechasViaje;
 import com.wisetrip.modelo.ResultadoRecomendacion;
 import com.wisetrip.modelo.Usuario;
@@ -36,6 +37,9 @@ public class ItinerarioControlador {
         model.addAttribute("inicialesUsuario", usuario.iniciales());
         model.addAttribute("destino", destino);
         model.addAttribute("fechas", fechas);
+        model.addAttribute("dias", fechas.listarDias().stream()
+                .map(DiaItinerario::de)
+                .toList());
 
         return "itinerario";
     }

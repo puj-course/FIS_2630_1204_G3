@@ -17,6 +17,7 @@ package com.wisetrip.modelo;
 import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
+import java.util.List;
 
 public class FechasViaje {
 
@@ -50,5 +51,14 @@ public class FechasViaje {
     LocalDate inicio = LocalDate.parse(fechaInicio);
     LocalDate fin = LocalDate.parse(fechaFin);
     return ChronoUnit.DAYS.between(inicio, fin) + 1;
+    }
+
+    // lista cada dia del viaje, del inicio al fin; vacia si las fechas no son validas
+    public List<LocalDate> listarDias() {
+        if (!tieneRangoValido()) {
+            return List.of();
+        }
+        LocalDate inicio = LocalDate.parse(fechaInicio);
+        return inicio.datesUntil(LocalDate.parse(fechaFin).plusDays(1)).toList();
     }
 }

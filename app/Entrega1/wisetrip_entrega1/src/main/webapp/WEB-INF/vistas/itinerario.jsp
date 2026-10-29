@@ -48,6 +48,18 @@
 
         <section class="it-caja it-calendario">
             <h2 class="it-caja-titulo">Calendario</h2>
+
+            <div class="it-cal-scroll">
+                <div class="it-cal" style="--dias: ${dias.size()}">
+                    <div class="it-cal-esquina">Horas</div>
+                    <c:forEach var="dia" items="${dias}">
+                        <div class="it-cal-dia" data-fecha="${dia.fecha()}">
+                            <span>${dia.nombreDia()}</span>
+                            <strong>${dia.numero()} ${dia.mes()}</strong>
+                        </div>
+                    </c:forEach>
+                </div>
+            </div>
         </section>
 
         <section class="it-caja it-actividades">

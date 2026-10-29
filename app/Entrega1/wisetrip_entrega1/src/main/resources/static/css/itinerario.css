@@ -77,3 +77,49 @@
     text-transform: uppercase;
     margin: 0 0 14px;
 }
+
+/* ===== Calendario ===== */
+
+/* Si el viaje tiene muchos días, el calendario se desplaza de lado */
+.it-cal-scroll {
+    overflow-x: auto;
+    border: 2.5px solid var(--tinta);
+    border-radius: 12px;
+}
+
+.it-cal {
+    display: grid;
+    grid-template-columns: 64px repeat(var(--dias), minmax(92px, 1fr));
+    min-width: min-content;
+}
+
+.it-cal-esquina,
+.it-cal-dia {
+    padding: 10px 8px;
+    border-bottom: 2.5px solid var(--tinta);
+    background: var(--turquesa-suave);
+    text-align: center;
+}
+
+.it-cal-dia { border-left: 2px solid var(--tinta); }
+
+.it-cal-esquina {
+    font-family: var(--dato);
+    font-size: 11px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.it-cal-dia span {
+    display: block;
+    font-family: var(--dato);
+    font-size: 11px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--gris);
+}
+
+.it-cal-dia strong { font-size: 14px; white-space: nowrap; }
