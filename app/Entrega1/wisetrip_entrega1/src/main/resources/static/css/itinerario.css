@@ -27,3 +27,53 @@
     margin: 0;
     max-width: 60ch;
 }
+
+/* ===== Grilla de zonas ===== */
+
+.it-grilla {
+    display: grid;
+    grid-template-columns: minmax(0, 2.2fr) minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-areas:
+        "calendario  actividades lateral"
+        "presupuesto consejos    consejos"
+        "gastos      consejos    consejos"
+        "proxima     final       final";
+    gap: 22px;
+    align-items: start;
+}
+
+@media (max-width: 980px) {
+    .it-grilla {
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-areas:
+            "calendario" "actividades" "lateral" "presupuesto"
+            "gastos" "consejos" "proxima" "final";
+    }
+}
+
+.it-calendario  { grid-area: calendario; }
+.it-actividades { grid-area: actividades; }
+.it-lateral     { grid-area: lateral; }
+.it-presupuesto { grid-area: presupuesto; }
+.it-consejos    { grid-area: consejos; }
+.it-gastos      { grid-area: gastos; }
+.it-proxima     { grid-area: proxima; }
+.it-final       { grid-area: final; }
+
+.it-caja {
+    background: #fff;
+    border: 3px solid var(--tinta);
+    border-radius: 18px;
+    box-shadow: 5px 5px 0 var(--tinta);
+    padding: 22px 22px 24px;
+    min-height: 140px;
+    min-width: 0;
+}
+
+.it-caja-titulo {
+    font-family: var(--display);
+    font-size: 18px;
+    letter-spacing: -.3px;
+    text-transform: uppercase;
+    margin: 0 0 14px;
+}

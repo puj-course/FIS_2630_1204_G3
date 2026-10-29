@@ -44,6 +44,42 @@
         </p>
     </section>
 
+    <div class="it-grilla">
+
+        <section class="it-caja it-calendario">
+            <h2 class="it-caja-titulo">Calendario</h2>
+        </section>
+
+        <section class="it-caja it-actividades">
+            <h2 class="it-caja-titulo">Actividades</h2>
+        </section>
+
+        <aside class="it-caja it-lateral">
+            <h2 class="it-caja-titulo">Checklist antes de viajar</h2>
+        </aside>
+
+        <section class="it-caja it-presupuesto">
+            <h2 class="it-caja-titulo">Presupuesto total</h2>
+        </section>
+
+        <section class="it-caja it-consejos">
+            <h2 class="it-caja-titulo">Consejos para tu viaje</h2>
+        </section>
+
+        <section class="it-caja it-gastos">
+            <h2 class="it-caja-titulo">Gastos estimados por categoría</h2>
+        </section>
+
+        <section class="it-caja it-proxima">
+            <h2 class="it-caja-titulo">Próxima actividad</h2>
+        </section>
+
+        <section class="it-caja it-final">
+            <h2 class="it-caja-titulo">Al final de actividades</h2>
+        </section>
+
+    </div>
+
 </main>
 
 </body>
