@@ -90,6 +90,27 @@
 
         <section class="it-caja it-actividades">
             <h2 class="it-caja-titulo">Actividades</h2>
+            <p class="it-caja-nota">Arrastra tus actividades al calendario</p>
+
+            <%-- Plantillas: reemplazar por las actividades reales del destino --%>
+            <ul class="it-lista-actividades" id="itListaActividades">
+                <li class="it-actividad vj-actividades" draggable="true" data-id="act-1">
+                    <strong>Recorrido por el centro</strong>
+                    <span>Actividad · 2 h</span>
+                </li>
+                <li class="it-actividad vj-actividades" draggable="true" data-id="act-2">
+                    <strong>Visita a un museo</strong>
+                    <span>Actividad · 2 h</span>
+                </li>
+                <li class="it-actividad vj-alimentacion" draggable="true" data-id="act-3">
+                    <strong>Almuerzo típico</strong>
+                    <span>Comida · 2 h</span>
+                </li>
+                <li class="it-actividad vj-transporte" draggable="true" data-id="act-4">
+                    <strong>Traslado al hotel</strong>
+                    <span>Transporte · 2 h</span>
+                </li>
+            </ul>
         </section>
 
         <aside class="it-caja it-lateral">

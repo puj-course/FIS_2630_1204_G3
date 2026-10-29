@@ -161,3 +161,45 @@
 
 .it-clima.it-clima-nube { color: var(--azul); }
 .it-clima.it-clima-nube .it-clima-nube { display: block; }
+
+/* ===== Panel de actividades ===== */
+
+.it-caja-nota {
+    font-size: 13.5px;
+    color: var(--gris);
+    margin: -8px 0 16px;
+}
+
+.it-lista-actividades {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* --c sale del color de la categoría (vj-actividades, vj-alimentacion...) */
+.it-actividad {
+    background: var(--c, var(--turquesa-suave));
+    border: 2.5px solid var(--tinta);
+    border-radius: 12px;
+    box-shadow: 3px 3px 0 var(--tinta);
+    padding: 10px 12px;
+    cursor: grab;
+    user-select: none;
+    transition: transform .12s ease, box-shadow .12s ease;
+}
+
+.it-actividad:hover { transform: translate(-1px, -1px); box-shadow: 4px 4px 0 var(--tinta); }
+.it-actividad:active { cursor: grabbing; }
+
+.it-actividad strong { display: block; font-size: 14px; line-height: 1.3; }
+
+.it-actividad span {
+    display: block;
+    font-family: var(--dato);
+    font-size: 11px;
+    letter-spacing: .04em;
+    margin-top: 3px;
+}
