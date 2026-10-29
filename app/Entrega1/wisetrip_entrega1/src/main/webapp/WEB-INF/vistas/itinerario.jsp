@@ -216,7 +216,56 @@
         </section>
 
         <section class="it-caja it-consejos">
-            <h2 class="it-caja-titulo">Consejos para tu viaje</h2>
+            <h2 class="it-caja-titulo">
+                <svg class="it-titulo-icono it-icono-amarillo" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2V16h5v-.1c0-.8.4-1.5 1-2A6 6 0 0 0 12 3z" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/>
+                </svg>
+                Consejos para tu viaje
+            </h2>
+
+            <%-- Plantillas: cambiar los textos por consejos reales del destino --%>
+            <div class="it-consejos-lista">
+                <details class="it-consejo vj-alimentacion">
+                    <summary>
+                        <span class="it-gasto-icono">
+                            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <path d="M8 4 4 6.5l2 3.5 2-1V20h8V9l2 1 2-3.5L16 4a4 4 0 0 1-8 0z" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                        <strong>Clima</strong>
+                        <span class="it-consejo-texto">Lleva ropa ligera y un suéter para las noches.</span>
+                    </summary>
+                    <p>Revisa el pronóstico de ${destino.ciudad.nombre} unos días antes de salir y empaca por capas: así te adaptas al calor del día y al fresco de la noche.</p>
+                </details>
+
+                <details class="it-consejo vj-imprevistos">
+                    <summary>
+                        <span class="it-gasto-icono">
+                            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <rect x="3" y="5.5" width="18" height="13" rx="2.5" stroke="currentColor" stroke-width="2.2"/>
+                                <path d="M3 10h18M7 15h4" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+                            </svg>
+                        </span>
+                        <strong>Pagos</strong>
+                        <span class="it-consejo-texto">Muchos lugares aceptan tarjeta, pero lleva algo de efectivo.</span>
+                    </summary>
+                    <p>Avisa a tu banco que vas a viajar a ${destino.ciudad.pais} y ten a mano efectivo en moneda local para transporte, propinas y mercados.</p>
+                </details>
+
+                <details class="it-consejo vj-hospedaje">
+                    <summary>
+                        <span class="it-gasto-icono">
+                            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <path d="M12 3 4 6v6c0 4.5 3.4 8 8 9 4.6-1 8-4.5 8-9V6z" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/>
+                                <path d="M8.5 12l2.5 2.5L15.5 10" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                        <strong>Seguridad</strong>
+                        <span class="it-consejo-texto">Zona turística segura, mantén tus pertenencias a la vista.</span>
+                    </summary>
+                    <p>Guarda una copia digital de tu pasaporte y comparte tu itinerario con alguien de confianza antes de salir.</p>
+                </details>
+            </div>
         </section>
 
         <section class="it-caja it-gastos">
