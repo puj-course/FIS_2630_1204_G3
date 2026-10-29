@@ -52,11 +52,13 @@ public class ItinerarioControlador {
                 .map(DiaItinerario::de)
                 .toList());
 
+        double totalUsd = gestorPresupuesto.convertirAUsd(presupuesto);
+
         model.addAttribute("presupuesto", presupuesto);
         model.addAttribute("montoFormateado",
                 gestorPresupuesto.formatear(presupuesto.getMontoNumerico()));
-        model.addAttribute("usdFormateado",
-                gestorPresupuesto.formatear(gestorPresupuesto.convertirAUsd(presupuesto)));
+        model.addAttribute("totalUsd", totalUsd);
+        model.addAttribute("usdFormateado", gestorPresupuesto.formatear(totalUsd));
 
         return "itinerario";
     }

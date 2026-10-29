@@ -20,7 +20,7 @@
         delete tarjeta.dataset.fecha;
         delete tarjeta.dataset.hora;
         document.getElementById(tarjeta.dataset.origen).appendChild(tarjeta);
-        actualizarDiasVacios();
+        refrescar();
     }
 
     // la celda tiene una actividad distinta a la que se está moviendo
@@ -61,6 +61,38 @@
                 celdas[0].appendChild(mensaje);
             }
         });
+    }
+
+    /* ===== Presupuesto ===== */
+
+    // a partir de este porcentaje gastado se muestra la alerta roja
+    var LIMITE_ALERTA = 0.9;
+    var cajaPresupuesto = document.getElementById('itPresupuesto');
+    var totalUsd = parseFloat(cajaPresupuesto.dataset.totalUsd) || 0;
+
+    // suma el costo (USD) de las actividades que ya están en el calendario
+    function gastadoEnCalendario() {
+        var suma = 0;
+        raiz.querySelectorAll('.it-cal-celda .it-actividad').forEach(function (t) {
+            suma += parseFloat(t.dataset.costo) || 0;
+        });
+        return suma;
+    }
+
+    function actualizarPresupuesto() {
+        var gastado = gastadoEnCalendario();
+        var cerca = totalUsd > 0 && gastado >= totalUsd * LIMITE_ALERTA;
+
+        document.getElementById('itGastado').textContent =
+            'US$ ' + gastado.toLocaleString('en-US');
+        document.getElementById('itAlertaRoja').hidden = !cerca;
+        document.getElementById('itAlertaVerde').hidden = cerca;
+    }
+
+    // todo lo que depende de dónde están las actividades
+    function refrescar() {
+        actualizarDiasVacios();
+        actualizarPresupuesto();
     }
 
     /* ===== Tarjetas ===== */
@@ -146,9 +178,9 @@
             arrastrada.dataset.fecha = celda.dataset.fecha;
             arrastrada.dataset.hora = celda.dataset.hora;
             celda.appendChild(arrastrada);
-            actualizarDiasVacios();
+            refrescar();
         });
     });
 
-    actualizarDiasVacios();
+    refrescar();
 })();

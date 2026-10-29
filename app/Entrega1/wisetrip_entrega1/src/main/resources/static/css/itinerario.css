@@ -494,3 +494,47 @@
 
 .it-presupuesto-usd .vj-rotulo { margin-bottom: 2px; }
 .it-presupuesto-usd strong { font-family: var(--dato); font-size: 15px; }
+
+/* ===== Alertas del presupuesto ===== */
+
+.it-gastado {
+    font-size: 14px;
+    color: var(--gris);
+    margin: 18px 0 12px;
+}
+
+.it-gastado strong { font-family: var(--dato); color: var(--tinta); }
+
+.it-alerta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 14px;
+    border: 2.5px solid var(--tinta);
+    border-radius: 12px;
+    box-shadow: 3px 3px 0 var(--tinta);
+}
+
+.it-alerta[hidden] { display: none; }
+
+.it-alerta p { margin: 0; font-size: 14px; font-weight: 600; line-height: 1.4; }
+.it-alerta a { color: inherit; }
+
+.it-alerta-icono {
+    width: 28px; height: 28px;
+    flex-shrink: 0;
+    border: 2.5px solid var(--tinta);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--display);
+    font-size: 14px;
+    color: #fff;
+}
+
+.it-alerta-roja { background: #FDE3EC; }
+.it-alerta-roja .it-alerta-icono { background: #C2185B; }
+
+.it-alerta-verde { background: #E3F4E4; }
+.it-alerta-verde .it-alerta-icono { background: var(--verde); color: var(--tinta); }

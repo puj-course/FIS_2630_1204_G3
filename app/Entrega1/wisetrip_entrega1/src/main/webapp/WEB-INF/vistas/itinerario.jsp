@@ -94,21 +94,21 @@
 
             <%-- Plantillas: reemplazar por las actividades reales del destino --%>
             <ul class="it-lista-actividades" id="itListaActividades">
-                <li class="it-actividad vj-actividades" draggable="true" data-id="act-1">
+                <li class="it-actividad vj-actividades" draggable="true" data-id="act-1" data-costo="15">
                     <strong>Recorrido por el centro</strong>
-                    <span>Actividad · 2 h</span>
+                    <span>Actividad · 2 h · US$ 15</span>
                 </li>
-                <li class="it-actividad vj-actividades" draggable="true" data-id="act-2">
+                <li class="it-actividad vj-actividades" draggable="true" data-id="act-2" data-costo="12">
                     <strong>Visita a un museo</strong>
-                    <span>Actividad · 2 h</span>
+                    <span>Actividad · 2 h · US$ 12</span>
                 </li>
-                <li class="it-actividad vj-alimentacion" draggable="true" data-id="act-3">
+                <li class="it-actividad vj-alimentacion" draggable="true" data-id="act-3" data-costo="10">
                     <strong>Almuerzo típico</strong>
-                    <span>Comida · 2 h</span>
+                    <span>Comida · 2 h · US$ 10</span>
                 </li>
-                <li class="it-actividad vj-transporte" draggable="true" data-id="act-4">
+                <li class="it-actividad vj-transporte" draggable="true" data-id="act-4" data-costo="8">
                     <strong>Traslado al hotel</strong>
-                    <span>Transporte · 2 h</span>
+                    <span>Transporte · 2 h · US$ 8</span>
                 </li>
             </ul>
 
@@ -123,19 +123,19 @@
             <%-- Plantillas: poner las fotos en static/img/itinerario/ con estos
                  nombres. Si la foto no existe, se ve el recuadro de plantilla. --%>
             <ul class="it-lista-actividades" id="itListaRecomendadas">
-                <li class="it-actividad it-recomendada" draggable="true" data-id="rec-1">
+                <li class="it-actividad it-recomendada" draggable="true" data-id="rec-1" data-costo="5">
                     <span class="it-foto">
                         <img src="/img/itinerario/recomendada-1.jpg" alt="" onerror="this.remove()">
                     </span>
                     <strong>Mirador de la ciudad</strong>
-                    <span>Recomendada · 2 h</span>
+                    <span>Recomendada · 2 h · US$ 5</span>
                 </li>
-                <li class="it-actividad it-recomendada" draggable="true" data-id="rec-2">
+                <li class="it-actividad it-recomendada" draggable="true" data-id="rec-2" data-costo="6">
                     <span class="it-foto">
                         <img src="/img/itinerario/recomendada-2.jpg" alt="" onerror="this.remove()">
                     </span>
                     <strong>Mercado local</strong>
-                    <span>Recomendada · 2 h</span>
+                    <span>Recomendada · 2 h · US$ 6</span>
                 </li>
             </ul>
         </section>
@@ -178,7 +178,8 @@
 
         <section class="it-caja it-presupuesto" id="itPresupuesto"
                  data-total="${presupuesto.montoNumerico}"
-                 data-moneda="${presupuesto.moneda}">
+                 data-moneda="${presupuesto.moneda}"
+                 data-total-usd="${totalUsd}">
             <h2 class="it-caja-titulo">
                 <svg class="it-titulo-icono" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                     <path d="M5 20V12M10 20V6M15 20v-9M20 20V4" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/>
@@ -194,6 +195,23 @@
                     <span class="vj-rotulo">Equivale a</span>
                     <strong>US$ ${usdFormateado}</strong>
                 </div>
+            </div>
+
+            <p class="it-gastado">
+                Actividades en el calendario: <strong id="itGastado">US$ 0</strong>
+            </p>
+
+            <div class="it-alerta it-alerta-roja" id="itAlertaRoja" role="status" hidden>
+                <span class="it-alerta-icono">!</span>
+                <p>
+                    ¿Estás a punto de gastar el máximo de tu presupuesto?
+                    <a href="<c:url value='/plan'/>">¿Te gustaría acomodarlo?</a>
+                </p>
+            </div>
+
+            <div class="it-alerta it-alerta-verde" id="itAlertaVerde" role="status">
+                <span class="it-alerta-icono">✓</span>
+                <p>Vas súper bien, aún tienes presupuesto hábil.</p>
             </div>
         </section>
 
