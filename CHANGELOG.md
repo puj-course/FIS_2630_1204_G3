@@ -5661,15 +5661,15 @@ falta de tiempo
 
 1. **¿Qué hice ayer?**
 
-
+Ayer estuvimos en Sprint Planning y decidimos enfocarnos en la realizacion de nuevo de los diagramas teniendo en cuenta las correcciones que nos dio el profesor en la segunda entrega
 
 2. **¿Qué voy a hacer hoy?**
 
-
+Hoy voy a revisar si aun queda codigo del modulo en el que estoy trabajando que pueda eliminar si afectar su funcionamiento y recordar las correcciones del profesor para los diagramas
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
-
+tengo la entrega de dos proyectos
 
 ---
 
