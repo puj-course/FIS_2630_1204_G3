@@ -139,3 +139,25 @@
     border-left: 2px solid var(--tinta);
     border-top: 1.5px dashed var(--arena-honda);
 }
+
+/* ===== Clima por día ===== */
+
+.it-clima {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 0;
+    border-left: 2px solid var(--tinta);
+}
+
+.it-clima svg { width: 30px; height: 30px; display: none; }
+
+/* Plantilla mientras no haya pronóstico: sol en gris */
+.it-clima-pendiente { color: var(--gris-claro); }
+.it-clima-pendiente .it-clima-sol { display: block; opacity: .55; }
+
+.it-clima.it-clima-sol { color: var(--amarillo); }
+.it-clima.it-clima-sol .it-clima-sol { display: block; }
+
+.it-clima.it-clima-nube { color: var(--azul); }
+.it-clima.it-clima-nube .it-clima-nube { display: block; }
