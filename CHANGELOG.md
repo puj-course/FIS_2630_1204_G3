@@ -5776,6 +5776,10 @@ Hoy voy a iniciar con el diseño de interfaces como fue planeado por el grupo
 no
 
 ---
+<img width="1600" height="1200" alt="image" src="https://github.com/user-attachments/assets/304ed1ea-4dad-446f-b549-6d75b2977ea2" />
+
+---
+
 
 ## Daily Sprint - 29/10/2026
 
