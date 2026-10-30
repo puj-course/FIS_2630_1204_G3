@@ -5819,15 +5819,15 @@ no
 
 1. **¿Qué hice ayer?**
 
-
+descargue el visual paradigm en la maquina virtual
 
 2. **¿Qué voy a hacer hoy?**
 
-
+empece a hacer mis diagrama
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
-
+no
 
 ---
 
