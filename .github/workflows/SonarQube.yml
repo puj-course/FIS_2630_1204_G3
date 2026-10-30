@@ -38,14 +38,14 @@ jobs:
           restore-keys: ${{ runner.os }}-m2
 
       - name: Verificar ubicación del POM
-        run: test -f FIS_2630_1204_G3/app/Entrega1/wisetrip_entrega1/pom.xml
+        run: test -f app/Entrega1/wisetrip_entrega1/pom.xml
 
       - name: Build and analyze
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: >
           mvn -B
-          -f FIS_2630_1204_G3/app/Entrega1/wisetrip_entrega1/pom.xml
+          -f app/Entrega1/wisetrip_entrega1/pom.xml
           verify
           org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
           -Dsonar.projectKey=puj-course_FIS_2630_1204_G3
