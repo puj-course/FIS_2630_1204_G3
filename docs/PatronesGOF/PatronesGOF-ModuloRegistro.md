@@ -1,6 +1,6 @@
 # Patrones GoF en WiseTrip - Módulo de registro e inicio de sesión
 
-## 1. Strategy — "diferentes formas de avisarle a alguien"
+## 1. Strategy — "diferentes formas de avisarle a alguien" - Comportamental 
 
 **Problema de diseño :**  Al registrarse o iniciar sesion, nuestra aplicación debe avisarle al usuario de estos por diferentes canales si es la primera vez en ingresar - registrarse le llegara un mensaje a su correo mientras que si ya se encontraba registrado anteriormente solo le llegara un mensaje al Telegram. Mas adelante deberian entrar otros canales como SMS. 
 Sin un patron la clase UsuarioServicio tendria que conocer la informacion de cada canal teniendo de esta forma: 
@@ -9,7 +9,7 @@ Sin un patron la clase UsuarioServicio tendria que conocer la informacion de cad
 - Baja cohesion: la clase de Usuario tendria que armar las URLs de telegram y los mensajes SMTP 
 - Dificultad en pruebas: No se puede probar el registro sin correo ni Telegram reales.
 
-**Solucion directa:** if/else para para cada canal
+**Solucion directa:** if/else para para cada canal - Comportamental
 
 El Patrón Strategy consiste en programar contra una interfaz (INotificador) en lugar de contra clases concretas, permitiendo intercambiar algoritmos o implementaciones (como enviar por correo o por Telegram) en tiempo de ejecución sin alterar la lógica principal de la clase que los utiliza (UsuarioServicio).
 
@@ -115,7 +115,7 @@ Lo importante aqui es que `UsuarioServicio` nunca tiene que saber los detalles t
 
 ---
 
-## 2. Factory Method — El sistema arma el mensaje (y decide qué tipo de mensaje armar)
+## 2. Factory Method — El sistema arma el mensaje (y decide qué tipo de mensaje armar) - Creacional 
 
 El patrón **Factory Method** consiste en declarar un método de creación en una clase base (el **Creator**), sin que esa clase sepa qué objeto concreto va a crear. Son las **subclases** (los **ConcreteCreator**) las que, al heredar de esa clase base y sobreescribir el método, deciden qué objeto específico se construye. Así, el código cliente nunca escribe `new Notificacion(...)` directamente — en vez de eso, crea el "fabricante" correcto y le delega la construcción.
 
@@ -205,37 +205,6 @@ new CreadorNotificacionInicioSesion().notificar(usuario, usuario.getChatId(), no
 
 --- 
 
-## 3. Facade — UsuarioServicio como fachada
 
-Si usaramos AuthControlador como quien registra, valida, guarda en base de datos, coordina los DAO, notifica y realiza la logica de validacion tendria mucho acoplamiento por eso aplicamos el patrón Facade a través de una clase de servicio intermediaria que encapsula y unifica toda esa complejidad en un solo lugar, permitiendo que el controlador solo tenga que hacer una llamada limpia sin enterarse de los detalles internos.
+--- 
 
-`controlador/AuthControlador.java`
-
-```java
-private final IRegistroUsuario registro;   // <- la fachada
-
-public String procesarRegistro(...) {
-    Map<String, String> errores = registro.validarRegistro(usuario, confirmarPassword);
-    if (!errores.isEmpty()) { ... }
-    registro.registrar(usuario);   // <- una sola orden
-    ...
-}
-```
-
-Detrás de esa única llamada `registro.registrar(usuario)`:
-
-`servicio/UsuarioServicio.java`
-
-```java
-@Override
-public void registrar(Usuario usuario) {
-    usuario.normalizar();                                       // 1. limpia datos
-    repositorio.registrar(usuario);                             // 2. guarda en PostgreSQL
-    notificar(notificadorCorreo, usuario.getCorreo(),            // 3. arma y envía
-              Notificacion.bienvenida(usuario));                 //    el correo
-}
-```
-
-El controlador (`AuthControlador`) solo dice "registrar", sin enterarse de que por dentro pasan tres cosas distintas: normalizar, guardar y notificar.
-
----

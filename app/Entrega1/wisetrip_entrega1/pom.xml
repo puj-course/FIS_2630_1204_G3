@@ -18,6 +18,7 @@
 
     <properties>
         <java.version>25</java.version>
+        <sonar.organization>puj-course</sonar.organization>
     </properties>
 
     <dependencies>
@@ -65,6 +66,12 @@
             <groupId>org.glassfish.web</groupId>
             <artifactId>jakarta.servlet.jsp.jstl</artifactId>
             
+        </dependency>
+
+        <!-- Habilita DataSource administrado por Spring. -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jdbc</artifactId>
         </dependency>
 
         <dependency>

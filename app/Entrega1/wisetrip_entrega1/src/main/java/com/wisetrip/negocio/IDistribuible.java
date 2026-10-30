@@ -1,6 +1,8 @@
 package com.wisetrip.negocio;
 
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Interfaz de negocio del dominio: cualquier reparto de dinero entre
@@ -17,6 +19,9 @@ public interface IDistribuible {
 
     /** Porcentaje asignado a una categoría. */
     int porcentajeDe(String categoria);
+
+    /** Asigna un porcentaje a una categoría. */
+    void asignar(String categoria, int porcentaje);
 
     /** Suma de todos los porcentajes asignados. */
     int getTotal();
@@ -56,5 +61,14 @@ public interface IDistribuible {
     /** Dinero que le corresponde a una categoría sobre un presupuesto total. */
     default double montoDe(String categoria, double presupuestoTotal) {
         return presupuestoTotal * porcentajeDe(categoria) / 100.0;
+    }
+
+    /** Reparte el presupuesto total entre todas las categorías (clave → monto). */
+    default Map<String, Double> distribuir(double presupuestoTotal) {
+        Map<String, Double> montos = new LinkedHashMap<>();
+        for (String categoria : CATEGORIAS) {
+            montos.put(categoria, montoDe(categoria, presupuestoTotal));
+        }
+        return montos;
     }
 }

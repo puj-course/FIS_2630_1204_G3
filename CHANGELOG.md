@@ -179,17 +179,15 @@ Al no tener  retroalimentacion del la presentacion de la idea se me es dificll d
 
 ---
 
-# Sprint Review y Sprint Retrospective - 15/08/2026
+##  Sprint Review - 15/08/2026
+
+# Sprint Retrospective - 15/08/2026
 
 ## Maria Alejandra Rodriguez
-
-### Sprint Review
 
 1. **¿Qué logramos?**
 
    Logramos entender el funcionamiento de GitHub y organizar de manera efectiva las actividades del proyecto para que todo salga bien en tema de gestión.
-
-### Sprint Retrospective
 
 2. **¿Cómo trabajamos?**
 
@@ -203,13 +201,9 @@ Al no tener  retroalimentacion del la presentacion de la idea se me es dificll d
 
 ## Gabriela Melo Gualteros
 
-### Sprint Review
-
 1. **¿Qué logramos?**
 
    Se logró poder comprender varias funciones de GitHub, además de comenzar a realizar nuestro primer Sprint.
-
-### Sprint Retrospective
 
 2. **¿Cómo trabajamos?**
 
@@ -223,13 +217,9 @@ Al no tener  retroalimentacion del la presentacion de la idea se me es dificll d
 
 ## Valeria Cortes Rendon
 
-### Sprint Review
-
 1. **¿Qué logramos?**
 
    Logramos el aprendizaje de la nueva herramienta GitHub, realizamos actividades de investigación sobre el proyecto, planteamos de forma más formal nuestra propuesta de negocio y realizamos el Sprint Diario como también la entrega del taller de GitHub.
-
-### Sprint Retrospective
 
 2. **¿Cómo trabajamos?**
 
@@ -243,13 +233,9 @@ Al no tener  retroalimentacion del la presentacion de la idea se me es dificll d
 
 ## Isabella Posada
 
-### Sprint Review
-
 1. **¿Qué logramos?**
 
    Logramos empezar a aprender a trabajar en equipo, reconocer el trabajo de cada uno y ponernos de acuerdo para repartir las actividades del GitHub.
-
-### Sprint Retrospective
 
 2. **¿Cómo trabajamos?**
 
@@ -263,13 +249,9 @@ Al no tener  retroalimentacion del la presentacion de la idea se me es dificll d
 
 ## Santiago Clavijo
 
-### Sprint Review
-
 1. **¿Qué logramos?**
 
    Entender el funcionamiento de GitHub, y trabajar en nuestros primeros Issues.
-
-### Sprint Retrospective
 
 2. **¿Cómo trabajamos?**
 
@@ -663,17 +645,63 @@ codificar las primeras acciones de recolección de datos y estructura para el in
 
 ---
 
-# Sprint Review y Sprint Retrospective - 23/08/2026
+## Sprint Review - 23/08/2026
+
+## Información de la Sesión
+* **Fecha de la Review:** 23/08/2026
+* **Sprint Goal:** Implementar el flujo principal de WiseTrip, conectando las pantallas de registro e inicio de sesión, origen del viaje, preferencias, fechas, presupuesto y recomendaciones de destinos con la base de datos.
+
+---
+
+## Incremento Entregado
+
+Durante este Sprint se trabajó en la construcción del flujo principal de WiseTrip, buscando conectar las funcionalidades necesarias para que el usuario pueda ingresar su información de viaje y recibir recomendaciones según sus preferencias y presupuesto.
+
+Los principales componentes contemplados fueron:
+
+* Desarrollo de las pantallas del flujo inicial de la aplicación.
+* Implementación de la captura de preferencias, fechas y presupuesto del viaje.
+* Integración entre las pantallas y la base de datos para gestionar la información del usuario.
+* Desarrollo de la lógica para procesar las preferencias y generar recomendaciones de destinos.
+* Organización y revisión de las historias de usuario para dar seguimiento al avance del Sprint.
+
+---
+
+## Demostración
+
+- [x] Registro e inicio de sesión del usuario.
+- [x] Selección del lugar de origen y de las preferencias del viaje.
+- [x] Selección de fechas y presupuesto.
+- [x] Generación y visualización de destinos recomendados.
+- [x] Persistencia y consulta de la información en la base de datos.
+- [x] Navegación entre las pantallas del flujo principal.
+- [x] Mockup de las pantallas y como se podrian ver 
+
+---
+
+## Conclusión y Próximos Pasos
+
+El Sprint se enfocó en avanzar hacia una primera versión funcional de WiseTrip, priorizando el flujo principal de planificación de viajes y la comunicación con la base de datos.
+
+Como próximos pasos, se propone:
+
+* Verificar el cumplimiento de los criterios de aceptación de cada historia de usuario.
+* Completar las integraciones que se encuentren pendientes.
+* Realizar pruebas del flujo completo, desde el ingreso de la información hasta la visualización de las recomendaciones.
+* Corregir los errores identificados durante las pruebas.
+* Actualizar el Product Backlog según los resultados y las necesidades identificadas.
+
+**Feedback de los stakeholders:** Pendiente de registrar con base en los comentarios recibidos durante la revisión del producto.
+
+---
+
+# Sprint Retrospective - 23/08/2026
 
 ## Maria Alejandra Rodriguez
-
-### Sprint Review
 
 1. **¿Qué logramos?**
 
    Avanzamos en la definición de la base de datos, seleccionamos y justificamos las APIs a utilizar y dejamos planteada la lógica de conexión en el código además con este primer borrador del código nos da una perspectiva mucho más clara del rumbo y la construcción del proyecto.
-
-### Sprint Retrospective
 
 2. **¿Cómo trabajamos?**
 
@@ -688,13 +716,9 @@ codificar las primeras acciones de recolección de datos y estructura para el in
 
 ## Gabriela Melo Gualteros
 
-### Sprint Review
-
 1. **¿Qué logramos?**
 
    Pudimos reconocer varios acpectos en los que nos faltaba mejorar para la implementación de la metodologia SCRUM y con respecto al proyecto se pudo realizar una investigación profunda de las APIs de pasarela de pagos. Pudimos reconocer cual de las APIs de pasarelas de pago era por el momento la mas indicada.
-
-### Sprint Retrospective
 
 2. **¿Cómo trabajamos?**
 
@@ -708,13 +732,9 @@ codificar las primeras acciones de recolección de datos y estructura para el in
 
 ## Valeria Cortes Rendon
 
-### Sprint Review
-
 1. **¿Qué logramos?**
 
    Pudimos realizar la parte inicial de la base de datos y proponer como vamos a implementar las apis dentro de la pagina web
-
-### Sprint Retrospective
 
 2. **¿Cómo trabajamos?**
 
@@ -728,13 +748,9 @@ codificar las primeras acciones de recolección de datos y estructura para el in
 
 ## Isabella Posada
 
-### Sprint Review
-
 1. **¿Qué logramos?**
 
    Armamos la base de datos, armamos qué APIs usar, por qué escogimos esas y no otras, y hasta cómo se conecta técnicamente en el código, además que ya va teniendo forma el proyecto
-
-### Sprint Retrospective
 
 2. **¿Cómo trabajamos?**
 
@@ -749,13 +765,9 @@ codificar las primeras acciones de recolección de datos y estructura para el in
 
 ## Santiago Clavijo
 
-### Sprint Review
-
 1. **¿Qué logramos?**
 
    Logramos mejorar en el git la parte de la metodologia SCRUM y saber que API del clima vamos a usar por medio de una investigacion que quedo reflejada en un documento.
-
-### Sprint Retrospective
 
 2. **¿Cómo trabajamos?**
 
@@ -1159,19 +1171,65 @@ Hoy trate de desarrollar encima de lo que tenemos
   No
   <img width="1600" height="783" alt="WhatsApp Image 2026-08-29 at 6 09 59 PM" src="https://github.com/user-attachments/assets/762417df-568e-4ccb-922e-258c9fdfabbb" />
 
+---
 
-  # Sprint Review y Sprint Retrospective - 30/08/2026
+## Sprint Review - 30/08/2026
+## Información de la Sesión
+* **Fecha de la Review:** 30/08/2026
+* **Sprint Goal:** Consolidar la estructura del backend y la base de datos de WiseTrip, implementando la lógica inicial de recomendación de destinos según las preferencias y el presupuesto del usuario.
+
+---
+
+## Incremento Entregado
+
+Durante este Sprint se avanzó en la implementación de los componentes principales de WiseTrip, pasando de la planificación y el diseño a una primera estructura técnica funcional.
+
+Los principales avances documentados fueron:
+
+* Implementación inicial del backend para procesar la información ingresada por el usuario.
+* Ajuste del modelo de datos para incorporar ciudades, coordenadas geográficas, atributos y relaciones necesarias para recomendar destinos.
+* Desarrollo inicial de la lógica de recomendación, comparando las preferencias del usuario con las características de las ciudades.
+* Integración inicial con Geoapify para consultar puntos de interés a partir de las coordenadas geográficas.
+* Ajustes en las consultas externas para reducir solicitudes y facilitar el procesamiento de la información obtenida.
+
+---
+
+## Demostración
+
+- [x] Estructura del backend y organización de sus principales componentes.
+- [x] Modelo de base de datos actualizado para soportar las recomendaciones.
+- [x] Procesamiento de las preferencias del usuario para seleccionar destinos.
+- [x] Generación de un conjunto reducido de destinos recomendados.
+- [x] Integración inicial con Geoapify para consultar puntos de interés.
+- [x] Verificación del flujo de información entre el backend y la base de datos.
+
+---
+
+## Conclusión y Próximos Pasos
+
+Este Sprint representó un avance en la construcción técnica de WiseTrip, al comenzar a conectar la lógica de recomendación con la información almacenada y los servicios externos.
+
+Durante el desarrollo se identificó que el modelo de datos inicial necesitaba modificaciones para responder a las necesidades del algoritmo de recomendación. También se priorizaron las funcionalidades esenciales, dejando para etapas posteriores la implementación del módulo climático y la pasarela de pagos.
+
+Como próximos pasos, se propone:
+
+* Validar el funcionamiento integral del proceso de recomendación.
+* Realizar pruebas sobre la información almacenada y procesada por el backend.
+* Verificar el funcionamiento de las consultas a Geoapify.
+* Completar las integraciones pendientes entre las pantallas, el backend y la base de datos.
+* Actualizar el Product Backlog según los resultados de las pruebas y las funcionalidades pendientes.
+
+**Feedback de los stakeholders:** Pendiente de registrar con base en los comentarios recibidos durante la revisión del incremento.
+
+---
+
+# Sprint Retrospective - 30/08/2026
 
 ## Maria Alejandra Rodriguez
-
-### Sprint Review
 
 1. **¿Qué logramos?**
 
 Logre hacer las pantalla inicial, las de crear sesion y las de iniciar sesion, ademas de eso una pequeña encuesta desde donde sale o se ubica el viajero o de donde va a salir
-
-
-### Sprint Retrospective
 
 2. **¿Cómo trabajamos?**
 
@@ -1186,14 +1244,9 @@ Logre hacer las pantalla inicial, las de crear sesion y las de iniciar sesion, a
 
 ## Gabriela Melo Gualteros
 
-### Sprint Review
-
 1. **¿Qué logramos?**
 
 Se logro hacer las pantallas principales funcionales pero independientes de cada una.
-
-
-### Sprint Retrospective
 
 2. **¿Cómo trabajamos?**
 
@@ -1208,13 +1261,9 @@ Nos dividimos el trabajo, entre dos creaban la base de datos y los otros tres cr
 
 ## Valeria Cortes Rendon
 
-### Sprint Review
-
 1. **¿Qué logramos?**
 
 En esta semana termine la arquitectura de la base de datos junto con el documento explicativo de la misma
-
-### Sprint Retrospective
 
 2. **¿Cómo trabajamos?**
 
@@ -1229,13 +1278,9 @@ La falta de comunicacion ya que en la parte del front se estaba haciendo uso de 
 
 ## Isabella Posada
 
-### Sprint Review
-
 1. **¿Qué logramos?**
 
 Se logro integrar la base de datos con el código, además de la api Geoapify que devuelve y filtra las categorías de las 44 ciudades alrededor con latinoamerica, y se guardan los atributos.
-
-### Sprint Retrospective
 
 2. **¿Cómo trabajamos?**
 
@@ -1249,14 +1294,9 @@ Se logro integrar la base de datos con el código, además de la api Geoapify qu
 
 ## Santiago Clavijo
 
-### Sprint Review
-
 1. **¿Qué logramos?**
 
 Logramos completar las historias de usuario
-
-
-### Sprint Retrospective
 
 2. **¿Cómo trabajamos?**
 
@@ -1291,21 +1331,21 @@ Además, se busca garantizar que los datos ingresados sean validados correctamen
 
 | ID | Título | Tipo | Estimación | Responsable |
 |----|--------|------|------------|-------------|
-| #31 | Como usuario quiero ingresar con mi correo y contraseña en la pantalla de acceso, para autenticarme y gestionar mis viajes. | Historia de Usuario | TBD | Valeria |
-| #32 | Como viajero, quiero consultar los destinos disponibles con sus características principales, para comparar las ciudades y elegir la que mejor se adapte a mis preferencias. | Historia de Usuario | TBD | Valeria |
-| #33 | Como administrador del sistema quiero verificar que se rechacen datos inválidos, para asegurar coherencia en los datos. | Historia de Usuario | TBD | Valeria |
-| #34 | Como viajero, quiero revisar un resumen visual de la información ingresada para confirmar que todos los datos de mi viaje sean correctos antes de continuar. | Historia de Usuario | TBD | Isa |
-| #35 | Como usuario quiero que las ciudades sean accesibles en comparación a mi presupuesto y tiempo de viaje, para que las recomendaciones no se vean afectadas por mi dinero. | Historia de Usuario | TBD | Isa |
-| #36 | Como usuario, quiero recibir recomendaciones de destinos ubicados en Latinoamérica, para explorar opciones de viaje dentro de la región y conocer diferentes culturas. | Historia de Usuario | TBD | Isa |
-| #37 | Como viajero, quiero ingresar mis datos de viaje de forma continua y ordenada, para completar mi plan fácilmente sin tener que saltar entre páginas sueltas. | Historia de Usuario | TBD | Gaby |
-| #38 | Como viajero, quiero ver destinos preseleccionados según el presupuesto y fechas de mi viaje, para ahorrar tiempo en la búsqueda y encontrar rápidamente opciones a mi medida. | Historia de Usuario | TBD | Gaby |
-| #39 | Como viajero quiero que la información que ingreso en presupuesto, fechas y preferencias quede guardada mientras avanzo en el flujo del sistema, para no tener que ingresarla cada vez que retrocedo o continúo entre pantallas. | Historia de Usuario | TBD | Gaby |
-| #40 | Como viajero, quiero navegar de forma clara y continua entre las pantallas de WiseTrip, para completar fácilmente el proceso de planificación de mi viaje. | Historia de Usuario | TBD | Maleja |
-| #41 | Como viajero, quiero que la plataforma me indique con claridad qué datos faltan o son incorrectos, para completar el registro de mi viaje correctamente. | Historia de Usuario | TBD | Maleja |
-| #42 | Como viajero, quiero consultar el resumen de mi viaje con una estructura visual uniforme en cada pantalla, para ubicar rápidamente los datos importantes de mi itinerario y presupuesto. | Historia de Usuario | TBD | Maleja |
-| #43 | Como viajero quiero ver mientras completo las pantallas de presupuesto, fechas y preferencias, para saber en qué etapa de la planificación me encuentro y cuánto me falta. | Historia de Usuario | TBD | Clavijo |
-| #44 | Como viajero quiero poder regresar a una pantalla anterior sin perder los datos ya ingresados en las siguientes, para corregir o ajustar mi información sin repetir todo el proceso. | Historia de Usuario | TBD | Clavijo |
-| #45 | Como viajero quiero recibir una confirmación antes de salir del proceso de planificación sin haberlo terminado, para evitar perder accidentalmente los datos que ya ingresé. | Historia de Usuario | TBD | Clavijo |
+| #31 | Como usuario quiero ingresar con mi correo y contraseña en la pantalla de acceso, para autenticarme y gestionar mis viajes. | Historia de Usuario | 5 | Valeria |
+| #32 | Como viajero, quiero consultar los destinos disponibles con sus características principales, para comparar las ciudades y elegir la que mejor se adapte a mis preferencias. | Historia de Usuario | 5 | Valeria |
+| #33 | Como administrador del sistema quiero verificar que se rechacen datos inválidos, para asegurar coherencia en los datos. | Historia de Usuario | 5 | Valeria |
+| #34 | Como viajero, quiero revisar un resumen visual de la información ingresada para confirmar que todos los datos de mi viaje sean correctos antes de continuar. | Historia de Usuario | 5 | Isa |
+| #35 | Como usuario quiero que las ciudades sean accesibles en comparación a mi presupuesto y tiempo de viaje, para que las recomendaciones no se vean afectadas por mi dinero. | Historia de Usuario | 5 | Isa |
+| #36 | Como usuario, quiero recibir recomendaciones de destinos ubicados en Latinoamérica, para explorar opciones de viaje dentro de la región y conocer diferentes culturas. | Historia de Usuario | 3 | Isa |
+| #37 | Como viajero, quiero ingresar mis datos de viaje de forma continua y ordenada, para completar mi plan fácilmente sin tener que saltar entre páginas sueltas. | Historia de Usuario | 5 | Gaby |
+| #38 | Como viajero, quiero ver destinos preseleccionados según el presupuesto y fechas de mi viaje, para ahorrar tiempo en la búsqueda y encontrar rápidamente opciones a mi medida. | Historia de Usuario | 5 | Gaby |
+| #39 | Como viajero quiero que la información que ingreso en presupuesto, fechas y preferencias quede guardada mientras avanzo en el flujo del sistema, para no tener que ingresarla cada vez que retrocedo o continúo entre pantallas. | Historia de Usuario | 8 | Gaby |
+| #40 | Como viajero, quiero navegar de forma clara y continua entre las pantallas de WiseTrip, para completar fácilmente el proceso de planificación de mi viaje. | Historia de Usuario | 8 | Maleja |
+| #41 | Como viajero, quiero que la plataforma me indique con claridad qué datos faltan o son incorrectos, para completar el registro de mi viaje correctamente. | Historia de Usuario | 3 | Maleja |
+| #42 | Como viajero, quiero consultar el resumen de mi viaje con una estructura visual uniforme en cada pantalla, para ubicar rápidamente los datos importantes de mi itinerario y presupuesto. | Historia de Usuario | 5 | Maleja |
+| #43 | Como viajero quiero ver mientras completo las pantallas de presupuesto, fechas y preferencias, para saber en qué etapa de la planificación me encuentro y cuánto me falta. | Historia de Usuario | 3 | Clavijo |
+| #44 | Como viajero quiero poder regresar a una pantalla anterior sin perder los datos ya ingresados en las siguientes, para corregir o ajustar mi información sin repetir todo el proceso. | Historia de Usuario | 5 | Clavijo |
+| #45 | Como viajero quiero recibir una confirmación antes de salir del proceso de planificación sin haberlo terminado, para evitar perder accidentalmente los datos que ya ingresé. | Historia de Usuario | 8 | Clavijo |
 
 ## Riesgos / Bloqueos identificados
 
@@ -1761,18 +1801,61 @@ sigo sin entender muy bien el gitbash y sus comandos adicionales, como el merge 
 
 ---
 
-  # Sprint Review y Sprint Retrospective - 06/09/2026
+## Sprint Review - 06/09/2026
+
+## Información de la Sesión
+* **Fecha de la Review:** 06/10/2026
+* **Sprint Goal:** Mejorar la integración de los componentes de WiseTrip y avanzar en la consolidación del flujo de planificación de viajes, verificando el funcionamiento de las funcionalidades desarrolladas y su conexión con la base de datos.
+
+---
+
+## Incremento Entregado
+
+Durante este Sprint se plantea continuar con la integración de los componentes desarrollados en las etapas anteriores, buscando mejorar la continuidad del flujo de planificación de viajes.
+
+Los aspectos que deben verificarse en el incremento son:
+
+* Integración de las pantallas del usuario con la lógica del sistema.
+* Conexión entre el backend y la base de datos para gestionar la información del viaje.
+* Validación de las preferencias, fechas y presupuesto ingresados por el usuario.
+* Revisión de la generación y presentación de destinos recomendados.
+* Corrección de errores identificados durante las pruebas de las funcionalidades existentes.
+
+---
+
+## Demostración
+
+- [x] Flujo de navegación entre las pantallas principales.
+- [x] Registro y consulta de la información del viaje.
+- [x] Validación de las preferencias y del presupuesto.
+- [x] Visualización de los destinos recomendados.
+- [x] Verificación de la comunicación entre la interfaz, el backend y la base de datos.
+
+---
+
+## Conclusión y Próximos Pasos
+
+El objetivo de esta revisión es comprobar el nivel de integración alcanzado por los componentes de WiseTrip e identificar los aspectos que requieren ajustes antes de continuar con nuevas funcionalidades.
+
+Como próximos pasos, se propone:
+
+* Completar las funcionalidades que continúen pendientes.
+* Corregir los errores detectados durante las pruebas.
+* Verificar los criterios de aceptación de las historias de usuario.
+* Revisar la consistencia de la información almacenada en la base de datos.
+* Priorizar en el Product Backlog las mejoras y funcionalidades necesarias para el siguiente Sprint.
+
+**Feedback de los stakeholders:** Pendiente de registrar con base en los comentarios recibidos durante la revisión.
+
+---
+
+## Sprint Retrospective - 06/09/2026
 
 ## Maria Alejandra Rodriguez
-
-### Sprint Review
 
 1. **¿Qué logramos?**
    
 Logramos una implementacion bastante adelantada a nuestro proyecto con respecto a la base de datos y el diseño de la pagina web, sin embargo teniendo en cuenta la retroalimentacion arreglamos el repositorio con la ayuda de los monitores
-
-
-### Sprint Retrospective
 
 2. **¿Cómo trabajamos?**
 
@@ -1787,13 +1870,9 @@ Logramos una implementacion bastante adelantada a nuestro proyecto con respecto 
 
 ## Gabriela Melo Gualteros
 
-### Sprint Review
-
 1. **¿Qué logramos?**
 
 Logramos corregir bastante (si no todo) de lo que el profesor nos corrigio en la pre-entrega, porfin entendimos el fujo que lleva esta metodologia
-
-### Sprint Retrospective
 
 2. **¿Cómo trabajamos?**
 
@@ -1808,13 +1887,9 @@ La carga, habiamos entendido que tocaba entregar en 50% del proyecto entero cuan
 
 ## Valeria Cortes Rendon
 
-### Sprint Review
-
 1. **¿Qué logramos?**
 
 Mejorar todo el repositorio teniendo en cuenta las observaciones que nos hizo el profesor y el moitor
-
-### Sprint Retrospective
 
 2. **¿Cómo trabajamos?**
 
@@ -1829,34 +1904,25 @@ En el momento me gustaria que mis compañeros se unieran a la hora acordada a la
 
 ## Isabella Posada
 
-### Sprint Review
-
 1. **¿Qué logramos?**
 
-
-
-### Sprint Retrospective
+Esta semana logramos trabajar en equipo como nunca, gracias a la retroalimentación del profesor pudimos ponernos al día con la mayoría de aspectos que no teníamos desde el principio de la materia y se que seguiremos así el resto del tiempo
 
 2. **¿Cómo trabajamos?**
 
-
+Bastante bien, sabíamos que cumplir como grupo era lo más importante, y la paciencia y dedicación de cada uno logró que completáramos nuestro objetivo,
   
 3. **¿Qué podríamos mejorar?**
 
-
+Tal vez leer la rúbrica más, con mejor detalle, para no tener más malentendidos.
 
 ---
 
 ## Santiago Clavijo
 
-### Sprint Review
-
 1. **¿Qué logramos?**
 
 Esta semana gracias a la retroalimentacion del profesor pudimos asociar los commits a la mayoria de las historias de usuario, asi como corregir todas las historias de usuario con su formato invest, su DoD (definition of done), y en mi caso entendi mas como funciona git para futuros sprints ya que no me seguia quedando claro la parte de los commits.
-
-
-### Sprint Retrospective
 
 2. **¿Cómo trabajamos?**
 
@@ -1888,16 +1954,16 @@ Además, se pretende vincular correctamente las ciudades y sus características 
 
 | ID | Título | Tipo | Estimación | Responsable |
 |----|--------|------|------------|-------------|
-| #46 | Como viajero, quiero ver el logo de WiseTrip para identificar la marca de la aplicación y regresar al inicio con solo un clic. | Historia de Usuario | TBD | Valeria |
-| #47 | Como administrador de WiseTrip, quiero vincular las ciudades y sus características con el sistema, para clasificar los destinos según las elecciones del viajero y mostrarlos ubicados en el mapa sin errores. | Historia de Usuario | TBD | Valeria |
-| #48 | Como usuario, quiero que el registro y el inicio de sesión tengan el mismo estilo visual de WiseTrip, para reconocer fácilmente dónde ingresar mis datos y acceder a mi cuenta. | Historia de Usuario | TBD | Maleja |
-| #49 | Como viajero, quiero ingresar de dónde salgo mediante un diseño que mantenga el estilo de WiseTrip, para continuar con la planificación de mi viaje de forma sencilla. | Historia de Usuario | TBD | Maleja |
-| #50 | Como viajero, quiero elegir mis preferencias de viaje de forma visual e interactiva, para terminar la encuesta rápidamente y conocer mis destinos sugeridos. | Historia de Usuario | TBD | Gaby |
-| #51 | Como viajero, quiero seleccionar mis fechas en un calendario visual, para elegir el rango de días sin escribirlos manualmente. | Historia de Usuario | TBD | Gaby |
-| #52 | Como viajero, quiero indicar desde qué ciudad salgo, para organizar mi itinerario teniendo en cuenta mi lugar de partida. | Historia de Usuario | TBD | Isa |
-| #53 | Como viajero, quiero indicar qué me gusta hacer en mis vacaciones, para que la plataforma filtre y me muestre solo opciones afines a mí. | Historia de Usuario | TBD | Isa |
-| #54 | Como viajero, quiero que la interfaz tenga una tipografía legible y una selección de colores adecuada para que la información sea fácil de leer y comprender. | Historia de Usuario | TBD | Clavijo |
-| #55 | Como viajero, quiero ver el icono de cada bandera dependiendo la moneda escogida en el selector del presupuesto, para identificar más rápido la moneda que estoy escogiendo. | Historia de Usuario | TBD | Clavijo |
+| #46 | Como viajero, quiero ver el logo de WiseTrip para identificar la marca de la aplicación y regresar al inicio con solo un clic. | Historia de Usuario | 3 | Valeria |
+| #47 | Como administrador de WiseTrip, quiero vincular las ciudades y sus características con el sistema, para clasificar los destinos según las elecciones del viajero y mostrarlos ubicados en el mapa sin errores. | Historia de Usuario | 8| Valeria |
+| #48 | Como usuario, quiero que el registro y el inicio de sesión tengan el mismo estilo visual de WiseTrip, para reconocer fácilmente dónde ingresar mis datos y acceder a mi cuenta. | Historia de Usuario | 5 | Maleja |
+| #49 | Como viajero, quiero ingresar de dónde salgo mediante un diseño que mantenga el estilo de WiseTrip, para continuar con la planificación de mi viaje de forma sencilla. | Historia de Usuario | 5 | Maleja |
+| #50 | Como viajero, quiero elegir mis preferencias de viaje de forma visual e interactiva, para terminar la encuesta rápidamente y conocer mis destinos sugeridos. | Historia de Usuario | 5 | Gaby |
+| #51 | Como viajero, quiero seleccionar mis fechas en un calendario visual, para elegir el rango de días sin escribirlos manualmente. | Historia de Usuario | 8 | Gaby |
+| #52 | Como viajero, quiero indicar desde qué ciudad salgo, para organizar mi itinerario teniendo en cuenta mi lugar de partida. | Historia de Usuario | 8 | Isa |
+| #53 | Como viajero, quiero indicar qué me gusta hacer en mis vacaciones, para que la plataforma filtre y me muestre solo opciones afines a mí. | Historia de Usuario | 5 | Isa |
+| #54 | Como viajero, quiero que la interfaz tenga una tipografía legible y una selección de colores adecuada para que la información sea fácil de leer y comprender. | Historia de Usuario | 5 | Clavijo |
+| #55 | Como viajero, quiero ver el icono de cada bandera dependiendo la moneda escogida en el selector del presupuesto, para identificar más rápido la moneda que estoy escogiendo. | Historia de Usuario | 5 | Clavijo |
 
 ## Riesgos / Bloqueos identificados
 
@@ -2259,17 +2325,65 @@ No
 
 ---
 
-# Sprint Review y Sprint Retrospective - 13/09/2026
+# Sprint Review - 13/09/2026
+
+## Información de la Sesión
+
+* **Fecha de la Review:** 13/09/2026
+* **Sprint Goal:** Mejorar la experiencia visual e interactiva del flujo principal de WiseTrip (logo, registro e inicio de sesión, origen, preferencias, fechas y presupuesto) y vincular las ciudades con sus características para recomendar destinos según las preferencias del viajero.
+
+## Incremento Entregado
+
+Durante este Sprint se trabajó en darle a WiseTrip una identidad visual más consistente y una experiencia más fácil de usar para el viajero. También se avanzó en la parte de datos, conectando las ciudades con sus características para que el sistema pueda clasificar y recomendar destinos.
+
+Los principales componentes trabajados fueron:
+
+* **Logo de WiseTrip (HU-46):** se agregó el logo en las pantallas definidas y al hacer clic sobre él el viajero vuelve a la pantalla de inicio.
+* **Ciudades y características (HU-47):** se vincularon las ciudades con sus características para clasificar los destinos según las elecciones del viajero y ubicarlos en el mapa.
+* **Estilo del registro e inicio de sesión (HU-48):** se unificaron tipografías, títulos, botones, campos y mensajes de error con el estilo de WiseTrip, sin afectar el funcionamiento.
+* **Pantalla de origen (HU-49 y HU-52):** se aplicó el estilo de WiseTrip a los campos de país, ciudad y lugar de salida. El viajero selecciona primero el país y después la ciudad, dentro de las 44 ciudades principales de Latinoamérica, y el origen se guarda para continuar con la planificación.
+* **Preferencias de viaje (HU-50 y HU-53):** se rediseñó la pantalla de las 26 preguntas con íconos, tarjetas, retroalimentación al responder y barra de progreso. Además, las respuestas Sí/No se usan para filtrar y recomendar destinos, teniendo en cuenta el peso de cada atributo y diferenciando los atributos manuales de los que vienen de la API.
+* **Selección de fechas (HU-51):** se cambió el ingreso manual por un calendario visual donde se marca el rango del viaje, manteniendo las validaciones de fechas que ya existían.
+* **Legibilidad (HU-54):** se ajustaron la tipografía y los colores para mejorar la lectura y el contraste en las distintas pantallas.
+* **Selector de moneda (HU-55):** se agregó la bandera de cada país junto a la moneda en el selector de presupuesto, con el código de la moneda como respaldo si la bandera no carga.
+
+## Demostración
+
+Resumen de los puntos presentados durante la demo del producto:
+
+* [x] Logo de WiseTrip visible y navegación al inicio al hacer clic sobre él.
+* [x] Registro e inicio de sesión con el nuevo estilo visual.
+* [x] Selección de país y ciudad de origen (44 ciudades de Latinoamérica).
+* [x] Cuestionario de preferencias con íconos, tarjetas y barra de progreso.
+* [x] Selección del rango de fechas en el calendario visual.
+* [x] Selector de moneda con banderas en el presupuesto.
+* [x] Recomendación de destinos distintos según las respuestas "Sí" elegidas.
+* [x] Ciudades y sus características vinculadas, y destinos ubicados en el mapa.
+* [x] Tipografía y colores aplicados de forma consistente en las pantallas.
+
+## Conclusión y Próximos Pasos
+
+El Sprint se enfocó en mejorar la parte visual y la interacción del flujo principal de WiseTrip, y en conectar las ciudades con sus características para que las recomendaciones respondan a las preferencias del viajero.
+
+Como próximos pasos, se propone:
+
+* Verificar que cada historia de usuario cumpla sus criterios de aceptación y su Definition of Done.
+* Hacer pruebas del flujo completo, desde el registro hasta la recomendación final del destino.
+* Revisar con más pruebas la recomendación final, ya que el cálculo del peso de los atributos puede cambiar a medida que avance el proyecto (HU-53).
+* Probar el diseño en distintos dispositivos (escritorio y móvil).
+* Corregir los errores que se encuentren durante las pruebas.
+* Actualizar el Product Backlog según los resultados y las necesidades identificadas.
+
+**Feedback de los stakeholders:** Pendiente de registrar con base en los comentarios recibidos durante la revisión del producto.
+---
+
+# Sprint Retrospective - 13/09/2026
 
 ## Maria Alejandra Rodriguez
-
-### Sprint Review
 
 1. **¿Qué logramos?**
 
    Logramos muchos cambios esteticos de la pagina y de legibilidad para ella
-   
-### Sprint Retrospective
 
 2. **¿Cómo trabajamos?**
 
@@ -2283,13 +2397,9 @@ No
 
 ## Gabriela Melo Gualteros
 
-### Sprint Review
-
 1. **¿Qué logramos?**
 
    Pude corregir el diseño de dospantallas, mejoraron un monton la estetica de la pagina web
-
-### Sprint Retrospective
 
 2. **¿Cómo trabajamos?**
 
@@ -2303,13 +2413,9 @@ No
 
 ## Valeria Cortes Rendon
 
-### Sprint Review
-
 1. **¿Qué logramos?**
 
    Se realizaron cambios importantes en la interfaz de la pagina, se explico el funcionamiento de la base de datos
-
-### Sprint Retrospective
 
 2. **¿Cómo trabajamos?**
 
@@ -2323,13 +2429,9 @@ No
 
 ## Isabella Posada
 
-### Sprint Review
-
 1. **¿Qué logramos?**
 
    Esta semana avanzamos principalmente con las HUs de cada uno, en mi caso mejorando la selección de la ciudad de origen para que el usuario pueda indicar correctamente desde dónde inicia su viaje. También el enfoque fue hacia el diseño de la pagina, lo que demuestra que cada vez vamos afinando mejor WiseTrip.
-
-### Sprint Retrospective
 
 2. **¿Cómo trabajamos?**
 
@@ -2343,13 +2445,9 @@ No
 
 ## Santiago Clavijo
 
-### Sprint Review
-
 1. **¿Qué logramos?**
 
    Logramos acabar todas las historias de usuario satisfactoriamente cada uno y vamos a hacer merge de develop a main para subir todo el trabajo hecho
-
-### Sprint Retrospective
 
 2. **¿Cómo trabajamos?**
 
@@ -2384,16 +2482,16 @@ También se trabajará en la relación entre las preferencias seleccionadas y el
 
 | ID | Issue | Título | Tipo | Prioridad | Estimación | Responsable |
 |---|---|---|---|---|---|---|
-| HU-56 | #219 | Visualizar una bienvenida con el logo y nombre de WiseTrip al iniciar la aplicación | Historia de usuario | Media | TBD | Valeria |
-| HU-57 | #220 | Consultar una lista de chequeo de equipaje con elementos básicos para empacar | Historia de usuario | Media | TBD | Valeria |
-| HU-58 | #225 | Implementar una misma identidad visual durante todo el recorrido en WiseTrip | Historia de usuario | Media | TBD | Maleja |
-| HU-59 | #226 | Incorporar imágenes y elementos gráficos relacionados con los viajes | Historia de usuario | Media | TBD | Maleja |
-| HU-60 | #217 | Mostrar una imagen relacionada con el elemento principal de cada pregunta | Historia de usuario | Media | TBD | Gaby |
-| HU-61 | #218 | Mantener un texto claro y consistente entre las preguntas del cuestionario | Historia de usuario | Media | TBD | Gaby |
-| HU-62 | #223 | Permitir responder las preguntas de selección después de iniciar sesión | Historia de usuario | Media | TBD | Isa |
-| HU-63 | #224 | Relacionar la selección del viaje con las preferencias del usuario | Historia de usuario | Alta | TBD | Isa |
-| HU-64 | #222 | Mostrar la bandera de la moneda seleccionada en el resumen final del viaje | Historia de usuario | Media | TBD | Clavijo |
-| HU-65 | #221 | Mostrar correctamente el icono de la bandera junto al selector de moneda | Historia de usuario | Media | TBD | Clavijo |
+| HU-56 | #219 | Visualizar una bienvenida con el logo y nombre de WiseTrip al iniciar la aplicación | Historia de usuario | Media | 8 | Valeria |
+| HU-57 | #220 | Consultar una lista de chequeo de equipaje con elementos básicos para empacar | Historia de usuario | Media | 3 | Valeria |
+| HU-58 | #225 | Implementar una misma identidad visual durante todo el recorrido en WiseTrip | Historia de usuario | Media | 5 | Maleja |
+| HU-59 | #226 | Incorporar imágenes y elementos gráficos relacionados con los viajes | Historia de usuario | Media | 8 | Maleja |
+| HU-60 | #217 | Mostrar una imagen relacionada con el elemento principal de cada pregunta | Historia de usuario | Media | 8 | Gaby |
+| HU-61 | #218 | Mantener un texto claro y consistente entre las preguntas del cuestionario | Historia de usuario | Media | 3 | Gaby |
+| HU-62 | #223 | Permitir responder las preguntas de selección después de iniciar sesión | Historia de usuario | Media | 1 | Isa |
+| HU-63 | #224 | Relacionar la selección del viaje con las preferencias del usuario | Historia de usuario | Alta | 2 | Isa |
+| HU-64 | #222 | Mostrar la bandera de la moneda seleccionada en el resumen final del viaje | Historia de usuario | Media | 13 | Clavijo |
+| HU-65 | #221 | Mostrar correctamente el icono de la bandera junto al selector de moneda | Historia de usuario | Media | 8 | Clavijo |
 
 
 ---
@@ -2755,18 +2853,95 @@ hoy acabe la hu 65 y la subi al develop
 falta de tiempo
 
 ---
+# Sprint Review - 20/09/2026
 
-# Sprint Review y Sprint Retrospective - 20/09/2026
+## Información de la Sesión
+
+* **Fecha de la Review:** 20/09/2026
+* **Sprint Goal:** Mejorar la experiencia del usuario en WiseTrip mediante una identidad visual consistente, recursos gráficos asociados con los viajes, correcciones en el cuestionario de preferencias y nuevas funcionalidades que faciliten la planificación personalizada del viaje.
+
+---
+
+## Incremento Entregado
+
+> *Descripción detallada de las funcionalidades, componentes e integraciones completadas durante el Sprint.*
+
+Durante el Sprint se trabajó en un conjunto de mejoras funcionales y visuales orientadas a fortalecer la experiencia del viajero dentro de WiseTrip. El incremento desarrollado comprende los siguientes componentes:
+
+* **HU-56 – Pantalla de bienvenida:** Se incorporó una pantalla inicial con el logo y el nombre de WiseTrip, respetando la identidad visual de la plataforma y permitiendo la transición automática hacia la siguiente pantalla.
+
+* **HU-57 – Lista de chequeo de equipaje:** Se desarrolló una lista con elementos básicos para el viaje, mediante la cual el usuario puede marcar y desmarcar los artículos empacados e identificar fácilmente cuáles se encuentran pendientes.
+
+* **HU-58 – Identidad visual:** Se aplicó una identidad gráfica consistente en las diferentes secciones de WiseTrip, incluyendo colores, tipografías, botones, formularios, fondos y elementos destacados.
+
+* **HU-59 – Recursos gráficos relacionados con viajes:** Se incorporaron imágenes, íconos y elementos visuales asociados con las distintas etapas de planificación, procurando que estos recursos no interfieran con los formularios ni con la navegación.
+
+* **HU-60 – Ajuste de imágenes del cuestionario:** Se corrigió el recorte y posicionamiento de las imágenes utilizadas en las preguntas, de manera que el elemento principal de cada fotografía pueda visualizarse completamente.
+
+* **HU-61 – Redacción del cuestionario:** Se revisaron y ajustaron los textos de las preguntas para mantener una redacción clara, comprensible y consistente, conservando las claves utilizadas para almacenar las respuestas.
+
+* **HU-62 – Preguntas posteriores al inicio de sesión:** Se habilitó el acceso al cuestionario de selección después de que el usuario inicia sesión, permitiéndole avanzar entre las preguntas sin perder las respuestas seleccionadas.
+
+* **HU-63 – Recomendaciones según preferencias:** Se continuó trabajando en la conexión entre las preferencias del usuario y el algoritmo de recomendación, utilizando los atributos asociados con las ciudades para priorizar los destinos con mayor afinidad.
+
+* **HU-64 – Bandera de la moneda en el resumen:** Se incorporó en el resumen final del viaje la bandera correspondiente a la moneda seleccionada durante la elaboración del presupuesto.
+
+* **HU-65 – Corrección de banderas en el presupuesto:** Se corrigió la carga y visualización de los íconos de las banderas asociados con el selector de moneda, manteniendo la actualización al cambiar la moneda y las validaciones existentes del formulario.
+
+---
+
+## Demostración
+
+> *Resumen de los puntos presentados durante la demo del producto.*
+
+- [x] Visualización de la pantalla de bienvenida con el logo y nombre de WiseTrip.
+- [x] Transición desde la pantalla de bienvenida hacia la siguiente sección de la aplicación.
+- [x] Funcionamiento de la lista de chequeo de equipaje.
+- [x] Marcación y desmarcación de artículos empacados.
+- [x] Aplicación de la nueva identidad visual en las diferentes secciones de WiseTrip.
+- [x] Incorporación de imágenes, íconos y recursos gráficos relacionados con los viajes.
+- [x] Visualización completa del elemento principal en las imágenes del cuestionario.
+- [x] Revisión de la claridad y consistencia de las preguntas.
+- [x] Acceso al cuestionario después de iniciar sesión.
+- [x] Conservación de las respuestas seleccionadas al avanzar entre las preguntas.
+- [x] Generación de recomendaciones relacionadas con las preferencias del usuario.
+- [x] Visualización de la bandera de la moneda en el resumen final.
+- [x] Actualización de la bandera al cambiar la moneda en la pantalla de presupuesto.
+- [x] Verificación del funcionamiento de las banderas para las monedas disponibles.
+
+---
+
+## Conclusión y Próximos Pasos
+
+> *Comentarios de los stakeholders, feedback recibido y ajustes sugeridos para el Product Backlog.*
+
+* El Sprint permitió avanzar en la consolidación de una experiencia visual más uniforme, clara y relacionada con la temática de viajes.
+
+* Las mejoras realizadas en el cuestionario facilitan la comprensión de las preguntas y permiten que el usuario continúe con la planificación después de iniciar sesión.
+
+* La lista de chequeo de equipaje incorpora una herramienta adicional para acompañar al viajero antes de comenzar su viaje.
+
+* Las correcciones realizadas en el selector y en el resumen del presupuesto permiten identificar visualmente la moneda seleccionada mediante su respectiva bandera.
+
+* Se debe continuar verificando que todos los componentes visuales mantengan el mismo comportamiento en diferentes resoluciones de pantalla y navegadores.
+
+* Se recomienda realizar pruebas integrales del recorrido completo, desde el inicio de sesión hasta la presentación de los destinos recomendados.
+
+* Se debe continuar validando los atributos asociados con las ciudades para mejorar la correspondencia entre las preferencias del usuario y los destinos recomendados.
+
+* La **HU-63** deberá continuar en seguimiento, debido a que complementa el trabajo realizado previamente sobre los atributos y preferencias utilizados por el algoritmo de recomendación.
+
+* Los comentarios adicionales recibidos durante la Review deberán convertirse en nuevos elementos del Product Backlog o en ajustes para el siguiente Sprint.
+
+---
+
+# Sprint Retrospective - 20/09/2026
 
 ## Maria Alejandra Rodriguez
-
-### Sprint Review
 
 1. **¿Qué logramos?**
 
 Logramos un diseño unificado de la pagina web mejorando su estetica y experiencia con el usuario. Se implementaron nuevos detalles que hacen que la pagina web se vea mejor y entendible para el usuario. la idea es que se vea comoda para el usuario.
-
-### Sprint Retrospective
 
 2. **¿Cómo trabajamos?**
 
@@ -2780,12 +2955,8 @@ Tenemos que mejorar cosas como grupo, a veces tenemos desacuerdos.
 
 ## Gabriela Melo Gualteros
 
-### Sprint Review
-
 1. **¿Qué logramos?**
 Logramos sacar mas imagenes para que la pantalla de las preguntas de preferencia se vea más armonioza, pero por el momento no se pueden ver por algun error que hay en el codigo que no deja mostrarlas
-
-### Sprint Retrospective
 
 2. **¿Cómo trabajamos?**
 No fue mi mejor semana de trabajo porque como eran vacaciones no tuve mucho tiempo para invertirle al proyecto, pero trate de corregir algunas cosas, me falto subir unos cambios al develop por lo que no se vera el trabajo en el main tampoco.
@@ -2797,13 +2968,9 @@ No logro hacer que se vean las imagenes en la pagina y no se porque. Siento que 
 
 ## Valeria Cortes Rendon
 
-### Sprint Review
-
 1. **¿Qué logramos?**
 
 Logramos trabajar en el diseño y me enfoque principalmente en branding de la marca, Se trabajo de manera unificada para cumplir con las expectatiavs de la marca
-
-### Sprint Retrospective
 
 2. **¿Cómo trabajamos?**
 
@@ -2817,13 +2984,9 @@ La responsabilidad de algunos de mis compañeros en cosas tan simples como los d
 
 ## Isabella Posada
 
-### Sprint Review
-
 1. **¿Qué logramos?**
 
 Logramos mejorar en la pagina, poner funciones nuevas y tambien un diseño renovado
-
-### Sprint Retrospective
 
 2. **¿Cómo trabajamos?**
 
@@ -2837,13 +3000,9 @@ Mas que todo como tomamos desiciones como equipo, que es lo que se esta haciendo
 
 ## Santiago Clavijo
 
-### Sprint Review
-
 1. **¿Qué logramos?**
 
 seguimos mejorando como se ve la pagina en temas de colores, detalles y marca.
-
-### Sprint Retrospective
 
 2. **¿Cómo trabajamos?**
 
@@ -3242,18 +3401,59 @@ si aun tenemos algunos problemas con la nube para que funcione como la pagina we
 
 
 ---
+## Sprint Review [27/09/2026]
 
-# Sprint Review y Sprint Retrospective - 27/09/2026
+## Información de la Sesión
+
+- Fecha de la Review: [27/09/2026]
+- Sprint Goal: Mejorar la planificación de viajes en WiseTrip mediante notificaciones, recomendaciones personalizadas, distribución del presupuesto y correcciones en el cuestionario y la plataforma.
+
+## Incremento Entregado
+
+Durante este Sprint se trabajó en mejorar el flujo de planificación de WiseTrip, permitiendo al viajero elegir su destino, organizar su presupuesto y recibir información relevante sobre su viaje. También se realizaron correcciones para mejorar la estabilidad y la experiencia de uso.
+
+Los principales componentes trabajados fueron:
+
+- Notificaciones por correo y Telegram (HU-66 y HU-67): envío de alertas sobre eventos importantes del viaje mediante ambos canales.
+- Selección de destinos (HU-68): posibilidad de elegir uno de los tres destinos recomendados y continuar con la planificación.
+- Distribución del presupuesto (HU-69): asignación del presupuesto entre hospedaje, alimentación, transporte, actividades y otros gastos.
+- Cuestionario de preferencias (HU-70 y HU-71): mejoras en la carga de imágenes y en la claridad de las preguntas.
+- Acceso y recomendaciones (HU-72 y HU-73): correcciones en el acceso a la plataforma y ajustes para recomendar destinos acordes con los intereses del viajero.
+- Banderas de monedas (HU-74 y HU-75): correcciones para mostrar la bandera correspondiente a la moneda seleccionada, tanto en el presupuesto como en el resumen final.
+
+## Demostración
+
+Resumen de los puntos presentados durante la demo del producto:
+
+- [x] Envío de notificaciones por correo electrónico y Telegram.
+- [x] Selección de uno de los tres destinos recomendados.
+- [x] Distribución del presupuesto entre las categorías del viaje.
+- [x] Carga de imágenes y visualización de las preguntas del cuestionario.
+- [x] Acceso a la plataforma y generación de recomendaciones según las preferencias.
+- [x] Visualización de las banderas en el selector de moneda y el resumen final.
+
+## Conclusión y Próximos Pasos
+
+El Sprint se enfocó en mejorar la planificación del viaje, incorporando herramientas para seleccionar destinos, distribuir el presupuesto y recibir notificaciones, además de corregir errores en la plataforma.
+
+Como próximos pasos, se propone:
+
+- Verificar los criterios de aceptación y la Definition of Done de cada historia.
+- Probar el flujo completo de planificación, desde el acceso hasta la selección del destino.
+- Validar el envío de notificaciones y el manejo de errores.
+- Comprobar las recomendaciones con diferentes combinaciones de preferencias.
+- Revisar la carga de imágenes y banderas en distintos navegadores.
+- Actualizar el Product Backlog según los resultados de las pruebas.
+
+Feedback de los stakeholders: Pendiente de registrar con base en los comentarios recibidos durante la revisión del producto.
+
+# Sprint Retrospective - 27/09/2026
 
 ## Maria Alejandra Rodriguez
-
-### Sprint Review
 
 1. **¿Qué logramos?**
 
 Logramos completar algunas otras pantallas ya dejándolas listas, además se agregaron nuevas funciones a la página, realmente nos hace falta muy poco para acabarla sin embargo en el próximo sprint tenemos que empezar a mirar lo de la entrega Gof en el código
-
-### Sprint Retrospective
 
 2. **¿Cómo trabajamos?**
 
@@ -3263,23 +3463,17 @@ Siento que esta semana todos trabajamos muy bien, todos realizaron la tarea de f
 
 En lo personal tengo que mejorar mi atención, a veces hago commits en main que tenían que ir en mi rama, esta semana por ejemplo tuve un error metiendo un correo que no pertenecía al proyecto y hice commits ahí sin notarlo y luego tuve que cambiar los commits que había hecho a la otra cuenta que si estoy usando para el proyecto y eso causó muchos conflictos en mi rama y a la hora de hacer merge hacía develop y hacía main. La herramienta aún me confunde mucho, pero estoy trabajando en entenderla cada vez más.
 
-
 ---
 
 ## Gabriela Melo Gualteros
-
-### Sprint Review
 
 1. **¿Qué logramos?**
 
 Logramos tener la pagina como la queriamos tener, en terminos de diseño, se logro solucionar varios errores que estaban impidiendo que s emostraron las imagenes en las pantallas principalmente. En mi caso pude subir profin las imagenes a la pantalla de Preguntas de Preferencia aunque siguen faltando algunas, pero ya se corrigio la ruta para que aparezcan.
 
-### Sprint Retrospective
-
 2. **¿Cómo trabajamos?**
 
 Esta semana se vio el trabajo en grupo, se vio que el Sprint Retrospective anterior valio la pena hablar y cmunicarnos bien como equipo. Esto ayudo a que esta semana se viera de verdad el progreso en el proyecto.
-
 
 3. **¿Qué podríamos mejorar?**
 
@@ -3289,13 +3483,9 @@ En mi parte a veces me confundo y termino trabajando directamente en el develop 
 
 ## Valeria Cortes Rendon
 
-### Sprint Review
-
 1. **¿Qué logramos?**
 
 Se realizo la implementacion de los correos y telegram, seguimos mejorando tanto en backend y en frontend. En las proximas entregas esperamos empezar a integrar las apis restantes. Sin embargo nos toca verificar en el flujo y como las usaremos.
-
-### Sprint Retrospective
 
 2. **¿Cómo trabajamos?**
 
@@ -3309,13 +3499,9 @@ Podria mejorar en colocar una hora especifica para realizar las reuniones y que 
 
 ## Isabella Posada
 
-### Sprint Review
-
 1. **¿Qué logramos?**
 
 Logramos trabajar nuevamente como grupo, siento que cada vez va afinándose mas el diseño de la pagina que le da un toque verdaderamente único y creativo! sin embargo no hay que dejar atrás el como funciona, siento que será clave en las próximas semanas ya que nos falta trabajar un poco mas en el back
-
-### Sprint Retrospective
 
 2. **¿Cómo trabajamos?**
 
@@ -3329,13 +3515,9 @@ la verdad, mi única observación es aprovechar un poco mas los dailys, estamos 
 
 ## Santiago Clavijo
 
-### Sprint Review
-
 1. **¿Qué logramos?**
 
 en terminos de diseño seguimos mejorando, ya se ve mas como una pagina verdadera de viajes, acabamos nuestras issues, y resolver problemas de la pagina
-
-### Sprint Retrospective
 
 2. **¿Cómo trabajamos?**
 
@@ -3736,12 +3918,56 @@ No
 <img width="1412" height="591" alt="image" src="https://github.com/user-attachments/assets/6b0926f8-5bb5-457b-8998-35d4e1bee357" />
 
 ---
+# Sprint Review - 04/10/2026
 
-# Sprint Review y Sprint Retrospective - 04/10/2026
+## Información de la Sesión
+* **Fecha de la Review:** 04/10/2026
+* **Sprint Goal:** Mejorar la calidad y precisión del motor de recomendación de destinos de WiseTrip (presupuesto, intereses y requisitos obligatorios), y fortalecer la experiencia del viajero con una interfaz más clara, imágenes y notificaciones por Telegram.
+
+---
+
+## Incremento Entregado
+> *Descripción detallada de las funcionalidades, componentes e integraciones completadas durante el Sprint.*
+
+* **Integración con Telegram (HU-76):** el usuario puede conectar su cuenta de Telegram para recibir notificaciones sobre su viaje.
+* **Organización de datos del usuario (HU-77):** la información del usuario quedó almacenada de forma clara y ordenada, facilitando que entienda cómo se usan sus datos.
+* **Imágenes de destinos (HU-78):** cada destino recomendado muestra una imagen distinta y relacionada con el lugar, para identificarlo y compararlo mejor.
+* **Distribución del presupuesto (HU-79):** el viajero puede ajustar el porcentaje del presupuesto asignado a cada tipo de gasto.
+* **Ponderación de intereses (HU-80):** el sistema da más peso a los intereses más importantes, evitando que una ciudad gane puntos solo por acumular gustos secundarios.
+* **Corrección de la pantalla de preferencias (HU-81):** se eliminaron los errores del cuestionario de preferencias.
+* **Filtros de recomendación (HU-82):** los destinos recomendados cumplen los requisitos obligatorios y un nivel mínimo de compatibilidad con las preferencias.
+* **Presupuesto y selección explícita (HU-83):** las recomendaciones respetan el presupuesto y el destino solo se guarda cuando el usuario lo selecciona de forma explícita.
+* **Bandera de moneda (HU-84):** el resumen del viaje y las recomendaciones muestran la bandera de la moneda elegida, en el nuevo diseño de la página.
+* **Comparación correcta del presupuesto (HU-85):** se corrigió el cálculo que compara el presupuesto contra el costo real del viaje, evitando destinos mal marcados como "accesibles" o "no accesibles".
+
+---
+
+## Demostración
+> *Resumen de los puntos presentados durante la demo del producto.*
+
+- [x] Conexión de Telegram y recepción de notificaciones del viaje (HU-76)
+- [x] Vista de datos del usuario organizados (HU-77)
+- [x] Recomendaciones con imágenes diferentes por destino (HU-78)
+- [x] Ajuste de porcentajes del presupuesto por tipo de gasto (HU-79)
+- [x] Recomendaciones según intereses con mayor peso (HU-80)
+- [x] Pantalla de preferencias sin errores (HU-81)
+- [x] Destinos filtrados por requisitos obligatorios y compatibilidad mínima (HU-82)
+- [x] Recomendaciones dentro del presupuesto y guardado de destino solo al seleccionarlo (HU-83)
+- [x] Bandera de moneda en resumen y recomendaciones (HU-84)
+- [x] Marcado correcto de destinos "accesibles" / "no accesibles" según costo real (HU-85)
+
+---
+
+## Conclusión y Próximos Pasos
+> *Comentarios de los stakeholders, feedback recibido y ajustes sugeridos para el Product Backlog.*
+
+* Se completaron las 10 historias de usuario del sprint (HU-76 a HU-85), con foco en la precisión de las recomendaciones y en la experiencia del viajero.
+* **Feedback de los stakeholders:** (escribe aquí los comentarios recibidos).
+* **Ajustes sugeridos al Product Backlog:** (escribe aquí nuevas historias o cambios de prioridad).
+
+# Sprint Retrospective - 04/10/2026
 
 ## Maria Alejandra Rodriguez
-
-### Sprint Review
 
 1. **¿Qué logramos?**
 
@@ -3760,8 +3986,6 @@ Arreglar los patrones de diseño que existen y podrian existir en el proyecto pa
 
 ## Gabriela Melo Gualteros
 
-### Sprint Review
-
 1. **¿Qué logramos?**
 
 logramos completar varias pantallas ya con el diseño y la funcionalidad que se penso desde un comienzo, se mejoro el backend de los paises recomendados.
@@ -3778,8 +4002,6 @@ Ya estamos revisando y empezando a mirar que nos falta de la segunda entrega y c
 ---
 
 ## Valeria Cortes Rendon
-
-### Sprint Review
 
 1. **¿Qué logramos?**
 
@@ -3813,13 +4035,9 @@ Podríamos organizar mejor los cambios, documentar más las decisiones y validar
 
 ## Santiago Clavijo
 
-### Sprint Review
-
 1. **¿Qué logramos?**
 
 Esta semana logramos en su mayoria acabar las hu, en mi caso estimamos mal el sprint y pensaba que no iba a tener tanto trabajo para esta semana, y solo pude acabar una hu.
-
-### Sprint Retrospective
 
 2. **¿Cómo trabajamos?**
 
@@ -3848,24 +4066,23 @@ Este sprint nos enfocamos en que la información de viaje del usuario —presupu
 
 | ID | Título | Tipo | Estimación | Responsable |
 |----|--------|------|------------|-------------|
-| #86 | | Como usuario, quiero que mis datos de viaje sean gestionados correctamente por WiseTrip, para recibir recomendaciones y servicios coherentes con mis preferencias. |  | Valeria |
-| #87 | | Como administrador, quiero gestionar correctamente la información de usuarios, viajes y destinos, para garantizar el funcionamiento adecuado de WiseTrip. |  | Valeria |
-| #88 | Como usuario de WiseTrip quiero que la gestión de mi presupuesto y gastos funcione de manera consistente para tener un mejor control financiero de mi viaje. | Historia de Usuario |  | Maleja |
-| #89 | Como usuario de WiseTrip quiero que las funcionalidades de presupuesto y gastos estén correctamente integradas para gestionar la información financiera de mi viaje de forma confiable. | Historia de Usuario |  | Maleja |
-| #90 | Como usuario quiero que el sistema rechace fechas o presupuestos inválidos sin importar desde dónde los ingrese, para que mi viaje quede registrado con datos coherentes y no a medio llenar | Historia de Usuario |  | Gaby |
-| #91 | Como usuario quiero que mi viaje (fechas, presupuesto, destino) siga guardandose y validandose correctamente aunque se realicen actualizaciones de la pagina, para no encontrarme con fallas o un mal registro de mi viaje. | Historia de Usuario |  | Gaby |
-| #92 | Como viajero, quiero que WiseTrip seleccione los destinos que mejor se adapten a mis preferencias, a pesar de los cambios técnicos y actualizaciones en el funcionamiento de la página | Historia de Usuario |  | Isa |
-| #93 | Como viajero, quiero seguir respondiendo preguntas sobre mis intereses de viaje, a pesar de que se hagan cambios técnicos en la arquitectura de la página | Historia de Usuario |  | Isa |
-| #94 | Quiero recibir destinos filtrados según mi presupuesto y ordenados por afinidad con mis preferencias, para ver solo lo que realmente se adapta a mi| Historia de Usuario |  | Clavijo |
-| #95 | Como viajero, quiero ingresar mi presupuesto y responder preguntas sobre mis intereses para que el sistema conozca las características y posibilidades económicas que busco en un destino | Historia de Usuario |  | Clavijo |
+| #86 | Como usuario, quiero que mis datos de viaje sean gestionados correctamente por WiseTrip, para recibir recomendaciones y servicios coherentes con mis preferencias. | Historia de Usuario | 5 | Valeria |
+| #87 | Como administrador, quiero gestionar correctamente la información de usuarios, viajes y destinos, para garantizar el funcionamiento adecuado de WiseTrip. |  Historia de Usuario | 5 | Valeria |
+| #88 | Como usuario de WiseTrip quiero que la gestión de mi presupuesto y gastos funcione de manera consistente para tener un mejor control financiero de mi viaje. | Historia de Usuario | 5  | Maleja |
+| #89 | Como usuario de WiseTrip quiero que las funcionalidades de presupuesto y gastos estén correctamente integradas para gestionar la información financiera de mi viaje de forma confiable. | Historia de Usuario | 8 | Maleja |
+| #90 | Como usuario quiero que el sistema rechace fechas o presupuestos inválidos sin importar desde dónde los ingrese, para que mi viaje quede registrado con datos coherentes y no a medio llenar | Historia de Usuario | 3 | Gaby |
+| #91 | Como usuario quiero que mi viaje (fechas, presupuesto, destino) siga guardandose y validandose correctamente aunque se realicen actualizaciones de la pagina, para no encontrarme con fallas o un mal registro de mi viaje. | Historia de Usuario | 8 | Gaby |
+| #92 | Como viajero, quiero que WiseTrip seleccione los destinos que mejor se adapten a mis preferencias, a pesar de los cambios técnicos y actualizaciones en el funcionamiento de la página | Historia de Usuario | 8 | Isa |
+| #93 | Como viajero, quiero seguir respondiendo preguntas sobre mis intereses de viaje, a pesar de que se hagan cambios técnicos en la arquitectura de la página | Historia de Usuario | 8  | Isa |
+| #94 | Quiero recibir destinos filtrados según mi presupuesto y ordenados por afinidad con mis preferencias, para ver solo lo que realmente se adapta a mi| Historia de Usuario | 13  | Clavijo |
+| #95 | Como viajero, quiero ingresar mi presupuesto y responder preguntas sobre mis intereses para que el sistema conozca las características y posibilidades económicas que busco en un destino | Historia de Usuario |  3 | Clavijo |
 
 ## Riesgos / Bloqueos identificados
 
 - Falta de conceptos
 - Codigo spaguetti a corregir
 - Falta de tiempo
-- 
----
+
 ---
 ## Daily Sprint - 06/10/2026
 
@@ -4218,24 +4435,70 @@ No
 
 ---
 
+# Sprint Review - 11/10/2026
 
-# Sprint Review y Sprint Retrospective - 11/10/2026
+## Información de la Sesión
+
+* **Fecha de la Review:** 11/10/2026
+* **Sprint Goal:** Reorganizar la arquitectura de WiseTrip con clases de dominio, interfaces de negocio y capas separadas, reforzando las validaciones de viaje, fechas y presupuesto, para que la captura de preferencias y presupuesto y la recomendación de destinos funcionen de forma consistente.
+
+## Incremento Entregado
+
+Durante este Sprint se trabajó en mejorar la estructura interna de WiseTrip sin cambiar lo que el viajero ve y hace en la aplicación. Se definieron clases de dominio con comportamiento propio, interfaces de negocio y una separación más clara entre controladores, servicios y acceso a datos. También se avanzó en que las recomendaciones respeten el presupuesto y las preferencias del usuario.
+
+Los principales componentes trabajados fueron:
+
+* **Gestión de datos de viaje (HU-86):** se organizó el manejo de usuarios, viajes, preferencias, presupuestos y destinos con clases de dominio, Services, Controllers y DAO con responsabilidades separadas, además de validaciones para mantener los datos consistentes.
+* **Gestión administrativa (HU-87):** se definieron las clases Usuario, Viaje y Ciudad o Destino, con sus reglas de negocio, validaciones y control de permisos para consultar y actualizar la información.
+* **Dominio de presupuesto y gastos (HU-88):** las clases del módulo ahora tienen métodos propios del negocio y no solo getters y setters, y se hizo el diagrama de dominio del módulo.
+* **Interfaces de presupuesto y gastos (HU-89):** se crearon interfaces de negocio para el módulo, implementadas con `implements` y `extends` cuando correspondía, y se hizo el diagrama de interfaces.
+* **Clase Viaje (HU-90):** se creó la clase `Viaje` que agrupa usuario, ciudad, fechas, presupuesto y preferencias. `ViajeDAO.insertar()` ahora recibe un objeto `Viaje` y valida que sea coherente antes de guardarlo (fechas válidas y presupuesto mayor a 0). También se hizo el diagrama de dominio.
+* **Interfaces de planificación (HU-91):** se creó al menos una interfaz de negocio para el módulo de planificación (por ejemplo, para fechas) y los controladores ahora dependen de la interfaz y no de la clase concreta. Además, se documentaron otras interfaces que se pueden crear más adelante y se hizo el diagrama de interfaces.
+* **Preguntas de intereses (HU-93):** se reorganizó la captura de preferencias en componentes e interfaces claras, para que el viajero siga respondiendo las preguntas igual que antes.
+* **Destinos según presupuesto (HU-94):** el sistema muestra solo los destinos que el usuario puede pagar y los ordena de mayor a menor afinidad con sus preferencias. Si ninguno cumple, muestra un mensaje claro.
+* **Presupuesto y cuestionario (HU-95):** el viajero ingresa su presupuesto con moneda y responde preguntas de las 6 categorías (aventura, cultura, gastronomía, naturaleza, vida nocturna y actividades de bajo costo). Las respuestas quedan asociadas a su usuario y puede modificarlas antes de confirmar.
+
+## Demostración
+
+Resumen de los puntos presentados durante la demo del producto:
+
+* [x] Registro y consulta de los datos de viaje del usuario.
+* [x] Gestión de usuarios, viajes y destinos desde el rol de administrador.
+* [x] Clases de dominio de presupuesto y gastos con sus métodos y su diagrama de dominio.
+* [x] Interfaces de negocio de presupuesto y gastos y su diagrama de interfaces.
+* [x] Creación de un viaje con la clase `Viaje` y validación de fechas y presupuesto antes de guardarlo.
+* [x] Controladores de planificación usando interfaces y diagrama de interfaces del módulo.
+* [x] Flujo de preguntas de intereses funcionando igual después de la refactorización.
+* [x] Ingreso de presupuesto con moneda y cuestionario de las 6 categorías.
+* [x] Destinos filtrados por presupuesto y ordenados por afinidad con las preferencias.
+* [x] Mensaje claro cuando ningún destino cumple con el presupuesto.
+
+## Conclusión y Próximos Pasos
+
+El Sprint se enfocó en mejorar la arquitectura interna de WiseTrip y en asegurar que la información del viaje se valide y se maneje de forma consistente, manteniendo funcionando lo que ya existía y avanzando en las recomendaciones según presupuesto y preferencias.
+
+Como próximos pasos, se propone:
+
+* Verificar que cada historia de usuario cumpla sus criterios de aceptación y su Definition of Done.
+* Terminar las pruebas unitarias y de integración sobre la gestión de datos de viaje, usuarios y destinos.
+* Crear las demás interfaces de negocio que quedaron documentadas (por ejemplo, para el guardado del viaje y el reparto de presupuesto).
+* Probar en el navegador el flujo completo, desde el presupuesto y las preguntas hasta la lista de destinos recomendados.
+* Revisar que los diagramas de dominio e interfaces coincidan con el código y estén subidos a `docs/diagrama`.
+* Actualizar el `CHANGELOG.md` y el Product Backlog según los resultados y las necesidades identificadas.
+
+---
+
+#  Sprint Retrospective - 11/10/2026
 
 ## Maria Alejandra Rodriguez
-
-### Sprint Review
 
 1. **¿Qué logramos?**
 
 Mejoramos la arquitectura con SOLID y GRASP tambien realizamos los diagramas y en general organizamos mas el codigo
 
- 
-### Sprint Retrospective
-
 2. **¿Cómo trabajamos?**
 
 Como equipo mucho mejor, en general nos hemos enfocado mucho en arreglar los codigos y nos ha ido muy bien, siempre colaborandonos
-
 
 3. **¿Qué podríamos mejorar?**
 
@@ -4245,13 +4508,9 @@ Tenemos que implementar ahora los patrones gof de resto siento que estamos muy b
 
 ## Gabriela Melo Gualteros
 
-### Sprint Review
-
 1. **¿Qué logramos?**
 
  Pudimos terminar los diagramas de interfaces, implementar los patrones SOLID y GRASP      
-
-### Sprint Retrospective
 
 2. **¿Cómo trabajamos?**
 
@@ -4265,13 +4524,9 @@ Aun nos hace falta implementar los patrones GoF y creo que depurar un poco mas e
 
 ## Valeria Cortes Rendon
 
-### Sprint Review
-
 1. **¿Qué logramos?**
 
    Se logro mejorar la arquitectura e implementar patrones GOF dentro de nuestro proyecto, tenemos ahora los diagramas por mi lado del primer modulo y como lo hemos realizado  
-
-### Sprint Retrospective
 
 2. **¿Cómo trabajamos?**
 
@@ -4285,19 +4540,13 @@ Aun nos hace falta implementar los patrones GoF y creo que depurar un poco mas e
 
 ## Isabella Posada
 
-### Sprint Review
-
 1. **¿Qué logramos?**
 
 Arreglamos y entendimos mucho como estaba el código y gracias a lo que aprendimos en clase como SOLID y GOF pudimos mejorar la arquitectura del proyecto en los modulos establecidos
 
-### Sprint Retrospective
-
 2. **¿Cómo trabajamos?**
 
 bastante bien, nuestro objetivo principal es tener un buen resultado en el proyecto y juntos nos hemos puesto en la tarea de
-
-
 
 3. **¿Qué podríamos mejorar?**
 
@@ -4307,13 +4556,9 @@ en entender los conceptos mejor para poderlos desarrollar bien en el codigo, ya 
 
 ## Santiago Clavijo
 
-### Sprint Review
-
 1. **¿Qué logramos?**
 
 esta semana como equipo logramos mejorar la organizacion del codigo, ya es mas entendible con todas las mejores de arquitectura (interfaces, implementaciones, etc)
-
-### Sprint Retrospective
 
 2. **¿Cómo trabajamos?**
 
@@ -4330,7 +4575,8 @@ todo lo veo bien , sin embargo estas semanas son criticas para todos los miembor
 # Sprint 9 - Sprint Planning - [13/10/2026]
 
 ## Sprint Goal
-
+Reorganizar la arquitectura de WiseTrip con clases de dominio, interfaces de negocio y capas separadas, reforzando las validaciones de viaje, fechas y presupuesto, para que la captura de preferencias y presupuesto y la recomendación de destinos funcionen de forma consistente.
+Incremento Entregado
 
 ## Capacidad del equipo
 
@@ -4345,12 +4591,12 @@ todo lo veo bien , sin embargo estas semanas son criticas para todos los miembor
 | #97 | Como usuario, quiero representar los modulos graficamente, para hacer correcciones manteniendo el orden del programa.  | Historia de Usuario | 8 | Valeria |
 | #98 | Como usuario de WiseTrip quiero que la gestión de mi presupuesto se adapte a las diferentes operaciones financieras para tener mayor control sobre los recursos disponibles durante mi viaje | Historia de Usuario | 8 | Maleja |
 | #99 | Como usuario de WiseTrip quiero registrar y gestionar mis gastos de forma organizada para mantener actualizado el control financiero de mi viaje | Historia de Usuario | 8 | Maleja |
-| #100 |  | Historia de Usuario | | Gaby |
-| #101 | | Historia de Usuario | | Gaby |
-| #102 | Como usuario, quiero recibir mis recomendaciones de destinos de forma ágil y sin esperas, para obtener resultados personalizados sin que las consultas externas afecten mi experiencia | Historia de Usuario | | Isa |
-| #103 |  Como usuario, quiero que la información de mis preferencias y destino se consulte y procese correctamente, para recibir recomendaciones confiables sin errores por fallas internas del sistema.| Historia de Usuario | | Isa |
-| #104 | Como administrador, quiero perfeccionar el boilerplate para que sea acorde al repositorio y permita ver con claridad cómo está organizado. | Historia de Usuario | | Clavijo |
-| #105 | Como administrador, quiero implementar el patrón de diseño GoF Decorator en el Módulo 2, para agregar comportamientos adicionales al proceso de recomendación de destinos sin modificar las clases existentes.| Historia de Usuario | | Clavijo |
+| #100 | Como usuario, quiero que la información de mi viaje (fechas, presupuesto, destino) esté organizada de forma clara dentro del sistema, para que no se mezcle ni se pierda mientras uso la aplicación. | Historia de Usuario | 8 | Gaby |
+| #101 | Como usuario, quiero que las validaciones y el manejo de mi sesión sigan funcionando correctamente aunque el equipo mejore el código por dentro, para no encontrarme con errores o fallas inesperadas. | Historia de Usuario | 8 | Gaby |
+| #102 | Como usuario, quiero recibir mis recomendaciones de destinos de forma ágil y sin esperas, para obtener resultados personalizados sin que las consultas externas afecten mi experiencia | Historia de Usuario | 8 | Isa |
+| #103 |  Como usuario, quiero que la información de mis preferencias y destino se consulte y procese correctamente, para recibir recomendaciones confiables sin errores por fallas internas del sistema.| Historia de Usuario | 8 | Isa |
+| #104 | Como administrador, quiero perfeccionar el boilerplate para que sea acorde al repositorio y permita ver con claridad cómo está organizado. | Historia de Usuario | 3 | Clavijo |
+| #105 | Como administrador, quiero implementar el patrón de diseño GoF Decorator en el Módulo 2, para agregar comportamientos adicionales al proceso de recomendación de destinos sin modificar las clases existentes.| Historia de Usuario | 5 | Clavijo |
 
 ## Riesgos / Bloqueos identificados
 
@@ -4361,6 +4607,1258 @@ todo lo veo bien , sin embargo estas semanas son criticas para todos los miembor
 <img width="959" height="470" alt="image" src="https://github.com/user-attachments/assets/61f08946-71be-485e-9707-88fb8a6a77ee" />
 
 ---
+## Daily Sprint - 14/10/2026
+
+### Isabella Posada
+
+1. **¿Qué hice ayer?**
+
+ayer estuvimos haciendo el planning especialmente pensado en la rubrica
+   
+2. **¿Qué voy a hacer hoy?**
+
+hoy hice lo del patron proxy en el modulo de recomendaciones del proyecto
+   
+3. **¿Tengo algún impedimento o bloqueo?**
+
+casi no he tenido tiempo por otras materias
 
 ---
+
+### Valeria Cortes Rendon
+
+1. **¿Qué hice ayer?**
+
+ 
+
+2. **¿Qué voy a hacer hoy?**
+
+
+   
+3. **¿Tengo algún impedimento o bloqueo?**
+
+
+   
+---
+
+### Santiago Clavijo
+
+1. **¿Qué hice ayer?**
+
+ayer con mi grupo hicimos el planning del esprint de esta semana asi como terminar el diagrama que falto del sprint pasado.
+
+2. **¿Qué voy a hacer hoy?**
+
+hoy implemente en el codigo el patron GoF Decorator y empece a actualizar el boilerplate para que este acorde al repositorio
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+falta de tiempo
+
+---
+
+### Gabriela Melo Gualteros
+
+1. **¿Qué hice ayer?**
+
+Ayer estuvimos en Sprint planning con el equipo y estuve trabajando en implementar los patrones GOF para el taller 5
+
+2. **¿Qué voy a hacer hoy?**
+
+hoy documente lo que hice de patrones GOF, ademas de hacerle unas mejoras y estuve estudiando los diagramas y el codigo para la presustentacion de mañana
+
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+no 
+
+---
+
+
+### Maria Alejandra Rodriguez
+
+1. **¿Qué hice ayer?** 
+
+
+
+2. **¿Qué voy a hacer hoy?** 
+
+
+
+3. **¿Tengo algún impedimento o bloqueo?** 
+
+
+---
+<img width="1280" height="832" alt="image" src="https://github.com/user-attachments/assets/b4d51d4a-0e5b-4d78-a6c9-d98136cc07e7" />
+
+---
+
+## Daily Sprint - 15/10/2026
+
+### Isabella Posada
+
+1. **¿Qué hice ayer?**
+
+Ayer hice junto a mis compañeros Clavijo y Valeria el diagrama de clases de dominio, además de algunas pruebas con el módulo de recomendaciones con el patrón proxy junto a las llamadas de api y revisar el repositorio
+   
+2. **¿Qué voy a hacer hoy?**
+
+Hoy tuvimos la retroalimentación de la segunda entrega d e proyecto el cual pudimos ver nuestras fortalezas y cosas por mejorar, para que el proyecto salga bien
+   
+3. **¿Tengo algún impedimento o bloqueo?**
+
+Si, no tengo tanto tiempo ya que es semana de parciales
+
+---
+
+### Valeria Cortes Rendon
+
+1. **¿Qué hice ayer?**
+
+ Se implemento el patro GOF factory method dentro del documento con su explicacion, se arreglo el changelog y se reviso que todas las HU y Dailys estuvieran correctos, revisamos diagramas
+
+2. **¿Qué voy a hacer hoy?**
+
+El dia de hoy tuvimos la sustentacion tenemos que arreglar todo lo del review y retrospective, los diagramas y poder explicar los gof
+   
+3. **¿Tengo algún impedimento o bloqueo?**
+
+no
+   
+---
+
+### Santiago Clavijo
+
+1. **¿Qué hice ayer?**
+
+ayer hicimos el diagrama de dominio que faltaba y corregimos unos diagramas, corregimos el codigo, lo estudie asi como con el patron gof seleccionado
+
+2. **¿Qué voy a hacer hoy?**
+
+hoy tuvimos la retroalimentacion de la segunda entrega del proyecto y corregi unos duplicados en el codigo, sabemos que teneos que mejorar algunos aspectos de la metodologia y mejorar el entendimiento del codigo en si
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+falta de tiempo
+
+---
+
+### Gabriela Melo Gualteros
+
+1. **¿Qué hice ayer?**
+
+ayer documente lo que hice de patrones GOF, ademas de hacerle unas mejoras y estuve estudiando los diagramas y el codigo para la presustentacion que tuvimos hoy
+
+
+2. **¿Qué voy a hacer hoy?**
+
+Hoy estuvimos en la pre-sustentación del proyecto, escuchamos las recomendaciones de mejora que nos dio el profesor y en nuestro daily analizamos como vamos a abordar esto.
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+Por el momento falta de tiempo por parciales y sobre todo parcial de estructura de datos
+
+
+
+---
+
+
+### Maria Alejandra Rodriguez
+
+1. **¿Qué hice ayer?** 
+
+conocer por completo todas las modificaciones que se le hizo al proyecto, revisar diagramas
+
+2. **¿Qué voy a hacer hoy?** 
+
+tuvimos la sustentacion dividimos tareas de quien va a arreglar o realizar que porque hoy se nos dio retroalimentación
+
+3. **¿Tengo algún impedimento o bloqueo?** 
+
+no
+
+---
+
+
+---
+## Daily Sprint - 16/10/2026
+
+### Isabella Posada
+
+1. **¿Qué hice ayer?**
+
+ayer tuvimos la retroalimentacion del profesor, la cual nos sirvio mucho para guiarnos en los errores que teniamos con respecto a la entrega 2.
+
+
+   
+2. **¿Qué voy a hacer hoy?**
+
+la verdad hoy no he podido adelantar mucho, ya que hoy es el examen de estructuras, unicamente revise el patron de proxy un poco.
+   
+3. **¿Tengo algún impedimento o bloqueo?**
+
+si, falta de tiempo por entregas, examenes y actividades extracurriculares la misma semana adicionales a la materia.
+
+---
+
+### Valeria Cortes Rendon
+
+1. **¿Qué hice ayer?**
+
+Se realizo la sustentacion se reviso que cambios tenemos que hacerle al repo y con respecto a los diagramas como podemos mejorarlo  
+
+2. **¿Qué voy a hacer hoy?**
+
+Hoy empece a revisar el repo y mirar como vamos a cambiar el retrospective y como los diagramas los vamos a manejar mejor por modulo. 
+   
+3. **¿Tengo algún impedimento o bloqueo?**
+
+no
+   
+---
+
+### Santiago Clavijo
+
+1. **¿Qué hice ayer?**
+
+tuvimos la primera sustentacin de la segunda entrega y revise los patrones gof
+
+2. **¿Qué voy a hacer hoy?**
+
+hoy no le pude dedicar tiempo al proyecto debido a que me encontraba en parcial de estructuras
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+no
+
+---
+
+### Gabriela Melo Gualteros
+
+1. **¿Qué hice ayer?**
+
+Se realizo la pre sustentación y estuvimos revisando las correcciones que nos dio el profesor
+
+
+2. **¿Qué voy a hacer hoy?**
+
+Hoy revise que de esos cambios puedo ir empezando y que corresponde al milestone que trabaje
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+No
+
+---
+
+
+### Maria Alejandra Rodriguez
+
+1. **¿Qué hice ayer?** 
+
+Revisé los patrones gof y empecé a organizar el nuevo creacional que me toca hacer para tenerlo listo para la sustentación
+
+2. **¿Qué voy a hacer hoy?** 
+
+Hoy tenía parcial de estructuras entonces me dediqué a eso
+
+3. **¿Tengo algún impedimento o bloqueo?** 
+
+No
+
+---
+<img width="736" height="1600" alt="image" src="https://github.com/user-attachments/assets/ae6f4401-2738-4025-8b34-caac6453040a" />
+
+---
+
+## Sprint Review [18/10/2026]
+
+## Información de la Sesión
+
+* **Fecha de la Review:** (agrega la fecha)
+* **Sprint Goal:** Fortalecer la estabilidad, la organización y la calidad interna de WiseTrip (inicio de sesión, gestión de presupuesto y gastos, información del viaje y recomendaciones de destinos), y documentar y estructurar el código con diagramas y patrones de diseño GoF.
+
+---
+
+## Incremento Entregado
+
+> *Descripción detallada de las funcionalidades, componentes e integraciones completadas durante el Sprint.*
+
+Durante el Sprint se trabajó en hacer WiseTrip más estable, ordenado y fácil de mantener. Se avanzó en la gestión financiera del viaje, en la agilidad y confiabilidad de las recomendaciones, y en la calidad interna del proyecto mediante refactorización, documentación y patrones de diseño. El incremento desarrollado comprende los siguientes componentes:
+
+* **HU-96 – Inicio de sesión:** El inicio de sesión quedó más simple y estable, para evitar problemas en el ingreso.
+
+* **HU-97 – Representación gráfica de módulos:** Se representaron los módulos con diagramas, para facilitar las correcciones manteniendo el orden del programa.
+
+* **HU-98 – Gestión del presupuesto:** La gestión del presupuesto se adapta a las diferentes operaciones financieras, dando mayor control sobre los recursos disponibles durante el viaje.
+
+* **HU-99 – Registro de gastos:** El viajero puede registrar y gestionar sus gastos de forma organizada para mantener actualizado el control financiero del viaje.
+
+* **HU-100 – Información del viaje:** Las fechas, el presupuesto y el destino están organizados de forma clara dentro del sistema, para que no se mezclen ni se pierdan.
+
+* **HU-101 – Validaciones y sesión:** Las validaciones y el manejo de la sesión siguen funcionando correctamente después de la refactorización del código.
+
+* **HU-102 – Recomendaciones ágiles:** Las recomendaciones de destinos se entregan de forma ágil y sin esperas, sin que las consultas externas afecten la experiencia.
+
+* **HU-103 – Procesamiento de preferencias y destino:** La información de preferencias y destino se consulta y procesa correctamente, evitando errores por fallas internas del sistema.
+
+* **HU-104 – Boilerplate:** Se perfeccionó el boilerplate para que sea acorde al repositorio y permita ver con claridad cómo está organizado.
+
+* **HU-105 – Patrón Decorator:** Se implementó el patrón de diseño GoF Decorator en el Módulo 2, para agregar comportamientos adicionales al proceso de recomendación de destinos sin modificar las clases existentes.
+
+Adicionalmente, se hizo una refactorización de la documentación, con cambios en el manejo del token de Telegram, la inclusión de los diagramas y la documentación correcta, y la implementación de patrones GoF.
+
+---
+
+## Demostración
+
+> *Resumen de los puntos presentados durante la demo del producto.*
+ 
+- [x] Inicio de sesión simple y estable.
+- [x] Diagramas de los módulos del sistema.
+- [x] Gestión del presupuesto con diferentes operaciones financieras.
+- [x] Registro y gestión de gastos del viaje.
+- [x] Información del viaje (fechas, presupuesto, destino) organizada.
+- [x] Validaciones y sesión funcionando después de la refactorización.
+- [x] Recomendaciones de destinos ágiles, sin esperas.
+- [x] Procesamiento correcto de preferencias y destino.
+- [x] Boilerplate y organización del repositorio.
+- [x] Patrón Decorator en el Módulo 2.
+- [x] Documentación refactorizada, token de Telegram y patrones GoF.
+
+---
+
+## Conclusión y Próximos Pasos
+
+> *Comentarios de los stakeholders, feedback recibido y ajustes sugeridos para el Product Backlog.*
+
+* El Sprint se enfocó en la estabilidad, la organización y la calidad interna de WiseTrip, además de fortalecer la gestión financiera del viaje y la confiabilidad de las recomendaciones.
+
+* Se debe verificar que cada historia de usuario cumpla sus criterios de aceptación y su Definition of Done.
+
+* Se recomienda realizar pruebas del flujo completo, desde el registro hasta la recomendación final del destino.
+
+* Se debe probar que la refactorización no haya afectado las validaciones, la sesión ni las recomendaciones.
+
+* Se debe revisar que la documentación y los diagramas estén actualizados con el código.
+
+* Se deben corregir los errores que se encuentren durante las pruebas.
+
+* Los comentarios adicionales recibidos durante la Review deberán convertirse en nuevos elementos del Product Backlog o en ajustes para el siguiente Sprint.
+
+**Feedback de los stakeholders:** Pendiente de registrar con base en los comentarios recibidos durante la revisión del producto.
+
+## Sprint Retrospective - 18/10/2026
+
+## Maria Alejandra Rodriguez
+
+1. **¿Qué logramos?**
+
+Logramos implementar diferentes patrones GOF, conocimos muchisimo más sobre ellos para lograr implementarlos, además de la corrección de las diferentes funciones del la logica en general del funcionamiento de la pagina web, respecto a la sección de preferencias y recomendaciones que se busca la manera en la que podamos aconsejar de manera correcta al cliente dependiendo sus gustos y lo que busca para su viaje
+
+2. **¿Cómo trabajamos?**
+
+Hemos trabajado muy bien y muy duro para poder lograr un producto de la pagina web muy bien hecho, todos hemos puesto de nuestra parte y esfuerzo siento a las habilidades de mis compañeros.
+
+3. **¿Qué podríamos mejorar?**
+
+La comunicación frente a la toma de decisiones no es muy clara o simplemente como equipo cada uno tiene su opinión, pero la mayoria de veces solemos respetar las diferentes tareas y especialidades que tiene cada uno en el equipo. Necesitamos una mejor comprensión por separado de lo que estamos tratando de representar cada uno, para un mejor dominio de lo que viene siendo toda la aplicación de wisetrip
+  
+---
+
+## Gabriela Melo Gualteros
+
+1. **¿Qué logramos?**
+
+Esta semana trabajamos en los patrones GoF y pudimos completar los diagramas que nos faltaban para cada modulo, en mi caso lo del modulo 3
+
+2. **¿Cómo trabajamos?**
+
+Como equipo creo que trabajamos bien, estuvimo en contacto y pendientes de todo lo que tocaba hacer para lograr todo lo que se pedia en esta entrega
+  
+3. **¿Qué podríamos mejorar?**
+
+Estudiar bien la arquitectura
+
+
+  
+---
+
+## Valeria Cortes Rendon
+
+1. **¿Qué logramos?**
+
+Se logro poner los Patrones GOF correctamente en el codigo, ademas que diagramamos por modulos correctamente se busca una mejora en los review del sprint de ahora en adelante
+
+2. **¿Cómo trabajamos?*
+
+Trabajaos bien se ha mejorado mucho el trabajo en equipo, se han realizado correctamente las reuniones de la metodologia y se han cumplido los objetivos hasta ahora
+
+3. **¿Qué podríamos mejorar?**
+
+Aprender mejor el funcionamiento de las partes de nuestros compañeros
+
+---
+
+## Isabella Posada
+
+1. **¿Qué logramos?**
+
+Como equipo, logramos implementar todos los patrones de diseño GoF que nos propusimos para el Sprint. A nivel individual, implementé el patrón Proxy para gestionar los request realizadas a la API incluyendo su respectiva interfaz, clase de implementación y diagrama.
+
+2. **¿Cómo trabajamos?**
+
+Aunque tuvimos un tiempo limitado y cada integrante debía responder por diferentes entregas académicas, logramos organizar el trabajo y conseguir que las funcionalidades operaran correctamente. Pero, se presentaron algunos problemas de coordinación, ya que dos compañeras implementaron el mismo patrón y algunos diagramas resultaron muy extensos.
+
+3. **¿Qué podríamos mejorar?**
+
+Debemos fortalecer la comunicación y coordinación del equipo para evitar la duplicación de tareas y distribuir mejor las responsabilidades. También es importante trabajar de manera más colaborativa y realizar revisiones frecuentes del código y de la integración entre componentes.
+a nivel individual, debo hacer un seguimiento más estricto con el código, ya que no había identificado que una de las clases principales de la lógica de recomendaciones se encontraba desconectada y se quito su implementación.
+por falta de tiempo, también quedó pendiente modificar el patrón Proxy para que gestione los datos mediante una tabla en la base de datos, en lugar de utilizar memoria caché. Esta mejora será implementada durante la próxima semana para la entrega definitiva de la segunda versión del proyecto.
+
+---
+
+## Santiago Clavijo
+
+
+1. **¿Qué logramos?**
+
+esta semana logramos acabar todas nuestras HUs correspondientes, y prepararnos para la sustentacion del martes, por mi parte pude hacer mi patron gof, y organice el boilerplate del repositorio
+
+2. **¿Cómo trabajamos?**
+
+como equipo trabajamos bien, todos estamos compromentidos con el proyecto, y seguimos la metodologia bien, exceptuando los reviews que lo teniamos mal
+
+3. **¿Qué podríamos mejorar?**
+
+falta de tiempo
+
+---
+
+# Sprint Planning - [19/10/2026]
+
+## Sprint Goal
+Iniciar la construcción interactiva del itinerario a partir de opciones reales del destino, fortaleciendo la experiencia del usuario con la integración de notificaciones por mensaje de texto, soporte mediante el manual de uso y mejoras visuales en la espera de cálculo y el cuestionario de preferencias.
+
+## Capacidad del equipo 
+
+* Desarrolladores disponibles: 5
+* Puntos/horas disponibles: 42
+
+## Issues seleccionados para el Sprint
+
+| ID | Título | Tipo | Estimación | Responsable |
+|----|--------|------|------------|-------------|
+| #106 | Como usuario, quiero recibir mensajes de texto en mi celular con los avisos importantes de mi viaje, para estar al tanto de avisos importantes. | Historia de Usuario |  | Valeria |
+| #107 | Como usuario, quiero contar con un manual que me explique cómo usar WiseTrip, para omprender la aplicación y conocer sus atajos y funcionalidades. | Historia de Usuario | TBD | Valeria |
+| #108 | Como viajero, quiero comenzar a construir el itinerario de mi viaje a partir del destino seleccionado para organizar las opciones que formarán parte de mi viaje | Historia de Usuario | TBD | Maleja |
+| #109 | Como viajero, quiero que WiseTrip consulte las APIs necesarias para obtener opciones reales de mi destino y poder utilizarlas en la construcción de mi itinerario | Historia de Usuario | TBD | Maleja |
+| #[N] | Como [rol], quiero [acción], para [beneficio]. | Historia de Usuario | TBD | [Nombre] |
+| #[N] | Como [rol], quiero [acción], para [beneficio]. | Historia de Usuario | TBD | [Nombre] |
+| #[N] | Como [rol], quiero [acción], para [beneficio]. | Historia de Usuario | TBD | [Nombre] |
+| #[N] | Como [rol], quiero [acción], para [beneficio]. | Historia de Usuario | TBD | [Nombre] |
+| #114 | Como usuario de WiseTrip, quiero ver una pantalla de carga entretenida mientras se calculan mis destinos, para que la espera se sienta corta | Historia de Usuario | TBD | Clavijo |
+| #115 | Como usuario de WiseTrip, quiero que la pantalla de preguntas de preferencias tenga un diseño atractivo y fácil de leer, para responder el cuestionario con gusto y sin cansarme | Historia de Usuario | TBD | Clavijo |
+
+## Riesgos / Bloqueos identificados
+
+- Depender de un servicio externo para enviar los mensajes (puede fallar o tener límites de envío).
+- Posible costo por mensaje enviado o necesidad de crear una cuenta con créditos.
+- Que la app cambie mientras se escribe el manual y quede desactualizado.
+
+---
+<img width="1600" height="1200" alt="image" src="https://github.com/user-attachments/assets/6a4f3aaf-af62-4cea-8a62-ced9555b65b7" />
+
+---
+## Daily Sprint - 20/10/2026
+
+### Isabella Posada
+
+1. **¿Qué hice ayer?**
+
+Ayer presentamos como grupo la sustentación de la entrega dos del proyecto, retroalimentamos muchas cosas de arquitectura y de código, nos dejo un poco pensativos en cuanto a potencial, actitud y tiempo que hemos invertid, pero ante todo el aprendizaje
+   
+2. **¿Qué voy a hacer hoy?**
+
+Hoy voy a revisar nuevamente el diagrama de componentes, y tambien revisé porque está fallando viajeDao
+   
+3. **¿Tengo algún impedimento o bloqueo?**
+
+Por ahora tiempo, tengo 2 sustentaciónes mañana de otras dos materias diferentes.
+
+---
+
+### Valeria Cortes Rendon
+
+1. **¿Qué hice ayer?**
+Se realizo la sustentacion y definimos que debemos mejorar con respecto a los diagramas ya que en la sustentacion 2 del proyecto nos fue un poco mal con respecto a eso tambien definimos que debemos empezar a borrar algunas clases y refactorizar el codigo para dejarlo mucho mas limpio y simplificado
+
+
+2. **¿Qué voy a hacer hoy?**
+Eliminacion de todos los documentos de diagramas para empezar a hacerlos uno por uno de nuevo, menos el de gof, empece a buscar como hacer el manual de usuarios
+
+   
+3. **¿Tengo algún impedimento o bloqueo?**
+No
+
+   
+---
+
+### Santiago Clavijo
+
+1. **¿Qué hice ayer?**
+
+ayer tuvimos la sustentacion de la segunda entrega del proyecto, entendimos que la arquitectura y los diagramas los teniamos mal pero ya entendimos porque
+
+2. **¿Qué voy a hacer hoy?**
+
+hoy revise mi patron gof, y demas diagramas para volver hacerlos
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+falta de tiempo
+
+---
+
+### Gabriela Melo Gualteros
+
+1. **¿Qué hice ayer?**
+
+Terminamos de revisar los diagramas y de estudiarlos para sustentarlos, se mejoraron algunos y estudiar mucho los patrones GoF
+
+2. **¿Qué voy a hacer hoy?**
+
+Tuvimos la sustentacion de la entrega 2 donde el profesor nos corrigio varias cosas de la arquitectura
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+no
+
+---
+
+
+### Maria Alejandra Rodriguez
+
+1. **¿Qué hice ayer?** 
+
+Terminamos de perfeccionar los diagramas y organizamos la sustentación
+
+2. **¿Qué voy a hacer hoy?** 
+
+Hoy tuvimos la sustentación, tenemos muchas cosas por mejorar y cambiar, una de ellas es refactorizar el código, también pues dominar ciertos aspectos que tenemos confusos en el proyecto
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+no 
+
+
+<img width="1280" height="678" alt="image" src="https://github.com/user-attachments/assets/c1b8d753-20f1-4093-bd38-013d67f0658f" />
+
+
+---
+
+---
+
+## Daily Sprint - 21/10/2026
+
+### Isabella Posada
+
+1. **¿Qué hice ayer?**
+
+Ayer revisé la conexión de ViajeDao 
+   
+2. **¿Qué voy a hacer hoy?**
+
+Hoy la verdad no he hecho mucho, solo revise la base de datos
+   
+3. **¿Tengo algún impedimento o bloqueo?**
+
+No
+
+---
+
+### Valeria Cortes Rendon
+
+1. **¿Qué hice ayer?**
+
+Eliminacion de todos los documentos de diagramas para empezar a hacerlos uno por uno de nuevo, menos el de gof, empece a buscar como hacer el manual de usuarios
+
+2. **¿Qué voy a hacer hoy?**
+
+Hoy empece a revisar como puedo hacer el diagrama de componentes que es el mas sencillo de los diagramas e intentado mirar como el manual de usuario lo podemos desarrollar con los modulo que tenemos hasta ahora
+   
+3. **¿Tengo algún impedimento o bloqueo?**
+
+no
+
+   
+---
+
+### Santiago Clavijo
+
+1. **¿Qué hice ayer?**
+
+ayer empece a revisar todos los patrones que hicimos, los borramos y somos concientes de que los tenemos que hacer bien para la proxima entrega
+
+
+2. **¿Qué voy a hacer hoy?**
+
+hoy deje de lado los diagramas para concentrarme en las HUs de esta semana, ya vi que le puedo cambiar a la pagina de preguntas para que quede mas limpia, y mañana empezare a cambiarla
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+falta de tiempo
+
+
+---
+
+### Gabriela Melo Gualteros
+
+1. **¿Qué hice ayer?**
+
+Ayer por las correcciones que nos hizo el profesor, eliminamos todos los diagramas y estuve revisando cuales de los diagramas que yo trabaje necesitan una mejora
+
+2. **¿Qué voy a hacer hoy?**
+
+Hoy ya revise las mejoras que se le pueden hacer a cada uno de los diagramas y entendi la dimension de cada uno, el de componentes, despliegue, dominio, que se supone que cada uno debe mostrar
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+no
+
+---
+
+
+### Maria Alejandra Rodriguez
+
+1. **¿Qué hice ayer?** 
+
+Ayer eliminamos todos los diagramas para empezar a hacer uno por uno con mucho mas detalle y cuidado para entender que fue lo que hicimos
+
+2. **¿Qué voy a hacer hoy?** 
+
+Hoy voy a empezar a revisar el codigo y ver si de alguna manera se puede como disminuir la cantidad de interfaces y tener estrictamente lo necesario
+
+3. **¿Tengo algún impedimento o bloqueo?** 
+
+no 
+
+---
+<img width="1297" height="691" alt="image" src="https://github.com/user-attachments/assets/5c6c8a22-2e91-4e4f-8b2f-5d68cd5307fe" />
+
+---
+## Daily Sprint - 22/10/2026
+
+### Isabella Posada
+
+1. **¿Qué hice ayer?**
+
+ayer revise el codigo y la base de datos
+   
+2. **¿Qué voy a hacer hoy?**
+
+hoy corregi ViajeDao y tambien el controlador de recomendaciones para que la base de datos guardara correctamente, ademas de guardar preferencias asociadas y si ya hay un viaje guardado en la planificación, se actualizará el destino del usuario. Hay que pulir algunas cosas especialmente con que si cambia el destino del viaje actual, actualizar esa fila usando id_viaje e id_usuario. Si comienza otro viaje, mirar a ver si se pregunta si se quiere descartar el vijae o simplemente decir que no se puede hacer un overleap de fechas de los viajes.
+   
+3. **¿Tengo algún impedimento o bloqueo?**
+
+no, me falta un poco de tiempo la verdad pero de resto bien
+
+---
+
+### Valeria Cortes Rendon
+
+1. **¿Qué hice ayer?**
+
+Hoy empece a revisar como puedo hacer el diagrama de componentes que es el mas sencillo de los diagramas e intentado mirar como el manual de usuario lo podemos desarrollar con los modulo que tenemos hasta ahora
+
+2. **¿Qué voy a hacer hoy?**
+
+Vimos sobre la retrospective de startfish, realizamos una de ellas en clase y decidimos que debemos empezar a implementarlo en cada uno de los modulos.
+   
+3. **¿Tengo algún impedimento o bloqueo?**
+
+no
+   
+---
+
+### Santiago Clavijo
+
+1. **¿Qué hice ayer?**
+
+ayer empece a ver que le podia cambiar a la pagina de las preguntas de preferenncia hacia el usuario
+
+2. **¿Qué voy a hacer hoy?**
+
+hoy corregi unas tarjetas que estaban estilos pero no se implementaban en preferencias.jsp, intente quitar una linea verde que tiene pero no pude solucionar, lo tratare de hacer mañana
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+
+no
+
+---
+
+### Gabriela Melo Gualteros
+
+1. **¿Qué hice ayer?**
+
+Ayer estuvimos analizando todos los comentarios que el profesor nos dio para mejorar, tanto de la arquitectura como del codigo 
+
+2. **¿Qué voy a hacer hoy?**
+
+Hoy estuvimos viendo que una buena forma de realizar el retrospective es utilizando el metodo de starfish, lo implementamos para el Sprint 8 
+
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+no
+
+---
+
+
+### Maria Alejandra Rodriguez
+
+1. **¿Qué hice ayer?** 
+
+Revise el codigo y empece a refactorizar
+
+2. **¿Qué voy a hacer hoy?** 
+
+hoy revisamos algunas cosas sobre como deberiamos analizar mejor las entregas de los sprints
+
+3. **¿Tengo algún impedimento o bloqueo?** 
+
+no
+
+---
+
+---
+
+## Daily Sprint - 23/10/2026
+
+### Isabella Posada
+
+1. **¿Qué hice ayer?**
+
+Ayer revise la base de datos, y el dao de los viajes
+   
+2. **¿Qué voy a hacer hoy?**
+
+hoy segui con eso, no pude hacer la migracion de solo atributos de api, es mas largo de lo que pensé
+Incluso pensé que podría adelantar mañana pero no podre tener ningun acceso al computador de 6am a 11pm...
+   
+3. **¿Tengo algún impedimento o bloqueo?**
+no
+
+
+---
+
+### Valeria Cortes Rendon
+
+1. **¿Qué hice ayer?**
+Vimos sobre la retrospective de startfish, realizamos una de ellas en clase y decidimos que debemos empezar a implementarlo en cada uno de los modulos.
+
+
+2. **¿Qué voy a hacer hoy?**
+Hice la guia de usuario y empece a revisar como podemos refactorizar el codigo ya que sin eso no podemos realizar de nuevo los diagramas ya que tenemos mucho codigo que es inservible por lo tanto debemos volverlo a organizar para solo tener lo necesario y lo que estamos haciendo
+
+   
+3. **¿Tengo algún impedimento o bloqueo?**
+No
+
+   
+---
+
+### Santiago Clavijo
+
+1. **¿Qué hice ayer?**
+
+vi lo que le voy hacer a la pagina de las recomendaciones y hicimos un trabajo en clase acerca de las retrospectivas
+
+2. **¿Qué voy a hacer hoy?**
+
+empece a implementar los cambios en la vista
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+no
+
+---
+
+### Gabriela Melo Gualteros
+
+1. **¿Qué hice ayer?**
+
+Ayer aprendimos del metodo que se puede implementar en los Sprint Retrospective, Starfish, y lo implementamos para el sprint 8
+
+2. **¿Qué voy a hacer hoy?**
+
+Hoy corregi un poco el codigo del modulo que me correspondio, entendiendo que hace cada funcion y eliminando cosas autogeneradas que no entiendo
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+no
+
+---
+
+
+### Maria Alejandra Rodriguez
+
+1. **¿Qué hice ayer?** 
+
+Revise la parte del itinerario y como esta funcionando lo de olvide contraseña
+
+2. **¿Qué voy a hacer hoy?** 
+
+hoy voy a seguir revisando esa parte del codigo que hay muchas cosas que no van
+
+3. **¿Tengo algún impedimento o bloqueo?** 
+
+no
+
+---
+
+<img width="1345" height="757" alt="image" src="https://github.com/user-attachments/assets/6dcbe3fc-a551-4e0b-84f9-8c296f24cfca" />
+
+---
+# Sprint Review - 25/08/2026
+
+## Información de la Sesión
+
+- **Fecha de la Review:** 25/08/2026
+- **Sprint Goal:** Implementar el flujo principal de WiseTrip, conectando las pantallas de registro e inicio de sesión, origen del viaje, preferencias, fechas, presupuesto y recomendaciones de destinos con la base de datos.
+
+---
+
+## Incremento Entregado
+
+Durante este Sprint se trabajó en la construcción del flujo principal de WiseTrip. El objetivo fue avanzar en la integración de las funcionalidades de planificación de viajes, la gestión de información del usuario y la generación de recomendaciones de destinos.
+
+Los principales componentes contemplados fueron:
+
+- Desarrollo de las pantallas correspondientes al flujo inicial de la aplicación.
+- Implementación de la captura de preferencias, fechas y presupuesto del viaje.
+- Integración de las pantallas con la base de datos para gestionar la información del usuario y del viaje.
+- Desarrollo de la lógica de recomendación de destinos a partir de las preferencias y el presupuesto.
+- Organización y revisión de las historias de usuario para realizar seguimiento al avance del Sprint.
+- Elaboración de mockups para representar visualmente la interfaz y la navegación propuesta para WiseTrip.
+
+---
+
+## Demostración
+
+Resumen de los puntos presentados durante la demo del producto:
+
+- Registro e inicio de sesión del usuario.
+- Selección del lugar de origen y de las preferencias del viaje.
+- Selección de las fechas y definición del presupuesto.
+- Generación y visualización de destinos recomendados según los datos ingresados.
+- Persistencia y consulta de la información mediante la base de datos.
+- Navegación entre las pantallas que conforman el flujo principal de la aplicación.
+- Presentación de los mockups de las pantallas para mostrar la propuesta visual y la experiencia de navegación esperada.
+
+---
+
+## Conclusión y Próximos Pasos
+
+El Sprint se enfocó en avanzar hacia una primera versión funcional de WiseTrip, priorizando el flujo principal de planificación de viajes y la comunicación con la base de datos. Se establecieron las bases para que el usuario pueda ingresar sus datos, definir las características de su viaje y obtener recomendaciones de destinos.
+
+Sin embargo, es necesario verificar el funcionamiento integral de las funcionalidades desarrolladas y confirmar que cada historia de usuario cumpla con sus criterios de aceptación antes de considerarla finalizada.
+
+Como próximos pasos, se propone:
+
+- Verificar el cumplimiento de los criterios de aceptación y la Definition of Done de cada historia de usuario.
+- Completar las integraciones pendientes entre las pantallas, la lógica de negocio y la base de datos.
+- Realizar pruebas del flujo completo, desde el ingreso de la información hasta la visualización de las recomendaciones.
+- Corregir los errores identificados durante las pruebas de funcionalidad e integración.
+- Validar que las recomendaciones generadas correspondan a las preferencias y al presupuesto ingresados por el usuario.
+- Mejorar la interfaz y la navegación de acuerdo con los mockups y las necesidades identificadas.
+- Actualizar el Product Backlog y priorizar las historias de usuario que deban retomarse en el siguiente Sprint.
+
+**Feedback de los stakeholders:**
+
+El feedback de los stakeholders queda pendiente de documentar con base en los comentarios recibidos durante la revisión del producto. Se recomienda registrar las observaciones relacionadas con el flujo principal, la experiencia de usuario, la integración con la base de datos y la calidad de las recomendaciones para definir las mejoras que se implementarán en los siguientes Sprints.
+---
+
+## Sprint Retrospective - 25/10/2026
+
+## Maria Alejandra Rodriguez
+
+1. **¿Qué logramos?**
+
+Logramos mejorar de alguna manera el codigo, falta hacer algunas revisiones para poder hacer la refactorizacion final y para arreglar los diagramas que tenemos
+
+2. **¿Cómo trabajamos?**
+
+Bien sin embargo siento que fue una semana un poco pesada para todos entonces se avanzo como se pudo
+
+3. **¿Qué podríamos mejorar?**
+
+Podriamos mejorar la distribuicion de tareas teniendo en cuenta la refactorizacion que se realizo y poner cierto tipo de limites o estandares para seguir haciendo codigo de manera controlada
+
+---
+
+## Gabriela Melo Gualteros
+
+1. **¿Qué logramos?**
+
+Logramos hacer la refactorizacion de todo el codigo, se eliminaron funciones, interfaces, codigo muerto, y cosas que teniamos que no se estaban utilizando, que tenian sobrecarga o que se podia mejorar y utilizar un codigo mas entendible
+
+2. **¿Cómo trabajamos?**
+
+Para este sprint se utilizo mi cuenta para hacer el refactor pero mis compañeros estuvieron al tanto de todo, esto se manejo asi para que solo se cambiara una rama y no hubieran mas conflictos si cada uno se ponia a editar en su rama
+  
+3. **¿Qué podríamos mejorar?**
+
+Manejar bien la carga de trabajo dependiendo de la semana academica en la que nos encontremos porque simpre fallamos en poner las HUs mas complejas en las semanas donde tenemos mas trabajo de otras materias, como lo son semanas de parciales o entregas. Esto mismo paso en este sprint, pensamos que teniamos el tiempo y que podiamos sacar todo adelante pero seguiamos en semana de parciales y entregas y no nos dio. Ademas tenemos que tener en cuenta lo que nos propusimos lograr al principio del proyecto
+
+
+  
+---
+
+## Valeria Cortes Rendon
+
+1. **¿Qué logramos?**
+
+Logramos refactorizar partes del codigo y por mi parte hacer el manual de usuario,. En el momento no pude iniciar con el envio de mensajes ya que no sabemos como el profesor quiere implementar esto dentro del proyecto si quiere como un autenticador o cual es la idea de conectar esto con el programa
+
+2. **¿Cómo trabajamos?*
+
+Por el momento hemos sabido distribuir el trabajo, sin embargo esta semana seguiamos en parciales por lo tanto teniamos muchos trabajos y entregas
+
+3. **¿Qué podríamos mejorar?**
+
+Entender el funcionamiento del proyecto mejor y poder seguir limpiando lo que no usamos actualmente y asi eliminar todo lo que no esta funcionando actualmente
+
+---
+
+## Isabella Posada
+
+1. **¿Qué logramos?**
+
+Logramos darnos cuenta de realmente que errores y confusiones teníamos con respecto a la metodología y arquitectura que estamos manejando como grupo, además de que ahora, sabemos (no con tanta exactitud) que es lo que debemos cambiar y lo que debemos seguir refactorizando.
+
+2. **¿Cómo trabajamos?**
+
+
+Trabajamos bien en equipo, cada vez nos entendemos mas y vamos incrementando el nivel y rigurosidad de trabajo
+
+3. **¿Qué podríamos mejorar?**
+
+A nivel individual, el manejo de tiempo con respecto a otras materias, ya que esta no es la única materia la cual requiere una gran cantidad de tiempo, y cuando se entrecruzan diferentes sustentaciones y exámenes, es complicado manejar todo al mismo tiempo.
+Como grupo siento que debemos mejorar más al no hacer las cosas por hacerlas; tomarnos el tiempo de pensar qué tenemos, qué nos falta y qué estamos haciendo. Aunque se correlaciona con lo mismo de el tiempo, seguramente si no estuviéramos con tantas cosas y hubiéramos organizado mejor el tiempo, nuestro rendimiento reflejado en la sustentación habría sido mejor.
+
+---
+
+## Santiago Clavijo
+
+
+1. **¿Qué logramos?**
+
+refactorizamos el codigo para hacerlo mas simple y facil de entender, nos queda pendiente la parte de los diagramas, ya que en la sustentacion nos dijeron que los tenemos mal y no estan adaptados al codigo
+
+2. **¿Cómo trabajamos?**
+
+por mi parte no pude completar todas mis hu, fue una semana dura en cuestion de trabajos, entregas, parciales etc, como equipo seguimos conectados y en la misma sintonia
+
+3. **¿Qué podríamos mejorar?**
+
+como equipo la distribucion del tiempo de otras materias ya que esta nos o me quita mucho tiempo
+
+---
+
+# Sprint Planning - [26/10/2026]
+
+## Sprint Goal
+
+
+## Capacidad del equipo 
+
+* Desarrolladores disponibles: 5
+* Puntos/horas disponibles: 42
+
+## Issues seleccionados para el Sprint
+
+| ID | Título | Tipo | Estimación | Responsable |
+|----|--------|------|------------|-------------|
+| #116 | Como administrador, quiero refactorizar el código, para mantenerlo limpio y entender mejor cómo está armado. | Historia de Usuario | TDB| Valeria |
+| #117 | Como administrador, quiero representar cada módulo en diagramas, para comprender cómo funciona el sistema y saber qué parte mejorar. | Historia de Usuario | TBD | Valeria |
+| #118 |Como usuario de WiseTrip quiero que la estructura del sistema esté correctamente organizada y documentada para que las funcionalidades que utilizo se mantengan integradas y puedan evolucionar de forma confiable  | Historia de Usuario | TBD | Maleja |
+| #119 | Como usuario de WiseTrip quiero que las funcionalidades del sistema tengan una estructura interna coherente para utilizar una aplicación estable, mantenible y confiable | Historia de Usuario | TBD | Maleja |
+| #120 | Como usuario, quiero que mis datos de preferencias, fechas y presupuesto estén bien organizados, para que no se pierdan ni se contradigan entre pantallas. | Historia de Usuario | TDB | Gaby|
+| #121 | Como usuario, quiero que las partes del sistema de mi planificación se comuniquen bien entre sí, para avanzar sin interrupciones entre pantallas. | Historia de Usuario | TBD | Gaby |
+| #122 |  | Historia de Usuario | TBD | Isa |
+| #123 |  | Historia de Usuario | TBD | Isa |
+| #114 |  Como administrador de WiseTrip quiero rehacer el diagrama de clases del patrón GoF decorador, para que refleje con claridad el código refactorizado | Historia de Usuario | TBD | Clavijo |
+| #125 | Como administrador de WiseTrip, quiero organizar la estructura de paquetes y archivos para que el equipo entienda cómo se relacionan sus partes y pueda mantenerlas de forma ordenada.  | Historia de Usuario | TBD | Clavijo |
+
+## Riesgos / Bloqueos identificados
+
+-
+-
+-
+
+---
+<img width="1600" height="1041" alt="image" src="https://github.com/user-attachments/assets/1ceef63c-b887-446f-aba0-b8e28fc3f525" />
+
+
+---
+
+## Daily Sprint - 27/10/2026
+
+### Isabella Posada
+
+1. **¿Qué hice ayer?**
+
+Ayer hicimos el Sprint Planning con mis compañeros acerca de como vamos a mejorar la representación de la arquitectura del proyecto; dividiendo nuestras tareas y responsabilidades por módulos. 
+   
+2. **¿Qué voy a hacer hoy?**
+
+
+Hoy estuve en clase aprendiendo sobre las pruebas y también revise lo que nos dijo el profe. 
+
+   
+3. **¿Tengo algún impedimento o bloqueo?**
+
+no
+
+---
+
+### Valeria Cortes Rendon
+
+1. **¿Qué hice ayer?**
+
+Realizamos el planning y nos dimos cuenta que debemos refatorizar mas partes del codigo antes de hacer los diagramas
+
+2. **¿Qué voy a hacer hoy?**
+
+Iniciar a hacer alguna refactorizacion del codigo y cuando ya hayamos terminado iniciar con los diagramas que es lo que mas nos importa en este momento
+   
+3. **¿Tengo algún impedimento o bloqueo?**
+
+Tiempo
+
+
+   
+---
+
+### Santiago Clavijo
+
+1. **¿Qué hice ayer?**
+
+Hicimos el sprint planning y entre todos decidimos que este sprint nos enfocaremos en arreglar el codigo, hacer y corregir los diagrams nuevo y faltantes con el nuevo codigo refactorizado
+
+2. **¿Qué voy a hacer hoy?**
+
+revise que todo el modulo 2 siga sirviendo sin errores, y descargue el visual paradigm para empezar a hacer el diagrama de mi patron gof
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+falta de tiempo
+
+---
+
+### Gabriela Melo Gualteros
+
+1. **¿Qué hice ayer?**
+
+Ayer estuvimos en Sprint Planning y decidimos enfocarnos en la realizacion de nuevo de los diagramas teniendo en cuenta las correcciones que nos dio el profesor en la segunda entrega
+
+2. **¿Qué voy a hacer hoy?**
+
+Hoy voy a revisar si aun queda codigo del modulo en el que estoy trabajando que pueda eliminar si afectar su funcionamiento y recordar las correcciones del profesor para los diagramas
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+tengo la entrega de dos proyectos
+
+---
+
+
+### Maria Alejandra Rodriguez
+
+1. **¿Qué hice ayer?** 
+
+Ayer tuvimos planning y revisamos como quedaron los cambios de la semana pasada
+
+2. **¿Qué voy a hacer hoy?** 
+
+Realice otras refactorizaciones que encontre en el codigo que no estaban haciendo gran cosa
+
+3. **¿Tengo algún impedimento o bloqueo?** 
+
+no 
+
+
+<img width="1600" height="1200" alt="image" src="https://github.com/user-attachments/assets/0b2702c5-3394-4304-a7da-31003b6aba20" />
+
+
+---
+
+## Daily Sprint - 28/10/2026
+
+### Isabella Posada
+
+1. **¿Qué hice ayer?**
+
+Ayer tuvimos la clase deprueba y revise las paginas que nos habia dicho el profe
+   
+2. **¿Qué voy a hacer hoy?**
+
+Hoy voy a descargar el visualparadigm porque no lo tengo y empezar a revisar el codigo refactorizado que se hizo en el sprint anterior, para ver que hace falta y poder empezar el diagrama de interfaces de recomendaciones.
+   
+3. **¿Tengo algún impedimento o bloqueo?**
+
+tengo un parcial y una entrega de otras materias entonces no voy a poner tener tanto tiempo hoy
+
+---
+
+### Valeria Cortes Rendon
+
+1. **¿Qué hice ayer?**
+
+iniciamos con la refactorizacion del codigo y tuvimos clase de pruebas empezamos a mirar que pruebas podriamos realizar
+
+2. **¿Qué voy a hacer hoy?**
+
+Descargar visual e iniciar los diagramas que se puedan hacer ya que si dejamos para lo ultimo puede que no alcancemos a terminarlos correctamente
+   
+3. **¿Tengo algún impedimento o bloqueo?**
+
+Tiempo
+   
+---
+
+### Santiago Clavijo
+
+1. **¿Qué hice ayer?**
+
+ayer intente descargar el visual paradigm, pero no pude ya que me pide pagar para empezar
+
+2. **¿Qué voy a hacer hoy?**
+
+hoy intente descargarlo en la maquina virtual de la universidad ya que asi se ha trabajado en materias anteriores.
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+no
+
+---
+
+### Gabriela Melo Gualteros
+
+1. **¿Qué hice ayer?**
+
+Ayer revise si aun queda codigo del modulo en el que estoy trabajando que pueda eliminar sin afectar su funcionamiento y recordar las correcciones del profesor para los diagramas
+
+2. **¿Qué voy a hacer hoy?**
+
+Estamos esperando a que mis otras compañeras hagan otros refactor en el codigo y empezare despues a hacer de nuevo los diagramas con las correcciones del profesor, ademas de descargar Visual Paradigm
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+Tiempo 
+
+---
+
+
+### Maria Alejandra Rodriguez
+
+1. **¿Qué hice ayer?** 
+
+Hice par de modificaciones del codigo respecto a algunas interfaces para poder empezar a hacer los diagramas
+
+2. **¿Qué voy a hacer hoy?** 
+
+Hoy voy a iniciar con el diseño de interfaces como fue planeado por el grupo
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+no
+
+---
+
+## Daily Sprint - 29/10/2026
+
+### Isabella Posada
+
+1. **¿Qué hice ayer?**
+
+
+   
+2. **¿Qué voy a hacer hoy?**
+
+
+   
+3. **¿Tengo algún impedimento o bloqueo?**
+
+
+
+---
+
+### Valeria Cortes Rendon
+
+1. **¿Qué hice ayer?**
+
+
+
+2. **¿Qué voy a hacer hoy?**
+
+
+   
+3. **¿Tengo algún impedimento o bloqueo?**
+
+
+   
+---
+
+### Santiago Clavijo
+
+1. **¿Qué hice ayer?**
+
+
+
+2. **¿Qué voy a hacer hoy?**
+
+
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+
+
+---
+
+### Gabriela Melo Gualteros
+
+1. **¿Qué hice ayer?**
+
+
+
+2. **¿Qué voy a hacer hoy?**
+
+
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+
+
+---
+
+
+### Maria Alejandra Rodriguez
+
+1. **¿Qué hice ayer?** 
+
+
+2. **¿Qué voy a hacer hoy?** 
+
+
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+
+---
+
+
+
+
 

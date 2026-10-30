@@ -12,5 +12,9 @@ public interface GestorPresupuesto {
     Map<String, String> monedasDisponibles(String paisDestino);
 
     String nombreMoneda(String codigo);
+    
     String formatear(double valor);
+    
+
+    
 }

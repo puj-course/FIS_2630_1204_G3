@@ -10,6 +10,7 @@ package com.wisetrip.datos;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import com.wisetrip.negocio.CatalogoPreguntas;
 
 public class DatosCiudades {
 
@@ -92,7 +93,12 @@ public class DatosCiudades {
     }
 
     private static Map<String, Boolean> attrs(String... atributos) {
-        return Arrays.stream(atributos)
-                .collect(java.util.stream.Collectors.toUnmodifiableMap(a -> a, a -> Boolean.TRUE));
+        // La semilla enumera los rasgos manuales que cumple el destino.
+        // Los demas manuales no cumplen; los AUTO siguen pendientes de Geoapify.
+        var presentes = java.util.Set.copyOf(Arrays.asList(atributos));
+        return CatalogoPreguntas.todas().stream()
+                .filter(pregunta -> pregunta.esManual())
+                .collect(java.util.stream.Collectors.toUnmodifiableMap(
+                        pregunta -> pregunta.id, pregunta -> presentes.contains(pregunta.id)));
     }
 }

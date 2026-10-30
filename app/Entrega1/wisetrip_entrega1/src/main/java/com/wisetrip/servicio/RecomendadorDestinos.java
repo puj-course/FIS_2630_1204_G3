@@ -1,6 +1,3 @@
-//toca entenderlo mucho mas
-//algoritmo de recomendacion por presupuesto y preferencias
-
 package com.wisetrip.servicio;
 
 import java.util.ArrayList;
@@ -17,24 +14,18 @@ import com.wisetrip.modelo.EstadoAtributo;
 import com.wisetrip.modelo.ValidacionCiudades;
 import com.wisetrip.modelo.PreferenciasUsuario;
 import com.wisetrip.modelo.ResultadoRecomendacion;
-import com.wisetrip.negocio.GestorPreferencias;
 import com.wisetrip.negocio.Recomendador;
+import com.wisetrip.negocio.GestorPreferencias;
 
 @Service
 public class RecomendadorDestinos implements Recomendador {
-
-    /**
-     * Factor minimo del castigo por "Lo prefiero": una ciudad que no cumple ninguno
-     * conserva la mitad de su coincidencia; si cumple todos, no se castiga.
-     */
-    static final double FACTOR_MINIMO_PREFIERO = 0.5;
 
     private final boolean presupuestoObligatorio;
     private final GestorPreferencias gestorPreferencias;
 
     public RecomendadorDestinos(
-            @Value("${wisetrip.presupuesto.obligatorio:true}") boolean presupuestoObligatorio,
-            GestorPreferencias gestorPreferencias) {
+        @Value("${wisetrip.presupuesto.obligatorio:true}") boolean presupuestoObligatorio,
+        GestorPreferencias gestorPreferencias) {
         this.presupuestoObligatorio = presupuestoObligatorio;
         this.gestorPreferencias = gestorPreferencias;
     }
@@ -55,24 +46,9 @@ public class RecomendadorDestinos implements Recomendador {
         }
     }
 
-    /**
-     * Coincidencia (0 a 1) de las preferencias del usuario con la oferta de la ciudad.
-     * Es la coincidencia ponderada de "Me gustaría" (peso 1) y "Lo prefiero" (peso 3),
-     * multiplicada por el castigo por los "Lo prefiero" que la ciudad no cumple.
-     * Los indispensables ({@link Importancia#si}) no suman puntos: se validan antes.
-     */
-    public double calcularPuntajePreferencias(Map<String, Boolean> oferta,
-                                              Map<String, Importancia> gustos) {
-        return calcularCoincidenciaPonderada(oferta, gustos)
-                * calcularFactorPrefiero(oferta, gustos);
-    }
-
-    /**
-     * Peso logrado / peso total de todas las preguntas puntuables (gustar y prefiero),
-     * sin agrupar por categoria. Los datos desconocidos cuentan como no cumplidos.
-     */
+    // Gustar suma 1; prefiero suma 3 o resta 1 si incumple.
     public double calcularCoincidenciaPonderada(Map<String, Boolean> oferta,
-                                                   Map<String, Importancia> gustos) {
+                                                Map<String, Importancia> gustos) {
         int pesoTotal = 0;
         int pesoLogrado = 0;
         for (var categoria : gestorPreferencias.listarCategorias()) {
@@ -80,48 +56,31 @@ public class RecomendadorDestinos implements Recomendador {
                 Importancia importancia = gustos.get(pregunta.getClave());
                 if (importancia != null && importancia.esPuntuable()) {
                     pesoTotal += importancia.getPeso();
-                    if (Boolean.TRUE.equals(oferta.get(pregunta.getClave()))) {
+                    Boolean cumple = oferta.get(pregunta.getClave());
+                    if (Boolean.TRUE.equals(cumple)) {
                         pesoLogrado += importancia.getPeso();
+                    } else if (importancia == Importancia.prefiero && Boolean.FALSE.equals(cumple)) {
+                        pesoLogrado--;
                     }
                 }
             }
         }
-        return pesoTotal == 0 ? 0.0 : (double) pesoLogrado / pesoTotal;
+        // Desconocidos conservan su peso, sin restar; minimo cero.
+        return pesoTotal == 0 ? 0.0 : Math.max(0.0, (double) pesoLogrado / pesoTotal);
     }
 
-    /**
-     * Factor de 0.5 a 1 segun el porcentaje de respuestas "Lo prefiero" que cumple la ciudad.
-     * Sin ningun "Lo prefiero" el factor es 1 (no hay castigo).
-     */
-    public double calcularFactorPrefiero(Map<String, Boolean> oferta,
-                                             Map<String, Importancia> gustos) {
-        int total = 0;
-        int cumplidos = 0;
-        for (var categoria : gestorPreferencias.listarCategorias()) {
-            for (var pregunta : categoria.getPreguntas()) {
-                if (gustos.get(pregunta.getClave()) == Importancia.prefiero) {
-                    total++;
-                    if (Boolean.TRUE.equals(oferta.get(pregunta.getClave()))) {
-                        cumplidos++;
-                    }
-                }
-            }
-        }
-        if (total == 0) {
-            return 1.0;
-        }
-        return FACTOR_MINIMO_PREFIERO
-                + (1 - FACTOR_MINIMO_PREFIERO) * cumplidos / total;
-    }
 
-    private ResultadoRecomendacion calcularPuntajeTotal(
+    @Override
+    public ResultadoRecomendacion calcularPuntajeTotal(
             Ciudad ciudad,
             PreferenciasUsuario preferencias) {
-        double costo = ciudad.costoEstadia(preferencias.getDuracionDias());
+        long dias = preferencias.getDuracionDias();
+        double diario = ciudad.getCostoPromedio();
+        double costo = diario * dias; // Costo de la estancia por persona.
         double presupuesto = preferencias.getPresupuestoUsd();
 
         double pCosto = calcularPuntajePresupuesto(costo, presupuesto);
-        double pGustos = calcularPuntajePreferencias(
+        double pGustos = calcularCoincidenciaPonderada(
                 ciudad.getAtributos(), preferencias.getAtributos());
         boolean provisional = preferencias.getAtributos().entrySet().stream()
                 .anyMatch(e -> e.getValue() != null && e.getValue().esPuntuable()
@@ -136,8 +95,16 @@ public class RecomendadorDestinos implements Recomendador {
      * Menor valor = más cerca del presupuesto del usuario.
      */
     public double diferenciaPresupuesto(Ciudad ciudad, PreferenciasUsuario preferencias) {
-        double costoViaje = ciudad.costoEstadia(preferencias.getDuracionDias());
+        double costoViaje = ciudad.getCostoPromedio() * preferencias.getDuracionDias();
         return Math.abs(costoViaje - preferencias.getPresupuestoUsd());
+    }
+
+    @Override
+    public boolean excedePresupuesto(Ciudad ciudad, PreferenciasUsuario preferencias) {
+        double costo = ciudad.getCostoPromedio() * preferencias.getDuracionDias();
+        // Un costo desconocido no confirma un exceso.
+        return presupuestoObligatorio && Double.isFinite(costo) && costo > 0
+                && costo > preferencias.getPresupuestoUsd();
     }
 
     @Override
@@ -146,10 +113,12 @@ public class RecomendadorDestinos implements Recomendador {
         List<Ciudad> descartadas = new ArrayList<>();
         List<Ciudad> pendientes = new ArrayList<>();
         for (Ciudad ciudad : ciudades) {
-            double costo = ciudad.costoEstadia(preferencias.getDuracionDias());
+            double costo = ciudad.getCostoPromedio() * preferencias.getDuracionDias();
             boolean faltaInformacion = !Double.isFinite(costo) || costo <= 0;
-            boolean incumple = !faltaInformacion && presupuestoObligatorio
-                    && costo > preferencias.getPresupuestoUsd();
+            
+            // Validación única y limpia de presupuesto excedido
+            boolean incumple = excedePresupuesto(ciudad, preferencias);
+
             for (var requisito : preferencias.getAtributos().entrySet()) {
                 if (requisito.getValue() == null || !requisito.getValue().esIndispensable()) continue;
                 EstadoAtributo estado = ciudad.estadoAtributo(requisito.getKey());
@@ -166,7 +135,7 @@ public class RecomendadorDestinos implements Recomendador {
 
     @Override
     public List<ResultadoRecomendacion> puntuarCiudadesValidas(ValidacionCiudades validacion,
-                                                              PreferenciasUsuario preferencias) {
+                                                               PreferenciasUsuario preferencias) {
         List<ResultadoRecomendacion> resultados = new ArrayList<>();
         for (Ciudad ciudad : validacion.validas()) {
             resultados.add(calcularPuntajeTotal(ciudad, preferencias));

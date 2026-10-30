@@ -19,8 +19,7 @@ public class Preferencias {
     }
 
     /**
-     * el viajero manifiesta interes por un atributo
-     * (respondio "gustar", "prefiero" o "si")
+     * el viajero manifiest interes por un atributo
      */
     public boolean tienePreferencia(String atributo) {
         String respuesta = respuestas.get(atributo);
@@ -30,10 +29,11 @@ public class Preferencias {
                 || "si".equals(respuesta);
     }
 
-    /** Cuantas respuestas manifiestan interes por su atributo. */
-    public long contarAfirmativas() {
-        return respuestas.keySet().stream()
-                .filter(this::tienePreferencia)
-                .count();
+    /**
+     * el atributo es indispensable para el viajero?
+     */
+    public boolean esIndispensable(String atributo) {
+        return "si".equals(respuestas.get(atributo));
     }
+
 }

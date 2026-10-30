@@ -46,10 +46,40 @@ public class RepartoPresupuesto implements IDistribuible {
         };
     }
 
+    @Override
+    public void asignar(String categoria, int porcentaje) {
+        if (porcentaje < 0 || porcentaje > PORCENTAJE_MAXIMO) {
+            throw new IllegalArgumentException(
+                    "El porcentaje de " + categoria + " debe estar entre 0 y 100.");
+        }
+        switch (categoria) {
+            case "hospedaje" -> hospedaje = porcentaje;
+            case "alimentacion" -> alimentacion = porcentaje;
+            case "transporte" -> transporte = porcentaje;
+            case "actividades" -> actividades = porcentaje;
+            case "imprevistos" -> imprevistos = porcentaje;
+            default -> throw new IllegalArgumentException("Categoría desconocida: " + categoria);
+        }
+    }
+
     /** Suma de todos los porcentajes. */
     @Override
     public int getTotal() {
         return hospedaje + alimentacion + transporte + actividades + imprevistos;
+    }
+
+    /** Vuelve al reparto que sugiere WiseTrip. */
+    public void restaurarSugerido() {
+        hospedaje = SUGERIDO_HOSPEDAJE;
+        alimentacion = SUGERIDO_ALIMENTACION;
+        transporte = SUGERIDO_TRANSPORTE;
+        actividades = SUGERIDO_ACTIVIDADES;
+        imprevistos = SUGERIDO_IMPREVISTOS;
+    }
+
+    /** Un reparto es válido si no tiene negativos, suma 100 y cubre lo básico. */
+    public boolean esValido() {
+        return !tienePorcentajesNegativos() && estaCompleto() && cubreLosBasicos();
     }
 
     // ===== Getters y setters (formulario y vistas) =====

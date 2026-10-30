@@ -4,6 +4,8 @@
  * para validar formato, y código de moneda ISO). Incluye utilidad para convertir
  * el monto a numero, devolviendo -1 si no es valido
  */
+
+
 package com.wisetrip.modelo;
 
 public class Presupuesto {
@@ -12,6 +14,11 @@ public class Presupuesto {
     private String moneda;
 
     public Presupuesto() {
+    }
+
+    public Presupuesto(String monto, String moneda) {
+        this.monto = monto;
+        this.moneda = moneda;
     }
 
     public String getMonto() {
@@ -51,4 +58,5 @@ public class Presupuesto {
             return -1;
         }
     }
+    
 }

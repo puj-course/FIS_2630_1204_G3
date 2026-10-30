@@ -122,23 +122,29 @@ public class PreferenciasServicio implements GestorPreferencias {
         return niveles;
     }
 
+    private static boolean esSeleccionada(String valor) {
+        return "gustar".equals(valor) || "prefiero".equals(valor) || "si".equals(valor);
+    }
+
     public Map<String, Boolean> obtenerAtributosSeleccionados(Preferencias preferencias) {
         Map<String, Boolean> atributos = new LinkedHashMap<>();
 
         for (CategoriaPreferencia categoria : CATEGORIAS) {
             for (Pregunta pregunta : categoria.getPreguntas()) {
-                atributos.put(pregunta.getClave(), preferencias.tienePreferencia(pregunta.getClave()));
+                String valor = preferencias.getRespuestas().get(pregunta.getClave());
+                atributos.put(pregunta.getClave(), esSeleccionada(valor));
             }
         }
         return atributos;
     }
+
 
     public Map<String, List<String>> resumenPorCategoria(Preferencias preferencias) {
         Map<String, List<String>> resumen = new LinkedHashMap<>();
 
         for (CategoriaPreferencia categoria : CATEGORIAS) {
             List<String> elegidas = categoria.getPreguntas().stream()
-                    .filter(p -> preferencias.tienePreferencia(p.getClave()))
+                    .filter(p -> esSeleccionada(preferencias.getRespuestas().get(p.getClave())))
                     .map(p -> ETIQUETAS.getOrDefault(p.getClave(), p.getTexto()))
                     .toList();
             resumen.put(categoria.getNombre(), elegidas);
@@ -147,11 +153,13 @@ public class PreferenciasServicio implements GestorPreferencias {
     }
 
     public long contarAfirmativas(Preferencias preferencias) {
-        return preferencias.contarAfirmativas();
+        return preferencias.getRespuestas().values().stream()
+                .filter(PreferenciasServicio::esSeleccionada)
+                .count();
     }
 
     private static CategoriaPreferencia categoria(String nombre, String descripcion, String... ids) {
-        return new CategoriaPreferencia(nombre, descripcion,
+            return new CategoriaPreferencia(nombre, descripcion,
                 java.util.Arrays.stream(ids)
                         .map(CatalogoPreguntas::porIdObligatorio)
                         .map(PreferenciasServicio::aPreguntaVista)

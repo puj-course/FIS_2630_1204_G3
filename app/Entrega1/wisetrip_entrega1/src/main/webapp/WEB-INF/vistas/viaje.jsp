@@ -36,6 +36,7 @@
         <a href="#presupuesto">Presupuesto</a>
         <a href="#itinerario">Itinerario</a>
         <a href="#antes-de-viajar">Antes de viajar</a>
+        <a href="<c:url value='/viajes'/>">Mis viajes</a>
     </nav>
 
     <div class="vj-opciones">
@@ -86,7 +87,7 @@
             <span class="vj-sello">Tu viaje está en marcha</span>
             <h1 class="vj-titulo">${destino.ciudad.nombre}</h1>
             <p class="vj-bajada">
-                ${destino.ciudad.pais} te espera. Aquí tienes todo tu viaje en un
+                <c:if test="${not empty destino.ciudad.pais}"><c:out value="${destino.ciudad.pais}"/> te espera. </c:if>Aquí tienes todo tu viaje en un
                 solo lugar: tu presupuesto organizado, tu itinerario día por día
                 y lo que necesitas antes de salir.
             </p>

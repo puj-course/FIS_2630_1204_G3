@@ -24,11 +24,10 @@ public class DefPregunta {
         this.umbral = umbral;
     }
 
-    /**
-     * indica si la pregunta utiliza categorias
-     * provenientes de fuentes externas
-     */
-    public boolean esAutomatica() {
-        return tipo == TipoAtributo.AUTO;
+    public boolean esManual() {
+        return tipo == TipoAtributo.MANUAL;
+    }
+    public boolean esDePerfil() {
+        return tipo == TipoAtributo.PERFIL;
     }
 }

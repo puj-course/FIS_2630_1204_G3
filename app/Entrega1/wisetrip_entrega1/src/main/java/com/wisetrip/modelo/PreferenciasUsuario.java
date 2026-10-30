@@ -2,24 +2,46 @@ package com.wisetrip.modelo;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
+import com.wisetrip.negocio.CatalogoPreguntas;
 
-/** Datos del viajero que usa el algoritmo de recomendación. */
 public class PreferenciasUsuario {
 
-    private final Map<String, Importancia> atributos;
-    private final Double presupuestoUsd;
-    private final long duracionDias;
+    private Map<String, Importancia> atributos = new LinkedHashMap<>();
+    private Double presupuestoUsd;
+    private long duracionDias;
+
+    public PreferenciasUsuario() {
+    }
+
+    public PreferenciasUsuario(Map<String, Importancia> atributos) {
+        if (atributos != null) {
+            setAtributos(atributos);
+        }
+    }
 
     public PreferenciasUsuario(Double presupuestoUsd,
                                Map<String, Importancia> atributos,
                                long duracionDias) {
-        this.atributos = atributos != null ? new LinkedHashMap<>(atributos) : new LinkedHashMap<>();
+        this(atributos);
         this.presupuestoUsd = presupuestoUsd;
         this.duracionDias = duracionDias;
     }
 
     public Map<String, Importancia> getAtributos() {
         return atributos;
+    }
+
+    public void setAtributos(Map<String, Importancia> atributos) {
+        this.atributos = new LinkedHashMap<>();
+        if (atributos == null) return;
+        atributos.forEach((clave, importancia) -> {
+            var pregunta = CatalogoPreguntas.porId(clave);
+            // Las respuestas de perfil se conservan en el cuestionario,
+            // pero no son requisitos ni gustos comparables con un destino.
+            if (pregunta != null && !pregunta.esDePerfil()) {
+                this.atributos.put(clave, importancia);
+            }
+        });
     }
 
     public Double getPresupuestoUsd() {
@@ -39,4 +61,26 @@ public class PreferenciasUsuario {
                 .anyMatch(importancia ->
                         importancia != null && importancia.esPuntuable());
     }
+
+    /**
+     * Indica si el usuario manifestó interés por un atributo.
+     */
+    public boolean tienePreferencia(String atributo) {
+        Importancia importancia = atributos.get(atributo);
+
+        return importancia != null
+                && importancia.estaSeleccionada();
+    }
+
+    /**
+     * Indica si un atributo es indispensable para el usuario.
+     */
+    public boolean esIndispensable(String atributo) {
+        Importancia importancia = atributos.get(atributo);
+
+        return importancia != null
+                && importancia.esIndispensable();
+    }
+
+
 }

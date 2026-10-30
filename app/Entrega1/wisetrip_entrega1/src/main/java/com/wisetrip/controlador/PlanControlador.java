@@ -15,8 +15,10 @@ import com.wisetrip.modelo.RepartoPresupuesto;
 import com.wisetrip.modelo.ResultadoRecomendacion;
 import com.wisetrip.modelo.Ubicacion;
 import com.wisetrip.modelo.Usuario;
-import com.wisetrip.negocio.GestorPresupuesto;
 import com.wisetrip.negocio.IGestionReparto;
+import com.wisetrip.negocio.IRepositorioViajes;
+import com.wisetrip.servicio.PresupuestoServicio;
+import com.wisetrip.servicio.UsuarioSesionFacade;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -32,19 +34,27 @@ import jakarta.servlet.http.HttpSession;
 @Controller
 public class PlanControlador {
 
+    private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(PlanControlador.class);
+    private final IRepositorioViajes viajeDAO;
+
     private final IGestionReparto gestionReparto;
-    private final GestorPresupuesto gestorPresupuesto;
+    private final PresupuestoServicio presupuestoServicio;
+    private final UsuarioSesionFacade usuarioSesionFacade;
 
     public PlanControlador(IGestionReparto gestionReparto,
-                           GestorPresupuesto gestorPresupuesto) {
+                           PresupuestoServicio presupuestoServicio,
+                           UsuarioSesionFacade usuarioSesionFacade,
+                           IRepositorioViajes viajeDAO) {
         this.gestionReparto = gestionReparto;
-        this.gestorPresupuesto = gestorPresupuesto;
+        this.presupuestoServicio = presupuestoServicio;
+        this.usuarioSesionFacade = usuarioSesionFacade;
+        this.viajeDAO = viajeDAO;
     }
 
     @GetMapping("/plan")
     public String mostrarPlan(HttpSession sesion, Model model) {
 
-        Usuario usuario = (Usuario) sesion.getAttribute("usuarioActivo");
+        Usuario usuario = usuarioSesionFacade.prepararEncabezado(sesion, model);
         if (usuario == null) return "redirect:/login";
 
         ResultadoRecomendacion destino =
@@ -57,22 +67,21 @@ public class PlanControlador {
         RepartoPresupuesto guardado = (RepartoPresupuesto) sesion.getAttribute("repartoPresupuesto");
         RepartoPresupuesto reparto = guardado != null ? guardado : new RepartoPresupuesto();
 
-        cargarDatos(model, sesion, usuario, destino, presupuesto, reparto);
+        cargarDatos(model, sesion, destino, presupuesto, reparto, usuario);
         return "plan";
     }
 
     @GetMapping("/viaje")
     public String mostrarViaje(HttpSession sesion, Model model) {
 
-        Usuario usuario = (Usuario) sesion.getAttribute("usuarioActivo");
+        Usuario usuario = usuarioSesionFacade.prepararEncabezado(sesion, model);
         if (usuario == null) return "redirect:/login";
 
         ResultadoRecomendacion destino =
                 (ResultadoRecomendacion) sesion.getAttribute("destinoElegido");
         if (destino == null) return "redirect:/recomendaciones";
 
-        Ubicacion ubicacion = (Ubicacion) sesion.getAttribute("ubicacionOrigen");
-        if (ubicacion == null) return "redirect:/origen";
+        Ubicacion ubicacion = SesionViaje.de(sesion, usuario).getOrigen();
 
         FechasViaje fechas = (FechasViaje) sesion.getAttribute("fechasViaje");
         if (fechas == null) return "redirect:/fechas";
@@ -84,9 +93,7 @@ public class PlanControlador {
                 (RepartoPresupuesto) sesion.getAttribute("repartoPresupuesto");
         if (reparto == null) return "redirect:/plan";
 
-        model.addAttribute("usuario", usuario);
-        model.addAttribute("inicialesUsuario", usuario.iniciales());
-        model.addAttribute("ubicacionCiudad", ubicacion.getCiudad());
+        model.addAttribute("ubicacionCiudad", ubicacion != null ? ubicacion.getCiudad() : "Origen no registrado");
         model.addAttribute("destino", destino);
         model.addAttribute("fechas", fechas);
         model.addAttribute("presupuesto", presupuesto);
@@ -105,23 +112,23 @@ public class PlanControlador {
 
     /** Datos del calendario y del presupuesto en USD que usa el itinerario. */
     private void cargarItinerario(Model model, FechasViaje fechas, Presupuesto presupuesto) {
-        double totalUsd = gestorPresupuesto.convertirAUsd(presupuesto);
+        double totalUsd = presupuestoServicio.convertirAUsd(presupuesto);
 
         model.addAttribute("diasCalendario", fechas.listarDias().stream()
                 .map(DiaItinerario::de)
                 .toList());
         model.addAttribute("montoFormateado",
-                gestorPresupuesto.formatear(presupuesto.getMontoNumerico()));
+                presupuestoServicio.formatear(presupuesto.getMontoNumerico()));
         model.addAttribute("totalUsd", totalUsd);
-        model.addAttribute("usdFormateado", gestorPresupuesto.formatear(totalUsd));
+        model.addAttribute("usdFormateado", presupuestoServicio.formatear(totalUsd));
     }
 
     @PostMapping("/plan")
     public String guardarPlan(@ModelAttribute("reparto") RepartoPresupuesto reparto,
-                              HttpSession sesion,
-                              Model model) {
+                            HttpSession sesion,
+                            Model model) {
 
-        Usuario usuario = (Usuario) sesion.getAttribute("usuarioActivo");
+        Usuario usuario = usuarioSesionFacade.prepararEncabezado(sesion, model);
         if (usuario == null) return "redirect:/login";
 
         ResultadoRecomendacion destino =
@@ -135,26 +142,37 @@ public class PlanControlador {
 
         if (!errores.isEmpty()) {
             model.addAttribute("errores", errores);
-            cargarDatos(model, sesion, usuario, destino, presupuesto, reparto);
+            cargarDatos(model, sesion, destino, presupuesto, reparto, usuario);
             return "plan";
         }
 
-        sesion.setAttribute("repartoPresupuesto", reparto);
+        synchronized (sesion) {
+            Integer idViaje = (Integer) sesion.getAttribute("idViajeGuardado");
+            if (idViaje == null) return "redirect:/recomendaciones";
+            try {
+                viajeDAO.guardarReparto(idViaje, usuario.getIdUsuario(), reparto);
+            } catch (IllegalArgumentException | IllegalStateException e) {
+                log.error("No se pudo guardar el reparto del viaje", e);
+                model.addAttribute("errores", Map.of("general",
+                        "No pudimos guardar el reparto. Intenta nuevamente."));
+                cargarDatos(model, sesion, destino, presupuesto, reparto, usuario);
+                return "plan";
+            }
+            sesion.setAttribute("repartoPresupuesto", reparto);
+        }
         return "redirect:/viaje";
     }
 
     /** Reúne todo lo que la vista necesita, para no repetirlo en cada método. */
-    private void cargarDatos(Model model, HttpSession sesion, Usuario usuario,
+    private void cargarDatos(Model model, HttpSession sesion,
                              ResultadoRecomendacion destino, Presupuesto presupuesto,
-                             RepartoPresupuesto reparto) {
+                             RepartoPresupuesto reparto, Usuario usuario) {
 
         FechasViaje fechas = (FechasViaje) sesion.getAttribute("fechasViaje");
-        Ubicacion ubicacion = (Ubicacion) sesion.getAttribute("ubicacionOrigen");
+        Ubicacion ubicacion = SesionViaje.de(sesion, usuario).getOrigen();
         double total = presupuesto.getMontoNumerico();
         long dias = fechas != null ? fechas.getDuracionDias() : 0;
 
-        model.addAttribute("usuario", usuario);
-        model.addAttribute("inicialesUsuario", usuario.iniciales());
         model.addAttribute("ubicacionCiudad", ubicacion != null ? ubicacion.getCiudad() : "Origen");
         model.addAttribute("destino", destino);
         model.addAttribute("presupuesto", presupuesto);
@@ -162,8 +180,9 @@ public class PlanControlador {
         model.addAttribute("reparto", reparto);
         model.addAttribute("dias", dias);
 
-        model.addAttribute("montoTotalFormateado", gestorPresupuesto.formatear(total));
+       
+        model.addAttribute("montoTotalFormateado", presupuestoServicio.formatear(total));
         model.addAttribute("porDiaTotal", dias > 0
-                ? gestorPresupuesto.formatear(total / dias) : "—");
+                ? presupuestoServicio.formatear(total / dias) : "—");
     }
 }

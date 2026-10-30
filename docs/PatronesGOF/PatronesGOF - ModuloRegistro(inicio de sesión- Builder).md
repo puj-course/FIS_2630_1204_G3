@@ -207,70 +207,8 @@ Este es el recorrido completo cuando alguien inicia sesión:
 
 ## Diseño - Diagrama UML
 
-```mermaid
-classDiagram
-    direction LR
+<img width="808" height="1160" alt="Untitled (1)" src="https://github.com/user-attachments/assets/2d79ed9e-24d3-4357-9641-fad2814f7cc3" />
 
-    class IUsuarioRepositorio {
-        <<interface>>
-        +buscarPorCorreo(correo String) Usuario
-    }
-
-    class UsuarioDAO {
-        <<Director / Cliente>>
-        +buscarPorCorreo(correo String) Usuario
-    }
-
-    class Usuario {
-        <<Product>>
-        -idUsuario int
-        -nombreCompleto String
-        -tipoDocumento String
-        -numeroDocumento String
-        -fechaNacimiento String
-        -correo String
-        -password String
-        -rol String
-        -chatId String
-        +Usuario()
-        +setCorreo(correo String) void
-        +verificarPassword(p String) boolean
-        +validarDatos(confirmar String) Map
-    }
-
-    class UsuarioBuilder["Usuario.Builder"] {
-        <<Builder>>
-        -idUsuario int
-        -nombreCompleto String
-        -tipoDocumento String
-        -numeroDocumento String
-        -fechaNacimiento String
-        -correo String
-        -password String
-        -rol String = "cliente"
-        -chatId String
-        +idUsuario(id int) Builder
-        +nombreCompleto(n String) Builder
-        +tipoDocumento(t String) Builder
-        +numeroDocumento(n String) Builder
-        +fechaNacimiento(f String) Builder
-        +correo(c String) Builder
-        +password(p String) Builder
-        +rol(r String) Builder
-        +chatId(c String) Builder
-        +build() Usuario
-    }
-
-    class UsuarioServicio {
-        +iniciarSesion(correo String, password String) Usuario
-    }
-
-    IUsuarioRepositorio <|.. UsuarioDAO : implementa
-    UsuarioServicio --> IUsuarioRepositorio : usa
-    UsuarioDAO ..> UsuarioBuilder : usa
-    UsuarioBuilder ..> Usuario : crea
-    Usuario *-- UsuarioBuilder : clase interna
-```
 
 **Cómo leer el diagrama:**
 - `UsuarioServicio` solo conoce la interfaz `IUsuarioRepositorio`, no sabe del Builder.

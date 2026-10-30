@@ -1,71 +1,57 @@
 /**
  * Fechas de viaje.
- * Servicio que valida las fechas del viaje: que no sean anteriores a hoy,
- * que la fecha de fin sea posterior a la de inicio y que el viaje no supere
- * los 60 días. También calcula la duración y da la fecha de hoy para el
- * formulario.
+ * Servicio que valida las fechas del viaje usando una cadena de reglas
+ * independientes (patrón Chain of Responsibility): fecha de inicio,
+ * fecha de fin, y la relación entre ambas (orden y duración máxima).
+ * También calcula la duración y da la fecha de hoy para el formulario.
  */
 
 package com.wisetrip.servicio;
 
 import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
-import java.util.LinkedHashMap;
 import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
 import com.wisetrip.negocio.IFechasServicio;
-import com.wisetrip.modelo.FechasViaje;
+import com.wisetrip.modelo.FechasViaje; 
 
 @Service
 public class FechasServicio implements IFechasServicio {
 
-    private static final int MAX_DIAS = 60;
+    private final ReglaValidacionFechas cadenaValidacion;
+    private final com.wisetrip.negocio.IRepositorioViajes viajes;
+
+    public FechasServicio(com.wisetrip.negocio.IRepositorioViajes viajes) {
+        this.viajes = viajes;
+        ReglaValidacionFechas fechaInicio = new ReglaFechaInicio();
+        ReglaValidacionFechas fechaFin = new ReglaFechaFin();
+        ReglaValidacionFechas relacion = new ReglaRelacionFechas();
+
+        fechaInicio.siguiente(fechaFin);
+        fechaFin.siguiente(relacion);
+
+        this.cadenaValidacion = fechaInicio;
+    }
 
     @Override
     public Map<String, String> validarFechas(FechasViaje fechas) {
-        Map<String, String> errores = new LinkedHashMap<>();
+        ContextoValidacionFechas contexto = new ContextoValidacionFechas(fechas);
+        cadenaValidacion.validar(contexto);
+        return contexto.getErrores();
+    }
 
-        LocalDate inicio = null;
-        LocalDate fin = null;
+    @Override
+    public long calcularDuracion(FechasViaje fechas) {
+        return fechas.getDuracionDias();
+    }
 
-        // Fecha de inicio
-        if (fechas.getFechaInicio() == null || fechas.getFechaInicio().isBlank()) {
-            errores.put("fechaInicio", "Selecciona la fecha de inicio de tu viaje.");
-        } else {
-            try {
-                inicio = LocalDate.parse(fechas.getFechaInicio());
-                if (inicio.isBefore(LocalDate.now())) {
-                    errores.put("fechaInicio", "La fecha de inicio no puede ser anterior a hoy.");
-                    inicio = null;
-                }
-            } catch (Exception e) {
-                errores.put("fechaInicio", "Ingresa una fecha válida.");
-            }
-        }
-
-        // Fecha de fin
-        if (fechas.getFechaFin() == null || fechas.getFechaFin().isBlank()) {
-            errores.put("fechaFin", "Selecciona la fecha de regreso.");
-        } else {
-            try {
-                fin = LocalDate.parse(fechas.getFechaFin());
-            } catch (Exception e) {
-                errores.put("fechaFin", "Ingresa una fecha válida.");
-            }
-        }
-
-        // Relacion entre ambas
-        if (inicio != null && fin != null) {
-            if (!fin.isAfter(inicio)) {
-                errores.put("fechaFin", "La fecha de regreso debe ser posterior a la de inicio.");
-            } else if (ChronoUnit.DAYS.between(inicio, fin) + 1 > MAX_DIAS) {
-                errores.put("fechaFin", "Por ahora WiseTrip planea viajes de máximo " + MAX_DIAS + " días.");
-            }
-        }
-
-        return errores;
+    @Override
+    public Map<String, String> validarFechas(FechasViaje fechas, int idUsuario, int idViajeActual) {
+        ContextoValidacionFechas contexto = new ContextoValidacionFechas(fechas);
+        contexto.setConsultaCruces(() -> viajes.hayCruceFechas(idUsuario, idViajeActual, fechas));
+        cadenaValidacion.validar(contexto);
+        return contexto.getErrores();
     }
 
     /** Fecha de hoy en formato yyyy-MM-dd, para el atributo min del input date. */
