@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.wisetrip.modelo.DiaItinerario;
 import com.wisetrip.modelo.FechasViaje;
 import com.wisetrip.modelo.Presupuesto;
 import com.wisetrip.modelo.RepartoPresupuesto;
@@ -23,7 +24,8 @@ import jakarta.servlet.http.HttpSession;
 
 /**
  * HU#69 y HU#79: permite al viajero repartir su presupuesto entre las
- * categorías de gasto del viaje y ver la página principal del viaje.
+ * categorías de gasto del viaje y ver la página principal del viaje
+ * con su itinerario.
  *
  * GRASP Controlador: recibe las peticiones web y delega el trabajo.
  * SOLID Inversión de dependencias: depende de la interfaz de negocio
@@ -97,8 +99,28 @@ public class PlanControlador {
         model.addAttribute("presupuesto", presupuesto);
         model.addAttribute("reparto", reparto);
         model.addAttribute("dias", fechas.getDuracionDias());
+        cargarItinerario(model, fechas, presupuesto);
 
         return "viaje";
+    }
+
+    /** El itinerario ahora es una sección de Mi viaje; se conserva el enlace viejo. */
+    @GetMapping("/itinerario")
+    public String mostrarItinerario() {
+        return "redirect:/viaje#itinerario";
+    }
+
+    /** Datos del calendario y del presupuesto en USD que usa el itinerario. */
+    private void cargarItinerario(Model model, FechasViaje fechas, Presupuesto presupuesto) {
+        double totalUsd = presupuestoServicio.convertirAUsd(presupuesto);
+
+        model.addAttribute("diasCalendario", fechas.listarDias().stream()
+                .map(DiaItinerario::de)
+                .toList());
+        model.addAttribute("montoFormateado",
+                presupuestoServicio.formatear(presupuesto.getMontoNumerico()));
+        model.addAttribute("totalUsd", totalUsd);
+        model.addAttribute("usdFormateado", presupuestoServicio.formatear(totalUsd));
     }
 
     @PostMapping("/plan")
