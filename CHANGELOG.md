@@ -5902,14 +5902,15 @@ no
 
 1. **¿Qué hice ayer?**
 
+ayer empece a hacer el diagrama de mi patron gof
 
 2. **¿Qué voy a hacer hoy?**
 
-
+hoy termine mi diagrama y lo subi al main, ademas de empezar con mi segunda hu que esta enfocada al modulo 2 de wisetrip ya que es un poco extensa me tomara mas tiempo
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
-
+no
 
 ---
 
