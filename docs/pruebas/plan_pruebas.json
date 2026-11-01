@@ -1,0 +1,472 @@
+[
+  {
+    "id": "CP01",
+    "servicio": "GastosServicio",
+    "metodo": "validarGasto",
+    "descripcion": "Gasto válido dentro del cupo",
+    "entrada": "viaje 1; hospedaje $100.000 COP; presupuesto $1.000.000; cupo hospedaje 35%",
+    "tipo": "Normal",
+    "esperado": "Mapa de errores vacío",
+    "justificacion": "Camino feliz: confirma que un gasto correcto no se bloquea"
+  },
+  {
+    "id": "CP02",
+    "servicio": "GastosServicio",
+    "metodo": "validarGasto",
+    "descripcion": "idViaje no positivo",
+    "entrada": "idViaje = 0",
+    "tipo": "Negativa",
+    "esperado": "Error 'idViaje' y no consulta repositorios",
+    "justificacion": "Evita consultas con ids inválidos"
+  },
+  {
+    "id": "CP03",
+    "servicio": "GastosServicio",
+    "metodo": "validarGasto",
+    "descripcion": "Gasto nulo",
+    "entrada": "gasto = null",
+    "tipo": "Negativa",
+    "esperado": "Error 'gasto'",
+    "justificacion": "Protege contra NullPointerException desde la vista"
+  },
+  {
+    "id": "CP04",
+    "servicio": "GastosServicio",
+    "metodo": "validarGasto",
+    "descripcion": "Moneda distinta a la del viaje",
+    "entrada": "gasto en USD, viaje en COP",
+    "tipo": "Negativa",
+    "esperado": "Error 'moneda'; no se evalúa el cupo",
+    "justificacion": "Evita mezclar monedas en el presupuesto"
+  },
+  {
+    "id": "CP05",
+    "servicio": "GastosServicio",
+    "metodo": "validarGasto",
+    "descripcion": "Monto igual al cupo exacto",
+    "entrada": "hospedaje $350.000 (cupo = 35% de $1.000.000)",
+    "tipo": "Borde",
+    "esperado": "Sin errores",
+    "justificacion": "Límite superior permitido: el cupo se puede agotar"
+  },
+  {
+    "id": "CP06",
+    "servicio": "GastosServicio",
+    "metodo": "validarGasto",
+    "descripcion": "Un centavo sobre el cupo",
+    "entrada": "hospedaje $350.000,01",
+    "tipo": "Borde",
+    "esperado": "Error 'cupoCategoria'",
+    "justificacion": "Primer valor que debe bloquearse (control estricto)"
+  },
+  {
+    "id": "CP07",
+    "servicio": "GastosServicio",
+    "metodo": "validarGasto",
+    "descripcion": "Monto cero",
+    "entrada": "transporte $0",
+    "tipo": "Borde",
+    "esperado": "Error 'monto'",
+    "justificacion": "El monto debe ser mayor que cero"
+  },
+  {
+    "id": "CP08",
+    "servicio": "GastosServicio",
+    "metodo": "advertenciasGasto",
+    "descripcion": "Imprevistos supera el cupo",
+    "entrada": "cupo $50.000; gastado $40.000; nuevo gasto $20.000",
+    "tipo": "Negocio",
+    "esperado": "validarGasto sin errores y advertencia 'cupoCategoria'",
+    "justificacion": "Regla de negocio: imprevistos es un colchón (control flexible, solo advierte)"
+  },
+  {
+    "id": "CP09",
+    "servicio": "GastosServicio",
+    "metodo": "advertenciasGasto",
+    "descripcion": "Gasto inválido no genera advertencias",
+    "entrada": "descripción en blanco",
+    "tipo": "Negativa",
+    "esperado": "Mapa vacío",
+    "justificacion": "No se advierte sobre algo que ya es un error"
+  },
+  {
+    "id": "CP10",
+    "servicio": "GastosServicio",
+    "metodo": "registrarGasto",
+    "descripcion": "Registro de un gasto válido",
+    "entrada": "alimentación $50.000",
+    "tipo": "Normal",
+    "esperado": "Se guarda y devuelve el gasto con id 55",
+    "justificacion": "Camino feliz de persistencia (repositorio simulado)"
+  },
+  {
+    "id": "CP11",
+    "servicio": "GastosServicio",
+    "metodo": "registrarGasto",
+    "descripcion": "Registro de gasto inválido",
+    "entrada": "categoría inexistente",
+    "tipo": "Excepción",
+    "esperado": "IllegalArgumentException y nunca se llama a guardar",
+    "justificacion": "Garantiza que no se persisten datos inválidos"
+  },
+  {
+    "id": "CP12",
+    "servicio": "GastosServicio",
+    "metodo": "consultarGastos",
+    "descripcion": "Lista de solo lectura",
+    "entrada": "1 gasto en el repositorio",
+    "tipo": "Normal",
+    "esperado": "Lista de 1 elemento; add() lanza UnsupportedOperationException",
+    "justificacion": "Protege el estado interno del repositorio"
+  },
+  {
+    "id": "CP13",
+    "servicio": "GastosServicio",
+    "metodo": "consultarResumen",
+    "descripcion": "Cálculo de saldo",
+    "entrada": "total $1.000.000; gastado $250.000",
+    "tipo": "Normal",
+    "esperado": "saldo = $750.000 en COP",
+    "justificacion": "Cálculo central del resumen financiero"
+  },
+  {
+    "id": "CP14",
+    "servicio": "GastosServicio",
+    "metodo": "consultarResumen",
+    "descripcion": "Se gasta todo el presupuesto",
+    "entrada": "gastado = total",
+    "tipo": "Borde",
+    "esperado": "saldo = 0",
+    "justificacion": "Límite entre saldo positivo y negativo"
+  },
+  {
+    "id": "CP15",
+    "servicio": "GastosServicio",
+    "metodo": "consultarResumen",
+    "descripcion": "Total gastado negativo",
+    "entrada": "gastado = -1",
+    "tipo": "Excepción",
+    "esperado": "IllegalStateException",
+    "justificacion": "Detecta datos corruptos del repositorio"
+  },
+  {
+    "id": "CP16",
+    "servicio": "GastosServicio",
+    "metodo": "consultarResumen",
+    "descripcion": "Presupuesto de otro viaje",
+    "entrada": "repositorio devuelve idViaje 99",
+    "tipo": "Excepción",
+    "esperado": "IllegalStateException",
+    "justificacion": "Evita mostrar datos de otro viaje"
+  },
+  {
+    "id": "CP17",
+    "servicio": "PresupuestoServicio",
+    "metodo": "validarPresupuesto",
+    "descripcion": "Monto y moneda válidos",
+    "entrada": "'1.500.000', COP",
+    "tipo": "Normal",
+    "esperado": "Sin errores",
+    "justificacion": "Camino feliz con formato colombiano"
+  },
+  {
+    "id": "CP18",
+    "servicio": "PresupuestoServicio",
+    "metodo": "validarPresupuesto",
+    "descripcion": "Monto vacío",
+    "entrada": "''",
+    "tipo": "Negativa",
+    "esperado": "Error 'monto'",
+    "justificacion": "Campo obligatorio"
+  },
+  {
+    "id": "CP19",
+    "servicio": "PresupuestoServicio",
+    "metodo": "validarPresupuesto",
+    "descripcion": "Monto con letras",
+    "entrada": "'abc'",
+    "tipo": "Negativa",
+    "esperado": "Error 'monto'",
+    "justificacion": "Entrada no numérica del formulario"
+  },
+  {
+    "id": "CP20",
+    "servicio": "PresupuestoServicio",
+    "metodo": "validarPresupuesto",
+    "descripcion": "Monto negativo",
+    "entrada": "'-5'",
+    "tipo": "Negativa",
+    "esperado": "Error 'monto'",
+    "justificacion": "No existen presupuestos negativos"
+  },
+  {
+    "id": "CP21",
+    "servicio": "PresupuestoServicio",
+    "metodo": "validarPresupuesto",
+    "descripcion": "Monto cero",
+    "entrada": "'0'",
+    "tipo": "Borde",
+    "esperado": "Error 'mayor que cero'",
+    "justificacion": "Límite inferior"
+  },
+  {
+    "id": "CP22",
+    "servicio": "PresupuestoServicio",
+    "metodo": "validarPresupuesto",
+    "descripcion": "Monto máximo permitido",
+    "entrada": "'1.000.000.000'",
+    "tipo": "Borde",
+    "esperado": "Sin errores",
+    "justificacion": "Último valor aceptado"
+  },
+  {
+    "id": "CP23",
+    "servicio": "PresupuestoServicio",
+    "metodo": "validarPresupuesto",
+    "descripcion": "Monto sobre el máximo",
+    "entrada": "'1.000.000.001'",
+    "tipo": "Borde",
+    "esperado": "Error 'realista'",
+    "justificacion": "Primer valor rechazado"
+  },
+  {
+    "id": "CP24",
+    "servicio": "PresupuestoServicio",
+    "metodo": "validarPresupuesto",
+    "descripcion": "Moneda inexistente",
+    "entrada": "'100', 'XXX'",
+    "tipo": "Negativa",
+    "esperado": "Error 'moneda'",
+    "justificacion": "Solo se aceptan las 19 monedas de la lista"
+  },
+  {
+    "id": "CP25",
+    "servicio": "PresupuestoServicio",
+    "metodo": "validarPresupuesto",
+    "descripcion": "Moneda nula",
+    "entrada": "'100', null",
+    "tipo": "Negativa",
+    "esperado": "Error 'moneda'",
+    "justificacion": "Campo obligatorio"
+  },
+  {
+    "id": "CP26",
+    "servicio": "PresupuestoServicio",
+    "metodo": "convertirAUsd",
+    "descripcion": "Conversión COP a USD",
+    "entrada": "'4.000.000' COP (tasa 4000)",
+    "tipo": "Normal",
+    "esperado": "1000.0 USD",
+    "justificacion": "Base de la comparación del recomendador"
+  },
+  {
+    "id": "CP27",
+    "servicio": "PresupuestoServicio",
+    "metodo": "convertirAUsd",
+    "descripcion": "Moneda desconocida",
+    "entrada": "'100' XXX",
+    "tipo": "Negativa",
+    "esperado": "0.0",
+    "justificacion": "Evita división por tasa inexistente"
+  },
+  {
+    "id": "CP28",
+    "servicio": "PresupuestoServicio",
+    "metodo": "convertirAUsd",
+    "descripcion": "Monto inválido",
+    "entrada": "'abc' COP",
+    "tipo": "Negativa",
+    "esperado": "0.0",
+    "justificacion": "No propaga valores inválidos"
+  },
+  {
+    "id": "CP29",
+    "servicio": "PresupuestoServicio",
+    "metodo": "convertirAUsd",
+    "descripcion": "Redondeo a 2 decimales",
+    "entrada": "'100' COP",
+    "tipo": "Borde",
+    "esperado": "0.03 USD",
+    "justificacion": "Verifica el redondeo (100/4000 = 0.025)"
+  },
+  {
+    "id": "CP30",
+    "servicio": "PresupuestoServicio",
+    "metodo": "monedasDisponibles",
+    "descripcion": "Lista de monedas",
+    "entrada": "país 'Perú' y país null",
+    "tipo": "Normal",
+    "esperado": "19 monedas, incluye COP y USD, igual para cualquier país",
+    "justificacion": "Contrato del selector de moneda"
+  },
+  {
+    "id": "CP31",
+    "servicio": "PresupuestoServicio",
+    "metodo": "nombreMoneda",
+    "descripcion": "Nombre de moneda",
+    "entrada": "'COP' y 'ZZZ'",
+    "tipo": "Borde",
+    "esperado": "'Peso colombiano (COP)' y 'ZZZ'",
+    "justificacion": "Un código desconocido no debe romper la vista"
+  },
+  {
+    "id": "CP32",
+    "servicio": "PresupuestoServicio",
+    "metodo": "formatear",
+    "descripcion": "Formato de números",
+    "entrada": "1234567.891 y 0",
+    "tipo": "Borde",
+    "esperado": "'1,234,567.89' y '0.00'",
+    "justificacion": "Presentación consistente del dinero"
+  },
+  {
+    "id": "CP33",
+    "servicio": "PresupuestoServicio",
+    "metodo": "getMontoNumerico (usado por el servicio)",
+    "descripcion": "Formato numérico colombiano",
+    "entrada": "'1.500,50' y '1.5'",
+    "tipo": "Negocio",
+    "esperado": "1500.5 y 15.0",
+    "justificacion": "Regla particular: el punto es separador de miles; documenta que '1.5' vale 15"
+  },
+  {
+    "id": "CP34",
+    "servicio": "FechasServicio",
+    "metodo": "validarFechas",
+    "descripcion": "Rango futuro válido",
+    "entrada": "inicio hoy+1, fin hoy+5",
+    "tipo": "Normal",
+    "esperado": "Sin errores",
+    "justificacion": "Camino feliz"
+  },
+  {
+    "id": "CP35",
+    "servicio": "FechasServicio",
+    "metodo": "validarFechas",
+    "descripcion": "Sin fechas",
+    "entrada": "inicio y fin vacíos",
+    "tipo": "Negativa",
+    "esperado": "Errores 'fechaInicio' y 'fechaFin'",
+    "justificacion": "Campos obligatorios en la cadena de reglas"
+  },
+  {
+    "id": "CP36",
+    "servicio": "FechasServicio",
+    "metodo": "validarFechas",
+    "descripcion": "Inicio en el pasado",
+    "entrada": "inicio ayer",
+    "tipo": "Negativa",
+    "esperado": "Error 'fechaInicio'",
+    "justificacion": "No se planean viajes ya iniciados"
+  },
+  {
+    "id": "CP37",
+    "servicio": "FechasServicio",
+    "metodo": "validarFechas",
+    "descripcion": "Formato inválido",
+    "entrada": "inicio '2026-13-45'",
+    "tipo": "Negativa",
+    "esperado": "Error 'fechaInicio'",
+    "justificacion": "Entrada manipulada o mal escrita"
+  },
+  {
+    "id": "CP38",
+    "servicio": "FechasServicio",
+    "metodo": "validarFechas",
+    "descripcion": "Inicio hoy",
+    "entrada": "inicio hoy, fin hoy+1",
+    "tipo": "Borde",
+    "esperado": "Sin errores",
+    "justificacion": "Límite de la regla 'no anterior a hoy'"
+  },
+  {
+    "id": "CP39",
+    "servicio": "FechasServicio",
+    "metodo": "validarFechas",
+    "descripcion": "Fin igual al inicio",
+    "entrada": "inicio = fin = hoy+1",
+    "tipo": "Borde",
+    "esperado": "Error 'fechaFin' (debe ser posterior)",
+    "justificacion": "Límite de la regla de orden"
+  },
+  {
+    "id": "CP40",
+    "servicio": "FechasServicio",
+    "metodo": "validarFechas",
+    "descripcion": "Viaje de 60 días",
+    "entrada": "inicio hoy, fin hoy+59",
+    "tipo": "Borde",
+    "esperado": "Sin errores",
+    "justificacion": "Máximo permitido"
+  },
+  {
+    "id": "CP41",
+    "servicio": "FechasServicio",
+    "metodo": "validarFechas",
+    "descripcion": "Viaje de 61 días",
+    "entrada": "inicio hoy, fin hoy+60",
+    "tipo": "Borde",
+    "esperado": "Error 'fechaFin' (máximo 60 días)",
+    "justificacion": "Primer valor rechazado"
+  },
+  {
+    "id": "CP42",
+    "servicio": "FechasServicio",
+    "metodo": "validarFechas (con usuario)",
+    "descripcion": "Cruce con otro viaje",
+    "entrada": "repositorio indica cruce",
+    "tipo": "Negocio",
+    "esperado": "Error 'fechaFin' (se cruzan)",
+    "justificacion": "Regla de negocio: un usuario no puede tener viajes solapados"
+  },
+  {
+    "id": "CP43",
+    "servicio": "FechasServicio",
+    "metodo": "validarFechas (con usuario)",
+    "descripcion": "Sin cruce",
+    "entrada": "repositorio indica que no hay cruce",
+    "tipo": "Normal",
+    "esperado": "Sin errores y se consulta el repositorio",
+    "justificacion": "Verifica la interacción con el repositorio"
+  },
+  {
+    "id": "CP44",
+    "servicio": "FechasServicio",
+    "metodo": "calcularDuracion",
+    "descripcion": "Duración de un viaje",
+    "entrada": "1 al 5 de diciembre de 2026",
+    "tipo": "Normal",
+    "esperado": "5 días",
+    "justificacion": "Cuenta inicio y fin"
+  },
+  {
+    "id": "CP45",
+    "servicio": "FechasServicio",
+    "metodo": "calcularDuracion",
+    "descripcion": "Sin fechas",
+    "entrada": "FechasViaje vacío",
+    "tipo": "Negativa",
+    "esperado": "0",
+    "justificacion": "No lanza excepción con datos vacíos"
+  },
+  {
+    "id": "CP46",
+    "servicio": "FechasServicio",
+    "metodo": "calcularDuracion",
+    "descripcion": "Inicio igual al fin",
+    "entrada": "1 de diciembre = 1 de diciembre",
+    "tipo": "Borde",
+    "esperado": "0 (hallazgo: debería ser 1)",
+    "justificacion": "Expone una inconsistencia con validarFechas"
+  },
+  {
+    "id": "CP47",
+    "servicio": "FechasServicio",
+    "metodo": "hoy",
+    "descripcion": "Fecha actual",
+    "entrada": "ninguna",
+    "tipo": "Normal",
+    "esperado": "Fecha actual en formato yyyy-MM-dd",
+    "justificacion": "Se usa en el atributo min del formulario"
+  }
+]

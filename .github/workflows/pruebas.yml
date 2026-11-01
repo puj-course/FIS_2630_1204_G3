@@ -1,0 +1,55 @@
+name: Pruebas unitarias
+
+# Gitflow: se ejecuta en las ramas de integración y en cada rama de trabajo,
+# y en los pull requests hacia main y develop.
+on:
+  push:
+    branches:
+      - main
+      - develop
+      - 'feature/**'
+      - 'feature/**'
+      - 'release/**'
+      - 'hotfix/**'
+  pull_request:
+    branches:
+      - main
+      - develop
+
+jobs:
+  pruebas:
+    name: JUnit + informe
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+
+      - name: Set up JDK 25
+        uses: actions/setup-java@c1e323688fd81a25caa38c78aa6df2d33d3e20d9 # v4.8.0
+        with:
+          java-version: 25
+          distribution: zulu
+
+      - name: Cache Maven packages
+        uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 # v4.3.0
+        with:
+          path: ~/.m2
+          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+          restore-keys: ${{ runner.os }}-m2
+
+      - name: Ejecutar pruebas unitarias
+        run: mvn -B -f app/Entrega1/wisetrip_entrega1/pom.xml verify
+
+      - name: Generar informe de pruebas (alineado con el plan)
+        if: always()
+        run: python3 .github/scripts/informe_pruebas.py
+
+      - name: Publicar informe como artefacto
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: informe-pruebas
+          path: |
+            app/Entrega1/wisetrip_entrega1/target/informe-pruebas/
+            app/Entrega1/wisetrip_entrega1/target/surefire-reports/
+            app/Entrega1/wisetrip_entrega1/target/site/jacoco/
