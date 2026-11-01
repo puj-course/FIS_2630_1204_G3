@@ -19,6 +19,7 @@ public class Usuario {
     public static final int EDAD_MINIMA = 18;
     public static final int EDAD_MAXIMA = 120;
     public static final int LARGO_MINIMO_PASSWORD = 6;
+    private static final String CAMPO_CLAVE = "password";
 
     private int idUsuario;
     private String nombreCompleto;
@@ -179,9 +180,9 @@ public class Usuario {
 
         //Password
         if (password == null || password.isEmpty()) {
-            errores.put("password", "Ingresa una contrasena.");
+            errores.put(CAMPO_CLAVE, "Ingresa una contrasena.");
         } else if (password.length() < LARGO_MINIMO_PASSWORD) {
-            errores.put("password", "La contrasena debe tener al menos 6 caracteres.");
+            errores.put(CAMPO_CLAVE, "La contrasena debe tener al menos 6 caracteres.");
         }
 
         //Confirmar password
