@@ -208,7 +208,8 @@ class GastosServicioTest {
         List<Gasto> resultado = servicio.consultarGastos(ID_VIAJE);
 
         assertEquals(1, resultado.size());
-        assertThrows(UnsupportedOperationException.class, () -> resultado.add(gasto("transporte", "1")));
+        Gasto nuevo = gasto("transporte", "1");
+        assertThrows(UnsupportedOperationException.class, () -> resultado.add(nuevo));
     }
 
     // ---------------------------------------------------------------- consultarResumen

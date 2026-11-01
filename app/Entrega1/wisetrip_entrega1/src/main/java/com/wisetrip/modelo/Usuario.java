@@ -180,9 +180,9 @@ public class Usuario {
 
         //Password
         if (password == null || password.isEmpty()) {
-            errores.put(CAMPO_CLAVE, "Ingresa una contrasena.");
+            errores.put(CAMPO_CLAVE, "Ingresa una contrasena."); // NOSONAR: llave del mapa de errores, no es una contraseña
         } else if (password.length() < LARGO_MINIMO_PASSWORD) {
-            errores.put(CAMPO_CLAVE, "La contrasena debe tener al menos 6 caracteres.");
+            errores.put(CAMPO_CLAVE, "La contrasena debe tener al menos 6 caracteres."); // NOSONAR: llave del mapa de errores, no es una contraseña
         }
 
         //Confirmar password

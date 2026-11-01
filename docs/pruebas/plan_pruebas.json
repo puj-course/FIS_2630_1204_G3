@@ -468,5 +468,105 @@
     "tipo": "Normal",
     "esperado": "Fecha actual en formato yyyy-MM-dd",
     "justificacion": "Se usa en el atributo min del formulario"
+  },
+  {
+    "id": "CP48",
+    "servicio": "Usuario (modelo)",
+    "metodo": "validarDatos",
+    "descripcion": "Datos completos y válidos",
+    "entrada": "nombre, CC, documento, fecha 2000-05-10, correo válido, clave 'secreta1'",
+    "tipo": "Normal",
+    "esperado": "Mapa de errores vacío",
+    "justificacion": "Camino feliz del registro"
+  },
+  {
+    "id": "CP49",
+    "servicio": "Usuario (modelo)",
+    "metodo": "validarDatos",
+    "descripcion": "Correo sin arroba",
+    "entrada": "'sinarroba.com'",
+    "tipo": "Negativa",
+    "esperado": "Error 'correo'",
+    "justificacion": "Formato de correo inválido"
+  },
+  {
+    "id": "CP50",
+    "servicio": "Usuario (modelo)",
+    "metodo": "validarDatos",
+    "descripcion": "Puntos seguidos en el dominio",
+    "entrada": "'a@b..com'",
+    "tipo": "Borde",
+    "esperado": "Error 'correo'",
+    "justificacion": "Verifica la regex corregida a partir de SonarCloud"
+  },
+  {
+    "id": "CP51",
+    "servicio": "Usuario (modelo)",
+    "metodo": "validarDatos",
+    "descripcion": "Contraseña de 5 caracteres",
+    "entrada": "'12345'",
+    "tipo": "Borde",
+    "esperado": "Error 'password'",
+    "justificacion": "Primer valor por debajo del mínimo (6)"
+  },
+  {
+    "id": "CP52",
+    "servicio": "Usuario (modelo)",
+    "metodo": "validarDatos",
+    "descripcion": "Contraseña de 6 caracteres",
+    "entrada": "'123456'",
+    "tipo": "Borde",
+    "esperado": "Sin errores",
+    "justificacion": "Mínimo permitido"
+  },
+  {
+    "id": "CP53",
+    "servicio": "Usuario (modelo)",
+    "metodo": "validarDatos",
+    "descripcion": "Contraseñas que no coinciden",
+    "entrada": "'secreta1' y 'otra-clave'",
+    "tipo": "Negativa",
+    "esperado": "Error 'confirmarPassword'",
+    "justificacion": "Evita registros con contraseña mal escrita"
+  },
+  {
+    "id": "CP54",
+    "servicio": "Usuario (modelo)",
+    "metodo": "validarDatos",
+    "descripcion": "Contraseña vacía",
+    "entrada": "'' y confirmación ''",
+    "tipo": "Negativa",
+    "esperado": "Errores 'password' y 'confirmarPassword'",
+    "justificacion": "Campos obligatorios"
+  },
+  {
+    "id": "CP55",
+    "servicio": "Usuario (modelo)",
+    "metodo": "validarDatos",
+    "descripcion": "Cumple 18 años hoy",
+    "entrada": "nacimiento = hoy - 18 años",
+    "tipo": "Borde",
+    "esperado": "Sin errores",
+    "justificacion": "Regla de negocio: edad mínima 18, límite inferior permitido"
+  },
+  {
+    "id": "CP56",
+    "servicio": "Usuario (modelo)",
+    "metodo": "validarDatos",
+    "descripcion": "Un día antes de cumplir 18",
+    "entrada": "nacimiento = hoy - 18 años + 1 día",
+    "tipo": "Borde",
+    "esperado": "Error 'fechaNacimiento' (mayor de 18)",
+    "justificacion": "Regla de negocio: primer caso rechazado"
+  },
+  {
+    "id": "CP57",
+    "servicio": "Usuario (modelo)",
+    "metodo": "validarDatos",
+    "descripcion": "Correo gigante",
+    "entrada": "'a@' + 'a.' x 20000 + '!'",
+    "tipo": "Negocio",
+    "esperado": "Error 'correo' en menos de 2 segundos",
+    "justificacion": "Seguridad: evita ataques por backtracking (issue de SonarCloud)"
   }
 ]

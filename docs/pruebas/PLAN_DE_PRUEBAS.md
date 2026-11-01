@@ -1,6 +1,6 @@
 # Plan de pruebas unitarias - WiseTrip
 
-Servicios probados: GastosServicio, PresupuestoServicio, FechasServicio. Columna *Resultado real*: se completa con el informe del pipeline.
+Servicios y clases probadas: GastosServicio, PresupuestoServicio, FechasServicio y Usuario (modelo). Columna *Resultado real*: se completa con el informe del pipeline.
 
 | Caso | Servicio | Método | Descripción | Entrada | Tipo | Resultado esperado | Resultado real | Justificación |
 |---|---|---|---|---|---|---|---|---|
@@ -51,3 +51,13 @@ Servicios probados: GastosServicio, PresupuestoServicio, FechasServicio. Columna
 | CP45 | FechasServicio | `calcularDuracion` | Sin fechas | FechasViaje vacío | Negativa | 0 |  | No lanza excepción con datos vacíos |
 | CP46 | FechasServicio | `calcularDuracion` | Inicio igual al fin | 1 de diciembre = 1 de diciembre | Borde | 0 (hallazgo: debería ser 1) |  | Expone una inconsistencia con validarFechas |
 | CP47 | FechasServicio | `hoy` | Fecha actual | ninguna | Normal | Fecha actual en formato yyyy-MM-dd |  | Se usa en el atributo min del formulario |
+| CP48 | Usuario (modelo) | `validarDatos` | Datos completos y válidos | nombre, CC, documento, fecha 2000-05-10, correo válido, clave 'secreta1' | Normal | Mapa de errores vacío |  | Camino feliz del registro |
+| CP49 | Usuario (modelo) | `validarDatos` | Correo sin arroba | 'sinarroba.com' | Negativa | Error 'correo' |  | Formato de correo inválido |
+| CP50 | Usuario (modelo) | `validarDatos` | Puntos seguidos en el dominio | 'a@b..com' | Borde | Error 'correo' |  | Verifica la regex corregida a partir de SonarCloud |
+| CP51 | Usuario (modelo) | `validarDatos` | Contraseña de 5 caracteres | '12345' | Borde | Error 'password' |  | Primer valor por debajo del mínimo (6) |
+| CP52 | Usuario (modelo) | `validarDatos` | Contraseña de 6 caracteres | '123456' | Borde | Sin errores |  | Mínimo permitido |
+| CP53 | Usuario (modelo) | `validarDatos` | Contraseñas que no coinciden | 'secreta1' y 'otra-clave' | Negativa | Error 'confirmarPassword' |  | Evita registros con contraseña mal escrita |
+| CP54 | Usuario (modelo) | `validarDatos` | Contraseña vacía | '' y confirmación '' | Negativa | Errores 'password' y 'confirmarPassword' |  | Campos obligatorios |
+| CP55 | Usuario (modelo) | `validarDatos` | Cumple 18 años hoy | nacimiento = hoy - 18 años | Borde | Sin errores |  | Regla de negocio: edad mínima 18, límite inferior permitido |
+| CP56 | Usuario (modelo) | `validarDatos` | Un día antes de cumplir 18 | nacimiento = hoy - 18 años + 1 día | Borde | Error 'fechaNacimiento' (mayor de 18) |  | Regla de negocio: primer caso rechazado |
+| CP57 | Usuario (modelo) | `validarDatos` | Correo gigante | 'a@' + 'a.' x 20000 + '@' | Negocio | Error 'correo' en menos de 2 segundos |  | Seguridad: evita ataques por backtracking (issue de SonarCloud) |
