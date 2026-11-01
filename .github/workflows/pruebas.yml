@@ -8,14 +8,13 @@ on:
       - main
       - develop
       - 'feature/**'
-      - 'feature/**'
+      - 'features-*'
       - 'release/**'
       - 'hotfix/**'
   pull_request:
     branches:
       - main
       - develop
-
 jobs:
   pruebas:
     name: JUnit + informe
