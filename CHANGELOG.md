@@ -5886,15 +5886,15 @@ no
 
 1. **¿Qué hice ayer?**
 
-
+Empezar a trabajar en la refactorizacion de codigo y preguntar que diagramas son los que debemos tener para hacerlos ademas del de componentes
 
 2. **¿Qué voy a hacer hoy?**
 
-
+Hoy no voy a poder adelantar ya que tengo que empezar a realizar el taller de pruebas y otros mapas
    
 3. **¿Tengo algún impedimento o bloqueo?**
 
-
+Cantidad de trabajos de otras materias
    
 ---
 
