@@ -1,0 +1,680 @@
+/*
+ * WiseTrip · Itinerario dentro de Mi viaje
+ * Calendario, actividades, control de gastos y "antes de viajar".
+ * Usa los colores, fuentes y encabezado de viaje.css; aquí solo va lo propio
+ * de estas secciones.
+ */
+
+/* ===== Grilla de zonas ===== */
+
+.it-grilla {
+    display: grid;
+    gap: 22px;
+    align-items: start;
+}
+
+.it-calendario  { grid-area: calendario; }
+.it-actividades { grid-area: actividades; }
+.it-consejos    { grid-area: consejos; }
+.it-gastos      { grid-area: gastos; }
+.it-proxima     { grid-area: proxima; }
+.it-final       { grid-area: final; }
+
+.it-caja {
+    background: #fff;
+    border: 3px solid var(--tinta);
+    border-radius: 18px;
+    box-shadow: 5px 5px 0 var(--tinta);
+    padding: 22px 22px 24px;
+    min-height: 140px;
+    min-width: 0;
+}
+
+.it-caja-titulo {
+    font-family: var(--display);
+    font-size: 18px;
+    letter-spacing: -.3px;
+    text-transform: uppercase;
+    margin: 0 0 14px;
+}
+
+/* ===== Calendario ===== */
+
+/* Si el viaje tiene muchos días, el calendario se desplaza de lado */
+.it-cal-scroll {
+    overflow-x: auto;
+    border: 2.5px solid var(--tinta);
+    border-radius: 12px;
+}
+
+.it-cal {
+    display: grid;
+    grid-template-columns: 64px repeat(var(--dias), minmax(92px, 1fr));
+    min-width: min-content;
+}
+
+.it-cal-esquina,
+.it-cal-dia {
+    padding: 10px 8px;
+    border-bottom: 2.5px solid var(--tinta);
+    background: var(--turquesa-suave);
+    text-align: center;
+}
+
+.it-cal-dia { border-left: 2px solid var(--tinta); }
+
+.it-cal-esquina {
+    font-family: var(--dato);
+    font-size: 11px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.it-cal-dia span {
+    display: block;
+    font-family: var(--dato);
+    font-size: 11px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--gris);
+}
+
+.it-cal-dia strong { font-size: 14px; white-space: nowrap; }
+
+.it-cal-hora {
+    font-family: var(--dato);
+    font-size: 12px;
+    color: var(--gris);
+    padding: 8px 6px;
+    text-align: center;
+    border-top: 1.5px dashed var(--arena-honda);
+}
+
+.it-cal-celda {
+    min-height: 62px;
+    padding: 5px;
+    border-left: 2px solid var(--tinta);
+    border-top: 1.5px dashed var(--arena-honda);
+}
+
+/* ===== Panel de actividades ===== */
+
+.it-caja-nota {
+    font-size: 13.5px;
+    color: var(--gris);
+    margin: -8px 0 16px;
+}
+
+.it-lista-actividades {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* --c sale del color de la categoría (vj-actividades, vj-alimentacion...) */
+.it-actividad {
+    background: var(--c, var(--turquesa-suave));
+    border: 2.5px solid var(--tinta);
+    border-radius: 12px;
+    box-shadow: 3px 3px 0 var(--tinta);
+    padding: 10px 12px;
+    cursor: grab;
+    user-select: none;
+    transition: transform .12s ease, box-shadow .12s ease;
+}
+
+.it-actividad:hover { transform: translate(-1px, -1px); box-shadow: 4px 4px 0 var(--tinta); }
+.it-actividad:active { cursor: grabbing; }
+
+.it-actividad strong { display: block; font-size: 14px; line-height: 1.3; }
+
+.it-actividad span {
+    display: block;
+    font-family: var(--dato);
+    font-size: 11px;
+    letter-spacing: .04em;
+    margin-top: 3px;
+}
+
+/* ===== Arrastrar y soltar ===== */
+
+.it-actividad.it-arrastrando { opacity: .45; }
+
+.it-cal-celda.it-encima {
+    background: var(--turquesa-suave);
+    outline: 2.5px dashed var(--turquesa-hondo);
+    outline-offset: -5px;
+}
+
+/* Tarjeta ya puesta en el calendario: más compacta */
+.it-cal-celda .it-actividad {
+    padding: 6px 8px;
+    border-width: 2px;
+    border-radius: 9px;
+    box-shadow: 2px 2px 0 var(--tinta);
+}
+
+.it-cal-celda .it-actividad strong { font-size: 12px; }
+.it-cal-celda .it-actividad span { font-size: 10px; }
+
+/* ===== Hora ocupada ===== */
+
+.it-cal-celda { position: relative; }
+
+.it-cal-celda.it-ocupada {
+    background: #FDE3EC;
+    outline: 2.5px dashed #C2185B;
+    outline-offset: -5px;
+    cursor: not-allowed;
+}
+
+.it-aviso {
+    position: absolute;
+    left: 4px; right: 4px; top: 4px;
+    z-index: 5;
+    margin: 0;
+    padding: 6px 8px;
+    background: var(--rosa);
+    border: 2px solid var(--tinta);
+    border-radius: 9px;
+    box-shadow: 2px 2px 0 var(--tinta);
+    font-size: 11.5px;
+    font-weight: 600;
+    line-height: 1.3;
+    animation: it-aparecer .18s ease-out;
+}
+
+@keyframes it-aparecer {
+    from { opacity: 0; transform: translateY(-4px); }
+    to   { opacity: 1; transform: none; }
+}
+
+/* ===== Día sin actividades ===== */
+
+/* No intercepta el arrastre: la celda sigue recibiendo la actividad */
+.it-vacio {
+    margin: 0;
+    padding: 4px 2px;
+    font-size: 11.5px;
+    line-height: 1.35;
+    color: var(--gris-claro);
+    font-style: italic;
+    pointer-events: none;
+}
+
+/* ===== Quitar del calendario ===== */
+
+.it-actividad { position: relative; }
+
+.it-quitar {
+    display: none;
+    position: absolute;
+    top: -8px; right: -8px;
+    width: 20px; height: 20px;
+    padding: 0;
+    background: var(--crema);
+    border: 2px solid var(--tinta);
+    border-radius: 50%;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--tinta);
+    cursor: pointer;
+}
+
+.it-cal-celda .it-quitar { display: block; }
+.it-quitar:hover { background: var(--rosa); }
+
+/* El panel resaltado cuando se arrastra una actividad de vuelta */
+.it-lista-actividades { min-height: 60px; border-radius: 12px; }
+
+.it-lista-actividades.it-encima {
+    background: var(--turquesa-suave);
+    outline: 2.5px dashed var(--turquesa-hondo);
+    outline-offset: 4px;
+}
+
+/* ===== Recomendadas en la ciudad ===== */
+
+.it-subtitulo {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 14px;
+    font-weight: 700;
+    margin: 24px 0 12px;
+    padding-top: 18px;
+    border-top: 2.5px dashed var(--arena-honda);
+}
+
+.it-subtitulo svg { width: 20px; height: 20px; color: var(--turquesa-hondo); flex-shrink: 0; }
+
+.it-recomendada { --c: #FFE9A8; }
+
+/* Espacio para la foto; sin foto se ve el recuadro de plantilla */
+.it-actividad .it-foto,
+.it-proxima-foto {
+    display: block;
+    position: relative;
+    height: 74px;
+    margin: -2px -4px 8px;
+    border: 2px dashed var(--tinta);
+    border-radius: 8px;
+    background: repeating-linear-gradient(-45deg, #fff6d6 0 8px, #ffefb8 8px 16px);
+    overflow: hidden;
+}
+
+.it-foto::after {
+    content: "Tu foto aquí";
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--dato);
+    font-size: 10.5px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--gris);
+}
+
+.it-foto img {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    pointer-events: none;
+}
+
+.it-foto:has(img) { border-style: solid; }
+
+/* En el calendario la foto ocuparía mucho: se oculta */
+.it-cal-celda .it-foto { display: none; }
+
+/* ===== Checklist de equipaje ===== */
+
+.it-progreso { display: flex; align-items: center; gap: 14px; margin: 0 0 22px; }
+
+.it-progreso-barra {
+    flex: 1;
+    height: 14px;
+    background: var(--crema);
+    border: 2.5px solid var(--tinta);
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.it-progreso-barra span {
+    display: block;
+    width: 0;
+    height: 100%;
+    background: var(--turquesa);
+    transition: width .25s ease;
+}
+
+.it-progreso-texto { font-family: var(--dato); font-size: 12.5px; color: var(--gris); white-space: nowrap; }
+.it-progreso-texto b { color: var(--tinta); }
+
+/* Las categorías se acomodan en columnas según el ancho disponible */
+.it-checklist {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 22px 26px;
+}
+
+.it-check-cabeza { display: flex; align-items: center; gap: 11px; margin-bottom: 11px; }
+
+.it-check-icono {
+    width: 38px; height: 38px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    background: var(--turquesa-suave);
+    border: 2.5px solid var(--tinta);
+    border-radius: 10px;
+}
+
+.it-check-cabeza h3 {
+    margin: 0;
+    font-family: var(--display);
+    font-size: 15px;
+    letter-spacing: -.3px;
+    text-transform: uppercase;
+}
+
+.it-check-item {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    padding: 10px 12px;
+    margin-bottom: 8px;
+    background: #fff;
+    border: 2px solid var(--tinta);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background .15s ease, box-shadow .15s ease;
+}
+
+.it-check-item:hover { box-shadow: 3px 3px 0 var(--turquesa); }
+
+/* La casilla real queda oculta pero sigue funcionando con teclado */
+.it-check-item input { position: absolute; opacity: 0; pointer-events: none; }
+.it-check-item:has(input:focus-visible) { outline: 2.5px solid var(--morado); outline-offset: 2px; }
+
+.it-check-marca {
+    width: 22px; height: 22px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    color: transparent;
+    background: #fff;
+    border: 2px solid var(--tinta);
+    border-radius: 6px;
+    transition: background .15s ease, color .15s ease;
+}
+
+.it-check-texto { font-size: 14px; line-height: 1.4; }
+
+.it-check-item:has(input:checked) { background: var(--turquesa-suave); }
+.it-check-item input:checked + .it-check-marca { background: var(--turquesa); color: #fff; }
+.it-check-item input:checked ~ .it-check-texto { color: var(--gris); text-decoration: line-through; }
+
+/* ===== Íconos de los títulos ===== */
+
+.it-caja-titulo:has(.it-titulo-icono) { display: flex; align-items: center; gap: 9px; }
+
+.it-titulo-icono {
+    width: 30px; height: 30px;
+    padding: 5px;
+    flex-shrink: 0;
+    color: #fff;
+    background: var(--morado);
+    border: 2.5px solid var(--tinta);
+    border-radius: 50%;
+}
+
+/* ===== Alertas del presupuesto ===== */
+
+.it-gastado {
+    font-size: 14px;
+    color: var(--gris);
+    margin: 18px 0 12px;
+}
+
+.it-gastado strong { font-family: var(--dato); color: var(--tinta); }
+
+.it-alerta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 14px;
+    border: 2.5px solid var(--tinta);
+    border-radius: 12px;
+    box-shadow: 3px 3px 0 var(--tinta);
+}
+
+.it-alerta[hidden] { display: none; }
+
+.it-alerta p { margin: 0; font-size: 14px; font-weight: 600; line-height: 1.4; }
+.it-alerta a { color: inherit; }
+
+.it-alerta-icono {
+    width: 28px; height: 28px;
+    flex-shrink: 0;
+    border: 2.5px solid var(--tinta);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--display);
+    font-size: 14px;
+    color: #fff;
+}
+
+.it-alerta-roja { background: #FDE3EC; }
+.it-alerta-roja .it-alerta-icono { background: #C2185B; }
+
+.it-alerta-verde { background: #E3F4E4; }
+.it-alerta-verde .it-alerta-icono { background: var(--verde); color: var(--tinta); }
+
+/* ===== Gastos por categoría ===== */
+
+.it-gastos-lista {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.it-gastos-lista li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 11px 0;
+    font-size: 15.5px;
+    font-weight: 600;
+}
+
+.it-gastos-lista li + li { border-top: 2px dashed var(--arena-honda); }
+
+/* --c sale del color de la categoría */
+.it-gasto-icono {
+    width: 34px; height: 34px;
+    flex-shrink: 0;
+    padding: 6px;
+    background: var(--c);
+    border: 2.5px solid var(--tinta);
+    border-radius: 10px;
+}
+
+.it-gasto-icono svg { width: 100%; height: 100%; display: block; }
+
+.it-gastos-lista strong {
+    margin-left: auto;
+    font-family: var(--dato);
+    font-size: 15px;
+}
+
+/* ===== Consejos ===== */
+
+.it-icono-amarillo { background: var(--amarillo); color: var(--tinta); }
+
+.it-consejos-lista { display: flex; flex-direction: column; gap: 12px; }
+
+.it-consejo {
+    background: var(--crema);
+    border: 2.5px solid var(--tinta);
+    border-radius: 14px;
+}
+
+.it-consejo summary {
+    display: grid;
+    grid-template-columns: auto 110px 1fr auto;
+    align-items: center;
+    gap: 14px;
+    padding: 12px 16px;
+    cursor: pointer;
+    list-style: none;
+}
+
+.it-consejo summary::-webkit-details-marker { display: none; }
+
+/* Flecha › que gira al abrir */
+.it-consejo summary::after {
+    content: "›";
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1;
+    transition: transform .15s ease;
+}
+
+.it-consejo[open] summary::after { transform: rotate(90deg); }
+.it-consejo summary:focus-visible { outline: 2.5px solid var(--morado); outline-offset: 2px; border-radius: 12px; }
+
+.it-consejo strong { font-size: 15px; }
+.it-consejo-texto { font-size: 14px; color: var(--gris); line-height: 1.4; }
+
+.it-consejo p {
+    margin: 0;
+    padding: 0 16px 14px;
+    font-size: 14px;
+    line-height: 1.55;
+}
+
+@media (max-width: 560px) {
+    .it-consejo summary { grid-template-columns: auto 1fr auto; }
+    .it-consejo-texto { grid-column: 1 / -1; order: 1; }
+}
+
+/* ===== Próxima actividad ===== */
+
+.it-proxima-tarjeta {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 12px;
+    background: var(--crema);
+    border: 2.5px solid var(--tinta);
+    border-radius: 14px;
+}
+
+.it-proxima-tarjeta[hidden],
+.it-proxima-vacia[hidden] { display: none; }
+
+/* Mismo recuadro de plantilla que las recomendadas, pero fijo y cuadrado */
+.it-proxima-tarjeta .it-proxima-foto {
+    width: 84px; height: 72px;
+    margin: 0;
+    flex-shrink: 0;
+}
+
+.it-proxima-tarjeta strong { display: block; font-size: 17px; line-height: 1.25; }
+
+.it-proxima-tarjeta span:not(.it-foto) {
+    display: block;
+    margin-top: 4px;
+    font-family: var(--dato);
+    font-size: 13px;
+    color: var(--gris);
+}
+
+.it-proxima-vacia { margin: 0; font-size: 14px; color: var(--gris); }
+
+/* ===== Actividad propia ===== */
+
+.it-oculto {
+    position: absolute;
+    width: 1px; height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+}
+
+.it-final-pregunta { margin: 0 0 14px; font-size: 15px; font-weight: 600; }
+
+.it-form-nueva { display: flex; gap: 10px; }
+
+.it-form-nueva input {
+    flex: 1;
+    min-width: 0;
+    padding: 12px 16px;
+    font: inherit;
+    font-size: 15px;
+    background: #fff;
+    border: 2.5px solid var(--tinta);
+    border-radius: 30px;
+}
+
+.it-form-nueva input:focus { outline: none; box-shadow: 3px 3px 0 var(--turquesa); }
+
+.it-form-nueva button {
+    width: 50px; height: 50px;
+    flex-shrink: 0;
+    font-family: var(--display);
+    font-size: 24px;
+    color: #fff;
+    background: var(--morado);
+    border: 2.5px solid var(--tinta);
+    border-radius: 50%;
+    box-shadow: 3px 3px 0 var(--tinta);
+    cursor: pointer;
+    transition: transform .12s ease, box-shadow .12s ease;
+}
+
+.it-form-nueva button:hover { transform: translate(-1px, -1px); box-shadow: 4px 4px 0 var(--tinta); }
+.it-form-nueva button:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--tinta); }
+
+.it-nueva-aviso { margin: 10px 0 0; font-size: 13px; color: var(--turquesa-hondo); min-height: 1em; }
+
+/* ===== Frase final ===== */
+
+.it-frase {
+    margin: 46px 0 0;
+    text-align: center;
+    font-family: var(--display);
+    font-size: clamp(26px, 4vw, 44px);
+    letter-spacing: -1px;
+    text-transform: uppercase;
+    color: var(--morado);
+    transform: rotate(-2deg);
+}
+
+.it-frase span {
+    display: inline-block;
+    background: var(--amarillo);
+    color: var(--tinta);
+    border: 3px solid var(--tinta);
+    border-radius: 14px;
+    box-shadow: 4px 4px 0 var(--tinta);
+    padding: 2px 14px;
+}
+
+/* ===== Celular ===== */
+
+@media (max-width: 560px) {
+    .it-grilla { gap: 16px; }
+    .it-caja { padding: 18px 16px 20px; box-shadow: 4px 4px 0 var(--tinta); }
+    .it-cal { grid-template-columns: 52px repeat(var(--dias), minmax(84px, 1fr)); }
+    .it-form-nueva button { width: 46px; height: 46px; }
+}
+
+/* ===== Itinerario dentro de Mi viaje ===== */
+
+.it-grilla-viaje {
+    grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+    grid-template-areas:
+        "calendario actividades"
+        "control    gastos"
+        "proxima    final";
+}
+
+.it-control { grid-area: control; }
+
+@media (max-width: 980px) {
+    .it-grilla-viaje {
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-areas:
+            "calendario" "actividades" "control" "gastos" "proxima" "final";
+    }
+}
+
+/* ===== Antes de viajar dentro de Mi viaje ===== */
+
+/* El checklist ocupa todo el ancho y los consejos van debajo */
+.it-grilla-antes {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: "checklist" "consejos";
+}
+
+.it-checklist-caja { grid-area: checklist; }

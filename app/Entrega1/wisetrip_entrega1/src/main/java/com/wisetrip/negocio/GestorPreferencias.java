@@ -22,6 +22,4 @@ public interface GestorPreferencias {
     Map<String, List<String>> resumenPorCategoria(Preferencias preferencias);
 
     long contarAfirmativas(Preferencias preferencias);
-
-    
 }

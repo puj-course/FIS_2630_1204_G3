@@ -5037,7 +5037,7 @@ falta de tiempo
 # Sprint Planning - [19/10/2026]
 
 ## Sprint Goal
-
+Iniciar la construcción interactiva del itinerario a partir de opciones reales del destino, fortaleciendo la experiencia del usuario con la integración de notificaciones por mensaje de texto, soporte mediante el manual de uso y mejoras visuales en la espera de cálculo y el cuestionario de preferencias.
 
 ## Capacidad del equipo 
 
@@ -5068,7 +5068,6 @@ falta de tiempo
 ---
 <img width="1600" height="1200" alt="image" src="https://github.com/user-attachments/assets/6a4f3aaf-af62-4cea-8a62-ced9555b65b7" />
 
-
 ---
 ## Daily Sprint - 20/10/2026
 
@@ -5076,30 +5075,30 @@ falta de tiempo
 
 1. **¿Qué hice ayer?**
 
-
+Ayer presentamos como grupo la sustentación de la entrega dos del proyecto, retroalimentamos muchas cosas de arquitectura y de código, nos dejo un poco pensativos en cuanto a potencial, actitud y tiempo que hemos invertid, pero ante todo el aprendizaje
    
 2. **¿Qué voy a hacer hoy?**
 
-
+Hoy voy a revisar nuevamente el diagrama de componentes, y tambien revisé porque está fallando viajeDao
    
 3. **¿Tengo algún impedimento o bloqueo?**
 
-
+Por ahora tiempo, tengo 2 sustentaciónes mañana de otras dos materias diferentes.
 
 ---
 
 ### Valeria Cortes Rendon
 
 1. **¿Qué hice ayer?**
-
+Se realizo la sustentacion y definimos que debemos mejorar con respecto a los diagramas ya que en la sustentacion 2 del proyecto nos fue un poco mal con respecto a eso tambien definimos que debemos empezar a borrar algunas clases y refactorizar el codigo para dejarlo mucho mas limpio y simplificado
 
 
 2. **¿Qué voy a hacer hoy?**
-
+Eliminacion de todos los documentos de diagramas para empezar a hacerlos uno por uno de nuevo, menos el de gof, empece a buscar como hacer el manual de usuarios
 
    
 3. **¿Tengo algún impedimento o bloqueo?**
-
+No
 
    
 ---
@@ -5253,15 +5252,15 @@ no
 
 1. **¿Qué hice ayer?**
 
-
+ayer revise el codigo y la base de datos
    
 2. **¿Qué voy a hacer hoy?**
 
-
+hoy corregi ViajeDao y tambien el controlador de recomendaciones para que la base de datos guardara correctamente, ademas de guardar preferencias asociadas y si ya hay un viaje guardado en la planificación, se actualizará el destino del usuario. Hay que pulir algunas cosas especialmente con que si cambia el destino del viaje actual, actualizar esa fila usando id_viaje e id_usuario. Si comienza otro viaje, mirar a ver si se pregunta si se quiere descartar el vijae o simplemente decir que no se puede hacer un overleap de fechas de los viajes.
    
 3. **¿Tengo algún impedimento o bloqueo?**
 
-
+no, me falta un poco de tiempo la verdad pero de resto bien
 
 ---
 
@@ -5320,21 +5319,469 @@ no
 
 1. **¿Qué hice ayer?** 
 
-
+Revise el codigo y empece a refactorizar
 
 2. **¿Qué voy a hacer hoy?** 
 
-
+hoy revisamos algunas cosas sobre como deberiamos analizar mejor las entregas de los sprints
 
 3. **¿Tengo algún impedimento o bloqueo?** 
 
-
+no
 
 ---
 
 ---
 
 ## Daily Sprint - 23/10/2026
+
+### Isabella Posada
+
+1. **¿Qué hice ayer?**
+
+Ayer revise la base de datos, y el dao de los viajes
+   
+2. **¿Qué voy a hacer hoy?**
+
+hoy segui con eso, no pude hacer la migracion de solo atributos de api, es mas largo de lo que pensé
+Incluso pensé que podría adelantar mañana pero no podre tener ningun acceso al computador de 6am a 11pm...
+   
+3. **¿Tengo algún impedimento o bloqueo?**
+no
+
+
+---
+
+### Valeria Cortes Rendon
+
+1. **¿Qué hice ayer?**
+Vimos sobre la retrospective de startfish, realizamos una de ellas en clase y decidimos que debemos empezar a implementarlo en cada uno de los modulos.
+
+
+2. **¿Qué voy a hacer hoy?**
+Hice la guia de usuario y empece a revisar como podemos refactorizar el codigo ya que sin eso no podemos realizar de nuevo los diagramas ya que tenemos mucho codigo que es inservible por lo tanto debemos volverlo a organizar para solo tener lo necesario y lo que estamos haciendo
+
+   
+3. **¿Tengo algún impedimento o bloqueo?**
+No
+
+   
+---
+
+### Santiago Clavijo
+
+1. **¿Qué hice ayer?**
+
+vi lo que le voy hacer a la pagina de las recomendaciones y hicimos un trabajo en clase acerca de las retrospectivas
+
+2. **¿Qué voy a hacer hoy?**
+
+empece a implementar los cambios en la vista
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+no
+
+---
+
+### Gabriela Melo Gualteros
+
+1. **¿Qué hice ayer?**
+
+Ayer aprendimos del metodo que se puede implementar en los Sprint Retrospective, Starfish, y lo implementamos para el sprint 8
+
+2. **¿Qué voy a hacer hoy?**
+
+Hoy corregi un poco el codigo del modulo que me correspondio, entendiendo que hace cada funcion y eliminando cosas autogeneradas que no entiendo
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+no
+
+---
+
+
+### Maria Alejandra Rodriguez
+
+1. **¿Qué hice ayer?** 
+
+Revise la parte del itinerario y como esta funcionando lo de olvide contraseña
+
+2. **¿Qué voy a hacer hoy?** 
+
+hoy voy a seguir revisando esa parte del codigo que hay muchas cosas que no van
+
+3. **¿Tengo algún impedimento o bloqueo?** 
+
+no
+
+---
+
+<img width="1345" height="757" alt="image" src="https://github.com/user-attachments/assets/6dcbe3fc-a551-4e0b-84f9-8c296f24cfca" />
+
+---
+# Sprint Review - 25/08/2026
+
+## Información de la Sesión
+
+- **Fecha de la Review:** 25/08/2026
+- **Sprint Goal:** Implementar el flujo principal de WiseTrip, conectando las pantallas de registro e inicio de sesión, origen del viaje, preferencias, fechas, presupuesto y recomendaciones de destinos con la base de datos.
+
+---
+
+## Incremento Entregado
+
+Durante este Sprint se trabajó en la construcción del flujo principal de WiseTrip. El objetivo fue avanzar en la integración de las funcionalidades de planificación de viajes, la gestión de información del usuario y la generación de recomendaciones de destinos.
+
+Los principales componentes contemplados fueron:
+
+- Desarrollo de las pantallas correspondientes al flujo inicial de la aplicación.
+- Implementación de la captura de preferencias, fechas y presupuesto del viaje.
+- Integración de las pantallas con la base de datos para gestionar la información del usuario y del viaje.
+- Desarrollo de la lógica de recomendación de destinos a partir de las preferencias y el presupuesto.
+- Organización y revisión de las historias de usuario para realizar seguimiento al avance del Sprint.
+- Elaboración de mockups para representar visualmente la interfaz y la navegación propuesta para WiseTrip.
+
+---
+
+## Demostración
+
+Resumen de los puntos presentados durante la demo del producto:
+
+- Registro e inicio de sesión del usuario.
+- Selección del lugar de origen y de las preferencias del viaje.
+- Selección de las fechas y definición del presupuesto.
+- Generación y visualización de destinos recomendados según los datos ingresados.
+- Persistencia y consulta de la información mediante la base de datos.
+- Navegación entre las pantallas que conforman el flujo principal de la aplicación.
+- Presentación de los mockups de las pantallas para mostrar la propuesta visual y la experiencia de navegación esperada.
+
+---
+
+## Conclusión y Próximos Pasos
+
+El Sprint se enfocó en avanzar hacia una primera versión funcional de WiseTrip, priorizando el flujo principal de planificación de viajes y la comunicación con la base de datos. Se establecieron las bases para que el usuario pueda ingresar sus datos, definir las características de su viaje y obtener recomendaciones de destinos.
+
+Sin embargo, es necesario verificar el funcionamiento integral de las funcionalidades desarrolladas y confirmar que cada historia de usuario cumpla con sus criterios de aceptación antes de considerarla finalizada.
+
+Como próximos pasos, se propone:
+
+- Verificar el cumplimiento de los criterios de aceptación y la Definition of Done de cada historia de usuario.
+- Completar las integraciones pendientes entre las pantallas, la lógica de negocio y la base de datos.
+- Realizar pruebas del flujo completo, desde el ingreso de la información hasta la visualización de las recomendaciones.
+- Corregir los errores identificados durante las pruebas de funcionalidad e integración.
+- Validar que las recomendaciones generadas correspondan a las preferencias y al presupuesto ingresados por el usuario.
+- Mejorar la interfaz y la navegación de acuerdo con los mockups y las necesidades identificadas.
+- Actualizar el Product Backlog y priorizar las historias de usuario que deban retomarse en el siguiente Sprint.
+
+**Feedback de los stakeholders:**
+
+El feedback de los stakeholders queda pendiente de documentar con base en los comentarios recibidos durante la revisión del producto. Se recomienda registrar las observaciones relacionadas con el flujo principal, la experiencia de usuario, la integración con la base de datos y la calidad de las recomendaciones para definir las mejoras que se implementarán en los siguientes Sprints.
+---
+
+## Sprint Retrospective - 25/10/2026
+
+## Maria Alejandra Rodriguez
+
+1. **¿Qué logramos?**
+
+Logramos mejorar de alguna manera el codigo, falta hacer algunas revisiones para poder hacer la refactorizacion final y para arreglar los diagramas que tenemos
+
+2. **¿Cómo trabajamos?**
+
+Bien sin embargo siento que fue una semana un poco pesada para todos entonces se avanzo como se pudo
+
+3. **¿Qué podríamos mejorar?**
+
+Podriamos mejorar la distribuicion de tareas teniendo en cuenta la refactorizacion que se realizo y poner cierto tipo de limites o estandares para seguir haciendo codigo de manera controlada
+
+---
+
+## Gabriela Melo Gualteros
+
+1. **¿Qué logramos?**
+
+Logramos hacer la refactorizacion de todo el codigo, se eliminaron funciones, interfaces, codigo muerto, y cosas que teniamos que no se estaban utilizando, que tenian sobrecarga o que se podia mejorar y utilizar un codigo mas entendible
+
+2. **¿Cómo trabajamos?**
+
+Para este sprint se utilizo mi cuenta para hacer el refactor pero mis compañeros estuvieron al tanto de todo, esto se manejo asi para que solo se cambiara una rama y no hubieran mas conflictos si cada uno se ponia a editar en su rama
+  
+3. **¿Qué podríamos mejorar?**
+
+Manejar bien la carga de trabajo dependiendo de la semana academica en la que nos encontremos porque simpre fallamos en poner las HUs mas complejas en las semanas donde tenemos mas trabajo de otras materias, como lo son semanas de parciales o entregas. Esto mismo paso en este sprint, pensamos que teniamos el tiempo y que podiamos sacar todo adelante pero seguiamos en semana de parciales y entregas y no nos dio. Ademas tenemos que tener en cuenta lo que nos propusimos lograr al principio del proyecto
+
+
+  
+---
+
+## Valeria Cortes Rendon
+
+1. **¿Qué logramos?**
+
+Logramos refactorizar partes del codigo y por mi parte hacer el manual de usuario,. En el momento no pude iniciar con el envio de mensajes ya que no sabemos como el profesor quiere implementar esto dentro del proyecto si quiere como un autenticador o cual es la idea de conectar esto con el programa
+
+2. **¿Cómo trabajamos?*
+
+Por el momento hemos sabido distribuir el trabajo, sin embargo esta semana seguiamos en parciales por lo tanto teniamos muchos trabajos y entregas
+
+3. **¿Qué podríamos mejorar?**
+
+Entender el funcionamiento del proyecto mejor y poder seguir limpiando lo que no usamos actualmente y asi eliminar todo lo que no esta funcionando actualmente
+
+---
+
+## Isabella Posada
+
+1. **¿Qué logramos?**
+
+Logramos darnos cuenta de realmente que errores y confusiones teníamos con respecto a la metodología y arquitectura que estamos manejando como grupo, además de que ahora, sabemos (no con tanta exactitud) que es lo que debemos cambiar y lo que debemos seguir refactorizando.
+
+2. **¿Cómo trabajamos?**
+
+
+Trabajamos bien en equipo, cada vez nos entendemos mas y vamos incrementando el nivel y rigurosidad de trabajo
+
+3. **¿Qué podríamos mejorar?**
+
+A nivel individual, el manejo de tiempo con respecto a otras materias, ya que esta no es la única materia la cual requiere una gran cantidad de tiempo, y cuando se entrecruzan diferentes sustentaciones y exámenes, es complicado manejar todo al mismo tiempo.
+Como grupo siento que debemos mejorar más al no hacer las cosas por hacerlas; tomarnos el tiempo de pensar qué tenemos, qué nos falta y qué estamos haciendo. Aunque se correlaciona con lo mismo de el tiempo, seguramente si no estuviéramos con tantas cosas y hubiéramos organizado mejor el tiempo, nuestro rendimiento reflejado en la sustentación habría sido mejor.
+
+---
+
+## Santiago Clavijo
+
+
+1. **¿Qué logramos?**
+
+refactorizamos el codigo para hacerlo mas simple y facil de entender, nos queda pendiente la parte de los diagramas, ya que en la sustentacion nos dijeron que los tenemos mal y no estan adaptados al codigo
+
+2. **¿Cómo trabajamos?**
+
+por mi parte no pude completar todas mis hu, fue una semana dura en cuestion de trabajos, entregas, parciales etc, como equipo seguimos conectados y en la misma sintonia
+
+3. **¿Qué podríamos mejorar?**
+
+como equipo la distribucion del tiempo de otras materias ya que esta nos o me quita mucho tiempo
+
+---
+
+# Sprint Planning - [26/10/2026]
+
+## Sprint Goal
+
+
+## Capacidad del equipo 
+
+* Desarrolladores disponibles: 5
+* Puntos/horas disponibles: 42
+
+## Issues seleccionados para el Sprint
+
+| ID | Título | Tipo | Estimación | Responsable |
+|----|--------|------|------------|-------------|
+| #116 | Como administrador, quiero refactorizar el código, para mantenerlo limpio y entender mejor cómo está armado. | Historia de Usuario | TDB| Valeria |
+| #117 | Como administrador, quiero representar cada módulo en diagramas, para comprender cómo funciona el sistema y saber qué parte mejorar. | Historia de Usuario | TBD | Valeria |
+| #118 |Como usuario de WiseTrip quiero que la estructura del sistema esté correctamente organizada y documentada para que las funcionalidades que utilizo se mantengan integradas y puedan evolucionar de forma confiable  | Historia de Usuario | TBD | Maleja |
+| #119 | Como usuario de WiseTrip quiero que las funcionalidades del sistema tengan una estructura interna coherente para utilizar una aplicación estable, mantenible y confiable | Historia de Usuario | TBD | Maleja |
+| #120 | Como usuario, quiero que mis datos de preferencias, fechas y presupuesto estén bien organizados, para que no se pierdan ni se contradigan entre pantallas. | Historia de Usuario | TDB | Gaby|
+| #121 | Como usuario, quiero que las partes del sistema de mi planificación se comuniquen bien entre sí, para avanzar sin interrupciones entre pantallas. | Historia de Usuario | TBD | Gaby |
+| #122 |  | Historia de Usuario | TBD | Isa |
+| #123 |  | Historia de Usuario | TBD | Isa |
+| #114 |  Como administrador de WiseTrip quiero rehacer el diagrama de clases del patrón GoF decorador, para que refleje con claridad el código refactorizado | Historia de Usuario | TBD | Clavijo |
+| #125 | Como administrador de WiseTrip, quiero organizar la estructura de paquetes y archivos para que el equipo entienda cómo se relacionan sus partes y pueda mantenerlas de forma ordenada.  | Historia de Usuario | TBD | Clavijo |
+
+## Riesgos / Bloqueos identificados
+
+-
+-
+-
+
+---
+<img width="1600" height="1041" alt="image" src="https://github.com/user-attachments/assets/1ceef63c-b887-446f-aba0-b8e28fc3f525" />
+
+
+---
+
+## Daily Sprint - 27/10/2026
+
+### Isabella Posada
+
+1. **¿Qué hice ayer?**
+
+Ayer hicimos el Sprint Planning con mis compañeros acerca de como vamos a mejorar la representación de la arquitectura del proyecto; dividiendo nuestras tareas y responsabilidades por módulos. 
+   
+2. **¿Qué voy a hacer hoy?**
+
+
+Hoy estuve en clase aprendiendo sobre las pruebas y también revise lo que nos dijo el profe. 
+
+   
+3. **¿Tengo algún impedimento o bloqueo?**
+
+no
+
+---
+
+### Valeria Cortes Rendon
+
+1. **¿Qué hice ayer?**
+
+Realizamos el planning y nos dimos cuenta que debemos refatorizar mas partes del codigo antes de hacer los diagramas
+
+2. **¿Qué voy a hacer hoy?**
+
+Iniciar a hacer alguna refactorizacion del codigo y cuando ya hayamos terminado iniciar con los diagramas que es lo que mas nos importa en este momento
+   
+3. **¿Tengo algún impedimento o bloqueo?**
+
+Tiempo
+
+
+   
+---
+
+### Santiago Clavijo
+
+1. **¿Qué hice ayer?**
+
+Hicimos el sprint planning y entre todos decidimos que este sprint nos enfocaremos en arreglar el codigo, hacer y corregir los diagrams nuevo y faltantes con el nuevo codigo refactorizado
+
+2. **¿Qué voy a hacer hoy?**
+
+revise que todo el modulo 2 siga sirviendo sin errores, y descargue el visual paradigm para empezar a hacer el diagrama de mi patron gof
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+falta de tiempo
+
+---
+
+### Gabriela Melo Gualteros
+
+1. **¿Qué hice ayer?**
+
+Ayer estuvimos en Sprint Planning y decidimos enfocarnos en la realizacion de nuevo de los diagramas teniendo en cuenta las correcciones que nos dio el profesor en la segunda entrega
+
+2. **¿Qué voy a hacer hoy?**
+
+Hoy voy a revisar si aun queda codigo del modulo en el que estoy trabajando que pueda eliminar si afectar su funcionamiento y recordar las correcciones del profesor para los diagramas
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+tengo la entrega de dos proyectos
+
+---
+
+
+### Maria Alejandra Rodriguez
+
+1. **¿Qué hice ayer?** 
+
+Ayer tuvimos planning y revisamos como quedaron los cambios de la semana pasada
+
+2. **¿Qué voy a hacer hoy?** 
+
+Realice otras refactorizaciones que encontre en el codigo que no estaban haciendo gran cosa
+
+3. **¿Tengo algún impedimento o bloqueo?** 
+
+no 
+
+
+<img width="1600" height="1200" alt="image" src="https://github.com/user-attachments/assets/0b2702c5-3394-4304-a7da-31003b6aba20" />
+
+
+---
+
+## Daily Sprint - 28/10/2026
+
+### Isabella Posada
+
+1. **¿Qué hice ayer?**
+
+Ayer tuvimos la clase deprueba y revise las paginas que nos habia dicho el profe
+   
+2. **¿Qué voy a hacer hoy?**
+
+Hoy voy a descargar el visualparadigm porque no lo tengo y empezar a revisar el codigo refactorizado que se hizo en el sprint anterior, para ver que hace falta y poder empezar el diagrama de interfaces de recomendaciones.
+   
+3. **¿Tengo algún impedimento o bloqueo?**
+
+tengo un parcial y una entrega de otras materias entonces no voy a poner tener tanto tiempo hoy
+
+---
+
+### Valeria Cortes Rendon
+
+1. **¿Qué hice ayer?**
+
+iniciamos con la refactorizacion del codigo y tuvimos clase de pruebas empezamos a mirar que pruebas podriamos realizar
+
+2. **¿Qué voy a hacer hoy?**
+
+Descargar visual e iniciar los diagramas que se puedan hacer ya que si dejamos para lo ultimo puede que no alcancemos a terminarlos correctamente
+   
+3. **¿Tengo algún impedimento o bloqueo?**
+
+Tiempo
+   
+---
+
+### Santiago Clavijo
+
+1. **¿Qué hice ayer?**
+
+ayer intente descargar el visual paradigm, pero no pude ya que me pide pagar para empezar
+
+2. **¿Qué voy a hacer hoy?**
+
+hoy intente descargarlo en la maquina virtual de la universidad ya que asi se ha trabajado en materias anteriores.
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+no
+
+---
+
+### Gabriela Melo Gualteros
+
+1. **¿Qué hice ayer?**
+
+Ayer revise si aun queda codigo del modulo en el que estoy trabajando que pueda eliminar sin afectar su funcionamiento y recordar las correcciones del profesor para los diagramas
+
+2. **¿Qué voy a hacer hoy?**
+
+Estamos esperando a que mis otras compañeras hagan otros refactor en el codigo y empezare despues a hacer de nuevo los diagramas con las correcciones del profesor, ademas de descargar Visual Paradigm
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+Tiempo 
+
+---
+
+
+### Maria Alejandra Rodriguez
+
+1. **¿Qué hice ayer?** 
+
+Hice par de modificaciones del codigo respecto a algunas interfaces para poder empezar a hacer los diagramas
+
+2. **¿Qué voy a hacer hoy?** 
+
+Hoy voy a iniciar con el diseño de interfaces como fue planeado por el grupo
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+no
+
+---
+<img width="1600" height="1200" alt="image" src="https://github.com/user-attachments/assets/304ed1ea-4dad-446f-b549-6d75b2977ea2" />
+
+---
+
+
+## Daily Sprint - 29/10/2026
 
 ### Isabella Posada
 
@@ -5372,15 +5819,15 @@ no
 
 1. **¿Qué hice ayer?**
 
-
+descargue el visual paradigm en la maquina virtual
 
 2. **¿Qué voy a hacer hoy?**
 
-
+empece a hacer mis diagrama
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
-
+no
 
 ---
 
@@ -5388,15 +5835,15 @@ no
 
 1. **¿Qué hice ayer?**
 
-Ayer aprendimos del metodo que se puede implementar en los Sprint Retrospective, Starfish, y lo implementamos para el sprint 8
+
 
 2. **¿Qué voy a hacer hoy?**
 
-Hoy corregi un poco el codigo del modulo que me correspondio, entendiendo que hace cada funcion y eliminando cosas autogeneradas que no entiendo
+
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
-no
+
 
 ---
 
@@ -5406,15 +5853,100 @@ no
 1. **¿Qué hice ayer?** 
 
 
+2. **¿Qué voy a hacer hoy?** 
+
+
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+
+---
+
+
+---
+## Daily Sprint - 30/10/2026
+
+### Isabella Posada
+
+1. **¿Qué hice ayer?**
+
+
+   
+2. **¿Qué voy a hacer hoy?**
+
+
+   
+3. **¿Tengo algún impedimento o bloqueo?**
+
+
+
+---
+
+### Valeria Cortes Rendon
+
+1. **¿Qué hice ayer?**
+
+
+
+2. **¿Qué voy a hacer hoy?**
+
+
+   
+3. **¿Tengo algún impedimento o bloqueo?**
+
+
+   
+---
+
+### Santiago Clavijo
+
+1. **¿Qué hice ayer?**
+
+ayer empece a hacer el diagrama de mi patron gof
+
+2. **¿Qué voy a hacer hoy?**
+
+hoy termine mi diagrama y lo subi al main, ademas de empezar con mi segunda hu que esta enfocada al modulo 2 de wisetrip ya que es un poco extensa me tomara mas tiempo
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+no
+
+---
+
+### Gabriela Melo Gualteros
+
+1. **¿Qué hice ayer?**
+
+
+
+2. **¿Qué voy a hacer hoy?**
+
+
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+
+
+---
+
+
+### Maria Alejandra Rodriguez
+
+1. **¿Qué hice ayer?** 
+
 
 2. **¿Qué voy a hacer hoy?** 
 
 
 
-3. **¿Tengo algún impedimento o bloqueo?** 
-
+3. **¿Tengo algún impedimento o bloqueo?**
 
 
 ---
 
+
 ---
+
+
+
