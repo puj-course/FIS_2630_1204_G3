@@ -174,7 +174,7 @@ public class Usuario {
         //Correo
         if (correo == null || correo.isBlank()) {
             errores.put("correo", "Ingresa tu correo electronico.");
-        } else if (!correo.trim().matches("^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$")) {
+        } else if (!correo.trim().matches("^[^\\s@]++@[^\\s@.]++(?:\\.[^\\s@.]++)++$")) {
             errores.put("correo", "El formato del correo no es valido.");
         }
 
