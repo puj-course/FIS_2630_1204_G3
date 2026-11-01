@@ -8,13 +8,13 @@ public class ReglaRelacionFechas extends ReglaValidacionFechas {
     private static final int MAX_DIAS = 60;
 
     @Override
-    protected boolean validarPropio(ContextoValidacionFechas contexto) {
+    protected void validarPropio(ContextoValidacionFechas contexto) {
         LocalDate inicio = contexto.getInicio();
         LocalDate fin = contexto.getFin();
 
         // Si alguna de las dos fechas no es válida, no tiene sentido compararlas.
         if (inicio == null || fin == null) {
-            return false;
+            return ;
         }
 
         if (!fin.isAfter(inicio)) {
@@ -24,7 +24,5 @@ public class ReglaRelacionFechas extends ReglaValidacionFechas {
         } else if (contexto.tieneCruceConOtroViaje()) {
             contexto.agregarError("fechaFin", "Estas fechas se cruzan con otro viaje de tu cuenta. Elige otro rango.");
         }
-
-        return false;
     }
 }
