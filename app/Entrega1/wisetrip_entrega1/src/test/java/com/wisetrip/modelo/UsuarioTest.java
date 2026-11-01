@@ -125,7 +125,7 @@ class UsuarioTest {
     @Test
     @DisplayName("CP57 validarDatos: un correo gigante se rechaza rápido (sin backtracking)")
     void cp57_validarDatos_correoGigante_respondeRapido() {
-        usuario.setCorreo("a@" + "a.".repeat(20000) + "!");
+        usuario.setCorreo("a@" + "a.".repeat(20000) + "@");
 
         Map<String, String> errores = assertTimeout(Duration.ofSeconds(2), () -> usuario.validarDatos(CLAVE_OK));
 
