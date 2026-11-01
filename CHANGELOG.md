@@ -5803,15 +5803,15 @@ no
 
 1. **¿Qué hice ayer?**
 
-
+Descargar visual e iniciar los diagramas que se puedan hacer ya que si dejamos para lo ultimo puede que no alcancemos a terminarlos correctamente
 
 2. **¿Qué voy a hacer hoy?**
 
-
+Empezar a trabajar en la refactorizacion de codigo y preguntar que diagramas son los que debemos tener para hacerlos ademas del de componentes
    
 3. **¿Tengo algún impedimento o bloqueo?**
 
-
+no tengo tanto tiempo
    
 ---
 
