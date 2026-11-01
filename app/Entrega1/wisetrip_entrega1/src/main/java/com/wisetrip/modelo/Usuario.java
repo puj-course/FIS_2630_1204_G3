@@ -19,6 +19,7 @@ public class Usuario {
     public static final int EDAD_MINIMA = 18;
     public static final int EDAD_MAXIMA = 120;
     public static final int LARGO_MINIMO_PASSWORD = 6;
+    private static final String CAMPO_CLAVE = "password";
 
     private int idUsuario;
     private String nombreCompleto;
@@ -173,15 +174,15 @@ public class Usuario {
         //Correo
         if (correo == null || correo.isBlank()) {
             errores.put("correo", "Ingresa tu correo electronico.");
-        } else if (!correo.trim().matches("^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$")) {
+        } else if (!correo.trim().matches("^[^\\s@]++@[^\\s@.]++(?:\\.[^\\s@.]++)++$")) {
             errores.put("correo", "El formato del correo no es valido.");
         }
 
         //Password
         if (password == null || password.isEmpty()) {
-            errores.put("password", "Ingresa una contrasena.");
+            errores.put(CAMPO_CLAVE, "Ingresa una contrasena."); // NOSONAR: llave del mapa de errores, no es una contraseña
         } else if (password.length() < LARGO_MINIMO_PASSWORD) {
-            errores.put("password", "La contrasena debe tener al menos 6 caracteres.");
+            errores.put(CAMPO_CLAVE, "La contrasena debe tener al menos 6 caracteres."); // NOSONAR: llave del mapa de errores, no es una contraseña
         }
 
         //Confirmar password
