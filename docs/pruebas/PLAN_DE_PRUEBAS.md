@@ -60,4 +60,4 @@ Servicios y clases probadas: GastosServicio, PresupuestoServicio, FechasServicio
 | CP54 | Usuario (modelo) | `validarDatos` | Contraseña vacía | '' y confirmación '' | Negativa | Errores 'password' y 'confirmarPassword' |  | Campos obligatorios |
 | CP55 | Usuario (modelo) | `validarDatos` | Cumple 18 años hoy | nacimiento = hoy - 18 años | Borde | Sin errores |  | Regla de negocio: edad mínima 18, límite inferior permitido |
 | CP56 | Usuario (modelo) | `validarDatos` | Un día antes de cumplir 18 | nacimiento = hoy - 18 años + 1 día | Borde | Error 'fechaNacimiento' (mayor de 18) |  | Regla de negocio: primer caso rechazado |
-| CP57 | Usuario (modelo) | `validarDatos` | Correo gigante | 'a@' + 'a.' x 20000 + '!' | Negocio | Error 'correo' en menos de 2 segundos |  | Seguridad: evita ataques por backtracking (issue de SonarCloud) |
+| CP57 | Usuario (modelo) | `validarDatos` | Correo gigante | 'a@' + 'a.' x 20000 + '@' | Negocio | Error 'correo' en menos de 2 segundos |  | Seguridad: evita ataques por backtracking (issue de SonarCloud) |
