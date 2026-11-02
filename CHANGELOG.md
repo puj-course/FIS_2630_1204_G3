@@ -4572,6 +4572,8 @@ todo lo veo bien , sin embargo estas semanas son criticas para todos los miembor
 
 <img width="959" height="469" alt="image" src="https://github.com/user-attachments/assets/f3ddccf6-395b-4478-a625-764fe9c11b6e" />
 
+---
+
 # Sprint 9 - Sprint Planning - [13/10/2026]
 
 ## Sprint Goal
@@ -5953,6 +5955,85 @@ NO
 
 
 ---
+#  Sprint Retrospective - 01/11/2026
 
+## Maria Alejandra Rodriguez
+
+1. **¿Qué logramos?**
+
+
+
+2. **¿Cómo trabajamos?**
+
+
+
+3. **¿Qué podríamos mejorar?**
+
+
+  
+---
+
+## Gabriela Melo Gualteros
+
+1. **¿Qué logramos?**
+
+ 
+ 
+2. **¿Cómo trabajamos?**
+
+
+  
+3. **¿Qué podríamos mejorar?**
+
+
+  
+---
+
+## Valeria Cortes Rendon
+
+1. **¿Qué logramos?**
+
+ 
+   
+2. **¿Cómo trabajamos?**
+
+
+ 
+3. **¿Qué podríamos mejorar?**
+
+
+ 
+---
+
+## Isabella Posada
+
+1. **¿Qué logramos?**
+
+   
+2. **¿Cómo trabajamos?**
+
+
+3. **¿Qué podríamos mejorar?**
+
+
+---
+
+## Santiago Clavijo
+
+1. **¿Qué logramos?**
+
+
+
+2. **¿Cómo trabajamos?**
+
+
+
+3. **¿Qué podríamos mejorar?**
+
+
+
+---
+
+---
 
 
