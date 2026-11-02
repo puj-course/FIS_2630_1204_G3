@@ -5935,13 +5935,15 @@ no
 
 1. **¿Qué hice ayer?** 
 
+Termine todo lo que tenía que ver con código y el diseño del itinerario y en general de las vistas de la página web
 
 2. **¿Qué voy a hacer hoy?** 
 
-
+Empezar la construcción de los diagramas
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
+NO
 
 ---
 
