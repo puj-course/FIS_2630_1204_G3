@@ -5993,15 +5993,17 @@ NO
 
 1. **¿Qué logramos?**
 
- 
+Se ha logrado mejorar el codigo y limpiarlo lo mas posible, ademas de que hemos trabajado coordinadamente para que nos vaya bien en el proyecto y podamos mejorar los aspectos que tenemos aun no muy pulidos
    
 2. **¿Cómo trabajamos?**
 
+Esta semana fue pesada para todos por lo que no estuve tan presente en el proyecto ya que tenia mas cosas por entregar. Se busca que iniciemos con la construccion de la 3era entrega
 
+¿Qué podríamos mejorar?
  
 3. **¿Qué podríamos mejorar?**
 
-
+La distribucion del tiempo ya que las tareas de esta semana fueron muy pesadas y la carga no me dio para hacer todo lo que tenia en mente
  
 ---
 
@@ -6022,15 +6024,15 @@ NO
 
 1. **¿Qué logramos?**
 
-
+logramos que el codigo este mas limpio sin perder funcionalidades del proyecto, asi como rehacer los diagramas de este codigo refactorizado
 
 2. **¿Cómo trabajamos?**
 
-
+como equipo bien, sin embargo estas ultimas semanas del semestre son las mas pesadas hablando de carga academica y proyectos por entregar
 
 3. **¿Qué podríamos mejorar?**
 
-
+la distribucion del tiempo de todos y el peso en el proyecto de las issues de aqui en adelate
 
 ---
 
