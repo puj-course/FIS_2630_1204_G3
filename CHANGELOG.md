@@ -5852,13 +5852,17 @@ no
 
 1. **¿Qué hice ayer?** 
 
+ayer hice una refactorizacion y arreglo del codigo porque de la que habia hecho quedaron algunos errores
+
 
 2. **¿Qué voy a hacer hoy?** 
 
+Hoy hice toda la pagina de itinerario y viajes que decidí unir para que esa ultima pantalla que era la mas importante se viera muy bien
 
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
+no 
 
 ---
 
