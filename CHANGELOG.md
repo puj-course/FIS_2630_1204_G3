@@ -5837,14 +5837,15 @@ no
 
 1. **¿Qué hice ayer?**
 
-
+Ayer espere que mi compañera hiciera otra refactorizacion al codigo
 
 2. **¿Qué voy a hacer hoy?**
 
-
+Hoy le pregunte al monitor los diagramas que teniamos que hacer para tenerlo presente pero no obtuve respuesta, pero ahi igual mire que es lo que teniamos que hacer
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
+no
 
 
 ---
