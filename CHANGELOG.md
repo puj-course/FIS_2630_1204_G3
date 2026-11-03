@@ -5979,15 +5979,15 @@ La organización de algunos issues y tareas que quedaron incompletas o mal hecha
 
 1. **¿Qué logramos?**
 
- 
+ Se logro hacer no solo una refactorizacion sino dos donde en cada una se pudo limpiar al maximo el codigo y empezar de nuevo con lo diagramas ahora con una idea mas clara de lo que se espera ver en cada uno de estos
  
 2. **¿Cómo trabajamos?**
 
-
+Bien, aunque esta semana no pude estar muy pendiente y comprometida como hubiera querido por otros trabajos de otras materias que tenia que entregar y porque viaje
   
 3. **¿Qué podríamos mejorar?**
 
-
+Esta semana volvimos a caer en poner mucho trabajo cuando la carga academica estaba muy alta y por lo tanto ninguno pudo rendir como se esperaba
   
 ---
 
