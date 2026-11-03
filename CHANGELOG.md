@@ -5925,15 +5925,15 @@ no
 
 1. **¿Qué hice ayer?**
 
-
+Ayer le pregunte al monitor sobre os diagramas y empece a realizar el del patron gof
 
 2. **¿Qué voy a hacer hoy?**
 
-
+Hoy hare otro diagrama, ya que el monitor ya le respondio a mi compañera y le envio la lista de diagramas que tenemos que tener para la entrega
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
-
+Tiempo
 
 ---
 
