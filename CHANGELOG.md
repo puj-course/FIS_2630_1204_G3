@@ -5961,14 +5961,15 @@ NO
 
 1. **¿Qué logramos?**
 
-
+Logramos refactorizar el codigo y tener lista la pagina del itinerario, con las funciones esperadas, le hacen falta par de detalles
 
 2. **¿Cómo trabajamos?**
 
-
+Bien, sin embargo estas semanas hemos tenido muchos trabajos de todas las materias pero aun así , trabajamos lo que mas pudimos
 
 3. **¿Qué podríamos mejorar?**
 
+La organización de algunos issues y tareas que quedaron incompletas o mal hechas por una mala estimación de tiempo
 
   
 ---
