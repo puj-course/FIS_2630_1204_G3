@@ -5881,14 +5881,20 @@ no
 1. **¿Qué hice ayer?**
 
 
+ayer inicie la elaboracion de los diagramas 
+
+
+
+
    
 2. **¿Qué voy a hacer hoy?**
 
-
+hoy revisamos en clase las nuevas tecnicas que vamos a usar para el proyecto que es lo de sonarcube y lo de junit, la verdad no me quedo tan claro
    
 3. **¿Tengo algún impedimento o bloqueo?**
 
 
+no tengo tanto tiempo
 
 ---
 
