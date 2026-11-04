@@ -5872,6 +5872,8 @@ no
 
 ---
 
+<img width="1460" height="832" alt="Screenshot 2026-11-03 at 9 20 19 PM" src="https://github.com/user-attachments/assets/374bc7b4-f2e7-44b1-a67c-4f08d1564868" />
+
 
 ---
 ## Daily Sprint - 30/10/2026
@@ -5880,13 +5882,8 @@ no
 
 1. **¿Qué hice ayer?**
 
-
 ayer inicie la elaboracion de los diagramas 
 
-
-
-
-   
 2. **¿Qué voy a hacer hoy?**
 
 hoy revisamos en clase las nuevas tecnicas que vamos a usar para el proyecto que es lo de sonarcube y lo de junit, la verdad no me quedo tan claro
@@ -5962,6 +5959,8 @@ Empezar la construcción de los diagramas
 NO
 
 ---
+
+<img width="1147" height="826" alt="Screenshot 2026-11-03 at 9 20 55 PM" src="https://github.com/user-attachments/assets/fe0114ae-b46d-4fcb-80f0-7f4f529cc419" />
 
 
 ---
