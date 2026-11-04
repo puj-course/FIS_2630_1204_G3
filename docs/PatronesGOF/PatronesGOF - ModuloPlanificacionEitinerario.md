@@ -71,16 +71,20 @@ Este mismo par de bloques — la línea de `getAttribute` + el método
 
 
 Nota: `prepararEncabezado` es el método que de verdad usan los
-controladores — es la "puerta de entrada" simplificada de la fachada. Por
+controladores, es la "puerta de entrada" simplificada de la fachada. Por
 dentro llama a `usuarioActivo` y a `iniciales`, que también quedan
 disponibles por separado por si algún controlador solo necesita una de las
-dos cosas.
+dos cosas. La clave de sesión quedó guardada en una sola constante,
+`CLAVE_USUARIO`, así que ningún controlador tiene que conocerla.
 
 ### 3: quién usa la fachada, sin saber cómo resuelve nada por dentro
 
-Así quedó el mismo método `mostrarViaje` después:
+La fachada la usan cuatro controladores: `PlanificacionControlador`,
+`PlanControlador`, `ViajeControlador` y `RecomendacionControlador`. Por
+ejemplo, así quedó el mismo método `mostrarViaje` de `PlanControlador`:
 
 <img width="579" height="103" alt="Screenshot 2026-10-14 at 12 09 58 AM" src="https://github.com/user-attachments/assets/4a446638-4f2e-4c7d-960e-c797b12574fd" />
+
 
 
 `PlanControlador` ya no sabe que el usuario vive bajo la clave
@@ -91,8 +95,19 @@ sesión iniciada.
 
 Y así quedó inyectada en los tres controladores, por ejemplo en
 `PlanControlador`:
+```java
+private final UsuarioSesionFacade usuarioSesionFacade;
 
-<img width="513" height="129" alt="Screenshot 2026-10-14 at 12 01 00 AM" src="https://github.com/user-attachments/assets/8676845d-b2e2-4712-9f52-c52b0c7febc9" />
+public PlanControlador(IGestionReparto gestionReparto,
+                       PresupuestoServicio presupuestoServicio,
+                       UsuarioSesionFacade usuarioSesionFacade,
+                       IRepositorioViajes viajeDAO) {
+    this.gestionReparto = gestionReparto;
+    this.presupuestoServicio = presupuestoServicio;
+    this.usuarioSesionFacade = usuarioSesionFacade;
+    this.viajeDAO = viajeDAO;
+}
+```
 
 
 Spring arma automáticamente esta pieza al arrancar la aplicación, igual que
@@ -119,17 +134,17 @@ usuario.
 
 ### ¿Qué gana el equipo con esto?
 
-Antes, un cambio en la regla de iniciales (por ejemplo, para manejar un
-nombre compuesto como "María José") significaba editar tres archivos.
-Ahora significa editar un solo método, `iniciales()`, dentro de
-`UsuarioSesionFacade`, y ese cambio queda aplicado automáticamente en las
-tres pantallas del flujo de planificación la próxima vez que se usen. Lo
-mismo pasa si mañana se agrega un cuarto controlador al flujo: no hay que
-copiar nada, solo inyectar la fachada.
+Un cambio en la regla de iniciales (por ejemplo, para manejar un nombre
+compuesto como "María José") significa editar un solo método, `iniciales()`,
+dentro de `UsuarioSesionFacade`, y ese cambio queda aplicado en todas las
+pantallas que usan los cuatro controladores. Lo mismo pasa si se agrega
+otro controlador al flujo: no hay que copiar nada, solo inyectar la
+fachada.
+
 
 ## Diseño — Diagrama UML
 
-<img width="620" height="662" alt="DiagramaEstructural(F)GoF" src="https://github.com/user-attachments/assets/f7d35571-45d7-4ab7-8d41-2bcafbba81f4" />
+<img width="732" height="751" alt="PatrónFacade drawio" src="https://github.com/user-attachments/assets/c6b9c997-efee-44ae-afea-8d7e98816e94" />
 
 ---
 
@@ -202,10 +217,19 @@ Todo en un solo método: difícil de leer de corrido, y cualquier regla nueva te
 
 ### 2: el contexto que viaja por la cadena
 
-Antes de ver las reglas, hace falta algo que lleve la información de una a otra. Ese es `ContextoValidacionFechas`: guarda las fechas originales, va acumulando los errores, y guarda las fechas ya parseadas para que la última regla no tenga que volver a interpretarlas.
+Antes de ver las reglas, hace falta algo que lleve la información de una a
+otra. Ese es `ContextoValidacionFechas`: guarda las fechas originales, va
+acumulando los errores y guarda las fechas ya convertidas a `LocalDate`
+para que la última regla no tenga que volver a interpretarlas. También
+guarda, en `consultaCruces`, la forma de preguntar si las fechas se cruzan
+con otro viaje del usuario.
 
-<img width="684" height="602" alt="Screenshot 2026-10-14 at 12 58 02 PM" src="https://github.com/user-attachments/assets/2c3faade-3812-4ea9-9daf-403eeeccdac4" />
+<img width="699" height="760" alt="Screenshot 2026-11-04 at 9 21 28 AM" src="https://github.com/user-attachments/assets/f940410e-246e-4ba7-a807-2b698c072c96" />
 
+
+Si nadie le asigna `consultaCruces`, `tieneCruceConOtroViaje()` devuelve
+`false`, así que la cadena también se puede usar sin consultar la base de
+datos.
 
 ### 3: el eslabón base de la cadena
 
@@ -214,25 +238,69 @@ Antes de ver las reglas, hace falta algo que lleve la información de una a otra
 <img width="693" height="506" alt="Screenshot 2026-10-14 at 12 59 11 PM" src="https://github.com/user-attachments/assets/a42e2eb5-05c8-4923-9730-cf81c398dffa" />
 
 
+`validarPropio` es `protected`: las reglas concretas lo implementan, pero
+desde afuera nadie lo llama directamente. La única entrada a la cadena es
+`validar()`, que siempre ejecuta la regla actual y después llama a la
+siguiente, hasta llegar a la última (la que tiene `siguiente` en `null`).
+
+
 ### 4: las tres reglas concretas
 
-`ReglaFechaInicio` y `ReglaFechaFin` siempre devuelven `true` (la cadena sigue pase lo que pase), porque son validaciones independientes y el usuario debería ver los dos errores a la vez si los comete los dos. `ReglaRelacionFechas` es la última: si `inicio` o `fin` quedaron en `null`, corta la cadena sin agregar un error nuevo, porque comparar fechas inválidas no tendría sentido.
+Las tres reglas se ejecutan siempre, una detrás de otra, y cada una va
+dejando sus errores en el contexto. Así el usuario ve todos sus errores de
+una vez y no tiene que corregirlos de a uno.
+
+`ReglaFechaInicio` revisa que la fecha de inicio exista, que tenga un
+formato válido y que no sea anterior a hoy. Si todo está bien, la guarda en
+el contexto con `setInicio()`:
 
 <img width="890" height="548" alt="Screenshot 2026-10-14 at 1 00 23 PM" src="https://github.com/user-attachments/assets/5342ec26-bcef-43a1-a6e1-e37065c673fe" />
 
-
+`ReglaFechaFin` hace lo mismo con la fecha de regreso y la guarda con
+`setFin()`:
 <img width="730" height="461" alt="Screenshot 2026-10-14 at 1 01 56 PM" src="https://github.com/user-attachments/assets/77077c32-41d5-4721-a666-4070b442e9c4" />
 
+`ReglaRelacionFechas` es la última. Si `inicio` o `fin` quedaron en `null`
+(porque alguna de las reglas anteriores encontró un error), no hace nada,
+porque comparar fechas inválidas no tendría sentido. Si las dos fechas
+están bien, revisa que el regreso sea después del inicio, que el viaje no
+pase de `MAX_DIAS` y que las fechas no se crucen con otro viaje del
+usuario:
 
-<img width="910" height="510" alt="Screenshot 2026-10-14 at 1 02 40 PM" src="https://github.com/user-attachments/assets/3c6b3e9d-9776-4d8e-ac72-0a95e9824dec" />
+<img width="999" height="548" alt="Screenshot 2026-11-04 at 9 27 07 AM" src="https://github.com/user-attachments/assets/ef867812-582e-49d6-85a6-2c4a8c2daff0" />
+
 
 
 ### 5: quién arma y dispara la cadena
 
-`FechasServicio` arma la cadena una sola vez, en el constructor, y la reutiliza en cada validación:
+`FechasServicio` arma la cadena una sola vez, en el constructor, y la
+reutiliza en cada validación. Tiene dos versiones de `validarFechas`: la
+primera solo revisa las fechas, y la segunda además le dice al contexto
+cómo consultar en la base de datos (a través de `IRepositorioViajes`) si
+las fechas se cruzan con otro viaje del mismo usuario.
 
-<img width="639" height="800" alt="Screenshot 2026-10-14 at 1 03 39 PM" src="https://github.com/user-attachments/assets/60ecb0aa-7007-4760-9284-87868a77f797" />
+<img width="753" height="800" alt="Screenshot 2026-11-04 at 9 29 47 AM" src="https://github.com/user-attachments/assets/0cc27f5f-19d5-4e9d-882d-d9709cd94467" />
 
+`FechasServicio` solo guarda la primera regla (`cadenaValidacion`): el
+resto de la cadena se recorre sola gracias a `siguiente`. Al final devuelve
+el mapa de errores del contexto, y si está vacío las fechas son válidas.
+
+La cadena la usan `PlanificacionControlador` (cuando el usuario guarda las
+fechas del viaje) y `SeleccionControlador` (cuando el usuario elige un
+destino), los dos a través de la interfaz `IFechasServicio`.
+
+### ¿Cómo se reparte la responsabilidad?
+
+- **`FechasServicio`** arma la cadena, crea el contexto y la dispara. No
+  revisa ninguna fecha por su cuenta.
+- **`ReglaValidacionFechas`** no valida nada: se encarga del recorrido,
+  ejecutando la regla actual y pasándole el turno a la siguiente.
+- **`ReglaFechaInicio`** y **`ReglaFechaFin`** revisan un solo campo cada
+  una y preparan las fechas convertidas para la regla siguiente.
+- **`ReglaRelacionFechas`** es la que más trabajo tiene: compara las dos
+  fechas, revisa la duración máxima y consulta si hay cruce con otro viaje.
+- **`ContextoValidacionFechas`** es lo que comparten todas: lleva las
+  fechas, guarda los resultados intermedios y junta los errores.
 
 ### ¿Por qué Chain of Responsibility y no Strategy?
 
@@ -244,6 +312,5 @@ Cada regla se puede probar sola, armando un `ContextoValidacionFechas` a mano, s
 
 ## Diseño — Diagrama UML
 
-<img width="814" height="656" alt="DiagramaComportamental(CR)GoF" src="https://github.com/user-attachments/assets/474e302a-5dfd-4182-bdf2-8a95dab967a2" />
-
+<img width="1059" height="695" alt="PatronChainResponsability drawio" src="https://github.com/user-attachments/assets/f0173a88-25a7-41a9-b8ed-cbe02c09457a" />
 
