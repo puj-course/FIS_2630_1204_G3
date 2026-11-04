@@ -314,3 +314,16 @@ Cada regla se puede probar sola, armando un `ContextoValidacionFechas` a mano, s
 
 <img width="1059" height="695" alt="PatronChainResponsability drawio" src="https://github.com/user-attachments/assets/f0173a88-25a7-41a9-b8ed-cbe02c09457a" />
 
+En el diagrama se ven los participantes del patrón:
+
+- **`FechasServicio`** guarda la primera regla de la cadena en
+  `cadenaValidacion` (asociación) y crea el contexto en cada validación
+  (dependencia "crea").
+- **`ReglaValidacionFechas`** es abstracta (por eso su nombre y
+  `validarPropio` van en cursiva) y tiene una asociación consigo misma,
+  `siguiente`, con multiplicidad `0..1`, porque la última regla no tiene
+  siguiente.
+- **Las tres reglas concretas** heredan de `ReglaValidacionFechas` y
+  sobrescriben `validarPropio`.
+- **`ContextoValidacionFechas`** es lo que viaja por la cadena: las reglas
+  lo leen y lo modifican.
