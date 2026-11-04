@@ -5789,15 +5789,18 @@ no
 
 1. **¿Qué hice ayer?**
 
+ayer revisamos lo de junit y sonarcube
 
    
 2. **¿Qué voy a hacer hoy?**
 
 
+hoy intentare terminar los diagramas
    
 3. **¿Tengo algún impedimento o bloqueo?**
 
 
+si falkta de tiempo
 
 ---
 
