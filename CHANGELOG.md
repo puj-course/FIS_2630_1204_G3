@@ -6109,8 +6109,8 @@ Mejoras en SonarQube
 | #127 |       | Historia de Usuario | TBD | Valeria |
 | #128 |       | Historia de Usuario | TBD | Maleja |
 | #129 |    | Historia de Usuario | TBD | Maleja |
-| #130 |       | Historia de Usuario | TBD | Gaby |
-| #131 |    | Historia de Usuario | TBD | Gaby |
+| #130 | Yo como usuario quiero que la información de mi plan de viaje se guarde y se muestre correctamente mientras lo armo para no tener que repetir pasos ni perder lo que ya elegí.      |Historia de Usuario | TBD | Gaby |
+| #131 |Yo como usuario quiero que mis fechas, los lugares que busco y los datos de mi viaje se mantengan correctos durante toda mi sesión para no recibir errores ni ver información equivocada mientras uso la aplicación. | Historia de Usuario | TBD | Gaby |
 | #132 |       | Historia de Usuario | TBD | Isabela|
 | #133 |    | Historia de Usuario | TBD | Isabela |
 | #134 |     | Historia de Usuario | TBD | Clavijo |
