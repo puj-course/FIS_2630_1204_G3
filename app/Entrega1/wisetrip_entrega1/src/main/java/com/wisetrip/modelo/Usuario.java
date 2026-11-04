@@ -19,6 +19,7 @@ public class Usuario {
     public static final int EDAD_MINIMA = 18;
     public static final int EDAD_MAXIMA = 120;
     public static final int LARGO_MINIMO_PASSWORD = 6;
+    private static final String CAMPO_CLAVE = "password";
 
     private int idUsuario;
     private String nombreCompleto;
@@ -123,13 +124,8 @@ public class Usuario {
         if (numeroDocumento != null) {
             numeroDocumento = numeroDocumento.trim();
         }
-        normalizarCorreo();
-    }
-
-
-    public void normalizarCorreo() {
-        if (this.correo != null) {
-            this.correo = this.correo.trim().toLowerCase();
+        if (correo != null) {
+            correo = correo.trim().toLowerCase();
         }
     }
 
@@ -178,15 +174,15 @@ public class Usuario {
         //Correo
         if (correo == null || correo.isBlank()) {
             errores.put("correo", "Ingresa tu correo electronico.");
-        } else if (!correo.trim().matches("^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$")) {
+        } else if (!correo.trim().matches("^[^\\s@]++@[^\\s@.]++(?:\\.[^\\s@.]++)++$")) {
             errores.put("correo", "El formato del correo no es valido.");
         }
 
         //Password
         if (password == null || password.isEmpty()) {
-            errores.put("password", "Ingresa una contrasena.");
+            errores.put(CAMPO_CLAVE, "Ingresa una contrasena."); // NOSONAR: llave del mapa de errores, no es una contraseña
         } else if (password.length() < LARGO_MINIMO_PASSWORD) {
-            errores.put("password", "La contrasena debe tener al menos 6 caracteres.");
+            errores.put(CAMPO_CLAVE, "La contrasena debe tener al menos 6 caracteres."); // NOSONAR: llave del mapa de errores, no es una contraseña
         }
 
         //Confirmar password
@@ -226,8 +222,14 @@ public class Usuario {
         return nombreCompleto.trim().split("\\s+")[0];
     }
 
-        /** Iniciales para el avatar: dos letras si hay nombre y apellido, una si solo hay nombre. */
+    /**
+     * Iniciales para el avatar: dos letras si hay nombre y apellido, una si
+     * solo hay nombre, y "?" si no hay nombre.
+     */
     public String iniciales() {
+        if (nombreCompleto == null || nombreCompleto.isBlank()) {
+            return "?";
+        }
         String[] partes = nombreCompleto.trim().split("\\s+");
         String iniciales = partes.length > 1
                 ? "" + partes[0].charAt(0) + partes[1].charAt(0)

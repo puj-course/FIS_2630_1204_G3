@@ -23,20 +23,6 @@ public class LlenarAtributosCiudad {
         this.geo = geo;
     }
 
-    public void enriquecer(Ciudad ciudad, CiudadSemilla semilla) {
-        enriquecer(ciudad, semilla, null);
-    }
-
-    //este es el metodo principal
-    //toma una ciudad y le va agregando sus atributos.
-
-    public void enriquecer(
-            Ciudad ciudad,
-            CiudadSemilla semilla,
-            Map<String, Boolean> atributosUsuario) {
-        enriquecer(ciudad, semilla, atributosUsuario, Map.of());
-    }
-
     public void enriquecer(Ciudad ciudad, CiudadSemilla semilla,
                           Map<String, Boolean> atributosUsuario,
                           Map<String, Importancia> importancias) {

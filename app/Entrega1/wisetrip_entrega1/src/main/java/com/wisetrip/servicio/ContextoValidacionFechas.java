@@ -16,6 +16,15 @@ public class ContextoValidacionFechas {
     private final Map<String, String> errores = new LinkedHashMap<>();
     private LocalDate inicio;
     private LocalDate fin;
+    private java.util.function.BooleanSupplier consultaCruces;
+
+    public void setConsultaCruces(java.util.function.BooleanSupplier consultaCruces) {
+        this.consultaCruces = consultaCruces;
+    }
+
+    public boolean tieneCruceConOtroViaje() {
+        return consultaCruces != null && consultaCruces.getAsBoolean();
+    }
 
     public ContextoValidacionFechas(FechasViaje fechas) {
         this.fechas = fechas;

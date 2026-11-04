@@ -48,16 +48,8 @@ public class PreferenciasUsuario {
         return presupuestoUsd;
     }
 
-    public void setPresupuestoUsd(Double presupuestoUsd) {
-        this.presupuestoUsd = presupuestoUsd;
-    }
-
     public long getDuracionDias() {
         return duracionDias;
-    }
-
-    public void setDuracionDias(long duracionDias) {
-        this.duracionDias = duracionDias;
     }
 
     /**
@@ -90,23 +82,5 @@ public class PreferenciasUsuario {
                 && importancia.esIndispensable();
     }
 
-    /**
-     * Obtiene la importancia que el usuario asignó a un atributo.
-     */
-    public Importancia importanciaDe(String atributo) {
-        return atributos.get(atributo);
-    }
 
-    /**
-     * Obtiene el peso de una preferencia.
-     */
-    public int pesoDe(String atributo) {
-        Importancia importancia = atributos.get(atributo);
-
-        if (importancia == null) {
-            return 0;
-        }
-
-        return importancia.getPeso();
-    }
 }

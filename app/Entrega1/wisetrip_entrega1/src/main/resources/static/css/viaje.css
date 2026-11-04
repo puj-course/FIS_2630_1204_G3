@@ -286,7 +286,6 @@
     border: 3px solid var(--tinta);
     border-radius: 18px;
     padding: 24px 28px;
-    margin-bottom: 52px;
     box-shadow: 6px 6px 0 var(--tinta);
 }
 
@@ -298,7 +297,6 @@
     flex-wrap: wrap;
     margin-bottom: 16px;
 }
-.vj-presupuesto-cifras div:last-child { text-align: right; }
 
 .vj-cifra {
     display: block;
@@ -320,17 +318,29 @@
 .vj-reparto-barra span { display: block; height: 100%; flex-shrink: 0; background: var(--c); }
 .vj-reparto-barra span + span { border-left: 2px solid var(--tinta); }
 
-.vj-leyenda {
-    list-style: none;
-    padding: 0;
-    margin: 16px 0 0;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px 24px;
-    font-size: 14px;
+/* Tabla del reparto: una fila por categoría de gasto */
+.vj-reparto-tabla {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+    font-size: 15px;
 }
-.vj-leyenda li { display: flex; align-items: center; gap: 8px; }
-.vj-leyenda b { font-family: var(--dato); font-weight: 600; }
+.vj-reparto-tabla th,
+.vj-reparto-tabla td { padding: 11px 8px; text-align: right; }
+.vj-reparto-tabla th[scope="row"] { text-align: left; font-weight: 700; }
+.vj-reparto-tabla .vj-punto { display: inline-block; vertical-align: -2px; margin-right: 8px; }
+.vj-reparto-tabla thead th {
+    font-family: var(--dato);
+    font-size: 10.5px;
+    font-weight: 500;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--gris);
+    border-bottom: 2.5px solid var(--tinta);
+}
+.vj-reparto-tabla thead th:first-child { text-align: left; }
+.vj-reparto-tabla tbody tr + tr { border-top: 2px dashed var(--arena-honda); }
+.vj-reparto-tabla td { font-family: var(--dato); font-weight: 600; white-space: nowrap; }
 .vj-punto {
     width: 14px; height: 14px;
     border: 2px solid var(--tinta);
@@ -338,7 +348,7 @@
     background: var(--c);
 }
 
-/* ===== Módulos ===== */
+/* ===== Títulos de sección ===== */
 
 .vj-seccion-cabeza {
     display: flex;
@@ -358,40 +368,8 @@
 }
 .vj-seccion-nota { font-size: 15px; line-height: 1.55; color: var(--gris); margin: 0; max-width: 42ch; }
 
-.vj-modulos {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 24px;
-}
-
-.vj-modulo {
-    background: #fff;
-    border: 3px solid var(--tinta);
-    border-radius: 18px;
-    overflow: hidden;
-    box-shadow: 6px 6px 0 var(--c);
-    display: flex;
-    flex-direction: column;
-}
-
-.vj-modulo-cabeza {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    background: var(--c);
-    border-bottom: 3px solid var(--tinta);
-    padding: 16px 20px;
-}
-.vj-modulo-cabeza h3 {
-    flex: 1;
-    margin: 0;
-    font-family: var(--display);
-    font-size: 21px;
-    letter-spacing: -.6px;
-    text-transform: uppercase;
-}
-
-.vj-modulo-icono {
+/* Colchón de imprevistos */
+.vj-colchon-icono {
     width: 46px; height: 46px;
     flex-shrink: 0;
     background: #fff;
@@ -399,61 +377,8 @@
     border-radius: 14px;
     display: flex; align-items: center; justify-content: center;
 }
-.vj-modulo-icono svg { width: 26px; height: 26px; }
+.vj-colchon-icono svg { width: 26px; height: 26px; }
 
-.vj-pronto {
-    background: #fff;
-    border: 2px solid var(--tinta);
-    border-radius: 20px;
-    padding: 4px 11px;
-    font-family: var(--dato);
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: .08em;
-    text-transform: uppercase;
-    transform: rotate(3deg);
-}
-
-.vj-modulo p {
-    margin: 18px 22px 0;
-    font-size: 15px;
-    line-height: 1.55;
-    color: #43434D;
-}
-
-.vj-modulo-cifras {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    margin: 18px 22px 0;
-    border: 2.5px solid var(--tinta);
-    border-radius: 14px;
-    overflow: hidden;
-}
-.vj-modulo-cifras div { padding: 13px 15px; }
-.vj-modulo-cifras div + div { border-left: 2.5px dashed var(--tinta); background: var(--crema); }
-.vj-modulo-cifras strong {
-    display: block;
-    font-family: var(--display);
-    font-size: 18px;
-    letter-spacing: -.5px;
-    line-height: 1.15;
-}
-
-.vj-modulo-btn {
-    margin: 20px 22px 22px;
-    align-self: flex-start;
-    padding: 12px 22px;
-    background: var(--crema);
-    color: var(--gris);
-    border: 2.5px dashed var(--tinta);
-    border-radius: 28px;
-    font-family: var(--texto);
-    font-size: 15px;
-    font-weight: 700;
-    cursor: not-allowed;
-}
-
-/* Colchón de imprevistos */
 .vj-colchon {
     display: flex;
     align-items: center;
@@ -517,16 +442,190 @@
 
 @media (max-width: 980px) {
     .vj-cabecera { flex-wrap: wrap; gap: 14px; padding: 14px 20px; }
-    .vj-menu { order: 3; width: 100%; justify-content: flex-start; }
     .vj-pantalla { padding: 24px 20px 48px; }
     .vj-portada { grid-template-columns: 1fr; padding: 32px 24px; gap: 34px; }
     .vj-portada::before { right: -30px; }
     .vj-pase { transform: none; }
-    .vj-modulos { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 560px) {
     .vj-colchon { flex-direction: column; align-items: flex-start; }
-    .vj-modulo-cifras { grid-template-columns: 1fr; }
-    .vj-modulo-cifras div + div { border-left: none; border-top: 2.5px dashed var(--tinta); }
+}
+/* ===== Distribución con barra lateral ===== */
+
+.vj-cabecera { justify-content: space-between; }
+
+.vj-distribucion {
+    display: grid;
+    grid-template-columns: 230px minmax(0, 1fr);
+    max-width: 1480px;
+    margin: 0 auto;
+}
+
+.vj-distribucion .vj-pantalla { max-width: none; margin: 0; width: 100%; }
+
+.vj-lateral {
+    position: sticky;
+    top: 74px;
+    align-self: start;
+    padding: 40px 0 24px 28px;
+}
+
+.vj-menu-lateral {
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: 10px;
+    margin-top: 8px;
+}
+
+.vj-menu-lateral a { padding: 11px 18px; }
+
+/* Al saltar a una sección, que no quede tapada por el encabezado fijo */
+.vj-pantalla section[id] { scroll-margin-top: 96px; }
+
+@media (max-width: 980px) {
+    .vj-distribucion { grid-template-columns: 1fr; }
+
+    /* En pantallas angostas la barra queda arriba y se desplaza de lado */
+    .vj-lateral {
+        top: 73px;
+        z-index: 20;
+        padding: 12px 20px;
+        background: var(--crema);
+        border-bottom: 2.5px solid var(--tinta);
+        overflow-x: auto;
+    }
+
+    .vj-lateral .vj-rotulo { display: none; }
+    .vj-menu-lateral { flex-direction: row; margin: 0; width: max-content; }
+    .vj-menu-lateral a { white-space: nowrap; }
+}
+
+/* ===== Resumen general ===== */
+
+.vj-seccion { margin-bottom: 30px; }
+
+.vj-resumen-tarjetas {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+}
+
+/* --c sale del color de la categoría */
+.vj-resumen-tarjeta {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 18px 20px;
+    background: #fff;
+    border: 3px solid var(--tinta);
+    border-top: 12px solid var(--c);
+    border-radius: 16px;
+    box-shadow: 5px 5px 0 var(--tinta);
+    color: var(--tinta);
+    text-decoration: none;
+    transition: transform .12s ease, box-shadow .12s ease;
+}
+
+.vj-resumen-tarjeta:hover { transform: translate(-2px, -2px); box-shadow: 7px 7px 0 var(--tinta); }
+
+.vj-resumen-tarjeta strong {
+    font-family: var(--display);
+    font-size: 22px;
+    line-height: 1.1;
+    overflow-wrap: anywhere;
+}
+
+.vj-resumen-tarjeta span:last-child { font-size: 13.5px; color: var(--gris); }
+
+@media (max-width: 760px) {
+    .vj-resumen-tarjetas { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 560px) {
+    /* En celular se esconde el "por día" de la tabla para que quepa */
+    .vj-reparto-tabla th:nth-child(4),
+    .vj-reparto-tabla td:nth-child(4) { display: none; }
+    .vj-presupuesto { padding: 20px 16px; }
+}
+
+/* Solo se ve la sección elegida en el menú lateral */
+.vj-seccion[hidden] { display: none; }
+
+/* ===== Opciones de la barra lateral ===== */
+
+.vj-opciones {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 28px;
+    padding-top: 22px;
+    border-top: 2.5px dashed var(--arena-honda);
+}
+
+.vj-opcion {
+    display: block;
+    width: 100%;
+    padding: 12px 14px;
+    background: #fff;
+    border: 2.5px solid var(--tinta);
+    border-radius: 14px;
+    box-shadow: 3px 3px 0 var(--tinta);
+    font: inherit;
+    text-align: left;
+    color: var(--tinta);
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform .12s ease, box-shadow .12s ease;
+}
+
+.vj-opcion:hover { transform: translate(-1px, -1px); box-shadow: 4px 4px 0 var(--tinta); }
+.vj-opcion:focus-visible { outline: 2.5px solid var(--morado); outline-offset: 2px; }
+.vj-opcion strong { display: block; font-size: 14px; line-height: 1.3; }
+.vj-opcion span { display: block; margin-top: 3px; font-size: 12.5px; color: var(--gris); }
+
+/* ===== Aviso antes de editar el presupuesto ===== */
+
+.vj-dialogo {
+    max-width: 460px;
+    width: calc(100% - 32px);
+    padding: 28px 28px 24px;
+    background: var(--crema);
+    color: var(--tinta);
+    border: 3px solid var(--tinta);
+    border-radius: 20px;
+    box-shadow: 8px 8px 0 var(--tinta);
+    font-family: var(--texto);
+}
+
+.vj-dialogo::backdrop { background: rgba(22, 22, 29, .55); }
+
+.vj-dialogo h2 {
+    margin: 0 0 14px;
+    font-family: var(--display);
+    font-size: 22px;
+    letter-spacing: -.5px;
+    text-transform: uppercase;
+}
+
+.vj-dialogo p { margin: 0 0 12px; font-size: 15.5px; line-height: 1.55; }
+
+.vj-dialogo-acciones {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.vj-dialogo-acciones .vj-btn { cursor: pointer; font-family: var(--texto); }
+
+@media (max-width: 980px) {
+    /* En la franja de arriba las opciones van en la misma fila */
+    .vj-lateral { display: flex; align-items: center; gap: 10px; }
+    .vj-opciones { flex-direction: row; margin: 0; padding: 0 0 0 10px; border-top: none; border-left: 2.5px dashed var(--arena-honda); }
+    .vj-opciones .vj-rotulo,
+    .vj-opcion span { display: none; }
+    .vj-opcion { width: auto; white-space: nowrap; padding: 9px 14px; }
 }

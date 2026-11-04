@@ -18,12 +18,6 @@ public class Preferencias {
         this.respuestas = respuestas;
     }
 
-    public int getTotalRespondidas() {
-        return (int) respuestas.values().stream()
-                .filter(v -> v != null && !v.isBlank())
-                .count();
-    }
-
     /**
      * el viajero manifiest interes por un atributo
      */
@@ -42,20 +36,4 @@ public class Preferencias {
         return "si".equals(respuestas.get(atributo));
     }
 
-    /**
-     * obtiene el nivel de importancia asociado a un atributo
-     */
-    public Importancia obtenerImportancia(String atributo) {
-        String respuesta = respuestas.get(atributo);
-
-        if (respuesta == null || respuesta.isBlank()) {
-            return null;
-        }
-
-        try {
-            return Importancia.valueOf(respuesta);
-        } catch (IllegalArgumentException e) {
-            return null;
-        }
-    }
 }

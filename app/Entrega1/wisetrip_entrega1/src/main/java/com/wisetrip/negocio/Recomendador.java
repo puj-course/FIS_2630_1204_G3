@@ -11,11 +11,6 @@ public interface Recomendador {
     // Detecta un exceso de presupuesto confirmado.
     boolean excedePresupuesto(Ciudad ciudad, PreferenciasUsuario preferencias);
 
-    List<ResultadoRecomendacion> recomendarDestinos(
-            List<Ciudad> ciudades,
-            PreferenciasUsuario preferencias
-    );
-
     ValidacionCiudades validarCiudades(
             List<Ciudad> ciudades,
             PreferenciasUsuario preferencias

@@ -138,12 +138,6 @@ public class PreferenciasServicio implements GestorPreferencias {
         return atributos;
     }
 
-    public List<String> clavesAfirmativas(Preferencias preferencias) {
-        return preferencias.getRespuestas().entrySet().stream()
-                .filter(e -> esSeleccionada(e.getValue()))
-                .map(Map.Entry::getKey)
-                .toList();
-    }
 
     public Map<String, List<String>> resumenPorCategoria(Preferencias preferencias) {
         Map<String, List<String>> resumen = new LinkedHashMap<>();
@@ -165,7 +159,7 @@ public class PreferenciasServicio implements GestorPreferencias {
     }
 
     private static CategoriaPreferencia categoria(String nombre, String descripcion, String... ids) {
-        return new CategoriaPreferencia(nombre, "", descripcion,
+            return new CategoriaPreferencia(nombre, descripcion,
                 java.util.Arrays.stream(ids)
                         .map(CatalogoPreguntas::porIdObligatorio)
                         .map(PreferenciasServicio::aPreguntaVista)

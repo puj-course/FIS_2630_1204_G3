@@ -6,12 +6,12 @@ import java.time.LocalDate;
 public class ReglaFechaInicio extends ReglaValidacionFechas {
 
     @Override
-    protected boolean validarPropio(ContextoValidacionFechas contexto) {
+    protected void validarPropio(ContextoValidacionFechas contexto) {
         String valor = contexto.getFechas().getFechaInicio();
 
         if (valor == null || valor.isBlank()) {
             contexto.agregarError("fechaInicio", "Selecciona la fecha de inicio de tu viaje.");
-            return true;
+            return ;
         }
 
         try {
@@ -24,7 +24,5 @@ public class ReglaFechaInicio extends ReglaValidacionFechas {
         } catch (DateTimeException e) {
             contexto.agregarError("fechaInicio", "Ingresa una fecha válida.");
         }
-
-        return true;
     }
 }

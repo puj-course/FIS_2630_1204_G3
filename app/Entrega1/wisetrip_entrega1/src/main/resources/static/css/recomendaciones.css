@@ -1,5 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=IBM+Plex+Mono:wght@400;500;600&family=Instrument+Sans:wght@400;500;600;700&display=swap');
 
+.mv-pantalla .mv-lista {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+    gap: 24px;
+    margin: 28px 0;
+}
+.mv-pantalla .mv-viaje {
+    background: #fff;
+    border: 2px solid var(--tinta);
+    border-radius: 18px;
+    padding: 24px;
+    box-shadow: 5px 5px 0 var(--turquesa);
+    overflow-wrap: anywhere;
+}
+.mv-pantalla .mv-viaje h2 { margin-top: 0; }
+.mv-pantalla .mv-viaje form { margin-top: 20px; }
+.mv-pantalla .mv-nuevo { margin-top: 32px; }
+
 .rc {
     --tinta: #16161D;
     --morado: #5B3FA8;
@@ -362,6 +380,8 @@
 .rc-barra-gustos span { background: var(--turquesa); }
 
 .rc-elegir {
+    font-family: inherit;
+    cursor: pointer;
     display: inline-block;
     padding: 13px 26px;
     background: var(--morado);

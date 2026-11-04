@@ -2,12 +2,14 @@ package com.wisetrip.negocio;
 
 import java.util.Map;
 
-/*
- * Usa extends para heredar los contratos de IValidadorReparto e
- * ICalculadoraReparto, y agrega el listado de categorías.
+/**
+ * Interfaz de negocio: validación del reparto del presupuesto (HU#69 y HU#79).
  */
-public interface IGestionReparto extends IValidadorReparto, ICalculadoraReparto {
+public interface IGestionReparto {
 
-    /** Clave y nombre visible de cada categoría, en el orden en que se muestran. */
-    Map<String, String> listarCategorias();
+    /**
+     * Devuelve los errores encontrados, con su clave ("general", "basicos").
+     * Si el mapa está vacío, el reparto es válido.
+     */
+    Map<String, String> validarReparto(IDistribuible reparto);
 }

@@ -33,6 +33,9 @@
 <main class="pl-pantalla">
 
     <section>
+        <c:if test="${not empty avisoReparto}">
+            <p class="pl-aviso" role="status"><c:out value="${avisoReparto}"/></p>
+        </c:if>
         <span class="pl-rotulo">Último paso</span>
         <h1 class="pl-titulo">¿Cómo repartimos<br>tu presupuesto?</h1>
         <p class="pl-bajada">
@@ -277,7 +280,11 @@
             <div class="pl-acciones-fila">
                 <button type="button" class="pl-btn-claro" id="btnRestaurar" hidden>Volver al sugerido</button>
                 <a class="pl-volver" href="<c:url value='/recomendaciones'/>">&larr; Cambiar destino</a>
+                <a class="pl-volver" href="<c:url value='/viajes'/>">Mis viajes</a>
             </div>
+            <form method="post" action="<c:url value='/viajes/nuevo'/>">
+                <button type="submit" class="pl-btn-claro">Nuevo viaje</button>
+            </form>
         </div>
     </aside>
 

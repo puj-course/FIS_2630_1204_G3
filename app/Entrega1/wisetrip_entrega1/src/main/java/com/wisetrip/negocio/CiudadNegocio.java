@@ -6,5 +6,4 @@ import java.util.List;
 public interface CiudadNegocio {
 
     List<Ciudad> obtenerTodas();
-    boolean insertar(Ciudad ciudad);
 }

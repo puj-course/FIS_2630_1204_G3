@@ -15,14 +15,14 @@ public abstract class ReglaValidacionFechas {
         return siguiente;
     }
 
-    /** Punto de entrada de la cadena: valida esta regla y pasa el turno si corresponde. */
-    public final void validar(ContextoValidacionFechas contexto) {
-        boolean continuar = validarPropio(contexto);
-        if (continuar && siguiente != null) {
+        /** Punto de entrada de la cadena: valida esta regla y pasa el turno a la siguiente. */
+        public final void validar(ContextoValidacionFechas contexto) {
+        validarPropio(contexto);
+        if (siguiente != null) {
             siguiente.validar(contexto);
         }
     }
 
-    /** Valida lo que le corresponde a esta regla. Devuelve si la cadena debe continuar. */
-    protected abstract boolean validarPropio(ContextoValidacionFechas contexto);
+    /** Valida lo que le corresponde a esta regla. */
+    protected abstract void validarPropio(ContextoValidacionFechas contexto);
 }

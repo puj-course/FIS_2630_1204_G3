@@ -30,7 +30,7 @@
 
     <h1>¿Qué tipo de viajero eres?</h1>
     <p class="subtitulo">
-      
+    Dinos qué tan importante es cada cosa para tu viaje y armamos recomendaciones a tu medida.
     </p>
 
     <c:if test="${not empty faltantes}">
