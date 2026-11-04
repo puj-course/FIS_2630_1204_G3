@@ -6087,4 +6087,43 @@ Como próximos pasos, se propone:
 **Feedback de los stakeholders:**
 Mejoras en SonarQube
 
+---
+
+---
+
+# Sprint Planning - [02/11/2026]
+
+## Sprint Goal
+
+
+## Capacidad del equipo 
+
+* Desarrolladores disponibles: 5
+* Puntos/horas disponibles: 42
+
+## Issues seleccionados para el Sprint
+
+| ID | Título | Tipo | Estimación | Responsable |
+|----|--------|------|------------|-------------|
+| #126 |       |Historia de Usuario  | TBD    | Valeria |
+| #127 |       | Historia de Usuario | TBD | Valeria |
+| #128 |       | Historia de Usuario | TBD | Maleja |
+| #129 |    | Historia de Usuario | TBD | Maleja |
+| #130 |       | Historia de Usuario | TBD | Gaby |
+| #131 |    | Historia de Usuario | TBD | Gaby |
+| #132 |       | Historia de Usuario | TBD | Isabela|
+| #133 |    | Historia de Usuario | TBD | Isabela |
+| #134 |     | Historia de Usuario | TBD | Clavijo |
+| #135 |     | Historia de Usuario | TBD | Clavijo |
+
+## Riesgos / Bloqueos identificados
+
+- 
+
+---
+<img width="1600" height="900" alt="PHOTO-2026-11-03-21-18-31" src="https://github.com/user-attachments/assets/4c661373-9865-4b8f-9ff5-fdd8a91f65f3" />
+
+---
+
+
 
