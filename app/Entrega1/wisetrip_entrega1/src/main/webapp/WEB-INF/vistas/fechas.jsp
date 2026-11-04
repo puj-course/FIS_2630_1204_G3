@@ -66,7 +66,7 @@
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2.5"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
                         </span>
                         <div>
-                            <label>Entrada</label>
+                            <span class="fc-campo-etiqueta">Entrada</span>
                             <span class="campo-fecha-valor fc-campo-valor" id="valorInicio">Selecciona</span>
                         </div>
                     </div>
