@@ -6105,8 +6105,8 @@ Mejoras en SonarQube
 
 | ID | Título | Tipo | Estimación | Responsable |
 |----|--------|------|------------|-------------|
-| #126 |       |Historia de Usuario  | TBD    | Valeria |
-| #127 |       | Historia de Usuario | TBD | Valeria |
+| #126 | Como administrador, quiero contar con pruebas automáticas y métricas de SonarQube para los controladores, para comprobar que funcionan bien y saber qué partes hay que mejorar. |Historia de Usuario  | TBD    | Valeria |
+| #127 | Como administrador, quiero contar con un plan de pruebas que cubra la mayor parte del código, para asegurarme de que el sistema esté bien probado y cumpla con la cobertura esperada. | Historia de Usuario | TBD | Valeria |
 | #128 | Como administrador de WiseTrip quiero verificar y corregir los problemas reportados por SonarQube en los servicios relacionados con presupuesto, gastos y viajes para mejorar la confiabilidad y mantenibilidad de estas funcionalidades     | Historia de Usuario | TBD | Maleja |
 | #129 | Como administrador de WiseTrip quiero verificar y corregir los problemas reportados por SonarQube en los servicios e integraciones del sistema para mejorar la calidad, seguridad y estabilidad de WiseTrip   | Historia de Usuario | TBD | Maleja |
 | #130 | Yo como usuario quiero que la información de mi plan de viaje se guarde y se muestre correctamente mientras lo armo para no tener que repetir pasos ni perder lo que ya elegí.      |Historia de Usuario | TBD | Gaby |
@@ -6118,12 +6118,301 @@ Mejoras en SonarQube
 
 ## Riesgos / Bloqueos identificados
 
-- 
+- Falta de tiempo
 
 ---
 <img width="1600" height="900" alt="PHOTO-2026-11-03-21-18-31" src="https://github.com/user-attachments/assets/4c661373-9865-4b8f-9ff5-fdd8a91f65f3" />
 
 ---
 
+## Daily Sprint - 03/11/2026
 
+### Isabella Posada
+
+1. **¿Qué hice ayer?**
+
+   
+2. **¿Qué voy a hacer hoy?**
+
+   
+3. **¿Tengo algún impedimento o bloqueo?**
+
+
+
+---
+
+### Valeria Cortes Rendon
+
+1. **¿Qué hice ayer?**
+
+Se realizo el planning, se miro que debemos mejorar con respecto a sonarqube ya que tenemos mas de 146 issues que debemos mejoraar para cubrir con el coverage
+
+2. **¿Qué voy a hacer hoy?**
+
+Hoy hice mas diagramas ahora los patrones GOF mejorados, temrine el de dominio y ajuste el de despliegue. Tengo que revisar el de componentes ya que no lo entiendo muy bien
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+Falta de tiempo, falta de entendimiento de temas de clase, acumulacion de cosas   
+---
+
+### Santiago Clavijo
+
+1. **¿Qué hice ayer?**
+
+
+
+2. **¿Qué voy a hacer hoy?**
+
+
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+---
+
+### Gabriela Melo Gualteros
+
+1. **¿Qué hice ayer?**
+
+
+
+2. **¿Qué voy a hacer hoy?**
+
+
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+---
+
+
+### Maria Alejandra Rodriguez
+
+1. **¿Qué hice ayer?** 
+
+Realizamos el planning, entendí como funcionaba sonarQube para poderlo empezar a utilizar esta semana en mis HUs
+
+2. **¿Qué voy a hacer hoy?** 
+
+Hoy voy a analizar bien como puedo realizar esas pruebas para poder avanzar rapido con eso para lugeo hacer las grupales que nos asignamos para poder acaparar todo el codigo
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+Tengo un poco de confusión sobre le funcionamiento de SonarQube
+---
+
+## Daily Sprint - 04/11/2026
+
+### Isabella Posada
+
+1. **¿Qué hice ayer?**
+
+   
+2. **¿Qué voy a hacer hoy?**
+
+   
+3. **¿Tengo algún impedimento o bloqueo?**
+
+
+
+---
+
+### Valeria Cortes Rendon
+
+1. **¿Qué hice ayer?**
+
+
+
+2. **¿Qué voy a hacer hoy?**
+
+   
+3. **¿Tengo algún impedimento o bloqueo?**
+
+   
+---
+
+### Santiago Clavijo
+
+1. **¿Qué hice ayer?**
+
+
+
+2. **¿Qué voy a hacer hoy?**
+
+
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+---
+
+### Gabriela Melo Gualteros
+
+1. **¿Qué hice ayer?**
+
+
+
+2. **¿Qué voy a hacer hoy?**
+
+
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+---
+
+
+### Maria Alejandra Rodriguez
+
+1. **¿Qué hice ayer?** 
+
+
+2. **¿Qué voy a hacer hoy?** 
+
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+
+---
+
+## Daily Sprint - 05/11/2026
+
+### Isabella Posada
+
+1. **¿Qué hice ayer?**
+
+   
+2. **¿Qué voy a hacer hoy?**
+
+   
+3. **¿Tengo algún impedimento o bloqueo?**
+
+
+
+---
+
+### Valeria Cortes Rendon
+
+1. **¿Qué hice ayer?**
+
+
+
+2. **¿Qué voy a hacer hoy?**
+
+   
+3. **¿Tengo algún impedimento o bloqueo?**
+
+   
+---
+
+### Santiago Clavijo
+
+1. **¿Qué hice ayer?**
+
+
+
+2. **¿Qué voy a hacer hoy?**
+
+
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+---
+
+### Gabriela Melo Gualteros
+
+1. **¿Qué hice ayer?**
+
+
+
+2. **¿Qué voy a hacer hoy?**
+
+
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+---
+
+
+### Maria Alejandra Rodriguez
+
+1. **¿Qué hice ayer?** 
+
+
+2. **¿Qué voy a hacer hoy?** 
+
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+
+---
+
+## Daily Sprint - 06/11/2026
+
+### Isabella Posada
+
+1. **¿Qué hice ayer?**
+
+   
+2. **¿Qué voy a hacer hoy?**
+
+   
+3. **¿Tengo algún impedimento o bloqueo?**
+
+
+
+---
+
+### Valeria Cortes Rendon
+
+1. **¿Qué hice ayer?**
+
+
+
+2. **¿Qué voy a hacer hoy?**
+
+   
+3. **¿Tengo algún impedimento o bloqueo?**
+
+   
+---
+
+### Santiago Clavijo
+
+1. **¿Qué hice ayer?**
+
+
+
+2. **¿Qué voy a hacer hoy?**
+
+
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+---
+
+### Gabriela Melo Gualteros
+
+1. **¿Qué hice ayer?**
+
+
+
+2. **¿Qué voy a hacer hoy?**
+
+
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+---
+
+
+### Maria Alejandra Rodriguez
+
+1. **¿Qué hice ayer?** 
+
+
+2. **¿Qué voy a hacer hoy?** 
+
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+
+---
 
