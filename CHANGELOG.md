@@ -6107,8 +6107,8 @@ Mejoras en SonarQube
 |----|--------|------|------------|-------------|
 | #126 |       |Historia de Usuario  | TBD    | Valeria |
 | #127 |       | Historia de Usuario | TBD | Valeria |
-| #128 |       | Historia de Usuario | TBD | Maleja |
-| #129 |    | Historia de Usuario | TBD | Maleja |
+| #128 | Como administrador de WiseTrip quiero verificar y corregir los problemas reportados por SonarQube en los servicios relacionados con presupuesto, gastos y viajes para mejorar la confiabilidad y mantenibilidad de estas funcionalidades     | Historia de Usuario | TBD | Maleja |
+| #129 | Como administrador de WiseTrip quiero verificar y corregir los problemas reportados por SonarQube en los servicios e integraciones del sistema para mejorar la calidad, seguridad y estabilidad de WiseTrip   | Historia de Usuario | TBD | Maleja |
 | #130 | Yo como usuario quiero que la información de mi plan de viaje se guarde y se muestre correctamente mientras lo armo para no tener que repetir pasos ni perder lo que ya elegí.      |Historia de Usuario | TBD | Gaby |
 | #131 |Yo como usuario quiero que mis fechas, los lugares que busco y los datos de mi viaje se mantengan correctos durante toda mi sesión para no recibir errores ni ver información equivocada mientras uso la aplicación. | Historia de Usuario | TBD | Gaby |
 | #132 |       | Historia de Usuario | TBD | Isabela|
