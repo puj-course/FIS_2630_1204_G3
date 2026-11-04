@@ -6050,7 +6050,41 @@ como equipo bien, sin embargo estas ultimas semanas del semestre son las mas pes
 la distribucion del tiempo de todos y el peso en el proyecto de las issues de aqui en adelate
 
 ---
+# Sprint Review - 01/11/2026
 
----
+## Información de la Sesión
+
+* **Fecha de la Review:** 01/11/2026
+* **Sprint Goal:** Avanzar en la refactorización y aseguramiento de calidad del código con base en los análisis de SonarQube, ejecutar el taller de automatización, implementar la interfaz funcional del itinerario en WiseTrip y actualizar el modelado del sistema (diagramas y patrones GoF) conforme a las observaciones de sustentaciones previas.
+
+## Incremento Entregado
+
+* **HU 119 (Completa):** Organización y diseño final de la página funcional del itinerario con los diferentes servicios ofrecidos por WiseTrip
+* **HU 116 (Completa):** Ejecución del taller de automatización y refactorización prevista del proyecto
+* **HU 114 (Parcial):** Reestructuración del diagrama de patrón GoF para adaptarlo al formato de trabajo definido en draw.io
+* **HU 117 / HU 124 (Parcial):** Elaboración de diagramas de representación del sistema asignados (pendientes de subida por definición de formato de entrega
+* **HU 120 / HU 121 (Parcial):** Análisis y aplicación de las correcciones indicadas por el docente en la sustentación anterior
+* **HU 123 (Parcial):** Avances en refactorización y desarrollo del taller de automatización
+
+## Demostración
+
+Resumen de los puntos presentados durante la demo del producto:
+
+* **Módulo de Itinerario WiseTrip:** Presentación del diseño e interacción de la página funcional donde se integran los distintos servicios turísticos
+* **Automatización y Calidad:** Muestra de los ejercicios del taller de automatización y las refactorizaciones base realizadas en la estructura del código
+* **Modelado del Sistema:** Estado de actualización de los diagramas arquitectónicos y de patrones GoF según las correcciones docentes previas
+
+## Conclusión y Próximos Pasos
+
+Como próximos pasos, se propone:
+
+1. Subir las correcciones pendientes de las HU 120 y HU 121 una vez finalizadas
+2. Definir las directrices y formato de entrega para subir los diagramas pendientes del sistema (HU 117 y HU 124)
+3. Completar en draw.io los diagramas de patrones GoF acordados por el equipo (HU 114)
+4. Replantear desde cero los diagramas de la HU 115, adaptándolos a la nueva estructura sin división por módulos
+5. Atender la deuda técnica y alertas de calidad reportadas por SonarQube identificadas durante la refactorización (HU 116 y HU 123)
+
+**Feedback de los stakeholders:**
+Mejoras en SonarQube
 
 
