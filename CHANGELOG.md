@@ -6013,12 +6013,17 @@ La distribucion del tiempo ya que las tareas de esta semana fueron muy pesadas y
 
 1. **¿Qué logramos?**
 
+Refactorizamos y limpiamos el código, actualizamos los diagramas y avanzamos en la página del itinerario, dejando una mejor base para la tercera entrega
    
 2. **¿Cómo trabajamos?**
 
 
+Trabajamos de forma coordinada, aunque la alta carga académica limitó el tiempo y la participación del equipo.
+
 3. **¿Qué podríamos mejorar?**
 
+
+Debemos organizar mejor el tiempo, estimar correctamente las tareas y distribuir la carga de trabajo de manera más equilibrada.
 
 ---
 
