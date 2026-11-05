@@ -1,13 +1,9 @@
 package com.wisetrip.modelo;
 
-import java.io.Serializable;
-
 import java.util.List;
 
 /** Destinos seleccionados y mensaje que se muestran al viajero. */
-public class SeleccionDestinos implements Serializable {
-    private static final long serialVersionUID = 1L;
-
+public class SeleccionDestinos {
 
     private final List<ResultadoRecomendacion> destinos;
     private final String mensaje;

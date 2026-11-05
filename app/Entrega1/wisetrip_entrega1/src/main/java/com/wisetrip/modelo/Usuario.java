@@ -1,7 +1,5 @@
 package com.wisetrip.modelo;
 
-import java.io.Serializable;
-
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.LinkedHashMap;
@@ -16,9 +14,7 @@ import java.util.Map;
 //agregar campos: estado, fecha registro, ultimo acceso
 
 // Modelo que representa la información de un usuario de WiseTrip
-public class Usuario implements Serializable {
-    private static final long serialVersionUID = 1L;
-
+public class Usuario {
 
     public static final int EDAD_MINIMA = 18;
     public static final int EDAD_MAXIMA = 120;

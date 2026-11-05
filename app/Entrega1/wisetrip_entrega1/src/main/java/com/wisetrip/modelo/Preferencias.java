@@ -1,13 +1,9 @@
 package com.wisetrip.modelo;
 
-import java.io.Serializable;
-
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-public class Preferencias implements Serializable {
-    private static final long serialVersionUID = 1L;
-
+public class Preferencias {
 
     private Map<String, String> respuestas = new LinkedHashMap<>();
 

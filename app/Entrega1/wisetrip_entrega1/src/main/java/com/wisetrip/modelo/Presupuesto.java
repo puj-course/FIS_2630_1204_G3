@@ -8,11 +8,7 @@
 
 package com.wisetrip.modelo;
 
-import java.io.Serializable;
-
-public class Presupuesto implements Serializable {
-    private static final long serialVersionUID = 1L;
-
+public class Presupuesto {
 
     private String monto;
     private String moneda;
