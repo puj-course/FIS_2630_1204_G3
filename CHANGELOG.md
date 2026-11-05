@@ -6176,13 +6176,15 @@ no entiendo bien como son las pruebas
 
 1. **¿Qué hice ayer?**
 
-
+Ayer estuvimos en planning y quedamos en que en este sprint vamos a enfocarnos en todo lo que tiene que ver con SonarQube
 
 2. **¿Qué voy a hacer hoy?**
 
-
+Hoy vamos a separarnos el trabajo de sonarQube ya que es bastante, hicimos una lista de todo lo que tenemos que corergir y cada uno se termino encargando de una seccion
 
 3. **¿Tengo algún impedimento o bloqueo?**
+
+Falta de entendimiento de como se maneja SonarQube
 
 ---
 
