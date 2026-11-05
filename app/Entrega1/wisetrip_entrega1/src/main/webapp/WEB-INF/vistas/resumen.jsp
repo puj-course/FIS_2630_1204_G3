@@ -241,5 +241,15 @@
     </div>
 </main>
 
+<script>
+    document.querySelectorAll('.rs-bandera').forEach(img => {
+        function ocultar() {
+            img.style.display = 'none';
+        }
+        img.addEventListener('error', ocultar);
+        if (img.complete && img.naturalWidth === 0) ocultar();
+    });
+</script>
+
 </body>
 </html>
