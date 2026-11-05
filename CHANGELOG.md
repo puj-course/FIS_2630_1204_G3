@@ -6206,13 +6206,14 @@ Tengo un poco de confusión sobre le funcionamiento de SonarQube
 
 1. **¿Qué hice ayer?**
 
-   
-2. **¿Qué voy a hacer hoy?**
+Ayer vimos lo de las medidas y los estándares que necesitamos para el proyecto
 
+2. **¿Qué voy a hacer hoy?**
+Hoy acabe el diagrama c4 del proyecto en draw.io y termine de hacer el de mi patrón gof
    
 3. **¿Tengo algún impedimento o bloqueo?**
 
-
+no 
 
 ---
 
