@@ -31,7 +31,7 @@
 
             <label for="correo">Correo electrónico</label>
             <div class="lg-campo">
-                <svg viewBox="0 0 20 20" fill="none">
+               <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
                     <rect x="2" y="4" width="16" height="12" rx="2" stroke="#5B3FA8" stroke-width="2"/>
                     <path d="m2.8 5.2 7.2 5.4 7.2-5.4" stroke="#5B3FA8" stroke-width="2" stroke-linejoin="round"/>
                 </svg>
@@ -43,7 +43,7 @@
                 <label for="clave">Contraseña</label>
             </div>
             <div class="lg-campo lg-campo-clave">
-                <svg viewBox="0 0 20 20" fill="none">
+                <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
                     <rect x="3" y="8.6" width="14" height="9" rx="2" stroke="#5B3FA8" stroke-width="2"/>
                     <path d="M6.6 8.6V6.4a3.4 3.4 0 0 1 6.8 0v2.2" stroke="#5B3FA8" stroke-width="2"/>
                 </svg>
