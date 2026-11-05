@@ -6239,13 +6239,15 @@ tiempo, son muchas pruebas
 
 1. **¿Qué hice ayer?**
 
-
+ayer revisamos el SonarQube, y vi los issues que me toca resolver a mi
 
 2. **¿Qué voy a hacer hoy?**
 
-
+hoy resolvi todos los issues de lo que se refiere a las vistas de wisetrip, no entendia bien lo que habia que hacer entonces solo corregi mas no hice las pruebas, esas las haare mañana
 
 3. **¿Tengo algún impedimento o bloqueo?**
+
+no entiendo bien como son las pruebas
 
 ---
 
