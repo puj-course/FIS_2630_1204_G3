@@ -6160,13 +6160,15 @@ Falta de tiempo, falta de entendimiento de temas de clase, acumulacion de cosas
 
 1. **¿Qué hice ayer?**
 
-
+ayer hicimos el planning en el cual quedamos que esta semana nos ibamos a dedidar a toda la parte de junit y sonarqube
 
 2. **¿Qué voy a hacer hoy?**
 
-
+hoy vi todos los issues de sonarqube que me toca resolver ya que son muchos, entonces nos los repartimos entre todos
 
 3. **¿Tengo algún impedimento o bloqueo?**
+
+no entiendo bien como son las pruebas
 
 ---
 
