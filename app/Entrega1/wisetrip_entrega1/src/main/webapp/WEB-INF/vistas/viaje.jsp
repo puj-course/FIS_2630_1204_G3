@@ -326,14 +326,16 @@
             <ul class="it-lista-actividades" id="itListaRecomendadas">
                 <li class="it-actividad it-recomendada" draggable="true" data-categoria="actividades" data-id="rec-1" data-costo="5">
                     <span class="it-foto">
-                        <img src="/img/itinerario/recomendada-1.jpg" alt="" onerror="this.remove()">
+                        <span class="it-foto">
+                         <img src="/img/itinerario/recomendada-1.jpg" alt="">
+                        </span>
                     </span>
                     <strong>Mirador de la ciudad</strong>
                     <span>Recomendada · 2 h · US$ 5</span>
                 </li>
                 <li class="it-actividad it-recomendada" draggable="true" data-categoria="actividades" data-id="rec-2" data-costo="6">
                     <span class="it-foto">
-                        <img src="/img/itinerario/recomendada-2.jpg" alt="" onerror="this.remove()">
+                         <img src="/img/itinerario/recomendada-2.jpg" alt="">
                     </span>
                     <strong>Mercado local</strong>
                     <span>Recomendada · 2 h · US$ 6</span>
