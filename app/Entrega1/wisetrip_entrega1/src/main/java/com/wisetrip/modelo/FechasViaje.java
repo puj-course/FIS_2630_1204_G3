@@ -14,13 +14,15 @@
 
 package com.wisetrip.modelo;
 
+import java.io.Serializable;
 import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
 
-public class FechasViaje {
+public class FechasViaje implements Serializable {
 
+    private static final long serialVersionUID = 1L;
     private String fechaInicio;   // formato yyyy-MM-dd
     private String fechaFin;
 
