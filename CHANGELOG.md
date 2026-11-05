@@ -6257,13 +6257,15 @@ no entiendo bien como son las pruebas
 
 1. **¿Qué hice ayer?**
 
-
+Ayer nos repartimos los errores que salen en SonarQube y lo que toca corregir. A mi me correspondieron unas clases de patrones, un controlador, entre otros.
 
 2. **¿Qué voy a hacer hoy?**
 
-
+Hoy la idea es empezar a navegar SonarQube y revisar los errores que sacan las clases que me correspondieron
 
 3. **¿Tengo algún impedimento o bloqueo?**
+
+Tengo otros trabajos que entregar antes de esto y no tengo muy claro lo de SonarQube
 
 ---
 
