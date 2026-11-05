@@ -6266,12 +6266,15 @@ tiempo, son muchas pruebas
 
 1. **¿Qué hice ayer?** 
 
+Termine algunos diagramas pendientes porque aun no se si quedaron muy bien o no
 
 2. **¿Qué voy a hacer hoy?** 
 
+Terminar esos diagramas pendientes y revisar los errores que manda sonarqube
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
+No entiendo muy bien eso de sonarqube
 
 ---
 
