@@ -1,6 +1,7 @@
 package com.wisetrip.controlador;
 
 import java.util.Map;
+import java.util.Objects;
 import java.util.Optional;
 
 import org.slf4j.Logger;
@@ -102,7 +103,7 @@ public class SeleccionControlador {
             try {
                 Integer idViaje = (Integer) sesion.getAttribute("idViajeGuardado");
                 Map<String, String> erroresFechas = fechasServicio.validarFechas(
-                        fechas, usuario.getIdUsuario(), idViaje != null ? idViaje : 0);
+                        fechas, usuario.getIdUsuario(), Objects.requireNonNullElse(idViaje, 0));
                 if (!erroresFechas.isEmpty()) {
                     redirect.addFlashAttribute(Nombres.ERRORES, erroresFechas);
                     return "redirect:/fechas";
