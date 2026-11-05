@@ -120,7 +120,7 @@ public class DatosCiudades {
         // La semilla enumera los rasgos manuales que cumple el destino.
         // Los demas manuales no cumplen; los AUTO siguen pendientes de Geoapify.
         var presentes = java.util.Set.copyOf(Arrays.asList(atributos));
-        return CatalogoPreguntas.todas().stream()
+        return CatalogoPreguntas.todasLasPreguntas().stream()
                 .filter(pregunta -> pregunta.esManual())
                 .collect(java.util.stream.Collectors.toUnmodifiableMap(
                         pregunta -> pregunta.id, pregunta -> presentes.contains(pregunta.id)));

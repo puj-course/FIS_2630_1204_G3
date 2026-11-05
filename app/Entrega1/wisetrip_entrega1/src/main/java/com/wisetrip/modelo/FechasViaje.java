@@ -25,6 +25,7 @@ public class FechasViaje {
     private String fechaFin;
 
     public FechasViaje() {
+        // Constructor vacio: Spring lo necesita para enlazar los campos del formulario
     }
 
     public String getFechaInicio() { return fechaInicio; }
