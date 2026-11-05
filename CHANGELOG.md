@@ -6221,13 +6221,15 @@ no
 
 1. **¿Qué hice ayer?**
 
-
+Ayer se hicieron mas diagramas ahora los patrones GOF mejorados, temrine el de dominio y ajuste el de despliegue. Tengo que revisar el de componentes ya que no lo entiendo muy bien
 
 2. **¿Qué voy a hacer hoy?**
 
+Se empezaron a hacer los cambios en sonarqube de las clases que fueron repartidas para cada uno de los integrantes se terminaron los diagramas que se estan realizando
    
 3. **¿Tengo algún impedimento o bloqueo?**
 
+tiempo, son muchas pruebas
    
 ---
 
