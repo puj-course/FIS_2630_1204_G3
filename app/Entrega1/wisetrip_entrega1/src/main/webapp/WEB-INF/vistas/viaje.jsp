@@ -588,6 +588,16 @@
 
 </div>
 
+<script>
+    document.querySelectorAll('#itListaRecomendadas .it-foto img').forEach(img => {
+        function quitar() {
+            img.remove();
+        }
+        img.addEventListener('error', quitar);
+        if (img.complete && img.naturalWidth === 0) quitar();
+    });
+</script>
+
 <script src="/js/viaje.js"></script>
 <script src="/js/itinerario.js"></script>
 </body>
