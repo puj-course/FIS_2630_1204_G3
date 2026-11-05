@@ -169,7 +169,7 @@
 
         <div class="lp-pasos">
             <article class="lp-paso">
-                <svg viewBox="0 0 24 24" fill="none">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
                     <path d="M12 22s7-6.2 7-11.2A7 7 0 0 0 5 10.8C5 15.8 12 22 12 22z"
                           stroke="#16161D" stroke-width="2.2"/>
                     <circle cx="12" cy="10.4" r="2.6" fill="#16161D"/>
@@ -179,7 +179,7 @@
             </article>
 
             <article class="lp-paso">
-                <svg viewBox="0 0 24 24" fill="none">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
                     <path d="M12 20.5S3.5 14.8 3.5 9.2a4.7 4.7 0 0 1 8.5-2.8 4.7 4.7 0 0 1 8.5 2.8c0 5.6-8.5 11.3-8.5 11.3z"
                           stroke="#16161D" stroke-width="2.2" stroke-linejoin="round"/>
                 </svg>
@@ -188,7 +188,7 @@
             </article>
 
             <article class="lp-paso">
-                <svg viewBox="0 0 24 24" fill="none">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
                     <rect x="3" y="5" width="18" height="16" rx="2.5" stroke="#16161D" stroke-width="2.2"/>
                     <path d="M3 10h18M8 2.5v5M16 2.5v5" stroke="#16161D" stroke-width="2.2" stroke-linecap="round"/>
                 </svg>
@@ -197,7 +197,7 @@
             </article>
 
             <article class="lp-paso">
-                <svg viewBox="0 0 24 24" fill="none">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
                     <path d="M21.5 2.5 2.5 10.2l8 3.3 3.3 8z" stroke="#16161D"
                           stroke-width="2.2" stroke-linejoin="round"/>
                 </svg>
