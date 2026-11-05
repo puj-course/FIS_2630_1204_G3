@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -249,6 +250,130 @@
             <span class="vj-colchon-cifra" data-monto="imprevistos"></span>
         </div>
     </div>
+
+    <!-- ===== Gastos reales (HU#89, patron Factory Method) ===== -->
+    <c:if test="${not empty estadoCategorias or gastosNoDisponibles}">
+    <div class="vj-gastos" id="gastos-reales">
+        <div class="vj-gastos-cabeza">
+            <h3 class="vj-gastos-titulo">Registra lo que vas gastando</h3>
+            <p class="vj-seccion-nota">
+                Cada gasto se compara con el cupo de su categoría. Hospedaje,
+                alimentación, transporte y actividades no se pueden pasar del cupo;
+                los imprevistos sí, pero te avisamos.
+            </p>
+        </div>
+
+        <c:choose>
+        <c:when test="${gastosNoDisponibles}">
+            <p class="vj-gastos-msg vj-gastos-error" role="alert">
+                No pudimos cargar tus gastos en este momento. Intenta más tarde.
+            </p>
+        </c:when>
+        <c:otherwise>
+
+        <c:if test="${gastoRegistrado}">
+            <p class="vj-gastos-msg vj-gastos-ok" role="status">✓ Gasto registrado.</p>
+        </c:if>
+        <c:if test="${not empty avisoGasto}">
+            <p class="vj-gastos-msg vj-gastos-aviso" role="status">⚠ <c:out value="${avisoGasto}"/></p>
+        </c:if>
+        <c:if test="${not empty erroresGasto}">
+            <div class="vj-gastos-msg vj-gastos-error" role="alert">
+                <strong>No se registró el gasto:</strong>
+                <ul>
+                    <c:forEach var="error" items="${erroresGasto}">
+                        <li><c:out value="${error.value}"/></li>
+                    </c:forEach>
+                </ul>
+            </div>
+        </c:if>
+
+        <form class="vj-gastos-form" method="post" action="<c:url value='/viaje/gastos'/>">
+            <label>
+                <span class="vj-rotulo">Categoría</span>
+                <select name="categoria" required>
+                    <c:forEach var="cat" items="${nombresCategoria}">
+                        <option value="${cat.key}" ${gastoForm.categoria == cat.key ? 'selected' : ''}>${cat.value}</option>
+                    </c:forEach>
+                </select>
+            </label>
+            <label class="vj-gastos-desc">
+                <span class="vj-rotulo">Descripción</span>
+                <input type="text" name="descripcion" maxlength="200" required
+                       placeholder="Ej: almuerzo en el centro" value="<c:out value='${gastoForm.descripcion}'/>">
+            </label>
+            <label>
+                <span class="vj-rotulo">Monto (US$)</span>
+                <input type="number" name="monto" min="0.01" step="0.01" required
+                       placeholder="0.00" value="<c:out value='${gastoForm.monto}'/>">
+            </label>
+            <label>
+                <span class="vj-rotulo">Fecha</span>
+                <input type="date" name="fecha" required min="${fechas.fechaInicio}" max="${fechas.fechaFin}"
+                       value="${empty gastoForm.fecha ? fechas.fechaInicio : gastoForm.fecha}">
+            </label>
+            <button type="submit" class="vj-gastos-boton">Registrar gasto</button>
+        </form>
+
+        <div class="vj-gastos-resumen">
+            <div>
+                <span class="vj-rotulo">Gastado</span>
+                <strong>US$ <fmt:formatNumber value="${resumenGastos.totalGastado}" minFractionDigits="2" maxFractionDigits="2"/></strong>
+            </div>
+            <div>
+                <span class="vj-rotulo">Te queda</span>
+                <strong class="${resumenGastos.saldoDisponible lt 0 ? 'vj-negativo' : ''}">US$ <fmt:formatNumber value="${resumenGastos.saldoDisponible}" minFractionDigits="2" maxFractionDigits="2"/></strong>
+            </div>
+        </div>
+
+        <table class="vj-reparto-tabla vj-cupos-tabla">
+            <thead>
+                <tr>
+                    <th scope="col">Categoría</th>
+                    <th scope="col">Cupo</th>
+                    <th scope="col">Gastado</th>
+                    <th scope="col">Queda</th>
+                </tr>
+            </thead>
+            <tbody>
+                <c:forEach var="estado" items="${estadoCategorias}">
+                    <tr class="vj-${estado.categoria} ${estado.excedido ? 'vj-cupo-excedido' : ''}">
+                        <th scope="row">
+                            <span class="vj-punto"></span>${nombresCategoria[estado.categoria]}
+                            <span class="vj-cupo-barra" aria-hidden="true"><span style="width: ${estado.porcentajeUsado}%"></span></span>
+                        </th>
+                        <td><fmt:formatNumber value="${estado.cupo}" minFractionDigits="2" maxFractionDigits="2"/></td>
+                        <td><fmt:formatNumber value="${estado.gastado}" minFractionDigits="2" maxFractionDigits="2"/></td>
+                        <td><fmt:formatNumber value="${estado.restante}" minFractionDigits="2" maxFractionDigits="2"/></td>
+                    </tr>
+                </c:forEach>
+            </tbody>
+        </table>
+
+        <c:choose>
+            <c:when test="${empty gastosReales}">
+                <p class="vj-gastos-vacio">Aún no has registrado gastos en este viaje.</p>
+            </c:when>
+            <c:otherwise>
+                <h4 class="vj-gastos-subtitulo">Tus gastos</h4>
+                <ul class="vj-gastos-lista">
+                    <c:forEach var="g" items="${gastosReales}">
+                        <li class="vj-${g.categoria()}">
+                            <span class="vj-punto"></span>
+                            <span class="vj-gasto-fecha">${g.fecha()}</span>
+                            <span class="vj-gasto-desc"><c:out value="${g.descripcion()}"/>
+                                <small>${nombresCategoria[g.categoria()]}</small></span>
+                            <strong>US$ <fmt:formatNumber value="${g.monto()}" minFractionDigits="2" maxFractionDigits="2"/></strong>
+                        </li>
+                    </c:forEach>
+                </ul>
+            </c:otherwise>
+        </c:choose>
+
+        </c:otherwise>
+        </c:choose>
+    </div>
+    </c:if>
     </section>
 
     <!-- ===== Itinerario ===== -->

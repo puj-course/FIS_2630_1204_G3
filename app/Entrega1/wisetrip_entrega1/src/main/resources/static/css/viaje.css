@@ -629,3 +629,113 @@
     .vj-opcion span { display: none; }
     .vj-opcion { width: auto; white-space: nowrap; padding: 9px 14px; }
 }
+
+/* ===== Gastos reales (HU#89) ===== */
+
+.vj-gastos {
+    margin-top: 28px;
+    background: #fff;
+    border: 3px solid var(--tinta);
+    border-radius: 18px;
+    padding: 24px 28px;
+    box-shadow: 6px 6px 0 var(--tinta);
+}
+.vj-gastos-cabeza { margin-bottom: 16px; }
+.vj-gastos-titulo {
+    font-family: var(--display);
+    font-size: 22px;
+    letter-spacing: -.6px;
+    text-transform: uppercase;
+    margin: 0 0 6px;
+}
+.vj-gastos-cabeza .vj-seccion-nota { max-width: 70ch; }
+
+.vj-gastos-msg {
+    border: 2.5px solid var(--tinta);
+    border-radius: 14px;
+    padding: 12px 16px;
+    margin: 0 0 14px;
+    font-weight: 600;
+}
+.vj-gastos-msg ul { margin: 6px 0 0; padding-left: 20px; font-weight: 500; }
+.vj-gastos-ok    { background: var(--turquesa-suave); }
+.vj-gastos-aviso { background: var(--amarillo); }
+.vj-gastos-error { background: var(--rosa); }
+
+.vj-gastos-form {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr 1fr auto;
+    gap: 12px;
+    align-items: end;
+    margin-bottom: 20px;
+}
+.vj-gastos-form label { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.vj-gastos-form input,
+.vj-gastos-form select {
+    font: inherit;
+    font-size: 15px;
+    padding: 9px 10px;
+    border: 2.5px solid var(--tinta);
+    border-radius: 12px;
+    background: #fff;
+    width: 100%;
+}
+.vj-gastos-form input:focus-visible,
+.vj-gastos-form select:focus-visible { outline: 2.5px solid var(--morado); outline-offset: 2px; }
+.vj-gastos-boton {
+    font: inherit;
+    font-weight: 700;
+    padding: 11px 18px;
+    background: var(--turquesa);
+    border: 2.5px solid var(--tinta);
+    border-radius: 12px;
+    box-shadow: 3px 3px 0 var(--tinta);
+    cursor: pointer;
+    white-space: nowrap;
+}
+.vj-gastos-boton:hover { transform: translate(-1px, -1px); box-shadow: 4px 4px 0 var(--tinta); }
+.vj-gastos-boton:focus-visible { outline: 2.5px solid var(--morado); outline-offset: 2px; }
+
+.vj-gastos-resumen { display: flex; gap: 36px; flex-wrap: wrap; margin-bottom: 8px; }
+.vj-gastos-resumen strong {
+    display: block;
+    font-family: var(--display);
+    font-size: 24px;
+    letter-spacing: -.8px;
+}
+.vj-negativo { color: #B3261E; }
+
+.vj-cupo-barra {
+    display: block;
+    height: 7px;
+    margin-top: 6px;
+    background: var(--crema);
+    border: 1.5px solid var(--tinta);
+    border-radius: 99px;
+    overflow: hidden;
+}
+.vj-cupo-barra span { display: block; height: 100%; background: var(--c); }
+.vj-cupo-excedido td { color: #B3261E; }
+.vj-cupo-excedido .vj-cupo-barra span { background: #B3261E; }
+
+.vj-gastos-vacio { color: var(--gris); margin: 16px 0 0; }
+.vj-gastos-subtitulo { font-size: 16px; margin: 20px 0 8px; }
+.vj-gastos-lista { list-style: none; margin: 0; padding: 0; }
+.vj-gastos-lista li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 0;
+    border-top: 2px dashed var(--arena-honda);
+}
+.vj-gasto-fecha { font-family: var(--dato); font-size: 13px; color: var(--gris); white-space: nowrap; }
+.vj-gasto-desc { flex: 1; min-width: 0; overflow-wrap: anywhere; }
+.vj-gasto-desc small { display: block; color: var(--gris); font-size: 12.5px; }
+.vj-gastos-lista strong { font-family: var(--dato); white-space: nowrap; }
+
+@media (max-width: 860px) {
+    .vj-gastos { padding: 18px 16px; }
+    .vj-gastos-form { grid-template-columns: 1fr 1fr; }
+    .vj-gastos-desc { grid-column: 1 / -1; }
+    .vj-gastos-boton { grid-column: 1 / -1; }
+}

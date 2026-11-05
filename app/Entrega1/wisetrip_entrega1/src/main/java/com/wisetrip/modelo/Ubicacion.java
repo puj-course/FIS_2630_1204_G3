@@ -64,17 +64,6 @@ public class Ubicacion implements IUbicable {
         return texto.toString();
     }
 
-    /**
-     * Cambia el país. Si es distinto al actual, la ciudad se borra,
-     * porque ya no pertenece al nuevo país.
-     */
-    public void cambiarPais(String nuevoPais) {
-        if (pais == null || !pais.equals(nuevoPais)) {
-            this.pais = nuevoPais;
-            this.ciudad = null;
-        }
-    }
-
     /** Quita espacios sobrantes y deja en null los campos vacíos. */
     public void normalizar() {
         pais = limpiar(pais);

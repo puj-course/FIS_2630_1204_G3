@@ -20,7 +20,7 @@ public class ControlCategoriaFlexible implements IControlCategoriaGasto {
         BigDecimal totalConGasto = totalGastadoCategoria.add(gasto.monto());
         if (totalConGasto.compareTo(cupoCategoria) > 0) {
             return new ResultadoControlCategoria(true, false,
-                    "Ya superaste el cupo previsto para 'imprevistos' (" + cupoCategoria
+                    "Ya superaste el cupo previsto para '" + gasto.categoria() + "' (" + cupoCategoria
                     + " " + gasto.moneda() + "). Sigue registrado, pero vigila el resto del viaje.");
         }
         return ResultadoControlCategoria.sinProblemas();
