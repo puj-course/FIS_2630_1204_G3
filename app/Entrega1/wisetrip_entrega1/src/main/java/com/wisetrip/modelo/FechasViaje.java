@@ -25,6 +25,8 @@ public class FechasViaje {
     private String fechaFin;
 
     public FechasViaje() {
+        // Constructor vacío necesario para que Spring cree el objeto
+        // y lo llene con las fechas del formulario mediante los setters.
     }
 
     public String getFechaInicio() { return fechaInicio; }
