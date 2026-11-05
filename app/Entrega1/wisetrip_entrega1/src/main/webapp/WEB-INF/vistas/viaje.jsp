@@ -326,16 +326,14 @@
             <ul class="it-lista-actividades" id="itListaRecomendadas">
                 <li class="it-actividad it-recomendada" draggable="true" data-categoria="actividades" data-id="rec-1" data-costo="5">
                     <span class="it-foto">
-                        <span class="it-foto">
-                         <img src="/img/itinerario/recomendada-1.jpg" alt="">
-                        </span>
+                        <img src="/img/itinerario/recomendada-1.jpg" alt="">
                     </span>
                     <strong>Mirador de la ciudad</strong>
                     <span>Recomendada · 2 h · US$ 5</span>
                 </li>
                 <li class="it-actividad it-recomendada" draggable="true" data-categoria="actividades" data-id="rec-2" data-costo="6">
                     <span class="it-foto">
-                         <img src="/img/itinerario/recomendada-2.jpg" alt="">
+                        <img src="/img/itinerario/recomendada-2.jpg" alt="">
                     </span>
                     <strong>Mercado local</strong>
                     <span>Recomendada · 2 h · US$ 6</span>
@@ -349,7 +347,6 @@
             <p class="it-gastado">
                 Actividades en el calendario: <strong id="itGastado">US$ 0</strong>
             </p>
-
 
             <output class="it-alerta it-alerta-roja" id="itAlertaRoja" hidden>
                 <span class="it-alerta-icono">!</span>
