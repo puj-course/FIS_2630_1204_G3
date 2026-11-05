@@ -190,9 +190,8 @@
                                     <%-- HU-84: bandera del país de la moneda elegida --%>
                                     <c:if test="${not empty presupuesto.moneda}">
                                         <img class="rs-bandera"
-                                            src="<c:url value='/img/banderas/${presupuesto.moneda}.png'/>"
-                                            alt="Bandera de ${presupuesto.moneda}"
-                                            onerror="this.style.display='none'">
+                                        src="<c:url value='/img/banderas/${presupuesto.moneda}.png'/>"
+                                        alt="Bandera de ${presupuesto.moneda}">
                                     </c:if>
                                 </strong>
                             <span class="rs-pase-detalle">
