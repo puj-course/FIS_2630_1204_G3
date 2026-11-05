@@ -12,8 +12,6 @@ import java.util.Map;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
 
 /**
  * Pruebas de validación de Usuario, incluyendo los casos CP48 - CP57.
@@ -29,6 +27,7 @@ class UsuarioTest {
 
     @BeforeEach
     void setUp() {
+        // Antes de cada prueba creamos un usuario con datos válidos.
         usuario = new Usuario();
         usuario.setNombreCompleto("Valeria Cortes");
         usuario.setTipoDocumento("CC");
@@ -135,15 +134,46 @@ class UsuarioTest {
         assertEquals("El formato del correo no es valido.", errores.get("correo"));
     }
 
-    @ParameterizedTest
-    @ValueSource(strings = {"no-es-fecha", "2025-02-29", "2026-13-01"})
-    @DisplayName("validarDatos: fechas mal formadas o inexistentes devuelven un error")
-    void validarDatos_fechaInvalida_error(String fecha) {
-        usuario.setFechaNacimiento(fecha);
+    @Test
+    @DisplayName("Una fecha escrita con texto devuelve un error")
+    void validarDatos_fechaConTexto_error() {
+        // Datos de entrada
+        usuario.setFechaNacimiento("no-es-fecha");
+
+        // Resultado obtenido
+        Map<String, String> errores = usuario.validarDatos(CLAVE_OK);
+        String resultadoObtenido = errores.get("fechaNacimiento");
+
+        // Resultado esperado y comparación
+        String resultadoEsperado = "Ingresa una fecha valida.";
+        assertEquals(resultadoEsperado, resultadoObtenido);
+        assertEquals(1, errores.size());
+    }
+
+    @Test
+    @DisplayName("El 29 de febrero de un año no bisiesto devuelve un error")
+    void validarDatos_diaInexistente_error() {
+        usuario.setFechaNacimiento("2025-02-29");
 
         Map<String, String> errores = usuario.validarDatos(CLAVE_OK);
+        String resultadoObtenido = errores.get("fechaNacimiento");
+        String resultadoEsperado = "Ingresa una fecha valida.";
 
-        assertEquals(Map.of("fechaNacimiento", "Ingresa una fecha valida."), errores);
+        assertEquals(resultadoEsperado, resultadoObtenido);
+        assertEquals(1, errores.size());
+    }
+
+    @Test
+    @DisplayName("Una fecha con mes 13 devuelve un error")
+    void validarDatos_mesInexistente_error() {
+        usuario.setFechaNacimiento("2026-13-01");
+
+        Map<String, String> errores = usuario.validarDatos(CLAVE_OK);
+        String resultadoObtenido = errores.get("fechaNacimiento");
+        String resultadoEsperado = "Ingresa una fecha valida.";
+
+        assertEquals(resultadoEsperado, resultadoObtenido);
+        assertEquals(1, errores.size());
     }
 
     @Test
@@ -153,7 +183,11 @@ class UsuarioTest {
 
         Map<String, String> errores = usuario.validarDatos(CLAVE_OK);
 
-        assertEquals(Map.of("fechaNacimiento", "La fecha de nacimiento no puede ser futura."), errores);
+        String resultadoObtenido = errores.get("fechaNacimiento");
+        String resultadoEsperado = "La fecha de nacimiento no puede ser futura.";
+
+        assertEquals(resultadoEsperado, resultadoObtenido);
+        assertEquals(1, errores.size());
     }
 
     @Test
@@ -161,7 +195,11 @@ class UsuarioTest {
     void validarDatos_cumple120Hoy_sinErrores() {
         usuario.setFechaNacimiento(LocalDate.now(ZONA_BOGOTA).minusYears(120).toString());
 
-        assertTrue(usuario.validarDatos(CLAVE_OK).isEmpty());
+        Map<String, String> errores = usuario.validarDatos(CLAVE_OK);
+        int resultadoObtenido = errores.size();
+        int resultadoEsperado = 0;
+
+        assertEquals(resultadoEsperado, resultadoObtenido);
     }
 
     @Test
@@ -169,8 +207,12 @@ class UsuarioTest {
     void validarDatos_cumple121Hoy_error() {
         usuario.setFechaNacimiento(LocalDate.now(ZONA_BOGOTA).minusYears(121).toString());
 
-        assertEquals(Map.of("fechaNacimiento", "Ingresa una fecha de nacimiento valida."),
-                usuario.validarDatos(CLAVE_OK));
+        Map<String, String> errores = usuario.validarDatos(CLAVE_OK);
+        String resultadoObtenido = errores.get("fechaNacimiento");
+        String resultadoEsperado = "Ingresa una fecha de nacimiento valida.";
+
+        assertEquals(resultadoEsperado, resultadoObtenido);
+        assertEquals(1, errores.size());
     }
 
     @Test
@@ -178,7 +220,10 @@ class UsuarioTest {
     void calcularEdad_cumpleanosManana_edadAnterior() {
         usuario.setFechaNacimiento(LocalDate.now(ZONA_BOGOTA).minusYears(30).plusDays(1).toString());
 
-        assertEquals(29, usuario.calcularEdad());
+        int resultadoObtenido = usuario.calcularEdad();
+        int resultadoEsperado = 29;
+
+        assertEquals(resultadoEsperado, resultadoObtenido);
     }
 
     @Test
@@ -186,6 +231,9 @@ class UsuarioTest {
     void calcularEdad_cumpleanosHoy_edadCumplida() {
         usuario.setFechaNacimiento(LocalDate.now(ZONA_BOGOTA).minusYears(30).toString());
 
-        assertEquals(30, usuario.calcularEdad());
+        int resultadoObtenido = usuario.calcularEdad();
+        int resultadoEsperado = 30;
+
+        assertEquals(resultadoEsperado, resultadoObtenido);
     }
 }
