@@ -171,7 +171,7 @@ public class Usuario {
                 } else if (edad > EDAD_MAXIMA) {
                     errores.put("fechaNacimiento", "Ingresa una fecha de nacimiento valida.");
                 }
-            } catch (Exception e) {
+            } catch (Exception _) {
                 errores.put("fechaNacimiento", "Ingresa una fecha valida.");
             }
         }
