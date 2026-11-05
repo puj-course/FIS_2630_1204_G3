@@ -10,6 +10,8 @@ import java.time.LocalDate;
 import org.springframework.stereotype.Repository;
 
 import com.wisetrip.modelo.Usuario;
+import com.wisetrip.modelo.UsuarioBuilder;
+import com.wisetrip.negocio.IUsuarioBuilder;
 import com.wisetrip.negocio.IUsuarioRepositorio;
 
 
@@ -82,20 +84,13 @@ public class UsuarioDAO implements IUsuarioRepositorio {
                 return null;
             }
 
-                Date fechaNacimiento = rs.getDate("fecha_nacimiento");
-
-                // Patron Builder: arma el Usuario con los datos de la consulta
-                return new Usuario.Builder()
-                        .idUsuario(rs.getInt("id_usuario"))
-                        .nombreCompleto(rs.getString("nombre"))
-                        .correo(rs.getString("correo"))
-                        .password(rs.getString("contraseña"))
-                        .rol(rs.getString("rol"))
-                        .tipoDocumento(rs.getString("tipo_documento"))
-                        .numeroDocumento(rs.getString("numero_documento"))
-                        .fechaNacimiento(fechaNacimiento != null ? fechaNacimiento.toLocalDate().toString() : null)
-                        .chatId(rs.getString("chat_id"))
-                        .build();
+                // PATRON BUILDER (GoF) - rol: Client.
+                // Crea el ConcreteBuilder, se lo entrega al Director,
+                // le pide construir y recoge el producto con getResult().
+                IUsuarioBuilder builder = new UsuarioBuilder();
+                DirectorUsuario director = new DirectorUsuario(builder);
+                director.construirDesdeConsulta(rs);
+                return builder.getResult();
             }
         } catch (SQLException e) {
             throw new IllegalStateException("No se pudo consultar el usuario en la base de datos.", e);
