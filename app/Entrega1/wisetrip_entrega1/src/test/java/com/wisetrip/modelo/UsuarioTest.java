@@ -6,21 +6,24 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.time.Duration;
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Map;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 /**
- * Pruebas unitarias de Usuario.validarDatos (CP48 - CP57).
- * Cubren las reglas de correo y contraseña, y los dos arreglos hechos a partir de SonarCloud:
- * la llave del mapa de errores y la expresión regular del correo (sin backtracking).
+ * Pruebas de validación de Usuario, incluyendo los casos CP48 - CP57.
+ * Cubren correo, contraseña, fechas inválidas y límites de edad con fecha de Bogotá.
  */
 @DisplayName("Usuario.validarDatos")
 class UsuarioTest {
 
     private static final String CLAVE_OK = "secreta1";
+    private static final ZoneId ZONA_BOGOTA = ZoneId.of("America/Bogota");
 
     private Usuario usuario;
 
@@ -105,7 +108,7 @@ class UsuarioTest {
     @Test
     @DisplayName("CP55 validarDatos: borde, quien cumple 18 años hoy puede registrarse")
     void cp55_validarDatos_cumple18Hoy_sinErrores() {
-        usuario.setFechaNacimiento(LocalDate.now().minusYears(18).toString());
+        usuario.setFechaNacimiento(LocalDate.now(ZONA_BOGOTA).minusYears(18).toString());
 
         Map<String, String> errores = usuario.validarDatos(CLAVE_OK);
 
@@ -115,7 +118,7 @@ class UsuarioTest {
     @Test
     @DisplayName("CP56 validarDatos: borde, a un día de cumplir 18 años no puede registrarse")
     void cp56_validarDatos_unDiaAntesDeLos18_error() {
-        usuario.setFechaNacimiento(LocalDate.now().minusYears(18).plusDays(1).toString());
+        usuario.setFechaNacimiento(LocalDate.now(ZONA_BOGOTA).minusYears(18).plusDays(1).toString());
 
         Map<String, String> errores = usuario.validarDatos(CLAVE_OK);
 
@@ -130,5 +133,59 @@ class UsuarioTest {
         Map<String, String> errores = assertTimeout(Duration.ofSeconds(2), () -> usuario.validarDatos(CLAVE_OK));
 
         assertEquals("El formato del correo no es valido.", errores.get("correo"));
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"no-es-fecha", "2025-02-29", "2026-13-01"})
+    @DisplayName("validarDatos: fechas mal formadas o inexistentes devuelven un error")
+    void validarDatos_fechaInvalida_error(String fecha) {
+        usuario.setFechaNacimiento(fecha);
+
+        Map<String, String> errores = usuario.validarDatos(CLAVE_OK);
+
+        assertEquals(Map.of("fechaNacimiento", "Ingresa una fecha valida."), errores);
+    }
+
+    @Test
+    @DisplayName("validarDatos: una fecha de nacimiento futura en Bogotá se rechaza")
+    void validarDatos_fechaFutura_error() {
+        usuario.setFechaNacimiento(LocalDate.now(ZONA_BOGOTA).plusDays(1).toString());
+
+        Map<String, String> errores = usuario.validarDatos(CLAVE_OK);
+
+        assertEquals(Map.of("fechaNacimiento", "La fecha de nacimiento no puede ser futura."), errores);
+    }
+
+    @Test
+    @DisplayName("validarDatos: quien cumple 120 años hoy está dentro del límite")
+    void validarDatos_cumple120Hoy_sinErrores() {
+        usuario.setFechaNacimiento(LocalDate.now(ZONA_BOGOTA).minusYears(120).toString());
+
+        assertTrue(usuario.validarDatos(CLAVE_OK).isEmpty());
+    }
+
+    @Test
+    @DisplayName("validarDatos: una edad de 121 años supera el límite")
+    void validarDatos_cumple121Hoy_error() {
+        usuario.setFechaNacimiento(LocalDate.now(ZONA_BOGOTA).minusYears(121).toString());
+
+        assertEquals(Map.of("fechaNacimiento", "Ingresa una fecha de nacimiento valida."),
+                usuario.validarDatos(CLAVE_OK));
+    }
+
+    @Test
+    @DisplayName("calcularEdad: el cumpleaños de mañana todavía no aumenta la edad")
+    void calcularEdad_cumpleanosManana_edadAnterior() {
+        usuario.setFechaNacimiento(LocalDate.now(ZONA_BOGOTA).minusYears(30).plusDays(1).toString());
+
+        assertEquals(29, usuario.calcularEdad());
+    }
+
+    @Test
+    @DisplayName("calcularEdad: el cumpleaños de hoy aumenta la edad")
+    void calcularEdad_cumpleanosHoy_edadCumplida() {
+        usuario.setFechaNacimiento(LocalDate.now(ZONA_BOGOTA).minusYears(30).toString());
+
+        assertEquals(30, usuario.calcularEdad());
     }
 }
