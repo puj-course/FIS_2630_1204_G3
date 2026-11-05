@@ -284,8 +284,9 @@
 <script src="/js/origen-mapa.js"></script>
 
 <!-- Boton flotante de Telegram -->
-<a href="<c:url value='/perfil/telegram'/>" class="boton-flotante-telegram" title="Conecta tu Telegram">
-    <svg width="26" height="26" viewBox="0 0 24 24" fill="white">
+<a href="<c:url value='/perfil/telegram'/>" class="boton-flotante-telegram"
+   aria-label="Conecta tu Telegram" title="Conecta tu Telegram">
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="white" aria-hidden="true">
         <path d="M21.5 4.5L2.7 11.9c-1.2.5-1.2 1.2-.2 1.5l4.8 1.5 1.8 5.6c.2.6.4.8.8.8.5 0 .7-.2 1-.5l2.4-2.3 4.9 3.6c.9.5 1.5.2 1.8-.8l3.2-15.1c.4-1.3-.3-1.9-1.7-1.3zM8.5 13.9l9.5-6c.5-.3.9-.1.5.2l-7.8 7.1-.3 3.3-1.4-4.6z"/>
     </svg>
 </a>
