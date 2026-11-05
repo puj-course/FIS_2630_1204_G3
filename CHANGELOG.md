@@ -6111,8 +6111,8 @@ Mejoras en SonarQube
 | #129 | Como administrador de WiseTrip quiero verificar y corregir los problemas reportados por SonarQube en los servicios e integraciones del sistema para mejorar la calidad, seguridad y estabilidad de WiseTrip   | Historia de Usuario | TBD | Maleja |
 | #130 | Yo como usuario quiero que la información de mi plan de viaje se guarde y se muestre correctamente mientras lo armo para no tener que repetir pasos ni perder lo que ya elegí.      |Historia de Usuario | TBD | Gaby |
 | #131 |Yo como usuario quiero que mis fechas, los lugares que busco y los datos de mi viaje se mantengan correctos durante toda mi sesión para no recibir errores ni ver información equivocada mientras uso la aplicación. | Historia de Usuario | TBD | Gaby |
-| #132 | HU | Historia de Usuario | TBD | Isabela|
-| #133 | HU | Historia de Usuario | TBD | Isabela |
+| #132 | Como Administrador, quiero configurar el análisis automatizado de código con SonarQube enfocado en el paquete de modelo, para asegurar que la estructura de datos y la lógica de negocio base cumplan con los estándares de calidad del proyecto | Historia de Usuario | TBD | Isabela|
+| #133 | HU | HU #133 - Como Administrador del sistema, quiero validar las pruebas unitarias creadas para los modelos, para asegurar que el código cumpla con el umbral requerido.| TBD | Isabela |
 | #134 | HU | Como administrador de WiseTrip, quiero corregir los issues que SonarQube reporta en los DAO y en las interfaces, para mejorar la confiabilidad, la seguridad y la mantenibilidad del acceso a la base de datos | TBD | Clavijo |
 | #135 | HU | Como administrador de WiseTrip, quiero corregir los issues que SonarQube reporta en los JSP, para que las vistas sean más legibles, fáciles de mantener y consistentes con el resto del sistema | TBD | Clavijo |
 
