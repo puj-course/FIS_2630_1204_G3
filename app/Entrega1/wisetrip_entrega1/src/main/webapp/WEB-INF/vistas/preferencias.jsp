@@ -114,6 +114,14 @@ HU #82 - Como viajero, quiero que los destinos recomendados cumplan los requisit
     const total = parseInt(pie.getAttribute('data-total'), 10) || 0;
     const contador = document.getElementById('contador');
     const relleno = document.getElementById('progresoRelleno');
+    document.querySelectorAll('.pregunta-imagen img').forEach(img => {
+    function sinImagen() {
+        img.parentElement.classList.add('sin-imagen');
+        img.remove();
+    }
+    img.addEventListener('error', sinImagen);
+    if (img.complete && img.naturalWidth === 0) sinImagen();
+});
 
     function actualizarProgreso() {
         const hechas = document.querySelectorAll('#formPreferencias input[type=radio]:checked').length;
