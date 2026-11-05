@@ -4,11 +4,11 @@ Este archivo registra las actualizaciones diarias del equipo durante el desarrol
 
 **Responsables:**
 
-* Maria Alejandra Rodriguez
-* Gabriela Melo Gualteros
-* Valeria Cortes Rendon
-* Isabella Posada
-* Santiago Clavijo
+* Maria Alejandra Rodriguez.
+* Gabriela Melo Gualteros.
+* Valeria Cortes Rendon.
+* Isabella Posada.
+* Santiago Clavijo.
 
 ---
 
