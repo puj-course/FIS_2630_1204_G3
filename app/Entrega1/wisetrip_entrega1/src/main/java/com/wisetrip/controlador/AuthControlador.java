@@ -14,6 +14,7 @@ import com.wisetrip.modelo.Usuario;
 import com.wisetrip.negocio.IAutenticacionUsuario;
 import com.wisetrip.negocio.IRegistroUsuario;
 
+import org.springframework.web.util.WebUtils;
 import jakarta.servlet.http.HttpSession;
 
 /** Puerto de entrada web: recibe la peticion y llama a los contratos de negocio. */
@@ -99,7 +100,7 @@ public class AuthControlador {
     }
 
     private void establecerUsuarioActivo(HttpSession sesion, Usuario usuario) {
-        synchronized (sesion) {
+        synchronized (WebUtils.getSessionMutex(sesion)) {
             Usuario anterior = (Usuario) sesion.getAttribute("usuarioActivo");
             if (anterior == null || anterior.getIdUsuario() != usuario.getIdUsuario()) {
                 SesionViaje.reiniciar(sesion);

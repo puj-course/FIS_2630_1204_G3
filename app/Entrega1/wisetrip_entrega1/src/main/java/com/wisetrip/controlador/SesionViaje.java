@@ -3,6 +3,7 @@ package com.wisetrip.controlador;
 import com.wisetrip.modelo.Usuario;
 import com.wisetrip.modelo.Viaje;
 
+import org.springframework.web.util.WebUtils;
 import jakarta.servlet.http.HttpSession;
 
 /**
@@ -31,7 +32,7 @@ final class SesionViaje {
 
     /** Recupera los datos persistidos sin mezclar otra planificacion de la sesion. */
     static void restaurar(HttpSession sesion, Viaje viaje) {
-        synchronized (sesion) {
+        synchronized (WebUtils.getSessionMutex(sesion)) {
             Usuario activo = (Usuario) sesion.getAttribute("usuarioActivo");
             if (viaje == null || !viaje.estaGuardado() || activo == null
                     || viaje.getUsuario().getIdUsuario() != activo.getIdUsuario()) {
@@ -51,7 +52,7 @@ final class SesionViaje {
 
     /** Descarta resultados calculados con preferencias, fechas o presupuesto anteriores. */
     static void invalidarSeleccion(HttpSession sesion) {
-        synchronized (sesion) {
+        synchronized (WebUtils.getSessionMutex(sesion)) {
             sesion.removeAttribute("seleccionDestinos");
             sesion.removeAttribute("seleccionRecomendada");
             sesion.removeAttribute("destinoElegido");
@@ -62,7 +63,7 @@ final class SesionViaje {
 
     /** Limpia la planificacion en sesion sin borrar viajes guardados ni cerrar la cuenta. */
     static void reiniciar(HttpSession sesion) {
-        synchronized (sesion) {
+        synchronized (WebUtils.getSessionMutex(sesion)) {
             for (String atributo : new String[] {
                     ATRIBUTO, "idViajeGuardado", "seleccionDestinos", "seleccionRecomendada",
                     "destinoElegido", "paisDestino", "preferenciasViaje",

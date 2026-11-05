@@ -20,6 +20,7 @@ import com.wisetrip.negocio.IRepositorioViajes;
 import com.wisetrip.negocio.IRepositorioPreferencias;
 import com.wisetrip.negocio.IFechasServicio;
 
+import org.springframework.web.util.WebUtils;
 import jakarta.servlet.http.HttpSession;
 
 /**
@@ -56,7 +57,7 @@ public class SeleccionControlador {
     @SuppressWarnings("unchecked")
     public String elegirDestino(@PathVariable("id") int id, HttpSession sesion,
                                 RedirectAttributes redirect) {
-        synchronized (sesion) {
+        synchronized (WebUtils.getSessionMutex(sesion)) {
             return guardarEleccion(id, sesion, redirect);
         }
     }
@@ -94,7 +95,7 @@ public class SeleccionControlador {
 
         // Serializa las elecciones de esta sesion dentro de la misma instancia del servidor.
         // La segunda peticion debe leer el ID que haya guardado la primera.
-        synchronized (sesion) {
+        synchronized (WebUtils.getSessionMutex(sesion)) {
             Ubicacion origen = SesionViaje.de(sesion, usuario).getOrigen();
             if (origen == null || !origen.estaCompleta()) return "redirect:/origen";
             String origenGuardado = origen.getCiudad().trim() + ", " + origen.getPais().trim();

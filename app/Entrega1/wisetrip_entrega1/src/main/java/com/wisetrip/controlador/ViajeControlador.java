@@ -20,6 +20,7 @@ import com.wisetrip.servicio.FechasServicio;
 import com.wisetrip.negocio.IViajeServicio;
 import com.wisetrip.servicio.UsuarioSesionFacade;
 
+import org.springframework.web.util.WebUtils;
 import jakarta.servlet.http.HttpSession;
 
 /**
@@ -69,7 +70,7 @@ public class ViajeControlador {
     @PostMapping("/viajes/{id}/continuar")
     public String continuarViaje(@PathVariable("id") int id, HttpSession sesion,
                                   RedirectAttributes flash) {
-        synchronized (sesion) {
+        synchronized (WebUtils.getSessionMutex(sesion)) {
             Usuario usuario = usuarioSesionFacade.usuarioActivo(sesion);
             if (usuario == null) return "redirect:/login";
             try {

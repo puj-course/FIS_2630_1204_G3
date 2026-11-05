@@ -20,6 +20,7 @@ import com.wisetrip.negocio.IRepositorioViajes;
 import com.wisetrip.servicio.PresupuestoServicio;
 import com.wisetrip.servicio.UsuarioSesionFacade;
 
+import org.springframework.web.util.WebUtils;
 import jakarta.servlet.http.HttpSession;
 
 /**
@@ -146,7 +147,7 @@ public class PlanControlador {
             return "plan";
         }
 
-        synchronized (sesion) {
+        synchronized (WebUtils.getSessionMutex(sesion)) {
             Integer idViaje = (Integer) sesion.getAttribute("idViajeGuardado");
             if (idViaje == null) return "redirect:/recomendaciones";
             try {
