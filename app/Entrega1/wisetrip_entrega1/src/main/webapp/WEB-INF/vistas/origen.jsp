@@ -114,7 +114,7 @@
 
             <label for="detalle">Punto de partida <span class="og-opcional">(opcional)</span></label>
             <div class="og-campo">
-                <svg viewBox="0 0 20 20" fill="none">
+                <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
                     <path d="M10 18s6-5.2 6-9.4A6 6 0 0 0 4 8.6C4 12.8 10 18 10 18z"
                           stroke="#5B3FA8" stroke-width="2"/>
                     <circle cx="10" cy="8.5" r="2.2" fill="#5B3FA8"/>
