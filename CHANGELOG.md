@@ -6131,13 +6131,15 @@ Mejoras en SonarQube
 
 1. **¿Qué hice ayer?**
 
+ayer lo que hicimos fue el planning de este nuevo sprint, ademas de revisar lo de sonarcube con respecto a clases predeterminadas para dividir la carga de trabajo. 
    
 2. **¿Qué voy a hacer hoy?**
 
+Hoy voy a revisar bien el codigo y el sonarcube 
    
 3. **¿Tengo algún impedimento o bloqueo?**
 
-
+no entiendo muy bien pero es cuestion de practica. 
 
 ---
 
