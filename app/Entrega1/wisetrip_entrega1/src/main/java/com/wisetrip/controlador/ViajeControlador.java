@@ -52,7 +52,7 @@ public class ViajeControlador {
     @GetMapping("/viajes")
     public String mostrarViajes(HttpSession sesion, Model model) {
         Usuario usuario = usuarioSesionFacade.prepararEncabezado(sesion, model);
-        if (usuario == null) return "redirect:/login";
+        if (usuario == null) return Nombres.REDIRECT_LOGIN;
         try {
             List<Viaje> guardados = viajes.listarVigentes(usuario, LocalDate.parse(fechasServicio.hoy()));
             if (guardados.isEmpty()) {
@@ -72,18 +72,18 @@ public class ViajeControlador {
                                   RedirectAttributes flash) {
         synchronized (WebUtils.getSessionMutex(sesion)) {
             Usuario usuario = usuarioSesionFacade.usuarioActivo(sesion);
-            if (usuario == null) return "redirect:/login";
+            if (usuario == null) return Nombres.REDIRECT_LOGIN;
             try {
                 var guardado = viajes.buscarPorId(id, usuario);
                 if (guardado.isEmpty()) {
-                    flash.addFlashAttribute("errorContinuar", "No encontramos ese viaje en tu cuenta.");
-                    return "redirect:/viajes";
+                    flash.addFlashAttribute(Nombres.ERROR_CONTINUAR, "No encontramos ese viaje en tu cuenta.");
+                    return Nombres.REDIRECT_VIAJES;
                 }
                 Viaje viaje = guardado.get();
                 if (LocalDate.parse(viaje.getFechas().getFechaFin())
                         .isBefore(LocalDate.parse(fechasServicio.hoy()))) {
-                    flash.addFlashAttribute("errorContinuar", "Este viaje ya termino.");
-                    return "redirect:/viajes";
+                    flash.addFlashAttribute(Nombres.ERROR_CONTINUAR, "Este viaje ya termino.");
+                    return Nombres.REDIRECT_VIAJES;
                 }
                 SesionViaje.restaurar(sesion, viaje);
                 if (viaje.getReparto() == null) {
@@ -94,16 +94,16 @@ public class ViajeControlador {
                 return "redirect:/viaje";
             } catch (IllegalArgumentException | IllegalStateException e) {
                 log.error("No se pudo recuperar el viaje seleccionado", e);
-                flash.addFlashAttribute("errorContinuar", "No pudimos abrir el viaje. Intenta nuevamente.");
-                return "redirect:/viajes";
+                flash.addFlashAttribute(Nombres.ERROR_CONTINUAR, "No pudimos abrir el viaje. Intenta nuevamente.");
+                return Nombres.REDIRECT_VIAJES;
             }
         }
     }
 
     @PostMapping("/viajes/nuevo")
     public String iniciarNuevoViaje(HttpSession sesion) {
-        if (sesion.getAttribute("usuarioActivo") == null) {
-            return "redirect:/login";
+        if (sesion.getAttribute(Nombres.USUARIO_ACTIVO) == null) {
+            return Nombres.REDIRECT_LOGIN;
         }
         SesionViaje.reiniciar(sesion);
         return "redirect:/origen";
@@ -117,7 +117,7 @@ public class ViajeControlador {
         // si no hay sesión iniciada, redirige al login
         Usuario usuario = usuarioSesionFacade.prepararEncabezado(sesion, model);
         if (usuario == null) {
-            return "redirect:/login";
+            return Nombres.REDIRECT_LOGIN;
         }
 
         // Busca si el usuario ya había guardado una ubicación anteriormente
@@ -148,7 +148,7 @@ public class ViajeControlador {
         // si no hay sesión iniciada, redirige al login
         Usuario usuario = usuarioSesionFacade.prepararEncabezado(sesion, model);
         if (usuario == null) {
-            return "redirect:/login";
+            return Nombres.REDIRECT_LOGIN;
         }
 
         // Valida los datos de ubicación mediante viajeServicio
@@ -158,7 +158,7 @@ public class ViajeControlador {
         if (!errores.isEmpty()) {
 
             // Envía los errores para mostrarlos en la vista
-            model.addAttribute("errores", errores);
+            model.addAttribute(Nombres.ERRORES, errores);
 
             // Vuelve a cargar los datos necesarios para el formulario
             model.addAttribute("paises", viajeServicio.listarPaises());

@@ -56,49 +56,49 @@ public class PlanControlador {
     public String mostrarPlan(HttpSession sesion, Model model) {
 
         Usuario usuario = usuarioSesionFacade.prepararEncabezado(sesion, model);
-        if (usuario == null) return "redirect:/login";
+        if (usuario == null) return Nombres.REDIRECT_LOGIN;
 
         ResultadoRecomendacion destino =
-                (ResultadoRecomendacion) sesion.getAttribute("destinoElegido");
-        if (destino == null) return "redirect:/recomendaciones";
+                (ResultadoRecomendacion) sesion.getAttribute(Nombres.DESTINO_ELEGIDO);
+        if (destino == null) return Nombres.REDIRECT_RECOMENDACIONES;
 
-        Presupuesto presupuesto = (Presupuesto) sesion.getAttribute("presupuestoViaje");
-        if (presupuesto == null) return "redirect:/presupuesto";
+        Presupuesto presupuesto = (Presupuesto) sesion.getAttribute(Nombres.PRESUPUESTO_VIAJE);
+        if (presupuesto == null) return Nombres.REDIRECT_PRESUPUESTO;
 
-        RepartoPresupuesto guardado = (RepartoPresupuesto) sesion.getAttribute("repartoPresupuesto");
+        RepartoPresupuesto guardado = (RepartoPresupuesto) sesion.getAttribute(Nombres.REPARTO_PRESUPUESTO);
         RepartoPresupuesto reparto = guardado != null ? guardado : new RepartoPresupuesto();
 
         cargarDatos(model, sesion, destino, presupuesto, reparto, usuario);
-        return "plan";
+        return Nombres.PLAN;
     }
 
     @GetMapping("/viaje")
     public String mostrarViaje(HttpSession sesion, Model model) {
 
         Usuario usuario = usuarioSesionFacade.prepararEncabezado(sesion, model);
-        if (usuario == null) return "redirect:/login";
+        if (usuario == null) return Nombres.REDIRECT_LOGIN;
 
         ResultadoRecomendacion destino =
-                (ResultadoRecomendacion) sesion.getAttribute("destinoElegido");
-        if (destino == null) return "redirect:/recomendaciones";
+                (ResultadoRecomendacion) sesion.getAttribute(Nombres.DESTINO_ELEGIDO);
+        if (destino == null) return Nombres.REDIRECT_RECOMENDACIONES;
 
         Ubicacion ubicacion = SesionViaje.de(sesion, usuario).getOrigen();
 
-        FechasViaje fechas = (FechasViaje) sesion.getAttribute("fechasViaje");
+        FechasViaje fechas = (FechasViaje) sesion.getAttribute(Nombres.FECHAS_VIAJE);
         if (fechas == null) return "redirect:/fechas";
 
-        Presupuesto presupuesto = (Presupuesto) sesion.getAttribute("presupuestoViaje");
-        if (presupuesto == null) return "redirect:/presupuesto";
+        Presupuesto presupuesto = (Presupuesto) sesion.getAttribute(Nombres.PRESUPUESTO_VIAJE);
+        if (presupuesto == null) return Nombres.REDIRECT_PRESUPUESTO;
 
         RepartoPresupuesto reparto =
-                (RepartoPresupuesto) sesion.getAttribute("repartoPresupuesto");
+                (RepartoPresupuesto) sesion.getAttribute(Nombres.REPARTO_PRESUPUESTO);
         if (reparto == null) return "redirect:/plan";
 
         model.addAttribute("ubicacionCiudad", ubicacion != null ? ubicacion.getCiudad() : "Origen no registrado");
         model.addAttribute("destino", destino);
-        model.addAttribute("fechas", fechas);
-        model.addAttribute("presupuesto", presupuesto);
-        model.addAttribute("reparto", reparto);
+        model.addAttribute(Nombres.FECHAS, fechas);
+        model.addAttribute(Nombres.PRESUPUESTO, presupuesto);
+        model.addAttribute(Nombres.REPARTO, reparto);
         model.addAttribute("dias", fechas.getDuracionDias());
         cargarItinerario(model, fechas, presupuesto);
 
@@ -125,41 +125,41 @@ public class PlanControlador {
     }
 
     @PostMapping("/plan")
-    public String guardarPlan(@ModelAttribute("reparto") RepartoPresupuesto reparto,
+    public String guardarPlan(@ModelAttribute(Nombres.REPARTO) RepartoPresupuesto reparto,
                             HttpSession sesion,
                             Model model) {
 
         Usuario usuario = usuarioSesionFacade.prepararEncabezado(sesion, model);
-        if (usuario == null) return "redirect:/login";
+        if (usuario == null) return Nombres.REDIRECT_LOGIN;
 
         ResultadoRecomendacion destino =
-                (ResultadoRecomendacion) sesion.getAttribute("destinoElegido");
-        if (destino == null) return "redirect:/recomendaciones";
+                (ResultadoRecomendacion) sesion.getAttribute(Nombres.DESTINO_ELEGIDO);
+        if (destino == null) return Nombres.REDIRECT_RECOMENDACIONES;
 
-        Presupuesto presupuesto = (Presupuesto) sesion.getAttribute("presupuestoViaje");
-        if (presupuesto == null) return "redirect:/presupuesto";
+        Presupuesto presupuesto = (Presupuesto) sesion.getAttribute(Nombres.PRESUPUESTO_VIAJE);
+        if (presupuesto == null) return Nombres.REDIRECT_PRESUPUESTO;
 
         Map<String, String> errores = gestionReparto.validarReparto(reparto);
 
         if (!errores.isEmpty()) {
-            model.addAttribute("errores", errores);
+            model.addAttribute(Nombres.ERRORES, errores);
             cargarDatos(model, sesion, destino, presupuesto, reparto, usuario);
-            return "plan";
+            return Nombres.PLAN;
         }
 
         synchronized (WebUtils.getSessionMutex(sesion)) {
             Integer idViaje = (Integer) sesion.getAttribute("idViajeGuardado");
-            if (idViaje == null) return "redirect:/recomendaciones";
+            if (idViaje == null) return Nombres.REDIRECT_RECOMENDACIONES;
             try {
                 viajeDAO.guardarReparto(idViaje, usuario.getIdUsuario(), reparto);
             } catch (IllegalArgumentException | IllegalStateException e) {
                 log.error("No se pudo guardar el reparto del viaje", e);
-                model.addAttribute("errores", Map.of("general",
+                model.addAttribute(Nombres.ERRORES, Map.of("general",
                         "No pudimos guardar el reparto. Intenta nuevamente."));
                 cargarDatos(model, sesion, destino, presupuesto, reparto, usuario);
-                return "plan";
+                return Nombres.PLAN;
             }
-            sesion.setAttribute("repartoPresupuesto", reparto);
+            sesion.setAttribute(Nombres.REPARTO_PRESUPUESTO, reparto);
         }
         return "redirect:/viaje";
     }
@@ -169,16 +169,16 @@ public class PlanControlador {
                              ResultadoRecomendacion destino, Presupuesto presupuesto,
                              RepartoPresupuesto reparto, Usuario usuario) {
 
-        FechasViaje fechas = (FechasViaje) sesion.getAttribute("fechasViaje");
+        FechasViaje fechas = (FechasViaje) sesion.getAttribute(Nombres.FECHAS_VIAJE);
         Ubicacion ubicacion = SesionViaje.de(sesion, usuario).getOrigen();
         double total = presupuesto.getMontoNumerico();
         long dias = fechas != null ? fechas.getDuracionDias() : 0;
 
         model.addAttribute("ubicacionCiudad", ubicacion != null ? ubicacion.getCiudad() : "Origen");
         model.addAttribute("destino", destino);
-        model.addAttribute("presupuesto", presupuesto);
-        model.addAttribute("fechas", fechas);
-        model.addAttribute("reparto", reparto);
+        model.addAttribute(Nombres.PRESUPUESTO, presupuesto);
+        model.addAttribute(Nombres.FECHAS, fechas);
+        model.addAttribute(Nombres.REPARTO, reparto);
         model.addAttribute("dias", dias);
 
        

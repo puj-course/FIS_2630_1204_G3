@@ -33,7 +33,7 @@ final class SesionViaje {
     /** Recupera los datos persistidos sin mezclar otra planificacion de la sesion. */
     static void restaurar(HttpSession sesion, Viaje viaje) {
         synchronized (WebUtils.getSessionMutex(sesion)) {
-            Usuario activo = (Usuario) sesion.getAttribute("usuarioActivo");
+            Usuario activo = (Usuario) sesion.getAttribute(Nombres.USUARIO_ACTIVO);
             if (viaje == null || !viaje.estaGuardado() || activo == null
                     || viaje.getUsuario().getIdUsuario() != activo.getIdUsuario()) {
                 throw new IllegalArgumentException("El viaje no pertenece al usuario activo.");
@@ -41,12 +41,12 @@ final class SesionViaje {
             reiniciar(sesion);
             sesion.setAttribute(ATRIBUTO, viaje);
             sesion.setAttribute("idViajeGuardado", viaje.getIdViaje());
-            sesion.setAttribute("fechasViaje", viaje.getFechas());
-            sesion.setAttribute("presupuestoViaje", viaje.getPresupuesto());
+            sesion.setAttribute(Nombres.FECHAS_VIAJE, viaje.getFechas());
+            sesion.setAttribute(Nombres.PRESUPUESTO_VIAJE, viaje.getPresupuesto());
             sesion.setAttribute("presupuestoEnUsd", viaje.getPresupuestoEnUsd());
-            sesion.setAttribute("destinoElegido", viaje.getDestinoElegido());
-            sesion.setAttribute("paisDestino", viaje.paisDestino());
-            sesion.setAttribute("repartoPresupuesto", viaje.getReparto());
+            sesion.setAttribute(Nombres.DESTINO_ELEGIDO, viaje.getDestinoElegido());
+            sesion.setAttribute(Nombres.PAIS_DESTINO, viaje.paisDestino());
+            sesion.setAttribute(Nombres.REPARTO_PRESUPUESTO, viaje.getReparto());
         }
     }
 
@@ -55,9 +55,9 @@ final class SesionViaje {
         synchronized (WebUtils.getSessionMutex(sesion)) {
             sesion.removeAttribute("seleccionDestinos");
             sesion.removeAttribute("seleccionRecomendada");
-            sesion.removeAttribute("destinoElegido");
-            sesion.removeAttribute("paisDestino");
-            sesion.removeAttribute("repartoPresupuesto");
+            sesion.removeAttribute(Nombres.DESTINO_ELEGIDO);
+            sesion.removeAttribute(Nombres.PAIS_DESTINO);
+            sesion.removeAttribute(Nombres.REPARTO_PRESUPUESTO);
         }
     }
 
@@ -66,9 +66,9 @@ final class SesionViaje {
         synchronized (WebUtils.getSessionMutex(sesion)) {
             for (String atributo : new String[] {
                     ATRIBUTO, "idViajeGuardado", "seleccionDestinos", "seleccionRecomendada",
-                    "destinoElegido", "paisDestino", "preferenciasViaje",
-                    "importanciasSeleccionadas", "atributosSeleccionados", "fechasViaje",
-                    "presupuestoViaje", "presupuestoEnUsd", "repartoPresupuesto"
+                    Nombres.DESTINO_ELEGIDO, Nombres.PAIS_DESTINO, Nombres.PREFERENCIAS_VIAJE,
+                    "importanciasSeleccionadas", "atributosSeleccionados", Nombres.FECHAS_VIAJE,
+                    Nombres.PRESUPUESTO_VIAJE, "presupuestoEnUsd", Nombres.REPARTO_PRESUPUESTO
             }) {
                 sesion.removeAttribute(atributo);
             }
