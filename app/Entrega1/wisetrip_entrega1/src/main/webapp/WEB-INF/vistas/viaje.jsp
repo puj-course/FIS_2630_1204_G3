@@ -350,18 +350,19 @@
                 Actividades en el calendario: <strong id="itGastado">US$ 0</strong>
             </p>
 
-            <div class="it-alerta it-alerta-roja" id="itAlertaRoja" role="status" hidden>
+
+            <output class="it-alerta it-alerta-roja" id="itAlertaRoja" hidden>
                 <span class="it-alerta-icono">!</span>
-                <p>
+                <span class="it-alerta-texto">
                     ¿Estás a punto de gastar el máximo de tu presupuesto?
                     <a href="<c:url value='/plan'/>">¿Te gustaría acomodarlo?</a>
-                </p>
-            </div>
+                </span>
+            </output>
 
-            <div class="it-alerta it-alerta-verde" id="itAlertaVerde" role="status">
+            <output class="it-alerta it-alerta-verde" id="itAlertaVerde">
                 <span class="it-alerta-icono">✓</span>
-                <p>Vas súper bien, aún tienes presupuesto hábil.</p>
-            </div>
+                <span class="it-alerta-texto">Vas súper bien, aún tienes presupuesto hábil.</span>
+            </output>
         </section>
 
         <section class="it-caja it-gastos">
@@ -438,7 +439,7 @@
                        placeholder="Escribe una actividad...">
                 <button type="submit" aria-label="Agregar actividad">+</button>
             </form>
-            <p class="it-nueva-aviso" id="itNuevaAviso" role="status"></p>
+            <output class="it-nueva-aviso" id="itNuevaAviso"></output>
         </section>
 
     </div>
