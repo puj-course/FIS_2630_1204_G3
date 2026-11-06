@@ -6299,13 +6299,15 @@ No entiendo muy bien eso de sonarqube
 
 1. **¿Qué hice ayer?**
 
+ayer estuvimos mirando el paquete que le correspondia a cada uno para poder analizar los errrores de sonarqube, la verdad habian tareas de 30min y otras de 2 entonces mirar como se podian resolver
    
 2. **¿Qué voy a hacer hoy?**
 
+Hoy corregi varios avisos de sonarqube en el paquete de  modelo e hice pruebas sencillas para comprobar que todo siguiera funcionando. Todas pasaron y sonarqube aprobo el analisis, me queda revisar la configuracion de cobertura, porque aparece en 0 % aunque si hice pruebas. Ademas corregi un monton de cosas del diagrama c4 porque aun no tenia coherencia con la refactorizacion que hicimos como grupo el sprint pasado. 
    
 3. **¿Tengo algún impedimento o bloqueo?**
 
-
+realmente si, de conocimiento, a pesar de que el taller era claro y coherente con lo que tenemos que hacer en el proyecto sigo con algunos vacios al entender lo de la cobertura del proyecto y es mi responsabilidad ponerme al dia y entender porque aun nos quedan muchas cosas por hacer y la proxima semana tengo mas entregas.
 
 ---
 
