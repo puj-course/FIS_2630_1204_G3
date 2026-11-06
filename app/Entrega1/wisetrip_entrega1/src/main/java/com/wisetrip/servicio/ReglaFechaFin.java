@@ -16,7 +16,7 @@ public class ReglaFechaFin extends ReglaValidacionFechas {
 
         try {
             contexto.setFin(LocalDate.parse(valor));
-        } catch (DateTimeException e) {
+        } catch (DateTimeException _) {
             contexto.agregarError("fechaFin", "Ingresa una fecha válida.");
         }
     }
