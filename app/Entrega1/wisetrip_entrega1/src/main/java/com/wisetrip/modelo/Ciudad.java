@@ -2,10 +2,14 @@
 
 package com.wisetrip.modelo;
 
+import java.io.Serializable;
+
 import java.util.HashMap;
 import java.util.Map;
 
-public class Ciudad {
+public class Ciudad implements Serializable {
+    private static final long serialVersionUID = 1L;
+
 
     private int id;
     private String nombre;

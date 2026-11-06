@@ -1,5 +1,7 @@
 package com.wisetrip.modelo;
 
+import java.io.Serializable;
+
 import com.wisetrip.negocio.IDistribuible;
 
 /**
@@ -14,7 +16,9 @@ import com.wisetrip.negocio.IDistribuible;
  * Los getters y setters se conservan porque Spring los usa para llenar
  * el formulario del plan y las vistas los leen con ${reparto.hospedaje}.
  */
-public class RepartoPresupuesto implements IDistribuible {
+public class RepartoPresupuesto implements IDistribuible, Serializable {
+    private static final long serialVersionUID = 1L;
+
 
     /** Reparto que sugiere WiseTrip. */
     public static final int SUGERIDO_HOSPEDAJE = 35;
