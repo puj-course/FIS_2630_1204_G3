@@ -1,9 +1,11 @@
 package com.wisetrip.controlador;
 
+
 import com.wisetrip.modelo.Usuario;
 import com.wisetrip.modelo.Viaje;
 
 import jakarta.servlet.http.HttpSession;
+import org.springframework.web.util.WebUtils;
 
 /**
  * Unico lugar donde se guarda y se busca el Viaje en la sesion HTTP.
@@ -12,6 +14,9 @@ import jakarta.servlet.http.HttpSession;
 final class SesionViaje {
 
     private static final String ATRIBUTO = "viaje";
+    private static final String DESTINO_ELEGIDO = "destinoElegido";
+    private static final String PAIS_DESTINO = "paisDestino";
+    private static final String REPARTO_PRESUPUESTO = "repartoPresupuesto";   
 
     private SesionViaje() {
     }
@@ -29,9 +34,17 @@ final class SesionViaje {
         return viaje;
     }
 
+    /**
+     * Candado de la sesion: el mismo objeto para todas las peticiones del usuario,
+     * para que dos pestañas no modifiquen el viaje al mismo tiempo.
+     */
+    private static Object candado(HttpSession sesion) {
+        return WebUtils.getSessionMutex(sesion);
+    }
+
     /** Recupera los datos persistidos sin mezclar otra planificacion de la sesion. */
     static void restaurar(HttpSession sesion, Viaje viaje) {
-        synchronized (sesion) {
+        synchronized (candado(sesion)) {
             Usuario activo = (Usuario) sesion.getAttribute("usuarioActivo");
             if (viaje == null || !viaje.estaGuardado() || activo == null
                     || viaje.getUsuario().getIdUsuario() != activo.getIdUsuario()) {
@@ -43,31 +56,31 @@ final class SesionViaje {
             sesion.setAttribute("fechasViaje", viaje.getFechas());
             sesion.setAttribute("presupuestoViaje", viaje.getPresupuesto());
             sesion.setAttribute("presupuestoEnUsd", viaje.getPresupuestoEnUsd());
-            sesion.setAttribute("destinoElegido", viaje.getDestinoElegido());
-            sesion.setAttribute("paisDestino", viaje.paisDestino());
-            sesion.setAttribute("repartoPresupuesto", viaje.getReparto());
+            sesion.setAttribute(DESTINO_ELEGIDO, viaje.getDestinoElegido());
+            sesion.setAttribute(PAIS_DESTINO, viaje.paisDestino());
+            sesion.setAttribute(REPARTO_PRESUPUESTO, viaje.getReparto());
         }
     }
 
     /** Descarta resultados calculados con preferencias, fechas o presupuesto anteriores. */
     static void invalidarSeleccion(HttpSession sesion) {
-        synchronized (sesion) {
+        synchronized (candado(sesion)) {
             sesion.removeAttribute("seleccionDestinos");
             sesion.removeAttribute("seleccionRecomendada");
-            sesion.removeAttribute("destinoElegido");
-            sesion.removeAttribute("paisDestino");
-            sesion.removeAttribute("repartoPresupuesto");
+            sesion.removeAttribute(DESTINO_ELEGIDO);
+            sesion.removeAttribute(PAIS_DESTINO);
+            sesion.removeAttribute(REPARTO_PRESUPUESTO);
         }
     }
 
     /** Limpia la planificacion en sesion sin borrar viajes guardados ni cerrar la cuenta. */
     static void reiniciar(HttpSession sesion) {
-        synchronized (sesion) {
+        synchronized (candado(sesion)) {
             for (String atributo : new String[] {
                     ATRIBUTO, "idViajeGuardado", "seleccionDestinos", "seleccionRecomendada",
-                    "destinoElegido", "paisDestino", "preferenciasViaje",
+                    DESTINO_ELEGIDO, PAIS_DESTINO, "preferenciasViaje",
                     "importanciasSeleccionadas", "atributosSeleccionados", "fechasViaje",
-                    "presupuestoViaje", "presupuestoEnUsd", "repartoPresupuesto"
+                    "presupuestoViaje", "presupuestoEnUsd", REPARTO_PRESUPUESTO
             }) {
                 sesion.removeAttribute(atributo);
             }
