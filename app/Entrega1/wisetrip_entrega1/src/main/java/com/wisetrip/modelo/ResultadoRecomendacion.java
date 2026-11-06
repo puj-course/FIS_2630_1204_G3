@@ -2,7 +2,11 @@
 
 package com.wisetrip.modelo;
 
-public class ResultadoRecomendacion {
+import java.io.Serializable;
+
+public class ResultadoRecomendacion implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     private final Ciudad ciudad;
     private final double puntajeTotal;

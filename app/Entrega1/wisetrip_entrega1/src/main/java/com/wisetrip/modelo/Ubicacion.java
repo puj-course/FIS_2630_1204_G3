@@ -1,5 +1,6 @@
 package com.wisetrip.modelo;
 
+import java.io.Serializable;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -17,7 +18,9 @@ import com.wisetrip.negocio.IUbicable;
  * Los getters y setters se conservan porque Spring los usa para llenar
  * el formulario de Origen y las vistas los leen.
  */
-public class Ubicacion implements IUbicable {
+public class Ubicacion implements IUbicable, Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     /** Largo máximo del punto de partida (igual al maxlength del formulario). */
     public static final int MAX_DETALLE = 60;
