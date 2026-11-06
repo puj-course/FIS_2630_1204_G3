@@ -6,9 +6,9 @@ package com.wisetrip.modelo;
  */
 
 public enum EstadoAtributo {
-    cumple,
-    noCumple,
-    noSabemos;
+    CUMPLE,
+    NO_CUMPLE,
+    NO_SABEMOS;
 
     /**
      * Evalua si el conteo de lugares de Geoapify cumple con el umbral minimo de la pregunta.
@@ -18,12 +18,12 @@ public enum EstadoAtributo {
      */
     public static EstadoAtributo desdeConteo(Integer conteo, int umbral) {
         if (conteo == null) {
-            return noSabemos;
+            return NO_SABEMOS;
         }
         if (conteo >= umbral) {
-            return cumple;
+            return CUMPLE;
         }
         // La consulta respondio, pero no alcanza el minimo.
-        return noCumple;
+        return NO_CUMPLE;
     }
 }

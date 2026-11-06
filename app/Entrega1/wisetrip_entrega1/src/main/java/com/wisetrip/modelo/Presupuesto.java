@@ -54,7 +54,7 @@ public class Presupuesto {
             double valor = Double.parseDouble(limpio);        
             return Double.isFinite(valor) ? valor : -1;
 
-        } catch (NumberFormatException e) {
+        } catch (NumberFormatException _) {
             return -1;
         }
     }

@@ -84,7 +84,7 @@ public class RecomendadorDestinos implements Recomendador {
                 ciudad.getAtributos(), preferencias.getAtributos());
         boolean provisional = preferencias.getAtributos().entrySet().stream()
                 .anyMatch(e -> e.getValue() != null && e.getValue().esPuntuable()
-                        && ciudad.estadoAtributo(e.getKey()) == EstadoAtributo.noSabemos);
+                        && ciudad.estadoAtributo(e.getKey()) == EstadoAtributo.NO_SABEMOS);
 
         return new ResultadoRecomendacion(ciudad, pGustos, pCosto, pGustos,
                 preferencias.tienePreferenciasPuntuables(), provisional);
@@ -122,8 +122,8 @@ public class RecomendadorDestinos implements Recomendador {
             for (var requisito : preferencias.getAtributos().entrySet()) {
                 if (requisito.getValue() == null || !requisito.getValue().esIndispensable()) continue;
                 EstadoAtributo estado = ciudad.estadoAtributo(requisito.getKey());
-                incumple |= estado == EstadoAtributo.noCumple;
-                faltaInformacion |= estado == EstadoAtributo.noSabemos;
+                incumple |= estado == EstadoAtributo.NO_CUMPLE;
+                faltaInformacion |= estado == EstadoAtributo.NO_SABEMOS;
             }
             // Un incumplimiento confirmado basta para descartar, aunque falten otros datos.
             if (incumple) descartadas.add(ciudad);

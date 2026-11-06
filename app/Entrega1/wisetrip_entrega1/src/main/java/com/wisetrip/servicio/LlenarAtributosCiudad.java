@@ -71,13 +71,13 @@ public class LlenarAtributosCiudad {
                     );
             // Si hubo un problema y no sabemos el resultado
             // no ponemos false porque false significaria que no cumple.
-            if (estado == EstadoAtributo.noSabemos) {
+            if (estado == EstadoAtributo.NO_SABEMOS) {
                 atributos.remove(pregunta.id);
             } else {
                 // Guardamos true si cumple y false si no cumple.
                 atributos.put(
                         pregunta.id,
-                        estado == EstadoAtributo.cumple
+                        estado == EstadoAtributo.CUMPLE
                 );
             }
         }

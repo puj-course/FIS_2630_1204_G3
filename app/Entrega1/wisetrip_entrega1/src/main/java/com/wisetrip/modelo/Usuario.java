@@ -2,6 +2,7 @@ package com.wisetrip.modelo;
 
 import java.time.LocalDate;
 import java.time.Period;
+import java.time.ZoneId;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -20,6 +21,9 @@ public class Usuario {
     public static final int EDAD_MAXIMA = 120;
     public static final int LARGO_MINIMO_PASSWORD = 6;
     private static final String CAMPO_CLAVE = "password";
+    // Usamos la zona de Bogotá, Colombia, porque es la referencia del proyecto.
+    // Así las validaciones de fecha no dependen de la zona horaria del servidor.
+    private static final ZoneId ZONA_HORARIA = ZoneId.of("America/Bogota");
 
     private int idUsuario;
     private String nombreCompleto;
@@ -31,9 +35,10 @@ public class Usuario {
     private String rol = "cliente";
     private String chatId;
 
-    // Constructor vacío necesario para que Spring pueda
-    // crear y llenar el objeto con los datos del formulario
     public Usuario() {
+        // Constructor vacio necesario para que Spring pueda
+        // crear y llenar el objeto con los datos del formulario.
+        // porque aun no lo ha hecho.
     }
 
     //GETTERS Y SETTERS
@@ -159,14 +164,14 @@ public class Usuario {
             try {
                 LocalDate nacimiento = LocalDate.parse(fechaNacimiento);
                 int edad = calcularEdad();
-                if (nacimiento.isAfter(LocalDate.now())) {
+                if (nacimiento.isAfter(LocalDate.now(ZONA_HORARIA))) {
                     errores.put("fechaNacimiento", "La fecha de nacimiento no puede ser futura.");
                 } else if (edad < EDAD_MINIMA) {
                     errores.put("fechaNacimiento", "Debes ser mayor de 18 años para crear una cuenta en WiseTrip.");
                 } else if (edad > EDAD_MAXIMA) {
                     errores.put("fechaNacimiento", "Ingresa una fecha de nacimiento valida.");
                 }
-            } catch (Exception e) {
+            } catch (Exception _) {
                 errores.put("fechaNacimiento", "Ingresa una fecha valida.");
             }
         }
@@ -198,7 +203,7 @@ public class Usuario {
 
     //calcular edad actual
     public int calcularEdad() {
-        return Period.between(LocalDate.parse(fechaNacimiento), LocalDate.now()).getYears();
+        return Period.between(LocalDate.parse(fechaNacimiento), LocalDate.now(ZONA_HORARIA)).getYears();
     }
 
     // verifica la contraseña, si es true coincide con la dada por el usuario
