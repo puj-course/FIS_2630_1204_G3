@@ -6341,13 +6341,15 @@ No entiendo muy bien eso de sonarqube
 
 1. **¿Qué hice ayer?**
 
-
+Ayer estuve revisando cuales eran las clases que me correspondian para corregir con el SonarQube
 
 2. **¿Qué voy a hacer hoy?**
 
-
+Hoy ya empece y termine las correcciones que aparecian en el SonarQube de las clases que me correspondieron cuando nos dividimos el trabajo con el equipo
 
 3. **¿Tengo algún impedimento o bloqueo?**
+
+Sigo sin entenderle al profesor lo del SonarQube, la configuracion de este, las pruebas, no se si lo que se esta haciendo esta del todo bien
 
 ---
 
