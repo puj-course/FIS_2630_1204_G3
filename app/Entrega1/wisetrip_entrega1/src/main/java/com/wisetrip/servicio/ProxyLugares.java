@@ -33,7 +33,7 @@ public class ProxyLugares implements ProovedorLugares {
         // Solo cache en BD; la consulta externa se delega al servicio real.
         Optional<Integer> cacheado = cache.buscar(lat, lon, categorias, radioMetros, limite);
         if (cacheado.isPresent()) {
-            LOGGER.info("Geoapify cache BD categorias=" + categorias + " cantidad=" + cacheado.get());
+            LOGGER.info(() -> "Geoapify cache BD categorias=" + categorias + " cantidad=" + cacheado.get());
             return cacheado.get();
         }
 
