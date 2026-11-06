@@ -6432,12 +6432,15 @@ Sigo sin entenderle al profesor lo del SonarQube, la configuracion de este, las 
 
 1. **¿Qué hice ayer?** 
 
+Termine varios de los diagramas que me hacían falta y empecé a hacer test de cada uno de los errores de sonarqube
 
 2. **¿Qué voy a hacer hoy?** 
 
+Modificamos por completo la configuración del sonarqube porque estaba tomando errores de más y ya nos estábamos asustando
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
+no
 
 ---
 
