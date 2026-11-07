@@ -6452,5 +6452,8 @@ Modificamos por completo la configuración del sonarqube porque estaba tomando e
 
 no
 
+
+<img width="736" height="1600" alt="image" src="https://github.com/user-attachments/assets/89964e6c-88ca-4397-abbb-550a7f65b75b" />
+
 ---
 
