@@ -6380,13 +6380,16 @@ No
 
 1. **¿Qué hice ayer?**
 
+ayer hice las pruebas de modelo y termine de modificar los diagramas que me faltaban
+
    
 2. **¿Qué voy a hacer hoy?**
+hoy segui modificando el diagrama c4 ya que tiene que coincidir con los diagramas anteriores que han hecho mis compañeros y termine el demi patron gof 
 
    
 3. **¿Tengo algún impedimento o bloqueo?**
 
-
+no e como esta configurado el sonarqube tengo algunos vacios
 
 ---
 
