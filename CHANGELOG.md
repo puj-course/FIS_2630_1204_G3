@@ -6408,13 +6408,15 @@ No
 
 1. **¿Qué hice ayer?**
 
-
+ayer intentamos configurar el sonarqube para que solo tome las clases del back
 
 2. **¿Qué voy a hacer hoy?**
 
-
+hoy volvi a hacer mi diagrama gof en draw.io ya que lo tenia en visual paradigm, tambien hice los arreglos y las pruebas de la clase ciudad dao
 
 3. **¿Tengo algún impedimento o bloqueo?**
+
+no entiendo como esta configurado el sonar, ni como configurarlo.
 
 ---
 
