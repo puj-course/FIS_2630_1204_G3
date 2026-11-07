@@ -80,7 +80,7 @@ public interface IGestorGastos {
      * Calcula el estado actual del presupuesto del viaje.
      *
      * @param idViaje viaje del que se quiere el resumen
-     * @return presupuesto total, total gastado y saldo disponible, todo en
+     * @return presupuesto total, total gastado y saldo disponible, expresados en
      *         la moneda del presupuesto
      */
     ResumenPresupuesto consultarResumen(int idViaje);

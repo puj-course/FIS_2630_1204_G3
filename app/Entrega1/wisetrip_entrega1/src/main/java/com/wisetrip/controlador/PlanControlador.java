@@ -193,7 +193,7 @@ public class PlanControlador {
         return "redirect:/viaje";
     }
 
-    /** Reúne todo lo que la vista necesita, para no repetirlo en cada método. */
+    /** Reúne los datos que la vista necesita, para no repetirlo en cada método. */
     private void cargarDatos(Model model, HttpSession sesion,
                              ResultadoRecomendacion destino, Presupuesto presupuesto,
                              RepartoPresupuesto reparto, Usuario usuario) {

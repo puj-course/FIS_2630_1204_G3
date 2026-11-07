@@ -10,7 +10,7 @@ import java.util.Map;
 
 //agregar validacion con not null, email y size 
 //no exponer la contraseña en tostring()
-//agregar metodo normalizarcorreo para que todo se guarde en minusculas
+//agregar metodo normalizarcorreo para que el correo se guarde en minusculas
 //agregar campos: estado, fecha registro, ultimo acceso
 
 // Modelo que representa la información de un usuario de WiseTrip

@@ -83,7 +83,7 @@ public class ViajeServicio implements IViajeServicio {
 
     /**
      * Valida la ubicacion de origen.
-     * Devuelve un mapa vacio si todo esta bien.
+     * Devuelve un mapa vacio si no hay errores.
      */
 
     @Override

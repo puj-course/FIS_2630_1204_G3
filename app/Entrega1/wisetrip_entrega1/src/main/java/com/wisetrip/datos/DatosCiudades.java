@@ -1,4 +1,4 @@
-//DatosCiudades: todo lo que involucra costoPromedio y el filtro de presupuesto
+//DatosCiudades: maneja costoPromedio y el filtro de presupuesto
 //pero toca corregirlo
 // SEMILLAS - SOLO atributos MANUALES.
 // Los AUTO (playa, naturaleza, museos, vida_nocturna, mochilero,
