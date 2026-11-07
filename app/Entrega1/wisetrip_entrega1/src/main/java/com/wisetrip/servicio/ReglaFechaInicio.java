@@ -21,7 +21,7 @@ public class ReglaFechaInicio extends ReglaValidacionFechas {
             } else {
                 contexto.setInicio(inicio);
             }
-        } catch (DateTimeException e) {
+        } catch (DateTimeException _) {
             contexto.agregarError("fechaInicio", "Ingresa una fecha válida.");
         }
 
