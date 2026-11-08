@@ -69,7 +69,7 @@ public class ServicioGeoapify implements ProovedorLugares {
 
             return new double[]{longitudYLatitud.get(1), longitudYLatitud.get(0)};
         } catch (Exception e) {
-            System.err.println("Error consultando Geoapify para " + ciudad + ": " + e.getMessage());
+            REGISTRO.log(Level.WARNING, e, () -> "Error consultando Geoapify para " + ciudad + ": " + e.getMessage());
             return null;
         }
     }
@@ -108,12 +108,14 @@ public class ServicioGeoapify implements ProovedorLugares {
 
             // Mostramos en consola el numero de llamada, cómo salió y cuánto tardó
             long milisegundosQueTardo = Duration.ofNanos(System.nanoTime() - momentoInicio).toMillis();
-            REGISTRO.info("Geoapify llamada #" + numeroDeLlamada
-                    + " status=" + respuesta.statusCode()
+            int estado = respuesta.statusCode();
+            // El texto se arma solo si el nivel INFO esta activo (Supplier diferido)
+            REGISTRO.info(() -> "Geoapify llamada #" + numeroDeLlamada
+                    + " status=" + estado
                     + " duracionMs=" + milisegundosQueTardo
                     + " categorias=" + categorias);
 
-            if (respuesta.statusCode() < 200 || respuesta.statusCode() >= 300) {
+            if (estado < 200 || estado >= 300) {
                 return null;
             }
 
@@ -123,7 +125,7 @@ public class ServicioGeoapify implements ProovedorLugares {
             if (datos == null || datos.features == null) return null;
             return datos.features.size();
         } catch (Exception e) {
-            REGISTRO.log(Level.WARNING, "Error contando lugares (" + categorias + "): " + e.getMessage(), e);
+            REGISTRO.log(Level.WARNING, e, () -> "Error contando lugares (" + categorias + "): " + e.getMessage());
             // Conserva la señal de interrupcion.
             if (e instanceof InterruptedException) {
                 Thread.currentThread().interrupt();
