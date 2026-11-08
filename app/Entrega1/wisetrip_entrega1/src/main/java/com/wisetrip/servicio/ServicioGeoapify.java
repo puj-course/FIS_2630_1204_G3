@@ -7,6 +7,7 @@ package com.wisetrip.servicio;
 import com.wisetrip.negocio.ProovedorLugares;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import java.io.IOException;
 import java.net.URI;
 import java.net.URLEncoder;
 import java.net.http.HttpClient;
@@ -72,12 +73,13 @@ public class ServicioGeoapify implements ProovedorLugares {
             List<Double> longitudYLatitud = datos.features.get(0).geometry.coordinates;
 
             return new double[]{longitudYLatitud.get(1), longitudYLatitud.get(0)};
-        } catch (Exception e) {
+        } catch (InterruptedException e) {
+            REGISTRO.log(Level.WARNING, e, () -> "Consulta a Geoapify interrumpida para " + ciudad);
+            // Se restaura la señal de interrupcion del hilo.
+            Thread.currentThread().interrupt();
+            return SIN_COORDENADAS;
+        } catch (IOException | RuntimeException e) {
             REGISTRO.log(Level.WARNING, e, () -> "Error consultando Geoapify para " + ciudad + ": " + e.getMessage());
-            // Conserva la señal de interrupcion.
-            if (e instanceof InterruptedException) {
-                Thread.currentThread().interrupt();
-            }
             return SIN_COORDENADAS;
         }
     }
@@ -132,12 +134,13 @@ public class ServicioGeoapify implements ProovedorLugares {
             RespuestaGeoapify datos = convertidorJson.fromJson(respuesta.body(), RespuestaGeoapify.class);
             if (datos == null || datos.features == null) return null;
             return datos.features.size();
-        } catch (Exception e) {
+        } catch (InterruptedException e) {
+            REGISTRO.log(Level.WARNING, e, () -> "Consulta de lugares interrumpida (" + categorias + ")");
+            // Se restaura la señal de interrupcion del hilo.
+            Thread.currentThread().interrupt();
+            return null;
+        } catch (IOException | RuntimeException e) {
             REGISTRO.log(Level.WARNING, e, () -> "Error contando lugares (" + categorias + "): " + e.getMessage());
-            // Conserva la señal de interrupcion.
-            if (e instanceof InterruptedException) {
-                Thread.currentThread().interrupt();
-            }
             return null;
         }
     }
