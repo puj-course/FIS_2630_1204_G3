@@ -110,6 +110,24 @@ public class GastosServicio implements IGestorGastos {
             return errores;
         }
 
+        validarDatosGasto(gasto, errores);
+        validarMoneda(gasto, presupuesto, errores);
+        if (!errores.isEmpty()) {
+            return errores;
+        }
+
+        ResultadoControlCategoria resultado = evaluarCupoCategoria(idViaje, gasto, presupuesto);
+        if (resultado.bloqueante()) {
+            errores.put("cupoCategoria", resultado.mensaje());
+        }
+        return errores;
+    }
+
+    /**
+     * Revisa categoría, descripción, monto y fecha del gasto (paso 4).
+     * Cada error se agrega al mapa con la clave de su campo.
+     */
+    private void validarDatosGasto(Gasto gasto, Map<String, String> errores) {
         if (gasto.categoria() == null || !IDistribuible.CATEGORIAS.contains(gasto.categoria())) {
             errores.put("categoria", "Selecciona una categoría válida.");
         }
@@ -124,20 +142,19 @@ public class GastosServicio implements IGestorGastos {
         if (gasto.fecha() == null) {
             errores.put("fecha", "Ingresa la fecha en que se realizó el gasto.");
         }
+    }
+
+    /**
+     * Revisa que el gasto tenga moneda y que sea la misma del presupuesto
+     * del viaje (paso 4).
+     */
+    private void validarMoneda(Gasto gasto, PresupuestoViaje presupuesto, Map<String, String> errores) {
         if (gasto.moneda() == null || gasto.moneda().isBlank()) {
             errores.put("moneda", "El gasto debe indicar su moneda.");
         } else if (presupuesto.moneda() == null
                 || !gasto.moneda().trim().equalsIgnoreCase(presupuesto.moneda().trim())) {
             errores.put("moneda", "La moneda del gasto debe coincidir con la del viaje.");
         }
-
-        if (errores.isEmpty()) {
-            ResultadoControlCategoria resultado = evaluarCupoCategoria(idViaje, gasto, presupuesto);
-            if (resultado.bloqueante()) {
-                errores.put("cupoCategoria", resultado.mensaje());
-            }
-        }
-        return errores;
     }
 
     /**
