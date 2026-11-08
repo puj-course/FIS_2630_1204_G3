@@ -43,7 +43,7 @@ public class FechasViaje implements Serializable {
         LocalDate inicio = LocalDate.parse(fechaInicio);
         LocalDate fin = LocalDate.parse(fechaFin);
         return fin.isAfter(inicio);
-    } catch (DateTimeException | NullPointerException e) {
+    } catch (DateTimeException | NullPointerException _) {
         return false;
         }
     }

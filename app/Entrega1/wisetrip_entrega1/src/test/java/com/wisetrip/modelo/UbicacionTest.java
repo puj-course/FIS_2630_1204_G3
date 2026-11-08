@@ -10,143 +10,210 @@ import java.util.Map;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-@DisplayName("Ubicacion")
+@DisplayName("Pruebas de Ubicacion")
 class UbicacionTest {
 
     @Test
-    @DisplayName("estaCompleta exige país y ciudad con texto")
-    void estaCompleta_exigePaisYCiudad() {
-        assertTrue(new Ubicacion("Colombia", "Bogotá", null).estaCompleta());
-        assertFalse(new Ubicacion("Colombia", " ", null).estaCompleta());
-        assertFalse(new Ubicacion(null, "Bogotá", null).estaCompleta());
-        assertFalse(new Ubicacion().estaCompleta());
+    @DisplayName("La descripcion separa ciudad y pais con una coma")
+    void descripcionConCiudadYPais() {
+        Ubicacion ubicacion = new Ubicacion("Colombia", "Bogota", null);
+
+        String resultadoEsperado = "Bogota, Colombia";
+        String resultadoObtenido = ubicacion.getDescripcion();
+
+        assertEquals(resultadoEsperado, resultadoObtenido);
     }
 
     @Test
-    @DisplayName("tieneDetalle es true solo si el detalle tiene texto")
-    void tieneDetalle_soloConTexto() {
-        assertTrue(new Ubicacion("Colombia", "Bogotá", "Aeropuerto").tieneDetalle());
-        assertFalse(new Ubicacion("Colombia", "Bogotá", "  ").tieneDetalle());
-        assertFalse(new Ubicacion("Colombia", "Bogotá", null).tieneDetalle());
+    @DisplayName("Sin ciudad, el pais aparece sin coma")
+    void descripcionSoloPais() {
+        Ubicacion ubicacion = new Ubicacion("Colombia", "Bogota", null);
+
+        ubicacion.setCiudad(null);
+
+        String resultadoEsperado = "Colombia";
+        String resultadoObtenido = ubicacion.getDescripcion();
+
+        assertEquals(resultadoEsperado, resultadoObtenido);
     }
 
     @Test
-    @DisplayName("getDescripcion arma el texto con ciudad, país y detalle")
-    void getDescripcion_variantes() {
-        assertEquals("Bogotá, Colombia", new Ubicacion("Colombia", "Bogotá", null).getDescripcion());
-        assertEquals("Aeropuerto El Dorado - Bogotá, Colombia",
-                new Ubicacion("Colombia", "Bogotá", "Aeropuerto El Dorado").getDescripcion());
-        assertEquals("Colombia", new Ubicacion("Colombia", null, null).getDescripcion());
-        assertEquals("", new Ubicacion().getDescripcion());
+    @DisplayName("Una ciudad con espacios no agrega una coma")
+    void descripcionCiudadEnBlanco() {
+        Ubicacion ubicacion = new Ubicacion("Colombia", "Bogota", null);
+
+        ubicacion.setCiudad("   ");
+
+        String resultadoEsperado = "Colombia";
+        String resultadoObtenido = ubicacion.getDescripcion();
+
+        assertEquals(resultadoEsperado, resultadoObtenido);
     }
 
     @Test
-    @DisplayName("cambiarPais con otro país borra la ciudad")
-    void cambiarPais_otroPais_borraLaCiudad() {
-        Ubicacion ubicacion = new Ubicacion("Colombia", "Bogotá", null);
+    @DisplayName("Sin pais, aparece solo la ciudad")
+    void descripcionSoloCiudad() {
+        Ubicacion ubicacion = new Ubicacion("Colombia", "Bogota", null);
 
-        ubicacion.cambiarPais("Perú");
+        ubicacion.setPais(null);
 
-        assertEquals("Perú", ubicacion.getPais());
-        assertNull(ubicacion.getCiudad());
+        String resultadoEsperado = "Bogota";
+        String resultadoObtenido = ubicacion.getDescripcion();
+
+        assertEquals(resultadoEsperado, resultadoObtenido);
     }
 
     @Test
-    @DisplayName("cambiarPais con el mismo país conserva la ciudad")
-    void cambiarPais_mismoPais_conservaLaCiudad() {
-        Ubicacion ubicacion = new Ubicacion("Colombia", "Bogotá", null);
+    @DisplayName("Sin ciudad ni pais, la descripcion queda vacia")
+    void descripcionSinDatos() {
+        Ubicacion ubicacion = new Ubicacion("Colombia", "Bogota", null);
+
+        ubicacion.setCiudad(null);
+        ubicacion.setPais(null);
+
+        String resultadoEsperado = "";
+        String resultadoObtenido = ubicacion.getDescripcion();
+
+        assertEquals(resultadoEsperado, resultadoObtenido);
+    }
+
+    @Test
+    @DisplayName("El punto de partida aparece antes de la ciudad")
+    void descripcionConDetalle() {
+        Ubicacion ubicacion = new Ubicacion("Colombia", "Bogota", null);
+
+        ubicacion.setDetalle("Aeropuerto");
+
+        String resultadoEsperado = "Aeropuerto - Bogota, Colombia";
+        String resultadoObtenido = ubicacion.getDescripcion();
+
+        assertEquals(resultadoEsperado, resultadoObtenido);
+    }
+
+    @Test
+    @DisplayName("Una ubicacion con pais y ciudad esta completa")
+    void ubicacionCompleta() {
+        Ubicacion ubicacion = new Ubicacion("Colombia", "Bogota", null);
+
+        boolean resultadoEsperado = true;
+        boolean resultadoObtenido = ubicacion.estaCompleta();
+
+        assertEquals(resultadoEsperado, resultadoObtenido);
+    }
+
+    @Test
+    @DisplayName("Una ubicacion sin ciudad esta incompleta")
+    void ubicacionSinCiudad() {
+        Ubicacion ubicacion = new Ubicacion("Colombia", "Bogota", null);
+
+        ubicacion.setCiudad(null);
+
+        boolean resultadoEsperado = false;
+        boolean resultadoObtenido = ubicacion.estaCompleta();
+
+        assertEquals(resultadoEsperado, resultadoObtenido);
+    }
+
+    @Test
+    @DisplayName("Cambiar de pais elimina la ciudad anterior")
+    void cambiarPaisBorraCiudad() {
+        Ubicacion ubicacion = new Ubicacion("Colombia", "Bogota", null);
+
+        ubicacion.cambiarPais("Peru");
+
+        String resultadoEsperado = null;
+        String resultadoObtenido = ubicacion.getCiudad();
+
+        assertEquals(resultadoEsperado, resultadoObtenido);
+    }
+
+    @Test
+    @DisplayName("Elegir el mismo pais conserva la ciudad")
+    void mismoPaisConservaCiudad() {
+        Ubicacion ubicacion = new Ubicacion("Colombia", "Bogota", null);
 
         ubicacion.cambiarPais("Colombia");
 
-        assertEquals("Bogotá", ubicacion.getCiudad());
+        String resultadoEsperado = "Bogota";
+        String resultadoObtenido = ubicacion.getCiudad();
+
+        assertEquals(resultadoEsperado, resultadoObtenido);
     }
 
     @Test
-    @DisplayName("cambiarPais cuando no había país lo asigna")
-    void cambiarPais_sinPaisPrevio_loAsigna() {
-        Ubicacion ubicacion = new Ubicacion();
+    @DisplayName("Normalizar elimina espacios sobrantes de la ciudad")
+    void normalizarCiudad() {
+        Ubicacion ubicacion = new Ubicacion("Colombia", "Bogota", null);
 
-        ubicacion.cambiarPais("Chile");
-
-        assertEquals("Chile", ubicacion.getPais());
-    }
-
-    @Test
-    @DisplayName("normalizar quita espacios sobrantes y deja null lo que queda vacío")
-    void normalizar_limpiaEspacios() {
-        Ubicacion ubicacion = new Ubicacion("  Costa   Rica ", " San  José", "   ");
-
+        ubicacion.setCiudad("  Santa   Marta  ");
         ubicacion.normalizar();
 
-        assertEquals("Costa Rica", ubicacion.getPais());
-        assertEquals("San José", ubicacion.getCiudad());
-        assertNull(ubicacion.getDetalle());
+        String resultadoEsperado = "Santa Marta";
+        String resultadoObtenido = ubicacion.getCiudad();
+
+        assertEquals(resultadoEsperado, resultadoObtenido);
     }
 
     @Test
-    @DisplayName("normalizar respeta los valores null")
-    void normalizar_respetaNull() {
-        Ubicacion ubicacion = new Ubicacion();
+    @DisplayName("Pais y ciudad validos no generan errores")
+    void validarDatosCompletos() {
+        Ubicacion ubicacion = new Ubicacion("Colombia", "Bogota", null);
 
-        ubicacion.normalizar();
+        int resultadoEsperado = 0;
+        int resultadoObtenido = ubicacion.validar().size();
 
-        assertNull(ubicacion.getPais());
-        assertNull(ubicacion.getCiudad());
+        assertEquals(resultadoEsperado, resultadoObtenido);
     }
 
     @Test
-    @DisplayName("validar: una ubicación completa no tiene errores")
-    void validar_completa_sinErrores() {
-        assertTrue(new Ubicacion("Colombia", "Bogotá", "Centro").validar().isEmpty());
+    @DisplayName("Sin pais aparece un mensaje de error")
+    void validarSinPais() {
+        Ubicacion ubicacion = new Ubicacion("Colombia", "Bogota", null);
+
+        ubicacion.setPais(null);
+
+        String resultadoEsperado = "Selecciona tu país de origen.";
+        String resultadoObtenido = ubicacion.validar().get("pais");
+
+        assertEquals(resultadoEsperado, resultadoObtenido);
     }
 
     @Test
-    @DisplayName("validar: sin país ni ciudad devuelve los dos errores")
-    void validar_vacia_dosErrores() {
-        Map<String, String> errores = new Ubicacion().validar();
+    @DisplayName("Sin ciudad aparece un mensaje de error")
+    void validarSinCiudad() {
+        Ubicacion ubicacion = new Ubicacion("Colombia", "Bogota", null);
 
-        assertEquals(2, errores.size());
-        assertTrue(errores.containsKey("pais"));
-        assertTrue(errores.containsKey("ciudad"));
+        ubicacion.setCiudad(null);
+
+        String resultadoEsperado = "Selecciona tu ciudad de origen.";
+        String resultadoObtenido = ubicacion.validar().get("ciudad");
+
+        assertEquals(resultadoEsperado, resultadoObtenido);
     }
 
     @Test
-    @DisplayName("validar: borde, un detalle de 60 caracteres pasa y uno de 61 falla")
-    void validar_detalleEnElLimite() {
-        assertFalse(new Ubicacion("Colombia", "Bogotá", "a".repeat(Ubicacion.MAX_DETALLE)).validar()
-                .containsKey("detalle"));
+    @DisplayName("Un detalle de 60 caracteres es valido")
+    void detalleEnLimite() {
+        Ubicacion ubicacion = new Ubicacion("Colombia", "Bogota", null);
 
-        Map<String, String> errores = new Ubicacion("Colombia", "Bogotá", "a".repeat(Ubicacion.MAX_DETALLE + 1)).validar();
+        ubicacion.setDetalle("a".repeat(60));
 
-        assertTrue(errores.get("detalle").contains("60"));
+        int resultadoEsperado = 0;
+        int resultadoObtenido = ubicacion.validar().size();
+
+        assertEquals(resultadoEsperado, resultadoObtenido);
     }
 
     @Test
-    @DisplayName("esMismaCiudadQue compara ciudad y país sin importar mayúsculas")
-    void esMismaCiudadQue_ignoraMayusculas() {
-        Ubicacion bogota = new Ubicacion("Colombia", "Bogotá", null);
+    @DisplayName("Un detalle de 61 caracteres genera un error")
+    void detalleMuyLargo() {
+        Ubicacion ubicacion = new Ubicacion("Colombia", "Bogota", null);
 
-        assertTrue(bogota.esMismaCiudadQue(new Ubicacion("COLOMBIA", "bogotá", "Norte")));
-        assertFalse(bogota.esMismaCiudadQue(new Ubicacion("Colombia", "Cali", null)));
-        assertFalse(bogota.esMismaCiudadQue(new Ubicacion("Perú", "Bogotá", null)));
-    }
+        ubicacion.setDetalle("a".repeat(61));
 
-    @Test
-    @DisplayName("esMismaCiudadQue es false con null o con datos incompletos")
-    void esMismaCiudadQue_nullODatosIncompletos() {
-        assertFalse(new Ubicacion("Colombia", "Bogotá", null).esMismaCiudadQue(null));
-        assertFalse(new Ubicacion("Colombia", null, null).esMismaCiudadQue(new Ubicacion("Colombia", "Bogotá", null)));
-        assertFalse(new Ubicacion(null, "Bogotá", null).esMismaCiudadQue(new Ubicacion("Colombia", "Bogotá", null)));
-    }
+        String resultadoEsperado = "El punto de partida no puede tener más de 60 caracteres.";
+        String resultadoObtenido = ubicacion.validar().get("detalle");
 
-    @Test
-    @DisplayName("los setters actualizan los datos")
-    void setters_actualizanLosDatos() {
-        Ubicacion ubicacion = new Ubicacion();
-        ubicacion.setPais("Chile");
-        ubicacion.setCiudad("Santiago");
-        ubicacion.setDetalle("Providencia");
-
-        assertEquals("Providencia - Santiago, Chile", ubicacion.getDescripcion());
+        assertEquals(resultadoEsperado, resultadoObtenido);
     }
 }

@@ -1,4 +1,5 @@
 package com.wisetrip.datos;
+//cache es la implementacion de la interfaz
 
 import com.wisetrip.negocio.CacheRepositorio;
 import org.springframework.stereotype.Repository;
@@ -29,18 +30,20 @@ public class Cache implements CacheRepositorio {
                 WHERE latitud = ? AND longitud = ? AND categoria = ?
                   AND radio_metros = ? AND limite = ?
                 """;
-
+        // Usa esta conexion para ejecutar el SQL.
         try (Connection conexion = dataSource.getConnection();
              PreparedStatement consulta = conexion.prepareStatement(sql)) {
             asignarClave(consulta, latitud, longitud, categoria, radioMetros, limite);
             try (ResultSet resultado = consulta.executeQuery()) {
                 if (!resultado.next()) return Optional.empty();
-                // Cero es un resultado guardado, no una ausencia.
+
+                // Cero es un resultado guardado, no que no existe solo que no hay
+                // lugares encontrados.
                 return Optional.of(resultado.getInt("respuesta"));
             }
         } catch (SQLException e) {
             // Un fallo de cache permite continuar con Geoapify.
-            REGISTRO.warning("No se pudo leer la cache. SQLState=" + e.getSQLState());
+            REGISTRO.warning("No se pudo leer la cache " + e.getSQLState());
             return Optional.empty();
         }
     }

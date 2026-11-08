@@ -4,11 +4,11 @@ Este archivo registra las actualizaciones diarias del equipo durante el desarrol
 
 **Responsables:**
 
-* Maria Alejandra Rodriguez
-* Gabriela Melo Gualteros
-* Valeria Cortes Rendon
-* Isabella Posada
-* Santiago Clavijo
+* Maria Alejandra Rodriguez.
+* Gabriela Melo Gualteros.
+* Valeria Cortes Rendon.
+* Isabella Posada.
+* Santiago Clavijo.
 
 ---
 
@@ -6111,10 +6111,10 @@ Mejoras en SonarQube
 | #129 | Como administrador de WiseTrip quiero verificar y corregir los problemas reportados por SonarQube en los servicios e integraciones del sistema para mejorar la calidad, seguridad y estabilidad de WiseTrip   | Historia de Usuario | TBD | Maleja |
 | #130 | Yo como usuario quiero que la información de mi plan de viaje se guarde y se muestre correctamente mientras lo armo para no tener que repetir pasos ni perder lo que ya elegí.      |Historia de Usuario | TBD | Gaby |
 | #131 |Yo como usuario quiero que mis fechas, los lugares que busco y los datos de mi viaje se mantengan correctos durante toda mi sesión para no recibir errores ni ver información equivocada mientras uso la aplicación. | Historia de Usuario | TBD | Gaby |
-| #132 |       | Historia de Usuario | TBD | Isabela|
-| #133 |    | Historia de Usuario | TBD | Isabela |
-| #134 |     | Historia de Usuario | TBD | Clavijo |
-| #135 |     | Historia de Usuario | TBD | Clavijo |
+| #132 | Como Administrador, quiero configurar el análisis automatizado de código con SonarQube enfocado en el paquete de modelo, para asegurar que la estructura de datos y la lógica de negocio base cumplan con los estándares de calidad del proyecto | Historia de Usuario | TBD | Isabela|
+| #133 | HU | HU #133 - Como Administrador del sistema, quiero validar las pruebas unitarias creadas para los modelos, para asegurar que el código cumpla con el umbral requerido.| TBD | Isabela |
+| #134 | HU | Como administrador de WiseTrip, quiero corregir los issues que SonarQube reporta en los DAO y en las interfaces, para mejorar la confiabilidad, la seguridad y la mantenibilidad del acceso a la base de datos | TBD | Clavijo |
+| #135 | HU | Como administrador de WiseTrip, quiero corregir los issues que SonarQube reporta en los JSP, para que las vistas sean más legibles, fáciles de mantener y consistentes con el resto del sistema | TBD | Clavijo |
 
 ## Riesgos / Bloqueos identificados
 
@@ -6131,13 +6131,15 @@ Mejoras en SonarQube
 
 1. **¿Qué hice ayer?**
 
+ayer lo que hicimos fue el planning de este nuevo sprint, ademas de revisar lo de sonarcube con respecto a clases predeterminadas para dividir la carga de trabajo. 
    
 2. **¿Qué voy a hacer hoy?**
 
+Hoy voy a revisar bien el codigo y el sonarcube 
    
 3. **¿Tengo algún impedimento o bloqueo?**
 
-
+no entiendo muy bien pero es cuestion de practica. 
 
 ---
 
@@ -6160,13 +6162,15 @@ Falta de tiempo, falta de entendimiento de temas de clase, acumulacion de cosas
 
 1. **¿Qué hice ayer?**
 
-
+ayer hicimos el planning en el cual quedamos que esta semana nos ibamos a dedidar a toda la parte de junit y sonarqube
 
 2. **¿Qué voy a hacer hoy?**
 
-
+hoy vi todos los issues de sonarqube que me toca resolver ya que son muchos, entonces nos los repartimos entre todos
 
 3. **¿Tengo algún impedimento o bloqueo?**
+
+no entiendo bien como son las pruebas
 
 ---
 
@@ -6174,13 +6178,15 @@ Falta de tiempo, falta de entendimiento de temas de clase, acumulacion de cosas
 
 1. **¿Qué hice ayer?**
 
-
+Ayer estuvimos en planning y quedamos en que en este sprint vamos a enfocarnos en todo lo que tiene que ver con SonarQube
 
 2. **¿Qué voy a hacer hoy?**
 
-
+Hoy vamos a separarnos el trabajo de sonarQube ya que es bastante, hicimos una lista de todo lo que tenemos que corergir y cada uno se termino encargando de una seccion
 
 3. **¿Tengo algún impedimento o bloqueo?**
+
+Falta de entendimiento de como se maneja SonarQube
 
 ---
 
@@ -6221,13 +6227,15 @@ no
 
 1. **¿Qué hice ayer?**
 
-
+Ayer se hicieron mas diagramas ahora los patrones GOF mejorados, temrine el de dominio y ajuste el de despliegue. Tengo que revisar el de componentes ya que no lo entiendo muy bien
 
 2. **¿Qué voy a hacer hoy?**
 
+Se empezaron a hacer los cambios en sonarqube de las clases que fueron repartidas para cada uno de los integrantes se terminaron los diagramas que se estan realizando
    
 3. **¿Tengo algún impedimento o bloqueo?**
 
+tiempo, son muchas pruebas
    
 ---
 
@@ -6235,13 +6243,15 @@ no
 
 1. **¿Qué hice ayer?**
 
-
+ayer revisamos el SonarQube, y vi los issues que me toca resolver a mi
 
 2. **¿Qué voy a hacer hoy?**
 
-
+hoy resolvi todos los issues de lo que se refiere a las vistas de wisetrip, no entendia bien lo que habia que hacer entonces solo corregi mas no hice las pruebas, esas las haare mañana
 
 3. **¿Tengo algún impedimento o bloqueo?**
+
+no entiendo bien como son las pruebas
 
 ---
 
@@ -6249,13 +6259,15 @@ no
 
 1. **¿Qué hice ayer?**
 
-
+Ayer nos repartimos los errores que salen en SonarQube y lo que toca corregir. A mi me correspondieron unas clases de patrones, un controlador, entre otros.
 
 2. **¿Qué voy a hacer hoy?**
 
-
+Hoy la idea es empezar a navegar SonarQube y revisar los errores que sacan las clases que me correspondieron
 
 3. **¿Tengo algún impedimento o bloqueo?**
+
+Tengo otros trabajos que entregar antes de esto y no tengo muy claro lo de SonarQube
 
 ---
 
@@ -6264,12 +6276,15 @@ no
 
 1. **¿Qué hice ayer?** 
 
+Termine algunos diagramas pendientes porque aun no se si quedaron muy bien o no
 
 2. **¿Qué voy a hacer hoy?** 
 
+Terminar esos diagramas pendientes y revisar los errores que manda sonarqube
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
+No entiendo muy bien eso de sonarqube
 
 ---
 
@@ -6284,13 +6299,15 @@ no
 
 1. **¿Qué hice ayer?**
 
+ayer estuvimos mirando el paquete que le correspondia a cada uno para poder analizar los errrores de sonarqube, la verdad habian tareas de 30min y otras de 2 entonces mirar como se podian resolver
    
 2. **¿Qué voy a hacer hoy?**
 
+Hoy corregi varios avisos de sonarqube en el paquete de  modelo e hice pruebas sencillas para comprobar que todo siguiera funcionando. Todas pasaron y sonarqube aprobo el analisis, me queda revisar la configuracion de cobertura, porque aparece en 0 % aunque si hice pruebas. Ademas corregi un monton de cosas del diagrama c4 porque aun no tenia coherencia con la refactorizacion que hicimos como grupo el sprint pasado. 
    
 3. **¿Tengo algún impedimento o bloqueo?**
 
-
+realmente si, de conocimiento, a pesar de que el taller era claro y coherente con lo que tenemos que hacer en el proyecto sigo con algunos vacios al entender lo de la cobertura del proyecto y es mi responsabilidad ponerme al dia y entender porque aun nos quedan muchas cosas por hacer y la proxima semana tengo mas entregas.
 
 ---
 
@@ -6298,41 +6315,45 @@ no
 
 1. **¿Qué hice ayer?**
 
-
+Se hizo refactorizacion del codigo teniendo en cuenta los factores que salian en sonarqube, correcciones en las tareas y realizacion de diagramas
 
 2. **¿Qué voy a hacer hoy?**
 
+Se siguieron haciendo correccciones en los diagramas y conectando los patrrones gof al diagrama de dominio se siguieron haciendo las correcciones en sonarqube y pruebas unitarias
    
 3. **¿Tengo algún impedimento o bloqueo?**
 
-   
+no estan funcionando las pruebas a mis compañeros   
 ---
 
 ### Santiago Clavijo
 
 1. **¿Qué hice ayer?**
 
-
+ayer corregir todos los issues, de las vistas que SonarQube mandaba a corregir mas no le hice pruebas ya que como no tienen logica de java no es necesario hacerle pruebas.
 
 2. **¿Qué voy a hacer hoy?**
 
-
+Hoy tratamos con el grupo de corregir la conexion de SonarQube ya que este esta tomando TODO el repositorio, y el profesor nos dijo que eso no tenia que pasar, que el sonar solo debe estar configurado para el back y no el repositorio en si
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
+falta de conocimiento y sin la conexion de sonarqube estamos basicamente a ciegas
 ---
 
 ### Gabriela Melo Gualteros
 
 1. **¿Qué hice ayer?**
 
-
+Ayer estuve revisando cuales eran las clases que me correspondian para corregir con el SonarQube
 
 2. **¿Qué voy a hacer hoy?**
 
-
+Hoy ya empece y termine las correcciones que aparecian en el SonarQube de las clases que me correspondieron cuando nos dividimos el trabajo con el equipo
 
 3. **¿Tengo algún impedimento o bloqueo?**
+
+Sigo sin entenderle al profesor lo del SonarQube, la configuracion de este, las pruebas, no se si lo que se esta haciendo esta del todo bien
 
 ---
 
@@ -6341,12 +6362,15 @@ no
 
 1. **¿Qué hice ayer?** 
 
+Termine varios de los diagramas que me hacían falta y empecé a hacer test de cada uno de los errores de sonarqube
 
 2. **¿Qué voy a hacer hoy?** 
 
+Modificamos por completo la configuración del sonarqube porque estaba tomando errores de más y ya nos estábamos asustando
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
+No
 
 ---
 
@@ -6356,13 +6380,16 @@ no
 
 1. **¿Qué hice ayer?**
 
+ayer hice las pruebas de modelo y termine de modificar los diagramas que me faltaban
+
    
 2. **¿Qué voy a hacer hoy?**
+hoy segui modificando el diagrama c4 ya que tiene que coincidir con los diagramas anteriores que han hecho mis compañeros y termine el demi patron gof 
 
    
 3. **¿Tengo algún impedimento o bloqueo?**
 
-
+no e como esta configurado el sonarqube tengo algunos vacios
 
 ---
 
@@ -6384,13 +6411,15 @@ no
 
 1. **¿Qué hice ayer?**
 
-
+ayer intentamos configurar el sonarqube para que solo tome las clases del back
 
 2. **¿Qué voy a hacer hoy?**
 
-
+hoy volvi a hacer mi diagrama gof en draw.io ya que lo tenia en visual paradigm, tambien hice los arreglos y las pruebas de la clase ciudad dao
 
 3. **¿Tengo algún impedimento o bloqueo?**
+
+no entiendo como esta configurado el sonar, ni como configurarlo.
 
 ---
 
@@ -6413,12 +6442,18 @@ no
 
 1. **¿Qué hice ayer?** 
 
+Termine varios de los diagramas que me hacían falta y empecé a hacer test de cada uno de los errores de sonarqube
 
 2. **¿Qué voy a hacer hoy?** 
 
+Modificamos por completo la configuración del sonarqube porque estaba tomando errores de más y ya nos estábamos asustando
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
+no
+
+
+<img width="736" height="1600" alt="image" src="https://github.com/user-attachments/assets/89964e6c-88ca-4397-abbb-550a7f65b75b" />
 
 ---
 
