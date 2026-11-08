@@ -61,7 +61,7 @@ public final class CatalogoPreguntas {
             new DefPregunta("golf", "¿Te interesa jugar golf durante el viaje?", TipoAtributo.AUTO, "sport.golf", 1)
     );
 
-    public static List<DefPregunta> todas() {
+    public static List<DefPregunta> todasLasPreguntas() {
         return TODAS;
     }
 

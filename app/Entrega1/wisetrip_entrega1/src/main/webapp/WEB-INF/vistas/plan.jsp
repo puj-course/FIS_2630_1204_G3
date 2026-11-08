@@ -34,7 +34,7 @@
 
     <section>
         <c:if test="${not empty avisoReparto}">
-            <p class="pl-aviso" role="status"><c:out value="${avisoReparto}"/></p>
+            <output class="pl-aviso"><c:out value="${avisoReparto}"/></output>
         </c:if>
         <span class="pl-rotulo">Último paso</span>
         <h1 class="pl-titulo">¿Cómo repartimos<br>tu presupuesto?</h1>

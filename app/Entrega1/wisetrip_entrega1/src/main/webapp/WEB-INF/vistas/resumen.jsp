@@ -190,9 +190,8 @@
                                     <%-- HU-84: bandera del país de la moneda elegida --%>
                                     <c:if test="${not empty presupuesto.moneda}">
                                         <img class="rs-bandera"
-                                            src="<c:url value='/img/banderas/${presupuesto.moneda}.png'/>"
-                                            alt="Bandera de ${presupuesto.moneda}"
-                                            onerror="this.style.display='none'">
+                                        src="<c:url value='/img/banderas/${presupuesto.moneda}.png'/>"
+                                        alt="Bandera de ${presupuesto.moneda}">
                                     </c:if>
                                 </strong>
                             <span class="rs-pase-detalle">
@@ -240,6 +239,16 @@
 
     </div>
 </main>
+
+<script>
+    document.querySelectorAll('.rs-bandera').forEach(img => {
+        function ocultar() {
+            img.style.display = 'none';
+        }
+        img.addEventListener('error', ocultar);
+        if (img.complete && img.naturalWidth === 0) ocultar();
+    });
+</script>
 
 </body>
 </html>

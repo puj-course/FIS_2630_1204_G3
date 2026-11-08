@@ -451,14 +451,14 @@
             <ul class="it-lista-actividades" id="itListaRecomendadas">
                 <li class="it-actividad it-recomendada" draggable="true" data-categoria="actividades" data-id="rec-1" data-costo="5">
                     <span class="it-foto">
-                        <img src="/img/itinerario/recomendada-1.jpg" alt="" onerror="this.remove()">
+                        <img src="/img/itinerario/recomendada-1.jpg" alt="">
                     </span>
                     <strong>Mirador de la ciudad</strong>
                     <span>Recomendada · 2 h · US$ 5</span>
                 </li>
                 <li class="it-actividad it-recomendada" draggable="true" data-categoria="actividades" data-id="rec-2" data-costo="6">
                     <span class="it-foto">
-                        <img src="/img/itinerario/recomendada-2.jpg" alt="" onerror="this.remove()">
+                        <img src="/img/itinerario/recomendada-2.jpg" alt="">
                     </span>
                     <strong>Mercado local</strong>
                     <span>Recomendada · 2 h · US$ 6</span>
@@ -473,18 +473,18 @@
                 Actividades en el calendario: <strong id="itGastado">US$ 0</strong>
             </p>
 
-            <div class="it-alerta it-alerta-roja" id="itAlertaRoja" role="status" hidden>
+            <output class="it-alerta it-alerta-roja" id="itAlertaRoja" hidden>
                 <span class="it-alerta-icono">!</span>
-                <p>
+                <span class="it-alerta-texto">
                     ¿Estás a punto de gastar el máximo de tu presupuesto?
                     <a href="<c:url value='/plan'/>">¿Te gustaría acomodarlo?</a>
-                </p>
-            </div>
+                </span>
+            </output>
 
-            <div class="it-alerta it-alerta-verde" id="itAlertaVerde" role="status">
+            <output class="it-alerta it-alerta-verde" id="itAlertaVerde">
                 <span class="it-alerta-icono">✓</span>
-                <p>Vas súper bien, aún tienes presupuesto hábil.</p>
-            </div>
+                <span class="it-alerta-texto">Vas súper bien, aún tienes presupuesto hábil.</span>
+            </output>
         </section>
 
         <section class="it-caja it-gastos">
@@ -561,7 +561,7 @@
                        placeholder="Escribe una actividad...">
                 <button type="submit" aria-label="Agregar actividad">+</button>
             </form>
-            <p class="it-nueva-aviso" id="itNuevaAviso" role="status"></p>
+            <output class="it-nueva-aviso" id="itNuevaAviso"></output>
         </section>
 
     </div>
@@ -710,6 +710,16 @@
 </main>
 
 </div>
+
+<script>
+    document.querySelectorAll('#itListaRecomendadas .it-foto img').forEach(img => {
+        function quitar() {
+            img.remove();
+        }
+        img.addEventListener('error', quitar);
+        if (img.complete && img.naturalWidth === 0) quitar();
+    });
+</script>
 
 <script src="/js/viaje.js"></script>
 <script src="/js/itinerario.js"></script>

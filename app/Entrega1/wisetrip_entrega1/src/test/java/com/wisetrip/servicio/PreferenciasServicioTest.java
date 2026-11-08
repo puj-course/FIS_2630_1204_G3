@@ -1,10 +1,9 @@
 package com.wisetrip.servicio;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -14,57 +13,56 @@ import org.junit.jupiter.api.Test;
 
 import com.wisetrip.modelo.CategoriaPreferencia;
 import com.wisetrip.modelo.Importancia;
-import com.wisetrip.modelo.Preferencias;
 import com.wisetrip.modelo.Pregunta;
+import com.wisetrip.modelo.Preferencias;
 
-/**
- * Pruebas unitarias de PreferenciasServicio: cuestionario de preferencias
- * del viajero (validación de respuestas, importancias y resumen).
- */
 @DisplayName("PreferenciasServicio")
 class PreferenciasServicioTest {
 
     private PreferenciasServicio servicio;
-    private Preferencias preferencias;
 
     @BeforeEach
     void setUp() {
         servicio = new PreferenciasServicio();
-        preferencias = new Preferencias();
-        preferencias.setRespuestas(todasCon("no"));
     }
 
-    /** Responde todas las preguntas del cuestionario con el mismo valor. */
-    private Map<String, String> todasCon(String valor) {
-        Map<String, String> respuestas = new LinkedHashMap<>();
+    /** Preferencias con la misma respuesta para todas las preguntas del cuestionario. */
+    private Preferencias respondiendoTodoCon(String valor) {
+        Preferencias preferencias = new Preferencias();
         for (CategoriaPreferencia categoria : servicio.listarCategorias()) {
             for (Pregunta pregunta : categoria.getPreguntas()) {
-                respuestas.put(pregunta.getClave(), valor);
+                preferencias.getRespuestas().put(pregunta.getClave(), valor);
             }
         }
-        return respuestas;
+        return preferencias;
     }
 
-    // ------------------------------------------------------------ catálogo
+    @Test
+    @DisplayName("listarCategorias devuelve las 9 categorías del cuestionario")
+    void listarCategorias_devuelveNueveCategorias() {
+        assertEquals(9, servicio.listarCategorias().size());
+    }
 
     @Test
-    @DisplayName("el cuestionario tiene 9 categorías y 29 preguntas")
-    void catalogo_categoriasYPreguntas() {
-        assertEquals(9, servicio.listarCategorias().size());
+    @DisplayName("totalPreguntas suma las preguntas de todas las categorías")
+    void totalPreguntas_sumaTodasLasCategorias() {
+        int esperado = servicio.listarCategorias().stream().mapToInt(c -> c.getPreguntas().size()).sum();
+
+        assertEquals(esperado, servicio.totalPreguntas());
         assertEquals(29, servicio.totalPreguntas());
     }
 
-    // ------------------------------------------------------------ validarPreferencias
-
     @Test
-    @DisplayName("todas las preguntas respondidas con valores válidos no tienen errores")
-    void validar_todoRespondido_sinErrores() {
-        assertTrue(servicio.validarPreferencias(preferencias).isEmpty());
+    @DisplayName("validarPreferencias: con todas las preguntas respondidas no hay errores")
+    void validarPreferencias_todasRespondidas_sinErrores() {
+        Map<String, String> errores = servicio.validarPreferencias(respondiendoTodoCon("gustar"));
+
+        assertTrue(errores.isEmpty());
     }
 
     @Test
-    @DisplayName("sin respuestas, cada pregunta reporta que falta responderla")
-    void validar_sinRespuestas_todasFaltan() {
+    @DisplayName("validarPreferencias: sin respuestas, cada pregunta genera un error")
+    void validarPreferencias_sinRespuestas_unErrorPorPregunta() {
         Map<String, String> errores = servicio.validarPreferencias(new Preferencias());
 
         assertEquals(servicio.totalPreguntas(), errores.size());
@@ -72,83 +70,100 @@ class PreferenciasServicioTest {
     }
 
     @Test
-    @DisplayName("una respuesta que no es un nivel de importancia se rechaza")
-    void validar_respuestaInvalida_error() {
-        preferencias.getRespuestas().put("playa", "talvez");
+    @DisplayName("validarPreferencias: una respuesta en blanco cuenta como no respondida")
+    void validarPreferencias_respuestaEnBlanco_error() {
+        Preferencias preferencias = respondiendoTodoCon("si");
+        preferencias.getRespuestas().put("playa", "  ");
 
         Map<String, String> errores = servicio.validarPreferencias(preferencias);
 
         assertEquals(1, errores.size());
-        assertEquals("Respuesta no válida.", errores.get("playa"));
+        assertEquals("Falta responder esta pregunta.", errores.get("playa"));
     }
 
     @Test
-    @DisplayName("borde: una respuesta en blanco cuenta como sin responder")
-    void validar_respuestaEnBlanco_falta() {
-        preferencias.getRespuestas().put("museos", "  ");
+    @DisplayName("validarPreferencias: una respuesta fuera de las cuatro opciones es inválida")
+    void validarPreferencias_respuestaInvalida_error() {
+        Preferencias preferencias = respondiendoTodoCon("no");
+        preferencias.getRespuestas().put("hispanohablante", "quizas");
 
-        assertEquals("Falta responder esta pregunta.",
-                servicio.validarPreferencias(preferencias).get("museos"));
+        Map<String, String> errores = servicio.validarPreferencias(preferencias);
+
+        assertEquals(1, errores.size());
+        assertEquals("Respuesta no válida.", errores.get("hispanohablante"));
     }
 
-    // ------------------------------------------------------------ conversiones
-
     @Test
-    @DisplayName("obtenerImportancias convierte cada respuesta a su nivel")
-    void obtenerImportancias_convierte() {
+    @DisplayName("obtenerImportancias convierte cada respuesta del formulario en su nivel")
+    void obtenerImportancias_convierteRespuestas() {
+        Preferencias preferencias = respondiendoTodoCon("no");
         preferencias.getRespuestas().put("playa", "prefiero");
-        preferencias.getRespuestas().put("museos", "si");
+        preferencias.getRespuestas().put("lujo", "si");
+        preferencias.getRespuestas().put("hispanohablante", "gustar");
 
         Map<String, Importancia> niveles = servicio.obtenerImportancias(preferencias);
 
-        assertEquals(Importancia.prefiero, niveles.get("playa"));
-        assertEquals(Importancia.si, niveles.get("museos"));
-        assertEquals(Importancia.no, niveles.get("compras"));
+        assertEquals(servicio.totalPreguntas(), niveles.size());
+        assertEquals(Importancia.PREFIERO, niveles.get("playa"));
+        assertEquals(Importancia.SI, niveles.get("lujo"));
+        assertEquals(Importancia.GUSTAR, niveles.get("hispanohablante"));
+        assertEquals(Importancia.NO, niveles.get("museos"));
     }
 
     @Test
-    @DisplayName("obtenerAtributosSeleccionados marca gustar, prefiero y si como true")
-    void atributosSeleccionados_marcaLosAfirmativos() {
+    @DisplayName("obtenerImportancias: una respuesta desconocida lanza IllegalArgumentException")
+    void obtenerImportancias_respuestaDesconocida_lanzaExcepcion() {
+        Preferencias preferencias = respondiendoTodoCon("no");
+        preferencias.getRespuestas().put("playa", "quizas");
+
+        assertThrows(IllegalArgumentException.class, () -> servicio.obtenerImportancias(preferencias));
+    }
+
+    @Test
+    @DisplayName("obtenerAtributosSeleccionados: gustar, prefiero y si son true; no y vacío son false")
+    void obtenerAtributosSeleccionados_marcaLasAfirmativas() {
+        Preferencias preferencias = new Preferencias();
         preferencias.getRespuestas().put("playa", "gustar");
-        preferencias.getRespuestas().put("museos", "prefiero");
-        preferencias.getRespuestas().put("compras", "si");
+        preferencias.getRespuestas().put("lujo", "prefiero");
+        preferencias.getRespuestas().put("hispanohablante", "si");
+        preferencias.getRespuestas().put("museos", "no");
 
         Map<String, Boolean> atributos = servicio.obtenerAtributosSeleccionados(preferencias);
 
+        assertEquals(servicio.totalPreguntas(), atributos.size());
         assertTrue(atributos.get("playa"));
-        assertTrue(atributos.get("museos"));
-        assertTrue(atributos.get("compras"));
-        assertFalse(atributos.get("nieve"));
+        assertTrue(atributos.get("lujo"));
+        assertTrue(atributos.get("hispanohablante"));
+        assertEquals(false, atributos.get("museos"));
+        assertEquals(false, atributos.get("urbano"));
+    }
+
+    @Test
+    @DisplayName("resumenPorCategoria: lista las etiquetas de lo elegido en su categoría")
+    void resumenPorCategoria_listaLoElegido() {
+        Preferencias preferencias = new Preferencias();
+        preferencias.getRespuestas().put("playa", "si");
+        preferencias.getRespuestas().put("nieve", "prefiero");
+        preferencias.getRespuestas().put("lujo", "gustar");
+
+        Map<String, List<String>> resumen = servicio.resumenPorCategoria(preferencias);
+
+        assertEquals(9, resumen.size());
+        assertEquals(List.of("Playa", "Nieve"), resumen.get("Paisaje y clima"));
+        assertEquals(List.of("Lujo"), resumen.get("Estilo de viaje"));
+        assertTrue(resumen.get("Cultura").isEmpty());
     }
 
     @Test
     @DisplayName("contarAfirmativas cuenta solo gustar, prefiero y si")
-    void contarAfirmativas_cuentaSoloLosAfirmativos() {
+    void contarAfirmativas_cuentaSoloAfirmativas() {
+        Preferencias preferencias = new Preferencias();
         preferencias.getRespuestas().put("playa", "gustar");
-        preferencias.getRespuestas().put("museos", "prefiero");
-        preferencias.getRespuestas().put("compras", "si");
+        preferencias.getRespuestas().put("lujo", "prefiero");
+        preferencias.getRespuestas().put("golf", "si");
+        preferencias.getRespuestas().put("museos", "no");
+        preferencias.getRespuestas().put("urbano", "");
 
-        assertEquals(3, servicio.contarAfirmativas(preferencias));
-    }
-
-    @Test
-    @DisplayName("borde: si todo es 'no' no hay afirmativas")
-    void contarAfirmativas_todoNo_cero() {
-        assertEquals(0, servicio.contarAfirmativas(preferencias));
-    }
-
-    // ------------------------------------------------------------ resumen
-
-    @Test
-    @DisplayName("resumenPorCategoria muestra las etiquetas de lo elegido en cada categoría")
-    void resumen_muestraEtiquetasPorCategoria() {
-        preferencias.getRespuestas().put("playa", "gustar");
-        preferencias.getRespuestas().put("nieve", "si");
-
-        Map<String, List<String>> resumen = servicio.resumenPorCategoria(preferencias);
-
-        assertEquals(List.of("Playa", "Nieve"), resumen.get("Paisaje y clima"));
-        assertTrue(resumen.get("Cultura").isEmpty());
-        assertEquals(9, resumen.size());
+        assertEquals(3L, servicio.contarAfirmativas(preferencias));
     }
 }

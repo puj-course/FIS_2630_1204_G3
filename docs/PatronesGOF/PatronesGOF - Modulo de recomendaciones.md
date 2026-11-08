@@ -54,7 +54,8 @@ public double calcularMargenImprevistos(Presupuesto presupuesto) {
 double margen = decoradorMargen.calcularMargenImprevistos(presupuesto);
 model.addAttribute("margenImprevistos", margen);
 ```
-<img width="1359" height="697" alt="image" src="https://github.com/user-attachments/assets/8b858db1-f6be-4d42-8e07-33f952dbe36f" />
+<img width="1029" height="838" alt="image" src="https://github.com/user-attachments/assets/ad494105-5b30-42fd-8b07-4c514cc85618" />
+
 
 ---
 

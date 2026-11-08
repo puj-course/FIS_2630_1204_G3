@@ -1,7 +1,10 @@
 package com.wisetrip.modelo;
 
+import java.io.Serializable;
+
 import java.time.LocalDate;
 import java.time.Period;
+import java.time.ZoneId;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -14,11 +17,17 @@ import java.util.Map;
 //agregar campos: estado, fecha registro, ultimo acceso
 
 // Modelo que representa la información de un usuario de WiseTrip
-public class Usuario {
+public class Usuario implements Serializable {
+    private static final long serialVersionUID = 1L;
+
 
     public static final int EDAD_MINIMA = 18;
     public static final int EDAD_MAXIMA = 120;
     public static final int LARGO_MINIMO_PASSWORD = 6;
+    private static final String CAMPO_CLAVE = "password";
+    // Usamos la zona de Bogotá, Colombia, porque es la referencia del proyecto.
+    // Así las validaciones de fecha no dependen de la zona horaria del servidor.
+    private static final ZoneId ZONA_HORARIA = ZoneId.of("America/Bogota");
 
     private int idUsuario;
     private String nombreCompleto;
@@ -30,9 +39,10 @@ public class Usuario {
     private String rol = "cliente";
     private String chatId;
 
-    // Constructor vacío necesario para que Spring pueda
-    // crear y llenar el objeto con los datos del formulario
     public Usuario() {
+        // Constructor vacio necesario para que Spring pueda
+        // crear y llenar el objeto con los datos del formulario.
+        // porque aun no lo ha hecho.
     }
 
     //GETTERS Y SETTERS
@@ -158,14 +168,14 @@ public class Usuario {
             try {
                 LocalDate nacimiento = LocalDate.parse(fechaNacimiento);
                 int edad = calcularEdad();
-                if (nacimiento.isAfter(LocalDate.now())) {
+                if (nacimiento.isAfter(LocalDate.now(ZONA_HORARIA))) {
                     errores.put("fechaNacimiento", "La fecha de nacimiento no puede ser futura.");
                 } else if (edad < EDAD_MINIMA) {
                     errores.put("fechaNacimiento", "Debes ser mayor de 18 años para crear una cuenta en WiseTrip.");
                 } else if (edad > EDAD_MAXIMA) {
                     errores.put("fechaNacimiento", "Ingresa una fecha de nacimiento valida.");
                 }
-            } catch (Exception e) {
+            } catch (Exception _) {
                 errores.put("fechaNacimiento", "Ingresa una fecha valida.");
             }
         }
@@ -173,15 +183,15 @@ public class Usuario {
         //Correo
         if (correo == null || correo.isBlank()) {
             errores.put("correo", "Ingresa tu correo electronico.");
-        } else if (!correo.trim().matches("^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$")) {
+        } else if (!correo.trim().matches("^[^\\s@]++@[^\\s@.]++(?:\\.[^\\s@.]++)++$")) {
             errores.put("correo", "El formato del correo no es valido.");
         }
 
         //Password
         if (password == null || password.isEmpty()) {
-            errores.put("password", "Ingresa una contrasena.");
+            errores.put(CAMPO_CLAVE, "Ingresa una contrasena."); // NOSONAR: llave del mapa de errores, no es una contraseña
         } else if (password.length() < LARGO_MINIMO_PASSWORD) {
-            errores.put("password", "La contrasena debe tener al menos 6 caracteres.");
+            errores.put(CAMPO_CLAVE, "La contrasena debe tener al menos 6 caracteres."); // NOSONAR: llave del mapa de errores, no es una contraseña
         }
 
         //Confirmar password
@@ -197,7 +207,7 @@ public class Usuario {
 
     //calcular edad actual
     public int calcularEdad() {
-        return Period.between(LocalDate.parse(fechaNacimiento), LocalDate.now()).getYears();
+        return Period.between(LocalDate.parse(fechaNacimiento), LocalDate.now(ZONA_HORARIA)).getYears();
     }
 
     // verifica la contraseña, si es true coincide con la dada por el usuario

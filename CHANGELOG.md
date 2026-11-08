@@ -4,11 +4,11 @@ Este archivo registra las actualizaciones diarias del equipo durante el desarrol
 
 **Responsables:**
 
-* Maria Alejandra Rodriguez
-* Gabriela Melo Gualteros
-* Valeria Cortes Rendon
-* Isabella Posada
-* Santiago Clavijo
+* Maria Alejandra Rodriguez.
+* Gabriela Melo Gualteros.
+* Valeria Cortes Rendon.
+* Isabella Posada.
+* Santiago Clavijo.
 
 ---
 
@@ -4572,6 +4572,8 @@ todo lo veo bien , sin embargo estas semanas son criticas para todos los miembor
 
 <img width="959" height="469" alt="image" src="https://github.com/user-attachments/assets/f3ddccf6-395b-4478-a625-764fe9c11b6e" />
 
+---
+
 # Sprint 9 - Sprint Planning - [13/10/2026]
 
 ## Sprint Goal
@@ -5776,6 +5778,10 @@ Hoy voy a iniciar con el diseño de interfaces como fue planeado por el grupo
 no
 
 ---
+<img width="1600" height="1200" alt="image" src="https://github.com/user-attachments/assets/304ed1ea-4dad-446f-b549-6d75b2977ea2" />
+
+---
+
 
 ## Daily Sprint - 29/10/2026
 
@@ -5783,15 +5789,607 @@ no
 
 1. **¿Qué hice ayer?**
 
+ayer revisamos lo de junit y sonarcube
 
    
 2. **¿Qué voy a hacer hoy?**
 
 
+hoy intentare terminar los diagramas
    
 3. **¿Tengo algún impedimento o bloqueo?**
 
 
+si falkta de tiempo
+
+---
+
+### Valeria Cortes Rendon
+
+1. **¿Qué hice ayer?**
+
+Descargar visual e iniciar los diagramas que se puedan hacer ya que si dejamos para lo ultimo puede que no alcancemos a terminarlos correctamente
+
+2. **¿Qué voy a hacer hoy?**
+
+Empezar a trabajar en la refactorizacion de codigo y preguntar que diagramas son los que debemos tener para hacerlos ademas del de componentes
+   
+3. **¿Tengo algún impedimento o bloqueo?**
+
+no tengo tanto tiempo
+   
+---
+
+### Santiago Clavijo
+
+1. **¿Qué hice ayer?**
+
+descargue el visual paradigm en la maquina virtual
+
+2. **¿Qué voy a hacer hoy?**
+
+empece a hacer mis diagrama
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+no
+
+---
+
+### Gabriela Melo Gualteros
+
+1. **¿Qué hice ayer?**
+
+Ayer espere que mi compañera hiciera otra refactorizacion al codigo
+
+2. **¿Qué voy a hacer hoy?**
+
+Hoy le pregunte al monitor los diagramas que teniamos que hacer para tenerlo presente pero no obtuve respuesta, pero ahi igual mire que es lo que teniamos que hacer
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+no
+
+
+---
+
+
+### Maria Alejandra Rodriguez
+
+1. **¿Qué hice ayer?** 
+
+ayer hice una refactorizacion y arreglo del codigo porque de la que habia hecho quedaron algunos errores
+
+
+2. **¿Qué voy a hacer hoy?** 
+
+Hoy hice toda la pagina de itinerario y viajes que decidí unir para que esa ultima pantalla que era la mas importante se viera muy bien
+
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+no 
+
+---
+
+<img width="1460" height="832" alt="Screenshot 2026-11-03 at 9 20 19 PM" src="https://github.com/user-attachments/assets/374bc7b4-f2e7-44b1-a67c-4f08d1564868" />
+
+
+---
+## Daily Sprint - 30/10/2026
+
+### Isabella Posada
+
+1. **¿Qué hice ayer?**
+
+ayer inicie la elaboracion de los diagramas 
+
+2. **¿Qué voy a hacer hoy?**
+
+hoy revisamos en clase las nuevas tecnicas que vamos a usar para el proyecto que es lo de sonarcube y lo de junit, la verdad no me quedo tan claro
+   
+3. **¿Tengo algún impedimento o bloqueo?**
+
+
+no tengo tanto tiempo
+
+---
+
+### Valeria Cortes Rendon
+
+1. **¿Qué hice ayer?**
+
+Empezar a trabajar en la refactorizacion de codigo y preguntar que diagramas son los que debemos tener para hacerlos ademas del de componentes
+
+2. **¿Qué voy a hacer hoy?**
+
+Hoy no voy a poder adelantar ya que tengo que empezar a realizar el taller de pruebas y otros mapas
+   
+3. **¿Tengo algún impedimento o bloqueo?**
+
+Cantidad de trabajos de otras materias
+   
+---
+
+### Santiago Clavijo
+
+1. **¿Qué hice ayer?**
+
+ayer empece a hacer el diagrama de mi patron gof
+
+2. **¿Qué voy a hacer hoy?**
+
+hoy termine mi diagrama y lo subi al main, ademas de empezar con mi segunda hu que esta enfocada al modulo 2 de wisetrip ya que es un poco extensa me tomara mas tiempo
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+no
+
+---
+
+### Gabriela Melo Gualteros
+
+1. **¿Qué hice ayer?**
+
+Ayer le pregunte al monitor sobre os diagramas y empece a realizar el del patron gof
+
+2. **¿Qué voy a hacer hoy?**
+
+Hoy hare otro diagrama, ya que el monitor ya le respondio a mi compañera y le envio la lista de diagramas que tenemos que tener para la entrega
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+Tiempo
+
+---
+
+
+### Maria Alejandra Rodriguez
+
+1. **¿Qué hice ayer?** 
+
+Termine todo lo que tenía que ver con código y el diseño del itinerario y en general de las vistas de la página web
+
+2. **¿Qué voy a hacer hoy?** 
+
+Empezar la construcción de los diagramas
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+NO
+
+---
+
+<img width="1147" height="826" alt="Screenshot 2026-11-03 at 9 20 55 PM" src="https://github.com/user-attachments/assets/fe0114ae-b46d-4fcb-80f0-7f4f529cc419" />
+
+
+---
+#  Sprint Retrospective - 01/11/2026
+
+## Maria Alejandra Rodriguez
+
+1. **¿Qué logramos?**
+
+Logramos refactorizar el codigo y tener lista la pagina del itinerario, con las funciones esperadas, le hacen falta par de detalles
+
+2. **¿Cómo trabajamos?**
+
+Bien, sin embargo estas semanas hemos tenido muchos trabajos de todas las materias pero aun así , trabajamos lo que mas pudimos
+
+3. **¿Qué podríamos mejorar?**
+
+La organización de algunos issues y tareas que quedaron incompletas o mal hechas por una mala estimación de tiempo
+
+  
+---
+
+## Gabriela Melo Gualteros
+
+1. **¿Qué logramos?**
+
+ Se logro hacer no solo una refactorizacion sino dos donde en cada una se pudo limpiar al maximo el codigo y empezar de nuevo con lo diagramas ahora con una idea mas clara de lo que se espera ver en cada uno de estos
+ 
+2. **¿Cómo trabajamos?**
+
+Bien, aunque esta semana no pude estar muy pendiente y comprometida como hubiera querido por otros trabajos de otras materias que tenia que entregar y porque viaje
+  
+3. **¿Qué podríamos mejorar?**
+
+Esta semana volvimos a caer en poner mucho trabajo cuando la carga academica estaba muy alta y por lo tanto ninguno pudo rendir como se esperaba
+  
+---
+
+## Valeria Cortes Rendon
+
+1. **¿Qué logramos?**
+
+Se ha logrado mejorar el codigo y limpiarlo lo mas posible, ademas de que hemos trabajado coordinadamente para que nos vaya bien en el proyecto y podamos mejorar los aspectos que tenemos aun no muy pulidos
+   
+2. **¿Cómo trabajamos?**
+
+Esta semana fue pesada para todos por lo que no estuve tan presente en el proyecto ya que tenia mas cosas por entregar. Se busca que iniciemos con la construccion de la 3era entrega
+
+¿Qué podríamos mejorar?
+ 
+3. **¿Qué podríamos mejorar?**
+
+La distribucion del tiempo ya que las tareas de esta semana fueron muy pesadas y la carga no me dio para hacer todo lo que tenia en mente
+ 
+---
+
+## Isabella Posada
+
+1. **¿Qué logramos?**
+
+Refactorizamos y limpiamos el código, actualizamos los diagramas y avanzamos en la página del itinerario, dejando una mejor base para la tercera entrega
+   
+2. **¿Cómo trabajamos?**
+
+
+Trabajamos de forma coordinada, aunque la alta carga académica limitó el tiempo y la participación del equipo.
+
+3. **¿Qué podríamos mejorar?**
+
+
+Debemos organizar mejor el tiempo, estimar correctamente las tareas y distribuir la carga de trabajo de manera más equilibrada.
+
+---
+
+## Santiago Clavijo
+
+1. **¿Qué logramos?**
+
+logramos que el codigo este mas limpio sin perder funcionalidades del proyecto, asi como rehacer los diagramas de este codigo refactorizado
+
+2. **¿Cómo trabajamos?**
+
+como equipo bien, sin embargo estas ultimas semanas del semestre son las mas pesadas hablando de carga academica y proyectos por entregar
+
+3. **¿Qué podríamos mejorar?**
+
+la distribucion del tiempo de todos y el peso en el proyecto de las issues de aqui en adelate
+
+---
+# Sprint Review - 01/11/2026
+
+## Información de la Sesión
+
+* **Fecha de la Review:** 01/11/2026
+* **Sprint Goal:** Avanzar en la refactorización y aseguramiento de calidad del código con base en los análisis de SonarQube, ejecutar el taller de automatización, implementar la interfaz funcional del itinerario en WiseTrip y actualizar el modelado del sistema (diagramas y patrones GoF) conforme a las observaciones de sustentaciones previas.
+
+## Incremento Entregado
+
+* **HU 119 (Completa):** Organización y diseño final de la página funcional del itinerario con los diferentes servicios ofrecidos por WiseTrip
+* **HU 116 (Completa):** Ejecución del taller de automatización y refactorización prevista del proyecto
+* **HU 114 (Parcial):** Reestructuración del diagrama de patrón GoF para adaptarlo al formato de trabajo definido en draw.io
+* **HU 117 / HU 124 (Parcial):** Elaboración de diagramas de representación del sistema asignados (pendientes de subida por definición de formato de entrega
+* **HU 120 / HU 121 (Parcial):** Análisis y aplicación de las correcciones indicadas por el docente en la sustentación anterior
+* **HU 123 (Parcial):** Avances en refactorización y desarrollo del taller de automatización
+
+## Demostración
+
+Resumen de los puntos presentados durante la demo del producto:
+
+* **Módulo de Itinerario WiseTrip:** Presentación del diseño e interacción de la página funcional donde se integran los distintos servicios turísticos
+* **Automatización y Calidad:** Muestra de los ejercicios del taller de automatización y las refactorizaciones base realizadas en la estructura del código
+* **Modelado del Sistema:** Estado de actualización de los diagramas arquitectónicos y de patrones GoF según las correcciones docentes previas
+
+## Conclusión y Próximos Pasos
+
+Como próximos pasos, se propone:
+
+1. Subir las correcciones pendientes de las HU 120 y HU 121 una vez finalizadas
+2. Definir las directrices y formato de entrega para subir los diagramas pendientes del sistema (HU 117 y HU 124)
+3. Completar en draw.io los diagramas de patrones GoF acordados por el equipo (HU 114)
+4. Replantear desde cero los diagramas de la HU 115, adaptándolos a la nueva estructura sin división por módulos
+5. Atender la deuda técnica y alertas de calidad reportadas por SonarQube identificadas durante la refactorización (HU 116 y HU 123)
+
+**Feedback de los stakeholders:**
+Mejoras en SonarQube
+
+---
+
+---
+
+# Sprint Planning - [02/11/2026]
+
+## Sprint Goal
+
+
+## Capacidad del equipo 
+
+* Desarrolladores disponibles: 5
+* Puntos/horas disponibles: 42
+
+## Issues seleccionados para el Sprint
+
+| ID | Título | Tipo | Estimación | Responsable |
+|----|--------|------|------------|-------------|
+| #126 | Como administrador, quiero contar con pruebas automáticas y métricas de SonarQube para los controladores, para comprobar que funcionan bien y saber qué partes hay que mejorar. |Historia de Usuario  | TBD    | Valeria |
+| #127 | Como administrador, quiero contar con un plan de pruebas que cubra la mayor parte del código, para asegurarme de que el sistema esté bien probado y cumpla con la cobertura esperada. | Historia de Usuario | TBD | Valeria |
+| #128 | Como administrador de WiseTrip quiero verificar y corregir los problemas reportados por SonarQube en los servicios relacionados con presupuesto, gastos y viajes para mejorar la confiabilidad y mantenibilidad de estas funcionalidades     | Historia de Usuario | TBD | Maleja |
+| #129 | Como administrador de WiseTrip quiero verificar y corregir los problemas reportados por SonarQube en los servicios e integraciones del sistema para mejorar la calidad, seguridad y estabilidad de WiseTrip   | Historia de Usuario | TBD | Maleja |
+| #130 | Yo como usuario quiero que la información de mi plan de viaje se guarde y se muestre correctamente mientras lo armo para no tener que repetir pasos ni perder lo que ya elegí.      |Historia de Usuario | TBD | Gaby |
+| #131 |Yo como usuario quiero que mis fechas, los lugares que busco y los datos de mi viaje se mantengan correctos durante toda mi sesión para no recibir errores ni ver información equivocada mientras uso la aplicación. | Historia de Usuario | TBD | Gaby |
+| #132 | Como Administrador, quiero configurar el análisis automatizado de código con SonarQube enfocado en el paquete de modelo, para asegurar que la estructura de datos y la lógica de negocio base cumplan con los estándares de calidad del proyecto | Historia de Usuario | TBD | Isabela|
+| #133 | HU | HU #133 - Como Administrador del sistema, quiero validar las pruebas unitarias creadas para los modelos, para asegurar que el código cumpla con el umbral requerido.| TBD | Isabela |
+| #134 | HU | Como administrador de WiseTrip, quiero corregir los issues que SonarQube reporta en los DAO y en las interfaces, para mejorar la confiabilidad, la seguridad y la mantenibilidad del acceso a la base de datos | TBD | Clavijo |
+| #135 | HU | Como administrador de WiseTrip, quiero corregir los issues que SonarQube reporta en los JSP, para que las vistas sean más legibles, fáciles de mantener y consistentes con el resto del sistema | TBD | Clavijo |
+
+## Riesgos / Bloqueos identificados
+
+- Falta de tiempo
+
+---
+<img width="1600" height="900" alt="PHOTO-2026-11-03-21-18-31" src="https://github.com/user-attachments/assets/4c661373-9865-4b8f-9ff5-fdd8a91f65f3" />
+
+---
+
+## Daily Sprint - 03/11/2026
+
+### Isabella Posada
+
+1. **¿Qué hice ayer?**
+
+ayer lo que hicimos fue el planning de este nuevo sprint, ademas de revisar lo de sonarcube con respecto a clases predeterminadas para dividir la carga de trabajo. 
+   
+2. **¿Qué voy a hacer hoy?**
+
+Hoy voy a revisar bien el codigo y el sonarcube 
+   
+3. **¿Tengo algún impedimento o bloqueo?**
+
+no entiendo muy bien pero es cuestion de practica. 
+
+---
+
+### Valeria Cortes Rendon
+
+1. **¿Qué hice ayer?**
+
+Se realizo el planning, se miro que debemos mejorar con respecto a sonarqube ya que tenemos mas de 146 issues que debemos mejoraar para cubrir con el coverage
+
+2. **¿Qué voy a hacer hoy?**
+
+Hoy hice mas diagramas ahora los patrones GOF mejorados, temrine el de dominio y ajuste el de despliegue. Tengo que revisar el de componentes ya que no lo entiendo muy bien
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+Falta de tiempo, falta de entendimiento de temas de clase, acumulacion de cosas   
+---
+
+### Santiago Clavijo
+
+1. **¿Qué hice ayer?**
+
+ayer hicimos el planning en el cual quedamos que esta semana nos ibamos a dedidar a toda la parte de junit y sonarqube
+
+2. **¿Qué voy a hacer hoy?**
+
+hoy vi todos los issues de sonarqube que me toca resolver ya que son muchos, entonces nos los repartimos entre todos
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+no entiendo bien como son las pruebas
+
+---
+
+### Gabriela Melo Gualteros
+
+1. **¿Qué hice ayer?**
+
+Ayer estuvimos en planning y quedamos en que en este sprint vamos a enfocarnos en todo lo que tiene que ver con SonarQube
+
+2. **¿Qué voy a hacer hoy?**
+
+Hoy vamos a separarnos el trabajo de sonarQube ya que es bastante, hicimos una lista de todo lo que tenemos que corergir y cada uno se termino encargando de una seccion
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+Falta de entendimiento de como se maneja SonarQube
+
+---
+
+
+### Maria Alejandra Rodriguez
+
+1. **¿Qué hice ayer?** 
+
+Realizamos el planning, entendí como funcionaba sonarQube para poderlo empezar a utilizar esta semana en mis HUs
+
+2. **¿Qué voy a hacer hoy?** 
+
+Hoy voy a analizar bien como puedo realizar esas pruebas para poder avanzar rapido con eso para lugeo hacer las grupales que nos asignamos para poder acaparar todo el codigo
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+Tengo un poco de confusión sobre le funcionamiento de SonarQube
+---
+
+## Daily Sprint - 04/11/2026
+
+### Isabella Posada
+
+1. **¿Qué hice ayer?**
+
+Ayer vimos lo de las medidas y los estándares que necesitamos para el proyecto
+
+2. **¿Qué voy a hacer hoy?**
+Hoy acabe el diagrama c4 del proyecto en draw.io y termine de hacer el de mi patrón gof
+   
+3. **¿Tengo algún impedimento o bloqueo?**
+
+no 
+
+---
+
+### Valeria Cortes Rendon
+
+1. **¿Qué hice ayer?**
+
+Ayer se hicieron mas diagramas ahora los patrones GOF mejorados, temrine el de dominio y ajuste el de despliegue. Tengo que revisar el de componentes ya que no lo entiendo muy bien
+
+2. **¿Qué voy a hacer hoy?**
+
+Se empezaron a hacer los cambios en sonarqube de las clases que fueron repartidas para cada uno de los integrantes se terminaron los diagramas que se estan realizando
+   
+3. **¿Tengo algún impedimento o bloqueo?**
+
+tiempo, son muchas pruebas
+   
+---
+
+### Santiago Clavijo
+
+1. **¿Qué hice ayer?**
+
+ayer revisamos el SonarQube, y vi los issues que me toca resolver a mi
+
+2. **¿Qué voy a hacer hoy?**
+
+hoy resolvi todos los issues de lo que se refiere a las vistas de wisetrip, no entendia bien lo que habia que hacer entonces solo corregi mas no hice las pruebas, esas las haare mañana
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+no entiendo bien como son las pruebas
+
+---
+
+### Gabriela Melo Gualteros
+
+1. **¿Qué hice ayer?**
+
+Ayer nos repartimos los errores que salen en SonarQube y lo que toca corregir. A mi me correspondieron unas clases de patrones, un controlador, entre otros.
+
+2. **¿Qué voy a hacer hoy?**
+
+Hoy la idea es empezar a navegar SonarQube y revisar los errores que sacan las clases que me correspondieron
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+Tengo otros trabajos que entregar antes de esto y no tengo muy claro lo de SonarQube
+
+---
+
+
+### Maria Alejandra Rodriguez
+
+1. **¿Qué hice ayer?** 
+
+Termine algunos diagramas pendientes porque aun no se si quedaron muy bien o no
+
+2. **¿Qué voy a hacer hoy?** 
+
+Terminar esos diagramas pendientes y revisar los errores que manda sonarqube
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+No entiendo muy bien eso de sonarqube
+
+---
+
+<img width="1536" height="2048" alt="image" src="https://github.com/user-attachments/assets/514594ab-1a18-4553-851b-2fefc9637d79" />
+
+
+---
+
+## Daily Sprint - 05/11/2026
+
+### Isabella Posada
+
+1. **¿Qué hice ayer?**
+
+ayer estuvimos mirando el paquete que le correspondia a cada uno para poder analizar los errrores de sonarqube, la verdad habian tareas de 30min y otras de 2 entonces mirar como se podian resolver
+   
+2. **¿Qué voy a hacer hoy?**
+
+Hoy corregi varios avisos de sonarqube en el paquete de  modelo e hice pruebas sencillas para comprobar que todo siguiera funcionando. Todas pasaron y sonarqube aprobo el analisis, me queda revisar la configuracion de cobertura, porque aparece en 0 % aunque si hice pruebas. Ademas corregi un monton de cosas del diagrama c4 porque aun no tenia coherencia con la refactorizacion que hicimos como grupo el sprint pasado. 
+   
+3. **¿Tengo algún impedimento o bloqueo?**
+
+realmente si, de conocimiento, a pesar de que el taller era claro y coherente con lo que tenemos que hacer en el proyecto sigo con algunos vacios al entender lo de la cobertura del proyecto y es mi responsabilidad ponerme al dia y entender porque aun nos quedan muchas cosas por hacer y la proxima semana tengo mas entregas.
+
+---
+
+### Valeria Cortes Rendon
+
+1. **¿Qué hice ayer?**
+
+Se hizo refactorizacion del codigo teniendo en cuenta los factores que salian en sonarqube, correcciones en las tareas y realizacion de diagramas
+
+2. **¿Qué voy a hacer hoy?**
+
+Se siguieron haciendo correccciones en los diagramas y conectando los patrrones gof al diagrama de dominio se siguieron haciendo las correcciones en sonarqube y pruebas unitarias
+   
+3. **¿Tengo algún impedimento o bloqueo?**
+
+no estan funcionando las pruebas a mis compañeros   
+---
+
+### Santiago Clavijo
+
+1. **¿Qué hice ayer?**
+
+ayer corregir todos los issues, de las vistas que SonarQube mandaba a corregir mas no le hice pruebas ya que como no tienen logica de java no es necesario hacerle pruebas.
+
+2. **¿Qué voy a hacer hoy?**
+
+Hoy tratamos con el grupo de corregir la conexion de SonarQube ya que este esta tomando TODO el repositorio, y el profesor nos dijo que eso no tenia que pasar, que el sonar solo debe estar configurado para el back y no el repositorio en si
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+falta de conocimiento y sin la conexion de sonarqube estamos basicamente a ciegas
+---
+
+### Gabriela Melo Gualteros
+
+1. **¿Qué hice ayer?**
+
+Ayer estuve revisando cuales eran las clases que me correspondian para corregir con el SonarQube
+
+2. **¿Qué voy a hacer hoy?**
+
+Hoy ya empece y termine las correcciones que aparecian en el SonarQube de las clases que me correspondieron cuando nos dividimos el trabajo con el equipo
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+Sigo sin entenderle al profesor lo del SonarQube, la configuracion de este, las pruebas, no se si lo que se esta haciendo esta del todo bien
+
+---
+
+
+### Maria Alejandra Rodriguez
+
+1. **¿Qué hice ayer?** 
+
+Termine varios de los diagramas que me hacían falta y empecé a hacer test de cada uno de los errores de sonarqube
+
+2. **¿Qué voy a hacer hoy?** 
+
+Modificamos por completo la configuración del sonarqube porque estaba tomando errores de más y ya nos estábamos asustando
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+No
+
+---
+
+## Daily Sprint - 06/11/2026
+
+### Isabella Posada
+
+1. **¿Qué hice ayer?**
+
+ayer hice las pruebas de modelo y termine de modificar los diagramas que me faltaban
+
+   
+2. **¿Qué voy a hacer hoy?**
+hoy segui modificando el diagrama c4 ya que tiene que coincidir con los diagramas anteriores que han hecho mis compañeros y termine el demi patron gof 
+
+   
+3. **¿Tengo algún impedimento o bloqueo?**
+
+no e como esta configurado el sonarqube tengo algunos vacios
 
 ---
 
@@ -5803,10 +6401,8 @@ no
 
 2. **¿Qué voy a hacer hoy?**
 
-
    
 3. **¿Tengo algún impedimento o bloqueo?**
-
 
    
 ---
@@ -5815,15 +6411,15 @@ no
 
 1. **¿Qué hice ayer?**
 
-
+ayer intentamos configurar el sonarqube para que solo tome las clases del back
 
 2. **¿Qué voy a hacer hoy?**
 
-
+hoy volvi a hacer mi diagrama gof en draw.io ya que lo tenia en visual paradigm, tambien hice los arreglos y las pruebas de la clase ciudad dao
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
-
+no entiendo como esta configurado el sonar, ni como configurarlo.
 
 ---
 
@@ -5839,8 +6435,6 @@ no
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
-
-
 ---
 
 
@@ -5848,17 +6442,18 @@ no
 
 1. **¿Qué hice ayer?** 
 
+Termine varios de los diagramas que me hacían falta y empecé a hacer test de cada uno de los errores de sonarqube
 
 2. **¿Qué voy a hacer hoy?** 
 
-
+Modificamos por completo la configuración del sonarqube porque estaba tomando errores de más y ya nos estábamos asustando
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
+no
+
+
+<img width="736" height="1600" alt="image" src="https://github.com/user-attachments/assets/89964e6c-88ca-4397-abbb-550a7f65b75b" />
 
 ---
-
-
-
-
 

@@ -4,13 +4,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import com.wisetrip.modelo.Ciudad;
@@ -20,18 +18,11 @@ import com.wisetrip.modelo.ResultadoRecomendacion;
 import com.wisetrip.modelo.ValidacionCiudades;
 
 /**
- * Pruebas unitarias de RecomendadorDestinos: puntaje por presupuesto,
- * coincidencia ponderada de gustos, filtro de requisitos indispensables
- * y orden final de las recomendaciones.
- *
- * Usa el catálogo real de preguntas (PreferenciasServicio), que vive en
- * memoria; no hay base de datos ni Geoapify.
+ * Pruebas de RecomendadorDestinos. Usa el PreferenciasServicio real como gestor de preguntas
+ * (no tiene dependencias externas), así que no hacen falta mocks.
  */
 @DisplayName("RecomendadorDestinos")
 class RecomendadorDestinosTest {
-
-    private static final double DELTA = 0.0001;
-    private static final long DIAS = 5;
 
     private RecomendadorDestinos recomendador;
 
@@ -40,208 +31,233 @@ class RecomendadorDestinosTest {
         recomendador = new RecomendadorDestinos(true, new PreferenciasServicio());
     }
 
-    /** Ciudad con costo diario y atributos dados como pares clave, valor (null = no sabemos). */
-    private static Ciudad ciudad(String nombre, double costoDiario, Object... atributos) {
+    private static Ciudad ciudad(String nombre, double costoDiario, Map<String, Boolean> atributos) {
         Ciudad ciudad = new Ciudad();
         ciudad.setNombre(nombre);
+        ciudad.setPais("Colombia");
         ciudad.setCostoPromedio(costoDiario);
-        Map<String, Boolean> mapa = new HashMap<>();
-        for (int i = 0; i < atributos.length; i += 2) {
-            mapa.put((String) atributos[i], (Boolean) atributos[i + 1]);
-        }
-        ciudad.setAtributos(mapa);
+        ciudad.setAtributos(atributos);
         return ciudad;
     }
 
-    private static PreferenciasUsuario preferencias(double presupuestoUsd, Map<String, Importancia> gustos) {
-        return new PreferenciasUsuario(presupuestoUsd, gustos, DIAS);
-    }
-
-    private static List<String> nombres(List<Ciudad> ciudades) {
-        return ciudades.stream().map(Ciudad::getNombre).toList();
+    private static PreferenciasUsuario preferencias(double presupuesto, long dias, Map<String, Importancia> atributos) {
+        return new PreferenciasUsuario(presupuesto, atributos, dias);
     }
 
     // ------------------------------------------------------------ calcularPuntajePresupuesto
 
-    @Nested
-    @DisplayName("calcularPuntajePresupuesto")
-    class PuntajePresupuesto {
+    @Test
+    @DisplayName("puntaje de presupuesto: sin presupuesto el puntaje es 0")
+    void puntajePresupuesto_presupuestoCero_cero() {
+        assertEquals(0.0, recomendador.calcularPuntajePresupuesto(100, 0), 0.0001);
+    }
 
-        @Test
-        @DisplayName("dentro del presupuesto el puntaje es 1 (no premia ahorrar)")
-        void dentroDelPresupuesto_uno() {
-            assertEquals(1.0, recomendador.calcularPuntajePresupuesto(300, 1000), DELTA);
-        }
+    @Test
+    @DisplayName("puntaje de presupuesto: si el costo cabe en el presupuesto el puntaje es 1")
+    void puntajePresupuesto_costoDentro_uno() {
+        assertEquals(1.0, recomendador.calcularPuntajePresupuesto(400, 500), 0.0001);
+        assertEquals(1.0, recomendador.calcularPuntajePresupuesto(500, 500), 0.0001);
+    }
 
-        @Test
-        @DisplayName("borde: costo igual al presupuesto también es 1")
-        void costoIgualAlPresupuesto_uno() {
-            assertEquals(1.0, recomendador.calcularPuntajePresupuesto(1000, 1000), DELTA);
-        }
-
-        @Test
-        @DisplayName("pasarse un 20% baja el puntaje a 0.8")
-        void excesoDelVeintePorCiento() {
-            assertEquals(0.8, recomendador.calcularPuntajePresupuesto(1200, 1000), DELTA);
-        }
-
-        @Test
-        @DisplayName("borde: un exceso mayor al 100% nunca da puntaje negativo")
-        void excesoEnorme_ceroNoNegativo() {
-            assertEquals(0.0, recomendador.calcularPuntajePresupuesto(2500, 1000), DELTA);
-        }
-
-        @Test
-        @DisplayName("borde: presupuesto en cero da puntaje 0")
-        void presupuestoCero_cero() {
-            assertEquals(0.0, recomendador.calcularPuntajePresupuesto(100, 0), DELTA);
-        }
+    @Test
+    @DisplayName("puntaje de presupuesto: el puntaje baja con el exceso y nunca es negativo")
+    void puntajePresupuesto_exceso_descuentaYNoBajaDeCero() {
+        assertEquals(0.5, recomendador.calcularPuntajePresupuesto(750, 500), 0.0001);
+        assertEquals(0.0, recomendador.calcularPuntajePresupuesto(1000, 500), 0.0001);
+        assertEquals(0.0, recomendador.calcularPuntajePresupuesto(5000, 500), 0.0001);
     }
 
     // ------------------------------------------------------------ calcularCoincidenciaPonderada
 
-    @Nested
-    @DisplayName("calcularCoincidenciaPonderada")
-    class Coincidencia {
+    @Test
+    @DisplayName("coincidencia: si la ciudad cumple lo que prefiero el puntaje es 1")
+    void coincidencia_cumpleTodo_uno() {
+        double puntaje = recomendador.calcularCoincidenciaPonderada(
+                Map.of("playa", true), Map.of("playa", Importancia.PREFIERO));
 
-        // playa vale 3 (prefiero) y museos vale 1 (gustar): peso total 4
-        private final Map<String, Importancia> gustos =
-                Map.of("playa", Importancia.prefiero, "museos", Importancia.gustar);
-
-        @Test
-        @DisplayName("si cumple todo, la coincidencia es 1")
-        void cumpleTodo_uno() {
-            assertEquals(1.0, recomendador.calcularCoincidenciaPonderada(
-                    Map.of("playa", true, "museos", true), gustos), DELTA);
-        }
-
-        @Test
-        @DisplayName("cumplir solo lo 'prefiero' da 3 de 4")
-        void soloPrefiero_tresCuartos() {
-            assertEquals(0.75, recomendador.calcularCoincidenciaPonderada(
-                    Map.of("playa", true, "museos", false), gustos), DELTA);
-        }
-
-        @Test
-        @DisplayName("incumplir un 'prefiero' resta 1 punto")
-        void incumplePrefiero_resta() {
-            // logrado = 1 (museos) - 1 (playa incumplida) = 0
-            assertEquals(0.0, recomendador.calcularCoincidenciaPonderada(
-                    Map.of("playa", false, "museos", true), gustos), DELTA);
-        }
-
-        @Test
-        @DisplayName("un dato desconocido no suma pero tampoco resta")
-        void desconocido_noResta() {
-            // playa desconocida: solo suma museos -> 1 de 4
-            assertEquals(0.25, recomendador.calcularCoincidenciaPonderada(
-                    Map.of("museos", true), gustos), DELTA);
-        }
-
-        @Test
-        @DisplayName("borde: sin gustos puntuables la coincidencia es 0")
-        void sinGustosPuntuables_cero() {
-            assertEquals(0.0, recomendador.calcularCoincidenciaPonderada(
-                    Map.of("playa", true), Map.of("playa", Importancia.si)), DELTA);
-        }
+        assertEquals(1.0, puntaje, 0.0001);
     }
 
-    // ------------------------------------------------------------ calcularPuntajeTotal
+    @Test
+    @DisplayName("coincidencia: si no cumple algo que prefiero, el puntaje no baja de 0")
+    void coincidencia_incumplePrefiero_noEsNegativo() {
+        double puntaje = recomendador.calcularCoincidenciaPonderada(
+                Map.of("playa", false), Map.of("playa", Importancia.PREFIERO));
+
+        assertEquals(0.0, puntaje, 0.0001);
+    }
 
     @Test
-    @DisplayName("calcularPuntajeTotal marca provisional si falta el dato de un gusto")
-    void puntajeTotal_datoFaltante_provisional() {
-        PreferenciasUsuario prefs = preferencias(1000, Map.of("playa", Importancia.gustar));
-        Ciudad sinDato = ciudad("Bogota", 100);
+    @DisplayName("coincidencia: pondera por peso (prefiero=3, gustar=1)")
+    void coincidencia_mezcla_ponderaPorPeso() {
+        double puntaje = recomendador.calcularCoincidenciaPonderada(
+                Map.of("playa", true, "lujo", true, "museos", false),
+                Map.of("playa", Importancia.PREFIERO, "lujo", Importancia.GUSTAR, "museos", Importancia.GUSTAR));
+
+        // peso total = 3 + 1 + 1 = 5; logrado = 3 + 1 + 0 = 4
+        assertEquals(0.8, puntaje, 0.0001);
+    }
+
+    @Test
+    @DisplayName("coincidencia: un dato desconocido de la ciudad no suma")
+    void coincidencia_datoDesconocido_noSuma() {
+        double puntaje = recomendador.calcularCoincidenciaPonderada(
+                Map.of(), Map.of("playa", Importancia.GUSTAR));
+
+        assertEquals(0.0, puntaje, 0.0001);
+    }
+
+    @Test
+    @DisplayName("coincidencia: sin preferencias puntuables el puntaje es 0")
+    void coincidencia_sinPuntuables_cero() {
+        double puntaje = recomendador.calcularCoincidenciaPonderada(
+                Map.of("playa", true), Map.of("playa", Importancia.SI, "lujo", Importancia.NO));
+
+        assertEquals(0.0, puntaje, 0.0001);
+    }
+
+    // ------------------------------------------------------------ calcularPuntajeTotal / diferencia / excede
+
+    @Test
+    @DisplayName("calcularPuntajeTotal: ciudad que cumple y cabe en el presupuesto")
+    void calcularPuntajeTotal_cumpleYCabe() {
+        Ciudad playa = ciudad("Santa Marta", 100, Map.of("playa", true));
+        PreferenciasUsuario prefs = preferencias(500, 3, Map.of("playa", Importancia.PREFIERO));
+
+        ResultadoRecomendacion resultado = recomendador.calcularPuntajeTotal(playa, prefs);
+
+        assertEquals(1.0, resultado.getPuntajePresupuesto(), 0.0001);
+        assertEquals(1.0, resultado.getPuntajePreferencias(), 0.0001);
+        assertEquals(1.0, resultado.getPuntajeTotal(), 0.0001);
+        assertTrue(resultado.isPreferenciasPuntuables());
+        assertFalse(resultado.isCoincidenciaProvisional());
+    }
+
+    @Test
+    @DisplayName("calcularPuntajeTotal: es provisional si falta un dato de la ciudad que el usuario pide")
+    void calcularPuntajeTotal_datoFaltante_esProvisional() {
+        Ciudad sinDato = ciudad("Leticia", 100, Map.of());
+        PreferenciasUsuario prefs = preferencias(500, 3, Map.of("playa", Importancia.GUSTAR));
 
         ResultadoRecomendacion resultado = recomendador.calcularPuntajeTotal(sinDato, prefs);
 
         assertTrue(resultado.isCoincidenciaProvisional());
-        assertEquals(1.0, resultado.getPuntajePresupuesto(), DELTA); // 100 x 5 = 500 <= 1000
     }
 
-    // ------------------------------------------------------------ excedePresupuesto
+    @Test
+    @DisplayName("diferenciaPresupuesto: distancia absoluta entre el costo del viaje y el presupuesto")
+    void diferenciaPresupuesto_distanciaAbsoluta() {
+        Ciudad ciudad = ciudad("Cali", 100, Map.of());
 
-    @Nested
-    @DisplayName("excedePresupuesto")
-    class ExcedePresupuesto {
+        assertEquals(200.0, recomendador.diferenciaPresupuesto(ciudad, preferencias(500, 3, Map.of())), 0.0001);
+        assertEquals(100.0, recomendador.diferenciaPresupuesto(ciudad, preferencias(200, 3, Map.of())), 0.0001);
+    }
 
-        private final PreferenciasUsuario prefs = preferencias(400, Map.of());
+    @Test
+    @DisplayName("excedePresupuesto: solo es true cuando el costo supera el presupuesto")
+    void excedePresupuesto_segunElCosto() {
+        Ciudad ciudad = ciudad("Cali", 100, Map.of());
 
-        @Test
-        @DisplayName("costo del viaje mayor al presupuesto lo excede")
-        void costoMayor_excede() {
-            assertTrue(recomendador.excedePresupuesto(ciudad("Paris", 100), prefs)); // 500 > 400
-        }
+        assertTrue(recomendador.excedePresupuesto(ciudad, preferencias(299, 3, Map.of())));
+        assertFalse(recomendador.excedePresupuesto(ciudad, preferencias(300, 3, Map.of())));
+    }
 
-        @Test
-        @DisplayName("borde: costo desconocido (0) no confirma un exceso")
-        void costoDesconocido_noExcede() {
-            assertFalse(recomendador.excedePresupuesto(ciudad("Sin datos", 0), prefs));
-        }
+    @Test
+    @DisplayName("excedePresupuesto: sin costo conocido no se considera que exceda")
+    void excedePresupuesto_costoDesconocido_false() {
+        Ciudad sinCosto = ciudad("Cali", 0, Map.of());
 
-        @Test
-        @DisplayName("si el presupuesto no es obligatorio nunca excede")
-        void presupuestoNoObligatorio_noExcede() {
-            RecomendadorDestinos flexible = new RecomendadorDestinos(false, new PreferenciasServicio());
+        assertFalse(recomendador.excedePresupuesto(sinCosto, preferencias(1, 3, Map.of())));
+    }
 
-            assertFalse(flexible.excedePresupuesto(ciudad("Paris", 100), prefs));
-        }
+    @Test
+    @DisplayName("excedePresupuesto: si el presupuesto no es obligatorio nunca descarta por costo")
+    void excedePresupuesto_noObligatorio_false() {
+        RecomendadorDestinos flexible = new RecomendadorDestinos(false, new PreferenciasServicio());
+        Ciudad cara = ciudad("Cali", 1000, Map.of());
+
+        assertFalse(flexible.excedePresupuesto(cara, preferencias(10, 3, Map.of())));
     }
 
     // ------------------------------------------------------------ validarCiudades
 
     @Test
-    @DisplayName("validarCiudades separa válidas, descartadas y pendientes")
-    void validarCiudades_separaEnTresGrupos() {
-        PreferenciasUsuario prefs = preferencias(400, Map.of("playa", Importancia.si));
-        List<Ciudad> ciudades = List.of(
-                ciudad("ConPlaya", 50, "playa", true),        // 250 <= 400 y cumple -> válida
-                ciudad("SinPlaya", 50, "playa", false),       // incumple -> descartada
-                ciudad("PlayaDesconocida", 50),               // no sabemos -> pendiente
-                ciudad("MuyCara", 100, "playa", true),        // 500 > 400 -> descartada
-                ciudad("SinCosto", 0, "playa", true),         // costo desconocido -> pendiente
-                ciudad("CaraYDesconocida", 100));             // exceso confirmado gana -> descartada
+    @DisplayName("validarCiudades clasifica en válidas, descartadas y pendientes")
+    void validarCiudades_clasificaLasCiudades() {
+        Ciudad valida = ciudad("Valida", 100, Map.of("playa", true));
+        Ciudad cara = ciudad("Cara", 500, Map.of("playa", true));
+        Ciudad sinCosto = ciudad("SinCosto", 0, Map.of("playa", true));
+        PreferenciasUsuario prefs = preferencias(500, 3, Map.of());
 
-        ValidacionCiudades validacion = recomendador.validarCiudades(ciudades, prefs);
+        ValidacionCiudades resultado = recomendador.validarCiudades(List.of(valida, cara, sinCosto), prefs);
 
-        assertEquals(List.of("ConPlaya"), nombres(validacion.validas()));
-        assertEquals(List.of("SinPlaya", "MuyCara", "CaraYDesconocida"), nombres(validacion.descartadas()));
-        assertEquals(List.of("PlayaDesconocida", "SinCosto"), nombres(validacion.pendientes()));
+        assertEquals(List.of(valida), resultado.validas());
+        assertEquals(List.of(cara), resultado.descartadas());
+        assertEquals(List.of(sinCosto), resultado.pendientes());
+    }
+
+    @Test
+    @DisplayName("validarCiudades: un requisito indispensable que la ciudad no cumple la descarta")
+    void validarCiudades_requisitoIndispensableIncumplido_descarta() {
+        Ciudad sinPlaya = ciudad("Bogota", 100, Map.of("playa", false));
+        PreferenciasUsuario prefs = preferencias(500, 3, Map.of("playa", Importancia.SI));
+
+        ValidacionCiudades resultado = recomendador.validarCiudades(List.of(sinPlaya), prefs);
+
+        assertEquals(List.of(sinPlaya), resultado.descartadas());
+        assertTrue(resultado.validas().isEmpty());
+    }
+
+    @Test
+    @DisplayName("validarCiudades: un requisito indispensable sin dato deja la ciudad pendiente")
+    void validarCiudades_requisitoIndispensableSinDato_pendiente() {
+        Ciudad sinDato = ciudad("Leticia", 100, Map.of());
+        PreferenciasUsuario prefs = preferencias(500, 3, Map.of("playa", Importancia.SI));
+
+        ValidacionCiudades resultado = recomendador.validarCiudades(List.of(sinDato), prefs);
+
+        assertEquals(List.of(sinDato), resultado.pendientes());
     }
 
     // ------------------------------------------------------------ puntuarCiudadesValidas
 
     @Test
-    @DisplayName("ordena por puntaje y desempata por cercanía al presupuesto")
-    void puntuar_ordenaPorPuntajeYDesempata() {
-        PreferenciasUsuario prefs = preferencias(1000,
-                Map.of("playa", Importancia.gustar, "museos", Importancia.gustar));
-        ValidacionCiudades validacion = new ValidacionCiudades(List.of(
-                ciudad("Lejana", 150, "playa", true),                  // 0.5, costo 750
-                ciudad("Completa", 100, "playa", true, "museos", true), // 1.0, costo 500
-                ciudad("Cercana", 190, "playa", true)),                 // 0.5, costo 950
-                List.of(), List.of());
+    @DisplayName("puntuarCiudadesValidas: sin preferencias puntuables ordena por cercanía al presupuesto")
+    void puntuar_sinPuntuables_ordenaPorPresupuesto() {
+        Ciudad lejos = ciudad("Lejos", 100, Map.of());   // costo 300, diferencia 200
+        Ciudad cerca = ciudad("Cerca", 160, Map.of());   // costo 480, diferencia 20
+        ValidacionCiudades validacion = new ValidacionCiudades(List.of(lejos, cerca), List.of(), List.of());
 
-        List<ResultadoRecomendacion> ranking = recomendador.puntuarCiudadesValidas(validacion, prefs);
+        List<ResultadoRecomendacion> orden = recomendador.puntuarCiudadesValidas(validacion, preferencias(500, 3, Map.of()));
 
-        assertEquals(List.of("Completa", "Cercana", "Lejana"),
-                ranking.stream().map(r -> r.getCiudad().getNombre()).toList());
+        assertEquals("Cerca", orden.get(0).getCiudad().getNombre());
+        assertEquals("Lejos", orden.get(1).getCiudad().getNombre());
     }
 
     @Test
-    @DisplayName("sin gustos puntuables ordena solo por cercanía al presupuesto")
-    void puntuar_sinGustos_ordenaPorPresupuesto() {
-        PreferenciasUsuario prefs = preferencias(1000, Map.of("playa", Importancia.si));
-        ValidacionCiudades validacion = new ValidacionCiudades(List.of(
-                ciudad("Diferencia500", 100, "playa", true),
-                ciudad("Diferencia50", 190, "playa", true),
-                ciudad("Diferencia250", 150, "playa", true)),
-                List.of(), List.of());
+    @DisplayName("puntuarCiudadesValidas: con puntajes distintos ordena de mayor a menor")
+    void puntuar_conPuntajesDistintos_ordenaPorPuntaje() {
+        Ciudad sinPlaya = ciudad("SinPlaya", 160, Map.of("playa", false));
+        Ciudad conPlaya = ciudad("ConPlaya", 100, Map.of("playa", true));
+        ValidacionCiudades validacion = new ValidacionCiudades(List.of(sinPlaya, conPlaya), List.of(), List.of());
 
-        List<ResultadoRecomendacion> ranking = recomendador.puntuarCiudadesValidas(validacion, prefs);
+        List<ResultadoRecomendacion> orden = recomendador.puntuarCiudadesValidas(
+                validacion, preferencias(500, 3, Map.of("playa", Importancia.PREFIERO)));
 
-        assertEquals(List.of("Diferencia50", "Diferencia250", "Diferencia500"),
-                ranking.stream().map(r -> r.getCiudad().getNombre()).toList());
+        assertEquals("ConPlaya", orden.get(0).getCiudad().getNombre());
+        assertEquals("SinPlaya", orden.get(1).getCiudad().getNombre());
+    }
+
+    @Test
+    @DisplayName("puntuarCiudadesValidas: con la misma coincidencia desempata por presupuesto")
+    void puntuar_conEmpate_desempataPorPresupuesto() {
+        Ciudad lejos = ciudad("Lejos", 100, Map.of("playa", true));
+        Ciudad cerca = ciudad("Cerca", 160, Map.of("playa", true));
+        ValidacionCiudades validacion = new ValidacionCiudades(List.of(lejos, cerca), List.of(), List.of());
+
+        List<ResultadoRecomendacion> orden = recomendador.puntuarCiudadesValidas(
+                validacion, preferencias(500, 3, Map.of("playa", Importancia.PREFIERO)));
+
+        assertEquals("Cerca", orden.get(0).getCiudad().getNombre());
     }
 }

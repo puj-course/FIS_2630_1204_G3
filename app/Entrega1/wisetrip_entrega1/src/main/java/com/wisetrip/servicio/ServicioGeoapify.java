@@ -45,7 +45,6 @@ public class ServicioGeoapify implements ProovedorLugares {
     //con long no funciono
     private final AtomicLong contadorLlamadas = new AtomicLong();
 
-    @Override
     public double[] coordenadas(String ciudad, String pais) {
         try {
             //texto a buscar en formato válido para la URL
