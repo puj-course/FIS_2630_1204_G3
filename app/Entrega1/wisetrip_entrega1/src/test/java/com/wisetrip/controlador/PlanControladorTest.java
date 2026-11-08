@@ -6,6 +6,8 @@ import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyDouble;
+import static org.mockito.Mockito.doThrow;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoInteractions;
 import static org.mockito.Mockito.when;
 
@@ -159,5 +161,113 @@ class PlanControladorTest {
     @DisplayName("el enlace viejo de itinerario lleva a la sección de Mi viaje")
     void itinerario_redirigeAMiViaje() {
         assertEquals("redirect:/viaje#itinerario", controlador.mostrarItinerario());
+    }
+
+    // ------------------------------------------------------------ GET /plan
+
+    @Test
+    @DisplayName("mostrarPlan sin reparto guardado propone el reparto sugerido")
+    void mostrarPlan_sinGuardado_usaSugerido() {
+        sesion.removeAttribute(Nombres.REPARTO_PRESUPUESTO);
+
+        assertEquals(Nombres.PLAN, controlador.mostrarPlan(sesion, model));
+        RepartoPresupuesto reparto = (RepartoPresupuesto) model.getAttribute(Nombres.REPARTO);
+        assertEquals(RepartoPresupuesto.SUGERIDO_HOSPEDAJE, reparto.getHospedaje());
+        assertEquals("Origen", model.getAttribute("ubicacionCiudad"));
+        assertEquals("1.000", model.getAttribute("porDiaTotal"));
+    }
+
+    @Test
+    @DisplayName("mostrarPlan sin destino elegido vuelve a las recomendaciones")
+    void mostrarPlan_sinDestino_redirige() {
+        sesion.removeAttribute(Nombres.DESTINO_ELEGIDO);
+
+        assertEquals(Nombres.REDIRECT_RECOMENDACIONES, controlador.mostrarPlan(sesion, model));
+    }
+
+    @Test
+    @DisplayName("mostrarPlan sin presupuesto vuelve a /presupuesto")
+    void mostrarPlan_sinPresupuesto_redirige() {
+        sesion.removeAttribute(Nombres.PRESUPUESTO_VIAJE);
+
+        assertEquals(Nombres.REDIRECT_PRESUPUESTO, controlador.mostrarPlan(sesion, model));
+    }
+
+    @Test
+    @DisplayName("borde: sin fechas el costo por día se muestra como '—'")
+    void mostrarPlan_sinFechas_porDiaGuion() {
+        sesion.removeAttribute(Nombres.FECHAS_VIAJE);
+
+        controlador.mostrarPlan(sesion, model);
+
+        assertEquals("—", model.getAttribute("porDiaTotal"));
+    }
+
+    @Test
+    @DisplayName("mostrarPlan sin sesión redirige al login")
+    void mostrarPlan_sinUsuario_redirigeAlLogin() {
+        when(usuarioSesionFacade.prepararEncabezado(sesion, model)).thenReturn(null);
+
+        assertEquals(Nombres.REDIRECT_LOGIN, controlador.mostrarPlan(sesion, model));
+    }
+
+    // ------------------------------------------------------------ POST /plan
+
+    @Test
+    @DisplayName("guardarPlan válido guarda el reparto y lleva a Mi viaje")
+    void guardarPlan_valido_guardaYVaAMiViaje() {
+        sesion.setAttribute("idViajeGuardado", ID_VIAJE);
+        RepartoPresupuesto reparto = new RepartoPresupuesto();
+        when(gestionReparto.validarReparto(reparto)).thenReturn(Map.of());
+
+        assertEquals("redirect:/viaje", controlador.guardarPlan(reparto, sesion, model));
+        verify(viajeDAO).guardarReparto(ID_VIAJE, 3, reparto);
+        assertSame(reparto, sesion.getAttribute(Nombres.REPARTO_PRESUPUESTO));
+    }
+
+    @Test
+    @DisplayName("guardarPlan con errores vuelve al plan sin guardar")
+    void guardarPlan_conErrores_vuelveAlPlan() {
+        RepartoPresupuesto reparto = new RepartoPresupuesto();
+        when(gestionReparto.validarReparto(reparto)).thenReturn(Map.of("general", "Te faltan 10% por repartir."));
+
+        assertEquals(Nombres.PLAN, controlador.guardarPlan(reparto, sesion, model));
+        assertTrue(model.containsAttribute(Nombres.ERRORES));
+        verifyNoInteractions(viajeDAO);
+    }
+
+    @Test
+    @DisplayName("guardarPlan sin viaje guardado vuelve a las recomendaciones")
+    void guardarPlan_sinViajeGuardado_redirige() {
+        when(gestionReparto.validarReparto(any())).thenReturn(Map.of());
+
+        assertEquals(Nombres.REDIRECT_RECOMENDACIONES,
+                controlador.guardarPlan(new RepartoPresupuesto(), sesion, model));
+    }
+
+    @Test
+    @DisplayName("si la base de datos falla al guardar el reparto, avisa y vuelve al plan")
+    void guardarPlan_falloAlGuardar_errorGeneral() {
+        sesion.setAttribute("idViajeGuardado", ID_VIAJE);
+        RepartoPresupuesto reparto = new RepartoPresupuesto();
+        when(gestionReparto.validarReparto(reparto)).thenReturn(Map.of());
+        doThrow(new IllegalStateException("BD caída")).when(viajeDAO).guardarReparto(ID_VIAJE, 3, reparto);
+
+        assertEquals(Nombres.PLAN, controlador.guardarPlan(reparto, sesion, model));
+        assertTrue(model.containsAttribute(Nombres.ERRORES));
+    }
+
+    @Test
+    @DisplayName("guardarPlan sin sesión, destino o presupuesto redirige")
+    void guardarPlan_faltanDatos_redirige() {
+        RepartoPresupuesto reparto = new RepartoPresupuesto();
+        sesion.removeAttribute(Nombres.PRESUPUESTO_VIAJE);
+        assertEquals(Nombres.REDIRECT_PRESUPUESTO, controlador.guardarPlan(reparto, sesion, model));
+
+        sesion.removeAttribute(Nombres.DESTINO_ELEGIDO);
+        assertEquals(Nombres.REDIRECT_RECOMENDACIONES, controlador.guardarPlan(reparto, sesion, model));
+
+        when(usuarioSesionFacade.prepararEncabezado(sesion, model)).thenReturn(null);
+        assertEquals(Nombres.REDIRECT_LOGIN, controlador.guardarPlan(reparto, sesion, model));
     }
 }
