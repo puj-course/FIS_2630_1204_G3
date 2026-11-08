@@ -21,11 +21,15 @@
         <sonar.organization>puj-course</sonar.organization>
         <!-- SonarQube: analizar SOLO el codigo Java de la app
              (controlador, datos, modelo, negocio, servicio).
-             Sin vistas JSP, sin CSS/JS, sin changelog y sin pruebas. -->
+             Sin vistas JSP, sin CSS/JS y sin changelog. -->
         <sonar.sources>src/main/java/com/wisetrip</sonar.sources>
         <sonar.inclusions>**/*.java</sonar.inclusions>
-        <sonar.test.exclusions>**/*</sonar.test.exclusions>
-        <sonar.coverage.exclusions>**/*</sonar.coverage.exclusions>
+        <!-- Pruebas unitarias: Sonar las cuenta como pruebas (no como codigo) -->
+        <sonar.tests>src/test/java/com/wisetrip</sonar.tests>
+        <sonar.test.inclusions>**/*Test.java</sonar.test.inclusions>
+        <!-- Cobertura: reporte que genera JaCoCo al correr mvn verify -->
+        <sonar.coverage.jacoco.xmlReportPaths>${project.build.directory}/site/jacoco/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
+        <jacoco.version>0.8.14</jacoco.version>
     </properties>
 
     <dependencies>
@@ -109,6 +113,28 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <!-- JaCoCo: mide que lineas del codigo recorren las pruebas
+                 y deja el reporte (jacoco.xml) que lee SonarQube -->
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>${jacoco.version}</version>
+                <executions>
+                    <execution>
+                        <id>preparar-agente</id>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>reporte-cobertura</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

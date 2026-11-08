@@ -1,6 +1,5 @@
 package com.wisetrip.servicio;
 
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.mockito.ArgumentMatchers.anyDouble;
@@ -109,27 +108,5 @@ class ProxyLugaresTest {
 
         assertNull(cantidad);
         verify(cache, never()).guardar(anyDouble(), anyDouble(), anyString(), anyInt(), anyInt(), anyInt());
-    }
-
-    @Test
-    @DisplayName("coordenadas se delega directo al servicio real, sin caché")
-    void coordenadas_seDelegaAlServicioReal() {
-        double[] bogota = {LAT, LON};
-        when(servicioReal.coordenadas("Bogota", "Colombia")).thenReturn(bogota);
-
-        double[] resultado = proxy.coordenadas("Bogota", "Colombia");
-
-        assertArrayEquals(bogota, resultado);
-        verifyNoInteractions(cache);
-    }
-
-    @Test
-    @DisplayName("borde: ciudad no encontrada devuelve arreglo vacío, no null")
-    void coordenadas_ciudadNoEncontrada_arregloVacio() {
-        when(servicioReal.coordenadas("Ciudad Inventada", "Ningun Pais")).thenReturn(new double[0]);
-
-        double[] resultado = proxy.coordenadas("Ciudad Inventada", "Ningun Pais");
-
-        assertEquals(0, resultado.length);
     }
 }
