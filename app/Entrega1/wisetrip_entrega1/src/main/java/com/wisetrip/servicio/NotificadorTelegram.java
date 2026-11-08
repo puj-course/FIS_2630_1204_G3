@@ -1,5 +1,6 @@
 package com.wisetrip.servicio;
 
+import java.io.IOException;
 import java.net.URI;
 import java.net.URLEncoder;
 import java.net.http.HttpClient;
@@ -50,12 +51,12 @@ public class NotificadorTelegram implements INotificador {
                 // El texto se arma solo si el nivel WARNING esta activo (Supplier diferido)
                 LOGGER.warning(() -> "Telegram respondio con error: " + response.body());
             }
-        } catch (Exception e) {
+        } catch (InterruptedException e) {
+            LOGGER.log(Level.WARNING, e, () -> "Envio a Telegram interrumpido.");
+            // Se restaura la señal de interrupcion del hilo.
+            Thread.currentThread().interrupt();
+        } catch (IOException | RuntimeException e) {
             LOGGER.log(Level.WARNING, e, () -> "No se pudo enviar el mensaje de Telegram: " + e.getMessage());
-            // Conserva la señal de interrupcion.
-            if (e instanceof InterruptedException) {
-                Thread.currentThread().interrupt();
-            }
         }
     }
 }
