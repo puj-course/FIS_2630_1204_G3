@@ -16,10 +16,11 @@
     <name>wisetrip</name>
     <description>Planificador de viajes WiseTrip</description>
 
-    <properties>
-        <java.version>25</java.version>
-        <sonar.organization>puj-course</sonar.organization>
-    </properties>
+   	<properties>
+		<java.version>25</java.version>
+		<sonar.organization>puj-course</sonar.organization>
+		<sonar.coverage.exclusions>**/static/**,**/webapp/**,**/WisetripApplication.java,**/ServletInitializer.java,**/datos/*DAO.java,**/datos/ConexionBD.java</sonar.coverage.exclusions>
+	</properties>
 
     <dependencies>
         <dependency>

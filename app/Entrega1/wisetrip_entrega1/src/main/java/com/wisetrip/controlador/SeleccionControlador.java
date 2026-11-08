@@ -1,6 +1,7 @@
 package com.wisetrip.controlador;
 
 import java.util.Map;
+import java.util.Objects;
 import java.util.Optional;
 
 import org.slf4j.Logger;
@@ -20,6 +21,7 @@ import com.wisetrip.negocio.IRepositorioViajes;
 import com.wisetrip.negocio.IRepositorioPreferencias;
 import com.wisetrip.negocio.IFechasServicio;
 
+import org.springframework.web.util.WebUtils;
 import jakarta.servlet.http.HttpSession;
 
 /**
@@ -56,7 +58,7 @@ public class SeleccionControlador {
     @SuppressWarnings("unchecked")
     public String elegirDestino(@PathVariable("id") int id, HttpSession sesion,
                                 RedirectAttributes redirect) {
-        synchronized (sesion) {
+        synchronized (WebUtils.getSessionMutex(sesion)) {
             return guardarEleccion(id, sesion, redirect);
         }
     }
@@ -64,8 +66,8 @@ public class SeleccionControlador {
     @SuppressWarnings("unchecked")
     private String guardarEleccion(int id, HttpSession sesion, RedirectAttributes redirect) {
 
-        Usuario usuario = (Usuario) sesion.getAttribute("usuarioActivo");
-        if (usuario == null) return "redirect:/login";
+        Usuario usuario = (Usuario) sesion.getAttribute(Nombres.USUARIO_ACTIVO);
+        if (usuario == null) return Nombres.REDIRECT_LOGIN;
 
         Map<String, Boolean> atributosCuestionario =
                 (Map<String, Boolean>) sesion.getAttribute("atributosSeleccionados");
@@ -73,37 +75,37 @@ public class SeleccionControlador {
 
         Double presupuestoUsd = (Double) sesion.getAttribute("presupuestoEnUsd");
         if (presupuestoUsd == null || !Double.isFinite(presupuestoUsd) || presupuestoUsd <= 0) {
-            return "redirect:/presupuesto";
+            return Nombres.REDIRECT_PRESUPUESTO;
         }
 
-        FechasViaje fechas = (FechasViaje) sesion.getAttribute("fechasViaje");
+        FechasViaje fechas = (FechasViaje) sesion.getAttribute(Nombres.FECHAS_VIAJE);
         if (fechas == null || !fechas.tieneRangoValido()) return "redirect:/fechas";
 
         SeleccionDestinos seleccionDestinos =
                 (SeleccionDestinos) sesion.getAttribute("seleccionDestinos");
         if (!seleccionDestino.hayDestinos(seleccionDestinos)) {
-            return "redirect:/recomendaciones";
+            return Nombres.REDIRECT_RECOMENDACIONES;
         }
 
         Optional<ResultadoRecomendacion> elegido = seleccionDestino.elegir(seleccionDestinos, id);
 
         // Si el id no corresponde a ninguno de los tres, regresa sin guardar.
         if (elegido.isEmpty()) {
-            return "redirect:/recomendaciones";
+            return Nombres.REDIRECT_RECOMENDACIONES;
         }
 
         // Serializa las elecciones de esta sesion dentro de la misma instancia del servidor.
         // La segunda peticion debe leer el ID que haya guardado la primera.
-        synchronized (sesion) {
+        synchronized (WebUtils.getSessionMutex(sesion)) {
             Ubicacion origen = SesionViaje.de(sesion, usuario).getOrigen();
             if (origen == null || !origen.estaCompleta()) return "redirect:/origen";
             String origenGuardado = origen.getCiudad().trim() + ", " + origen.getPais().trim();
             try {
                 Integer idViaje = (Integer) sesion.getAttribute("idViajeGuardado");
                 Map<String, String> erroresFechas = fechasServicio.validarFechas(
-                        fechas, usuario.getIdUsuario(), idViaje != null ? idViaje : 0);
+                        fechas, usuario.getIdUsuario(), Objects.requireNonNullElse(idViaje, 0));
                 if (!erroresFechas.isEmpty()) {
-                    redirect.addFlashAttribute("errores", erroresFechas);
+                    redirect.addFlashAttribute(Nombres.ERRORES, erroresFechas);
                     return "redirect:/fechas";
                 }
                 int idCiudad = elegido.get().getCiudad().getId();
@@ -118,16 +120,16 @@ public class SeleccionControlador {
                 preferenciaDAO.guardarActivas(idViaje, atributosCuestionario);
             } catch (IllegalArgumentException e) {
                 redirect.addFlashAttribute("errorGuardado", e.getMessage());
-                return "redirect:/recomendaciones";
+                return Nombres.REDIRECT_RECOMENDACIONES;
             } catch (IllegalStateException e) {
                 log.error("No se pudo completar el guardado del viaje y sus preferencias", e);
                 redirect.addFlashAttribute("errorGuardado",
                         "No pudimos completar el guardado de tu viaje. Elige el destino nuevamente para reintentar.");
-                return "redirect:/recomendaciones";
+                return Nombres.REDIRECT_RECOMENDACIONES;
             }
 
-            sesion.setAttribute("destinoElegido", elegido.get());
-            sesion.setAttribute("paisDestino", elegido.get().getCiudad().getPais());
+            sesion.setAttribute(Nombres.DESTINO_ELEGIDO, elegido.get());
+            sesion.setAttribute(Nombres.PAIS_DESTINO, elegido.get().getCiudad().getPais());
         }
 
         return "redirect:/plan";
