@@ -16,17 +16,11 @@
     <name>wisetrip</name>
     <description>Planificador de viajes WiseTrip</description>
 
-    <properties>
-        <java.version>25</java.version>
-        <sonar.organization>puj-course</sonar.organization>
-        <!-- SonarQube: analizar SOLO el codigo Java de la app
-             (controlador, datos, modelo, negocio, servicio).
-             Sin vistas JSP, sin CSS/JS, sin changelog y sin pruebas. -->
-        <sonar.sources>src/main/java/com/wisetrip</sonar.sources>
-        <sonar.inclusions>**/*.java</sonar.inclusions>
-        <sonar.test.exclusions>**/*</sonar.test.exclusions>
-        <sonar.coverage.exclusions>**/*</sonar.coverage.exclusions>
-    </properties>
+   	<properties>
+		<java.version>25</java.version>
+		<sonar.organization>puj-course</sonar.organization>
+		<sonar.coverage.exclusions>**/static/**,**/webapp/**,**/WisetripApplication.java,**/ServletInitializer.java,**/datos/*DAO.java,**/datos/ConexionBD.java</sonar.coverage.exclusions>
+	</properties>
 
     <dependencies>
         <dependency>

@@ -89,7 +89,7 @@ public class LlenarAtributosCiudad {
 
     private boolean incumpleIndispensableManual(Map<String, Boolean> atributos,
                                                 Map<String, Importancia> importancias) {
-        for (DefPregunta pregunta : CatalogoPreguntas.todas()) {
+        for (DefPregunta pregunta : CatalogoPreguntas.todasLasPreguntas()) {
             Importancia importancia = importancias.get(pregunta.id);
             // Desconocido no significa incumplido.
             if (pregunta.tipo == TipoAtributo.MANUAL

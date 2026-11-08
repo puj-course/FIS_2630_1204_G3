@@ -14,19 +14,22 @@
 
 package com.wisetrip.modelo;
 
+import java.io.Serializable;
+
 import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
 
-public class FechasViaje {
+public class FechasViaje implements Serializable {
+    private static final long serialVersionUID = 1L;
+
 
     private String fechaInicio;   // formato yyyy-MM-dd
     private String fechaFin;
 
     public FechasViaje() {
-        // Constructor vacío necesario para que Spring cree el objeto
-        // y lo llene con las fechas del formulario mediante los setters.
+        // Constructor vacio: Spring lo necesita para enlazar los campos del formulario
     }
 
     public String getFechaInicio() { return fechaInicio; }

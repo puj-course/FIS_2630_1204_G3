@@ -69,6 +69,10 @@ public class ServicioGeoapify implements ProovedorLugares {
             return new double[]{longitudYLatitud.get(1), longitudYLatitud.get(0)};
         } catch (Exception e) {
             System.err.println("Error consultando Geoapify para " + ciudad + ": " + e.getMessage());
+            // Conserva la senal de interrupcion.
+            if (e instanceof InterruptedException) {
+                Thread.currentThread().interrupt();
+            }
             return null;
         }
     }

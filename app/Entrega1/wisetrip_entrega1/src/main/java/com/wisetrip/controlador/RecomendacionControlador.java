@@ -59,7 +59,7 @@ public class RecomendacionControlador {
     public String mostrarRecomendaciones(HttpSession sesion, Model model) {
 
         Usuario usuario = usuarioSesionFacade.prepararEncabezado(sesion, model);
-        if (usuario == null) return "redirect:/login";
+        if (usuario == null) return Nombres.REDIRECT_LOGIN;
 
         Map<String, Boolean> atributosCuestionario =
                 (Map<String, Boolean>) sesion.getAttribute("atributosSeleccionados");
@@ -69,9 +69,9 @@ public class RecomendacionControlador {
         if (importancias == null) return "redirect:/preferencias";
 
         Double presupuestoUsd = (Double) sesion.getAttribute("presupuestoEnUsd");
-        if (presupuestoUsd == null) return "redirect:/presupuesto";
+        if (presupuestoUsd == null) return Nombres.REDIRECT_PRESUPUESTO;
 
-        FechasViaje fechas = (FechasViaje) sesion.getAttribute("fechasViaje");
+        FechasViaje fechas = (FechasViaje) sesion.getAttribute(Nombres.FECHAS_VIAJE);
         if (fechas == null || fechas.getDuracionDias() < 1) return "redirect:/fechas";
         PreferenciasUsuario preferencias = new PreferenciasUsuario( presupuestoUsd, importancias, fechas.getDuracionDias());
         List<Ciudad> ciudades = ciudadDAO.obtenerTodas();
@@ -94,11 +94,11 @@ public class RecomendacionControlador {
 
         // Iniciales para el avatar del encabezado
         model.addAttribute("seleccion", seleccion);
-        model.addAttribute("fechas", fechas);
+        model.addAttribute(Nombres.FECHAS, fechas);
 
         // Datos de la ficha de búsqueda
         model.addAttribute("ubicacion", SesionViaje.de(sesion, usuario).getOrigen());
-        model.addAttribute("presupuesto", sesion.getAttribute("presupuestoViaje"));
+        model.addAttribute(Nombres.PRESUPUESTO, sesion.getAttribute(Nombres.PRESUPUESTO_VIAJE));
 
         return "recomendaciones";
     }

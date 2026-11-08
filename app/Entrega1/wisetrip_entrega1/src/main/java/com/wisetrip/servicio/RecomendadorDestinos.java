@@ -59,7 +59,7 @@ public class RecomendadorDestinos implements Recomendador {
                     Boolean cumple = oferta.get(pregunta.getClave());
                     if (Boolean.TRUE.equals(cumple)) {
                         pesoLogrado += importancia.getPeso();
-                    } else if (importancia == Importancia.prefiero && Boolean.FALSE.equals(cumple)) {
+                    } else if (importancia == Importancia.PREFIERO && Boolean.FALSE.equals(cumple)) {
                         pesoLogrado--;
                     }
                 }

@@ -53,31 +53,31 @@ public class PlanificacionControlador {
     @GetMapping("/preferencias")
     public String mostrarPreferencias(HttpSession sesion, Model model) {
         Usuario usuario = usuarioSesionFacade.prepararEncabezado(sesion, model);
-        if (usuario == null) return "redirect:/login";
+        if (usuario == null) return Nombres.REDIRECT_LOGIN;
         if (!SesionViaje.de(sesion, usuario).tieneOrigen()) return "redirect:/origen";
 
-        Preferencias guardadas = (Preferencias) sesion.getAttribute("preferenciasViaje");
-        model.addAttribute("preferencias", guardadas != null ? guardadas : new Preferencias());
+        Preferencias guardadas = (Preferencias) sesion.getAttribute(Nombres.PREFERENCIAS_VIAJE);
+        model.addAttribute(Nombres.PREFERENCIAS, guardadas != null ? guardadas : new Preferencias());
         cargarCuestionario(model);
-        return "preferencias";
+        return Nombres.PREFERENCIAS;
     }
 
     @PostMapping("/preferencias")
-    public String guardarPreferencias(@ModelAttribute("preferencias") Preferencias preferencias,
+    public String guardarPreferencias(@ModelAttribute(Nombres.PREFERENCIAS) Preferencias preferencias,
                                       HttpSession sesion,
                                       Model model) {
         Usuario usuario = usuarioSesionFacade.prepararEncabezado(sesion, model);
-        if (usuario == null) return "redirect:/login";
+        if (usuario == null) return Nombres.REDIRECT_LOGIN;
 
         Map<String, String> errores = gestorPreferencias.validarPreferencias(preferencias);
         if (!errores.isEmpty()) {
-            model.addAttribute("errores", errores);
+            model.addAttribute(Nombres.ERRORES, errores);
             model.addAttribute("faltantes", errores.size());
             cargarCuestionario(model);
-            return "preferencias";
+            return Nombres.PREFERENCIAS;
         }
 
-        sesion.setAttribute("preferenciasViaje", preferencias);
+        sesion.setAttribute(Nombres.PREFERENCIAS_VIAJE, preferencias);
         sesion.setAttribute("importanciasSeleccionadas",
                 gestorPreferencias.obtenerImportancias(preferencias));
         sesion.setAttribute("atributosSeleccionados",
@@ -91,20 +91,20 @@ public class PlanificacionControlador {
     @GetMapping("/fechas")
     public String mostrarFechas(HttpSession sesion, Model model) {
         Usuario usuario = usuarioSesionFacade.prepararEncabezado(sesion, model);
-        if (usuario == null) return "redirect:/login";
-        if (sesion.getAttribute("preferenciasViaje") == null) return "redirect:/preferencias";
+        if (usuario == null) return Nombres.REDIRECT_LOGIN;
+        if (sesion.getAttribute(Nombres.PREFERENCIAS_VIAJE) == null) return "redirect:/preferencias";
 
-        FechasViaje guardadas = (FechasViaje) sesion.getAttribute("fechasViaje");
-        model.addAttribute("fechas", guardadas != null ? guardadas : new FechasViaje());
-        return "fechas";
+        FechasViaje guardadas = (FechasViaje) sesion.getAttribute(Nombres.FECHAS_VIAJE);
+        model.addAttribute(Nombres.FECHAS, guardadas != null ? guardadas : new FechasViaje());
+        return Nombres.FECHAS;
     }
 
     @PostMapping("/fechas")
-    public String guardarFechas(@ModelAttribute("fechas") FechasViaje fechas,
+    public String guardarFechas(@ModelAttribute(Nombres.FECHAS) FechasViaje fechas,
                                 HttpSession sesion,
                                 Model model) {
         Usuario usuario = usuarioSesionFacade.prepararEncabezado(sesion, model);
-        if (usuario == null) return "redirect:/login";
+        if (usuario == null) return Nombres.REDIRECT_LOGIN;
 
         Integer idViaje = (Integer) sesion.getAttribute("idViajeGuardado");
         Map<String, String> errores;
@@ -117,13 +117,13 @@ public class PlanificacionControlador {
         }
 
         if (!errores.isEmpty()) {
-            model.addAttribute("errores", errores);
-            return "fechas";
+            model.addAttribute(Nombres.ERRORES, errores);
+            return Nombres.FECHAS;
         }
 
-        sesion.setAttribute("fechasViaje", fechas);
+        sesion.setAttribute(Nombres.FECHAS_VIAJE, fechas);
         SesionViaje.invalidarSeleccion(sesion);
-        return "redirect:/presupuesto";
+        return Nombres.REDIRECT_PRESUPUESTO;
     }
 
     // ---------- Presupuesto ----------
@@ -131,31 +131,31 @@ public class PlanificacionControlador {
     @GetMapping("/presupuesto")
     public String mostrarPresupuesto(HttpSession sesion, Model model) {
         Usuario usuario = usuarioSesionFacade.prepararEncabezado(sesion, model);
-        if (usuario == null) return "redirect:/login";
-        if (sesion.getAttribute("fechasViaje") == null) return "redirect:/fechas";
+        if (usuario == null) return Nombres.REDIRECT_LOGIN;
+        if (sesion.getAttribute(Nombres.FECHAS_VIAJE) == null) return "redirect:/fechas";
 
-        Presupuesto guardado = (Presupuesto) sesion.getAttribute("presupuestoViaje");
-        model.addAttribute("presupuesto", guardado != null ? guardado : new Presupuesto());
+        Presupuesto guardado = (Presupuesto) sesion.getAttribute(Nombres.PRESUPUESTO_VIAJE);
+        model.addAttribute(Nombres.PRESUPUESTO, guardado != null ? guardado : new Presupuesto());
         cargarFormularioPresupuesto(model, sesion);
-        return "presupuesto";
+        return Nombres.PRESUPUESTO;
     }
 
     @PostMapping("/presupuesto")
-    public String guardarPresupuesto(@ModelAttribute("presupuesto") Presupuesto presupuesto,
+    public String guardarPresupuesto(@ModelAttribute(Nombres.PRESUPUESTO) Presupuesto presupuesto,
                                      HttpSession sesion,
                                      Model model) {
         Usuario usuario = usuarioSesionFacade.prepararEncabezado(sesion, model);
-        if (usuario == null) return "redirect:/login";
+        if (usuario == null) return Nombres.REDIRECT_LOGIN;
 
-        String paisDestino = (String) sesion.getAttribute("paisDestino");
+        String paisDestino = (String) sesion.getAttribute(Nombres.PAIS_DESTINO);
         Map<String, String> errores = gestorPresupuesto.validarPresupuesto(presupuesto, paisDestino);
         if (!errores.isEmpty()) {
-            model.addAttribute("errores", errores);
+            model.addAttribute(Nombres.ERRORES, errores);
             cargarFormularioPresupuesto(model, sesion);
-            return "presupuesto";
+            return Nombres.PRESUPUESTO;
         }
 
-        sesion.setAttribute("presupuestoViaje", presupuesto);
+        sesion.setAttribute(Nombres.PRESUPUESTO_VIAJE, presupuesto);
         sesion.setAttribute("presupuestoEnUsd", gestorPresupuesto.convertirAUsd(presupuesto));
         SesionViaje.invalidarSeleccion(sesion);
         return "redirect:/resumen";
@@ -166,19 +166,19 @@ public class PlanificacionControlador {
     @GetMapping("/resumen")
     public String mostrarResumen(HttpSession sesion, Model model) {
         Usuario usuario = usuarioSesionFacade.prepararEncabezado(sesion, model);
-        if (usuario == null) return "redirect:/login";
+        if (usuario == null) return Nombres.REDIRECT_LOGIN;
 
         Ubicacion ubicacion = SesionViaje.de(sesion, usuario).getOrigen();
         if (ubicacion == null) return "redirect:/origen";
 
-        Preferencias preferencias = (Preferencias) sesion.getAttribute("preferenciasViaje");
-        Presupuesto presupuesto = (Presupuesto) sesion.getAttribute("presupuestoViaje");
+        Preferencias preferencias = (Preferencias) sesion.getAttribute(Nombres.PREFERENCIAS_VIAJE);
+        Presupuesto presupuesto = (Presupuesto) sesion.getAttribute(Nombres.PRESUPUESTO_VIAJE);
         Double enUsd = (Double) sesion.getAttribute("presupuestoEnUsd");
 
         model.addAttribute("ubicacion", ubicacion);
-        model.addAttribute("fechas", sesion.getAttribute("fechasViaje"));
-        model.addAttribute("presupuesto", presupuesto);
-        model.addAttribute("destinoElegido", sesion.getAttribute("destinoElegido"));
+        model.addAttribute(Nombres.FECHAS, sesion.getAttribute(Nombres.FECHAS_VIAJE));
+        model.addAttribute(Nombres.PRESUPUESTO, presupuesto);
+        model.addAttribute(Nombres.DESTINO_ELEGIDO, sesion.getAttribute(Nombres.DESTINO_ELEGIDO));
 
         if (preferencias != null) {
             model.addAttribute("resumenPreferencias",
@@ -205,9 +205,9 @@ public class PlanificacionControlador {
     }
 
     private void cargarFormularioPresupuesto(Model model, HttpSession sesion) {
-        String paisDestino = (String) sesion.getAttribute("paisDestino");
+        String paisDestino = (String) sesion.getAttribute(Nombres.PAIS_DESTINO);
         model.addAttribute("monedas", gestorPresupuesto.monedasDisponibles(paisDestino));
-        model.addAttribute("paisDestino", paisDestino);
-        model.addAttribute("fechas", sesion.getAttribute("fechasViaje"));
+        model.addAttribute(Nombres.PAIS_DESTINO, paisDestino);
+        model.addAttribute(Nombres.FECHAS, sesion.getAttribute(Nombres.FECHAS_VIAJE));
     }
 }
