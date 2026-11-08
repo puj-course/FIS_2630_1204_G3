@@ -1,5 +1,6 @@
 package com.wisetrip.controlador;
 
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 import org.springframework.stereotype.Controller;
@@ -16,6 +17,7 @@ import com.wisetrip.modelo.ResultadoRecomendacion;
 import com.wisetrip.modelo.Ubicacion;
 import com.wisetrip.modelo.Usuario;
 import com.wisetrip.negocio.IGestionReparto;
+import com.wisetrip.negocio.IGestorGastos;
 import com.wisetrip.negocio.IRepositorioViajes;
 import com.wisetrip.servicio.PresupuestoServicio;
 import com.wisetrip.servicio.UsuarioSesionFacade;
@@ -41,15 +43,18 @@ public class PlanControlador {
     private final IGestionReparto gestionReparto;
     private final PresupuestoServicio presupuestoServicio;
     private final UsuarioSesionFacade usuarioSesionFacade;
+    private final IGestorGastos gestorGastos;
 
     public PlanControlador(IGestionReparto gestionReparto,
                            PresupuestoServicio presupuestoServicio,
                            UsuarioSesionFacade usuarioSesionFacade,
-                           IRepositorioViajes viajeDAO) {
+                           IRepositorioViajes viajeDAO,
+                           IGestorGastos gestorGastos) {
         this.gestionReparto = gestionReparto;
         this.presupuestoServicio = presupuestoServicio;
         this.usuarioSesionFacade = usuarioSesionFacade;
         this.viajeDAO = viajeDAO;
+        this.gestorGastos = gestorGastos;
     }
 
     @GetMapping("/plan")
@@ -101,6 +106,7 @@ public class PlanControlador {
         model.addAttribute(Nombres.REPARTO, reparto);
         model.addAttribute("dias", fechas.getDuracionDias());
         cargarItinerario(model, fechas, presupuesto);
+        cargarGastos(model, (Integer) sesion.getAttribute("idViajeGuardado"));
 
         return "viaje";
     }
@@ -122,6 +128,30 @@ public class PlanControlador {
                 presupuestoServicio.formatear(presupuesto.getMontoNumerico()));
         model.addAttribute("totalUsd", totalUsd);
         model.addAttribute("usdFormateado", presupuestoServicio.formatear(totalUsd));
+    }
+
+    /**
+     * HU#89: gastos reales del viaje y cupo de cada categoria. Si el viaje
+     * aun no esta guardado o la base falla, la pagina se muestra igual,
+     * sin la seccion de gastos.
+     */
+    private void cargarGastos(Model model, Integer idViaje) {
+        if (idViaje == null) return;
+        Map<String, String> nombres = new LinkedHashMap<>();
+        nombres.put("hospedaje", "Hospedaje");
+        nombres.put("alimentacion", "Alimentación");
+        nombres.put("transporte", "Transporte");
+        nombres.put("actividades", "Actividades");
+        nombres.put("imprevistos", "Imprevistos");
+        model.addAttribute("nombresCategoria", nombres);
+        try {
+            model.addAttribute("gastosReales", gestorGastos.consultarGastos(idViaje));
+            model.addAttribute("estadoCategorias", gestorGastos.consultarEstadoCategorias(idViaje));
+            model.addAttribute("resumenGastos", gestorGastos.consultarResumen(idViaje));
+        } catch (IllegalArgumentException | IllegalStateException | NullPointerException e) {
+            log.error("No se pudieron cargar los gastos del viaje {}", idViaje, e);
+            model.addAttribute("gastosNoDisponibles", true);
+        }
     }
 
     @PostMapping("/plan")
@@ -164,7 +194,7 @@ public class PlanControlador {
         return "redirect:/viaje";
     }
 
-    /** Reúne todo lo que la vista necesita, para no repetirlo en cada método. */
+    /** Reúne los datos que la vista necesita, para no repetirlo en cada método. */
     private void cargarDatos(Model model, HttpSession sesion,
                              ResultadoRecomendacion destino, Presupuesto presupuesto,
                              RepartoPresupuesto reparto, Usuario usuario) {

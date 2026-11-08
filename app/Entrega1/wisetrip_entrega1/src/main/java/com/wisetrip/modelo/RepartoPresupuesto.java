@@ -72,6 +72,11 @@ public class RepartoPresupuesto implements IDistribuible, Serializable {
         return hospedaje + alimentacion + transporte + actividades + imprevistos;
     }
 
+    /** Un reparto es válido si no tiene negativos, suma 100 y cubre lo básico. */
+    public boolean esValido() {
+        return !tienePorcentajesNegativos() && estaCompleto() && cubreLosBasicos();
+    }
+
     /** Vuelve al reparto que sugiere WiseTrip. */
     public void restaurarSugerido() {
         hospedaje = SUGERIDO_HOSPEDAJE;
@@ -79,11 +84,6 @@ public class RepartoPresupuesto implements IDistribuible, Serializable {
         transporte = SUGERIDO_TRANSPORTE;
         actividades = SUGERIDO_ACTIVIDADES;
         imprevistos = SUGERIDO_IMPREVISTOS;
-    }
-
-    /** Un reparto es válido si no tiene negativos, suma 100 y cubre lo básico. */
-    public boolean esValido() {
-        return !tienePorcentajesNegativos() && estaCompleto() && cubreLosBasicos();
     }
 
     // ===== Getters y setters (formulario y vistas) =====

@@ -7,6 +7,7 @@ package com.wisetrip.servicio;
 import com.wisetrip.negocio.ProovedorLugares;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import java.io.IOException;
 import java.net.URI;
 import java.net.URLEncoder;
 import java.net.http.HttpClient;
@@ -31,6 +32,9 @@ public class ServicioGeoapify implements ProovedorLugares {
 
     // Tiempo max 8 creo que esta bien
     private static final Duration TIEMPO_MAXIMO_ESPERA = Duration.ofSeconds(8);
+
+    // Se devuelve cuando no se encuentran coordenadas (en vez de null)
+    private static final double[] SIN_COORDENADAS = new double[0];
 
     // application properties
     @Value("${geoapify.api-key:}")
@@ -60,20 +64,22 @@ public class ServicioGeoapify implements ProovedorLugares {
             Gson convertidorJson = new Gson();
             RespuestaGeoapify datos = convertidorJson.fromJson(respuesta.body(), RespuestaGeoapify.class);
 
-            if (datos.features == null || datos.features.isEmpty())
-                return null;
+            // Sin resultados: arreglo vacio (no null), asi quien lo use no falla
+            if (datos == null || datos.features == null || datos.features.isEmpty())
+                return SIN_COORDENADAS;
 
             //Geoapify entrega longitud, latitud
             List<Double> longitudYLatitud = datos.features.get(0).geometry.coordinates;
 
             return new double[]{longitudYLatitud.get(1), longitudYLatitud.get(0)};
-        } catch (Exception e) {
-            System.err.println("Error consultando Geoapify para " + ciudad + ": " + e.getMessage());
-            // Conserva la senal de interrupcion.
-            if (e instanceof InterruptedException) {
-                Thread.currentThread().interrupt();
-            }
-            return null;
+        } catch (InterruptedException e) {
+            REGISTRO.log(Level.WARNING, e, () -> "Consulta a Geoapify interrumpida para " + ciudad);
+            // Se restaura la señal de interrupcion del hilo.
+            Thread.currentThread().interrupt();
+            return SIN_COORDENADAS;
+        } catch (IOException | RuntimeException e) {
+            REGISTRO.log(Level.WARNING, e, () -> "Error consultando Geoapify para " + ciudad + ": " + e.getMessage());
+            return SIN_COORDENADAS;
         }
     }
 
@@ -111,12 +117,14 @@ public class ServicioGeoapify implements ProovedorLugares {
 
             // Mostramos en consola el numero de llamada, cómo salió y cuánto tardó
             long milisegundosQueTardo = Duration.ofNanos(System.nanoTime() - momentoInicio).toMillis();
-            REGISTRO.info("Geoapify llamada #" + numeroDeLlamada
-                    + " status=" + respuesta.statusCode()
+            int estado = respuesta.statusCode();
+            // El texto se arma solo si el nivel INFO esta activo (Supplier diferido)
+            REGISTRO.info(() -> "Geoapify llamada #" + numeroDeLlamada
+                    + " status=" + estado
                     + " duracionMs=" + milisegundosQueTardo
                     + " categorias=" + categorias);
 
-            if (respuesta.statusCode() < 200 || respuesta.statusCode() >= 300) {
+            if (estado < 200 || estado >= 300) {
                 return null;
             }
 
@@ -125,12 +133,13 @@ public class ServicioGeoapify implements ProovedorLugares {
             RespuestaGeoapify datos = convertidorJson.fromJson(respuesta.body(), RespuestaGeoapify.class);
             if (datos == null || datos.features == null) return null;
             return datos.features.size();
-        } catch (Exception e) {
-            REGISTRO.log(Level.WARNING, "Error contando lugares (" + categorias + "): " + e.getMessage(), e);
-            // Conserva la señal de interrupcion.
-            if (e instanceof InterruptedException) {
-                Thread.currentThread().interrupt();
-            }
+        } catch (InterruptedException e) {
+            REGISTRO.log(Level.WARNING, e, () -> "Consulta de lugares interrumpida (" + categorias + ")");
+            // Se restaura la señal de interrupcion del hilo.
+            Thread.currentThread().interrupt();
+            return null;
+        } catch (IOException | RuntimeException e) {
+            REGISTRO.log(Level.WARNING, e, () -> "Error contando lugares (" + categorias + "): " + e.getMessage());
             return null;
         }
     }

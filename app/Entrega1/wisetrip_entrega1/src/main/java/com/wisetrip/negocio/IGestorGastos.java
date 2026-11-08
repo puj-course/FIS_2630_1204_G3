@@ -3,6 +3,7 @@ package com.wisetrip.negocio;
 import java.util.List;
 import java.util.Map;
 
+import com.wisetrip.modelo.EstadoCategoriaGasto;
 import com.wisetrip.modelo.Gasto;
 import com.wisetrip.modelo.ResumenPresupuesto;
 
@@ -79,8 +80,17 @@ public interface IGestorGastos {
      * Calcula el estado actual del presupuesto del viaje.
      *
      * @param idViaje viaje del que se quiere el resumen
-     * @return presupuesto total, total gastado y saldo disponible,
-     * expresados en la moneda del presupuesto
+     * @return presupuesto total, total gastado y saldo disponible, expresados en
+     *         la moneda del presupuesto
      */
     ResumenPresupuesto consultarResumen(int idViaje);
+
+    /**
+     * Calcula el cupo de cada categoría del reparto y lo que ya se ha
+     * gastado en ella.
+     *
+     * @param idViaje viaje del que se quiere el estado
+     * @return una fila por categoría, en el orden en que se muestran
+     */
+    List<EstadoCategoriaGasto> consultarEstadoCategorias(int idViaje);
 }

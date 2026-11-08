@@ -19,20 +19,23 @@ import com.wisetrip.negocio.IGestionReparto;
 @Service
 public class RepartoServicio implements IGestionReparto {
 
+    /** Clave del error que se muestra arriba del formulario del reparto. */
+    private static final String ERROR_GENERAL = "general";
+
     @Override
     public Map<String, String> validarReparto(IDistribuible reparto) {
         Map<String, String> errores = new LinkedHashMap<>();
 
         if (reparto.tienePorcentajesNegativos()) {
-            errores.put("general", "Ningún porcentaje puede ser negativo.");
+            errores.put(ERROR_GENERAL, "Ningún porcentaje puede ser negativo.");
             return errores;
         }
 
         if (reparto.excedeElMaximo()) {
-            errores.put("general", "Te estás pasando por " + reparto.porcentajeExcedido()
+            errores.put(ERROR_GENERAL, "Te estás pasando por " + reparto.porcentajeExcedido()
                     + "%. Ajusta el reparto para que sume 100%.");
         } else if (!reparto.estaCompleto()) {
-            errores.put("general", "Te faltan " + reparto.porcentajeDisponible()
+            errores.put(ERROR_GENERAL, "Te faltan " + reparto.porcentajeDisponible()
                     + "% por repartir.");
         }
 

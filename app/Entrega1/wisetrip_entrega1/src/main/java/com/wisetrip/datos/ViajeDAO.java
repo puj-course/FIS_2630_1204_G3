@@ -16,15 +16,21 @@ import com.wisetrip.modelo.FechasViaje;
 import com.wisetrip.modelo.RepartoPresupuesto;
 import com.wisetrip.modelo.Ciudad;
 import com.wisetrip.modelo.Presupuesto;
+import com.wisetrip.modelo.PresupuestoViaje;
 import com.wisetrip.modelo.ResultadoRecomendacion;
 import com.wisetrip.modelo.Ubicacion;
 import com.wisetrip.modelo.Usuario;
 import com.wisetrip.modelo.Viaje;
+import com.wisetrip.negocio.IDistribuible;
+import com.wisetrip.negocio.IRepositorioPresupuestoViaje;
+import com.wisetrip.negocio.IRepositorioRepartoPresupuesto;
 import com.wisetrip.negocio.IRepositorioViajes;
 
 /**
  * Guarda los viajes en PostgreSQL.
- * Implementa la interfaz de negocio IRepositorioViajes.
+ * Implementa la interfaz de negocio IRepositorioViajes y, para el modulo de
+ * gastos (HU#89), IRepositorioPresupuestoViaje e IRepositorioRepartoPresupuesto:
+ * el presupuesto (en dolares) y el reparto por categorias de un viaje.
  * se separa el acceso a datos del dominio.
  */
 //mejoras
@@ -36,7 +42,8 @@ import com.wisetrip.negocio.IRepositorioViajes;
 //Agregar logs de auditoría
 
 @Repository
-public class ViajeDAO implements IRepositorioViajes {
+public class ViajeDAO implements IRepositorioViajes,
+        IRepositorioPresupuestoViaje, IRepositorioRepartoPresupuesto {
 
     @Override
     public boolean hayCruceFechas(int idUsuario, int idViajeActual, FechasViaje fechas) {
@@ -301,6 +308,48 @@ public class ViajeDAO implements IRepositorioViajes {
             }
         } catch (SQLException e) {
             throw new IllegalStateException("No se pudo actualizar el viaje en PostgreSQL.", e);
+        }
+    }
+
+    @Override
+    public PresupuestoViaje buscarPresupuesto(int idViaje) {
+        String sql = "SELECT presupuesto FROM viajes WHERE id_viaje = ?";
+        try (Connection conn = ConexionBD.obtenerConexion();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, idViaje);
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (!rs.next()) {
+                    throw new IllegalArgumentException("El viaje no existe.");
+                }
+                return new PresupuestoViaje(idViaje, rs.getBigDecimal("presupuesto"), GastoDAO.MONEDA_VIAJE);
+            }
+        } catch (SQLException e) {
+            throw new IllegalStateException("No se pudo consultar el presupuesto del viaje.", e);
+        }
+    }
+
+    @Override
+    public IDistribuible buscarReparto(int idViaje) {
+        String sql = """
+                SELECT hospedaje, alimentacion, transporte, actividades, imprevistos
+                FROM reparto_presupuesto
+                WHERE id_viaje = ?
+                """;
+        try (Connection conn = ConexionBD.obtenerConexion();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, idViaje);
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (!rs.next()) {
+                    throw new IllegalArgumentException("El viaje todavia no tiene un reparto guardado.");
+                }
+                RepartoPresupuesto reparto = new RepartoPresupuesto();
+                for (String categoria : IDistribuible.CATEGORIAS) {
+                    reparto.asignar(categoria, rs.getInt(categoria));
+                }
+                return reparto;
+            }
+        } catch (SQLException e) {
+            throw new IllegalStateException("No se pudo consultar el reparto del presupuesto.", e);
         }
     }
 

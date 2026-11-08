@@ -3,6 +3,8 @@ package com.wisetrip.servicio;
 
 import java.util.Map;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +24,8 @@ import com.wisetrip.negocio.IUsuarioRepositorio;
 
 @Service
 public class UsuarioServicio implements IRegistroUsuario, IPerfilUsuario, IAutenticacionUsuario {
+
+    private static final Logger log = LoggerFactory.getLogger(UsuarioServicio.class);
 
     private static final String MSG_DOCUMENTO_EXISTE = "Ya existe una cuenta con este documento.";
     private static final String MSG_CORREO_EXISTE = "Ya existe una cuenta con este correo.";
@@ -91,7 +95,7 @@ public class UsuarioServicio implements IRegistroUsuario, IPerfilUsuario, IAuten
         try {
             creador.notificar(usuario, destino, notificador);
         } catch (Exception e) {
-            System.err.println("No se pudo enviar la notificacion: " + e.getMessage());
+            log.warn("No se pudo enviar la notificacion.", e);
         }
     }
 }
