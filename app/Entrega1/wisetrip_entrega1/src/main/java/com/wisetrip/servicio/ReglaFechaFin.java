@@ -6,12 +6,12 @@ import java.time.LocalDate;
 public class ReglaFechaFin extends ReglaValidacionFechas {
 
     @Override
-    protected boolean validarPropio(ContextoValidacionFechas contexto) {
+    protected void validarPropio(ContextoValidacionFechas contexto) {
         String valor = contexto.getFechas().getFechaFin();
 
         if (valor == null || valor.isBlank()) {
             contexto.agregarError("fechaFin", "Selecciona la fecha de regreso.");
-            return true;
+            return;
         }
 
         try {
@@ -19,7 +19,5 @@ public class ReglaFechaFin extends ReglaValidacionFechas {
         } catch (DateTimeException _) {
             contexto.agregarError("fechaFin", "Ingresa una fecha válida.");
         }
-
-        return true;
     }
 }

@@ -9,12 +9,12 @@ public class ReglaFechaInicio extends ReglaValidacionFechas {
     private static final String CAMPO_FECHA_INICIO = "fechaInicio";
 
     @Override
-    protected boolean validarPropio(ContextoValidacionFechas contexto) {
+    protected void validarPropio(ContextoValidacionFechas contexto) {
         String valor = contexto.getFechas().getFechaInicio();
 
         if (valor == null || valor.isBlank()) {
             contexto.agregarError(CAMPO_FECHA_INICIO, "Selecciona la fecha de inicio de tu viaje.");
-            return true;
+            return;
         }
 
         try {
@@ -27,7 +27,5 @@ public class ReglaFechaInicio extends ReglaValidacionFechas {
         } catch (DateTimeException _) {
             contexto.agregarError(CAMPO_FECHA_INICIO, "Ingresa una fecha válida.");
         }
-
-        return true;
     }
 }
