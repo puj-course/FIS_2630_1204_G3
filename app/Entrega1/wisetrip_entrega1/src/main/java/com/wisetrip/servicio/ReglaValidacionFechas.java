@@ -1,11 +1,19 @@
 package com.wisetrip.servicio;
 
+import java.time.ZoneId;
+
 /**
  * Handler del patrón Chain of Responsibility: cada regla de validación
  * de fechas extiende esta clase, valida lo suyo, y decide si la cadena
  * debe seguir con la siguiente regla.
  */
 public abstract class ReglaValidacionFechas {
+
+    /**
+     * Zona horaria con la que se calcula "hoy". Se fija en Colombia para que
+     * no dependa de la zona del servidor donde corra la app.
+     */
+    static final ZoneId ZONA_HORARIA = ZoneId.of("America/Bogota");
 
     private ReglaValidacionFechas siguiente;
 

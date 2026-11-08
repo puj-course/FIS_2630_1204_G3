@@ -57,6 +57,7 @@ public class FechasServicio implements IFechasServicio {
     /** Fecha de hoy en formato yyyy-MM-dd, para el atributo min del input date. */
     @Override
     public String hoy() {
-        return LocalDate.now().toString();
+        // Misma zona que usa ReglaFechaInicio, para que el min del calendario coincida
+        return LocalDate.now(ReglaValidacionFechas.ZONA_HORARIA).toString();
     }
 }

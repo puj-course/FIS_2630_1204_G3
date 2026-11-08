@@ -19,7 +19,7 @@ public class ReglaFechaInicio extends ReglaValidacionFechas {
 
         try {
             LocalDate inicio = LocalDate.parse(valor);
-            if (inicio.isBefore(LocalDate.now())) {
+            if (inicio.isBefore(LocalDate.now(ZONA_HORARIA))) {
                 contexto.agregarError(CAMPO_FECHA_INICIO, "La fecha de inicio no puede ser anterior a hoy.");
             } else {
                 contexto.setInicio(inicio);
