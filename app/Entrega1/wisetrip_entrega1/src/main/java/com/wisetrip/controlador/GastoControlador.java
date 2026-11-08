@@ -95,7 +95,7 @@ public class GastoControlador {
                 errores.put("monto", "El monto es demasiado grande.");
             }
             return valor;
-        } catch (NumberFormatException e) {
+        } catch (NumberFormatException _) {
             errores.put("monto", "Ingresa un monto válido, por ejemplo 25.50.");
             return null;
         }
@@ -112,7 +112,7 @@ public class GastoControlador {
                         + " y el " + fechas.getFechaFin() + ".");
             }
             return valor;
-        } catch (DateTimeParseException e) {
+        } catch (DateTimeParseException _) {
             errores.put("fecha", "Ingresa la fecha del gasto.");
             return null;
         }
