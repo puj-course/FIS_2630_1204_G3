@@ -3,6 +3,9 @@ package com.wisetrip.datos;
 import com.wisetrip.modelo.Ciudad;
 import com.wisetrip.negocio.CiudadNegocio;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import org.springframework.stereotype.Repository;
 
 import java.sql.*;
@@ -10,6 +13,8 @@ import java.util.*;
 
 @Repository
 public class CiudadDAO implements CiudadNegocio {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(CiudadDAO.class);
 
     @Override
     public List<Ciudad> obtenerTodas() {
@@ -42,10 +47,8 @@ public class CiudadDAO implements CiudadNegocio {
             }
 
         } catch (SQLException e) {
-
-            System.err.println(
-                    "Error al obtener ciudades: " + e.getMessage()
-            );
+ 
+            LOGGER.error("Error al obtener ciudades", e);
         }
 
         return ciudades;

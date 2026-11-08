@@ -41,7 +41,7 @@ public interface IRepositorioGastos {
     List<Gasto> listarPorViaje(int idViaje);
 
     /**
-     * Suma todo lo que se ha gastado en el viaje.
+     * Suma el total de gastos registrados en el viaje.
      *
      * @param idViaje viaje del que se quiere el total
      * @return total gastado en la moneda del viaje; si no hay gastos,
