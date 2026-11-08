@@ -32,6 +32,9 @@ public class ServicioGeoapify implements ProovedorLugares {
     // Tiempo max 8 creo que esta bien
     private static final Duration TIEMPO_MAXIMO_ESPERA = Duration.ofSeconds(8);
 
+    // Se devuelve cuando no se encuentran coordenadas (en vez de null)
+    private static final double[] SIN_COORDENADAS = new double[0];
+
     // application properties
     @Value("${geoapify.api-key:}")
     private String claveApi;
@@ -61,8 +64,9 @@ public class ServicioGeoapify implements ProovedorLugares {
             Gson convertidorJson = new Gson();
             RespuestaGeoapify datos = convertidorJson.fromJson(respuesta.body(), RespuestaGeoapify.class);
 
-            if (datos.features == null || datos.features.isEmpty())
-                return null;
+            // Sin resultados: arreglo vacio (no null), asi quien lo use no falla
+            if (datos == null || datos.features == null || datos.features.isEmpty())
+                return SIN_COORDENADAS;
 
             //Geoapify entrega longitud, latitud
             List<Double> longitudYLatitud = datos.features.get(0).geometry.coordinates;
@@ -70,7 +74,11 @@ public class ServicioGeoapify implements ProovedorLugares {
             return new double[]{longitudYLatitud.get(1), longitudYLatitud.get(0)};
         } catch (Exception e) {
             REGISTRO.log(Level.WARNING, e, () -> "Error consultando Geoapify para " + ciudad + ": " + e.getMessage());
-            return null;
+            // Conserva la señal de interrupcion.
+            if (e instanceof InterruptedException) {
+                Thread.currentThread().interrupt();
+            }
+            return SIN_COORDENADAS;
         }
     }
 
