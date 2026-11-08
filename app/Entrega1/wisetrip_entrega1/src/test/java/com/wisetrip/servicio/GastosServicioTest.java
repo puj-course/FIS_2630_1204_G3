@@ -25,6 +25,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.mockito.junit.jupiter.MockitoSettings;
 import org.mockito.quality.Strictness;
 
+import com.wisetrip.modelo.EstadoCategoriaGasto;
 import com.wisetrip.modelo.Gasto;
 import com.wisetrip.modelo.PresupuestoViaje;
 import com.wisetrip.modelo.RepartoPresupuesto;
@@ -250,5 +251,46 @@ class GastosServicioTest {
                 .thenReturn(new PresupuestoViaje(99, TOTAL, COP));
 
         assertThrows(IllegalStateException.class, () -> servicio.consultarResumen(ID_VIAJE));
+    }
+
+    // ---------------------------------------------------------------- descripción (HU#89)
+
+    @Test
+    @DisplayName("CP17 validarGasto: borde, descripción de más de 200 caracteres se rechaza")
+    void cp17_validarGasto_descripcionMuyLarga_error() {
+        Gasto largo = new Gasto(0, "hospedaje", "x".repeat(201), new BigDecimal("100"), COP,
+                LocalDate.of(2026, 11, 20));
+
+        Map<String, String> errores = servicio.validarGasto(ID_VIAJE, largo);
+
+        assertEquals("La descripción puede tener máximo 200 caracteres.", errores.get("descripcion"));
+    }
+
+    // ---------------------------------------------------------------- consultarEstadoCategorias
+
+    @Test
+    @DisplayName("CP18 consultarEstadoCategorias: una fila por categoría con su cupo y lo gastado")
+    void cp18_consultarEstadoCategorias_cupoYGastadoPorCategoria() {
+        when(repositorioGastos.listarPorViaje(ID_VIAJE)).thenReturn(List.of(
+                gasto("hospedaje", "100000"), gasto("hospedaje", "50000"), gasto("transporte", "20000")));
+
+        List<EstadoCategoriaGasto> estados = servicio.consultarEstadoCategorias(ID_VIAJE);
+
+        assertEquals(5, estados.size());
+        EstadoCategoriaGasto hospedaje = estados.get(0);
+        assertEquals("hospedaje", hospedaje.categoria());
+        assertEquals(0, new BigDecimal("350000").compareTo(hospedaje.cupo()));   // 35% de 1.000.000
+        assertEquals(0, new BigDecimal("150000").compareTo(hospedaje.gastado()));
+        assertEquals(0, new BigDecimal("20000").compareTo(estados.get(2).gastado()));
+    }
+
+    @Test
+    @DisplayName("CP19 consultarEstadoCategorias: sin gastos todas las categorías quedan en cero")
+    void cp19_consultarEstadoCategorias_sinGastos_todoEnCero() {
+        when(repositorioGastos.listarPorViaje(ID_VIAJE)).thenReturn(List.of());
+
+        List<EstadoCategoriaGasto> estados = servicio.consultarEstadoCategorias(ID_VIAJE);
+
+        assertTrue(estados.stream().allMatch(e -> e.gastado().signum() == 0));
     }
 }
