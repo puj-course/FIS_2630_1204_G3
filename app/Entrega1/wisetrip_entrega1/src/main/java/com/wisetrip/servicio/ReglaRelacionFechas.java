@@ -6,7 +6,9 @@ import java.time.temporal.ChronoUnit;
 public class ReglaRelacionFechas extends ReglaValidacionFechas {
 
     private static final int MAX_DIAS = 60;
-        private static final String CAMPO_FECHA_FIN = "fechaFin";
+
+    /** Campo del formulario donde se muestran los errores de esta regla. */
+    private static final String CAMPO_FECHA_FIN = "fechaFin";
 
     @Override
     protected void validarPropio(ContextoValidacionFechas contexto) {
@@ -15,7 +17,7 @@ public class ReglaRelacionFechas extends ReglaValidacionFechas {
 
         // Si alguna de las dos fechas no es válida, no tiene sentido compararlas.
         if (inicio == null || fin == null) {
-            return ;
+            return;
         }
 
         if (!fin.isAfter(inicio)) {

@@ -3,12 +3,13 @@
 package com.wisetrip.modelo;
 
 import java.io.Serializable;
+
 import java.util.HashMap;
 import java.util.Map;
 
 public class Ciudad implements Serializable {
+    private static final long serialVersionUID = 1L;
 
-    private static final long serialVersionUID = 1L;    
 
     private int id;
     private String nombre;
@@ -39,8 +40,8 @@ public class Ciudad implements Serializable {
     public Map<String, Boolean> getAtributos() { return atributos; }
     public EstadoAtributo estadoAtributo(String atributo) {
         Boolean valor = atributos.get(atributo);
-        if (valor == null) return EstadoAtributo.noSabemos;
-        return valor ? EstadoAtributo.cumple : EstadoAtributo.noCumple;
+        if (valor == null) return EstadoAtributo.NO_SABEMOS;
+        return valor ? EstadoAtributo.CUMPLE : EstadoAtributo.NO_CUMPLE;
     }
     public void setAtributos(Map<String, Boolean> atributos) {
         this.atributos = atributos != null ? atributos : new HashMap<>();

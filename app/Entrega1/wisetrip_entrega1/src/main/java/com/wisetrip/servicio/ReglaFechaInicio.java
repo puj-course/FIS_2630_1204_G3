@@ -2,10 +2,10 @@ package com.wisetrip.servicio;
 
 import java.time.DateTimeException;
 import java.time.LocalDate;
-import java.time.ZoneId;
 
 public class ReglaFechaInicio extends ReglaValidacionFechas {
 
+    /** Campo del formulario donde se muestran los errores de esta regla. */
     private static final String CAMPO_FECHA_INICIO = "fechaInicio";
 
     @Override
@@ -14,13 +14,13 @@ public class ReglaFechaInicio extends ReglaValidacionFechas {
 
         if (valor == null || valor.isBlank()) {
             contexto.agregarError(CAMPO_FECHA_INICIO, "Selecciona la fecha de inicio de tu viaje.");
-            return ;
+            return;
         }
 
         try {
             LocalDate inicio = LocalDate.parse(valor);
-            if (inicio.isBefore(LocalDate.now(ZoneId.systemDefault()))) {
-              contexto.agregarError(CAMPO_FECHA_INICIO, "Selecciona la fecha de inicio de tu viaje.");
+            if (inicio.isBefore(LocalDate.now(ZONA_HORARIA))) {
+                contexto.agregarError(CAMPO_FECHA_INICIO, "La fecha de inicio no puede ser anterior a hoy.");
             } else {
                 contexto.setInicio(inicio);
             }

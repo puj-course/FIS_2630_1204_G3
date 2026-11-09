@@ -1,11 +1,10 @@
 package com.wisetrip.controlador;
 
-
 import com.wisetrip.modelo.Usuario;
 import com.wisetrip.modelo.Viaje;
 
-import jakarta.servlet.http.HttpSession;
 import org.springframework.web.util.WebUtils;
+import jakarta.servlet.http.HttpSession;
 
 /**
  * Unico lugar donde se guarda y se busca el Viaje en la sesion HTTP.
@@ -14,9 +13,6 @@ import org.springframework.web.util.WebUtils;
 final class SesionViaje {
 
     private static final String ATRIBUTO = "viaje";
-    private static final String DESTINO_ELEGIDO = "destinoElegido";
-    private static final String PAIS_DESTINO = "paisDestino";
-    private static final String REPARTO_PRESUPUESTO = "repartoPresupuesto";   
 
     private SesionViaje() {
     }
@@ -34,18 +30,10 @@ final class SesionViaje {
         return viaje;
     }
 
-    /**
-     * Candado de la sesion: el mismo objeto para todas las peticiones del usuario,
-     * para que dos pestañas no modifiquen el viaje al mismo tiempo.
-     */
-    private static Object candado(HttpSession sesion) {
-        return WebUtils.getSessionMutex(sesion);
-    }
-
     /** Recupera los datos persistidos sin mezclar otra planificacion de la sesion. */
     static void restaurar(HttpSession sesion, Viaje viaje) {
-        synchronized (candado(sesion)) {
-            Usuario activo = (Usuario) sesion.getAttribute("usuarioActivo");
+        synchronized (WebUtils.getSessionMutex(sesion)) {
+            Usuario activo = (Usuario) sesion.getAttribute(Nombres.USUARIO_ACTIVO);
             if (viaje == null || !viaje.estaGuardado() || activo == null
                     || viaje.getUsuario().getIdUsuario() != activo.getIdUsuario()) {
                 throw new IllegalArgumentException("El viaje no pertenece al usuario activo.");
@@ -53,34 +41,34 @@ final class SesionViaje {
             reiniciar(sesion);
             sesion.setAttribute(ATRIBUTO, viaje);
             sesion.setAttribute("idViajeGuardado", viaje.getIdViaje());
-            sesion.setAttribute("fechasViaje", viaje.getFechas());
-            sesion.setAttribute("presupuestoViaje", viaje.getPresupuesto());
+            sesion.setAttribute(Nombres.FECHAS_VIAJE, viaje.getFechas());
+            sesion.setAttribute(Nombres.PRESUPUESTO_VIAJE, viaje.getPresupuesto());
             sesion.setAttribute("presupuestoEnUsd", viaje.getPresupuestoEnUsd());
-            sesion.setAttribute(DESTINO_ELEGIDO, viaje.getDestinoElegido());
-            sesion.setAttribute(PAIS_DESTINO, viaje.paisDestino());
-            sesion.setAttribute(REPARTO_PRESUPUESTO, viaje.getReparto());
+            sesion.setAttribute(Nombres.DESTINO_ELEGIDO, viaje.getDestinoElegido());
+            sesion.setAttribute(Nombres.PAIS_DESTINO, viaje.paisDestino());
+            sesion.setAttribute(Nombres.REPARTO_PRESUPUESTO, viaje.getReparto());
         }
     }
 
     /** Descarta resultados calculados con preferencias, fechas o presupuesto anteriores. */
     static void invalidarSeleccion(HttpSession sesion) {
-        synchronized (candado(sesion)) {
+        synchronized (WebUtils.getSessionMutex(sesion)) {
             sesion.removeAttribute("seleccionDestinos");
             sesion.removeAttribute("seleccionRecomendada");
-            sesion.removeAttribute(DESTINO_ELEGIDO);
-            sesion.removeAttribute(PAIS_DESTINO);
-            sesion.removeAttribute(REPARTO_PRESUPUESTO);
+            sesion.removeAttribute(Nombres.DESTINO_ELEGIDO);
+            sesion.removeAttribute(Nombres.PAIS_DESTINO);
+            sesion.removeAttribute(Nombres.REPARTO_PRESUPUESTO);
         }
     }
 
     /** Limpia la planificacion en sesion sin borrar viajes guardados ni cerrar la cuenta. */
     static void reiniciar(HttpSession sesion) {
-        synchronized (candado(sesion)) {
+        synchronized (WebUtils.getSessionMutex(sesion)) {
             for (String atributo : new String[] {
                     ATRIBUTO, "idViajeGuardado", "seleccionDestinos", "seleccionRecomendada",
-                    DESTINO_ELEGIDO, PAIS_DESTINO, "preferenciasViaje",
-                    "importanciasSeleccionadas", "atributosSeleccionados", "fechasViaje",
-                    "presupuestoViaje", "presupuestoEnUsd", REPARTO_PRESUPUESTO
+                    Nombres.DESTINO_ELEGIDO, Nombres.PAIS_DESTINO, Nombres.PREFERENCIAS_VIAJE,
+                    "importanciasSeleccionadas", "atributosSeleccionados", Nombres.FECHAS_VIAJE,
+                    Nombres.PRESUPUESTO_VIAJE, "presupuestoEnUsd", Nombres.REPARTO_PRESUPUESTO
             }) {
                 sesion.removeAttribute(atributo);
             }

@@ -1,6 +1,7 @@
 package com.wisetrip.modelo;
 
-import java.io.Serializable; 
+import java.io.Serializable;
+
 import java.util.Map;
 
 /**
@@ -11,8 +12,9 @@ import java.util.Map;
  * relacionan esas partes entre si.
  */
 public class Viaje implements Serializable {
-
     private static final long serialVersionUID = 1L;
+
+
     private int idViaje;                         // 0 = todavia no se guardo en la base de datos
     private final Usuario usuario;
     private Ubicacion origen;

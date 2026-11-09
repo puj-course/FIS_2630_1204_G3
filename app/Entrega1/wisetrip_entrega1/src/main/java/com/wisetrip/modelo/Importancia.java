@@ -1,10 +1,12 @@
 package com.wisetrip.modelo;
 
+import java.util.Locale;
+
 public enum Importancia {
-    no(0),
-    gustar(1),
-    prefiero(3),
-    si(0);
+    NO(0),
+    GUSTAR(1),
+    PREFIERO(3),
+    SI(0);
 
     private final int peso;
 
@@ -17,14 +19,24 @@ public enum Importancia {
     }
 
     public boolean esPuntuable() {
-        return this == gustar || this == prefiero;
+        return this == GUSTAR || this == PREFIERO;
     }
 
     public boolean estaSeleccionada() {
-        return this != no;
+        return this != NO;
     }
 
     public boolean esIndispensable() {
-        return this == si;
+        return this == SI;
+    }
+
+    /** Valor en minusculas que envian los formularios (no, gustar, prefiero, si). */
+    public String valor() {
+        return name().toLowerCase(Locale.ROOT);
+    }
+
+    /** Convierte el valor del formulario (en minusculas) a la constante correspondiente. */
+    public static Importancia desdeValor(String valor) {
+        return valueOf(valor.toUpperCase(Locale.ROOT));
     }
 }

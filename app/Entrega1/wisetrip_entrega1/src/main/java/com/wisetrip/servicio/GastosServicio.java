@@ -1,11 +1,15 @@
 package com.wisetrip.servicio;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
+import org.springframework.stereotype.Service;
+
+import com.wisetrip.modelo.EstadoCategoriaGasto;
 import com.wisetrip.modelo.Gasto;
 import com.wisetrip.modelo.PresupuestoViaje;
 import com.wisetrip.modelo.ResultadoControlCategoria;
@@ -34,7 +38,10 @@ import com.wisetrip.negocio.IRepositorioRepartoPresupuesto;
  * que le corresponde a esa categoría, sin conocer qué control concreto
  * crea.
  */
+@Service
 public class GastosServicio implements IGestorGastos {
+
+    private static final int LARGO_MAXIMO_DESCRIPCION = 200;
 
     /**
      * Creador concreto (Factory Method, HU#89) que se usa para cada
@@ -103,11 +110,31 @@ public class GastosServicio implements IGestorGastos {
             return errores;
         }
 
+        validarDatosGasto(gasto, errores);
+        validarMoneda(gasto, presupuesto, errores);
+        if (!errores.isEmpty()) {
+            return errores;
+        }
+
+        ResultadoControlCategoria resultado = evaluarCupoCategoria(idViaje, gasto, presupuesto);
+        if (resultado.bloqueante()) {
+            errores.put("cupoCategoria", resultado.mensaje());
+        }
+        return errores;
+    }
+
+    /**
+     * Revisa categoría, descripción, monto y fecha del gasto (paso 4).
+     * Cada error se agrega al mapa con la clave de su campo.
+     */
+    private void validarDatosGasto(Gasto gasto, Map<String, String> errores) {
         if (gasto.categoria() == null || !IDistribuible.CATEGORIAS.contains(gasto.categoria())) {
             errores.put("categoria", "Selecciona una categoría válida.");
         }
         if (gasto.descripcion() == null || gasto.descripcion().isBlank()) {
             errores.put("descripcion", "Ingresa una descripción para el gasto.");
+        } else if (gasto.descripcion().trim().length() > LARGO_MAXIMO_DESCRIPCION) {
+            errores.put("descripcion", "La descripción puede tener máximo 200 caracteres.");
         }
         if (gasto.monto() == null || gasto.monto().signum() <= 0) {
             errores.put("monto", "El monto del gasto debe ser mayor que cero.");
@@ -115,20 +142,19 @@ public class GastosServicio implements IGestorGastos {
         if (gasto.fecha() == null) {
             errores.put("fecha", "Ingresa la fecha en que se realizó el gasto.");
         }
+    }
+
+    /**
+     * Revisa que el gasto tenga moneda y que sea la misma del presupuesto
+     * del viaje (paso 4).
+     */
+    private void validarMoneda(Gasto gasto, PresupuestoViaje presupuesto, Map<String, String> errores) {
         if (gasto.moneda() == null || gasto.moneda().isBlank()) {
             errores.put("moneda", "El gasto debe indicar su moneda.");
         } else if (presupuesto.moneda() == null
                 || !gasto.moneda().trim().equalsIgnoreCase(presupuesto.moneda().trim())) {
             errores.put("moneda", "La moneda del gasto debe coincidir con la del viaje.");
         }
-
-        if (errores.isEmpty()) {
-            ResultadoControlCategoria resultado = evaluarCupoCategoria(idViaje, gasto, presupuesto);
-            if (resultado.bloqueante()) {
-                errores.put("cupoCategoria", resultado.mensaje());
-            }
-        }
-        return errores;
     }
 
     /**
@@ -178,7 +204,8 @@ public class GastosServicio implements IGestorGastos {
                 repositorioReparto.buscarReparto(idViaje),
                 "El repositorio debe devolver el reparto del viaje.");
         BigDecimal cupoCategoria = BigDecimal.valueOf(
-                reparto.montoDe(gasto.categoria(), presupuesto.montoTotal().doubleValue()));
+                reparto.montoDe(gasto.categoria(), presupuesto.montoTotal().doubleValue()))
+                .setScale(2, RoundingMode.HALF_UP);
         BigDecimal totalGastadoCategoria = Objects.requireNonNull(
                 repositorioGastos.totalGastadoPorCategoria(idViaje, gasto.categoria()),
                 "El repositorio debe devolver el total gastado por categoría.");
@@ -222,6 +249,33 @@ public class GastosServicio implements IGestorGastos {
         return List.copyOf(Objects.requireNonNull(
                 repositorioGastos.listarPorViaje(idViaje),
                 "El repositorio debe devolver una lista de gastos."));
+    }
+
+    /**
+     * Calcula, para cada categoría del reparto, su cupo y lo que ya se ha
+     * gastado en ella. El cupo usa la misma regla que el Factory Method:
+     * porcentaje del reparto sobre el presupuesto total.
+     *
+     * @return una fila por categoría, en el orden de IDistribuible.CATEGORIAS
+     */
+    @Override
+    public List<EstadoCategoriaGasto> consultarEstadoCategorias(int idViaje) {
+        PresupuestoViaje presupuesto = obtenerPresupuesto(idViaje);
+        IDistribuible reparto = Objects.requireNonNull(
+                repositorioReparto.buscarReparto(idViaje),
+                "El repositorio debe devolver el reparto del viaje.");
+        List<Gasto> gastos = consultarGastos(idViaje);
+
+        return IDistribuible.CATEGORIAS.stream()
+                .map(categoria -> new EstadoCategoriaGasto(
+                        categoria,
+                        BigDecimal.valueOf(reparto.montoDe(categoria, presupuesto.montoTotal().doubleValue()))
+                                .setScale(2, RoundingMode.HALF_UP),
+                        gastos.stream()
+                                .filter(g -> categoria.equals(g.categoria()))
+                                .map(Gasto::monto)
+                                .reduce(BigDecimal.ZERO, BigDecimal::add)))
+                .toList();
     }
 
     /**

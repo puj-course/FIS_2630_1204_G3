@@ -103,7 +103,7 @@ public class PreferenciasServicio implements GestorPreferencias {
                 if (valor == null || valor.isBlank()) {
                     errores.put(pregunta.getClave(), "Falta responder esta pregunta.");
                 } else if (java.util.Arrays.stream(Importancia.values())
-                        .noneMatch(nivel -> nivel.name().equals(valor))) {
+                        .noneMatch(nivel -> nivel.valor().equals(valor))) {
                     errores.put(pregunta.getClave(), "Respuesta no válida.");
                 }
             }
@@ -116,7 +116,7 @@ public class PreferenciasServicio implements GestorPreferencias {
         for (CategoriaPreferencia categoria : CATEGORIAS) {
             for (Pregunta pregunta : categoria.getPreguntas()) {
                 niveles.put(pregunta.getClave(),
-                        Importancia.valueOf(preferencias.getRespuestas().get(pregunta.getClave())));
+                        Importancia.desdeValor(preferencias.getRespuestas().get(pregunta.getClave())));
             }
         }
         return niveles;

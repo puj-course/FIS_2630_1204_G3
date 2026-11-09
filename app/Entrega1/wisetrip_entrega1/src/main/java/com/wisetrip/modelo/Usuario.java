@@ -1,8 +1,10 @@
 package com.wisetrip.modelo;
 
 import java.io.Serializable;
+
 import java.time.LocalDate;
 import java.time.Period;
+import java.time.ZoneId;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -11,18 +13,21 @@ import java.util.Map;
 
 //agregar validacion con not null, email y size 
 //no exponer la contraseña en tostring()
-//agregar metodo normalizarcorreo para que todo se guarde en minusculas
+//agregar metodo normalizarcorreo para que el correo se guarde en minusculas
 //agregar campos: estado, fecha registro, ultimo acceso
 
 // Modelo que representa la información de un usuario de WiseTrip
 public class Usuario implements Serializable {
-
     private static final long serialVersionUID = 1L;
+
 
     public static final int EDAD_MINIMA = 18;
     public static final int EDAD_MAXIMA = 120;
     public static final int LARGO_MINIMO_PASSWORD = 6;
     private static final String CAMPO_CLAVE = "password";
+    // Usamos la zona de Bogotá, Colombia, porque es la referencia del proyecto.
+    // Así las validaciones de fecha no dependen de la zona horaria del servidor.
+    private static final ZoneId ZONA_HORARIA = ZoneId.of("America/Bogota");
 
     private int idUsuario;
     private String nombreCompleto;
@@ -34,9 +39,10 @@ public class Usuario implements Serializable {
     private String rol = "cliente";
     private String chatId;
 
-    // Constructor vacío necesario para que Spring pueda
-    // crear y llenar el objeto con los datos del formulario
     public Usuario() {
+        // Constructor vacio necesario para que Spring pueda
+        // crear y llenar el objeto con los datos del formulario.
+        // porque aun no lo ha hecho.
     }
 
     //GETTERS Y SETTERS
@@ -162,14 +168,14 @@ public class Usuario implements Serializable {
             try {
                 LocalDate nacimiento = LocalDate.parse(fechaNacimiento);
                 int edad = calcularEdad();
-                if (nacimiento.isAfter(LocalDate.now())) {
+                if (nacimiento.isAfter(LocalDate.now(ZONA_HORARIA))) {
                     errores.put("fechaNacimiento", "La fecha de nacimiento no puede ser futura.");
                 } else if (edad < EDAD_MINIMA) {
                     errores.put("fechaNacimiento", "Debes ser mayor de 18 años para crear una cuenta en WiseTrip.");
                 } else if (edad > EDAD_MAXIMA) {
                     errores.put("fechaNacimiento", "Ingresa una fecha de nacimiento valida.");
                 }
-            } catch (Exception e) {
+            } catch (Exception _) {
                 errores.put("fechaNacimiento", "Ingresa una fecha valida.");
             }
         }
@@ -201,7 +207,7 @@ public class Usuario implements Serializable {
 
     //calcular edad actual
     public int calcularEdad() {
-        return Period.between(LocalDate.parse(fechaNacimiento), LocalDate.now()).getYears();
+        return Period.between(LocalDate.parse(fechaNacimiento), LocalDate.now(ZONA_HORARIA)).getYears();
     }
 
     // verifica la contraseña, si es true coincide con la dada por el usuario
@@ -239,83 +245,4 @@ public class Usuario implements Serializable {
                 : partes[0].substring(0, 1);
         return iniciales.toUpperCase();
     }
-
-    // PATRON BUILDER (creacional)
-    // Arma un Usuario paso a paso con metodos encadenados en lugar de
-    // llamar muchos setters seguidos. El constructor vacio y los setters
-    // se conservan porque Spring los usa para llenar el formulario.
-    public static class Builder {
-
-        private int idUsuario;
-        private String nombreCompleto;
-        private String tipoDocumento;
-        private String numeroDocumento;
-        private String fechaNacimiento;
-        private String correo;
-        private String password;
-        private String rol = "cliente";
-        private String chatId;
-
-        public Builder idUsuario(int idUsuario) {
-            this.idUsuario = idUsuario;
-            return this;
-        }
-
-        public Builder nombreCompleto(String nombreCompleto) {
-            this.nombreCompleto = nombreCompleto;
-            return this;
-        }
-
-        public Builder tipoDocumento(String tipoDocumento) {
-            this.tipoDocumento = tipoDocumento;
-            return this;
-        }
-
-        public Builder numeroDocumento(String numeroDocumento) {
-            this.numeroDocumento = numeroDocumento;
-            return this;
-        }
-
-        public Builder fechaNacimiento(String fechaNacimiento) {
-            this.fechaNacimiento = fechaNacimiento;
-            return this;
-        }
-
-        public Builder correo(String correo) {
-            this.correo = correo;
-            return this;
-        }
-
-        public Builder password(String password) {
-            this.password = password;
-            return this;
-        }
-
-        public Builder rol(String rol) {
-            this.rol = rol;
-            return this;
-        }
-
-        public Builder chatId(String chatId) {
-            this.chatId = chatId;
-            return this;
-        }
-
-        // Crea el Usuario usando los setters, asi se mantienen sus reglas
-        // (por ejemplo, setCorreo deja el correo en minusculas)
-        public Usuario build() {
-            Usuario usuario = new Usuario();
-            usuario.setIdUsuario(idUsuario);
-            usuario.setNombreCompleto(nombreCompleto);
-            usuario.setTipoDocumento(tipoDocumento);
-            usuario.setNumeroDocumento(numeroDocumento);
-            usuario.setFechaNacimiento(fechaNacimiento);
-            usuario.setCorreo(correo);
-            usuario.setPassword(password);
-            usuario.setRol(rol);
-            usuario.setChatId(chatId);
-            return usuario;
-        }
-    }
-
 }

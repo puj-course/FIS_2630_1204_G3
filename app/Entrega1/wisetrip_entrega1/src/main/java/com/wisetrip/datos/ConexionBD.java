@@ -1,4 +1,4 @@
-// Conexión y estructura general de la base de datos.
+//Maneja la conexion y la estructura general de la base de datos.
 
 package com.wisetrip.datos;
 

@@ -11,7 +11,7 @@ public class ReglaFechaFin extends ReglaValidacionFechas {
 
         if (valor == null || valor.isBlank()) {
             contexto.agregarError("fechaFin", "Selecciona la fecha de regreso.");
-            return ;
+            return;
         }
 
         try {

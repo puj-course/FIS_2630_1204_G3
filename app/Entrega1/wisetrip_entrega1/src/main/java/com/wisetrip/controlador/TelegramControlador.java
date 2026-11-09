@@ -24,9 +24,9 @@ public class TelegramControlador {
     // Muestra el formulario para vincular Telegram
     @GetMapping("/perfil/telegram")
     public String mostrarVinculacion(HttpSession sesion, Model model) {
-        Usuario usuarioActivo = (Usuario) sesion.getAttribute("usuarioActivo");
+        Usuario usuarioActivo = (Usuario) sesion.getAttribute(Nombres.USUARIO_ACTIVO);
         if (usuarioActivo == null) {
-            return "redirect:/login";
+            return Nombres.REDIRECT_LOGIN;
         }
         model.addAttribute("chatIdActual", usuarioActivo.getChatId());
         return "vincular-telegram";
@@ -37,13 +37,13 @@ public class TelegramControlador {
     public String procesarVinculacion(@RequestParam String chatId,
                                       HttpSession sesion,
                                       RedirectAttributes flash) {
-        Usuario usuarioActivo = (Usuario) sesion.getAttribute("usuarioActivo");
+        Usuario usuarioActivo = (Usuario) sesion.getAttribute(Nombres.USUARIO_ACTIVO);
         if (usuarioActivo == null) {
-            return "redirect:/login";
+            return Nombres.REDIRECT_LOGIN;
         }
 
         perfil.vincularTelegram(usuarioActivo, chatId);
-        sesion.setAttribute("usuarioActivo", usuarioActivo);
+        sesion.setAttribute(Nombres.USUARIO_ACTIVO, usuarioActivo);
 
         flash.addFlashAttribute("mensaje", "¡Telegram vinculado con éxito!");
         return "redirect:/perfil/telegram";

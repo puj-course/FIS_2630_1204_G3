@@ -14,6 +14,7 @@ import com.wisetrip.modelo.Usuario;
 import com.wisetrip.negocio.IAutenticacionUsuario;
 import com.wisetrip.negocio.IRegistroUsuario;
 
+import org.springframework.web.util.WebUtils;
 import jakarta.servlet.http.HttpSession;
 
 /** Puerto de entrada web: recibe la peticion y llama a los contratos de negocio. */
@@ -47,7 +48,7 @@ public class AuthControlador {
         Map<String, String> errores = registro.validarRegistro(usuario, confirmarPassword);
 
         if (!errores.isEmpty()) {
-            model.addAttribute("errores", errores);
+            model.addAttribute(Nombres.ERRORES, errores);
             return "registro";   // vuelve al formulario mostrando los errores
         }
 
@@ -55,7 +56,7 @@ public class AuthControlador {
         establecerUsuarioActivo(sesion, usuario);
 
         flash.addFlashAttribute("nombre", usuario.getNombreCompleto());
-        flash.addFlashAttribute("correo", usuario.getCorreo());
+        flash.addFlashAttribute(Nombres.CORREO, usuario.getCorreo());
         flash.addFlashAttribute("primerNombre", usuario.primerNombre());
         flash.addFlashAttribute("inicialesUsuario", usuario.iniciales());
         return "redirect:/registro-exitoso";
@@ -69,42 +70,42 @@ public class AuthControlador {
     // Muestra el formulario de login
     @GetMapping("/login")
     public String mostrarLogin() {
-        return "login";
+        return Nombres.LOGIN;
     }
 
     // Procesa el inicio de sesion
     @PostMapping("/login")
-    public String procesarLogin(@RequestParam("correo") String correo,
+    public String procesarLogin(@RequestParam(Nombres.CORREO) String correo,
                                 @RequestParam("password") String password,
                                 HttpSession sesion,
                                 Model model) {
 
         if (correo == null || correo.isBlank() || password == null || password.isEmpty()) {
             model.addAttribute("error", "Ingresa tu correo y contrasena.");
-            model.addAttribute("correo", correo);
-            return "login";
+            model.addAttribute(Nombres.CORREO, correo);
+            return Nombres.LOGIN;
         }
 
         Usuario usuario = autenticacion.iniciarSesion(correo, password);
 
         if (usuario == null) {
             model.addAttribute("error", "Correo o contrasena incorrectos.");
-            model.addAttribute("correo", correo);
-            return "login";
+            model.addAttribute(Nombres.CORREO, correo);
+            return Nombres.LOGIN;
         }
 
         // Guarda al usuario en la sesion
         establecerUsuarioActivo(sesion, usuario);
-        return "redirect:/viajes";
+        return Nombres.REDIRECT_VIAJES;
     }
 
     private void establecerUsuarioActivo(HttpSession sesion, Usuario usuario) {
-        synchronized (sesion) {
-            Usuario anterior = (Usuario) sesion.getAttribute("usuarioActivo");
+        synchronized (WebUtils.getSessionMutex(sesion)) {
+            Usuario anterior = (Usuario) sesion.getAttribute(Nombres.USUARIO_ACTIVO);
             if (anterior == null || anterior.getIdUsuario() != usuario.getIdUsuario()) {
                 SesionViaje.reiniciar(sesion);
             }
-            sesion.setAttribute("usuarioActivo", usuario);
+            sesion.setAttribute(Nombres.USUARIO_ACTIVO, usuario);
         }
     }
 

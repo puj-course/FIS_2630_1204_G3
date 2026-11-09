@@ -15,18 +15,21 @@
 package com.wisetrip.modelo;
 
 import java.io.Serializable;
+
 import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
 
 public class FechasViaje implements Serializable {
-
     private static final long serialVersionUID = 1L;
+
+
     private String fechaInicio;   // formato yyyy-MM-dd
     private String fechaFin;
 
     public FechasViaje() {
+        // Constructor vacio: Spring lo necesita para enlazar los campos del formulario
     }
 
     public String getFechaInicio() { return fechaInicio; }
@@ -40,7 +43,7 @@ public class FechasViaje implements Serializable {
         LocalDate inicio = LocalDate.parse(fechaInicio);
         LocalDate fin = LocalDate.parse(fechaFin);
         return fin.isAfter(inicio);
-    } catch (DateTimeException | NullPointerException e) {
+    } catch (DateTimeException | NullPointerException _) {
         return false;
         }
     }

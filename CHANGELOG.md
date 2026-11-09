@@ -6299,13 +6299,15 @@ No entiendo muy bien eso de sonarqube
 
 1. **¿Qué hice ayer?**
 
+ayer estuvimos mirando el paquete que le correspondia a cada uno para poder analizar los errrores de sonarqube, la verdad habian tareas de 30min y otras de 2 entonces mirar como se podian resolver
    
 2. **¿Qué voy a hacer hoy?**
 
+Hoy corregi varios avisos de sonarqube en el paquete de  modelo e hice pruebas sencillas para comprobar que todo siguiera funcionando. Todas pasaron y sonarqube aprobo el analisis, me queda revisar la configuracion de cobertura, porque aparece en 0 % aunque si hice pruebas. Ademas corregi un monton de cosas del diagrama c4 porque aun no tenia coherencia con la refactorizacion que hicimos como grupo el sprint pasado. 
    
 3. **¿Tengo algún impedimento o bloqueo?**
 
-
+realmente si, de conocimiento, a pesar de que el taller era claro y coherente con lo que tenemos que hacer en el proyecto sigo con algunos vacios al entender lo de la cobertura del proyecto y es mi responsabilidad ponerme al dia y entender porque aun nos quedan muchas cosas por hacer y la proxima semana tengo mas entregas.
 
 ---
 
@@ -6313,41 +6315,45 @@ No entiendo muy bien eso de sonarqube
 
 1. **¿Qué hice ayer?**
 
-
+Se hizo refactorizacion del codigo teniendo en cuenta los factores que salian en sonarqube, correcciones en las tareas y realizacion de diagramas
 
 2. **¿Qué voy a hacer hoy?**
 
+Se siguieron haciendo correccciones en los diagramas y conectando los patrrones gof al diagrama de dominio se siguieron haciendo las correcciones en sonarqube y pruebas unitarias
    
 3. **¿Tengo algún impedimento o bloqueo?**
 
-   
+no estan funcionando las pruebas a mis compañeros   
 ---
 
 ### Santiago Clavijo
 
 1. **¿Qué hice ayer?**
 
-
+ayer corregir todos los issues, de las vistas que SonarQube mandaba a corregir mas no le hice pruebas ya que como no tienen logica de java no es necesario hacerle pruebas.
 
 2. **¿Qué voy a hacer hoy?**
 
-
+Hoy tratamos con el grupo de corregir la conexion de SonarQube ya que este esta tomando TODO el repositorio, y el profesor nos dijo que eso no tenia que pasar, que el sonar solo debe estar configurado para el back y no el repositorio en si
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
+falta de conocimiento y sin la conexion de sonarqube estamos basicamente a ciegas
 ---
 
 ### Gabriela Melo Gualteros
 
 1. **¿Qué hice ayer?**
 
-
+Ayer estuve revisando cuales eran las clases que me correspondian para corregir con el SonarQube
 
 2. **¿Qué voy a hacer hoy?**
 
-
+Hoy ya empece y termine las correcciones que aparecian en el SonarQube de las clases que me correspondieron cuando nos dividimos el trabajo con el equipo
 
 3. **¿Tengo algún impedimento o bloqueo?**
+
+Sigo sin entenderle al profesor lo del SonarQube, la configuracion de este, las pruebas, no se si lo que se esta haciendo esta del todo bien
 
 ---
 
@@ -6356,12 +6362,15 @@ No entiendo muy bien eso de sonarqube
 
 1. **¿Qué hice ayer?** 
 
+Termine varios de los diagramas que me hacían falta y empecé a hacer test de cada uno de los errores de sonarqube
 
 2. **¿Qué voy a hacer hoy?** 
 
+Modificamos por completo la configuración del sonarqube porque estaba tomando errores de más y ya nos estábamos asustando
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
+No
 
 ---
 
@@ -6371,13 +6380,16 @@ No entiendo muy bien eso de sonarqube
 
 1. **¿Qué hice ayer?**
 
+ayer hice las pruebas de modelo y termine de modificar los diagramas que me faltaban
+
    
 2. **¿Qué voy a hacer hoy?**
+hoy segui modificando el diagrama c4 ya que tiene que coincidir con los diagramas anteriores que han hecho mis compañeros y termine el demi patron gof 
 
    
 3. **¿Tengo algún impedimento o bloqueo?**
 
-
+no e como esta configurado el sonarqube tengo algunos vacios
 
 ---
 
@@ -6385,13 +6397,16 @@ No entiendo muy bien eso de sonarqube
 
 1. **¿Qué hice ayer?**
 
-
+Se realizaron diagramas y mejoras en el codigo por sonarqube
 
 2. **¿Qué voy a hacer hoy?**
+
+Se estan terminando los diagramas faltantes y correcciones en el codigo y toda su informacion con respecto a las pruebas y demas
 
    
 3. **¿Tengo algún impedimento o bloqueo?**
 
+no
    
 ---
 
@@ -6399,13 +6414,15 @@ No entiendo muy bien eso de sonarqube
 
 1. **¿Qué hice ayer?**
 
-
+ayer intentamos configurar el sonarqube para que solo tome las clases del back
 
 2. **¿Qué voy a hacer hoy?**
 
-
+hoy volvi a hacer mi diagrama gof en draw.io ya que lo tenia en visual paradigm, tambien hice los arreglos y las pruebas de la clase ciudad dao
 
 3. **¿Tengo algún impedimento o bloqueo?**
+
+no entiendo como esta configurado el sonar, ni como configurarlo.
 
 ---
 
@@ -6413,13 +6430,15 @@ No entiendo muy bien eso de sonarqube
 
 1. **¿Qué hice ayer?**
 
-
+Hice las correcciones de SonarQube que me correspondian y las acabe
 
 2. **¿Qué voy a hacer hoy?**
 
-
+Hoy vere como se hacen los test o pruebas que se piden
 
 3. **¿Tengo algún impedimento o bloqueo?**
+
+no
 
 ---
 
@@ -6428,12 +6447,18 @@ No entiendo muy bien eso de sonarqube
 
 1. **¿Qué hice ayer?** 
 
+Termine varios de los diagramas que me hacían falta y empecé a hacer test de cada uno de los errores de sonarqube
 
 2. **¿Qué voy a hacer hoy?** 
 
+Modificamos por completo la configuración del sonarqube porque estaba tomando errores de más y ya nos estábamos asustando
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
+no
+
+
+<img width="736" height="1600" alt="image" src="https://github.com/user-attachments/assets/89964e6c-88ca-4397-abbb-550a7f65b75b" />
 
 ---
 

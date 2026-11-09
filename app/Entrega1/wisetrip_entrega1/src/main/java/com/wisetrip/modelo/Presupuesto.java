@@ -11,8 +11,9 @@ package com.wisetrip.modelo;
 import java.io.Serializable;
 
 public class Presupuesto implements Serializable {
+    private static final long serialVersionUID = 1L;
 
-    private static final long serialVersionUID = 1L;    
+
     private String monto;
     private String moneda;
 
@@ -57,7 +58,7 @@ public class Presupuesto implements Serializable {
             double valor = Double.parseDouble(limpio);        
             return Double.isFinite(valor) ? valor : -1;
 
-        } catch (NumberFormatException e) {
+        } catch (NumberFormatException _) {
             return -1;
         }
     }
