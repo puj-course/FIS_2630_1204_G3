@@ -2,28 +2,22 @@
 
 ## 1. Facade — UsuarioSesionFacade como fachada de la sesión
 
-**Problema de diseño:** En el flujo de planificación (preferencias, fechas,
-presupuesto, reparto y el resumen del viaje) hay tres controladores
-distintos — `PlanificacionControlador`, `PlanControlador` y
-`ViajeControlador` — y los tres necesitan, en casi todos sus métodos, lo
-mismo: saber quién es el usuario que tiene la sesión abierta, y mostrar sus
-iniciales en el encabezado de cada pantalla. Antes de aplicar el patrón,
-cada controlador resolvía esto por su cuenta:
+**Problema de diseño:** En el flujo de planificación preferencias, fechas, presupuesto, recomendaciones, reparto y el resumen del viaje) hay cuatro controladores distintos — PlanificacionControlador, PlanControlador, ViajeControlador y RecomendacionControlador — y los cuatro necesitan, en casi todos sus métodos, lo mismo: saber quién es el usuario que tiene la sesión abierta, y mostrar sus iniciales en el encabezado de cada pantalla. Antes de aplicar el patrón, cada controlador resolvía esto por su cuenta:
 
-- Alto acoplamiento: los tres controladores dependían directamente de cómo
+- Alto acoplamiento: los cuatro controladores dependían directamente de cómo
   se guarda el usuario en `HttpSession` (la clave `"usuarioActivo"` estaba
   escrita a mano en cada uno).
 - Duplicación de lógica: el método que calcula las iniciales
-  (`calcularIniciales`) estaba copiado, idéntico, en los tres
+  (`calcularIniciales`) estaba copiado, idéntico, en los cuatro
   controladores.
 - Código rígido: si cambiaba la clave de sesión o la forma de calcular las
-  iniciales, había que acordarse de tocar los tres archivos a la vez.
+  iniciales, había que acordarse de tocar los cuatro archivos a la vez.
 
 **Solución directa:** seguir copiando el mismo bloque de código en cada
 controlador nuevo que se agregue al flujo.
 
 El patrón Facade consiste en poner una sola clase entre los controladores
-(los clientes) y el subsistema que usan (`HttpSession` + `Usuario`), de
+(los clientes) y el subsistema que usan (HttpSession, Model y Usuario), de
 forma que los controladores le hablen únicamente a esa clase y no conozcan
 los detalles de cómo resuelve el trabajo por dentro.
 
@@ -59,8 +53,7 @@ private String calcularIniciales(Usuario usuario) {
 ```
 
 Este mismo par de bloques — la línea de `getAttribute` + el método
-`calcularIniciales` completo — aparecía también en
-`PlanificacionControlador` y en `ViajeControlador`, letra por letra.
+`calcularIniciales` completo — ase repetía en los demás controladores del flujo, letra por letra.
 
 ### 2: la fachada — un solo lugar que sabe resolver todo esto
 
@@ -93,7 +86,7 @@ que `usuarioSesionFacade.prepararEncabezado(...)` le devuelve el usuario (y
 de paso ya deja todo listo en el `model`), o `null` si no hay nadie con
 sesión iniciada.
 
-Y así quedó inyectada en los tres controladores, por ejemplo en
+Y así quedó inyectada en los cuatro controladores, por ejemplo en
 `PlanControlador`:
 ```java
 private final UsuarioSesionFacade usuarioSesionFacade;
@@ -147,7 +140,11 @@ fachada.
 <img width="732" height="751" alt="PatrónFacade drawio" src="https://github.com/user-attachments/assets/c6b9c997-efee-44ae-afea-8d7e98816e94" />
 
 ---
+En el diagrama se ven tres partes:
 
+- **Clientes:** los cuatro controladores. Cada uno guarda la fachada como atributo, por eso la relación es una asociación (línea continua).
+- **Facade:** `UsuarioSesionFacade`, con la constante `CLAVE_USUARIO` (subrayada porque es `static`) y sus tres métodos.
+- **Subsistema:** `HttpSession` y `Model`, que son interfaces de Jakarta y de Spring, y `Usuario`. La fachada no los guarda como atributos, solo los recibe como parámetros o los usa dentro de sus métodos, por eso la relación es una dependencia (línea punteada).
 
 ---
 
