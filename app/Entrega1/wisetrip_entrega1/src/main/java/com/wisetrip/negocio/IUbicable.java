@@ -24,13 +24,4 @@ public interface IUbicable extends IValidable {
 
     /** Texto listo para mostrar: "Aeropuerto principal - Bogotá, Colombia". */
     String getDescripcion();
-
-    /** Compara ciudad y país sin importar mayúsculas. */
-    default boolean esMismaCiudadQue(IUbicable otra) {
-        if (otra == null || getCiudad() == null || getPais() == null) {
-            return false;
-        }
-        return getCiudad().equalsIgnoreCase(otra.getCiudad())
-                && getPais().equalsIgnoreCase(otra.getPais());
-    }
 }

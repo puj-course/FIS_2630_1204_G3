@@ -11,12 +11,12 @@ public class ReglaFechaFin extends ReglaValidacionFechas {
 
         if (valor == null || valor.isBlank()) {
             contexto.agregarError("fechaFin", "Selecciona la fecha de regreso.");
-            return ;
+            return;
         }
 
         try {
             contexto.setFin(LocalDate.parse(valor));
-        } catch (DateTimeException e) {
+        } catch (DateTimeException _) {
             contexto.agregarError("fechaFin", "Ingresa una fecha válida.");
         }
     }

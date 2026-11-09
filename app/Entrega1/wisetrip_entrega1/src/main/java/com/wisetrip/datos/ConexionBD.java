@@ -1,4 +1,4 @@
-//todo lo que toca conexion y estructura general de la base de datos.
+//Maneja la conexion y la estructura general de la base de datos.
 
 package com.wisetrip.datos;
 
@@ -13,6 +13,10 @@ public class ConexionBD {
 
     private static final Properties PROPIEDADES = cargarPropiedades();
 
+    private ConexionBD() {
+        // Solo tiene métodos estáticos: se usa como ConexionBD.obtenerConexion(), sin crear objetos.
+    }
+
     public static Connection obtenerConexion() throws SQLException {
         try {
             return DriverManager.getConnection(
@@ -21,8 +25,7 @@ public class ConexionBD {
                     PROPIEDADES.getProperty("spring.datasource.password")
             );
         } catch (SQLException e) {
-            System.err.println("Error al conectar a la base de datos: " + e.getMessage());
-            throw e;
+            throw new SQLException("No se pudo conectar a la base de datos de WiseTrip.", e.getSQLState(), e);
         }
     }
 

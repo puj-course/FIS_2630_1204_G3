@@ -6397,13 +6397,16 @@ no e como esta configurado el sonarqube tengo algunos vacios
 
 1. **¿Qué hice ayer?**
 
-
+Se realizaron diagramas y mejoras en el codigo por sonarqube
 
 2. **¿Qué voy a hacer hoy?**
+
+Se estan terminando los diagramas faltantes y correcciones en el codigo y toda su informacion con respecto a las pruebas y demas
 
    
 3. **¿Tengo algún impedimento o bloqueo?**
 
+no
    
 ---
 
@@ -6427,13 +6430,15 @@ no entiendo como esta configurado el sonar, ni como configurarlo.
 
 1. **¿Qué hice ayer?**
 
-
+Hice las correcciones de SonarQube que me correspondian y las acabe
 
 2. **¿Qué voy a hacer hoy?**
 
-
+Hoy vere como se hacen los test o pruebas que se piden
 
 3. **¿Tengo algún impedimento o bloqueo?**
+
+no
 
 ---
 

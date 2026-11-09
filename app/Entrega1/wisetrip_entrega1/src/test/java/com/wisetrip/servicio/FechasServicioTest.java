@@ -41,7 +41,7 @@ class FechasServicioTest {
     @BeforeEach
     void setUp() {
         servicio = new FechasServicio(viajes);
-        hoy = LocalDate.now();
+        hoy = LocalDate.now(ReglaValidacionFechas.ZONA_HORARIA);
     }
 
     private static FechasViaje fechas(LocalDate inicio, LocalDate fin) {
@@ -174,9 +174,9 @@ class FechasServicioTest {
     @Test
     @DisplayName("CP47 hoy: devuelve la fecha actual en formato yyyy-MM-dd")
     void cp47_hoy_formatoIso() {
-        LocalDate antes = LocalDate.now();
+        LocalDate antes = LocalDate.now(ReglaValidacionFechas.ZONA_HORARIA);
         String valor = servicio.hoy();
-        LocalDate despues = LocalDate.now();
+        LocalDate despues = LocalDate.now(ReglaValidacionFechas.ZONA_HORARIA);
 
         LocalDate parseada = LocalDate.parse(valor);
         assertTrue(!parseada.isBefore(antes) && !parseada.isAfter(despues));
