@@ -2,28 +2,22 @@
 
 ## 1. Facade — UsuarioSesionFacade como fachada de la sesión
 
-**Problema de diseño:** En el flujo de planificación (preferencias, fechas,
-presupuesto, reparto y el resumen del viaje) hay tres controladores
-distintos — `PlanificacionControlador`, `PlanControlador` y
-`ViajeControlador` — y los tres necesitan, en casi todos sus métodos, lo
-mismo: saber quién es el usuario que tiene la sesión abierta, y mostrar sus
-iniciales en el encabezado de cada pantalla. Antes de aplicar el patrón,
-cada controlador resolvía esto por su cuenta:
+**Problema de diseño:** En el flujo de planificación preferencias, fechas, presupuesto, recomendaciones, reparto y el resumen del viaje) hay cuatro controladores distintos — PlanificacionControlador, PlanControlador, ViajeControlador y RecomendacionControlador — y los cuatro necesitan, en casi todos sus métodos, lo mismo: saber quién es el usuario que tiene la sesión abierta, y mostrar sus iniciales en el encabezado de cada pantalla. Antes de aplicar el patrón, cada controlador resolvía esto por su cuenta:
 
-- Alto acoplamiento: los tres controladores dependían directamente de cómo
+- Alto acoplamiento: los cuatro controladores dependían directamente de cómo
   se guarda el usuario en `HttpSession` (la clave `"usuarioActivo"` estaba
   escrita a mano en cada uno).
 - Duplicación de lógica: el método que calcula las iniciales
-  (`calcularIniciales`) estaba copiado, idéntico, en los tres
+  (`calcularIniciales`) estaba copiado, idéntico, en los cuatro
   controladores.
 - Código rígido: si cambiaba la clave de sesión o la forma de calcular las
-  iniciales, había que acordarse de tocar los tres archivos a la vez.
+  iniciales, había que acordarse de tocar los cuatro archivos a la vez.
 
 **Solución directa:** seguir copiando el mismo bloque de código en cada
 controlador nuevo que se agregue al flujo.
 
 El patrón Facade consiste en poner una sola clase entre los controladores
-(los clientes) y el subsistema que usan (`HttpSession` + `Usuario`), de
+(los clientes) y el subsistema que usan (HttpSession, Model y Usuario), de
 forma que los controladores le hablen únicamente a esa clase y no conozcan
 los detalles de cómo resuelve el trabajo por dentro.
 
@@ -59,8 +53,7 @@ private String calcularIniciales(Usuario usuario) {
 ```
 
 Este mismo par de bloques — la línea de `getAttribute` + el método
-`calcularIniciales` completo — aparecía también en
-`PlanificacionControlador` y en `ViajeControlador`, letra por letra.
+`calcularIniciales` completo — ase repetía en los demás controladores del flujo, letra por letra.
 
 ### 2: la fachada — un solo lugar que sabe resolver todo esto
 
@@ -93,7 +86,7 @@ que `usuarioSesionFacade.prepararEncabezado(...)` le devuelve el usuario (y
 de paso ya deja todo listo en el `model`), o `null` si no hay nadie con
 sesión iniciada.
 
-Y así quedó inyectada en los tres controladores, por ejemplo en
+Y así quedó inyectada en los cuatro controladores, por ejemplo en
 `PlanControlador`:
 ```java
 private final UsuarioSesionFacade usuarioSesionFacade;
@@ -147,7 +140,11 @@ fachada.
 <img width="732" height="751" alt="PatrónFacade drawio" src="https://github.com/user-attachments/assets/c6b9c997-efee-44ae-afea-8d7e98816e94" />
 
 ---
+En el diagrama se ven tres partes:
 
+- **Clientes:** los cuatro controladores. Cada uno guarda la fachada como atributo, por eso la relación es una asociación (línea continua).
+- **Facade:** `UsuarioSesionFacade`, con la constante `CLAVE_USUARIO` (subrayada porque es `static`) y sus tres métodos.
+- **Subsistema:** `HttpSession` y `Model`, que son interfaces de Jakarta y de Spring, y `Usuario`. La fachada no los guarda como atributos, solo los recibe como parámetros o los usa dentro de sus métodos, por eso la relación es una dependencia (línea punteada).
 
 ---
 
@@ -235,7 +232,8 @@ datos.
 
 `ReglaValidacionFechas` es la clase abstracta de la que salen todas las reglas. Define cómo se encadena una regla con la siguiente (`siguiente()`) y el método que dispara la validación (`validar()`), que es `final` porque ninguna regla concreta debe poder cambiar el mecanismo de la cadena, solo su propia lógica.
 
-<img width="693" height="506" alt="Screenshot 2026-10-14 at 12 59 11 PM" src="https://github.com/user-attachments/assets/a42e2eb5-05c8-4923-9730-cf81c398dffa" />
+<img width="685" height="656" alt="Screenshot 2026-11-09 at 7 10 04 PM" src="https://github.com/user-attachments/assets/6f1b27eb-7368-4bf5-b85b-af70c7df0d46" />
+
 
 
 `validarPropio` es `protected`: las reglas concretas lo implementan, pero
@@ -254,11 +252,14 @@ una vez y no tiene que corregirlos de a uno.
 formato válido y que no sea anterior a hoy. Si todo está bien, la guarda en
 el contexto con `setInicio()`:
 
-<img width="890" height="548" alt="Screenshot 2026-10-14 at 1 00 23 PM" src="https://github.com/user-attachments/assets/5342ec26-bcef-43a1-a6e1-e37065c673fe" />
+<img width="881" height="557" alt="Screenshot 2026-11-09 at 7 11 17 PM" src="https://github.com/user-attachments/assets/e14d87ec-cdb7-4df7-b164-22744e8b023d" />
+
 
 `ReglaFechaFin` hace lo mismo con la fecha de regreso y la guarda con
 `setFin()`:
-<img width="730" height="461" alt="Screenshot 2026-10-14 at 1 01 56 PM" src="https://github.com/user-attachments/assets/77077c32-41d5-4721-a666-4070b442e9c4" />
+
+<img width="724" height="416" alt="Screenshot 2026-11-09 at 7 12 00 PM" src="https://github.com/user-attachments/assets/a4374748-2852-4868-9f06-b84731d182d3" />
+
 
 `ReglaRelacionFechas` es la última. Si `inicio` o `fin` quedaron en `null`
 (porque alguna de las reglas anteriores encontró un error), no hace nada,
@@ -267,7 +268,7 @@ están bien, revisa que el regreso sea después del inicio, que el viaje no
 pase de `MAX_DIAS` y que las fechas no se crucen con otro viaje del
 usuario:
 
-<img width="999" height="548" alt="Screenshot 2026-11-04 at 9 27 07 AM" src="https://github.com/user-attachments/assets/ef867812-582e-49d6-85a6-2c4a8c2daff0" />
+<img width="985" height="565" alt="Screenshot 2026-11-09 at 7 12 22 PM" src="https://github.com/user-attachments/assets/61f8fc56-5902-4ab5-bf92-73a06b6edb96" />
 
 
 
@@ -312,7 +313,8 @@ Cada regla se puede probar sola, armando un `ContextoValidacionFechas` a mano, s
 
 ## Diseño — Diagrama UML
 
-<img width="1059" height="695" alt="PatronChainResponsability drawio" src="https://github.com/user-attachments/assets/f0173a88-25a7-41a9-b8ed-cbe02c09457a" />
+<img width="1100" height="709" alt="PatrónFacade-ChainResponsability drawio (1)" src="https://github.com/user-attachments/assets/078a004b-7c90-4fa7-a341-0007381ad7c1" />
+
 
 En el diagrama se ven los participantes del patrón:
 

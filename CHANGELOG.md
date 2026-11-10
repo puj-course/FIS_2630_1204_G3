@@ -6397,13 +6397,16 @@ no e como esta configurado el sonarqube tengo algunos vacios
 
 1. **¿Qué hice ayer?**
 
-
+Se realizaron diagramas y mejoras en el codigo por sonarqube
 
 2. **¿Qué voy a hacer hoy?**
+
+Se estan terminando los diagramas faltantes y correcciones en el codigo y toda su informacion con respecto a las pruebas y demas
 
    
 3. **¿Tengo algún impedimento o bloqueo?**
 
+no
    
 ---
 
@@ -6427,13 +6430,15 @@ no entiendo como esta configurado el sonar, ni como configurarlo.
 
 1. **¿Qué hice ayer?**
 
-
+Hice las correcciones de SonarQube que me correspondian y las acabe
 
 2. **¿Qué voy a hacer hoy?**
 
-
+Hoy vere como se hacen los test o pruebas que se piden
 
 3. **¿Tengo algún impedimento o bloqueo?**
+
+no
 
 ---
 
@@ -6457,3 +6462,153 @@ no
 
 ---
 
+---
+#  Sprint Retrospective - 08/11/2026
+
+## Maria Alejandra Rodriguez
+
+1. **¿Qué logramos?**
+
+
+
+2. **¿Cómo trabajamos?**
+
+
+
+3. **¿Qué podríamos mejorar?**
+
+
+
+  
+---
+
+## Gabriela Melo Gualteros
+
+1. **¿Qué logramos?**
+
+
+ 
+2. **¿Cómo trabajamos?**
+
+
+  
+3. **¿Qué podríamos mejorar?**
+
+
+  
+---
+
+## Valeria Cortes Rendon
+
+1. **¿Qué logramos?**
+
+   
+2. **¿Cómo trabajamos?**
+
+
+
+¿Qué podríamos mejorar?
+ 
+3. **¿Qué podríamos mejorar?**
+
+
+ 
+---
+
+## Isabella Posada
+
+1. **¿Qué logramos?**
+
+
+   
+2. **¿Cómo trabajamos?**
+
+
+
+
+3. **¿Qué podríamos mejorar?**
+
+
+
+
+---
+
+## Santiago Clavijo
+
+1. **¿Qué logramos?**
+
+
+
+2. **¿Cómo trabajamos?**
+
+
+
+3. **¿Qué podríamos mejorar?**
+
+
+
+---
+# Sprint Review - 01/11/2026
+
+## Información de la Sesión
+
+* **Fecha de la Review:** 08/11/2026
+* **Sprint Goal:** 
+
+## Incremento Entregado
+
+* **HU 126 (Completa):** 
+* **HU 127 (Completa):** 
+* **HU 128 (Completa):** Se realizaron todas las pruebas de la carpeta servicio en el programa de wisetrip
+* **HU 129 (Completa):** Se realizaron cada uno de los @test en cada de las clases de sevicios o donde se requeria
+* **HU 130 (Completa):** Complete las correcciones que salian en el SonarQube de las clases que me correspondieron
+* **HU 131 (Completa):** Se hicieron los tests respectivos de cada una de las clases. Solo hubo una clase que no corregi que es la de ConexionBD.java (esta en la carpeta de datos y por lo que no se trata del backend no lo tocamos, ademas porque las correcciones de la base de datos modifican grandemente el codigo que ya tenemos hecho)
+* **HU 132 (Completa):** Avances en refactorización y desarrollo del taller de automatización
+* **HU 133 (Completa):**
+* **HU 134 (Parcial):** esta hu se referia a dorregir y testear los dao y las interfaces, pero con el equipo decidimos que los dao no lo sibamos a tocar, ya que no queremos que se dañe nada de lo que tenemos, y en el caso de las interfaces se corrigieron los issues mas no se testearon ya que estas solo declararan los metodos
+* **HU 135 (Completa):** igual que mi otra hu, corregi todos los issues, gracias a el consejo del profesor como estos no tienen logica java no se le puede hacer pruebas
+
+## Demostración
+
+
+## Conclusión y Próximos Pasos
+
+
+
+**Feedback de los stakeholders:**
+
+
+---
+
+---
+
+# Sprint Planning - [09/11/2026]
+
+## Sprint Goal
+
+
+## Capacidad del equipo 
+
+* Desarrolladores disponibles: 5
+* Puntos/horas disponibles: 42
+
+## Issues seleccionados para el Sprint
+
+| ID | Título | Tipo | Estimación | Responsable |
+|----|--------|------|------------|-------------|
+| #136 | HU |.    |Historia de Usuario  | TBD    | Valeria |
+| #137 | HU |.    | Historia de Usuario | TBD | Valeria |
+| #138 | HU |.     | Historia de Usuario | TBD | Maleja |
+| #139 | HU |     | Historia de Usuario | TBD | Maleja |
+| #140 | HU |.   |Historia de Usuario | TBD | Gaby |
+| #141 |HU |.    | Historia de Usuario | TBD | Gaby |
+| #142 | HU |.    | Historia de Usuario | TBD | Isabela|
+| #143 | HU |     | TBD | Isabela |
+| #144 | HU |      | TBD | Clavijo |
+| #145 | HU |      | TBD | Clavijo |
+
+## Riesgos / Bloqueos identificados
+
+-
+
+---
