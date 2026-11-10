@@ -313,7 +313,8 @@ Cada regla se puede probar sola, armando un `ContextoValidacionFechas` a mano, s
 
 ## Diseño — Diagrama UML
 
-<img width="1059" height="695" alt="PatronChainResponsability drawio" src="https://github.com/user-attachments/assets/f0173a88-25a7-41a9-b8ed-cbe02c09457a" />
+<img width="1100" height="709" alt="PatrónFacade-ChainResponsability drawio (1)" src="https://github.com/user-attachments/assets/078a004b-7c90-4fa7-a341-0007381ad7c1" />
+
 
 En el diagrama se ven los participantes del patrón:
 
