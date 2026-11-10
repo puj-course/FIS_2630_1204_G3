@@ -1,0 +1,16 @@
+# Solo se necesita el codigo de la app; todo lo demas se excluye del contexto de Docker
+.git
+.github
+.idea
+.vscode
+conf
+database
+docs
+scripts
+temp
+*.md
+.env
+**/target
+**/.idea
+**/.vscode
+**/node_modules
