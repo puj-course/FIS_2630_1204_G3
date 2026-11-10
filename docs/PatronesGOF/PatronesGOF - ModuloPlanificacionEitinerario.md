@@ -232,7 +232,8 @@ datos.
 
 `ReglaValidacionFechas` es la clase abstracta de la que salen todas las reglas. Define cómo se encadena una regla con la siguiente (`siguiente()`) y el método que dispara la validación (`validar()`), que es `final` porque ninguna regla concreta debe poder cambiar el mecanismo de la cadena, solo su propia lógica.
 
-<img width="693" height="506" alt="Screenshot 2026-10-14 at 12 59 11 PM" src="https://github.com/user-attachments/assets/a42e2eb5-05c8-4923-9730-cf81c398dffa" />
+<img width="685" height="656" alt="Screenshot 2026-11-09 at 7 10 04 PM" src="https://github.com/user-attachments/assets/6f1b27eb-7368-4bf5-b85b-af70c7df0d46" />
+
 
 
 `validarPropio` es `protected`: las reglas concretas lo implementan, pero
@@ -251,11 +252,14 @@ una vez y no tiene que corregirlos de a uno.
 formato válido y que no sea anterior a hoy. Si todo está bien, la guarda en
 el contexto con `setInicio()`:
 
-<img width="890" height="548" alt="Screenshot 2026-10-14 at 1 00 23 PM" src="https://github.com/user-attachments/assets/5342ec26-bcef-43a1-a6e1-e37065c673fe" />
+<img width="881" height="557" alt="Screenshot 2026-11-09 at 7 11 17 PM" src="https://github.com/user-attachments/assets/e14d87ec-cdb7-4df7-b164-22744e8b023d" />
+
 
 `ReglaFechaFin` hace lo mismo con la fecha de regreso y la guarda con
 `setFin()`:
-<img width="730" height="461" alt="Screenshot 2026-10-14 at 1 01 56 PM" src="https://github.com/user-attachments/assets/77077c32-41d5-4721-a666-4070b442e9c4" />
+
+<img width="724" height="416" alt="Screenshot 2026-11-09 at 7 12 00 PM" src="https://github.com/user-attachments/assets/a4374748-2852-4868-9f06-b84731d182d3" />
+
 
 `ReglaRelacionFechas` es la última. Si `inicio` o `fin` quedaron en `null`
 (porque alguna de las reglas anteriores encontró un error), no hace nada,
@@ -264,7 +268,7 @@ están bien, revisa que el regreso sea después del inicio, que el viaje no
 pase de `MAX_DIAS` y que las fechas no se crucen con otro viaje del
 usuario:
 
-<img width="999" height="548" alt="Screenshot 2026-11-04 at 9 27 07 AM" src="https://github.com/user-attachments/assets/ef867812-582e-49d6-85a6-2c4a8c2daff0" />
+<img width="985" height="565" alt="Screenshot 2026-11-09 at 7 12 22 PM" src="https://github.com/user-attachments/assets/61f8fc56-5902-4ab5-bf92-73a06b6edb96" />
 
 
 
