@@ -6462,3 +6462,89 @@ no
 
 ---
 
+---
+#  Sprint Retrospective - 08/11/2026
+
+## Maria Alejandra Rodriguez
+
+1. **¿Qué logramos?**
+
+
+
+2. **¿Cómo trabajamos?**
+
+
+
+3. **¿Qué podríamos mejorar?**
+
+
+
+  
+---
+
+## Gabriela Melo Gualteros
+
+1. **¿Qué logramos?**
+
+
+ 
+2. **¿Cómo trabajamos?**
+
+
+  
+3. **¿Qué podríamos mejorar?**
+
+
+  
+---
+
+## Valeria Cortes Rendon
+
+1. **¿Qué logramos?**
+
+   
+2. **¿Cómo trabajamos?**
+
+
+
+¿Qué podríamos mejorar?
+ 
+3. **¿Qué podríamos mejorar?**
+
+
+ 
+---
+
+## Isabella Posada
+
+1. **¿Qué logramos?**
+
+
+   
+2. **¿Cómo trabajamos?**
+
+
+
+
+3. **¿Qué podríamos mejorar?**
+
+
+
+
+---
+
+## Santiago Clavijo
+
+1. **¿Qué logramos?**
+
+
+
+2. **¿Cómo trabajamos?**
+
+
+
+3. **¿Qué podríamos mejorar?**
+
+
+
+---
