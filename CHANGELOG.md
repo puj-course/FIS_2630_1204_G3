@@ -6581,3 +6581,34 @@ no
 ---
 
 ---
+
+# Sprint Planning - [09/11/2026]
+
+## Sprint Goal
+
+
+## Capacidad del equipo 
+
+* Desarrolladores disponibles: 5
+* Puntos/horas disponibles: 42
+
+## Issues seleccionados para el Sprint
+
+| ID | Título | Tipo | Estimación | Responsable |
+|----|--------|------|------------|-------------|
+| #136 | HU |.    |Historia de Usuario  | TBD    | Valeria |
+| #137 | HU |.    | Historia de Usuario | TBD | Valeria |
+| #138 | HU |.     | Historia de Usuario | TBD | Maleja |
+| #139 | HU |     | Historia de Usuario | TBD | Maleja |
+| #140 | HU |.   |Historia de Usuario | TBD | Gaby |
+| #141 |HU |.    | Historia de Usuario | TBD | Gaby |
+| #142 | HU |.    | Historia de Usuario | TBD | Isabela|
+| #143 | HU |     | TBD | Isabela |
+| #144 | HU |      | TBD | Clavijo |
+| #145 | HU |      | TBD | Clavijo |
+
+## Riesgos / Bloqueos identificados
+
+-
+
+---
