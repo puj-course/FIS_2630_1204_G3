@@ -6600,8 +6600,8 @@ no
 | #137 | HU |.    | Historia de Usuario | TBD | Valeria |
 | #138 | HU |.     | Historia de Usuario | TBD | Maleja |
 | #139 | HU |     | Historia de Usuario | TBD | Maleja |
-| #140 | HU |.   |Historia de Usuario | TBD | Gaby |
-| #141 |HU |.    | Historia de Usuario | TBD | Gaby |
+| #140 | HU |Como usuario quiero recibir un mensaje de texto en mi celular cuando mi registro en WiseTrip sea exitoso, para tener la confirmación de que mi cuenta quedó creada. |Historia de Usuario | TBD | Gaby |
+| #141 |HU |Como usuario quiero recibir un SMS en mi celular cada vez que se inicie sesión en mi cuenta de WiseTrip, para confirmar que fui yo quien entró y darme cuenta rápido si alguien más lo hizo.  | Historia de Usuario | TBD | Gaby |
 | #142 | HU |.    | Historia de Usuario | TBD | Isabela|
 | #143 | HU |     | TBD | Isabela |
 | #144 | HU |      | TBD | Clavijo |
