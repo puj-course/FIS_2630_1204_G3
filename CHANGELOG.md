@@ -6581,6 +6581,11 @@ Podriamos entender mejor las herramientas antes de empezar, especialmente la dif
 **Feedback de los stakeholders:**
 
 
+**foto**
+
+<img width="736" height="1600" alt="image" src="https://github.com/user-attachments/assets/9a1e6637-c977-49a9-9fa7-c79d774216a6" />
+
+
 ---
 
 ---
