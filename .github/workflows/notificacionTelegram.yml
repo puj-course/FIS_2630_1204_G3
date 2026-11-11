@@ -1,0 +1,48 @@
+name: Notificar a Telegram
+
+on:
+  push:
+  pull_request:
+    types: [opened, reopened, synchronize, closed]
+
+jobs:
+  notificar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Notificar a Telegram
+        env:
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          EVENT: ${{ github.event_name }}
+          REPO: ${{ github.repository }}
+          ACTOR: ${{ github.actor }}
+          BRANCH: ${{ github.ref_name }}
+          COMMIT_MESSAGE: ${{ github.event.head_commit.message }}
+          COMPARE_URL: ${{ github.event.compare }}
+          PR_ACTION: ${{ github.event.action }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          PR_TITLE: ${{ github.event.pull_request.title }}
+          PR_URL: ${{ github.event.pull_request.html_url }}
+          PR_MERGED: ${{ github.event.pull_request.merged }}
+        run: |
+          if [ "$EVENT" = "push" ]; then
+            TEXT=" Nuevo push en $REPO
+          Rama: $BRANCH
+          Autor: $ACTOR
+          Commit: $COMMIT_MSG
+          $COMPARE_URL"
+          else
+            ACCION="$PR_ACTION"
+            if [ "$PR_ACTION" = "closed" ] && [ "$PR_MERGED" = "true" ]; then
+              ACCION="merged"
+            fi
+            TEXT=" Pull Request #$PR_NUMBER ($ACCION) en $REPO
+          Título: $PR_TITLE
+          Autor: $ACTOR
+          $PR_URL"
+          fi
+
+          curl -s -X POST "https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage" \
+            --data-urlencode "chat_id=${TELEGRAM_CHAT_ID}" \
+            --data-urlencode "text=${TEXT}"
+        
