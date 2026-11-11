@@ -6612,8 +6612,7 @@ Podriamos entender mejor las herramientas antes de empezar, especialmente la dif
 | #141 |HU |Como usuario quiero recibir un SMS en mi celular cada vez que se inicie sesión en mi cuenta de WiseTrip, para confirmar que fui yo quien entró y darme cuenta rápido si alguien más lo hizo.  | Historia de Usuario | TBD | Gaby |
 | #142 | Como administrador de WiseTrip, quiero medir la complejidad ciclomática del módulo de recomendaciones, para identificar métodos con demasiados caminos de decisión y evaluar el impacto de la refactorización sobre la mantenibilidad del código |.  Historia de usuario  | Historia de Usuario | TBD | Isabela|
 | #143 | Como administrador de WiseTrip, quiero analizar métricas orientadas a objetos del módulo de recomendaciones, para evaluar la estructura de las clases y detectar posibles oportunidades de mejora en su diseño |  Historia de Usuario   | TBD | Isabela |
-| #144 | HU |      | TBD | Clavijo |
-| #145 | HU |      | TBD | Clavijo |
+| #144 | HU |  Como miembro del equipo de wisetrip quiero recibir en Telegram un aviso cada vez que se haga un commit, se actualice o cierre un pull request, para enterarme de los cambios en tiempo real sin tener que entrar a GitHub constantemente. | TBD | Clavijo |
 
 ## Riesgos / Bloqueos identificados
 
