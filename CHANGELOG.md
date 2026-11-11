@@ -6520,15 +6520,18 @@ no
 1. **¿Qué logramos?**
 
 
+logramos coordinarnos como grupo y repartir los issues de SonarQube por paquetes para mejorar la calidad del codigo, a mi me tocaron los modelos. Tambien terminamos los diagramas de despliegue, clases y componentes, y creamos y ejecutamos los tests.
    
 2. **¿Cómo trabajamos?**
 
 
+Trabajamos bien en equipo y cada persona avanzo con sus responsabilidades. Aunque tuvimos varias dudas sobre SonarQube, nos apoyamos para resolverlas y seguir avanzando.
 
 
 3. **¿Qué podríamos mejorar?**
 
 
+Podriamos entender mejor las herramientas antes de empezar, especialmente la diferencia entre pasar los tests y medir la cobertura. Tambien organizar revisiones entre compañeros y dejar mas tiempo para integrar los cambios y comprobar que todo funcione junto.
 
 
 ---
