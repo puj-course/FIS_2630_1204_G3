@@ -6661,15 +6661,15 @@ si tiempo. creo que no voy a alcanzar...
 
 1. **¿Qué hice ayer?**
 
-   
+ayer hicimos el planning y con el equipo decidimos que hacer y como distrubuir los pendientes de esta semana para la ultima sustentacion   
 
 2. **¿Qué voy a hacer hoy?**
 
-   
+hoy no pude realizar trabajo, ya que tenia una entrega de ooperativos
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
-   
+la complejidad y la longitud del codigo
 
 ---
 
