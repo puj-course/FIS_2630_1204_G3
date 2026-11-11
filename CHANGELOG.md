@@ -6563,8 +6563,8 @@ no
 * **HU 129 (Completa):** Se realizaron cada uno de los @test en cada de las clases de sevicios o donde se requeria
 * **HU 130 (Completa):** Complete las correcciones que salian en el SonarQube de las clases que me correspondieron
 * **HU 131 (Completa):** Se hicieron los tests respectivos de cada una de las clases. Solo hubo una clase que no corregi que es la de ConexionBD.java (esta en la carpeta de datos y por lo que no se trata del backend no lo tocamos, ademas porque las correcciones de la base de datos modifican grandemente el codigo que ya tenemos hecho)
-* **HU 132 (Completa):** Avances en refactorización y desarrollo del taller de automatización
-* **HU 133 (Completa):**
+* **HU 132 (Completa):** Se revisaron y corrigieron los issues de SonarQube del paquete modelo. El analisis automatizado del pull request paso el Quality Gate, sin problemas nuevos.
+* **HU 133 (Completa):** Se crearon y ejecutaron las pruebas unitarias de Usuario, FechasViaje, Presupuesto y Ubicacion, y todas pasaron. Quedo pendiente revisar la configuracion de cobertura en SonarQube para confirmar el cumplimiento del umbral requerido.
 * **HU 134 (Parcial):** esta hu se referia a dorregir y testear los dao y las interfaces, pero con el equipo decidimos que los dao no lo sibamos a tocar, ya que no queremos que se dañe nada de lo que tenemos, y en el caso de las interfaces se corrigieron los issues mas no se testearon ya que estas solo declararan los metodos
 * **HU 135 (Completa):** igual que mi otra hu, corregi todos los issues, gracias a el consejo del profesor como estos no tienen logica java no se le puede hacer pruebas
 
