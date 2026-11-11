@@ -1,13 +1,36 @@
+# Orquestacion de WiseTrip con Docker Compose
+# Levantar:  docker compose up --build -d
+# Apagar:    docker compose down
+#
+# Servicios: solo la aplicacion. La base de datos es PostgreSQL administrado
+# en Neon (nube), compartida por todo el equipo, por eso no se levanta un
+# contenedor de base de datos ni se necesitan volumenes de datos.
+name: wisetrip
+
 services:
   wisetrip:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
     image: wisetrip:latest
     container_name: wisetrip
     ports:
-      - "8090:8090"
+      # puerto del equipo : puerto del contenedor (WISETRIP_PUERTO cambia el primero)
+      - "${WISETRIP_PUERTO:-8090}:8090"
+    environment:
+      TZ: America/Bogota
+      # La JVM usa como maximo el 75% de la memoria asignada al contenedor
+      JAVA_TOOL_OPTIONS: "-XX:MaxRAMPercentage=75"
     # Opcional: variables que sobreescriben application.properties
     # (por ejemplo SPRING_DATASOURCE_PASSWORD). Ver .env.example
     env_file:
       - path: .env
         required: false
+    # Docker marca el contenedor como "healthy" cuando el puerto 8090 responde
+    healthcheck:
+      test: ["CMD-SHELL", "bash -c '</dev/tcp/127.0.0.1/8090' || exit 1"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
     restart: unless-stopped
