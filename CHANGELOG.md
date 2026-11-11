@@ -6629,15 +6629,16 @@ Podriamos entender mejor las herramientas antes de empezar, especialmente la dif
 
 1. **¿Qué hice ayer?**
 
-   
+ayer hicimos el planning de esta semana, cuadramos y repartimos las diferentes tareas para cubrir el resto de cosas de la entrega aparte de las pruebas unitarias, como lo del docker, lo del sms y lo de telegram, ademas de hablar y coordinar las recomendaciones que nos habia dado el monitor el dia anterior. 
 
 2. **¿Qué voy a hacer hoy?**
 
-   
+hoy empece con las metricas de calidad que debemos cubrir para el proyecto, en este caso empecé trabajando la que para mi es la mas complicada que es la complejidad ciclomática, pero lo voy a trabajar solo en el modulo de recomendaciones, primero defini qué clases y métodos del módulo son como las mejores para medir. La idea es guardar los valores actuales de complejidad ciclomática, identificar qué métodos tienen más decisiones o caminos de ejecución y, después de la refactorización, volver a medirlos para comparar si realmente se redujo la complejidad y mejoró la mantenibilidad del código, pero como ya hemos refactorizado ese codigo como mas de 20 veces no se como salga, aun la sigo haciendo.
+
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
-   
+si tiempo. creo que no voy a alcanzar...    
 
 ---
 
