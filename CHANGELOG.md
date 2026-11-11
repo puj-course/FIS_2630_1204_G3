@@ -6540,15 +6540,15 @@ Podriamos entender mejor las herramientas antes de empezar, especialmente la dif
 
 1. **¿Qué logramos?**
 
-
+logramos mejorar la cobertura de sonarqube, en un puntaje muy alto
 
 2. **¿Cómo trabajamos?**
 
-
+trabajamos bien contando con la falta de conocimiento y vacios que tenemos, y aunque en un punto nadie sabia que o como hacer las cosas al final lo pudimos hacer entre todos
 
 3. **¿Qué podríamos mejorar?**
 
-
+ Como miembro del equipo de wisetrip quiero recibir en Telegram un aviso cada vez que se haga un commit, se actualice o cierre un pull request, para enterarme de los cambios en tiempo real sin tener que entrar a GitHub constantemente.
 
 ---
 # Sprint Review - 01/11/2026
