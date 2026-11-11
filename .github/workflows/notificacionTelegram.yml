@@ -25,4 +25,24 @@ jobs:
           PR_URL: ${{ github.event.pull_request.html_url }}
           PR_MERGED: ${{ github.event.pull_request.merged }}
         run: |
-         if []
+          if [ "$EVENT" = "push" ]; then
+            TEXT=" Nuevo push en $REPO
+          Rama: $BRANCH
+          Autor: $ACTOR
+          Commit: $COMMIT_MSG
+          $COMPARE_URL"
+          else
+            ACCION="$PR_ACTION"
+            if [ "$PR_ACTION" = "closed" ] && [ "$PR_MERGED" = "true" ]; then
+              ACCION="merged"
+            fi
+            TEXT=" Pull Request #$PR_NUMBER ($ACCION) en $REPO
+          Título: $PR_TITLE
+          Autor: $ACTOR
+          $PR_URL"
+          fi
+
+          curl -s -X POST "https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage" \
+            --data-urlencode "chat_id=${TELEGRAM_CHAT_ID}" \
+            --data-urlencode "text=${TEXT}"
+        
