@@ -6620,3 +6620,332 @@ Podriamos entender mejor las herramientas antes de empezar, especialmente la dif
 -
 
 ---
+
+# Sprint 14 - ultimo 
+
+## Daily Scrum - 10/11/2026
+
+### Isabella Posada
+
+1. **¿Qué hice ayer?**
+
+   
+
+2. **¿Qué voy a hacer hoy?**
+
+   
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+   
+
+---
+
+### Gabriela Melo Gualteros
+
+1. **¿Qué hice ayer?**
+
+   
+
+2. **¿Qué voy a hacer hoy?**
+
+   
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+   
+
+---
+
+### Santiago Clavijo
+
+1. **¿Qué hice ayer?**
+
+   
+
+2. **¿Qué voy a hacer hoy?**
+
+   
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+   
+
+---
+
+### Valeria Cortes Rendon
+
+1. **¿Qué hice ayer?**
+
+   
+
+2. **¿Qué voy a hacer hoy?**
+
+   
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+   
+
+---
+
+### Maria Alejandra Rodriguez
+
+1. **¿Qué hice ayer?**
+
+   
+
+2. **¿Qué voy a hacer hoy?**
+
+   
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+
+## Daily Scrum - 11/11/2026
+
+### Isabella Posada
+
+1. **¿Qué hice ayer?**
+
+   
+
+2. **¿Qué voy a hacer hoy?**
+
+   
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+   
+
+---
+
+### Gabriela Melo Gualteros
+
+1. **¿Qué hice ayer?**
+
+   
+
+2. **¿Qué voy a hacer hoy?**
+
+   
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+   
+
+---
+
+### Santiago Clavijo
+
+1. **¿Qué hice ayer?**
+
+   
+
+2. **¿Qué voy a hacer hoy?**
+
+   
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+   
+
+---
+
+### Valeria Cortes Rendon
+
+1. **¿Qué hice ayer?**
+
+   
+
+2. **¿Qué voy a hacer hoy?**
+
+   
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+   
+
+---
+
+### Maria Alejandra Rodriguez
+
+1. **¿Qué hice ayer?**
+
+   
+
+2. **¿Qué voy a hacer hoy?**
+
+   
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+   
+
+---
+
+# Sprint 14 - ultimo
+
+## Daily Scrum - 12/11/2026
+
+### Isabella Posada
+
+1. **¿Qué hice ayer?**
+
+   
+
+2. **¿Qué voy a hacer hoy?**
+
+   
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+   
+
+---
+
+### Gabriela Melo Gualteros
+
+1. **¿Qué hice ayer?**
+
+   
+
+2. **¿Qué voy a hacer hoy?**
+
+   
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+   
+
+---
+
+### Santiago Clavijo
+
+1. **¿Qué hice ayer?**
+
+   
+
+2. **¿Qué voy a hacer hoy?**
+
+   
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+   
+
+---
+
+### Valeria Cortes Rendon
+
+1. **¿Qué hice ayer?**
+
+   
+
+2. **¿Qué voy a hacer hoy?**
+
+   
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+   
+
+---
+
+### Maria Alejandra Rodriguez
+
+1. **¿Qué hice ayer?**
+
+   
+
+2. **¿Qué voy a hacer hoy?**
+
+   
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+   
+
+---
+
+# Sprint 14 - ultimo
+
+## Daily Scrum - 13/11/2026
+
+### Isabella Posada
+
+1. **¿Qué hice ayer?**
+
+   
+
+2. **¿Qué voy a hacer hoy?**
+
+   
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+   
+
+---
+
+### Gabriela Melo Gualteros
+
+1. **¿Qué hice ayer?**
+
+   
+
+2. **¿Qué voy a hacer hoy?**
+
+   
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+   
+
+---
+
+### Santiago Clavijo
+
+1. **¿Qué hice ayer?**
+
+   
+
+2. **¿Qué voy a hacer hoy?**
+
+   
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+   
+
+---
+
+### Valeria Cortes Rendon
+
+1. **¿Qué hice ayer?**
+
+   
+
+2. **¿Qué voy a hacer hoy?**
+
+   
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+   
+
+---
+
+### Maria Alejandra Rodriguez
+
+1. **¿Qué hice ayer?**
+
+   
+
+2. **¿Qué voy a hacer hoy?**
+
+   
+
+3. **¿Tengo algún impedimento o bloqueo?**
+
+   
