@@ -6469,15 +6469,15 @@ no
 
 1. **¿Qué logramos?**
 
-
+Logramos un porcentaje más alto del esperado para sonarQube con las pruebas unitarias y los test de la mayoria de clases que nos mostraba sonarQube
 
 2. **¿Cómo trabajamos?**
 
-
+Muy bien , siento que hubo un punto de crisis donde ninguno tenia muy claro que hacer porque la explicación que se nos dio en clase no fue muy clara pero bueno lo logramos aún nos hacen falta cosas para la sustentación
 
 3. **¿Qué podríamos mejorar?**
 
-
+hemos trabajado muy bien, algunas veces dejamos incompletas las HUs pero de resto todo esta bien
 
   
 ---
@@ -6593,7 +6593,7 @@ trabajamos bien contando con la falta de conocimiento y vacios que tenemos, y au
 # Sprint Planning - [09/11/2026]
 
 ## Sprint Goal
-
+Mejorar la calidad, mantenibilidad y confiabilidad de WiseTrip mediante pruebas y métricas de código, optimizando su estructura e incorporando herramientas que faciliten su despliegue, ejecución y seguimiento.
 
 ## Capacidad del equipo 
 
@@ -6606,8 +6606,8 @@ trabajamos bien contando con la falta de conocimiento y vacios que tenemos, y au
 |----|--------|------|------------|-------------|
 | #136 | HU |.    |Historia de Usuario  | TBD    | Valeria |
 | #137 | HU |.    | Historia de Usuario | TBD | Valeria |
-| #138 | HU |.     | Historia de Usuario | TBD | Maleja |
-| #139 | HU |     | Historia de Usuario | TBD | Maleja |
+| #138 | HU |Como administrador de WiseTrip quiero ejecutar la aplicación en un entorno contenerizado con Docker para garantizar un funcionamiento consistente e independiente del entorno local  | Historia de Usuario | TBD | Maleja |
+| #139 | HU |Como administrador de WiseTrip quiero disponer de un proceso estandarizado para desplegar y ejecutar la aplicación mediante Docker para facilitar su instalación, mantenimiento y portabilidad entre diferentes entornos | Historia de Usuario | TBD | Maleja |
 | #140 | HU |Como usuario quiero recibir un mensaje de texto en mi celular cuando mi registro en WiseTrip sea exitoso, para tener la confirmación de que mi cuenta quedó creada. |Historia de Usuario | TBD | Gaby |
 | #141 |HU |Como usuario quiero recibir un SMS en mi celular cada vez que se inicie sesión en mi cuenta de WiseTrip, para confirmar que fui yo quien entró y darme cuenta rápido si alguien más lo hizo.  | Historia de Usuario | TBD | Gaby |
 | #142 | Como administrador de WiseTrip, quiero medir la complejidad ciclomática del módulo de recomendaciones, para identificar métodos con demasiados caminos de decisión y evaluar el impacto de la refactorización sobre la mantenibilidad del código |.  Historia de usuario  | Historia de Usuario | TBD | Isabela|
@@ -6693,14 +6693,15 @@ la complejidad y la longitud del codigo
 
 1. **¿Qué hice ayer?**
 
-   
+   Ayer tuvimos planning y nos organizamos para saber que nos faltaba para la entrega
 
 2. **¿Qué voy a hacer hoy?**
 
-   
+   Revisar y empezar a implementar el tema de docker en el proyecto tambien para desarrollar el taller
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
+   no 
 
 ## Daily Scrum - 11/11/2026
 
@@ -6772,15 +6773,16 @@ la complejidad y la longitud del codigo
 
 1. **¿Qué hice ayer?**
 
-   
+   Ayer logre parte de la configuración del docker pero no aun no estoy muy segura si todo esta bien 
 
 2. **¿Qué voy a hacer hoy?**
 
+Dejar el docker listo, dejar los diagramas listos, hacer el taller de docker, dejar el repositorio ordenado para la entrega de mañana, dejar algunas cosas que hacen falta del sonarQube
    
-
 3. **¿Tengo algún impedimento o bloqueo?**
 
-   
+   no
+
 
 ---
 
