@@ -114,9 +114,25 @@ public class RecomendadorDestinos implements Recomendador {
         double pCosto = calcularPuntajePresupuesto(costo, presupuesto);
         double pGustos = calcularCoincidenciaPonderada(
                 ciudad.getAtributos(), preferencias.getAtributos());
-        boolean provisional = preferencias.getAtributos().entrySet().stream()
-                .anyMatch(e -> e.getValue() != null && e.getValue().esPuntuable()
-                        && ciudad.estadoAtributo(e.getKey()) == EstadoAtributo.NO_SABEMOS);
+        // HU142: stream().anyMatch() se cambio por un for con condiciones explicitas.
+        // La coincidencia es provisional si falta un dato que participa en el puntaje.
+        boolean provisional = false;
+        for (Map.Entry<String, Importancia> preferencia : preferencias.getAtributos().entrySet()) {
+            Importancia importancia = preferencia.getValue();
+
+            if (importancia != null) {
+                if (importancia.esPuntuable()) {
+                    String atributo = preferencia.getKey();
+                    EstadoAtributo estado = ciudad.estadoAtributo(atributo);
+
+                    if (estado == EstadoAtributo.NO_SABEMOS) {
+                        provisional = true;
+                        // Como anyMatch(), termina al encontrar la primera coincidencia.
+                        break;
+                    }
+                }
+            }
+        }
 
         return new ResultadoRecomendacion(ciudad, pGustos, pCosto, pGustos,
                 preferencias.tienePreferenciasPuntuables(), provisional);
