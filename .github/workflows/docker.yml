@@ -1,0 +1,102 @@
+name: Docker CI/CD
+
+# Construye el proyecto, construye la imagen Docker, comprueba que el
+# contenedor arranque y publica la imagen en DockerHub.
+on:
+  push:
+    branches:
+      - main
+      - develop
+      - 'feature/docker-deploy'
+  pull_request:
+    branches:
+      - main
+      - develop
+
+env:
+  APP_DIR: app/Entrega1/wisetrip_entrega1
+  IMAGEN: wisetrip
+
+jobs:
+  # ---------------------------------------------------------------- 1. Maven
+  build-y-pruebas:
+    name: Build y pruebas (Maven)
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+
+      - name: Configurar JDK 25
+        uses: actions/setup-java@c1e323688fd81a25caa38c78aa6df2d33d3e20d9 # v4.8.0
+        with:
+          java-version: 25
+          distribution: zulu
+
+      - name: Cache de Maven
+        uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 # v4.3.0
+        with:
+          path: ~/.m2
+          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+          restore-keys: ${{ runner.os }}-m2
+
+      - name: Compilar, probar y empaquetar el .war
+        run: mvn -B -f ${{ env.APP_DIR }}/pom.xml verify
+
+      - name: Guardar el .war como artefacto del workflow
+        uses: actions/upload-artifact@v4
+        with:
+          name: wisetrip-war
+          path: ${{ env.APP_DIR }}/target/*.war
+
+  # ---------------------------------------------------------------- 2. Docker
+  docker:
+    name: Imagen Docker, prueba de humo y publicacion
+    needs: build-y-pruebas
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+
+      - name: Configurar Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Construir la imagen con el Dockerfile
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          load: true
+          tags: ${{ env.IMAGEN }}:ci
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      - name: Prueba de humo (el contenedor debe responder en el puerto 8090)
+        run: |
+          docker run -d --name wisetrip -p 8090:8090 ${{ env.IMAGEN }}:ci
+          for intento in $(seq 1 30); do
+            if curl -fs -o /dev/null http://localhost:8090/; then
+              echo "WiseTrip respondio en http://localhost:8090 (intento $intento)"
+              exit 0
+            fi
+            sleep 3
+          done
+          echo "El contenedor no respondio a tiempo"
+          docker logs wisetrip
+          exit 1
+
+      - name: Iniciar sesion en DockerHub
+        if: github.event_name == 'push'
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Publicar la imagen en DockerHub (latest y hash del commit)
+        if: github.event_name == 'push'
+        run: |
+          REPO="${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGEN }}"
+          SHA_CORTO="${GITHUB_SHA::7}"
+          docker tag ${{ env.IMAGEN }}:ci "$REPO:latest"
+          docker tag ${{ env.IMAGEN }}:ci "$REPO:$SHA_CORTO"
+          docker push "$REPO:latest"
+          docker push "$REPO:$SHA_CORTO"
+          echo "Publicada: $REPO:latest y $REPO:$SHA_CORTO"
