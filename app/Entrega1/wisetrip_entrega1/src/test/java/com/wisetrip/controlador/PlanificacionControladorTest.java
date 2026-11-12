@@ -121,6 +121,15 @@ class PlanificacionControladorTest {
         }
 
         @Test
+        @DisplayName("la primera vez (sin respuestas guardadas) muestra el cuestionario vacío")
+        void mostrar_sinRespuestasGuardadas_cuestionarioNuevo() {
+            conOrigen();
+
+            assertEquals(Nombres.PREFERENCIAS, controlador.mostrarPreferencias(sesion, model));
+            assertTrue(model.getAttribute(Nombres.PREFERENCIAS) instanceof Preferencias);
+        }
+
+        @Test
         @DisplayName("respuestas incompletas vuelven al cuestionario indicando cuántas faltan")
         void guardar_conErrores_vuelveAlCuestionario() {
             when(gestorPreferencias.validarPreferencias(any())).thenReturn(Map.of("playa", "Falta responder."));
@@ -166,6 +175,17 @@ class PlanificacionControladorTest {
 
             assertEquals(Nombres.FECHAS, controlador.mostrarFechas(sesion, model));
             assertTrue(model.getAttribute(Nombres.FECHAS) instanceof FechasViaje);
+        }
+
+        @Test
+        @DisplayName("al volver al paso de fechas se muestran las que ya había guardado")
+        void mostrar_conFechasGuardadas_lasReutiliza() {
+            sesion.setAttribute(Nombres.PREFERENCIAS_VIAJE, new Preferencias());
+            FechasViaje guardadas = new FechasViaje();
+            sesion.setAttribute(Nombres.FECHAS_VIAJE, guardadas);
+
+            assertEquals(Nombres.FECHAS, controlador.mostrarFechas(sesion, model));
+            assertSame(guardadas, model.getAttribute(Nombres.FECHAS));
         }
 
         @Test
@@ -224,6 +244,17 @@ class PlanificacionControladorTest {
 
             assertEquals(Nombres.PRESUPUESTO, controlador.mostrarPresupuesto(sesion, model));
             assertSame(monedas, model.getAttribute("monedas"));
+        }
+
+        @Test
+        @DisplayName("al volver al paso de presupuesto se muestra el que ya había guardado")
+        void mostrar_conPresupuestoGuardado_loReutiliza() {
+            sesion.setAttribute(Nombres.FECHAS_VIAJE, new FechasViaje());
+            Presupuesto guardado = new Presupuesto();
+            sesion.setAttribute(Nombres.PRESUPUESTO_VIAJE, guardado);
+
+            assertEquals(Nombres.PRESUPUESTO, controlador.mostrarPresupuesto(sesion, model));
+            assertSame(guardado, model.getAttribute(Nombres.PRESUPUESTO));
         }
 
         @Test
