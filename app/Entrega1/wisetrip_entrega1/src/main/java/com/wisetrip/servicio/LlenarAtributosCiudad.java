@@ -23,12 +23,12 @@ public class LlenarAtributosCiudad {
     // Esta es la interfaz que usamos para consultar lugares.
 
     private final ProovedorLugares proveedorLugares;
-    //complejidad manual = 1 de la dependencia.
+    // HU142: complejidad ciclomatica manual = 1; solo asigna la dependencia, sin decisiones.
     public LlenarAtributosCiudad(ProovedorLugares proveedorLugares) {
         this.proveedorLugares = proveedorLugares;
     }
 
-    //omplejidad ciclomatica manual = 7 (1 base + 3 if + 1 for + 1 ternario + 1 &&).
+    // HU142: complejidad ciclomatica manual = 7 (1 base + 5 if/else if + 1 for).
 
     public void enriquecer(
             Ciudad ciudad,
