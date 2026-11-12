@@ -1,8 +1,13 @@
+# =============================================================================
+# Notificar a Telegram
+# Avisa en el chat de Telegram del equipo cada push y cada pull request,
+# para que todos se enteren de los cambios sin tener que revisar GitHub.
+# =============================================================================
 name: Notificar a Telegram
 
 on:
-  push:
-  pull_request:
+  push:                  # cualquier push, en cualquier rama
+  pull_request:          # PR abierto, reabierto, actualizado o cerrado/fusionado
     types: [opened, reopened, synchronize, closed]
 
 jobs:
@@ -10,21 +15,24 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Notificar a Telegram
+        # Datos que usa el script. Los dos primeros son secretos del repositorio
+        # (token del bot y chat del equipo); el resto los da GitHub sobre el evento.
         env:
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-          EVENT: ${{ github.event_name }}
-          REPO: ${{ github.repository }}
-          ACTOR: ${{ github.actor }}
-          BRANCH: ${{ github.ref_name }}
-          COMMIT_MSG: ${{ github.event.head_commit.message }}
-          COMPARE_URL: ${{ github.event.compare }}
-          PR_ACTION: ${{ github.event.action }}
+          EVENT: ${{ github.event_name }}                      # push o pull_request
+          REPO: ${{ github.repository }}                       # puj-course/FIS_2630_1204_G3
+          ACTOR: ${{ github.actor }}                           # quien hizo el cambio
+          BRANCH: ${{ github.ref_name }}                       # rama del push
+          COMMIT_MSG: ${{ github.event.head_commit.message }}  # mensaje del ultimo commit
+          COMPARE_URL: ${{ github.event.compare }}             # enlace para ver los cambios
+          PR_ACTION: ${{ github.event.action }}                # opened, closed, ...
           PR_NUMBER: ${{ github.event.pull_request.number }}
           PR_TITLE: ${{ github.event.pull_request.title }}
           PR_URL: ${{ github.event.pull_request.html_url }}
-          PR_MERGED: ${{ github.event.pull_request.merged }}
+          PR_MERGED: ${{ github.event.pull_request.merged }}   # true si se fusiono
         run: |
+          # Arma un mensaje distinto segun sea push o pull request
           if [ "$EVENT" = "push" ]; then
             TEXT=" Nuevo push en $REPO
           Rama: $BRANCH
@@ -33,6 +41,7 @@ jobs:
           $COMPARE_URL"
           else
             ACCION="$PR_ACTION"
+            # Un PR "closed" con merged=true se reporta como "merged"
             if [ "$PR_ACTION" = "closed" ] && [ "$PR_MERGED" = "true" ]; then
               ACCION="merged"
             fi
@@ -42,7 +51,8 @@ jobs:
           $PR_URL"
           fi
 
+          # Envia el mensaje con la API de bots de Telegram.
+          # --data-urlencode evita problemas con tildes, saltos de linea y simbolos.
           curl -s -X POST "https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage" \
             --data-urlencode "chat_id=${TELEGRAM_CHAT_ID}" \
             --data-urlencode "text=${TEXT}"
-        
