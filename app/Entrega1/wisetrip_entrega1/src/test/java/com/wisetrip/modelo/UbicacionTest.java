@@ -141,6 +141,32 @@ class UbicacionTest {
     }
 
     @Test
+    @DisplayName("Borde: si todavia no habia pais, cambiarPais lo asigna y deja la ciudad vacia")
+    void cambiarPaisSinPaisPrevio() {
+        Ubicacion ubicacion = new Ubicacion();
+        ubicacion.setCiudad("Lima");
+
+        ubicacion.cambiarPais("Peru");
+
+        assertEquals("Peru", ubicacion.getPais());
+        assertNull(ubicacion.getCiudad());
+    }
+
+    @Test
+    @DisplayName("Borde: normalizar deja en null los campos que solo tienen espacios")
+    void normalizarCamposEnBlancoQuedanNulos() {
+        Ubicacion ubicacion = new Ubicacion();
+        ubicacion.setCiudad("   ");
+        ubicacion.setDetalle(" \t ");
+
+        ubicacion.normalizar();
+
+        assertNull(ubicacion.getPais());
+        assertNull(ubicacion.getCiudad());
+        assertNull(ubicacion.getDetalle());
+    }
+
+    @Test
     @DisplayName("Normalizar elimina espacios sobrantes de la ciudad")
     void normalizarCiudad() {
         Ubicacion ubicacion = new Ubicacion("Colombia", "Bogota", null);
