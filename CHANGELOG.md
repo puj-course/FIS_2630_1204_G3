@@ -6604,15 +6604,17 @@ Mejorar la calidad, mantenibilidad y confiabilidad de WiseTrip mediante pruebas 
 
 | ID | Título | Tipo | Estimación | Responsable |
 |----|--------|------|------------|-------------|
-| #136 | HU |.    |Historia de Usuario  | TBD    | Valeria |
-| #137 | HU |.    | Historia de Usuario | TBD | Valeria |
-| #138 | HU |Como administrador de WiseTrip quiero ejecutar la aplicación en un entorno contenerizado con Docker para garantizar un funcionamiento consistente e independiente del entorno local  | Historia de Usuario | TBD | Maleja |
-| #139 | HU |Como administrador de WiseTrip quiero disponer de un proceso estandarizado para desplegar y ejecutar la aplicación mediante Docker para facilitar su instalación, mantenimiento y portabilidad entre diferentes entornos | Historia de Usuario | TBD | Maleja |
-| #140 | HU |Como usuario quiero recibir un mensaje de texto en mi celular cuando mi registro en WiseTrip sea exitoso, para tener la confirmación de que mi cuenta quedó creada. |Historia de Usuario | TBD | Gaby |
-| #141 |HU |Como usuario quiero recibir un SMS en mi celular cada vez que se inicie sesión en mi cuenta de WiseTrip, para confirmar que fui yo quien entró y darme cuenta rápido si alguien más lo hizo.  | Historia de Usuario | TBD | Gaby |
-| #142 | Como administrador de WiseTrip, quiero medir la complejidad ciclomática del módulo de recomendaciones, para identificar métodos con demasiados caminos de decisión y evaluar el impacto de la refactorización sobre la mantenibilidad del código |.  Historia de usuario  | Historia de Usuario | TBD | Isabela|
-| #143 | Como administrador de WiseTrip, quiero analizar métricas orientadas a objetos del módulo de recomendaciones, para evaluar la estructura de las clases y detectar posibles oportunidades de mejora en su diseño |  Historia de Usuario   | TBD | Isabela |
-| #144 | HU |  Como miembro del equipo de wisetrip quiero recibir en Telegram un aviso cada vez que se haga un commit, se actualice o cierre un pull request, para enterarme de los cambios en tiempo real sin tener que entrar a GitHub constantemente. | TBD | Clavijo |
+| #136 | HU - 136: Como administrador, quiero ampliar las pruebas automáticas del sistema hasta superar el 80% de cobertura, para asegurarme de que la mayor parte del código está probada y detectar fallas a tiempo. | Historia de Usuario | TBD | Valeria |
+| #137 | HU - 137: Como administrador, quiero corregir los problemas que SonarCloud encontró en el código, para que el sistema quede más limpio y confiable. | Historia de Usuario | TBD | Valeria |
+| #138 | HU - 138: Como administrador de WiseTrip, quiero ejecutar la aplicación en un entorno contenerizado con Docker para garantizar un funcionamiento consistente e independiente del entorno local. | Historia de Usuario | TBD | Maleja |
+| #139 | HU - 139: Como administrador de WiseTrip, quiero disponer de un proceso estandarizado para desplegar y ejecutar la aplicación mediante Docker para facilitar su instalación, mantenimiento y portabilidad entre diferentes entornos. | Historia de Usuario | TBD | Maleja |
+| #140 | HU - 140: Como usuario, quiero recibir un mensaje de texto en mi celular cuando mi registro en WiseTrip sea exitoso, para tener la confirmación de que mi cuenta quedó creada. | Historia de Usuario | TBD | Gaby |
+| #141 | HU - 141: Como usuario, quiero recibir un SMS en mi celular cada vez que se inicie sesión en mi cuenta de WiseTrip, para confirmar que fui yo quien entró y darme cuenta rápido si alguien más lo hizo. | Historia de Usuario | TBD | Gaby |
+| #142 | HU - 142: Como administrador de WiseTrip, quiero medir la complejidad ciclomática del módulo de recomendaciones, para identificar métodos con demasiados caminos de decisión y evaluar el impacto de la refactorización sobre la mantenibilidad del código. | Historia de Usuario | TBD | Isabela |
+| #143 | HU - 143: Como administrador de WiseTrip, quiero analizar métricas orientadas a objetos del módulo de recomendaciones, para evaluar la estructura de las clases y detectar posibles oportunidades de mejora en su diseño. | Historia de Usuario | TBD | Isabela |
+| #144 | HU - 144: Como miembro del equipo de WiseTrip, quiero recibir en Telegram un aviso cada vez que se haga un commit, se actualice o cierre un pull request, para enterarme de los cambios en tiempo real sin tener que entrar a GitHub constantemente. | Historia de Usuario | TBD | Clavijo |
+
+## Riesgos / Bloqueos identificados
 
 ## Riesgos / Bloqueos identificados
 
@@ -6678,15 +6680,15 @@ la complejidad y la longitud del codigo
 
 1. **¿Qué hice ayer?**
 
-   
+se hicieron cambios en los diagramas y lo que falta para la sustentacion 
 
 2. **¿Qué voy a hacer hoy?**
 
-   
+Haciendo correcciones con respecto a sonarqube y entender mejor los test   
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
-   
+tiempo  
 
 ---
 
@@ -6758,15 +6760,15 @@ no, solo nervios de la sustentacion
 
 1. **¿Qué hice ayer?**
 
-   
+ Se hicieron correcciones de sonarqube y pruebas  
 
 2. **¿Qué voy a hacer hoy?**
 
-   
+ Se mejoraron y revisaron por ultima vez los diagramas de todos. Se hicieron cambios en diferentes situaciones  
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
-   
+   tiempo, muchas cosas por mejorar
 
 ---
 
