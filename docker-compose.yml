@@ -2,9 +2,14 @@
 # Levantar:  docker compose up --build -d
 # Apagar:    docker compose down
 #
-# Servicios: solo la aplicacion. La base de datos es PostgreSQL administrado
-# en Neon (nube), compartida por todo el equipo, por eso no se levanta un
-# contenedor de base de datos ni se necesitan volumenes de datos.
+# Servicios:
+#   - wisetrip: la aplicacion Spring Boot (puerto 8090)
+#   - proxy:    Nginx, proxy inverso que reenvia a "wisetrip" por la red interna
+# Los dos estan en la red "wisetrip-red" y se comunican por nombre de servicio.
+#
+# La base de datos es PostgreSQL administrado en Neon (nube), compartida por
+# todo el equipo, por eso no se levanta un contenedor de base de datos ni se
+# necesitan volumenes de datos.
 name: wisetrip
 
 services:
@@ -34,3 +39,35 @@ services:
       retries: 5
       start_period: 30s
     restart: unless-stopped
+    networks:
+      - wisetrip-red
+
+  proxy:
+    image: nginx:1.27-alpine
+    container_name: wisetrip-proxy
+    ports:
+      # Entrada por el proxy: http://localhost (PROXY_PUERTO cambia el primero)
+      - "${PROXY_PUERTO:-80}:80"
+    volumes:
+      - ./conf/nginx/wisetrip.conf:/etc/nginx/conf.d/default.conf:ro
+    # El proxy arranca solo cuando la aplicacion ya esta "healthy"
+    depends_on:
+      wisetrip:
+        condition: service_healthy
+    # Healthy cuando el proxy logra llegar a la app a traves de la red
+    healthcheck:
+      test: ["CMD-SHELL", "wget -q -O /dev/null http://127.0.0.1/ || exit 1"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+      start_period: 5s
+    restart: unless-stopped
+    networks:
+      - wisetrip-red
+
+networks:
+  # Red privada tipo bridge: los contenedores se encuentran por nombre
+  # de servicio gracias al DNS interno de Docker
+  wisetrip-red:
+    name: wisetrip-red
+    driver: bridge

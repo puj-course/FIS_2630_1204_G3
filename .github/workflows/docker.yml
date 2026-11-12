@@ -1,13 +1,17 @@
 name: Docker CI/CD
 
-# Construye el proyecto, construye la imagen Docker, comprueba que el
-# contenedor arranque y publica la imagen en DockerHub.
+# Construye el proyecto, construye la imagen Docker, la despliega con
+# Docker Compose (app + proxy Nginx en la red wisetrip-red), comprueba que
+# responda y publica la imagen en DockerHub.
 on:
   push:
     branches:
       - main
       - develop
       - 'feature/docker-deploy'
+      - 'feature/docker-compose-red'
+    tags:
+      - 'v*'
   pull_request:
     branches:
       - main
@@ -69,19 +73,35 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
-      - name: Prueba de humo (el contenedor debe responder en el puerto 8090)
+      - name: Desplegar con Docker Compose (app + proxy en la red wisetrip-red)
         run: |
-          docker run -d --name wisetrip -p 8090:8090 ${{ env.IMAGEN }}:ci
-          for intento in $(seq 1 30); do
-            if curl -fs -o /dev/null http://localhost:8090/; then
-              echo "WiseTrip respondio en http://localhost:8090 (intento $intento)"
-              exit 0
-            fi
-            sleep 3
-          done
-          echo "El contenedor no respondio a tiempo"
-          docker logs wisetrip
-          exit 1
+          # Compose usa la imagen recien construida en vez de construirla otra vez
+          docker tag ${{ env.IMAGEN }}:ci ${{ env.IMAGEN }}:latest
+          # --wait espera a que los healthchecks de los dos servicios digan "healthy"
+          docker compose up -d --no-build --wait --wait-timeout 180
+          docker compose ps
+
+      - name: Verificar la red Docker entre servicios
+        run: |
+          docker network ls --filter name=wisetrip-red
+          echo "Contenedores conectados a wisetrip-red:"
+          docker network inspect wisetrip-red --format '{{range .Containers}}{{.Name}} -> {{.IPv4Address}}{{println}}{{end}}'
+          # El proxy llega a la app por el nombre del servicio (DNS interno de Docker)
+          docker compose exec -T proxy wget -q -O /dev/null http://wisetrip:8090/
+          echo "proxy -> http://wisetrip:8090 por la red interna: OK"
+
+      - name: Prueba de humo (directo en 8090 y a traves del proxy en 80)
+        run: |
+          curl -fsS -o /dev/null -w "Directo  http://localhost:8090 -> HTTP %{http_code}\n" http://localhost:8090/
+          curl -fsS -o /dev/null -w "Proxy    http://localhost      -> HTTP %{http_code}\n" http://localhost/
+
+      - name: Logs de los contenedores (solo si algo fallo)
+        if: failure()
+        run: docker compose logs
+
+      - name: Apagar el despliegue de prueba
+        if: always()
+        run: docker compose down
 
       - name: Iniciar sesion en DockerHub
         if: github.event_name == 'push'
@@ -100,3 +120,9 @@ jobs:
           docker push "$REPO:latest"
           docker push "$REPO:$SHA_CORTO"
           echo "Publicada: $REPO:latest y $REPO:$SHA_CORTO"
+          # Version semantica: al subir un tag de git (v1.0.0) tambien se publica con ese nombre
+          if [ "$GITHUB_REF_TYPE" = "tag" ]; then
+            docker tag ${{ env.IMAGEN }}:ci "$REPO:$GITHUB_REF_NAME"
+            docker push "$REPO:$GITHUB_REF_NAME"
+            echo "Publicada: $REPO:$GITHUB_REF_NAME"
+          fi

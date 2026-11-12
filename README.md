@@ -54,9 +54,47 @@ El puerto se cambia con `SERVER_PORT` o en `src/main/resources/application.prope
 
 ### Docker
 
+Requisito: Docker Desktop abierto (en Windows Home necesita WSL 2).
+
+**Opción 1: desde el repositorio, con Docker Compose**
+
 ```bash
-docker compose up --build
+docker compose up --build -d   # construye la imagen y levanta app + proxy
+docker compose ps              # los dos servicios deben quedar "healthy"
+docker compose logs -f         # logs (Ctrl+C para salir)
+docker compose down            # apagar
 ```
+
+| Servicio | Contenedor | URL | Qué es |
+| -------- | ---------- | --- | ------ |
+| `wisetrip` | `wisetrip` | http://localhost:8090 | La aplicación Spring Boot |
+| `proxy` | `wisetrip-proxy` | http://localhost | Nginx, reenvía a `http://wisetrip:8090` |
+
+Los dos servicios están en la red `wisetrip-red` (bridge) y se comunican por
+nombre de servicio gracias al DNS interno de Docker. Para comprobarlo:
+
+```bash
+docker network inspect wisetrip-red
+docker compose exec proxy wget -qO- http://wisetrip:8090/ | head
+```
+
+**Opción 2: solo con la imagen publicada en DockerHub (sin el código)**
+
+```bash
+docker pull malejandrarod/wisetrip:latest
+docker run -d --name wisetrip -p 8090:8090 malejandrarod/wisetrip:latest
+```
+
+Etiquetas de la imagen: `latest` (última versión), el hash corto del commit
+(por ejemplo `1f7adb6`) y la versión cuando se publica un tag de git (`v1.0.0`).
+
+**Variables de entorno** (copiar `.env.example` como `.env`, que nunca se sube al repo):
+`WISETRIP_PUERTO`, `PROXY_PUERTO` y las `SPRING_*`, que sobreescriben
+`application.properties`.
+
+**CI/CD:** el workflow `.github/workflows/docker.yml` compila y prueba con
+Maven, construye la imagen, la despliega con Docker Compose, verifica la red y
+la respuesta HTTP, y publica en DockerHub.
 
 ## Configuración
 
