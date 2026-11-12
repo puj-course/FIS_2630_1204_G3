@@ -6712,15 +6712,18 @@ tiempo
 
 1. **¿Qué hice ayer?**
 
-   
+ayer empece con la metrica de complejidad ciclomatica, entenderla y ver que tambien sonarla tenia integrada, ademas de revisar manualmente ciertas clases establecidas, ademas de llegar hasta el 60% del diagrama c3 del c4, corrigiendo el tipo de graficos que estaba usando con el standard c4
+
+ 
 
 2. **¿Qué voy a hacer hoy?**
 
-   
+   hoy termine las metricas, a la final hicimos 2 de opp y una normal, ademas de que el diagrama c4 ya esta completo solo me toca revisar lo del docker como parte de los contenedores del proyecto.
+
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
-   
+   estoy muy cansada y me da miedo sustentar, ademas del tiempo... pero con toda  
 
 ---
 
