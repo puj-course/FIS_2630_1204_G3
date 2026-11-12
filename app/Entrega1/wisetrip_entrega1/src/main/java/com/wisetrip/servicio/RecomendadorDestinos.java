@@ -150,9 +150,23 @@ public class RecomendadorDestinos implements Recomendador {
     @Override
     public boolean excedePresupuesto(Ciudad ciudad, PreferenciasUsuario preferencias) {
         double costo = ciudad.getCostoPromedio() * preferencias.getDuracionDias();
-        // Un costo desconocido no confirma un exceso.
-        return presupuestoObligatorio && Double.isFinite(costo) && costo > 0
-                && costo > preferencias.getPresupuestoUsd();
+
+        // HU142: la cadena de && se cambio por comprobaciones separadas con retorno temprano.
+        if (!presupuestoObligatorio) {
+            return false;
+        }
+
+        // Un costo no numerico o infinito no permite confirmar un exceso.
+        if (!Double.isFinite(costo)) {
+            return false;
+        }
+
+        // Un costo cero o negativo se considera desconocido.
+        if (costo <= 0) {
+            return false;
+        }
+
+        return costo > preferencias.getPresupuestoUsd();
     }
 
     @Override
