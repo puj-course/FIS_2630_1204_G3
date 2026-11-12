@@ -61,10 +61,12 @@ public class RecomendadorDestinos implements Recomendador {
         for (var categoria : gestorPreferencias.listarCategorias()) {
             // Recorre cada pregunta dentro de esa categoría
             for (var pregunta : categoria.getPreguntas()) {
-                // Busca qué tan importante es esa pregunta en tus gustos
+                // Busca qué tan importante es esa pregunta en los gustos
                 Importancia importancia = gustos.get(pregunta.getClave());
 
-                // Revisa si esa pregunta te importa y si da puntos
+                // Revisa si esa pregunta le importa al viajero y si da puntos
+                //importancia.java de gustar y prefiero
+
                 if (importancia != null && importancia.esPuntuable()) {
                     // Suma el valor de la pregunta al puntaje máximo posible
                     pesoTotal += importancia.getPeso();
@@ -75,7 +77,7 @@ public class RecomendadorDestinos implements Recomendador {
                     // Si la oferta sí cumple, suma todos los puntos de esa pregunta
                     if (Boolean.TRUE.equals(cumple)) {
                         pesoLogrado += importancia.getPeso();
-                        // Si la oferta NO cumple y era algo que "preferías", resta 1 punto
+                        // Si la oferta NOOOO cumple y era algo que "preferías", resta 1 punto
                     } else if (importancia == Importancia.PREFIERO && Boolean.FALSE.equals(cumple)) {
                         pesoLogrado--;
                     }
@@ -128,28 +130,53 @@ public class RecomendadorDestinos implements Recomendador {
     }
 
     @Override
-    public ValidacionCiudades validarCiudades(List<Ciudad> ciudades, PreferenciasUsuario preferencias) {
+    public ValidacionCiudades validarCiudades(
+            List<Ciudad> ciudades, PreferenciasUsuario preferencias) {
+
         List<Ciudad> validas = new ArrayList<>();
         List<Ciudad> descartadas = new ArrayList<>();
         List<Ciudad> pendientes = new ArrayList<>();
+
         for (Ciudad ciudad : ciudades) {
             double costo = ciudad.getCostoPromedio() * preferencias.getDuracionDias();
-            boolean faltaInformacion = !Double.isFinite(costo) || costo <= 0;
-            
-            // Validación única y limpia de presupuesto excedido
+
+            boolean faltaInformacion = false;
+            if (!Double.isFinite(costo)) {
+                faltaInformacion = true;
+            } else if (costo <= 0) {
+                faltaInformacion = true;
+            }
+
             boolean incumple = excedePresupuesto(ciudad, preferencias);
 
             for (var requisito : preferencias.getAtributos().entrySet()) {
-                if (requisito.getValue() == null || !requisito.getValue().esIndispensable()) continue;
-                EstadoAtributo estado = ciudad.estadoAtributo(requisito.getKey());
-                incumple |= estado == EstadoAtributo.NO_CUMPLE;
-                faltaInformacion |= estado == EstadoAtributo.NO_SABEMOS;
+                var preferenciaDelAtributo = requisito.getValue();
+
+                if (preferenciaDelAtributo != null) {
+                    if (preferenciaDelAtributo.esIndispensable()) {
+                        var atributo = requisito.getKey();
+                        EstadoAtributo estado = ciudad.estadoAtributo(atributo);
+
+                        if (estado == EstadoAtributo.NO_CUMPLE) {
+                            incumple = true;
+                        }
+
+                        if (estado == EstadoAtributo.NO_SABEMOS) {
+                            faltaInformacion = true;
+                        }
+                    }
+                }
             }
-            // Un incumplimiento confirmado basta para descartar, aunque falten otros datos.
-            if (incumple) descartadas.add(ciudad);
-            else if (faltaInformacion) pendientes.add(ciudad);
-            else validas.add(ciudad);
+
+            if (incumple) {
+                descartadas.add(ciudad);
+            } else if (faltaInformacion) {
+                pendientes.add(ciudad);
+            } else {
+                validas.add(ciudad);
+            }
         }
+
         return new ValidacionCiudades(validas, descartadas, pendientes);
     }
 
