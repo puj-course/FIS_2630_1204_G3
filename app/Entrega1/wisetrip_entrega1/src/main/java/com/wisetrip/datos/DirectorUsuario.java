@@ -38,5 +38,10 @@ public class DirectorUsuario {
                 fila.getString("contraseña"),
                 fila.getString("rol"));
         builder.construirContacto(fila.getString("chat_id"));
+
+        builder.construirTelefono(fila.getString("telefono"));
+
     }
+
+       
 }

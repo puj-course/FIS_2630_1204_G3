@@ -51,6 +51,11 @@ public class UsuarioBuilder implements IUsuarioBuilder {
         usuario.setChatId(chatId);
     }
 
+    @Override
+    public void construirTelefono(String telefono) {
+        usuario.setTelefono(telefono);
+    }
+
     /** Entrega el Usuario terminado y deja el builder listo para otro. */
     @Override
     public Usuario getResult() {
