@@ -1,135 +1,105 @@
+# HU 142 — Complejidad ciclomática y claridad de RecomendadorDestinos
 
+## Objetivo y alcance
 
-## 2. Estado de la medición
+Medir manualmente la complejidad por método de `RecomendadorDestinos` y mejorar su legibilidad conservando su comportamiento. La refactorización busca que las condiciones y los cálculos sean fáciles de explicar; no pretende reducir artificialmente la métrica.
 
-| Dato | Registro |
-|---|---|
-| Tipo de medición | Conteo manual del código fuente |
-| Clase analizada | `RecomendadorDestinos` |
-| Fecha de registro | 10 de noviembre de 2026 |
+Archivo: [RecomendadorDestinos.java](../app/Entrega1/wisetrip_entrega1/src/main/java/com/wisetrip/servicio/RecomendadorDestinos.java).
 
-La medición se realizó mediante la lectura del código fuente.
+Fecha de cierre de esta serie: 11 de noviembre de 2026. Versión anterior a los seis cambios: `d33041b6430497d466e5110605dfbf467bcf70f6`. El sexto cambio está preparado en el directorio de trabajo, pendiente del commit de la autora.
 
-## 3. Alcance
+Esta evaluación abarca ocho métodos y registra el constructor aparte. No representa una medición del módulo completo. Queda pendiente revisar `RecomendacionControlador` y confirmar la inclusión de `LlenarAtributosCiudad` y `ProxyLugares` según su responsabilidad en el flujo.
 
-Las clases se seleccionan por su responsabilidad en el flujo de recomendaciones.
+## Criterio de conteo manual
 
-| Clase | Justificación | Estado |
-|---|---|---|
-| `RecomendadorDestinos` | Implementa la validación, la puntuación y el ordenamiento de destinos. | Conteo manual completado. |
-| `RecomendacionControlador` | Es candidata por su papel como punto de entrada del módulo. | Pendiente revisar sus métodos y llamadas. |
-| `LlenarAtributosCiudad` | Completa información utilizada en las recomendaciones. | Pendiente confirmar su participación en el flujo. |
-| `ProxyLugares` | Proporciona información sobre lugares. | Pendiente confirmar su participación en el flujo. |
+**Complejidad = 1 inicial + decisiones identificadas.**
 
-En las clases seleccionadas se registrarán los métodos públicos y privados dentro del alcance, incluidos los de complejidad baja. Los constructores se registrarán por separado. La inclusión de cada clase se justificará por su participación en el flujo.
+- Se suma 1 por cada `if` o `else if`, bucle, ternario, operador `&&` y operador `||`.
+- No se suma por `else`, `return`, `break`, `continue`, asignaciones, comparaciones aisladas, operaciones aritméticas ni llamadas a métodos.
+- Las decisiones de una lambda se atribuyen al método que la contiene, sin otra base para la lambda.
+- `stream()`, `anyMatch()` y `sort()` no suman por sí mismos. Sus implementaciones internas no se incorporan al conteo del método llamador.
+- `|=` no es un operador con cortocircuito y no suma bajo este criterio.
+- El anidamiento y el número de iteraciones no añaden puntos adicionales.
 
-## 4. Criterio de medición manual
+Es un conteo manual con convenciones explícitas, no un reporte de Sonar o JaCoCo. La validación automática de la métrica sigue pendiente y deberá registrar herramienta, versión y posibles diferencias de criterio, especialmente para lambdas.
 
-La complejidad ciclomática representa el número de caminos independientes del flujo de control. Para el conteo manual se aplica la siguiente fórmula.
+## Línea base y resultados finales
 
-**Complejidad ciclomática = 1 + decisiones identificadas**
+El conteo inicial de la conversación se realizó sobre una versión anterior. Antes de iniciar los seis cambios, `validarCiudades` ya había sido reescrito con condiciones explícitas y su valor era 11, no 8. Esta diferencia previa se registra para no atribuirla a la serie actual.
 
-| Elemento | Aporte |
-|---|---:|
-| Base de cada método o constructor | 1 |
-| Cada `if` o `else if` | +1 |
-| Cada `for`, `while` o `do-while` | +1 |
-| Cada operador ternario (`? :`) | +1 |
-| Cada operador `&&` o `\|\|` | +1 |
-| `else` | 0 |
-| Asignaciones y operaciones aritméticas | 0 |
-| Comparaciones por sí solas, como `==` o `>` | 0 |
-| `return` | 0 |
-| Llamadas a otros métodos | 0 |
-| `continue` | 0 |
+| Método | Conteo inicial de la conversación | Antes de los seis cambios | Después | Justificación del valor final |
+|---|---:|---:|---:|---|
+| `calcularPuntajePresupuesto` | 3 | 3 | 3 | 1 base + 2 if |
+| `calcularCoincidenciaPonderada` | 9 | 9 | 9 | 1 base + 2 for + 4 if/else if + 2 && |
+| `calcularPuntajeTotal` | 3 | 3 | 5 | 1 base + 1 for + 3 if |
+| `diferenciaPresupuesto` | 1 | 1 | 1 | Solo cálculos y llamadas |
+| `excedePresupuesto` | 4 | 4 | 4 | 1 base + 3 if |
+| `validarCiudades` | 8 | 11 | 11 | 1 base + 2 for + 8 if/else if |
+| `puntuarCiudadesValidas` | 4 | 4 | 4 | 1 base + 1 for + 1 operador OR con cortocircuito + 1 if |
+| `todosMismoPuntaje` | 4 | 4 | 4 | 1 base + 1 for + 2 if |
 
-### Convenciones adicionales
+Constructor `RecomendadorDestinos`: **1 → 1**, sin decisiones. Se excluye de los agregados siguientes.
 
-- Cada bucle suma un punto, independientemente del número de iteraciones.
-- Cada decisión se cuenta una vez, independientemente de su nivel de anidamiento.
-- Las decisiones se cuentan en el método donde están escritas. Las decisiones de una lambda se atribuyen al método que la contiene, con una sola base para ese método.
-- Las llamadas a `stream()`, `anyMatch()` y `sort()` aportan cero puntos por sí mismas.
-- En `validarCiudades`, se cuenta el `if` que determina si se ejecuta `continue`.
-- Los comentarios quedan fuera del conteo.
+| Indicador de los ocho métodos | Antes de la serie | Después |
+|---|---:|---:|
+| Suma de complejidades | 39 | 41 |
+| Promedio | 4,875 | 5,125 |
+| Máximo | 11 | 11 |
+| Mínimo | 1 | 1 |
 
-Estas convenciones se aplicarán también en la medición posterior. Al contrastar el conteo manual con un analizador, se documentará cómo trata los operadores booleanos y las lambdas, así como cualquier diferencia con el criterio utilizado aquí.
+La suma es un agregado de valores por método, no el número de caminos de toda la clase. El promedio inicial de la conversación era 4,5, pero no corresponde a la versión inmediatamente anterior a esta serie.
 
-## 5. Línea base de `RecomendadorDestinos`
+## Los seis cambios y su justificación
 
-Archivo analizado en el repositorio. [RecomendadorDestinos.java](../app/Entrega1/wisetrip_entrega1/src/main/java/com/wisetrip/servicio/RecomendadorDestinos.java)
+| Cambio | Método | Antes y después | Motivo | Complejidad |
+|---|---|---|---|---|
+| 1 | `calcularCoincidenciaPonderada` | Ternario final sustituido por un if y la variable `proporcionLograda`. | Separar el caso sin peso del cálculo de la proporción. Se mantienen la conversión a double y el mínimo de cero. | 9 → 9 |
+| 2 | `calcularPuntajePresupuesto` | Eliminación del else posterior al return; cálculo dividido en `montoExcedido`, `proporcionExcedida` y `puntajePenalizado`. | Mostrar la penalización paso a paso, conservando las operaciones y su orden. | 3 → 3 |
+| 3 | `calcularPuntajeTotal` | `stream().anyMatch()` sustituido por for, condiciones explícitas y break al encontrar el primer dato puntuable desconocido. | Mostrar el recorrido, la comprobación de null y la condición de provisionalidad. | 3 → 5 |
+| 4 | `excedePresupuesto` | Cadena de tres && sustituida por tres if con retorno temprano. | Explicar por separado presupuesto opcional, costo no finito y costo no positivo. Se conserva el orden de evaluación. | 4 → 4 |
+| 5 | `validarCiudades` | Variables con nombres descriptivos, tipos explícitos en lugar de var y comentarios de las reglas. | Distinguir incumplimientos confirmados de datos faltantes y explicar la prioridad del descarte. | 11 → 11 |
+| 6 | `puntuarCiudadesValidas` y `todosMismoPuntaje` | Comparadores separados en `porCercaniaAlPresupuesto`, `porMayorPuntaje` y `porPuntajeYDesempate`; `primero` renombrado a `puntajeDeReferencia` y extracción de `puntajeActual`. | Explicar orden principal, desempate y comparación con el puntaje de referencia. Se conservan Comparator y Double.compare para mantener sus reglas de comparación. | 4 → 4 en ambos |
 
-| Método | Justificación del cálculo | Complejidad manual |
-|---|---|---:|
-| `calcularPuntajePresupuesto` | 1 de base + 2 `if` | 3 |
-| `calcularCoincidenciaPonderada` | 1 de base + 2 `for` + 3 decisiones `if`/`else if` + 2 operadores `&&` + 1 ternario | 9 |
-| `calcularPuntajeTotal` | 1 de base + 2 operadores `&&` dentro de la lambda | 3 |
-| `diferenciaPresupuesto` | 1 de base. Contiene cálculos y llamadas. | 1 |
-| `excedePresupuesto` | 1 de base + 3 operadores `&&` | 4 |
-| `validarCiudades` | 1 de base + 2 `for` + 3 decisiones `if`/`else if` + 2 operadores `\|\|` | 8 |
-| `puntuarCiudadesValidas` | 1 de base + 1 `for` + 1 operador `\|\|` + 1 `if` | 4 |
-| `todosMismoPuntaje` | 1 de base + 2 `if` + 1 `for` | 4 |
+Se añadieron comentarios HU142 junto a los cambios principales. No se dejaron copias de las implementaciones anteriores comentadas dentro de los métodos.
 
-### Constructor
+### Referencias de los commits
 
-| Constructor | Justificación del cálculo | Complejidad manual |
-|---|---|---:|
-| `RecomendadorDestinos` | 1 de base. Contiene asignaciones de atributos. | 1 |
+Los commits los realiza la autora del proyecto:
 
-El promedio se calcula sobre los ocho métodos de la tabla principal.
+1. `0098c5c`: cálculo final de coincidencia.
+2. `32dc7ba`: puntaje de presupuesto.
+3. `97fa811`: detección de coincidencia provisional.
+4. `0154124`: validación de exceso de presupuesto.
+5. `de3cba7`: nombres y reglas de clasificación.
+6. Pendiente de commit: ordenamiento, desempates y este informe final.
 
-## 6. Ejemplo de cálculo
+## Verificación
 
-El método `calcularPuntajePresupuesto` contiene dos decisiones.
+Se revisaron los diffs y se ejecutó la suite existente `RecomendadorDestinosTest` sobre el resultado de los seis cambios:
 
-1. Comprueba si el presupuesto es menor o igual a cero.
-2. Si el presupuesto es positivo, comprueba si el costo está dentro del presupuesto.
+**20 pruebas ejecutadas, 0 fallos, 0 errores, 0 omitidas. BUILD SUCCESS.**
 
-**Complejidad ciclomática = 1 + 2 = 3**
+Se utilizó Maven con JDK 26.0.1, compilación configurada para Java 25 y estas opciones:
 
-Los tres caminos son los siguientes.
+```text
+mvn -o -Dmaven.repo.local=C:/Users/XPG/.m2/repository -Dmaven.compiler.fork=true -Dtest=RecomendadorDestinosTest test
+```
 
-1. El presupuesto es menor o igual a cero.
-2. El presupuesto es positivo y el costo es menor o igual al presupuesto.
-3. El presupuesto es positivo y el costo supera el presupuesto.
+Los primeros intentos fallaron por acceso denegado a la dependencia local `commons-logging-1.3.6.jar`. La ejecución con permisos ampliados permitió completar las pruebas. No se modificó el pom ni se añadieron tests para esta serie.
 
-El `else`, los `return`, las operaciones aritméticas y la llamada a `Math.max()` aportan cero puntos al conteo del método.
+Las pruebas existentes comprueban puntuación, datos faltantes, presupuesto, clasificación y ordenamiento. Su aprobación aporta evidencia de conservación del comportamiento, pero no demuestra cobertura exhaustiva de todos los caminos. No se ejecutó la suite completa del proyecto ni se obtuvo una medición automática de complejidad.
 
-## 7. Resumen de `RecomendadorDestinos`
+## Interpretación para la HU
 
-| Indicador | Resultado |
-|---|---:|
-| Métodos analizados | 8 |
-| Suma de las complejidades por método | 36 |
-| Promedio por método | 4,5 |
-| Complejidad máxima | 9 |
-| Complejidad mínima | 1 |
+La complejidad máxima permanece en 11, en `validarCiudades`, seguida de 9 en `calcularCoincidenciaPonderada`. Estos valores orientan la revisión de decisiones y pruebas; no representan errores ni una nota global de calidad.
 
-La suma de 36 es un agregado de las mediciones individuales. Los métodos con mayor complejidad son `calcularCoincidenciaPonderada` (**9**) y `validarCiudades` (**8**). Se priorizarán en la revisión porque concentran la mayor cantidad de decisiones entre los métodos analizados.
+La complejidad agregada aumenta de 39 a 41 porque el recorrido antes encapsulado en `anyMatch` queda explícito en `calcularPuntajeTotal`. El conteo utilizado mide decisiones visibles en el método y no incorpora el flujo interno de bibliotecas. Por ello, el incremento no demuestra por sí solo un empeoramiento del comportamiento o de la mantenibilidad.
 
-## 8. Comparación posterior a la refactorización
+La mejora buscada es cualitativa: nombres descriptivos, cálculos separados y reglas explicadas. No se afirma una reducción de complejidad ni una mejora cuantitativa de mantenibilidad. La comprensión de la nueva versión debe confirmarse mediante revisión por quienes mantienen el código.
 
-| Clase | Método original | Antes (conteo manual) | Después | Observaciones |
-|---|---|---:|---|---|
-| `RecomendadorDestinos` | `calcularPuntajePresupuesto` | 3 | Pendiente | |
-| `RecomendadorDestinos` | `calcularCoincidenciaPonderada` | 9 | Pendiente | |
-| `RecomendadorDestinos` | `calcularPuntajeTotal` | 3 | Pendiente | |
-| `RecomendadorDestinos` | `diferenciaPresupuesto` | 1 | Pendiente | |
-| `RecomendadorDestinos` | `excedePresupuesto` | 4 | Pendiente | |
-| `RecomendadorDestinos` | `validarCiudades` | 8 | Pendiente | |
-| `RecomendadorDestinos` | `puntuarCiudadesValidas` | 4 | Pendiente | |
-| `RecomendadorDestinos` | `todosMismoPuntaje` | 4 | Pendiente | |
+## Pendientes
 
-Si un método se divide, se renombra o se elimina, se registrará qué pasó con su lógica. Los métodos nuevos también se medirán. Para evaluar la mantenibilidad, se revisarán los cambios en complejidad junto con la claridad del código, la distribución de responsabilidades y la conservación del comportamiento.
-
-## 9. Relación con las pruebas
-
-El conteo manual se obtiene al revisar el código fuente. La complejidad ayuda a identificar qué caminos conviene revisar. Las pruebas sirven para comprobar que la refactorización conserva los resultados esperados. Los casos de prueba se definen según el comportamiento que se quiere verificar.
-
-## 10. Trabajo pendiente
-
-- [ ] Revisar `RecomendacionControlador` y medir los métodos incluidos en el alcance.
-- [ ] Confirmar la participación de `LlenarAtributosCiudad` y `ProxyLugares`.
-- [ ] Completar la línea base de las clases seleccionadas.
-- [ ] Contrastar los resultados con un analizador y documentar su versión y criterio.
-- [ ] Guardar la referencia de la versión medida antes de refactorizar.
-- [ ] Repetir la medición después de la refactorización y comparar los resultados.
+1. Registrar el commit del sexto cambio cuando la autora lo cree.
+2. Contrastar el conteo con un analizador manteniendo documentadas las convenciones.
+3. Completar el alcance del módulo si la HU requiere evaluar otras clases.
+4. Revisar si las pruebas cubren los caminos relevantes de los métodos con mayor complejidad.
