@@ -293,4 +293,96 @@ class GastosServicioTest {
 
         assertTrue(estados.stream().allMatch(e -> e.gastado().signum() == 0));
     }
+
+    // ---------------------------------------------------------------- campos nulos del gasto
+
+    @Test
+    @DisplayName("CP20 validarGasto: un gasto con todos sus campos nulos devuelve un error por campo")
+    void cp20_validarGasto_camposNulos_errorEnCadaCampo() {
+        Gasto vacio = new Gasto(0, null, null, null, null, null);
+
+        Map<String, String> errores = servicio.validarGasto(ID_VIAJE, vacio);
+
+        assertEquals("Selecciona una categoría válida.", errores.get("categoria"));
+        assertEquals("Ingresa una descripción para el gasto.", errores.get("descripcion"));
+        assertEquals("El monto del gasto debe ser mayor que cero.", errores.get("monto"));
+        assertEquals("Ingresa la fecha en que se realizó el gasto.", errores.get("fecha"));
+        assertEquals("El gasto debe indicar su moneda.", errores.get("moneda"));
+        assertEquals(5, errores.size());
+    }
+
+    @Test
+    @DisplayName("CP21 validarGasto: borde, una moneda en blanco cuenta como no indicada")
+    void cp21_validarGasto_monedaEnBlanco_error() {
+        Gasto sinMoneda = new Gasto(0, "hospedaje", "Hotel", new BigDecimal("100"), "  ",
+                LocalDate.of(2026, 11, 20));
+
+        Map<String, String> errores = servicio.validarGasto(ID_VIAJE, sinMoneda);
+
+        assertEquals("El gasto debe indicar su moneda.", errores.get("moneda"));
+        assertEquals(1, errores.size());
+    }
+
+    @Test
+    @DisplayName("CP22 validarGasto: borde, la moneda se compara sin importar mayúsculas ni espacios")
+    void cp22_validarGasto_monedaEnMinusculas_sinErrores() {
+        Gasto gasto = new Gasto(0, "hospedaje", "Hotel", new BigDecimal("100"), " cop ",
+                LocalDate.of(2026, 11, 20));
+
+        assertTrue(servicio.validarGasto(ID_VIAJE, gasto).isEmpty());
+    }
+
+    // ---------------------------------------------------------------- advertencias sin exceso
+
+    @Test
+    @DisplayName("CP23 advertenciasGasto: un gasto válido dentro del cupo no genera advertencias")
+    void cp23_advertenciasGasto_dentroDelCupo_vacio() {
+        Map<String, String> advertencias = servicio.advertenciasGasto(ID_VIAJE, gasto("imprevistos", "1000"));
+
+        assertTrue(advertencias.isEmpty());
+    }
+
+    // ---------------------------------------------------------------- presupuesto inconsistente
+
+    @Test
+    @DisplayName("CP24 consultarResumen: idViaje no positivo lanza IllegalArgumentException")
+    void cp24_consultarResumen_idViajeCero_lanzaExcepcion() {
+        assertThrows(IllegalArgumentException.class, () -> servicio.consultarResumen(0));
+        verifyNoInteractions(repositorioPresupuesto);
+    }
+
+    @Test
+    @DisplayName("CP25 consultarResumen: presupuesto sin monto total lanza IllegalStateException")
+    void cp25_consultarResumen_montoTotalNulo_lanzaExcepcion() {
+        when(repositorioPresupuesto.buscarPresupuesto(ID_VIAJE))
+                .thenReturn(new PresupuestoViaje(ID_VIAJE, null, COP));
+
+        IllegalStateException error =
+                assertThrows(IllegalStateException.class, () -> servicio.consultarResumen(ID_VIAJE));
+        assertEquals("El presupuesto del viaje debe ser un monto no negativo.", error.getMessage());
+    }
+
+    @Test
+    @DisplayName("CP26 consultarResumen: borde, presupuesto negativo lanza IllegalStateException")
+    void cp26_consultarResumen_montoTotalNegativo_lanzaExcepcion() {
+        when(repositorioPresupuesto.buscarPresupuesto(ID_VIAJE))
+                .thenReturn(new PresupuestoViaje(ID_VIAJE, new BigDecimal("-1"), COP));
+
+        assertThrows(IllegalStateException.class, () -> servicio.consultarResumen(ID_VIAJE));
+    }
+
+    @Test
+    @DisplayName("CP27 consultarResumen: presupuesto sin moneda (nula o en blanco) lanza IllegalStateException")
+    void cp27_consultarResumen_presupuestoSinMoneda_lanzaExcepcion() {
+        when(repositorioPresupuesto.buscarPresupuesto(ID_VIAJE))
+                .thenReturn(new PresupuestoViaje(ID_VIAJE, TOTAL, null))
+                .thenReturn(new PresupuestoViaje(ID_VIAJE, TOTAL, " "));
+
+        IllegalStateException sinMoneda =
+                assertThrows(IllegalStateException.class, () -> servicio.consultarResumen(ID_VIAJE));
+        IllegalStateException monedaEnBlanco =
+                assertThrows(IllegalStateException.class, () -> servicio.consultarResumen(ID_VIAJE));
+        assertEquals("El presupuesto del viaje debe tener una moneda.", sinMoneda.getMessage());
+        assertEquals("El presupuesto del viaje debe tener una moneda.", monedaEnBlanco.getMessage());
+    }
 }
