@@ -88,7 +88,13 @@ public class RecomendadorDestinos implements Recomendador {
 
         // Si no hubo preguntas puntuables, devuelve 0.0.
         // Si las hubo, divide puntos ganados entre el total y asegura que nunca sea menor a 0.0.
-        return pesoTotal == 0 ? 0.0 : Math.max(0.0, (double) pesoLogrado / pesoTotal);
+        // HU142: el ternario se cambio por un if y un calculo separado para facilitar la lectura.
+        if (pesoTotal == 0) {
+            return 0.0;
+        }
+
+        double proporcionLograda = (double) pesoLogrado / pesoTotal;
+        return Math.max(0.0, proporcionLograda);
     }
 
 
