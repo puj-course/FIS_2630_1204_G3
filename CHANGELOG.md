@@ -6726,15 +6726,15 @@ la complejidad y la longitud del codigo
 
 1. **¿Qué hice ayer?**
 
-   
+Estuve mirando como funciona Twilio y como podriamos implementarlo   
 
 2. **¿Qué voy a hacer hoy?**
 
-   
+Hoy tengo que terminar de implementar esta funcion de automatizar los mensajes de texto de registro   
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
-   
+no, solo nervios de la sustentacion   
 
 ---
 
