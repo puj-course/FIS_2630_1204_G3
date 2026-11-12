@@ -6742,15 +6742,15 @@ no, solo nervios de la sustentacion
 
 1. **¿Qué hice ayer?**
 
-   
+   ayer no pude hacer mucho as que descargar telegram y crear el grupo con todos los miembros de wisetrip
 
 2. **¿Qué voy a hacer hoy?**
 
-   
+  hoy conecte l repositorio al telegrema para que ahora sepamos quien eso que cosa y cuando. 
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
-   
+   tenemos mucho miedo de la sustentacion y al mismo tiempo tenemos muchas cosas que hacer, y no entiendo como tenemos tantas cosas que hacer este sprint si en todos los anteriores priorizamos lo importante
 
 ---
 
