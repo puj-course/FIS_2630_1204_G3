@@ -1,3 +1,4 @@
+
 package com.wisetrip.servicio;
 
 import java.util.ArrayList;
@@ -30,10 +31,9 @@ public class RecomendadorDestinos implements Recomendador {
         this.gestorPreferencias = gestorPreferencias;
     }
 
-    /**
-     * Puntaje (0 a 1) de viabilidad presupuestal. Dentro del limite todos
-     * reciben 1: no se premia gastar mas ni ahorrar. El exceso se penaliza.
-     */
+    //Puntaje (0 a 1) de viabilidad presupuestal. Dentro del limite todos
+    //reciben 1: no se premia gastar mas ni ahorrar. El exceso se penaliza.
+
     public double calcularPuntajePresupuesto(double costo, double presupuesto) {
         if (presupuesto <= 0) {
             return 0.0;
@@ -42,30 +42,50 @@ public class RecomendadorDestinos implements Recomendador {
             return 1.0;
         } else {
             double exceso = (costo - presupuesto) / presupuesto;
+            //Primero calcula 1 - exceso y luego devuelve el mayor entre ese resultado
+            // y 0.0. Así, el valor que devuelve tiene un mínimo de 0.
             return Math.max(0.0, 1 - exceso);
         }
     }
 
     // Gustar suma 1; prefiero suma 3 o resta 1 si incumple.
+    // Calcula qué tanto coincide una oferta con tus gustos (devuelve un número entre 0.0 y 1.0)
     public double calcularCoincidenciaPonderada(Map<String, Boolean> oferta,
                                                 Map<String, Importancia> gustos) {
+        // Guarda la suma máxima de puntos posibles
         int pesoTotal = 0;
+        // Guarda los puntos que realmente ganaste
         int pesoLogrado = 0;
+
+        // Recorre cada categoría de preguntas (ej. Ubicación, Precio)
         for (var categoria : gestorPreferencias.listarCategorias()) {
+            // Recorre cada pregunta dentro de esa categoría
             for (var pregunta : categoria.getPreguntas()) {
+                // Busca qué tan importante es esa pregunta en tus gustos
                 Importancia importancia = gustos.get(pregunta.getClave());
+
+                // Revisa si esa pregunta te importa y si da puntos
                 if (importancia != null && importancia.esPuntuable()) {
+                    // Suma el valor de la pregunta al puntaje máximo posible
                     pesoTotal += importancia.getPeso();
+
+                    // Mira si la oferta cumple (true), no cumple (false) o no se sabe (null)
                     Boolean cumple = oferta.get(pregunta.getClave());
+
+                    // Si la oferta sí cumple, suma todos los puntos de esa pregunta
                     if (Boolean.TRUE.equals(cumple)) {
                         pesoLogrado += importancia.getPeso();
+                        // Si la oferta NO cumple y era algo que "preferías", resta 1 punto
                     } else if (importancia == Importancia.PREFIERO && Boolean.FALSE.equals(cumple)) {
                         pesoLogrado--;
                     }
+                    // Si "cumple" es null (desconocido), no suma ni resta nada
                 }
             }
         }
-        // Desconocidos conservan su peso, sin restar; minimo cero.
+
+        // Si no hubo preguntas puntuables, devuelve 0.0.
+        // Si las hubo, divide puntos ganados entre el total y asegura que nunca sea menor a 0.0.
         return pesoTotal == 0 ? 0.0 : Math.max(0.0, (double) pesoLogrado / pesoTotal);
     }
 
