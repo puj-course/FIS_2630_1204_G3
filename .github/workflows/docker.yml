@@ -1,39 +1,52 @@
-name: Docker CI/CD
-
+# =============================================================================
+# Docker CI/CD
 # Construye el proyecto, construye la imagen Docker, la despliega con
 # Docker Compose (app + proxy Nginx en la red wisetrip-red), comprueba que
 # responda y publica la imagen en DockerHub.
-#
+# =============================================================================
+name: Docker CI/CD   # nombre que aparece en la pestana Actions de GitHub
+
+# --- Cuando se ejecuta -------------------------------------------------------
 # Solo corre al fusionar en main, al publicar una version (tag v*) o a mano
 # desde la pestana Actions ("Run workflow"). No corre en cada pull request ni
 # en las ramas de trabajo, para no llenar de checks el flujo diario del equipo.
 on:
   push:
     branches:
-      - main
+      - main            # cada merge a main genera y publica una imagen nueva
     tags:
-      - 'v*'
-  workflow_dispatch:
+      - 'v*'            # un tag de git como v1.0.0 publica esa version
+  workflow_dispatch:    # boton "Run workflow" para lanzarlo a mano
 
+# --- Variables compartidas por todos los pasos -------------------------------
 env:
-  APP_DIR: app/Entrega1/wisetrip_entrega1
-  IMAGEN: wisetrip
+  APP_DIR: app/Entrega1/wisetrip_entrega1   # carpeta donde esta el pom.xml
+  IMAGEN: wisetrip                          # nombre local de la imagen
 
 jobs:
-  # ---------------------------------------------------------------- 1. Maven
+  # ===========================================================================
+  # JOB 1: compilar y correr TODAS las pruebas con Maven.
+  # Si alguna prueba falla, el job 2 no se ejecuta y no se publica nada.
+  # ===========================================================================
   build-y-pruebas:
     name: Build y pruebas (Maven)
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest   # maquina virtual Linux limpia que da GitHub
 
     steps:
+      # Descarga el codigo del repositorio en la maquina virtual.
+      # Las acciones se fijan por SHA (no por @v4) para que nadie pueda
+      # cambiar su codigo a escondidas; el comentario dice la version.
       - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
 
+      # Instala Java 25, la misma version que usa el proyecto.
       - name: Configurar JDK 25
         uses: actions/setup-java@c1e323688fd81a25caa38c78aa6df2d33d3e20d9 # v4.8.0
         with:
           java-version: 25
           distribution: zulu
 
+      # Guarda las dependencias de Maven (~/.m2) entre ejecuciones.
+      # La clave depende del pom.xml: si no cambia, no se vuelve a descargar nada.
       - name: Cache de Maven
         uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 # v4.3.0
         with:
@@ -41,36 +54,46 @@ jobs:
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
 
+      # verify = compilar + correr las pruebas unitarias + empaquetar el .war
+      # (-B: modo batch, logs sin colores ni barras de progreso)
       - name: Compilar, probar y empaquetar el .war
         run: mvn -B -f ${{ env.APP_DIR }}/pom.xml verify
 
+      # Deja el .war descargable desde la pagina del run (evidencia del build).
       - name: Guardar el .war como artefacto del workflow
         uses: actions/upload-artifact@v4
         with:
           name: wisetrip-war
           path: ${{ env.APP_DIR }}/target/*.war
 
-  # ---------------------------------------------------------------- 2. Docker
+  # ===========================================================================
+  # JOB 2: construir la imagen, desplegarla con Compose, probarla y publicarla.
+  # ===========================================================================
   docker:
     name: Imagen Docker, prueba de humo y publicacion
-    needs: build-y-pruebas
+    needs: build-y-pruebas   # solo corre si el job 1 termino bien
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
 
+      # Activa Buildx (BuildKit), que el Dockerfile necesita por la
+      # cache de Maven (RUN --mount=type=cache).
       - name: Configurar Docker Buildx
         uses: docker/setup-buildx-action@v3
 
+      # Construye la imagen con el MISMO Dockerfile que se usa en local.
       - name: Construir la imagen con el Dockerfile
         uses: docker/build-push-action@v6
         with:
-          context: .
-          load: true
-          tags: ${{ env.IMAGEN }}:ci
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
+          context: .                  # raiz del repo (ahi esta el Dockerfile)
+          load: true                  # deja la imagen en la maquina para probarla
+          tags: ${{ env.IMAGEN }}:ci  # nombre temporal de la imagen en el CI
+          cache-from: type=gha        # reutiliza capas de builds anteriores...
+          cache-to: type=gha,mode=max # ...y guarda las nuevas en la cache de GitHub
 
+      # Despliegue real con Docker Compose: levanta la app y el proxy Nginx
+      # en la red wisetrip-red, igual que en el equipo de un desarrollador.
       - name: Desplegar con Docker Compose (app + proxy en la red wisetrip-red)
         run: |
           # Compose usa la imagen recien construida en vez de construirla otra vez
@@ -79,8 +102,10 @@ jobs:
           docker compose up -d --no-build --wait --wait-timeout 180
           docker compose ps
 
+      # Evidencia del networking entre servicios que pide la rubrica.
       - name: Verificar la red Docker entre servicios
         run: |
+          # La red existe y es de tipo bridge
           docker network ls --filter name=wisetrip-red
           echo "Contenedores conectados a wisetrip-red:"
           docker network inspect wisetrip-red --format '{{range .Containers}}{{.Name}} -> {{.IPv4Address}}{{println}}{{end}}'
@@ -88,19 +113,26 @@ jobs:
           docker compose exec -T proxy wget -q -O /dev/null http://wisetrip:8090/
           echo "proxy -> http://wisetrip:8090 por la red interna: OK"
 
+      # Prueba de humo: la app responde de verdad (no solo compila).
+      # curl -f hace fallar el paso si la respuesta es un error HTTP.
       - name: Prueba de humo (directo en 8090 y a traves del proxy en 80)
         run: |
           curl -fsS -o /dev/null -w "Directo  http://localhost:8090 -> HTTP %{http_code}\n" http://localhost:8090/
           curl -fsS -o /dev/null -w "Proxy    http://localhost      -> HTTP %{http_code}\n" http://localhost/
 
+      # Solo si algo fallo: muestra los logs de Spring y Nginx para diagnosticar.
       - name: Logs de los contenedores (solo si algo fallo)
         if: failure()
         run: docker compose logs
 
+      # Siempre (falle o no) apaga y borra los contenedores y la red de prueba.
       - name: Apagar el despliegue de prueba
         if: always()
         run: docker compose down
 
+      # Inicia sesion en DockerHub con los secretos del repositorio
+      # (Settings > Secrets and variables > Actions). GitHub los oculta como ***.
+      # Solo desde main o un tag de version: otras ramas no publican.
       - name: Iniciar sesion en DockerHub
         if: github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/tags/v')
         uses: docker/login-action@v3
@@ -108,6 +140,10 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
+      # Publica la imagen con etiquetas claras:
+      #   latest       -> la ultima version de main
+      #   <hash corto> -> el commit exacto que genero la imagen (permite volver atras)
+      #   v1.0.0       -> la version, si el run lo disparo un tag
       - name: Publicar la imagen en DockerHub (latest y hash del commit)
         if: github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/tags/v')
         run: |
