@@ -14,6 +14,8 @@ import java.util.logging.Logger;
 @Service
 @Primary
 
+// HU143: NPM explicito = 1; excluye constructores, heredados y generados.
+// NOC = 0: sin hijas directas en src/main/java al 2026-11-11. Recalcular ante cambios.
 public class ProxyLugares implements ProovedorLugares {
     private static final Logger LOGGER = Logger.getLogger(ProxyLugares.class.getName());
 

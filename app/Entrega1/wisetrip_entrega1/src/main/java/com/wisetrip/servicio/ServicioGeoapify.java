@@ -25,6 +25,8 @@ import com.google.gson.Gson;
 //contarLugares: cuenta cuántos lugares de ciertas categorías hay cerca de un punto.
 
 @Service
+// HU143: NPM explicito = 2; excluye constructores, heredados y generados.
+// NOC = 0: sin hijas directas en src/main/java al 2026-11-11. Recalcular ante cambios.
 public class ServicioGeoapify implements ProovedorLugares {
 
     // Escribe mensajes en la consola (así vemos cuántas llamadas se hacen)

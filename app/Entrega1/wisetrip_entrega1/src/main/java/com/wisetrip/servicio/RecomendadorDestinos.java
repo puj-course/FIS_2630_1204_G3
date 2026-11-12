@@ -19,6 +19,8 @@ import com.wisetrip.negocio.Recomendador;
 import com.wisetrip.negocio.GestorPreferencias;
 
 @Service
+// HU143: NPM explicito = 7; excluye constructores, heredados y generados.
+// NOC = 0: sin hijas directas en src/main/java al 2026-11-11. Recalcular ante cambios.
 public class RecomendadorDestinos implements Recomendador {
 
     private final boolean presupuestoObligatorio;
@@ -92,7 +94,7 @@ public class RecomendadorDestinos implements Recomendador {
 
         // Si no hubo preguntas puntuables, devuelve 0.0.
         // Si las hubo, divide puntos ganados entre el total y asegura que nunca sea menor a 0.0.
-        // HU142: el ternario se cambio por un if y un calculo separado para facilitar la lectura.
+
         if (pesoTotal == 0) {
             return 0.0;
         }

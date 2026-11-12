@@ -34,6 +34,8 @@ import jakarta.servlet.http.HttpSession;
  * El viaje se debe guardar cuando el usuario elija un destino.
  */
 @Controller
+// HU143: NPM explicito = 1; excluye constructores, heredados y generados.
+// NOC = 0: sin hijas directas en src/main/java al 2026-11-11. Recalcular ante cambios.
 public class RecomendacionControlador {
 
     private final CiudadNegocio ciudadDAO;

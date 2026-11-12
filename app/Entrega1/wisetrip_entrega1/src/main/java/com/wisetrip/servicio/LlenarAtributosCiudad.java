@@ -15,6 +15,8 @@ import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
 
 @Service
+// HU143: NPM explicito = 1; excluye constructores, heredados y generados.
+// NOC = 0: sin hijas directas en src/main/java al 2026-11-11. Recalcular ante cambios.
 public class LlenarAtributosCiudad {
 
     //constante que indica 50 km
@@ -28,7 +30,7 @@ public class LlenarAtributosCiudad {
         this.proveedorLugares = proveedorLugares;
     }
 
-    // HU142: complejidad ciclomatica manual = 7 (1 base + 5 if/else if + 1 for).
+    //complejidad manual = 7 (1 base + 5 if/else if + 1 for).
 
     public void enriquecer(
             Ciudad ciudad,
@@ -78,9 +80,8 @@ public class LlenarAtributosCiudad {
         ciudad.setAtributos(atributos);
     }
 
-    // HU142: complejidad ciclomatica manual = 6 (1 base + 1 for + 1 if + 3 &&).
-    // Las decisiones internas de esIndispensable() se miden en su propio metodo.
-    // Recalcular este valor si cambian las decisiones del metodo.
+    //complejidad manual = 6 (1 base + 1 for + 1 if + 3 &&).
+
     private boolean incumpleIndispensableManual(Map<String, Boolean> atributos,
                                                 Map<String, Importancia> importancias) {
         for (DefPregunta pregunta : CatalogoPreguntas.todasLasPreguntas()) {
