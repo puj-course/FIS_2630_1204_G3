@@ -173,32 +173,34 @@ public class RecomendadorDestinos implements Recomendador {
     public ValidacionCiudades validarCiudades(
             List<Ciudad> ciudades, PreferenciasUsuario preferencias) {
 
-        List<Ciudad> validas = new ArrayList<>();
-        List<Ciudad> descartadas = new ArrayList<>();
-        List<Ciudad> pendientes = new ArrayList<>();
+        // HU142: nombres abreviados y tipos var se cambiaron por nombres y tipos explicitos.
+        List<Ciudad> ciudadesValidas = new ArrayList<>();
+        List<Ciudad> ciudadesDescartadas = new ArrayList<>();
+        List<Ciudad> ciudadesPendientes = new ArrayList<>();
 
         for (Ciudad ciudad : ciudades) {
-            double costo = ciudad.getCostoPromedio() * preferencias.getDuracionDias();
+            double costoEstancia = ciudad.getCostoPromedio() * preferencias.getDuracionDias();
 
             boolean faltaInformacion = false;
-            if (!Double.isFinite(costo)) {
+            if (!Double.isFinite(costoEstancia)) {
                 faltaInformacion = true;
-            } else if (costo <= 0) {
+            } else if (costoEstancia <= 0) {
                 faltaInformacion = true;
             }
 
-            boolean incumple = excedePresupuesto(ciudad, preferencias);
+            boolean tieneIncumplimientoConfirmado = excedePresupuesto(ciudad, preferencias);
 
-            for (var requisito : preferencias.getAtributos().entrySet()) {
-                var preferenciaDelAtributo = requisito.getValue();
+            // Entre las preferencias de atributos, solo las indispensables afectan esta clasificacion.
+            for (Map.Entry<String, Importancia> requisito : preferencias.getAtributos().entrySet()) {
+                Importancia preferenciaDelAtributo = requisito.getValue();
 
                 if (preferenciaDelAtributo != null) {
                     if (preferenciaDelAtributo.esIndispensable()) {
-                        var atributo = requisito.getKey();
+                        String atributo = requisito.getKey();
                         EstadoAtributo estado = ciudad.estadoAtributo(atributo);
 
                         if (estado == EstadoAtributo.NO_CUMPLE) {
-                            incumple = true;
+                            tieneIncumplimientoConfirmado = true;
                         }
 
                         if (estado == EstadoAtributo.NO_SABEMOS) {
@@ -208,16 +210,17 @@ public class RecomendadorDestinos implements Recomendador {
                 }
             }
 
-            if (incumple) {
-                descartadas.add(ciudad);
+            // Un incumplimiento confirmado tiene prioridad, aunque tambien falten datos.
+            if (tieneIncumplimientoConfirmado) {
+                ciudadesDescartadas.add(ciudad);
             } else if (faltaInformacion) {
-                pendientes.add(ciudad);
+                ciudadesPendientes.add(ciudad);
             } else {
-                validas.add(ciudad);
+                ciudadesValidas.add(ciudad);
             }
         }
 
-        return new ValidacionCiudades(validas, descartadas, pendientes);
+        return new ValidacionCiudades(ciudadesValidas, ciudadesDescartadas, ciudadesPendientes);
     }
 
     @Override
