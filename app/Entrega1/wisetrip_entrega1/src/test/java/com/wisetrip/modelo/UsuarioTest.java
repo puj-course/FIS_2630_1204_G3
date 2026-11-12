@@ -1,6 +1,8 @@
 package com.wisetrip.modelo;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTimeout;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -235,5 +237,161 @@ class UsuarioTest {
         int resultadoEsperado = 30;
 
         assertEquals(resultadoEsperado, resultadoObtenido);
+    }
+
+    // ------------------------------------------------------------ campos vacios
+
+    @Test
+    @DisplayName("validarDatos: un formulario sin ningun dato devuelve un error por cada campo obligatorio")
+    void validarDatos_todoNulo_errorEnCadaCampo() {
+        Usuario vacio = new Usuario();
+
+        Map<String, String> errores = vacio.validarDatos(null);
+
+        assertEquals("Ingresa tu nombre completo.", errores.get("nombreCompleto"));
+        assertEquals("Selecciona un tipo de documento.", errores.get("tipoDocumento"));
+        assertEquals("Ingresa tu numero de documento.", errores.get("numeroDocumento"));
+        assertEquals("Ingresa tu fecha de nacimiento.", errores.get("fechaNacimiento"));
+        assertEquals("Ingresa tu correo electronico.", errores.get("correo"));
+        assertEquals("Ingresa una contrasena.", errores.get("password"));
+        assertEquals("Confirma tu contrasena.", errores.get("confirmarPassword"));
+        assertEquals(7, errores.size());
+    }
+
+    @Test
+    @DisplayName("validarDatos: borde, campos con solo espacios cuentan como vacios")
+    void validarDatos_camposEnBlanco_errorDeObligatorio() {
+        usuario.setNombreCompleto("   ");
+        usuario.setTipoDocumento(" ");
+        usuario.setNumeroDocumento("  ");
+        usuario.setFechaNacimiento(" ");
+        usuario.setCorreo("   ");
+
+        Map<String, String> errores = usuario.validarDatos(CLAVE_OK);
+
+        assertEquals("Ingresa tu nombre completo.", errores.get("nombreCompleto"));
+        assertEquals("Selecciona un tipo de documento.", errores.get("tipoDocumento"));
+        assertEquals("Ingresa tu numero de documento.", errores.get("numeroDocumento"));
+        assertEquals("Ingresa tu fecha de nacimiento.", errores.get("fechaNacimiento"));
+        assertEquals("Ingresa tu correo electronico.", errores.get("correo"));
+        assertEquals(5, errores.size());
+    }
+
+    @Test
+    @DisplayName("validarDatos: borde, un nombre de 2 letras es demasiado corto")
+    void validarDatos_nombreDeDosLetras_error() {
+        usuario.setNombreCompleto(" Al ");
+
+        Map<String, String> errores = usuario.validarDatos(CLAVE_OK);
+
+        assertEquals("El nombre es demasiado corto.", errores.get("nombreCompleto"));
+        assertEquals(1, errores.size());
+    }
+
+    @Test
+    @DisplayName("validarDatos: un documento con letras se rechaza")
+    void validarDatos_documentoConLetras_error() {
+        usuario.setNumeroDocumento("12AB34");
+
+        Map<String, String> errores = usuario.validarDatos(CLAVE_OK);
+
+        assertEquals("El documento debe tener entre 5 y 15 digitos.", errores.get("numeroDocumento"));
+        assertEquals(1, errores.size());
+    }
+
+    @Test
+    @DisplayName("validarDatos: sin contraseña no se compara con la confirmacion")
+    void validarDatos_passwordNulaConConfirmacion_soloErrorDePassword() {
+        usuario.setPassword(null);
+
+        Map<String, String> errores = usuario.validarDatos(CLAVE_OK);
+
+        assertEquals("Ingresa una contrasena.", errores.get("password"));
+        assertEquals(1, errores.size());
+    }
+
+    // ------------------------------------------------------------ normalizar y setCorreo
+
+    @Test
+    @DisplayName("normalizar: quita espacios y deja el correo en minusculas")
+    void normalizar_datosConEspacios_quedanLimpios() {
+        usuario.setNombreCompleto("  Valeria Cortes  ");
+        usuario.setNumeroDocumento(" 1234567890 ");
+        usuario.setCorreo(" Valeria@Javeriana.EDU.co ");
+
+        usuario.normalizar();
+
+        assertEquals("Valeria Cortes", usuario.getNombreCompleto());
+        assertEquals("1234567890", usuario.getNumeroDocumento());
+        assertEquals("valeria@javeriana.edu.co", usuario.getCorreo());
+    }
+
+    @Test
+    @DisplayName("normalizar: borde, con campos nulos no lanza excepcion y siguen nulos")
+    void normalizar_camposNulos_siguenNulos() {
+        Usuario vacio = new Usuario();
+
+        vacio.normalizar();
+
+        assertNull(vacio.getNombreCompleto());
+        assertNull(vacio.getNumeroDocumento());
+        assertNull(vacio.getCorreo());
+    }
+
+    @Test
+    @DisplayName("setCorreo: borde, un correo nulo queda nulo")
+    void setCorreo_nulo_quedaNulo() {
+        usuario.setCorreo(null);
+
+        assertNull(usuario.getCorreo());
+    }
+
+    // ------------------------------------------------------------ otros metodos
+
+    @Test
+    @DisplayName("verificarPassword: solo es true si la contraseña coincide")
+    void verificarPassword_coincideONo() {
+        assertTrue(usuario.verificarPassword(CLAVE_OK));
+        assertFalse(usuario.verificarPassword("otra-clave"));
+    }
+
+    @Test
+    @DisplayName("verificarPassword: borde, un usuario sin contraseña nunca coincide")
+    void verificarPassword_sinPassword_false() {
+        usuario.setPassword(null);
+
+        assertFalse(usuario.verificarPassword(null));
+    }
+
+    @Test
+    @DisplayName("tieneTelegramVinculado: falso sin chat_id o con chat_id en blanco, verdadero con chat_id")
+    void tieneTelegramVinculado_segunChatId() {
+        assertFalse(usuario.tieneTelegramVinculado());
+
+        usuario.vincularTelegram("   ");
+        assertFalse(usuario.tieneTelegramVinculado());
+
+        usuario.vincularTelegram(" 555 ");
+        assertTrue(usuario.tieneTelegramVinculado());
+        assertEquals("555", usuario.getChatId());
+    }
+
+    @Test
+    @DisplayName("iniciales: dos letras con nombre y apellido, una con solo nombre")
+    void iniciales_segunElNombre() {
+        assertEquals("VC", usuario.iniciales());
+
+        usuario.setNombreCompleto("  ana  ");
+        assertEquals("A", usuario.iniciales());
+    }
+
+    @Test
+    @DisplayName("iniciales: borde, sin nombre o con nombre en blanco devuelve '?'")
+    void iniciales_sinNombre_interrogacion() {
+        usuario.setNombreCompleto(null);
+        assertEquals("?", usuario.iniciales());
+
+        usuario.setNombreCompleto("   ");
+        assertEquals("?", usuario.iniciales());
     }
 }
