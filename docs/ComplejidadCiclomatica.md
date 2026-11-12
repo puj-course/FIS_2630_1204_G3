@@ -78,3 +78,41 @@ En los métodos comparados, el conteo se mantuvo o subió.
 
 Después de los cambios en `RecomendadorDestinos`, pasaron sus **20 pruebas
 ya hechas**. 
+
+ademas se pued everificar en el sonarqube 
+
+`RecomendacionControlador.java` 
+<img width="1842" height="1017" alt="image" src="https://github.com/user-attachments/assets/4eac88c3-f851-4a1d-baef-797132294a7e" />
+
+`RecomendadorDestinos.java`
+<img width="1089" height="592" alt="image" src="https://github.com/user-attachments/assets/be26e3cf-4dd4-407a-8e43-4036d162ad40" />
+
+como este se analiza en el análisis de `main`, el código que
+muestra Sonar todavía usa `anyMatch()` en `calcularPuntajeTotal`,
+mientras que la versión del conteo final usa un `for`.
+
+El conteo manual final suma 42 para el archivo, incluidos los ocho
+métodos y el constructor. Como los valores corresponden a versiones
+distintas, los registramos como referencia. Para compararlos
+directamente, queda pendiente ejecutar Sonar sobre la misma versión
+que contamos a mano.
+
+<img width="928" height="319" alt="image" src="https://github.com/user-attachments/assets/32a49072-b590-49c8-aeea-8a545f5a4726" />
+
+`LlenarAtributosCiudad.java`
+<img width="1482" height="726" alt="image" src="https://github.com/user-attachments/assets/134e1846-888a-4422-ab3f-d5d15162f8ec" />
+
+SonarQube reporta 15 en `main`.
+El conteo manual de la versión final suma 14 (7 de `enriquecer`, 6 de
+`incumpleIndispensableManual` y 1 del constructor).
+
+En Sonar todavía aparecen los imports de `Set` y `Collectors`, que se
+usaban para armar el conjunto de atributos activos. En la versión final,
+`enriquecer` consulta cada atributo directamente en el mapa. Para saber
+si la diferencia de un punto se debe a la versión del código o al
+criterio de conteo, queda pendiente medir la misma versión con ambos
+métodos.
+
+
+
+
