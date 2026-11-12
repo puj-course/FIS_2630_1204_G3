@@ -53,11 +53,14 @@ class UsuarioServicioTest {
     @Mock
     private INotificador notificadorTelegram;
 
+    @Mock
+    private INotificador notificadorSms;
+
     private UsuarioServicio servicio;
 
     @BeforeEach
     void setUp() {
-        servicio = new UsuarioServicio(repositorio, notificadorCorreo, notificadorTelegram);
+        servicio = new UsuarioServicio(repositorio, notificadorCorreo, notificadorTelegram, notificadorSms);
     }
 
     /** Usuario con todos los datos válidos (mayor de edad, correo y documento bien escritos). */
@@ -243,4 +246,63 @@ class UsuarioServicioTest {
         assertFalse(usuario.tieneTelegramVinculado());
         verify(repositorio).vincularTelegram(10, null);
     }
+
+
+    // ------------------------------------------------------------ SMS (Twilio)
+
+    @Test
+    @DisplayName("registrar: con celular envía la bienvenida por SMS")
+    void registrar_conTelefono_enviaSms() {
+        Usuario usuario = usuarioValido();
+        usuario.setTelefono("3001234567");
+
+        servicio.registrar(usuario);
+
+        assertEquals("+573001234567", usuario.getTelefono());
+        verify(notificadorSms).enviar(eq("+573001234567"), any(Notificacion.class));
+    }
+
+    @Test
+    @DisplayName("registrar: sin celular no envía SMS")
+    void registrar_sinTelefono_noEnviaSms() {
+        servicio.registrar(usuarioValido());
+
+        verifyNoInteractions(notificadorSms);
+    }
+
+    @Test
+    @DisplayName("registrar: si el SMS falla, el registro no se rompe")
+    void registrar_smsFalla_noRompeElRegistro() {
+        Usuario usuario = usuarioValido();
+        usuario.setTelefono("3001234567");
+        doThrow(new IllegalStateException("Twilio caído"))
+                .when(notificadorSms).enviar(anyString(), any(Notificacion.class));
+
+        assertDoesNotThrow(() -> servicio.registrar(usuario));
+        verify(repositorio).registrar(usuario);
+    }
+
+    @Test
+    @DisplayName("iniciarSesion: con celular avisa el inicio por SMS")
+    void iniciarSesion_conTelefono_avisaPorSms() {
+        Usuario usuario = usuarioValido();
+        usuario.setTelefono("+573001234567");
+        when(repositorio.buscarPorCorreo(CORREO)).thenReturn(usuario);
+
+        servicio.iniciarSesion(CORREO, PASSWORD);
+
+        verify(notificadorSms).enviar(eq("+573001234567"), any(Notificacion.class));
+    }
+
+    @Test
+    @DisplayName("iniciarSesion: sin celular no envía SMS")
+    void iniciarSesion_sinTelefono_noAvisaPorSms() {
+        when(repositorio.buscarPorCorreo(CORREO)).thenReturn(usuarioValido());
+
+        servicio.iniciarSesion(CORREO, PASSWORD);
+
+        verify(notificadorSms, never()).enviar(anyString(), any(Notificacion.class));
+    }
+
+
 }

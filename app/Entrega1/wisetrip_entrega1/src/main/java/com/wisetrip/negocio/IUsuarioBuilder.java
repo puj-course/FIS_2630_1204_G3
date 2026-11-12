@@ -26,6 +26,9 @@ public interface IUsuarioBuilder {
     /** Parte 4: canal de contacto por Telegram (puede no tenerlo). */
     void construirContacto(String chatId);
 
+    /** celular para recibir SMS . */
+    void construirTelefono(String telefono);
+
     /** Devuelve el Usuario ya ensamblado. */
     Usuario getResult();
 }

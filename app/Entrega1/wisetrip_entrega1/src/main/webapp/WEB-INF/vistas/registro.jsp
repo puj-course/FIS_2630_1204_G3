@@ -101,6 +101,13 @@
                 <span class="rg-error">${errores.correo}</span>
             </c:if>
 
+            <label for="telefono">Celular (opcional)</label>
+            <input id="telefono" type="text" name="telefono" value="${usuario.telefono}"
+                   placeholder="Ej: 3001234567">
+            <c:if test="${not empty errores.telefono}">
+                <span class="rg-error">${errores.telefono}</span>
+            </c:if>
+
             <div class="rg-fila">
                 <div>
                     <label for="clave">Contraseña</label>

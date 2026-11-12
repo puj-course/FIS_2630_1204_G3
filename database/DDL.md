@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXISTS usuario (
     correo CITEXT NOT NULL,
     contraseña VARCHAR(255) NOT NULL,
     rol VARCHAR(20) NOT NULL,
-    chat_id VARCHAR(50),
+    chat_id VARCHAR(20),
     fecha_registro TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     estado BOOLEAN NOT NULL DEFAULT TRUE,
     tipo_documento VARCHAR(30),
