@@ -38,6 +38,7 @@ public class Usuario implements Serializable {
     private String password;
     private String rol = "cliente";
     private String chatId;
+    private String telefono;
 
     public Usuario() {
         // Constructor vacio necesario para que Spring pueda
@@ -123,6 +124,14 @@ public class Usuario implements Serializable {
         this.chatId = chatId;
     }
 
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono != null ? telefono.trim() : null;
+    }
+
     //METODOS 
 
     //limpia los espacios y deja el correo en minusculas
@@ -135,6 +144,15 @@ public class Usuario implements Serializable {
         }
         if (correo != null) {
             correo = correo.trim().toLowerCase();
+        }
+
+        if (telefono != null) {
+            telefono = telefono.replaceAll("\\s", "");
+        if (telefono.isEmpty()) {
+             telefono = null;
+        } else if (!telefono.startsWith("+")) {
+            telefono = "+57" + telefono;
+        }
         }
     }
 
@@ -200,6 +218,11 @@ public class Usuario implements Serializable {
         } else if (password != null && !password.equals(confirmarPassword)) {
             errores.put("confirmarPassword", "Las contrasenas no coinciden.");
         }
+                //Celular (opcional): celular colombiano de 10 digitos, con o sin +57
+        if (telefono != null && !telefono.isBlank()
+                && !telefono.replaceAll("\\s", "").matches("^(\\+57)?3\\d{9}$")) {
+            errores.put("telefono", "Ingresa un celular colombiano valido de 10 digitos (ej. 3001234567).");
+        }
 
         return errores;
     }
@@ -224,6 +247,11 @@ public class Usuario implements Serializable {
 
     public boolean tieneTelegramVinculado() {
         return chatId != null && !chatId.isBlank();
+    }
+
+    // retorna true si el usuario registro un celular para recibir SMS
+    public boolean tieneTelefono() {
+        return telefono != null && !telefono.isBlank();
     }
 
     // saca solo el primer nombre del usuario
