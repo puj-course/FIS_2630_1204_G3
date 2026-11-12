@@ -40,12 +40,16 @@ public class RecomendadorDestinos implements Recomendador {
         }
         if (costo <= presupuesto) {
             return 1.0;
-        } else {
-            double exceso = (costo - presupuesto) / presupuesto;
-            //Primero calcula 1 - exceso y luego devuelve el mayor entre ese resultado
-            // y 0.0. Así, el valor que devuelve tiene un mínimo de 0.
-            return Math.max(0.0, 1 - exceso);
         }
+
+        // HU142: se elimino el else porque el caso anterior ya termina con return.
+        // El calculo se separo en pasos para explicar la penalizacion por exceso.
+        double montoExcedido = costo - presupuesto;
+        double proporcionExcedida = montoExcedido / presupuesto;
+        double puntajePenalizado = 1 - proporcionExcedida;
+
+        // El puntaje nunca puede ser menor que cero.
+        return Math.max(0.0, puntajePenalizado);
     }
 
     // Gustar suma 1; prefiero suma 3 o resta 1 si incumple.
