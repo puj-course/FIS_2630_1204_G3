@@ -30,17 +30,19 @@ public class UsuarioServicio implements IRegistroUsuario, IPerfilUsuario, IAuten
     private static final String MSG_DOCUMENTO_EXISTE = "Ya existe una cuenta con este documento.";
     private static final String MSG_CORREO_EXISTE = "Ya existe una cuenta con este correo.";
 
-     private final IUsuarioRepositorio repositorio;
+    private final IUsuarioRepositorio repositorio;
     private final INotificador notificadorCorreo;
     private final INotificador notificadorTelegram;
+    private final INotificador notificadorSms;
 
     // contructor con inyeccion de dependencias, se le dice a spring 
     //que vamos a necesitar para funcionar y spring nos lo va a dar
 
-    public UsuarioServicio(IUsuarioRepositorio repositorio, @Qualifier("notificadorCorreo") INotificador notificadorCorreo, @Qualifier("notificadorTelegram") INotificador notificadorTelegram) {
+    public UsuarioServicio(IUsuarioRepositorio repositorio, @Qualifier("notificadorCorreo") INotificador notificadorCorreo, @Qualifier("notificadorTelegram") INotificador notificadorTelegram, @Qualifier("notificadorSMS") INotificador notificadorSms) {
         this.repositorio = repositorio;
         this.notificadorCorreo = notificadorCorreo;
         this.notificadorTelegram = notificadorTelegram;
+        this.notificadorSms = notificadorSms;
     }
 
     @Override
@@ -64,6 +66,9 @@ public class UsuarioServicio implements IRegistroUsuario, IPerfilUsuario, IAuten
         repositorio.registrar(usuario);
         // Si el correo falla, el registro no se rompe
         notificar(new CreadorNotificacionBienvenida(), usuario, usuario.getCorreo(), notificadorCorreo);
+        if (usuario.tieneTelefono()) {
+            notificar(new CreadorNotificacionBienvenida(), usuario, usuario.getTelefono(), notificadorSms);
+        }
     }
 
     @Override
@@ -78,6 +83,11 @@ public class UsuarioServicio implements IRegistroUsuario, IPerfilUsuario, IAuten
         if (usuario.tieneTelegramVinculado()) {
             notificar(new CreadorNotificacionInicioSesion(), usuario, usuario.getChatId(), notificadorTelegram);
         }
+        if (usuario.tieneTelefono()) {
+            notificar(new CreadorNotificacionInicioSesion(), usuario, usuario.getTelefono(), notificadorSms);
+        }
+
+
         return usuario;
     }
 
