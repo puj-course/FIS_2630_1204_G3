@@ -22,8 +22,8 @@ public class UsuarioDAO implements IUsuarioRepositorio {
     public Usuario registrar(Usuario usuario) {
         String sql = """
             INSERT INTO usuario
-                (nombre, correo, contraseña, rol, estado, tipo_documento, numero_documento, fecha_nacimiento, chat_id)
-            VALUES (?, ?, ?, ?, TRUE, ?, ?, ?, ?)
+                (nombre, correo, contraseña, rol, estado, tipo_documento, numero_documento, fecha_nacimiento, chat_id, telefono)
+            VALUES (?, ?, ?, ?, TRUE, ?, ?, ?, ?, ?)
             RETURNING id_usuario
             """;
 
@@ -37,6 +37,7 @@ public class UsuarioDAO implements IUsuarioRepositorio {
         stmt.setString(6, usuario.getNumeroDocumento());
         stmt.setDate(7, parseFecha(usuario.getFechaNacimiento()));
         stmt.setString(8, usuario.getChatId());
+        stmt.setString(9, usuario.getTelefono());
 
         try (ResultSet rs = stmt.executeQuery()) {
             if (rs.next()) {
@@ -70,7 +71,7 @@ public class UsuarioDAO implements IUsuarioRepositorio {
     public Usuario buscarPorCorreo(String correo) {
          String sql = """
             SELECT id_usuario, nombre, correo, contraseña, rol,
-                   tipo_documento, numero_documento, fecha_nacimiento, chat_id
+                tipo_documento, numero_documento, fecha_nacimiento, chat_id, telefono
             FROM usuario
             WHERE LOWER(correo) = LOWER(?) AND estado = TRUE
             """;
