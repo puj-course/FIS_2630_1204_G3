@@ -236,13 +236,23 @@ public class RecomendadorDestinos implements Recomendador {
         boolean ordenarPorPresupuesto = !preferencias.tienePreferenciasPuntuables()
                 || todosMismoPuntaje(resultados);
 
+        // HU142: la cadena de comparadores se separo en reglas con nombres explicitos.
+        // La flecha indica que, para cada resultado, calculamos su distancia al presupuesto.
+        Comparator<ResultadoRecomendacion> porCercaniaAlPresupuesto = Comparator.comparingDouble(
+                resultado -> diferenciaPresupuesto(resultado.getCiudad(), preferencias));
+
         if (ordenarPorPresupuesto) {
-            resultados.sort(Comparator.comparingDouble(
-                    r -> diferenciaPresupuesto(r.getCiudad(), preferencias)));
+            // Primero aparece la ciudad cuyo costo esta mas cerca del presupuesto.
+            resultados.sort(porCercaniaAlPresupuesto);
         } else {
-            resultados.sort(Comparator
-                    .comparingDouble(ResultadoRecomendacion::getPuntajeTotal).reversed()
-                    .thenComparingDouble(r -> diferenciaPresupuesto(r.getCiudad(), preferencias)));
+            // comparingDouble ordena de menor a mayor; reversed invierte ese orden.
+            Comparator<ResultadoRecomendacion> porMayorPuntaje = Comparator
+                    .comparingDouble(ResultadoRecomendacion::getPuntajeTotal).reversed();
+
+            // thenComparing usa el presupuesto solo cuando los puntajes son iguales.
+            Comparator<ResultadoRecomendacion> porPuntajeYDesempate = porMayorPuntaje
+                    .thenComparing(porCercaniaAlPresupuesto);
+            resultados.sort(porPuntajeYDesempate);
         }
 
         return resultados;
@@ -252,9 +262,11 @@ public class RecomendadorDestinos implements Recomendador {
         if (resultados.size() <= 1) {
             return true;
         }
-        double primero = resultados.get(0).getPuntajeTotal();
+        double puntajeDeReferencia = resultados.get(0).getPuntajeTotal();
         for (ResultadoRecomendacion resultado : resultados) {
-            if (Double.compare(resultado.getPuntajeTotal(), primero) != 0) {
+            double puntajeActual = resultado.getPuntajeTotal();
+            // Double.compare devuelve cero cuando ambos puntajes son iguales.
+            if (Double.compare(puntajeActual, puntajeDeReferencia) != 0) {
                 return false;
             }
         }

@@ -42,6 +42,7 @@ public class RecomendacionControlador {
     private final SeleRecomendaciones selectorDestinos;
     private final UsuarioSesionFacade usuarioSesionFacade;
 
+    // HU142: complejidad ciclomatica manual = 1; solo asigna dependencias
     public RecomendacionControlador(CiudadNegocio ciudadDAO,
                                     LlenarAtributosCiudad llenarAtributosCiudad,
                                     Recomendador recomendadorDestinos,
@@ -53,6 +54,9 @@ public class RecomendacionControlador {
         this.selectorDestinos = selectorDestinos;
         this.usuarioSesionFacade = usuarioSesionFacade;
     }
+
+    //complejidad ciclomatica manual = 10
+    // (1 base + 7 if + 1 for + 1 ||).
 
     @SuppressWarnings("unchecked")
     @GetMapping("/recomendaciones")
