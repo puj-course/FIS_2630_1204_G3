@@ -4,6 +4,8 @@ package com.wisetrip.modelo;
 
 import java.io.Serializable;
 
+// HU143: NPM explicito = 6; excluye constructores, heredados y generados.
+// NOC = 0: sin hijas directas en src/main/java al 2026-11-11. Recalcular ante cambios.
 public class ResultadoRecomendacion implements Serializable {
     private static final long serialVersionUID = 1L;
 

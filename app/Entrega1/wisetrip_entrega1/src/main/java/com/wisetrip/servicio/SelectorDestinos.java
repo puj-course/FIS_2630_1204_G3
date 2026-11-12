@@ -13,6 +13,8 @@ import com.wisetrip.modelo.SeleccionDestinos;
 import com.wisetrip.negocio.SeleRecomendaciones;
 
 @Service
+// HU143: NPM explicito = 1; excluye constructores, heredados y generados.
+// NOC = 0: sin hijas directas en src/main/java al 2026-11-11. Recalcular ante cambios.
 public class SelectorDestinos implements SeleRecomendaciones  {
 
     private static final int CANTIDAD_DESTINOS = 3;

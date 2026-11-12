@@ -15,77 +15,72 @@ import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
 
 @Service
+// HU143: NPM explicito = 1; excluye constructores, heredados y generados.
+// NOC = 0: sin hijas directas en src/main/java al 2026-11-11. Recalcular ante cambios.
 public class LlenarAtributosCiudad {
 
+    //constante que indica 50 km
+    private static final int RADIO_BUSQUEDA_METROS = 50_000;
+
     // Esta es la interfaz que usamos para consultar lugares.
-    private final ProovedorLugares geo;
-    public LlenarAtributosCiudad(ProovedorLugares geo) {
-        this.geo = geo;
+
+    private final ProovedorLugares proveedorLugares;
+    // HU142: complejidad ciclomatica manual = 1; solo asigna la dependencia, sin decisiones.
+    public LlenarAtributosCiudad(ProovedorLugares proveedorLugares) {
+        this.proveedorLugares = proveedorLugares;
     }
 
-    public void enriquecer(Ciudad ciudad, CiudadSemilla semilla,
-                          Map<String, Boolean> atributosUsuario,
-                          Map<String, Importancia> importancias) {
+    //complejidad manual = 7 (1 base + 5 if/else if + 1 for).
 
-        //atributos manuales
-        Map<String, Boolean> atributos =
-                new HashMap<>(semilla.atributosManuales());
-        // Conserva el incumplimiento para la validacion final.
+    public void enriquecer(
+            Ciudad ciudad,
+            CiudadSemilla semilla,
+            Map<String, Boolean> atributosUsuario,
+            Map<String, Importancia> importancias) {
+
+        Map<String, Boolean> atributos = new HashMap<>(semilla.atributosManuales());
+
         if (incumpleIndispensableManual(atributos, importancias)) {
             ciudad.setAtributos(atributos);
             return;
         }
-        // Si no mandaron preferencias, queda vacío.
-        Set<String> atributosActivos =
-                atributosUsuario == null
-                        ? Set.of()
-                        : atributosUsuario.entrySet()
-                          .stream()
-                          .filter(entry ->
-                                  Boolean.TRUE.equals(entry.getValue()))
-                          .map(Map.Entry::getKey)
-                          .collect(Collectors.toSet());
 
-        // Recorrer las preguntas de la api las AUto
         for (DefPregunta pregunta : CatalogoPreguntas.atributosAuto()) {
-            if (atributosUsuario != null
-                    && !atributosActivos.contains(pregunta.id)) {
-                continue;
-            }
-            // Le preguntamos al proveedor cuantos lugares hay
-            // cerca de la ciudad para esa categoría.
-            Integer cantidad = geo.contarLugares(
-                    ciudad.getLatitud(),
-                    ciudad.getLongitud(),
-                    pregunta.categorias,
-                    //coordenadas o bueno los kilometros a la redonda
-                    50_000,
-                    // Basta con alcanzar el umbral.
-                    pregunta.umbral
-            );
+            // Si no hay un mapa de preferencias, revisamos todas las preguntas.
+            boolean revisarPregunta = true;
 
-            EstadoAtributo estado =
-                    EstadoAtributo.desdeConteo(
-                            cantidad,
-                            pregunta.umbral
-                    );
-            // Si hubo un problema y no sabemos el resultado
-            // no ponemos false porque false significaria que no cumple.
-            if (estado == EstadoAtributo.NO_SABEMOS) {
-                atributos.remove(pregunta.id);
-            } else {
-                // Guardamos true si cumple y false si no cumple.
-                atributos.put(
-                        pregunta.id,
-                        estado == EstadoAtributo.CUMPLE
+            if (atributosUsuario != null) {
+                Boolean atributoActivo = atributosUsuario.get(pregunta.id);
+                revisarPregunta = Boolean.TRUE.equals(atributoActivo);
+            }
+
+            if (revisarPregunta) {
+                Integer cantidad = proveedorLugares.contarLugares(
+                        ciudad.getLatitud(),
+                        ciudad.getLongitud(),
+                        pregunta.categorias,
+                        RADIO_BUSQUEDA_METROS,
+                        pregunta.umbral
                 );
+
+                EstadoAtributo estado = EstadoAtributo.desdeConteo(
+                        cantidad, pregunta.umbral
+                );
+
+                if (estado == EstadoAtributo.NO_SABEMOS) {
+                    atributos.remove(pregunta.id);
+                } else if (estado == EstadoAtributo.CUMPLE) {
+                    atributos.put(pregunta.id, true);
+                } else {
+                    atributos.put(pregunta.id, false);
+                }
             }
         }
 
-        // Al final guardamos todos los atributos calculados
-        // dentro de la ciudad.
         ciudad.setAtributos(atributos);
     }
+
+    //complejidad manual = 6 (1 base + 1 for + 1 if + 3 &&).
 
     private boolean incumpleIndispensableManual(Map<String, Boolean> atributos,
                                                 Map<String, Importancia> importancias) {

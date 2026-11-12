@@ -8,26 +8,23 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
-/**
- * Interfaz de negocio para guardar viajes.
- * quien guarda un viaje depende de este contrato, no de PostgreSQL. 
- */
+
 public interface IRepositorioViajes {
-    /** Incluye los dias de salida y regreso; excluye el propio viaje al editar. */
+    //Incluye los dias de salida y regreso; excluye el propio viaje al editar. */
     boolean hayCruceFechas(int idUsuario, int idViajeActual, FechasViaje fechas);
 
-    /** Lista los viajes del usuario que aun no han terminado en la fecha indicada. */
+    //Lista los viajes del usuario que aun no han terminado en la fecha indicada. */
     List<Viaje> listarVigentes(Usuario usuario, LocalDate hoy);
 
-    /** Busca un viaje exclusivamente dentro de los viajes del usuario. */
+    //Busca un viaje exclusivamente dentro de los viajes del usuario. */
     Optional<Viaje> buscarPorId(int idViaje, Usuario usuario);
 
-    /** Guarda los porcentajes solo si el viaje pertenece al usuario indicado. */
+    //Guarda los porcentajes solo si el viaje pertenece al usuario indicado. */
     void guardarReparto(int idViaje, int idUsuario, RepartoPresupuesto reparto);
 
-    /** Guarda el viaje y devuelve su id. */
+    //Guarda el viaje y devuelve su id. */
     int insertar(int idUsuario, int idCiudad, FechasViaje fechas, double presupuestoUsd, String origen);
 
-    /** Actualiza destino, fechas y presupuesto del viaje que pertenece al usuario indicado. */
+    //Actualiza destino, fechas y presupuesto del viaje que pertenece al usuario indicado. */
     void actualizar(int idViaje, int idUsuario, int idCiudad, FechasViaje fechas, double presupuestoUsd, String origen);
 }

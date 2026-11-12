@@ -34,6 +34,8 @@ import jakarta.servlet.http.HttpSession;
  * El viaje se debe guardar cuando el usuario elija un destino.
  */
 @Controller
+// HU143: NPM explicito = 1; excluye constructores, heredados y generados.
+// NOC = 0: sin hijas directas en src/main/java al 2026-11-11. Recalcular ante cambios.
 public class RecomendacionControlador {
 
     private final CiudadNegocio ciudadDAO;
@@ -42,6 +44,7 @@ public class RecomendacionControlador {
     private final SeleRecomendaciones selectorDestinos;
     private final UsuarioSesionFacade usuarioSesionFacade;
 
+    // HU142: complejidad ciclomatica manual = 1; solo asigna dependencias
     public RecomendacionControlador(CiudadNegocio ciudadDAO,
                                     LlenarAtributosCiudad llenarAtributosCiudad,
                                     Recomendador recomendadorDestinos,
@@ -53,6 +56,9 @@ public class RecomendacionControlador {
         this.selectorDestinos = selectorDestinos;
         this.usuarioSesionFacade = usuarioSesionFacade;
     }
+
+    //complejidad ciclomatica manual = 10
+    // (1 base + 7 if + 1 for + 1 ||).
 
     @SuppressWarnings("unchecked")
     @GetMapping("/recomendaciones")
