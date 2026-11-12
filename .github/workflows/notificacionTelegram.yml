@@ -17,7 +17,7 @@ jobs:
           REPO: ${{ github.repository }}
           ACTOR: ${{ github.actor }}
           BRANCH: ${{ github.ref_name }}
-          COMMIT_MESSAGE: ${{ github.event.head_commit.message }}
+          COMMIT_MSG: ${{ github.event.head_commit.message }}
           COMPARE_URL: ${{ github.event.compare }}
           PR_ACTION: ${{ github.event.action }}
           PR_NUMBER: ${{ github.event.pull_request.number }}
