@@ -6645,14 +6645,15 @@ si tiempo. creo que no voy a alcanzar...
 
 1. **¿Qué hice ayer?**
 
-   
+Ayer estuvimos en Sprint Planning y a mi en este Sprint me correspondio hacer lo que envuelve lo de la automatizacion de mensajeria de SMS   
 
 2. **¿Qué voy a hacer hoy?**
 
-   
+hoy estuve revisando twilio y como funcionaba para hacer lo de los mensajes SMS   
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
+tiempo, tengo otras dos entregas esta semana
    
 
 ---
