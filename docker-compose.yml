@@ -1,0 +1,13 @@
+services:
+  wisetrip:
+    build: .
+    image: wisetrip:latest
+    container_name: wisetrip
+    ports:
+      - "8090:8090"
+    # Opcional: variables que sobreescriben application.properties
+    # (por ejemplo SPRING_DATASOURCE_PASSWORD). Ver .env.example
+    env_file:
+      - path: .env
+        required: false
+    restart: unless-stopped

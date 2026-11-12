@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -259,5 +260,93 @@ class RecomendadorDestinosTest {
                 validacion, preferencias(500, 3, Map.of("playa", Importancia.PREFIERO)));
 
         assertEquals("Cerca", orden.get(0).getCiudad().getNombre());
+    }
+
+    // ------------------------------------------------------------ casos borde
+
+    @Test
+    @DisplayName("coincidencia: un 'prefiero' sin dato de la ciudad conserva su peso pero no resta")
+    void coincidencia_prefieroDesconocido_noResta() {
+        double puntaje = recomendador.calcularCoincidenciaPonderada(
+                Map.of("lujo", true),
+                Map.of("playa", Importancia.PREFIERO, "lujo", Importancia.GUSTAR));
+
+        // peso total = 3 + 1 = 4; logrado = 0 (playa desconocida, no resta) + 1 = 1
+        assertEquals(0.25, puntaje, 0.0001);
+    }
+
+    @Test
+    @DisplayName("calcularPuntajeTotal: respuestas sin valor o indispensables no vuelven provisional el puntaje")
+    void calcularPuntajeTotal_preferenciaNulaOIndispensable_noEsProvisional() {
+        Ciudad sinDatos = ciudad("Leticia", 100, Map.of());
+        Map<String, Importancia> gustos = new LinkedHashMap<>();
+        gustos.put("playa", null);
+        gustos.put("museos", Importancia.SI);
+
+        ResultadoRecomendacion resultado = recomendador.calcularPuntajeTotal(sinDatos, preferencias(500, 3, gustos));
+
+        assertFalse(resultado.isCoincidenciaProvisional());
+    }
+
+    @Test
+    @DisplayName("excedePresupuesto: borde, un costo no numerico (NaN) no confirma un exceso")
+    void excedePresupuesto_costoNoNumerico_false() {
+        Ciudad costoInvalido = ciudad("Cali", Double.NaN, Map.of());
+
+        assertFalse(recomendador.excedePresupuesto(costoInvalido, preferencias(1, 3, Map.of())));
+    }
+
+    @Test
+    @DisplayName("validarCiudades: borde, una ciudad con costo no numerico queda pendiente")
+    void validarCiudades_costoNoNumerico_pendiente() {
+        Ciudad costoInvalido = ciudad("Cali", Double.NaN, Map.of());
+
+        ValidacionCiudades resultado = recomendador.validarCiudades(
+                List.of(costoInvalido), preferencias(500, 3, Map.of()));
+
+        assertEquals(List.of(costoInvalido), resultado.pendientes());
+    }
+
+    @Test
+    @DisplayName("validarCiudades: las respuestas sin valor o que no son indispensables no descartan la ciudad")
+    void validarCiudades_preferenciasNoIndispensables_seIgnoran() {
+        Ciudad sinDatos = ciudad("Cali", 100, Map.of("museos", false));
+        Map<String, Importancia> gustos = new LinkedHashMap<>();
+        gustos.put("playa", null);
+        gustos.put("museos", Importancia.GUSTAR);
+
+        ValidacionCiudades resultado = recomendador.validarCiudades(List.of(sinDatos), preferencias(500, 3, gustos));
+
+        assertEquals(List.of(sinDatos), resultado.validas());
+    }
+
+    @Test
+    @DisplayName("puntuarCiudadesValidas: borde, con una sola ciudad la devuelve sin problema")
+    void puntuar_unaSolaCiudad_laDevuelve() {
+        Ciudad unica = ciudad("Unica", 100, Map.of("playa", true));
+        ValidacionCiudades validacion = new ValidacionCiudades(List.of(unica), List.of(), List.of());
+
+        List<ResultadoRecomendacion> orden = recomendador.puntuarCiudadesValidas(
+                validacion, preferencias(500, 3, Map.of("playa", Importancia.PREFIERO)));
+
+        assertEquals(1, orden.size());
+        assertEquals("Unica", orden.get(0).getCiudad().getNombre());
+    }
+
+    @Test
+    @DisplayName("puntuarCiudadesValidas: si solo algunas empatan, ordena por puntaje y desempata esas por presupuesto")
+    void puntuar_empateParcial_ordenaPorPuntajeYDesempata() {
+        Ciudad lejos = ciudad("Lejos", 100, Map.of("playa", true));      // puntaje 1, diferencia 200
+        Ciudad cerca = ciudad("Cerca", 160, Map.of("playa", true));      // puntaje 1, diferencia 20
+        Ciudad sinPlaya = ciudad("SinPlaya", 150, Map.of("playa", false)); // puntaje 0
+        ValidacionCiudades validacion = new ValidacionCiudades(
+                List.of(lejos, sinPlaya, cerca), List.of(), List.of());
+
+        List<ResultadoRecomendacion> orden = recomendador.puntuarCiudadesValidas(
+                validacion, preferencias(500, 3, Map.of("playa", Importancia.PREFIERO)));
+
+        assertEquals("Cerca", orden.get(0).getCiudad().getNombre());
+        assertEquals("Lejos", orden.get(1).getCiudad().getNombre());
+        assertEquals("SinPlaya", orden.get(2).getCiudad().getNombre());
     }
 }

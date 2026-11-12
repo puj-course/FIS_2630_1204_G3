@@ -79,6 +79,22 @@ class PreferenciasUsuarioTest {
     }
 
     @Test
+    @DisplayName("borde: una pregunta sin respuesta (importancia null) no puntúa ni cuenta como preferencia")
+    void importanciaNula_noPuntuaNiCuenta() {
+        Map<String, Importancia> origen = new LinkedHashMap<>();
+        origen.put("playa", null);
+        PreferenciasUsuario soloNula = new PreferenciasUsuario(origen);
+
+        assertFalse(soloNula.tienePreferenciasPuntuables());
+        assertFalse(soloNula.tienePreferencia("playa"));
+        assertFalse(soloNula.esIndispensable("playa"));
+
+        origen.put("museos", Importancia.GUSTAR);
+        assertTrue(new PreferenciasUsuario(origen).tienePreferenciasPuntuables(),
+                "una respuesta null no impide que otra sí puntúe");
+    }
+
+    @Test
     @DisplayName("tienePreferencia es true para todo menos no y lo que no se respondió")
     void tienePreferencia() {
         PreferenciasUsuario preferencias = new PreferenciasUsuario(
