@@ -6848,15 +6848,15 @@ falta de tiempo
 
 1. **¿Qué hice ayer?**
 
-   
+   Mis compañeros me comentaron la retroalimentacion que realizao el profesor ya que yo no pude estar en la pre sustentacion. se empezaron a delegar cambios y mejoras dentro del proyecto
 
 2. **¿Qué voy a hacer hoy?**
 
-   
+   Iniciar a estudiar el codigo para la sustentacion final
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
-   
+   No estoy en colombia, no tengo tiempo disponible
 
 ---
 
