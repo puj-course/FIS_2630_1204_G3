@@ -6932,15 +6932,17 @@ falta de tiempo
 
 1. **¿Qué hice ayer?**
 
-   
+   Iniciar a estudiar el codigo para la sustentacion final
 
 2. **¿Qué voy a hacer hoy?**
 
-   
+   Hoy no puedo avanzar mucho ya que estoy en una competencia internacional por lo tanto no podre realizar mucha revision el dia de hoy
+
+¿Tengo algun impedimento o bloqueo?
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
-   
+   Tiempo
 
 ---
 
