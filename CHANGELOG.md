@@ -6916,15 +6916,15 @@ falta de tiempo
 
 1. **¿Qué hice ayer?**
 
-   
+   ayer ademas de revisar y corregir tuvimos la revision d¿para la sustentacion del martes
 
 2. **¿Qué voy a hacer hoy?**
 
-   
+   hoy no puedo hacer mucho ya que tengo un concierto y me toca salir desde temprano
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
-   
+   no
 
 ---
 
