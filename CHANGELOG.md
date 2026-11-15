@@ -6832,15 +6832,15 @@ Dejar el docker listo, dejar los diagramas listos, hacer el taller de docker, de
 
 1. **¿Qué hice ayer?**
 
-   
+ayer conecte el telegram al repositorio para que cada cambio que se haga todos los miembors del equipo sepamos cuando alguien vaya haciendo cambios en el repo
 
 2. **¿Qué voy a hacer hoy?**
 
-   
+hoy revise el codigo y estuve organizando el repositorio
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
-   
+falta de tiempo
 
 ---
 
