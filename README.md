@@ -92,10 +92,15 @@ Etiquetas de la imagen: `latest` (última versión), el hash corto del commit
 `WISETRIP_PUERTO`, `PROXY_PUERTO` y las `SPRING_*`, que sobreescriben
 `application.properties`.
 
-**CI/CD:** el workflow `.github/workflows/docker.yml` compila y prueba con
-Maven, construye la imagen, la despliega con Docker Compose, verifica la red y
-la respuesta HTTP, y publica en DockerHub.
+**CI/CD:** está separado en dos workflows:
 
+- **Integración continua (CI):** `.github/workflows/integracion-continua.yml`.
+  Corre en cada push y en cada PR a `main` o `develop`: compila con Maven, ejecuta
+  todas las pruebas unitarias, mide la cobertura con JaCoCo y guarda el `.war`.
+- **Despliegue continuo (CD):** `.github/workflows/despliegue-continuo.yml`.
+  Solo corre cuando el CI termina bien en `main` (o en un tag `v*`): construye la
+  imagen Docker, la despliega con Docker Compose, verifica la red y la respuesta
+  HTTP, y publica la imagen en DockerHub. Si el CI falla, no se despliega nada.
 ## Configuración
 
 Variables opcionales (ver `.env.example`):
