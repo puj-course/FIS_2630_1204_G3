@@ -6864,14 +6864,15 @@ falta de tiempo
 
 1. **¿Qué hice ayer?**
 
-   
+   Termine de hacer algunos ajustes a unas clases y termine de configurar las cosas de docker
 
 2. **¿Qué voy a hacer hoy?**
 
-   
+   Gracias a la retroalimentación cambiar todo lo que hace falta arreglar
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
+No
    
 
 ---
@@ -6950,12 +6951,12 @@ falta de tiempo
 
 1. **¿Qué hice ayer?**
 
-   
+   Cambie la configuración del docker porque habian cosas incorrectas
 
 2. **¿Qué voy a hacer hoy?**
 
-   
+   Hacerle algunas pruebas al docker para ver si todo funciona en orden
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
-   
+   No
