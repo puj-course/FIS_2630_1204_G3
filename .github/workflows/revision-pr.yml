@@ -1,0 +1,54 @@
+# =============================================================================
+# REVISION DE PULL REQUESTS
+# Revisa que el titulo de cada PR siga el formato de Conventional Commits
+# que usa el equipo, por ejemplo:
+#   feat: agregar campo de celular en el registro
+#   fix(ci): restaurar docker-compose.yml
+# Si el titulo no cumple, el check queda en rojo y dice como corregirlo.
+# Asi el historial de main queda ordenado y se entiende que hizo cada PR.
+# =============================================================================
+name: Revision de PR (Conventional Commits)
+
+on:
+  pull_request:
+    # opened: se abre el PR | edited: le cambian el titulo
+    # synchronize: suben commits nuevos | reopened: se vuelve a abrir
+    types: [opened, edited, synchronize, reopened]
+    branches:
+      - main
+      - develop
+
+jobs:
+  titulo:
+    name: Revisar titulo del PR
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Validar formato del titulo
+        env:
+          # El titulo se pasa como variable (no directo en el script)
+          # para que un titulo con comillas o simbolos no rompa nada
+          TITULO: ${{ github.event.pull_request.title }}
+        run: |
+          # Tipos permitidos en el equipo
+          TIPOS="feat|fix|docs|style|refactor|test|chore|perf|ci|build|merge"
+
+          # Formato: tipo(alcance opcional): descripcion
+          PATRON="^($TIPOS)(\([a-zA-Z0-9_-]+\))?!?: .+"
+
+          echo "Titulo del PR: $TITULO"
+
+          if [[ "$TITULO" =~ $PATRON ]]; then
+            echo "El titulo cumple con Conventional Commits"
+            echo "### ✅ Titulo correcto" >> "$GITHUB_STEP_SUMMARY"
+            echo "\`$TITULO\`" >> "$GITHUB_STEP_SUMMARY"
+          else
+            # ::error:: hace que el mensaje salga resaltado en GitHub
+            echo "::error::El titulo del PR no sigue Conventional Commits. Debe empezar con uno de estos tipos: feat, fix, docs, style, refactor, test, chore, perf, ci, build, merge. Ejemplo: 'feat: agregar campo de celular en el registro'"
+            echo "### ❌ Titulo incorrecto" >> "$GITHUB_STEP_SUMMARY"
+            echo "Titulo actual: \`$TITULO\`" >> "$GITHUB_STEP_SUMMARY"
+            echo "" >> "$GITHUB_STEP_SUMMARY"
+            echo "Formato esperado: \`tipo(alcance opcional): descripcion\`" >> "$GITHUB_STEP_SUMMARY"
+            echo "Ejemplo: \`feat: agregar campo de celular en el registro\`" >> "$GITHUB_STEP_SUMMARY"
+            exit 1
+          fi
