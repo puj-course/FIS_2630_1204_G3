@@ -1,0 +1,80 @@
+# =============================================================================
+# INTEGRACION CONTINUA (CI)
+# Cada vez que alguien sube codigo o abre un PR, este workflow revisa que
+# el proyecto compile y que TODAS las pruebas unitarias pasen.
+# Si algo falla, el check queda en rojo y el despliegue (CD) no se ejecuta.
+# =============================================================================
+name: Integracion continua (CI)
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+      - 'feature/**'    # ramas de funcionalidades
+      - 'features-*'    # ramas personales (features-santiago, ...)
+      - 'features_*'    # ramas personales con guion bajo (features_Gabriela)
+      - 'release/**'
+      - 'hotfix/**'
+    tags:
+      - 'v*'            # una version (v1.0.0) tambien pasa por el CI antes de publicarse
+  pull_request:         # un PR a main/develop no se fusiona tranquilo si esto falla
+    branches:
+      - main
+      - develop
+
+env:
+  APP_DIR: app/Entrega1/wisetrip_entrega1   # carpeta donde esta el pom.xml
+
+jobs:
+  integracion:
+    name: Compilar, probar y empaquetar
+    runs-on: ubuntu-latest   # maquina virtual Linux limpia que da GitHub
+
+    steps:
+      # Descarga el codigo (accion fijada por SHA por seguridad; comentario = version)
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+
+      # Instala Java 25, la version del proyecto
+      - name: Configurar JDK 25
+        uses: actions/setup-java@c1e323688fd81a25caa38c78aa6df2d33d3e20d9 # v4.8.0
+        with:
+          java-version: 25
+          distribution: zulu
+
+      # Guarda las dependencias de Maven entre ejecuciones para no descargarlas siempre
+      - name: Cache de Maven
+        uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 # v4.3.0
+        with:
+          path: ~/.m2
+          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+          restore-keys: ${{ runner.os }}-m2
+
+      # verify = compilar + correr las pruebas (Surefire) + cobertura (JaCoCo) + armar el .war
+      # Si una prueba falla, este paso falla y el check queda en rojo.
+      - name: Compilar y ejecutar pruebas unitarias
+        run: mvn -B -f ${{ env.APP_DIR }}/pom.xml verify
+
+      # Cruza el resultado de cada prueba con el plan de pruebas (CP01..CP57)
+      # always(): se ejecuta aunque fallen pruebas, para ver cuales fallaron
+      - name: Generar informe de pruebas (alineado con el plan)
+        if: always()
+        run: python3 .github/scripts/informe_pruebas.py
+
+      # Deja descargables el informe, los reportes de Surefire y la cobertura de JaCoCo
+      - name: Publicar informe de pruebas
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: informe-pruebas
+          path: |
+            ${{ env.APP_DIR }}/target/informe-pruebas/
+            ${{ env.APP_DIR }}/target/surefire-reports/
+            ${{ env.APP_DIR }}/target/site/jacoco/
+
+      # El .war que sale del CI queda guardado como evidencia de que el build funciona
+      - name: Guardar el .war como artefacto
+        uses: actions/upload-artifact@v4
+        with:
+          name: wisetrip-war
+          path: ${{ env.APP_DIR }}/target/*.war
