@@ -8,6 +8,7 @@ import com.wisetrip.servicio.ProxyLugares;
 import com.wisetrip.servicio.RecomendadorDestinos;
 import com.wisetrip.servicio.SelectorDestinos;
 import com.wisetrip.servicio.ServicioGeoapify;
+import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.util.List;
@@ -52,6 +53,21 @@ public class Metricas {
         for (Class<?> candidata : clasesDelAlcance) {
             // getSuperclass devuelve solo el padre directo; no incluye interfaces ni abuelos.
             if (candidata.getSuperclass() == clase) {
+                cantidad++;
+            }
+        }
+
+        return cantidad;
+    }
+
+    // NOA: numero de atributos declarados directamente, de cualquier visibilidad.
+    public static int calcularNOA(Class<?> clase) {
+        int cantidad = 0;
+
+        // Incluye constantes y campos static; no incluye heredados ni variables locales.
+        for (Field atributo : clase.getDeclaredFields()) {
+            // Excluye campos auxiliares generados por el compilador.
+            if (!atributo.isSynthetic()) {
                 cantidad++;
             }
         }
