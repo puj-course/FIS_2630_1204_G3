@@ -49,8 +49,8 @@ jobs:
       - name: Cache de Maven
         uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 
         with:
-          path: ~/.m2
-          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+          path: ~/.m2 # carpeta 
+          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }} # inserta so de la mv {} -m2 carpeta  hashfiles - todos los archivos pom
           restore-keys: ${{ runner.os }}-m2
 
       # verify = compilar + correr las pruebas JUnit + cobertura (JaCoCo) + armar el .war
