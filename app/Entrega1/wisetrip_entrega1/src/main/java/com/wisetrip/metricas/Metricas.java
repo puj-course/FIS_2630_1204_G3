@@ -80,6 +80,11 @@ public class Metricas {
     public static void main(String[] args) {
         System.out.println("HU143 - Alcance del analisis de recomendaciones");
         System.out.println("Clases seleccionadas: " + CLASES_SELECCIONADAS.size());
+        System.out.println("NPM: metodos publicos propios; sin constructores, heredados, sinteticos ni puente.");
+        System.out.println("NOC: hijas directas SOLO entre las clases seleccionadas; implements no cuenta.");
+        System.out.println("NOA: atributos propios de cualquier visibilidad, incluidos static y constantes;");
+        System.out.println("     sin heredados, variables locales ni campos sinteticos.");
+        System.out.println("Se excluyen interfaces, records y clases internas del alcance seleccionado.");
         System.out.println();
         System.out.printf("%-30s %5s %5s %5s%n", "Clase", "NPM", "NOC", "NOA");
         System.out.println("------------------------------------------------");
