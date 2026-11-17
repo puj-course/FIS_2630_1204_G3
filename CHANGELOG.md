@@ -7005,16 +7005,17 @@ hoy decidí que iba a usar la métrica de NOA que es number of attributes la cua
 
 1. **¿Qué logramos?**
 
+Mis compañeros lograron hacer la pre sustentacion y tener algunos cambios importantes dentro del proyecto, por mi parte logre entender muchisimo mas lo que han realizado mis compañeros, sin embargo tenemos que hacer cambios para mejorar nuestra nota en la sustentacion final
+
+¿Cómo trabajamo
    
 2. **¿Cómo trabajamos?**
 
-
-
-¿Qué podríamos mejorar?
+Muy unidos, se nota como hemos podido mejorar en diferentes aspectos, esta semana no pude hacer mucho. Sin embargo me mantuve pendiente de la informacion dada por mis compañeros. Hacemos un buen trabajo juntos
  
 3. **¿Qué podríamos mejorar?**
 
-
+Unicamente cambios en el codigo previos a la sustentacion y estudiar mas el codigo final
  
 ---
 
