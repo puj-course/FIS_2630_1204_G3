@@ -23,7 +23,7 @@ jobs:
 
     steps:
      
-      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # clona el código en la vm con actions/checkout y luego muetsra el commit exacto 
 
       
       - name: Configurar JDK 25

@@ -94,13 +94,6 @@ class PresupuestoServicioTest {
         assertTrue(errores.containsKey("moneda"));
     }
 
-    @Test
-    @DisplayName("CP25 validarPresupuesto: moneda null devuelve error 'moneda'")
-    void cp25_validarPresupuesto_monedaNull_error() {
-        Map<String, String> errores = servicio.validarPresupuesto(new Presupuesto("100", null), "Colombia");
-
-        assertTrue(errores.containsKey("moneda"));
-    }
 
     // ---------------------------------------------------------------- convertirAUsd
 

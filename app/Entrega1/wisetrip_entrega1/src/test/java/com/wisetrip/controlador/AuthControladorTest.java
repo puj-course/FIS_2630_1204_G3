@@ -112,23 +112,24 @@ class AuthControladorTest {
     // ---------------------------------------------------------------- login
 
     @Test
-    @DisplayName("procesarLogin sin correo muestra el error y no consulta la autenticación")
-    void procesarLogin_sinCorreo_error() {
-        String vista = controlador.procesarLogin("  ", "clave1", sesion, model);
+    @DisplayName("procesarLogin con correo o contraseña nulos o vacíos muestra el error y no consulta la autenticación")
+    void procesarLogin_datosIncompletos_error() {
+        String[][] casos = {
+                {null, "clave1"},                  // correo nulo
+                {"  ", "clave1"},                  // correo en blanco
+                {"valeria@correo.com", null},      // contraseña nula
+                {"valeria@correo.com", ""}         // contraseña vacía
+        };
 
-        assertEquals("login", vista);
-        assertEquals("Ingresa tu correo y contrasena.", model.getAttribute("error"));
-        verifyNoInteractions(autenticacion);
-    }
+        for (String[] caso : casos) {
+            ConcurrentModel modelo = new ConcurrentModel();
 
-    @Test
-    @DisplayName("procesarLogin sin contraseña muestra el error y conserva el correo escrito")
-    void procesarLogin_sinPassword_error() {
-        String vista = controlador.procesarLogin("valeria@correo.com", "", sesion, model);
+            String vista = controlador.procesarLogin(caso[0], caso[1], sesion, modelo);
 
-        assertEquals("login", vista);
-        assertEquals("Ingresa tu correo y contrasena.", model.getAttribute("error"));
-        assertEquals("valeria@correo.com", model.getAttribute("correo"));
+            assertEquals("login", vista);
+            assertEquals("Ingresa tu correo y contrasena.", modelo.getAttribute("error"));
+            assertEquals(caso[0], modelo.getAttribute("correo"));
+        }
         verifyNoInteractions(autenticacion);
     }
 

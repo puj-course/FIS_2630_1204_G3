@@ -59,6 +59,7 @@ jobs:
 
       # Deja descargables: el informe del plan, los reportes de Surefire y la
       # cobertura de JaCoCo (abrir target/site/jacoco/index.html).
+      # JACOCO : biblioteca de código abierto para Java que mide la cobertura de código (code coverage) durante la ejecución de pruebas automatizadas
       - name: Publicar informe como artefacto
         if: always()
         uses: actions/upload-artifact@v4

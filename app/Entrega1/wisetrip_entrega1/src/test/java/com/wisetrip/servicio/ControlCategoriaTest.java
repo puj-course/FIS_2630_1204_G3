@@ -9,12 +9,10 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import com.wisetrip.modelo.Gasto;
 import com.wisetrip.modelo.ResultadoControlCategoria;
-import com.wisetrip.negocio.ControlCategoriaCreador;
 
 /**
  * Pruebas unitarias del patrón Factory Method de presupuesto (HU#89).
@@ -32,6 +30,9 @@ class ControlCategoriaTest {
     private static final String USD = "USD";
     private static final BigDecimal CUPO = new BigDecimal("400.00");
 
+    private final ControlCategoriaEstricto estricto = new ControlCategoriaEstricto();
+    private final ControlCategoriaFlexible flexible = new ControlCategoriaFlexible();
+
     private static Gasto gasto(String categoria, String monto) {
         return new Gasto(0, categoria, "Gasto de prueba", new BigDecimal(monto), USD,
                 LocalDate.of(2026, 12, 1));
@@ -39,148 +40,106 @@ class ControlCategoriaTest {
 
     // ------------------------------------------------------------ ConcreteProduct estricto
 
-    @Nested
-    @DisplayName("ControlCategoriaEstricto")
-    class Estricto {
+    @Test
+    @DisplayName("Estricto: gasto que queda dentro del cupo no tiene problemas")
+    void estricto_dentroDelCupo_sinProblemas() {
+        ResultadoControlCategoria resultado =
+                estricto.evaluar(gasto("hospedaje", "100"), CUPO, new BigDecimal("200"));
 
-        private final ControlCategoriaEstricto control = new ControlCategoriaEstricto();
+        assertFalse(resultado.excedeCupo());
+        assertFalse(resultado.bloqueante());
+        assertNull(resultado.mensaje());
+    }
 
-        @Test
-        @DisplayName("gasto que queda dentro del cupo no tiene problemas")
-        void dentroDelCupo_sinProblemas() {
-            ResultadoControlCategoria resultado =
-                    control.evaluar(gasto("hospedaje", "100"), CUPO, new BigDecimal("200"));
+    @Test
+    @DisplayName("Estricto, borde: gastar exactamente el cupo está permitido")
+    void estricto_exactamenteElCupo_permitido() {
+        ResultadoControlCategoria resultado =
+                estricto.evaluar(gasto("hospedaje", "150"), CUPO, new BigDecimal("250"));
 
-            assertFalse(resultado.excedeCupo());
-            assertFalse(resultado.bloqueante());
-            assertNull(resultado.mensaje());
-        }
+        assertFalse(resultado.excedeCupo());
+    }
 
-        @Test
-        @DisplayName("borde: gastar exactamente el cupo está permitido")
-        void exactamenteElCupo_permitido() {
-            ResultadoControlCategoria resultado =
-                    control.evaluar(gasto("hospedaje", "150"), CUPO, new BigDecimal("250"));
+    @Test
+    @DisplayName("Estricto: pasarse del cupo excede y BLOQUEA el registro")
+    void estricto_superaElCupo_bloquea() {
+        ResultadoControlCategoria resultado =
+                estricto.evaluar(gasto("hospedaje", "80"), CUPO, new BigDecimal("350"));
 
-            assertFalse(resultado.excedeCupo());
-        }
+        assertTrue(resultado.excedeCupo());
+        assertTrue(resultado.bloqueante());
+        assertTrue(resultado.mensaje().contains("hospedaje"));
+        assertTrue(resultado.mensaje().contains("400.00 USD"));
+    }
 
-        @Test
-        @DisplayName("pasarse del cupo excede y BLOQUEA el registro")
-        void superaElCupo_bloquea() {
-            ResultadoControlCategoria resultado =
-                    control.evaluar(gasto("hospedaje", "80"), CUPO, new BigDecimal("350"));
+    @Test
+    @DisplayName("Estricto, borde: pasarse por un centavo también bloquea")
+    void estricto_superaPorUnCentavo_bloquea() {
+        ResultadoControlCategoria resultado =
+                estricto.evaluar(gasto("transporte", "0.01"), CUPO, new BigDecimal("400.00"));
 
-            assertTrue(resultado.excedeCupo());
-            assertTrue(resultado.bloqueante());
-            assertTrue(resultado.mensaje().contains("hospedaje"));
-            assertTrue(resultado.mensaje().contains("400.00 USD"));
-        }
-
-        @Test
-        @DisplayName("borde: pasarse por un centavo también bloquea")
-        void superaPorUnCentavo_bloquea() {
-            ResultadoControlCategoria resultado =
-                    control.evaluar(gasto("transporte", "0.01"), CUPO, new BigDecimal("400.00"));
-
-            assertTrue(resultado.bloqueante());
-        }
+        assertTrue(resultado.bloqueante());
     }
 
     // ------------------------------------------------------------ ConcreteProduct flexible
 
-    @Nested
-    @DisplayName("ControlCategoriaFlexible")
-    class Flexible {
+    @Test
+    @DisplayName("Flexible: gasto que queda dentro del cupo no tiene problemas")
+    void flexible_dentroDelCupo_sinProblemas() {
+        ResultadoControlCategoria resultado =
+                flexible.evaluar(gasto("imprevistos", "50"), CUPO, BigDecimal.ZERO);
 
-        private final ControlCategoriaFlexible control = new ControlCategoriaFlexible();
+        assertFalse(resultado.excedeCupo());
+        assertNull(resultado.mensaje());
+    }
 
-        @Test
-        @DisplayName("gasto que queda dentro del cupo no tiene problemas")
-        void dentroDelCupo_sinProblemas() {
-            ResultadoControlCategoria resultado =
-                    control.evaluar(gasto("imprevistos", "50"), CUPO, BigDecimal.ZERO);
+    @Test
+    @DisplayName("Flexible: pasarse del cupo excede pero NO bloquea, solo avisa")
+    void flexible_superaElCupo_soloAvisa() {
+        ResultadoControlCategoria resultado =
+                flexible.evaluar(gasto("imprevistos", "150"), new BigDecimal("100.00"), BigDecimal.ZERO);
 
-            assertFalse(resultado.excedeCupo());
-            assertNull(resultado.mensaje());
-        }
+        assertTrue(resultado.excedeCupo());
+        assertFalse(resultado.bloqueante());
+        assertTrue(resultado.mensaje().contains("imprevistos"));
+    }
 
-        @Test
-        @DisplayName("pasarse del cupo excede pero NO bloquea: solo avisa")
-        void superaElCupo_soloAvisa() {
-            ResultadoControlCategoria resultado =
-                    control.evaluar(gasto("imprevistos", "150"), new BigDecimal("100.00"), BigDecimal.ZERO);
+    @Test
+    @DisplayName("Flexible: el mensaje usa la categoría del gasto, no un texto fijo")
+    void flexible_mensajeUsaLaCategoriaDelGasto() {
+        ResultadoControlCategoria resultado =
+                flexible.evaluar(gasto("actividades", "500"), CUPO, BigDecimal.ZERO);
 
-            assertTrue(resultado.excedeCupo());
-            assertFalse(resultado.bloqueante());
-            assertTrue(resultado.mensaje().contains("imprevistos"));
-        }
-
-        @Test
-        @DisplayName("el mensaje usa la categoría del gasto, no un texto fijo")
-        void mensajeUsaLaCategoriaDelGasto() {
-            ResultadoControlCategoria resultado =
-                    control.evaluar(gasto("actividades", "500"), CUPO, BigDecimal.ZERO);
-
-            assertTrue(resultado.mensaje().contains("'actividades'"));
-        }
+        assertTrue(resultado.mensaje().contains("'actividades'"));
     }
 
     // ------------------------------------------------------------ Creators
 
-    @Nested
-    @DisplayName("ConcreteCreators usados como ControlCategoriaCreador")
-    class Creadores {
+    @Test
+    @DisplayName("CreadorControlEstricto fabrica un ControlCategoriaEstricto")
+    void creadorEstricto_fabricaEstricto() {
+        assertEquals(ControlCategoriaEstricto.class,
+                new CreadorControlEstricto().crearControl().getClass());
+    }
 
-        @Test
-        @DisplayName("CreadorControlEstricto fabrica un ControlCategoriaEstricto")
-        void creadorEstricto_fabricaEstricto() {
-            assertEquals(ControlCategoriaEstricto.class,
-                    new CreadorControlEstricto().crearControl().getClass());
-        }
+    @Test
+    @DisplayName("CreadorControlFlexible fabrica un ControlCategoriaFlexible")
+    void creadorFlexible_fabricaFlexible() {
+        assertEquals(ControlCategoriaFlexible.class,
+                new CreadorControlFlexible().crearControl().getClass());
+    }
 
-        @Test
-        @DisplayName("CreadorControlFlexible fabrica un ControlCategoriaFlexible")
-        void creadorFlexible_fabricaFlexible() {
-            assertEquals(ControlCategoriaFlexible.class,
-                    new CreadorControlFlexible().crearControl().getClass());
-        }
+    @Test
+    @DisplayName("el mismo gasto da resultados distintos según el creador (polimorfismo)")
+    void mismoGasto_distintoResultadoSegunCreador() {
+        Gasto gasto = gasto("hospedaje", "500");
 
-        @Test
-        @DisplayName("evaluarGasto con el creador estricto bloquea el exceso")
-        void evaluarGasto_creadorEstricto_bloquea() {
-            ControlCategoriaCreador creador = new CreadorControlEstricto();
+        boolean bloqueaEstricto = new CreadorControlEstricto()
+                .evaluarGasto(gasto, CUPO, BigDecimal.ZERO).bloqueante();
+        boolean bloqueaFlexible = new CreadorControlFlexible()
+                .evaluarGasto(gasto, CUPO, BigDecimal.ZERO).bloqueante();
 
-            ResultadoControlCategoria resultado =
-                    creador.evaluarGasto(gasto("alimentacion", "500"), CUPO, BigDecimal.ZERO);
-
-            assertTrue(resultado.bloqueante());
-        }
-
-        @Test
-        @DisplayName("evaluarGasto con el creador flexible solo avisa el exceso")
-        void evaluarGasto_creadorFlexible_soloAvisa() {
-            ControlCategoriaCreador creador = new CreadorControlFlexible();
-
-            ResultadoControlCategoria resultado =
-                    creador.evaluarGasto(gasto("imprevistos", "500"), CUPO, BigDecimal.ZERO);
-
-            assertTrue(resultado.excedeCupo());
-            assertFalse(resultado.bloqueante());
-        }
-
-        @Test
-        @DisplayName("el mismo gasto da resultados distintos según el creador (polimorfismo)")
-        void mismoGasto_distintoResultadoSegunCreador() {
-            Gasto gasto = gasto("hospedaje", "500");
-
-            boolean bloqueaEstricto = new CreadorControlEstricto()
-                    .evaluarGasto(gasto, CUPO, BigDecimal.ZERO).bloqueante();
-            boolean bloqueaFlexible = new CreadorControlFlexible()
-                    .evaluarGasto(gasto, CUPO, BigDecimal.ZERO).bloqueante();
-
-            assertTrue(bloqueaEstricto);
-            assertFalse(bloqueaFlexible);
-        }
+        assertTrue(bloqueaEstricto);
+        assertFalse(bloqueaFlexible);
     }
 }

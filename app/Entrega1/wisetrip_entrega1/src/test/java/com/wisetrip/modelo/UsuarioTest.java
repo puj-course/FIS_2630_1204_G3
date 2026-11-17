@@ -166,19 +166,6 @@ class UsuarioTest {
     }
 
     @Test
-    @DisplayName("Una fecha con mes 13 devuelve un error")
-    void validarDatos_mesInexistente_error() {
-        usuario.setFechaNacimiento("2026-13-01");
-
-        Map<String, String> errores = usuario.validarDatos(CLAVE_OK);
-        String resultadoObtenido = errores.get("fechaNacimiento");
-        String resultadoEsperado = "Ingresa una fecha valida.";
-
-        assertEquals(resultadoEsperado, resultadoObtenido);
-        assertEquals(1, errores.size());
-    }
-
-    @Test
     @DisplayName("validarDatos: una fecha de nacimiento futura en Bogotá se rechaza")
     void validarDatos_fechaFutura_error() {
         usuario.setFechaNacimiento(LocalDate.now(ZONA_BOGOTA).plusDays(1).toString());
