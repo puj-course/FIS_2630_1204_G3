@@ -6,6 +6,7 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.never;
+import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoInteractions;
 import static org.mockito.Mockito.when;
@@ -180,12 +181,19 @@ class GastoControladorTest {
     }
 
     @Test
-    @DisplayName("borde: fecha fuera de las fechas del viaje se rechaza")
-    void fechaFueraDelViaje_error() {
-        registrar("hospedaje", "Hotel", "100", "2026-12-11");
+    @DisplayName("borde: un día antes del inicio o después del fin se rechaza; el primer y último día se aceptan")
+    void fechasEnLosLimitesDelViaje() {
+        String mensaje = "La fecha debe estar entre el 2026-12-01 y el 2026-12-10.";
 
-        assertTrue(errores().get("fecha").contains("2026-12-01"));
+        registrar("hospedaje", "Hotel", "100", "2026-11-30");   // un día antes del inicio
+        assertEquals(mensaje, errores().get("fecha"));
+        registrar("hospedaje", "Hotel", "100", "2026-12-11");   // un día después del fin
+        assertEquals(mensaje, errores().get("fecha"));
         verifyNoInteractions(gestorGastos);
+
+        registrar("hospedaje", "Hotel", "100", "2026-12-01");   // primer día: válido
+        registrar("hospedaje", "Hotel", "100", "2026-12-10");   // último día: válido
+        verify(gestorGastos, times(2)).registrarGasto(eq(ID_VIAJE), any(Gasto.class));
     }
 
     @Test

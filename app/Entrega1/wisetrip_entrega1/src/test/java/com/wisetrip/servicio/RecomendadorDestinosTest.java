@@ -235,32 +235,6 @@ class RecomendadorDestinosTest {
         assertEquals("Lejos", orden.get(1).getCiudad().getNombre());
     }
 
-    @Test
-    @DisplayName("puntuarCiudadesValidas: con puntajes distintos ordena de mayor a menor")
-    void puntuar_conPuntajesDistintos_ordenaPorPuntaje() {
-        Ciudad sinPlaya = ciudad("SinPlaya", 160, Map.of("playa", false));
-        Ciudad conPlaya = ciudad("ConPlaya", 100, Map.of("playa", true));
-        ValidacionCiudades validacion = new ValidacionCiudades(List.of(sinPlaya, conPlaya), List.of(), List.of());
-
-        List<ResultadoRecomendacion> orden = recomendador.puntuarCiudadesValidas(
-                validacion, preferencias(500, 3, Map.of("playa", Importancia.PREFIERO)));
-
-        assertEquals("ConPlaya", orden.get(0).getCiudad().getNombre());
-        assertEquals("SinPlaya", orden.get(1).getCiudad().getNombre());
-    }
-
-    @Test
-    @DisplayName("puntuarCiudadesValidas: con la misma coincidencia desempata por presupuesto")
-    void puntuar_conEmpate_desempataPorPresupuesto() {
-        Ciudad lejos = ciudad("Lejos", 100, Map.of("playa", true));
-        Ciudad cerca = ciudad("Cerca", 160, Map.of("playa", true));
-        ValidacionCiudades validacion = new ValidacionCiudades(List.of(lejos, cerca), List.of(), List.of());
-
-        List<ResultadoRecomendacion> orden = recomendador.puntuarCiudadesValidas(
-                validacion, preferencias(500, 3, Map.of("playa", Importancia.PREFIERO)));
-
-        assertEquals("Cerca", orden.get(0).getCiudad().getNombre());
-    }
 
     // ------------------------------------------------------------ casos borde
 
