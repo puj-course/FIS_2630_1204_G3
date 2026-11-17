@@ -80,12 +80,16 @@ public class Metricas {
     public static void main(String[] args) {
         System.out.println("HU143 - Alcance del analisis de recomendaciones");
         System.out.println("Clases seleccionadas: " + CLASES_SELECCIONADAS.size());
-        System.out.printf("%-30s %5s %5s%n", "Clase", "NPM", "NOC");
+        System.out.println();
+        System.out.printf("%-30s %5s %5s %5s%n", "Clase", "NPM", "NOC", "NOA");
+        System.out.println("------------------------------------------------");
 
         for (Class<?> clase : CLASES_SELECCIONADAS) {
             int npm = calcularNPM(clase);
             int noc = calcularNOC(clase, CLASES_SELECCIONADAS);
-            System.out.printf("%-30s %5d %5d%n", clase.getSimpleName(), npm, noc);
+            int noa = calcularNOA(clase);
+            System.out.printf("%-30s %5d %5d %5d%n", clase.getSimpleName(), npm, noc, noa);
         }
+        System.out.println("------------------------------------------------");
     }
 }
