@@ -30,15 +30,9 @@ public class Metricas {
     public static int NPM(Class<?> clase) {
         int cantidadMetodosPublicos = 0;
 
-        // getDeclaredMethods no incluye constructores ni metodos heredados.
         Method[] metodos = clase.getDeclaredMethods();
-        // i indica la posicion del metodo que estamos revisando en el arreglo.
         for (int i = 0; i < metodos.length; i++) {
             Method metodo = metodos[i];
-            // Los metodos sinteticos y puente son detalles generados por el compilador.
-            if (metodo.isSynthetic() || metodo.isBridge()) {
-                continue;
-            }
 
             if (Modifier.isPublic(metodo.getModifiers())) {
                 cantidadMetodosPublicos++;
@@ -86,7 +80,8 @@ public class Metricas {
     public static void main(String[] args) {
         System.out.println("HU143 - Alcance del analisis de recomendaciones");
         System.out.println("Clases seleccionadas: " + CLASES_SELECCIONADAS.length);
-        System.out.println("NPM: metodos publicos propios; sin constructores, heredados, sinteticos ni puente.");
+        System.out.println("NPM: metodos publicos propios; sin constructores ni heredados.");
+        System.out.println("     No se excluyen metodos sinteticos o puente en esta version.");
         System.out.println("NOC: hijas directas SOLO entre las clases seleccionadas; implements no cuenta.");
         System.out.println("NOA: atributos propios de cualquier visibilidad, incluidos static y constantes;");
         System.out.println("     sin heredados, variables locales ni campos sinteticos.");
