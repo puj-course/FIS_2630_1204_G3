@@ -177,15 +177,23 @@ class SeleccionControladorTest {
     @Test
     @DisplayName("un viaje nuevo se inserta, guarda las preferencias y deja el destino en la sesión")
     void viajeNuevo_seInsertaYRedirigeAlPlan() {
+         // Deja en la sesión todo lo que el usuario llenó antes de elegir destino
         sesionCompleta();
+        // El 0 es el id del viaje: todavía no existe en la base de datos.
+        // Un mapa vacío significa que las fechas son válidas
         when(fechasServicio.validarFechas(fechas, ID_USUARIO, 0)).thenReturn(Map.of());
+         // El DAO devuelve 77 como el id que la base de datos le asignó al viaje nuevo
         when(viajeDAO.insertar(ID_USUARIO, ID_CIUDAD, fechas, 1000.0, ORIGEN)).thenReturn(77);
 
         String vista = controlador.elegirDestino(ID_CIUDAD, sesion, flash);
 
+        // redirige a la página del plan con el viaje guardado y las preferencias activas
         assertEquals("redirect:/plan", vista);
+        // el id del viaje guardado se deja en la sesión para que el plan lo use
         assertEquals(77, sesion.getAttribute("idViajeGuardado"));
+        // se guardan las preferencias activas del usuario para este viaje
         verify(preferenciaDAO).guardarActivas(77, atributos);
+        // el destino y pais tambien
         assertSame(resultado, sesion.getAttribute("destinoElegido"));
         assertEquals("Colombia", sesion.getAttribute("paisDestino"));
     }
@@ -194,14 +202,19 @@ class SeleccionControladorTest {
     @DisplayName("un viaje ya guardado se actualiza en lugar de insertarse")
     void viajeExistente_seActualiza() {
         sesionCompleta();
+        // Ya hay un viaje guardado (id 40): el usuario volvió y cambió de destino
         sesion.setAttribute("idViajeGuardado", 40);
+        //Ahora la validación de fechas recibe el id 40 en vez de 0
         when(fechasServicio.validarFechas(fechas, ID_USUARIO, 40)).thenReturn(Map.of());
 
         String vista = controlador.elegirDestino(ID_CIUDAD, sesion, flash);
 
         assertEquals("redirect:/plan", vista);
+        // se actualiza el viaje existente en lugar de insertarse uno nuevo
         verify(viajeDAO).actualizar(40, ID_USUARIO, ID_CIUDAD, fechas, 1000.0, ORIGEN);
+        // no se duplica el viaje, con el any() acepta cualquier valor en los parametros
         verify(viajeDAO, never()).insertar(anyInt(), anyInt(), any(), anyDouble(), anyString());
+        // se guardan las preferencias activas del usuario para este viaje
         verify(preferenciaDAO).guardarActivas(40, atributos);
     }
 
@@ -209,11 +222,13 @@ class SeleccionControladorTest {
     @DisplayName("si el guardado lanza IllegalArgumentException muestra su mensaje y vuelve a recomendaciones")
     void errorDeArgumento_muestraElMensaje() {
         sesionCompleta();
+        //simula que el DAO lanza IllegalArgumentException con un mensaje de error
         when(viajeDAO.insertar(anyInt(), anyInt(), any(), anyDouble(), anyString()))
                 .thenThrow(new IllegalArgumentException("El destino ya no está disponible."));
 
         String vista = controlador.elegirDestino(ID_CIUDAD, sesion, flash);
 
+        // redirige a la página de recomendaciones con el mensaje de error del DAO
         assertEquals("redirect:/recomendaciones", vista);
         assertEquals("El destino ya no está disponible.", flash.getFlashAttributes().get("errorGuardado"));
     }
@@ -228,6 +243,8 @@ class SeleccionControladorTest {
         String vista = controlador.elegirDestino(ID_CIUDAD, sesion, flash);
 
         assertEquals("redirect:/recomendaciones", vista);
+        // Con IllegalStateException NO se muestra el mensaje técnico ("fallo de base de datos"),
+        // sino un aviso genérico que no revela detalles internos
         assertEquals("No pudimos completar el guardado de tu viaje. Elige el destino nuevamente para reintentar.",
                 flash.getFlashAttributes().get("errorGuardado"));
     }

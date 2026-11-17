@@ -45,6 +45,7 @@ import com.wisetrip.servicio.UsuarioSesionFacade;
  * (GET /viaje) y su sección de gastos (HU#89).
  */
 @ExtendWith(MockitoExtension.class)
+// se usa Strictness.LENIENT para que no fallen los tests si no se usan todos los mocks
 @MockitoSettings(strictness = Strictness.LENIENT)
 @DisplayName("PlanControlador")
 class PlanControladorTest {
@@ -66,6 +67,7 @@ class PlanControladorTest {
     private MockHttpSession sesion;
     private ConcurrentModel model;
 
+    // antes de cada test se crea un controlador nuevo y una sesión nueva
     @BeforeEach
     void setUp() {
         controlador = new PlanControlador(gestionReparto, presupuestoServicio, usuarioSesionFacade,
@@ -90,10 +92,13 @@ class PlanControladorTest {
         sesion.setAttribute(Nombres.REPARTO_PRESUPUESTO, new RepartoPresupuesto());
     }
 
+
     @Test
     @DisplayName("con viaje guardado carga los gastos, el estado por categoría y el resumen")
     void viajeGuardado_cargaLosGastos() {
+        //carga un viaje, el controlador sabe que hay gastos que consultar 
         sesion.setAttribute("idViajeGuardado", ID_VIAJE);
+        //datos que devuelve el servico de gastos 
         List<EstadoCategoriaGasto> estados = List.of(
                 new EstadoCategoriaGasto("hospedaje", new BigDecimal("350"), new BigDecimal("100")));
         ResumenPresupuesto resumen = new ResumenPresupuesto(
@@ -105,19 +110,25 @@ class PlanControladorTest {
         String vista = controlador.mostrarViaje(sesion, model);
 
         assertEquals("viaje", vista);
+         // assertSame comprueba que es el mismo objeto, o sea que el controlador lo pasó tal cual
         assertSame(estados, model.getAttribute("estadoCategorias"));
         assertSame(resumen, model.getAttribute("resumenGastos"));
+        // trae los nombres de las categorías para mostrarlos en la vista
         assertEquals("Alimentación", ((Map<?, ?>) model.getAttribute("nombresCategoria")).get("alimentacion"));
+        // calcula los días del viaje para mostrarlo en la vista
         assertEquals(3L, model.getAttribute("dias"));
     }
 
     @Test
     @DisplayName("si el viaje aún no está guardado muestra la página sin la sección de gastos")
     void viajeSinGuardar_sinGastos() {
+        // no hay viaje guardado, el controlador no consulta los gastos
         String vista = controlador.mostrarViaje(sesion, model);
 
         assertEquals("viaje", vista);
+        // no hay gastos ni resumen ni estado por categoría
         assertFalse(model.containsAttribute("gastosReales"));
+        //no onsulta el servicio de gastos porque no hay viaje guardado
         verifyNoInteractions(gestorGastos);
     }
 
@@ -125,10 +136,12 @@ class PlanControladorTest {
     @DisplayName("si la base de datos falla la página se muestra igual y avisa que no hay gastos")
     void falloAlCargarGastos_paginaIgualSeMuestra() {
         sesion.setAttribute("idViajeGuardado", ID_VIAJE);
+        // el servicio de gastos lanza una excepción al consultar los gastos
         when(gestorGastos.consultarGastos(ID_VIAJE)).thenThrow(new IllegalStateException("BD caída"));
 
         String vista = controlador.mostrarViaje(sesion, model);
 
+        // la vista se muestra igual, pero el modelo indica que no hay gastos disponibles
         assertEquals("viaje", vista);
         assertTrue((Boolean) model.getAttribute("gastosNoDisponibles"));
     }
@@ -136,6 +149,7 @@ class PlanControladorTest {
     @Test
     @DisplayName("sin reparto guardado manda primero a /plan")
     void sinReparto_redirigeAlPlan() {
+        //el usuario aun no define el reparto del presupuesto
         sesion.removeAttribute(Nombres.REPARTO_PRESUPUESTO);
 
         assertEquals("redirect:/plan", controlador.mostrarViaje(sesion, model));
@@ -152,6 +166,7 @@ class PlanControladorTest {
     @Test
     @DisplayName("sin sesión iniciada redirige al login")
     void sinUsuario_redirigeAlLogin() {
+        // el usuario no está logueado, el facade devuelve null
         when(usuarioSesionFacade.prepararEncabezado(sesion, model)).thenReturn(null);
 
         assertEquals(Nombres.REDIRECT_LOGIN, controlador.mostrarViaje(sesion, model));
@@ -160,11 +175,14 @@ class PlanControladorTest {
     @Test
     @DisplayName("el enlace viejo de itinerario lleva a la sección de Mi viaje")
     void itinerario_redirigeAMiViaje() {
+
         assertEquals("redirect:/viaje#itinerario", controlador.mostrarItinerario());
     }
 
     // ------------------------------------------------------------ GET /plan
 
+    //Prueba que, al entrar a la pantalla del plan sin haber guardado un presupuesto antes
+    // el sistema carga automáticamente los valores por defecto sugeridos.
     @Test
     @DisplayName("mostrarPlan sin reparto guardado propone el reparto sugerido")
     void mostrarPlan_sinGuardado_usaSugerido() {

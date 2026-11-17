@@ -14,8 +14,10 @@ class InicioControladorTest {
     @Test
     @DisplayName("GET / muestra la landing con el mensaje de bienvenida")
     void mostrarLanding_devuelveLaVistaConElMensaje() {
+        // se crea un modelo vacío para que el controlador lo llene
         Model model = new ConcurrentModel();
 
+        // se invoca el controlador
         String vista = new InicioControlador().mostrarLanding(model);
 
         assertEquals("landing", vista);

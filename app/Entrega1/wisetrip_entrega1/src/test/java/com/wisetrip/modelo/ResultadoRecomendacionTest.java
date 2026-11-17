@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Test;
 @DisplayName("ResultadoRecomendacion")
 class ResultadoRecomendacionTest {
 
+    // valida que el constructor guarda correctamente los datos que recibe
     @Test
     @DisplayName("guarda la ciudad, los puntajes y las banderas que recibe")
     void constructor_guardaLosDatos() {
