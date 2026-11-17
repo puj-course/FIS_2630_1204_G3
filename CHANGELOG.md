@@ -7068,7 +7068,7 @@ como todos hicimos cosas diferentes, no todos sabemos lo que hicieron los demas
 * **HU 141 (Completa):** Se hicieron los tests respectivos de cada una de las clases. Solo hubo una clase que no corregi que es la de ConexionBD.java (esta en la carpeta de datos y por lo que no se trata del backend no lo tocamos, ademas porque las correcciones de la base de datos modifican grandemente el codigo que ya tenemos hecho)
 * **HU 142 (Completa):** Se revisaron y corrigieron los issues de SonarQube del paquete modelo. El analisis automatizado del pull request paso el Quality Gate, sin problemas nuevos.
 * **HU 143 (Completa):** Se crearon y ejecutaron las pruebas unitarias de Usuario, FechasViaje, Presupuesto y Ubicacion, y todas pasaron. Quedo pendiente revisar la configuracion de cobertura en SonarQube para confirmar el cumplimiento del umbral requerido.
-* **HU 144 (Parcial):** esta hu se referia a dorregir y testear los dao y las interfaces, pero con el equipo decidimos que los dao no lo sibamos a tocar, ya que no queremos que se dañe nada de lo que tenemos, y en el caso de las interfaces se corrigieron los issues mas no se testearon ya que estas solo declararan los metodos
+* **HU 144 (Completa):** Se realizo la integracion entre el repositorio y un grupo de telegram con todos los miembros del equipo, para ver cambios en el repositorio en tiempo real.
 
 ## Demostración
 
