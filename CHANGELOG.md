@@ -6800,15 +6800,17 @@ Dejar el docker listo, dejar los diagramas listos, hacer el taller de docker, de
 
 1. **¿Qué hice ayer?**
 
-   
+
+ayer termine de documentar las metricas y de ajustar el markdown en el repositorio para que quedara listo para la sustentacion 
 
 2. **¿Qué voy a hacer hoy?**
 
-   
+Hoy tuvimos la sustentacion como grupo y la verdad no sabia que las metricas se tenian que programar, ya gracias a las recomendaciones que nos dio el profesor es mas fácil saber cuales son las cosas que nos faltan y mejorar nuestra nota del martes. 
+hoy espero mirar con el monitor a ver que como es que se programan las metricas y elegir otra que se acople a las metricas deprogramacion orientada a objetos porque complejidad ciclomatica ya la tiene 
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
-   
+   no
 
 ---
 
