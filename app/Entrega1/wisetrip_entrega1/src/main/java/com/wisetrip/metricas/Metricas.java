@@ -85,15 +85,16 @@ public class Metricas {
         System.out.println("     sin heredados, variables locales ni campos sinteticos.");
         System.out.println("Se excluyen interfaces, records y clases internas del alcance seleccionado.");
         System.out.println();
-        System.out.printf("%-30s %5s %5s %5s%n", "Clase", "NPM", "NOC", "NOA");
-        System.out.println("------------------------------------------------");
 
         for (Class<?> clase : CLASES_SELECCIONADAS) {
             int npm = calcularNPM(clase);
             int noc = calcularNOC(clase, CLASES_SELECCIONADAS);
             int noa = calcularNOA(clase);
-            System.out.printf("%-30s %5d %5d %5d%n", clase.getSimpleName(), npm, noc, noa);
+            System.out.println("Clase: " + clase.getSimpleName());
+            System.out.println("NPM: " + npm);
+            System.out.println("NOC: " + noc);
+            System.out.println("NOA: " + noa);
+            System.out.println("--------------------------------");
         }
-        System.out.println("------------------------------------------------");
     }
 }
