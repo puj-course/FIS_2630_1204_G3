@@ -17,9 +17,11 @@ import org.junit.jupiter.api.Test;
 @DisplayName("Viaje")
 class ViajeTest {
 
+    // Declaración de variables de instancia que se reutilizarán en las pruebas
     private Usuario usuario;
     private Viaje viaje;
 
+    // Antes de cada prueba, se inicializan un usuario y un viaje asociado a ese usuario
     @BeforeEach
     void setUp() {
         usuario = new Usuario();
@@ -27,6 +29,7 @@ class ViajeTest {
         viaje = new Viaje(usuario);
     }
 
+    // Método auxiliar para crear un objeto FechasViaje con fechas relativas a "hoy"
     private static FechasViaje fechas(int diasDesdeHoyInicio, int diasDesdeHoyFin) {
         FechasViaje fechas = new FechasViaje();
         fechas.setFechaInicio(LocalDate.now().plusDays(diasDesdeHoyInicio).toString());
@@ -34,6 +37,7 @@ class ViajeTest {
         return fechas;
     }
 
+    // Método auxiliar para crear un objeto ResultadoRecomendacion con un país específico
     private static ResultadoRecomendacion destino(String pais) {
         Ciudad ciudad = new Ciudad();
         ciudad.setNombre("Ciudad");
@@ -44,6 +48,7 @@ class ViajeTest {
     @Test
     @DisplayName("un viaje nuevo no tiene nada definido")
     void viajeNuevo_sinDatos() {
+        //valida el estado inicial de un viaje creado
         assertFalse(viaje.estaGuardado());
         assertFalse(viaje.tieneOrigen());
         assertFalse(viaje.tienePreferencias());
@@ -58,6 +63,7 @@ class ViajeTest {
     }
 
     @Test
+    // revisa que los setters  guaden los datos 
     @DisplayName("los setters hacen que el viaje reconozca origen, preferencias, fechas y reparto")
     void setters_marcanLosPasosCompletados() {
         viaje.setOrigen(new Ubicacion("Colombia", "Bogotá", null));
@@ -70,6 +76,7 @@ class ViajeTest {
         assertTrue(viaje.tienePreferencias());
         assertTrue(viaje.tieneFechas());
         assertSame(reparto, viaje.getReparto());
+        // Valida la duración en días (del día 1 al 4 hay 4 días de diferencia calculada por el modelo)
         assertEquals(4L, viaje.duracionDias());
     }
 
@@ -81,6 +88,7 @@ class ViajeTest {
         assertEquals(12, viaje.getIdViaje());
 
         viaje.setIdViaje(0);
+        //revisa que no haya viaje guardado si el id es 0
         assertFalse(viaje.estaGuardado());
     }
 
@@ -93,9 +101,12 @@ class ViajeTest {
         viaje.definirPresupuesto(new Presupuesto("1000", "USD"), 1000.0);
 
         assertTrue(viaje.tienePresupuesto());
+        // 0.0001 es la tolerancia para la comparación de números de punto flotante
         assertEquals(1000.0, viaje.getPresupuestoEnUsd(), 0.0001);
         assertEquals("1000", viaje.getPresupuesto().getMonto());
+        // El ID de viaje vuelve a 0 porque al cambiar el presupuesto el viaje se modifica
         assertEquals(0, viaje.getIdViaje());
+        // El destino se limpia porque cambió el presupuesto base
         assertFalse(viaje.tieneDestino());
     }
 
@@ -106,8 +117,11 @@ class ViajeTest {
 
         viaje.elegirDestino(elegido);
 
+        // revisa que el viaje si trenga un destino elegido
         assertTrue(viaje.tieneDestino());
+        // son los mismos? 
         assertSame(elegido, viaje.getDestinoElegido());
+        // revisa que el nombre y país del destino sean los esperados
         assertEquals("Ciudad", viaje.destino().getNombre());
         assertEquals("Perú", viaje.paisDestino());
     }
@@ -116,15 +130,18 @@ class ViajeTest {
     @DisplayName("puedeRecomendar necesita presupuesto en dólares y al menos 1 día")
     void puedeRecomendar_necesitaPresupuestoYFechas() {
         viaje.definirPresupuesto(new Presupuesto("1000", "USD"), 1000.0);
+        // Aun con presupuesto, si no tiene fechas no puede recomendar
         assertFalse(viaje.puedeRecomendar());
 
         viaje.setFechas(fechas(1, 3));
+        //luego de agrgar las fechas si deja recomendar
         assertTrue(viaje.puedeRecomendar());
     }
 
     @Test
     @DisplayName("crearPreferenciasUsuario lanza IllegalStateException si faltan presupuesto o fechas")
     void crearPreferenciasUsuario_sinDatos_lanzaExcepcion() {
+        // Al faltar presupuesto y fechas, debe lanzar IllegalStateException
         assertThrows(IllegalStateException.class, () -> viaje.crearPreferenciasUsuario(Map.of()));
     }
 
@@ -137,6 +154,7 @@ class ViajeTest {
         PreferenciasUsuario preferencias = viaje.crearPreferenciasUsuario(Map.of("playa", Importancia.GUSTAR));
 
         assertEquals(1000.0, preferencias.getPresupuestoUsd(), 0.0001);
+        //5L longitud de días entre el día 1 y el día 5
         assertEquals(5L, preferencias.getDuracionDias());
         assertTrue(preferencias.tienePreferencia("playa"));
     }
