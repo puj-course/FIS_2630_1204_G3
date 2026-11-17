@@ -39,12 +39,12 @@ jobs:
 
           if [[ "$TITULO" =~ $PATRON ]]; then
             echo "El titulo cumple con Conventional Commits"
-            echo "### ✅ Titulo correcto" >> "$GITHUB_STEP_SUMMARY"
+            echo "### Titulo correcto" >> "$GITHUB_STEP_SUMMARY"
             echo "\`$TITULO\`" >> "$GITHUB_STEP_SUMMARY"
           else
             # ::error:: hace que el mensaje salga resaltado en GitHub
             echo "::error::El titulo del PR no sigue Conventional Commits. Debe empezar con uno de estos tipos: feat, fix, docs, style, refactor, test, chore, perf, ci, build, merge. Ejemplo: 'feat: agregar campo de celular en el registro'"
-            echo "### ❌ Titulo incorrecto" >> "$GITHUB_STEP_SUMMARY"
+            echo "###  Titulo incorrecto" >> "$GITHUB_STEP_SUMMARY"
             echo "Titulo actual: \`$TITULO\`" >> "$GITHUB_STEP_SUMMARY"
             echo "" >> "$GITHUB_STEP_SUMMARY"
             echo "Formato esperado: \`tipo(alcance opcional): descripcion\`" >> "$GITHUB_STEP_SUMMARY"
