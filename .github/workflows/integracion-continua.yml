@@ -3,6 +3,9 @@
 # Cada vez que alguien sube codigo o abre un PR, este workflow revisa que
 # el proyecto compile y que TODAS las pruebas unitarias pasen.
 # Si algo falla, el check queda en rojo y el despliegue (CD) no se ejecuta.
+
+# se encarga de compilarlo y ejecutar pruebas (como pruebas unitarias o de calidad) 
+#para verificar que los cambios funcionan y no rompen el resto de la aplicación
 # =============================================================================
 name: Integracion continua (CI)
 
