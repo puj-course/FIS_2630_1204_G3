@@ -53,6 +53,6 @@ jobs:
 
           # Envia el mensaje con la API de bots de Telegram.
           # --data-urlencode evita problemas con tildes, saltos de linea y simbolos.
-          curl -s -X POST "https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage" \
+          curl -s --retry 3 --retry-delay 5 --retry-all-errors -X POST "https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage" \
             --data-urlencode "chat_id=${TELEGRAM_CHAT_ID}" \
             --data-urlencode "text=${TEXT}"

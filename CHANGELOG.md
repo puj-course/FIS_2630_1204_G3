@@ -6800,15 +6800,17 @@ Dejar el docker listo, dejar los diagramas listos, hacer el taller de docker, de
 
 1. **¿Qué hice ayer?**
 
-   
+
+ayer termine de documentar las metricas y de ajustar el markdown en el repositorio para que quedara listo para la sustentacion 
 
 2. **¿Qué voy a hacer hoy?**
 
-   
+Hoy tuvimos la sustentacion como grupo y la verdad no sabia que las metricas se tenian que programar, ya gracias a las recomendaciones que nos dio el profesor es mas fácil saber cuales son las cosas que nos faltan y mejorar nuestra nota del martes. 
+hoy espero mirar con el monitor a ver que como es que se programan las metricas y elegir otra que se acople a las metricas deprogramacion orientada a objetos porque complejidad ciclomatica ya la tiene 
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
-   
+   no
 
 ---
 
@@ -6832,15 +6834,15 @@ Dejar el docker listo, dejar los diagramas listos, hacer el taller de docker, de
 
 1. **¿Qué hice ayer?**
 
-   
+ayer conecte el telegram al repositorio para que cada cambio que se haga todos los miembors del equipo sepamos cuando alguien vaya haciendo cambios en el repo
 
 2. **¿Qué voy a hacer hoy?**
 
-   
+hoy revise el codigo y estuve organizando el repositorio
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
-   
+falta de tiempo
 
 ---
 
@@ -6848,15 +6850,15 @@ Dejar el docker listo, dejar los diagramas listos, hacer el taller de docker, de
 
 1. **¿Qué hice ayer?**
 
-   
+   Mis compañeros me comentaron la retroalimentacion que realizao el profesor ya que yo no pude estar en la pre sustentacion. se empezaron a delegar cambios y mejoras dentro del proyecto
 
 2. **¿Qué voy a hacer hoy?**
 
-   
+   Iniciar a estudiar el codigo para la sustentacion final
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
-   
+   No estoy en colombia, no tengo tiempo disponible
 
 ---
 
@@ -6864,14 +6866,15 @@ Dejar el docker listo, dejar los diagramas listos, hacer el taller de docker, de
 
 1. **¿Qué hice ayer?**
 
-   
+   Termine de hacer algunos ajustes a unas clases y termine de configurar las cosas de docker
 
 2. **¿Qué voy a hacer hoy?**
 
-   
+   Gracias a la retroalimentación cambiar todo lo que hace falta arreglar
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
+No
    
 
 ---
@@ -6884,15 +6887,17 @@ Dejar el docker listo, dejar los diagramas listos, hacer el taller de docker, de
 
 1. **¿Qué hice ayer?**
 
-   
+ayer hable con mi equipo lo de las cosas que teníamos que mejorar y les comente como las iba a programar 
 
 2. **¿Qué voy a hacer hoy?**
 
-   
+  
+hoy decidí que iba a usar la métrica de NOA que es number of attributes la cual mide cuántos atributos declara una clase. Ademas de empezar el código, sigue en mi rama. 
+
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
-   
+  un poco de tiempo, tengo un parcial ese mismo dia pero manejare bien mi tiempo  
 
 ---
 
@@ -6916,15 +6921,15 @@ Dejar el docker listo, dejar los diagramas listos, hacer el taller de docker, de
 
 1. **¿Qué hice ayer?**
 
-   
+   ayer ademas de revisar y corregir tuvimos la revision d¿para la sustentacion del martes
 
 2. **¿Qué voy a hacer hoy?**
 
-   
+   hoy no puedo hacer mucho ya que tengo un concierto y me toca salir desde temprano
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
-   
+   no
 
 ---
 
@@ -6932,15 +6937,17 @@ Dejar el docker listo, dejar los diagramas listos, hacer el taller de docker, de
 
 1. **¿Qué hice ayer?**
 
-   
+   Iniciar a estudiar el codigo para la sustentacion final
 
 2. **¿Qué voy a hacer hoy?**
 
-   
+   Hoy no puedo avanzar mucho ya que estoy en una competencia internacional por lo tanto no podre realizar mucha revision el dia de hoy
+
+¿Tengo algun impedimento o bloqueo?
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
-   
+   Tiempo
 
 ---
 
@@ -6948,12 +6955,12 @@ Dejar el docker listo, dejar los diagramas listos, hacer el taller de docker, de
 
 1. **¿Qué hice ayer?**
 
-   
+   Cambie la configuración del docker porque habian cosas incorrectas
 
 2. **¿Qué voy a hacer hoy?**
 
-   
+   Hacerle algunas pruebas al docker para ver si todo funciona en orden
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
-   
+   No

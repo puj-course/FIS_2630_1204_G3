@@ -1,0 +1,121 @@
+# =============================================================================
+# DESPLIEGUE CONTINUO (CD)
+# NO se ejecuta solo: espera a que termine la Integracion continua (CI).
+# Si el CI salio bien en main (o en un tag de version v*), este workflow:
+#   1. construye la imagen Docker de WiseTrip
+#   2. la despliega con Docker Compose (app + proxy Nginx)
+#   3. comprueba que responda (prueba de humo)
+#   4. publica la imagen en DockerHub
+# Si el CI fallo, aqui no se despliega nada.
+# =============================================================================
+name: Despliegue continuo (CD)
+
+on:
+  # Se dispara cuando el workflow de CI termina (bien o mal; abajo se filtra)
+  workflow_run:
+    workflows: ["Integracion continua (CI)"]   # debe ser igual al name: del CI
+    types: [completed]
+  workflow_dispatch:    # boton "Run workflow" para lanzarlo a mano
+
+env:
+  IMAGEN: wisetrip      # nombre local de la imagen
+
+jobs:
+  despliegue:
+    name: Imagen Docker, despliegue, prueba de humo y publicacion
+    runs-on: ubuntu-latest
+
+    # Solo despliega si:
+    #  - lo lanzaron a mano, o
+    #  - el CI termino BIEN, fue por un push (no por un PR)
+    #    y fue en main o en un tag de version (v1.0.0)
+    if: >
+      github.event_name == 'workflow_dispatch' ||
+      (github.event.workflow_run.conclusion == 'success' &&
+       github.event.workflow_run.event == 'push' &&
+       (github.event.workflow_run.head_branch == 'main' ||
+        startsWith(github.event.workflow_run.head_branch, 'v')))
+
+    env:
+      # Commit y rama que aprobo el CI (o los actuales si se lanzo a mano)
+      SHA: ${{ github.event.workflow_run.head_sha || github.sha }}
+      RAMA: ${{ github.event.workflow_run.head_branch || github.ref_name }}
+
+    steps:
+      # Descarga exactamente el commit que paso el CI
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+        with:
+          ref: ${{ github.event.workflow_run.head_sha || github.sha }}
+
+      - name: Configurar Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      # Construye la imagen usando el Dockerfile de la raiz del repo
+      - name: Construir la imagen con el Dockerfile
+        uses: docker/build-push-action@v6
+        with:
+          context: .                  # raiz del repo (ahi esta el Dockerfile)
+          load: true                  # deja la imagen en la maquina para probarla
+          tags: ${{ env.IMAGEN }}:ci  # nombre temporal de la imagen
+          cache-from: type=gha        # reutiliza capas de builds anteriores...
+          cache-to: type=gha,mode=max # ...y guarda las nuevas en la cache de GitHub
+
+      # Levanta la app y el proxy con docker-compose.yml
+      - name: Desplegar con Docker Compose (app + proxy en la red wisetrip-red)
+        run: |
+          # Compose usa la imagen recien construida en vez de construirla otra vez
+          docker tag ${{ env.IMAGEN }}:ci ${{ env.IMAGEN }}:latest
+          # --wait espera a que los dos servicios digan "healthy"
+          docker compose up -d --no-build --wait --wait-timeout 180
+          docker compose ps
+
+      # Evidencia de que los contenedores se comunican por la red de Docker
+      - name: Verificar la red Docker entre servicios
+        run: |
+          docker network ls --filter name=wisetrip-red
+          echo "Contenedores conectados a wisetrip-red:"
+          docker network inspect wisetrip-red --format '{{range .Containers}}{{.Name}} -> {{.IPv4Address}}{{println}}{{end}}'
+          # El proxy llega a la app por el nombre del servicio (DNS interno de Docker)
+          docker compose exec -T proxy wget -q -O /dev/null http://wisetrip:8090/
+          echo "proxy -> http://wisetrip:8090 por la red interna: OK"
+
+      # Prueba de humo: la app responde directo y a traves del proxy
+      - name: Prueba de humo (directo en 8090 y a traves del proxy en 80)
+        run: |
+          curl -fsS -o /dev/null -w "Directo  http://localhost:8090 -> HTTP %{http_code}\n" http://localhost:8090/
+          curl -fsS -o /dev/null -w "Proxy    http://localhost      -> HTTP %{http_code}\n" http://localhost/
+
+      # Solo si algo fallo: muestra los logs de Spring y Nginx
+      - name: Logs de los contenedores (solo si algo fallo)
+        if: failure()
+        run: docker compose logs
+
+      # Siempre apaga y borra los contenedores y la red de prueba
+      - name: Apagar el despliegue de prueba
+        if: always()
+        run: docker compose down
+
+      # Publicar solo desde main o desde un tag de version
+      - name: Iniciar sesion en DockerHub
+        if: env.RAMA == 'main' || startsWith(env.RAMA, 'v')
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Publicar la imagen en DockerHub (latest y hash del commit)
+        if: env.RAMA == 'main' || startsWith(env.RAMA, 'v')
+        run: |
+          REPO="${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGEN }}"
+          SHA_CORTO="${SHA::7}"
+          docker tag ${{ env.IMAGEN }}:ci "$REPO:latest"
+          docker tag ${{ env.IMAGEN }}:ci "$REPO:$SHA_CORTO"
+          docker push "$REPO:latest"
+          docker push "$REPO:$SHA_CORTO"
+          echo "Publicada: $REPO:latest y $REPO:$SHA_CORTO"
+          # Si viene de un tag de version (v1.0.0) tambien se publica con ese nombre
+          if [[ "$RAMA" == v* ]]; then
+            docker tag ${{ env.IMAGEN }}:ci "$REPO:$RAMA"
+            docker push "$REPO:$RAMA"
+            echo "Publicada: $REPO:$RAMA"
+          fi
