@@ -1,0 +1,121 @@
+@startuml
+title Recomendaciones - Interfaces de negocio e implementaciones
+left to right direction
+skinparam classAttributeIconSize 0
+hide empty members
+package "Contratos de negocio" {
+interface IViajeServicio {
+  +List<String> listarPaises()
+  +List<String> listarCiudades(String pais)
+  +Map<String, String> validarUbicacion(Ubicacion ubicacion)
+}
+interface GestorPreferencias {
+  +List<CategoriaPreferencia> listarCategorias()
+  +int totalPreguntas()
+  +Map<String, String> validarPreferencias(Preferencias preferencias)
+  +Map<String, Importancia> obtenerImportancias(Preferencias preferencias)
+  +Map<String, Boolean> obtenerAtributosSeleccionados(Preferencias preferencias)
+  +List<String> clavesAfirmativas(Preferencias preferencias)
+  +Map<String, List<String>> resumenPorCategoria(Preferencias preferencias)
+  +long contarAfirmativas(Preferencias preferencias)
+}
+interface IFechasServicio {
+  +Map<String, String> validarFechas(FechasViaje fechas)
+  +long calcularDuracion(FechasViaje fechas)
+  +String hoy()
+}
+interface GestorPresupuesto {
+  +Map<String, String> validarPresupuesto(Presupuesto presupuesto, String paisDestino)
+  +double convertirAUsd(Presupuesto presupuesto)
+  +Map<String, String> monedasDisponibles(String paisDestino)
+  +String nombreMoneda(String codigo)
+  +String formatear(double valor)
+}
+interface Recomendador {
+  +boolean excedePresupuesto(Ciudad ciudad, PreferenciasUsuario preferencias)
+  +List<ResultadoRecomendacion> recomendarDestinos( List<Ciudad> ciudades, PreferenciasUsuario preferencias )
+  +ValidacionCiudades validarCiudades( List<Ciudad> ciudades, PreferenciasUsuario preferencias )
+  +List<ResultadoRecomendacion> puntuarCiudadesValidas( ValidacionCiudades validacion, PreferenciasUsuario preferencias )
+  +ResultadoRecomendacion calcularPuntajeTotal( Ciudad ciudad, PreferenciasUsuario preferencias )
+}
+interface SeleRecomendaciones {
+  +SeleccionDestinos seleccionarMejoresDestinos( List<ResultadoRecomendacion> resultados)
+}
+interface ProovedorLugares {
+  +Integer contarLugares(double lat, double lon, String categorias, int radioMetros, int limite)
+}
+interface CacheRepositorio {
+  +Optional<Integer> buscar(double latitud, double longitud, String categoria, int radioMetros, int limite)
+  +void guardar(double latitud, double longitud, String categoria, int radioMetros, int limite, int respuesta)
+}
+interface CiudadNegocio {
+  +List<Ciudad> obtenerTodas()
+  +boolean insertar(Ciudad ciudad)
+}
+interface IRepositorioViajes {
+  +int insertar(int idUsuario, int idCiudad, FechasViaje fechas, double presupuestoUsd)
+}
+interface IRepositorioPreferencias {
+  +void guardarActivas(int idViaje, Map<String, Boolean> atributosSeleccionados)
+}
+}
+package "Implementaciones y consumidores" {
+class ViajeControlador
+class PlanificacionControlador
+class RecomendacionControlador
+class ViajeServicio
+class PreferenciasServicio
+class FechasServicio
+class PresupuestoServicio
+class PresupuestoConMargenDecorador
+class RecomendadorDestinos
+class SelectorDestinos
+class LlenarAtributosCiudad
+class ProxyLugares
+class ServicioGeoapify
+class Cache
+class CiudadDAO
+class ViajeDAO
+class PreferenciaDAO
+}
+ViajeServicio ..|> IViajeServicio
+PreferenciasServicio ..|> GestorPreferencias
+FechasServicio ..|> IFechasServicio
+PresupuestoServicio ..|> GestorPresupuesto
+PresupuestoConMargenDecorador ..|> GestorPresupuesto
+RecomendadorDestinos ..|> Recomendador
+SelectorDestinos ..|> SeleRecomendaciones
+ProxyLugares ..|> ProovedorLugares
+ServicioGeoapify ..|> ProovedorLugares
+Cache ..|> CacheRepositorio
+CiudadDAO ..|> CiudadNegocio
+ViajeDAO ..|> IRepositorioViajes
+PreferenciaDAO ..|> IRepositorioPreferencias
+ViajeControlador --> IViajeServicio
+PlanificacionControlador --> GestorPreferencias
+PlanificacionControlador --> IFechasServicio
+PlanificacionControlador --> GestorPresupuesto
+PlanificacionControlador --> PresupuestoConMargenDecorador : margen del resumen
+PresupuestoConMargenDecorador --> GestorPresupuesto : gestorBase
+PresupuestoConMargenDecorador ..> PresupuestoServicio : constructor
+RecomendacionControlador --> CiudadNegocio
+RecomendacionControlador --> IRepositorioViajes
+RecomendacionControlador --> IRepositorioPreferencias
+RecomendacionControlador --> LlenarAtributosCiudad
+RecomendacionControlador --> Recomendador
+RecomendacionControlador --> SeleRecomendaciones
+RecomendadorDestinos --> GestorPreferencias
+LlenarAtributosCiudad --> ProovedorLugares : geo
+ProxyLugares --> ProovedorLugares : servicioReal
+ProxyLugares --> CacheRepositorio : cache
+ProxyLugares ..> ServicioGeoapify : inyecta @Qualifier("servicioGeoapify")
+note bottom of ProxyLugares
+  @Primary: LlenarAtributosCiudad recibe el proxy.
+  servicioReal tiene tipo ProovedorLugares;
+  el bean inyectado es ServicioGeoapify.
+end note
+note bottom of ProovedorLugares
+  Nombre conservado tal como aparece en Java.
+  coordenadas() no forma parte de este contrato.
+end note
+@enduml

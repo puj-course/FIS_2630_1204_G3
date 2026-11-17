@@ -1,0 +1,357 @@
+@startuml
+title Recomendaciones - Clases (miembros relevantes al alcance)
+top to bottom direction
+skinparam classAttributeIconSize 0
+hide empty members
+package controlador {
+class ViajeControlador {
+  -IViajeServicio viajeServicio
+  -UsuarioSesionFacade usuarioSesionFacade
+  +String mostrarOrigen(HttpSession sesion, Model model)
+  +String guardarOrigen(Ubicacion ubicacion, HttpSession sesion, Model model)
+}
+class PlanificacionControlador {
+  -GestorPreferencias gestorPreferencias
+  -GestorPresupuesto gestorPresupuesto
+  -PresupuestoConMargenDecorador decoradorMargen
+  -IFechasServicio fechasServicio
+  -UsuarioSesionFacade usuarioSesionFacade
+  +String mostrarPreferencias(HttpSession sesion, Model model)
+  +String guardarPreferencias(Preferencias preferencias, HttpSession sesion, Model model)
+  +String mostrarFechas(HttpSession sesion, Model model)
+  +String guardarFechas(FechasViaje fechas, HttpSession sesion, Model model)
+  +String mostrarPresupuesto(HttpSession sesion, Model model)
+  +String guardarPresupuesto(Presupuesto presupuesto, HttpSession sesion, Model model)
+  +String mostrarResumen(HttpSession sesion, Model model)
+}
+class RecomendacionControlador {
+  -CiudadNegocio ciudadDAO
+  -IRepositorioViajes viajeDAO
+  -IRepositorioPreferencias preferenciaDAO
+  -LlenarAtributosCiudad llenarAtributosCiudad
+  -Recomendador recomendadorDestinos
+  -SeleRecomendaciones selectorDestinos
+  +String mostrarRecomendaciones(HttpSession sesion, Model model)
+}
+class SesionViaje {
+  {static} ~Viaje de(HttpSession sesion, Usuario usuario)
+}
+}
+package servicio {
+class UsuarioSesionFacade {
+  +Usuario prepararEncabezado(HttpSession sesion, Model model)
+}
+class ViajeServicio {
+  +List<String> listarPaises()
+  +List<String> listarCiudades(String pais)
+  +Map<String, String> validarUbicacion(Ubicacion ubicacion)
+}
+class PreferenciasServicio {
+  +Map<String, String> validarPreferencias(Preferencias preferencias)
+  +Map<String, Importancia> obtenerImportancias(Preferencias preferencias)
+  +Map<String, Boolean> obtenerAtributosSeleccionados(Preferencias preferencias)
+}
+class FechasServicio {
+  -ReglaValidacionFechas cadenaValidacion
+  +Map<String, String> validarFechas(FechasViaje fechas)
+  +long calcularDuracion(FechasViaje fechas)
+}
+abstract class ReglaValidacionFechas {
+  -ReglaValidacionFechas siguiente
+  +ReglaValidacionFechas siguiente(ReglaValidacionFechas siguiente)
+  +void validar(ContextoValidacionFechas contexto)
+}
+class ReglaFechaInicio {
+}
+class ReglaFechaFin {
+}
+class ReglaRelacionFechas {
+}
+class ContextoValidacionFechas {
+  -FechasViaje fechas
+  -Map<String, String> errores
+  -LocalDate inicio
+  -LocalDate fin
+}
+class PresupuestoServicio {
+  +Map<String, String> validarPresupuesto(Presupuesto presupuesto, String paisDestino)
+  +double convertirAUsd(Presupuesto presupuesto)
+}
+class PresupuestoConMargenDecorador {
+  -GestorPresupuesto gestorBase
+  +Map<String, String> validarPresupuesto(Presupuesto presupuesto, String paisDestino)
+  +double convertirAUsd(Presupuesto presupuesto)
+  +double calcularMargenImprevistos(Presupuesto presupuesto)
+}
+class LlenarAtributosCiudad {
+  -ProovedorLugares geo
+  +void enriquecer(Ciudad ciudad, CiudadSemilla semilla)
+  +void enriquecer( Ciudad ciudad, CiudadSemilla semilla, Map<String, Boolean> atributosUsuario)
+  +void enriquecer(Ciudad ciudad, CiudadSemilla semilla, Map<String, Boolean> atributosUsuario, Map<String, Importancia> importancias)
+}
+class RecomendadorDestinos {
+  -boolean presupuestoObligatorio
+  -GestorPreferencias gestorPreferencias
+  +double calcularCoincidenciaPonderada(Map<String, Boolean> oferta, Map<String, Importancia> gustos)
+  +ResultadoRecomendacion calcularPuntajeTotal( Ciudad ciudad, PreferenciasUsuario preferencias)
+  +boolean excedePresupuesto(Ciudad ciudad, PreferenciasUsuario preferencias)
+  +ValidacionCiudades validarCiudades(List<Ciudad> ciudades, PreferenciasUsuario preferencias)
+  +List<ResultadoRecomendacion> puntuarCiudadesValidas(ValidacionCiudades validacion, PreferenciasUsuario preferencias)
+}
+class SelectorDestinos {
+  +SeleccionDestinos seleccionarMejoresDestinos( List<ResultadoRecomendacion> resultados)
+}
+class ProxyLugares {
+  -ProovedorLugares servicioReal
+  -CacheRepositorio cache
+  +Integer contarLugares(double lat, double lon, String categorias, int radioMetros, int limite)
+}
+class ServicioGeoapify {
+  -String claveApi
+  -HttpClient clienteHttp
+  -AtomicLong contadorLlamadas
+  +Integer contarLugares(double latitud, double longitud, String categorias, int radioMetros, int maximoResultados)
+}
+}
+package negocio {
+class CatalogoPreguntas {
+  +List<DefPregunta> todas()
+  +DefPregunta porId(String id)
+  +List<DefPregunta> atributosAuto()
+}
+class DefPregunta {
+}
+}
+package datos {
+class CiudadDAO {
+  +List<Ciudad> obtenerTodas()
+  +boolean insertar(Ciudad ciudad)
+}
+class ViajeDAO {
+  +int insertar(int idUsuario, int idCiudad, FechasViaje fechas, double presupuestoUsd)
+}
+class PreferenciaDAO {
+  +void guardarActivas(int idViaje, Map<String, Boolean> atributosSeleccionados)
+}
+class Cache {
+  -DataSource dataSource
+  +Optional<Integer> buscar(double latitud, double longitud, String categoria, int radioMetros, int limite)
+  +void guardar(double latitud, double longitud, String categoria, int radioMetros, int limite, int respuesta)
+}
+class ConexionBD {
+}
+class DatosCiudades {
+  +CiudadSemilla porNombreYPais(String nombre, String pais)
+}
+class CiudadSemilla {
+}
+}
+package modelo {
+class Ubicacion {
+  -String pais
+  -String ciudad
+  -String detalle
+  +Map<String, String> validar()
+}
+class Viaje {
+  -Usuario usuario
+  -Ubicacion origen
+}
+class Preferencias {
+  -Map<String, String> respuestas
+  +boolean esIndispensable(String atributo)
+}
+class CategoriaPreferencia {
+  -String nombre
+  -String icono
+  -String descripcion
+  -List<Pregunta> preguntas
+}
+class Pregunta {
+  -String clave
+  -String texto
+}
+class FechasViaje {
+  -String fechaInicio
+  -String fechaFin
+  +long getDuracionDias()
+}
+class Presupuesto {
+  -String monto
+  -String moneda
+}
+class PreferenciasUsuario {
+  -Map<String, Importancia> atributos
+  -Double presupuestoUsd
+  -long duracionDias
+  +boolean tienePreferenciasPuntuables()
+  +boolean esIndispensable(String atributo)
+}
+class Ciudad {
+  -int id
+  -String nombre
+  -String pais
+  -double costoPromedio
+  -double latitud
+  -double longitud
+  -Map<String, Boolean> atributos
+  +EstadoAtributo estadoAtributo(String atributo)
+}
+class ValidacionCiudades <<record>> {
+  List<Ciudad> validas
+  List<Ciudad> descartadas
+  List<Ciudad> pendientes
+}
+class ResultadoRecomendacion {
+  -Ciudad ciudad
+  -double puntajeTotal
+  -double puntajePresupuesto
+  -double puntajePreferencias
+  -boolean preferenciasPuntuables
+  -boolean coincidenciaProvisional
+}
+class SeleccionDestinos {
+  -List<ResultadoRecomendacion> destinos
+  -String mensaje
+  +boolean isVacio()
+}
+enum Importancia {
+  -int peso
+  +boolean esPuntuable()
+  +boolean esIndispensable()
+  no
+  gustar
+  prefiero
+  si
+}
+enum EstadoAtributo {
+  +EstadoAtributo desdeConteo(Integer conteo, int umbral)
+  cumple
+  noCumple
+  noSabemos
+}
+enum TipoAtributo {
+  MANUAL
+  AUTO
+  PERFIL
+}
+}
+package "Contratos (detalle en interfaces.puml)" {
+interface IViajeServicio
+interface GestorPreferencias
+interface IFechasServicio
+interface GestorPresupuesto
+interface Recomendador
+interface SeleRecomendaciones
+interface ProovedorLugares
+interface CacheRepositorio
+interface CiudadNegocio
+interface IRepositorioViajes
+interface IRepositorioPreferencias
+}
+ViajeServicio ..|> IViajeServicio
+PreferenciasServicio ..|> GestorPreferencias
+FechasServicio ..|> IFechasServicio
+PresupuestoServicio ..|> GestorPresupuesto
+PresupuestoConMargenDecorador ..|> GestorPresupuesto
+RecomendadorDestinos ..|> Recomendador
+SelectorDestinos ..|> SeleRecomendaciones
+ProxyLugares ..|> ProovedorLugares
+ServicioGeoapify ..|> ProovedorLugares
+Cache ..|> CacheRepositorio
+CiudadDAO ..|> CiudadNegocio
+ViajeDAO ..|> IRepositorioViajes
+PreferenciaDAO ..|> IRepositorioPreferencias
+
+ViajeControlador --> IViajeServicio
+PlanificacionControlador --> GestorPreferencias
+PlanificacionControlador --> IFechasServicio
+PlanificacionControlador --> GestorPresupuesto
+PlanificacionControlador --> PresupuestoConMargenDecorador : margen del resumen
+PresupuestoConMargenDecorador --> GestorPresupuesto : gestorBase
+PresupuestoConMargenDecorador ..> PresupuestoServicio : constructor
+RecomendacionControlador --> CiudadNegocio
+RecomendacionControlador --> IRepositorioViajes
+RecomendacionControlador --> IRepositorioPreferencias
+RecomendacionControlador --> LlenarAtributosCiudad
+RecomendacionControlador --> Recomendador
+RecomendacionControlador --> SeleRecomendaciones
+RecomendadorDestinos --> GestorPreferencias
+LlenarAtributosCiudad --> ProovedorLugares : geo
+ProxyLugares --> ProovedorLugares : servicioReal
+ProxyLugares --> CacheRepositorio : cache
+ProxyLugares ..> ServicioGeoapify : inyecta @Qualifier("servicioGeoapify")
+
+ViajeControlador --> UsuarioSesionFacade
+PlanificacionControlador --> UsuarioSesionFacade
+ViajeControlador ..> SesionViaje
+PlanificacionControlador ..> SesionViaje
+RecomendacionControlador ..> SesionViaje
+SesionViaje ..> Viaje : recupera o crea
+Viaje --> Ubicacion : origen
+Viaje --> Usuario : usuario autenticado
+class Usuario <<contexto existente>>
+ViajeControlador ..> Ubicacion
+PlanificacionControlador ..> Preferencias
+PlanificacionControlador ..> FechasViaje
+PlanificacionControlador ..> Presupuesto
+PreferenciasServicio ..> CatalogoPreguntas
+PreferenciasServicio ..> CategoriaPreferencia
+CategoriaPreferencia "1" --> "*" Pregunta
+CatalogoPreguntas --> "*" DefPregunta
+DefPregunta --> TipoAtributo
+PreferenciasUsuario ..> CatalogoPreguntas : excluye respuestas de perfil
+PreferenciasUsuario --> Importancia
+PreferenciasServicio ..> Importancia
+FechasServicio *-- ReglaValidacionFechas : cadenaValidacion
+ReglaValidacionFechas --> "0..1" ReglaValidacionFechas : siguiente
+ReglaFechaInicio --|> ReglaValidacionFechas
+ReglaFechaFin --|> ReglaValidacionFechas
+ReglaRelacionFechas --|> ReglaValidacionFechas
+ReglaValidacionFechas ..> ContextoValidacionFechas
+FechasServicio ..> ContextoValidacionFechas : crea
+ContextoValidacionFechas --> FechasViaje
+RecomendacionControlador ..> PreferenciasUsuario : crea con USD, importancias y días
+RecomendacionControlador ..> DatosCiudades
+DatosCiudades --> "*" CiudadSemilla
+LlenarAtributosCiudad ..> CiudadSemilla
+LlenarAtributosCiudad ..> CatalogoPreguntas
+LlenarAtributosCiudad ..> Ciudad : enriquece
+LlenarAtributosCiudad ..> EstadoAtributo
+Ciudad ..> EstadoAtributo
+RecomendadorDestinos ..> PreferenciasUsuario
+RecomendadorDestinos ..> ValidacionCiudades : crea
+RecomendadorDestinos ..> ResultadoRecomendacion : crea y ordena
+ValidacionCiudades --> "*" Ciudad : válidas / descartadas / pendientes
+ResultadoRecomendacion --> "1" Ciudad
+SelectorDestinos ..> SeleccionDestinos : crea
+SeleccionDestinos --> "0..3" ResultadoRecomendacion : destinos en este flujo
+CiudadDAO ..> Ciudad
+CiudadDAO ..> ConexionBD
+ViajeDAO ..> ConexionBD
+PreferenciaDAO ..> ConexionBD
+class DataSource <<externo>>
+Cache --> DataSource
+class "API Geoapify" as API <<externo>>
+ServicioGeoapify ..> API : HTTPS
+note bottom of RecomendacionControlador
+  Lee entradas de la sesión HTTP, enriquece ciudades,
+  valida, puntúa y selecciona hasta tres destinos.
+  Guarda viaje y preferencias antes de renderizar.
+  Fin: recomendaciones.jsp.
+end note
+note bottom of Viaje
+  Se muestran únicamente los miembros usados
+  para el origen en este flujo. Las otras entradas
+  se guardan por separado en la sesión HTTP.
+end note
+note bottom of RecomendadorDestinos
+  Costo de estancia = costoPromedio x días.
+  Presupuesto obligatorio según configuración.
+  Indispensables: filtran, no suman puntaje.
+  Afinidad: gustar suma 1; prefiero suma 3,
+  o resta 1 si se confirma incumplimiento.
+  Desconocidos no se tratan como falsos.
+  Desempate: cercanía al presupuesto.
+end note
+@enduml
