@@ -6887,15 +6887,17 @@ No
 
 1. **¿Qué hice ayer?**
 
-   
+ayer hable con mi equipo lo de las cosas que teníamos que mejorar y les comente como las iba a programar 
 
 2. **¿Qué voy a hacer hoy?**
 
-   
+  
+hoy decidí que iba a usar la métrica de NOA que es number of attributes la cual mide cuántos atributos declara una clase. Ademas de empezar el código, sigue en mi rama. 
+
 
 3. **¿Tengo algún impedimento o bloqueo?**
 
-   
+  un poco de tiempo, tengo un parcial ese mismo dia pero manejare bien mi tiempo  
 
 ---
 
