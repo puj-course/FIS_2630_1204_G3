@@ -11,8 +11,7 @@ name: Revision de PR (Conventional Commits)
 
 on:
   pull_request:
-    # opened: se abre el PR | edited: le cambian el titulo
-    # synchronize: suben commits nuevos | reopened: se vuelve a abrir
+    # se abre el PR | le cambian el titulo | suben commits nuevos | se vuelve a abrir un PR cerrado
     types: [opened, edited, synchronize, reopened]
     branches:
       - main
@@ -26,7 +25,7 @@ jobs:
     steps:
       - name: Validar formato del titulo
         env:
-          # El titulo se pasa como variable (no directo en el script)
+          # El titulo se pasa como variable
           # para que un titulo con comillas o simbolos no rompa nada
           TITULO: ${{ github.event.pull_request.title }}
         run: |
