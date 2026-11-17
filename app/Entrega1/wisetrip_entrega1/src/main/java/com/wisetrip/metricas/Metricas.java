@@ -45,16 +45,31 @@ public class Metricas {
         return cantidad;
     }
 
+    // NOC: numero de hijas directas dentro de las clases recibidas como alcance.
+    public static int calcularNOC(Class<?> clase, List<Class<?>> clasesDelAlcance) {
+        int cantidad = 0;
+
+        for (Class<?> candidata : clasesDelAlcance) {
+            // getSuperclass devuelve solo el padre directo; no incluye interfaces ni abuelos.
+            if (candidata.getSuperclass() == clase) {
+                cantidad++;
+            }
+        }
+
+        return cantidad;
+    }
+
     // ValidacionCiudades queda fuera: es un record con metodos generados por Java.
     // Este programa se ejecuta por separado, sin iniciar Spring ni consultar servicios.
     public static void main(String[] args) {
         System.out.println("HU143 - Alcance del analisis de recomendaciones");
         System.out.println("Clases seleccionadas: " + CLASES_SELECCIONADAS.size());
-        System.out.printf("%-30s %5s%n", "Clase", "NPM");
+        System.out.printf("%-30s %5s %5s%n", "Clase", "NPM", "NOC");
 
         for (Class<?> clase : CLASES_SELECCIONADAS) {
             int npm = calcularNPM(clase);
-            System.out.printf("%-30s %5d%n", clase.getSimpleName(), npm);
+            int noc = calcularNOC(clase, CLASES_SELECCIONADAS);
+            System.out.printf("%-30s %5d %5d%n", clase.getSimpleName(), npm, noc);
         }
     }
 }
