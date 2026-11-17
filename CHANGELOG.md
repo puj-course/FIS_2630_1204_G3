@@ -7022,20 +7022,15 @@ hoy decidí que iba a usar la métrica de NOA que es number of attributes la cua
 
 1. **¿Qué logramos?**
 
-
-
+a nivel de grupo trabajamos demasiado bien, nos dividimos bien los tests cada uno sabia que hacer y nos rindio el tiempo trabajando en equipo
   
 2. **¿Cómo trabajamos?**
 
-
-
-
+Demasiado en equipo, siento que a lo largo del tiempo ya sabemos como trabajar juntos para cumplir con todo lo que pide la entrega, sabemos como entendernos y comunicarnos y fue una semana demasiado productiva
 
 3. **¿Qué podríamos mejorar?**
 
-
-
-
+entender el codigo no solo de nosotros sino de los demas
 
 ---
 
