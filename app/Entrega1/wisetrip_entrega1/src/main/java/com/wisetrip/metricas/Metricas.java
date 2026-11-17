@@ -14,7 +14,7 @@ import java.lang.reflect.Modifier;
 
 public class Metricas {
 
-    // Class<?> representa la informacion de una clase, sin crear un objeto de ella.
+    //arreglo de clases que se eligieron
     private static final Class<?>[] CLASES_SELECCIONADAS = {
             RecomendacionControlador.class,
             RecomendadorDestinos.class,
@@ -26,12 +26,15 @@ public class Metricas {
             SeleccionDestinos.class
     };
 
-    // NPM: numero de metodos publicos declarados en la propia clase.
-    public static int calcularNPM(Class<?> clase) {
+    //NPM number of public methods
+    public static int NPM(Class<?> clase) {
         int cantidadMetodosPublicos = 0;
 
         // getDeclaredMethods no incluye constructores ni metodos heredados.
-        for (Method metodo : clase.getDeclaredMethods()) {
+        Method[] metodos = clase.getDeclaredMethods();
+        // i indica la posicion del metodo que estamos revisando en el arreglo.
+        for (int i = 0; i < metodos.length; i++) {
+            Method metodo = metodos[i];
             // Los metodos sinteticos y puente son detalles generados por el compilador.
             if (metodo.isSynthetic() || metodo.isBridge()) {
                 continue;
@@ -46,12 +49,14 @@ public class Metricas {
     }
 
     // NOC: numero de hijas directas dentro de las clases recibidas como alcance.
-    public static int calcularNOC(Class<?> clase, Class<?>[] clasesDelAlcance) {
+    public static int NOC(Class<?> clase, Class<?>[] clasesDelAlcance) {
         int cantidadHijasDirectas = 0;
 
-        for (Class<?> candidata : clasesDelAlcance) {
+        for (int i = 0; i < clasesDelAlcance.length; i++) {
+            Class<?> candidata = clasesDelAlcance[i];
             // getSuperclass devuelve solo el padre directo; no incluye interfaces ni abuelos.
-            if (candidata.getSuperclass() == clase) {
+            Class<?> padre = candidata.getSuperclass();
+            if (padre == clase) {
                 cantidadHijasDirectas++;
             }
         }
@@ -60,11 +65,13 @@ public class Metricas {
     }
 
     // NOA: numero de atributos declarados directamente, de cualquier visibilidad.
-    public static int calcularNOA(Class<?> clase) {
+    public static int NOA(Class<?> clase) {
         int cantidadAtributos = 0;
 
         // Incluye constantes y campos static; no incluye heredados ni variables locales.
-        for (Field atributo : clase.getDeclaredFields()) {
+        Field[] atributos = clase.getDeclaredFields();
+        for (int i = 0; i < atributos.length; i++) {
+            Field atributo = atributos[i];
             // Excluye campos auxiliares generados por el compilador.
             if (!atributo.isSynthetic()) {
                 cantidadAtributos++;
@@ -86,10 +93,11 @@ public class Metricas {
         System.out.println("Se excluyen interfaces, records y clases internas del alcance seleccionado.");
         System.out.println();
 
-        for (Class<?> clase : CLASES_SELECCIONADAS) {
-            int npm = calcularNPM(clase);
-            int noc = calcularNOC(clase, CLASES_SELECCIONADAS);
-            int noa = calcularNOA(clase);
+        for (int i = 0; i < CLASES_SELECCIONADAS.length; i++) {
+            Class<?> clase = CLASES_SELECCIONADAS[i];
+            int npm = NPM(clase);
+            int noc = NOC(clase, CLASES_SELECCIONADAS);
+            int noa = NOA(clase);
             System.out.println("Clase: " + clase.getSimpleName());
             System.out.println("NPM: " + npm);
             System.out.println("NOC: " + noc);
