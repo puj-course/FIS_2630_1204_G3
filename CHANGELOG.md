@@ -7066,8 +7066,8 @@ como todos hicimos cosas diferentes, no todos sabemos lo que hicieron los demas
 * **HU 139 (Completa):** Se realizaron cada uno de los @test en cada de las clases de sevicios o donde se requeria
 * **HU 140 (Completa):** Complete las correcciones que salian en el SonarQube de las clases que me correspondieron
 * **HU 141 (Completa):** Se hicieron los tests respectivos de cada una de las clases. Solo hubo una clase que no corregi que es la de ConexionBD.java (esta en la carpeta de datos y por lo que no se trata del backend no lo tocamos, ademas porque las correcciones de la base de datos modifican grandemente el codigo que ya tenemos hecho)
-* **HU 142 (Completa):** Se revisaron y corrigieron los issues de SonarQube del paquete modelo. El analisis automatizado del pull request paso el Quality Gate, sin problemas nuevos.
-* **HU 143 (Completa):** Se crearon y ejecutaron las pruebas unitarias de Usuario, FechasViaje, Presupuesto y Ubicacion, y todas pasaron. Quedo pendiente revisar la configuracion de cobertura en SonarQube para confirmar el cumplimiento del umbral requerido.
+* **HU 142 (Completa):** Se realizaron las pruebas manuales de la complejidad ciclomatica, a pesar de que en el sonarqube se viera, lo cual realmente no era necesariopara la entrega ya que habia que programarlo, pero muestra como estabamos con respecto a eso
+* **HU 143 (Completa mas noa):** A demas de la comprobacion mannual y documentarla por completo, ademas se programo y se añadio una nueva metrica que es number of atributes, que sigue la misma caracteristicas de noc y npm solo que con los atributos de cada clase
 * **HU 144 (Completa):** Se realizo la integracion entre el repositorio y un grupo de telegram con todos los miembros del equipo, para ver cambios en el repositorio en tiempo real.
 
 ## Demostración
