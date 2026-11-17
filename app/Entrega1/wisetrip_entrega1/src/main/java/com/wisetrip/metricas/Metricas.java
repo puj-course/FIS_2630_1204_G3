@@ -11,12 +11,11 @@ import com.wisetrip.servicio.ServicioGeoapify;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
-import java.util.List;
 
 public class Metricas {
 
     // Class<?> representa la informacion de una clase, sin crear un objeto de ella.
-    private static final List<Class<?>> CLASES_SELECCIONADAS = List.of(
+    private static final Class<?>[] CLASES_SELECCIONADAS = {
             RecomendacionControlador.class,
             RecomendadorDestinos.class,
             SelectorDestinos.class,
@@ -25,11 +24,11 @@ public class Metricas {
             ServicioGeoapify.class,
             ResultadoRecomendacion.class,
             SeleccionDestinos.class
-    );
+    };
 
     // NPM: numero de metodos publicos declarados en la propia clase.
     public static int calcularNPM(Class<?> clase) {
-        int cantidad = 0;
+        int cantidadMetodosPublicos = 0;
 
         // getDeclaredMethods no incluye constructores ni metodos heredados.
         for (Method metodo : clase.getDeclaredMethods()) {
@@ -39,47 +38,47 @@ public class Metricas {
             }
 
             if (Modifier.isPublic(metodo.getModifiers())) {
-                cantidad++;
+                cantidadMetodosPublicos++;
             }
         }
 
-        return cantidad;
+        return cantidadMetodosPublicos;
     }
 
     // NOC: numero de hijas directas dentro de las clases recibidas como alcance.
-    public static int calcularNOC(Class<?> clase, List<Class<?>> clasesDelAlcance) {
-        int cantidad = 0;
+    public static int calcularNOC(Class<?> clase, Class<?>[] clasesDelAlcance) {
+        int cantidadHijasDirectas = 0;
 
         for (Class<?> candidata : clasesDelAlcance) {
             // getSuperclass devuelve solo el padre directo; no incluye interfaces ni abuelos.
             if (candidata.getSuperclass() == clase) {
-                cantidad++;
+                cantidadHijasDirectas++;
             }
         }
 
-        return cantidad;
+        return cantidadHijasDirectas;
     }
 
     // NOA: numero de atributos declarados directamente, de cualquier visibilidad.
     public static int calcularNOA(Class<?> clase) {
-        int cantidad = 0;
+        int cantidadAtributos = 0;
 
         // Incluye constantes y campos static; no incluye heredados ni variables locales.
         for (Field atributo : clase.getDeclaredFields()) {
             // Excluye campos auxiliares generados por el compilador.
             if (!atributo.isSynthetic()) {
-                cantidad++;
+                cantidadAtributos++;
             }
         }
 
-        return cantidad;
+        return cantidadAtributos;
     }
 
     // ValidacionCiudades queda fuera: es un record con metodos generados por Java.
     // Este programa se ejecuta por separado, sin iniciar Spring ni consultar servicios.
     public static void main(String[] args) {
         System.out.println("HU143 - Alcance del analisis de recomendaciones");
-        System.out.println("Clases seleccionadas: " + CLASES_SELECCIONADAS.size());
+        System.out.println("Clases seleccionadas: " + CLASES_SELECCIONADAS.length);
         System.out.println("NPM: metodos publicos propios; sin constructores, heredados, sinteticos ni puente.");
         System.out.println("NOC: hijas directas SOLO entre las clases seleccionadas; implements no cuenta.");
         System.out.println("NOA: atributos propios de cualquier visibilidad, incluidos static y constantes;");
