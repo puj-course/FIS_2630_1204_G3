@@ -7060,12 +7060,12 @@ como todos hicimos cosas diferentes, no todos sabemos lo que hicieron los demas
 
 ## Incremento Entregado
 
-* **HU 136 (Completa):** 
-* **HU 137 (Completa):** 
-* **HU 138 (Completa):** Se realizaron todas las pruebas de la carpeta servicio en el programa de wisetrip
-* **HU 139 (Completa):** Se realizaron cada uno de los @test en cada de las clases de sevicios o donde se requeria
-* **HU 140 (Completa):** Complete las correcciones que salian en el SonarQube de las clases que me correspondieron
-* **HU 141 (Completa):** Se hicieron los tests respectivos de cada una de las clases. Solo hubo una clase que no corregi que es la de ConexionBD.java (esta en la carpeta de datos y por lo que no se trata del backend no lo tocamos, ademas porque las correcciones de la base de datos modifican grandemente el codigo que ya tenemos hecho)
+* **HU 136 (No Completa):** Se realizaron correcciones por parte de mis compañeros pero no por mi ya que estaba revisando los diagramas faltantes
+* **HU 137 (Completa):** Se realizaron los diagramas necesitados por el profesor se mostro que cumplian con los patrones y demas requerimientos pedidos
+* **HU 138 (Completa):** 
+* **HU 139 (Completa):** 
+* **HU 140 (Completa):**
+* **HU 141 (Completa):** 
 * **HU 142 (Completa):** Se realizaron las pruebas manuales de la complejidad ciclomatica, a pesar de que en el sonarqube se viera, lo cual realmente no era necesariopara la entrega ya que habia que programarlo, pero muestra como estabamos con respecto a eso
 * **HU 143 (Completa mas noa):** A demas de la comprobacion mannual y documentarla por completo, ademas se programo y se añadio una nueva metrica que es number of atributes, que sigue la misma caracteristicas de noc y npm solo que con los atributos de cada clase
 * **HU 144 (Completa):** Se realizo la integracion entre el repositorio y un grupo de telegram con todos los miembros del equipo, para ver cambios en el repositorio en tiempo real.
