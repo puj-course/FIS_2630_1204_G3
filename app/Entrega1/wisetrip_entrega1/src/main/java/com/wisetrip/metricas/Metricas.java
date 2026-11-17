@@ -15,7 +15,7 @@ import java.lang.reflect.Modifier;
 public class Metricas {
 
     //arreglo de clases que se eligieron
-    private static final Class<?>[] CLASES_SELECCIONADAS = {
+    private static final Class[] CLASES_SELECCIONADAS = {
             RecomendacionControlador.class,
             RecomendadorDestinos.class,
             SelectorDestinos.class,
@@ -27,7 +27,7 @@ public class Metricas {
     };
 
     //NPM number of public methods
-    public static int NPM(Class<?> clase) {
+    public static int NPM(Class clase) {
         int cantidadMetodosPublicos = 0;
 
         Method[] metodos = clase.getDeclaredMethods();
@@ -42,14 +42,14 @@ public class Metricas {
         return cantidadMetodosPublicos;
     }
 
-    // NOC: numero de hijas directas dentro de las clases recibidas como alcance.
-    public static int NOC(Class<?> clase, Class<?>[] clasesDelAlcance) {
+    // NOC number of children 
+    public static int NOC(Class clase, Class[] clasesDelAlcance) {
         int cantidadHijasDirectas = 0;
 
         for (int i = 0; i < clasesDelAlcance.length; i++) {
-            Class<?> candidata = clasesDelAlcance[i];
+            Class candidata = clasesDelAlcance[i];
             // getSuperclass devuelve solo el padre directo; no incluye interfaces ni abuelos.
-            Class<?> padre = candidata.getSuperclass();
+            Class padre = candidata.getSuperclass();
             if (padre == clase) {
                 cantidadHijasDirectas++;
             }
@@ -59,7 +59,7 @@ public class Metricas {
     }
 
     // NOA: numero de atributos declarados directamente, de cualquier visibilidad.
-    public static int NOA(Class<?> clase) {
+    public static int NOA(Class clase) {
         int cantidadAtributos = 0;
 
         // Incluye constantes y campos static; no incluye heredados ni variables locales.
@@ -89,7 +89,7 @@ public class Metricas {
         System.out.println();
 
         for (int i = 0; i < CLASES_SELECCIONADAS.length; i++) {
-            Class<?> clase = CLASES_SELECCIONADAS[i];
+            Class clase = CLASES_SELECCIONADAS[i];
             int npm = NPM(clase);
             int noc = NOC(clase, CLASES_SELECCIONADAS);
             int noa = NOA(clase);
