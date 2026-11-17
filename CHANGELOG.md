@@ -7043,14 +7043,15 @@ hoy decidí que iba a usar la métrica de NOA que es number of attributes la cua
 
 1. **¿Qué logramos?**
 
-
+entre todos logramos obtener una cobertura mejor a la que esperabamos en sonarqube, tambien corregimos y estudiamos mas el codigo para la sustentacion del martes.
 
 2. **¿Cómo trabajamos?**
 
-
+Muy bien, hemos aprendido a trabajar mucho en grupo ya que este tipo de metodologias lo piden asi, ya siendo las ultimas semanas reconozco que como equipo todos siempre le dimos la prioridad necesaria al proyecto y supimos llevarlo junto con las otras materias
 
 3. **¿Qué podríamos mejorar?**
 
+como todos hicimos cosas diferentes, no todos sabemos lo que hicieron los demas
 
 ---
    
