@@ -15,7 +15,7 @@ import java.lang.reflect.Modifier;
 public class Metricas {
 
     //arreglo de clases que se eligieron
-    private static final Class[] CLASES_SELECCIONADAS = {
+    private static final Class[] clases = {
             RecomendacionControlador.class,
             RecomendadorDestinos.class,
             SelectorDestinos.class,
@@ -79,7 +79,7 @@ public class Metricas {
     // Este programa se ejecuta por separado, sin iniciar Spring ni consultar servicios.
     public static void main(String[] args) {
         System.out.println("HU143 - Alcance del analisis de recomendaciones");
-        System.out.println("Clases seleccionadas: " + CLASES_SELECCIONADAS.length);
+        System.out.println("Clases seleccionadas: " + clases.length);
         System.out.println("NPM: metodos publicos propios; sin constructores ni heredados.");
         System.out.println("     No se excluyen metodos sinteticos o puente en esta version.");
         System.out.println("NOC: hijas directas SOLO entre las clases seleccionadas; implements no cuenta.");
@@ -88,10 +88,10 @@ public class Metricas {
         System.out.println("Se excluyen interfaces, records y clases internas del alcance seleccionado.");
         System.out.println();
 
-        for (int i = 0; i < CLASES_SELECCIONADAS.length; i++) {
-            Class clase = CLASES_SELECCIONADAS[i];
+        for (int i = 0; i < clases.length; i++) {
+            Class clase = clases[i];
             int npm = NPM(clase);
-            int noc = NOC(clase, CLASES_SELECCIONADAS);
+            int noc = NOC(clase, clases);
             int noa = NOA(clase);
             System.out.println("Clase: " + clase.getSimpleName());
             System.out.println("NPM: " + npm);
