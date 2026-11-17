@@ -6967,21 +6967,21 @@ hoy decidí que iba a usar la métrica de NOA que es number of attributes la cua
 
 ---
 
-#  Sprint Retrospective - 08/11/2026
+#  Sprint Retrospective - 15/11/2026
 
 ## Maria Alejandra Rodriguez
 
 1. **¿Qué logramos?**
 
-
+Logramos un gran trabajo esta semana, sacamos de manera exitosa las pruebas de SonarQube, los git actions que algunos tuvieron sus fallas pero ya estan arregladas, sacamos las cosas de docker, de mensajeria con el repositorio y con la aplicación y logramos de alguna manera terminar el producto, no con todas las cualidades que pensamos en un inicio pero si con la mayoria de cosas que deberiamos cumplir
 
 2. **¿Cómo trabajamos?**
 
-
+Trabajamos muy bien, logramos mucho más de lo que esperabamos todo con el esfuerzo del equipo y el empeño que le dimos al proyecto, muchas veces hubo problemas de comunicación pero siento que lo supimos manejar muy bien
 
 3. **¿Qué podríamos mejorar?**
 
-
+Estudiar para la presentación para que todos nos podamos dar una mano
   
 ---
 
