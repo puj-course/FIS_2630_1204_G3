@@ -7062,8 +7062,8 @@ como todos hicimos cosas diferentes, no todos sabemos lo que hicieron los demas
 
 * **HU 136 (No Completa):** Se realizaron correcciones por parte de mis compañeros pero no por mi ya que estaba revisando los diagramas faltantes
 * **HU 137 (Completa):** Se realizaron los diagramas necesitados por el profesor se mostro que cumplian con los patrones y demas requerimientos pedidos
-* **HU 138 (Completa):** 
-* **HU 139 (Completa):** 
+* **HU 138 (Completa):** Se realizo el taller de docker y con eso la construcción del docker
+* **HU 139 (Completa):** Se realizaron las pruebas del funcionamiento de docker con la prueba de otros integrantes del equipo
 * **HU 140 (Completa):**
 * **HU 141 (Completa):** 
 * **HU 142 (Completa):** Se realizaron las pruebas manuales de la complejidad ciclomatica, a pesar de que en el sonarqube se viera, lo cual realmente no era necesariopara la entrega ya que habia que programarlo, pero muestra como estabamos con respecto a eso
