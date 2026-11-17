@@ -6580,9 +6580,7 @@ trabajamos bien contando con la falta de conocimiento y vacios que tenemos, y au
 
 **Feedback de los stakeholders:**
 
-
-**foto**
-
+---
 <img width="736" height="1600" alt="image" src="https://github.com/user-attachments/assets/9a1e6637-c977-49a9-9fa7-c79d774216a6" />
 
 
@@ -7050,4 +7048,37 @@ Muy bien, hemos aprendido a trabajar mucho en grupo ya que este tipo de metodolo
 como todos hicimos cosas diferentes, no todos sabemos lo que hicieron los demas
 
 ---
-   
+---
+
+---
+# Sprint Review - 15/11/2026
+
+## Información de la Sesión
+
+* **Fecha de la Review:** 15/11/2026
+* **Sprint Goal:** 
+
+## Incremento Entregado
+
+* **HU 136 (Completa):** 
+* **HU 137 (Completa):** 
+* **HU 138 (Completa):** Se realizaron todas las pruebas de la carpeta servicio en el programa de wisetrip
+* **HU 139 (Completa):** Se realizaron cada uno de los @test en cada de las clases de sevicios o donde se requeria
+* **HU 140 (Completa):** Complete las correcciones que salian en el SonarQube de las clases que me correspondieron
+* **HU 141 (Completa):** Se hicieron los tests respectivos de cada una de las clases. Solo hubo una clase que no corregi que es la de ConexionBD.java (esta en la carpeta de datos y por lo que no se trata del backend no lo tocamos, ademas porque las correcciones de la base de datos modifican grandemente el codigo que ya tenemos hecho)
+* **HU 142 (Completa):** Se revisaron y corrigieron los issues de SonarQube del paquete modelo. El analisis automatizado del pull request paso el Quality Gate, sin problemas nuevos.
+* **HU 143 (Completa):** Se crearon y ejecutaron las pruebas unitarias de Usuario, FechasViaje, Presupuesto y Ubicacion, y todas pasaron. Quedo pendiente revisar la configuracion de cobertura en SonarQube para confirmar el cumplimiento del umbral requerido.
+* **HU 144 (Parcial):** esta hu se referia a dorregir y testear los dao y las interfaces, pero con el equipo decidimos que los dao no lo sibamos a tocar, ya que no queremos que se dañe nada de lo que tenemos, y en el caso de las interfaces se corrigieron los issues mas no se testearon ya que estas solo declararan los metodos
+
+## Demostración
+
+
+## Conclusión y Próximos Pasos
+
+
+
+**Feedback de los stakeholders:**
+
+---
+
+---
